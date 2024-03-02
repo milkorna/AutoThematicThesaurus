@@ -57,16 +57,18 @@ def parse_article(url):
         # save_data(text_file_path, text)
         
 def main():
-    with open('collected_links.txt', 'r') as file:
+    with open(links_file_path, 'r') as file:
         count = 0
         for url in file:
             print(f"Started processing the article {url}")
             parse_article(url.strip())
             count +=1 # for tests
-            if count == 5:
+            if count == 3:
                 return
 
-output_folder = 'text_data'
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+links_file_path = os.path.join(current_script_dir, '..', 'my_data', 'collected_links.txt')
+output_folder = os.path.join(current_script_dir, '..', 'my_data', 'texts')
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
