@@ -1,0 +1,40 @@
+In this article, we will briefly review a technology that underlies ChatGPT — embeddings. Also we’ll write a simple intelligent search in a codebase of a project.
+Embedding is the process of converting words or text into a set of numbers called a numeric vector. Vectors can be compared with each other to determine how similar two texts or words are in meaning.
+For example, we take two numerical vectors (embeddings) of the words "donate" and "give". The words are different but the meaning is similar, i.e. they are interconnected, and the result of both will be giving something to someone.
+To get a similar result in the context of a code, we can convert the words into embeddings and compare their similarity measures . The value of measure will range from 0 to 1, where 1 is the maximum similarity and 0 is no correlation. Cosine similarity can be taken as such a comparison function. Imagine that we have done all the necessary operations with embeddings and now analyze the result. We also compared two embeddings of the words "give" and "red". For the words "give" and "donate" the function returned the number 0.80, and for "give" and "red" — only 0.20. Thus, we can conclude that "give" and "donate" are closer than "give" and "red".
+In the codebase of a project, embeddings can be used to search in a code or documentation. For example, you can make an embedding (vector) out of the search query and then measure similarity of both to find relevant functions or classes.
+So, to make it you need an Open AI account and an API token. If you don't have an account yet, you can register on the official Open AI website . After registering and verifying your account, go to the API Keys profile section and generate an API token.
+To start they give $18. That was enough to make an example for this article (below) and conduct further testing of the service.
+Take a TypeScript project as a codebase. I recommend taking a small one so as not to wait for generating embeddings long. Also you can use an example . You also need Python 3+ versions and the library from Open AI. No worries if you don't know any of these languages. The code examples below are simple and don't require a deep understanding of both.
+Let's get started. First, you need to write a code to extract various pieces of code from the project, such as functions. TypeScript provides a convenient compiler API for working with an AST , which simplifies the task. Install csv-stringify library to generate CSV:
+Then create the file code-to-csv.js and write the extraction of information from the code:
+The script collects all the fragments we need and prints a CSV table to the console. CSV table consists of the columns file_name, name, code, docs, combined.
+file_name contains the path to the file in the project,.
+name is the name of the fragment, for example, "function’s name",.
+code is the entity code,.
+docs is the description from the comments to the fragment,.
+combined is the addition of the contents of the code and docs columns, we are going to use this column to generate embeddings.
+You don't need to run it.
+Now to Python.
+Install the library from Open AI and utilities for working with embeddings:
+Create the file create_search_db.py with the following code:
+The script runs code-to-csv.js (1), the result is loaded into a dataframe(2) and embeddings are generated for the content in the combined (3) column. Embeddings are written to the embedding column. The final table with everything needed for the search is saved to the search_db.csv (4) file.
+For the script to work, you need an API token. The openai library can automatically take the token from the environment variables, so you can write a convenient script to make it:
+Save it somewhere, for example, in env.sh , and run:
+Everything is ready to generate the search database.
+Run the script create_search_db.py and wait until the CSV file with the database appears. This may take a couple of minutes. After that, you can start writing a search engine.
+Create a new search.py ​​file and write the following:
+Let's analyze how the script works. The data from search_db.csv is loaded into a dataframe(1), an object-oriented representation of the table. Then embeddings from the table are converted into arrays with numbers(2) so that they can be worked with. At the end, the search function is launched with a search query string(3).
+The search function generates an embedding for the query(4), measures similarity of this embedding with each embedding from the base, and stores the similarity score in the similarities column(5).
+The degree of similarity is determined by a number from 0 to 1, where 1 means the maximum fit. The rows in the table are sorted by similarities (6).
+Finally, the first three rows are retrieved from the database and printed to the console.
+The search engine is ready, you can test it.
+For the test, run the command with the request:
+Now try to enter a request in another language:
+As you can see, the search is based on the meaning of the words in the query, and not just on keywords.
+The tool is not limited to just this case and one project. You can organize a more extensive search for all projects at once. This is useful if you develop several similar applications every year and would like to quickly find code snippets, or you have a lot of documentation, and a keyword search is not a good call. It all depends on the tasks and scope.
+Thanks for your attention!
+Links:
+Open AI API.
+Open AI Embeddings API.
+Example.
