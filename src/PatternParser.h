@@ -17,6 +17,8 @@ namespace ParserUtils
     std::pair<std::string, std::string> ParseData(const std::string &str);
 
     std::string ExtractSubstringInQuotes(const std::string &str);
+
+    std::string ExtractSubstringInSq(const std::string &str);
 }
 
 class Parser
@@ -26,19 +28,14 @@ public:
     {
         if (!fileStream)
         {
-            // If file cannot be opened, throw an exception
             throw std::runtime_error("Error opening file: " + filePath);
         }
-    }
-
-    std::unordered_map<std::string, std::shared_ptr<Model>> getParsedPatterns()
-    {
-        return models;
     }
 
     void Parse();
 
 private:
+    bool logs = false;
     std::string filePath;
     std::ifstream fileStream;
     std::unordered_map<std::string, std::shared_ptr<Model>> models;
@@ -47,7 +44,7 @@ private:
     SyntaxRole ParseRoleAndCut(std::string &line) const;
     std::shared_ptr<WordComp> ParseWordComp(std::string &line);
     std::shared_ptr<ModelComp> ParseModelComp(std::string &line);
-    const Additional ParseTags(const std::string &line) const;
+    Additional ParseTags(const std::string &line);
 
     UniMorphTag ParseUniMorphTag(const std::string &line) const;
     std::pair<UniSPTag, UniMorphTag> ProcessWord(const X::UniString &line);

@@ -1,5 +1,39 @@
 #include <GrammarComponent.h>
 
+void WordComp::print() const
+{
+    std::cout << "\t\tword sp: " << this->getSPTag().toString();
+    if (const auto &cond = this->getCondition(); !cond.isEmpty())
+    {
+        std::cout << ", mt: " << cond.getMorphTag().toString();
+        if (const auto &addCond = cond.getAdditional(); !addCond.isEmpty())
+        {
+            std::cout << ", lex: " << addCond.m_exLex;
+        }
+    }
+    std::cout << std::endl;
+}
+
+void Model::printWords() const
+{
+    for (const auto &comps : this->getComponents())
+    {
+        if (const auto &c = comps.get(); c->isWord())
+        {
+            WordComp *wc = dynamic_cast<WordComp *>(c);
+            // std::cout << "word form: " << this->getForm() << ", sp: " << this->getSPTag().toString();
+            wc->print();
+        }
+        else
+        {
+            std::cout << "\tmodel form: " << c->getForm() << ", comps: " << std::endl;
+            Model *m = dynamic_cast<Model *>(c);
+            m->printWords();
+            std::cout << std::endl;
+        }
+    }
+}
+
 std::shared_ptr<WordComp> Model::getHead() const
 {
     // for (const auto &comp : m_comps)

@@ -22,6 +22,8 @@ struct Additional
     bool m_rec = false;
     std::string m_exLex = "";
     std::vector<std::string> m_themes = {};
+
+    bool isEmpty() const { return m_themes.empty() && m_exLex.empty(); }
 };
 
 class Condition
@@ -38,6 +40,8 @@ public:
     const UniMorphTag getMorphTag() const { return m_tag; };
     const Additional getAdditional() const { return m_addcond; };
     const SyntaxRole getSyntaxRole() const { return m_role; };
+
+    bool isEmpty() const { return m_tag == UniMorphTag::UNKN && m_addcond.isEmpty(); }
 
     const bool matches() const;
 };
@@ -83,12 +87,11 @@ class WordComp : public Word
 public:
     WordComp(const UniSPTag &sp = UniSPTag::X, const Condition &cond = Condition()) : Word(sp), m_cond(cond) {}
 
-    const Condition getCondition() const
-    {
-        return m_cond;
-    }
+    const Condition getCondition() const { return m_cond; }
 
     ~WordComp() override {}
+
+    void print() const;
 
     const bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
     const bool matches(const WordFormPtr &wordForm, size_t &position) const;
@@ -117,6 +120,8 @@ public:
     bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
 
     std::shared_ptr<WordComp> getHead() const;
+
+    void printWords() const;
 };
 
 class ModelComp : public Model

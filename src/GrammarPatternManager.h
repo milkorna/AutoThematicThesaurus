@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include <memory>
 #include <unordered_map>
 
@@ -13,11 +14,17 @@ class GrammarPatternManager
 {
 private:
     static GrammarPatternManager *instance;
-    std::unordered_map<std::string, std::shared_ptr<Model>> patterns;
+
     std::unordered_map<std::string, std::shared_ptr<Model>> bases;
     std::unordered_map<std::string, std::shared_ptr<Model>> assemblies;
+
+    std::unordered_map<std::string, std::shared_ptr<Model>> patterns;
+
     // Private constructors for Singleton pattern
-    GrammarPatternManager();
+    GrammarPatternManager()
+    {
+        std::cout << "Creating a new instance of GrammarPatternManager\n";
+    }
 
 public:
     // Singleton access method
@@ -40,6 +47,8 @@ public:
     void readPatterns(const std::string &filename);
 
     void printPatterns() const;
+
+    size_t size() const;
 
     void divide();
 };

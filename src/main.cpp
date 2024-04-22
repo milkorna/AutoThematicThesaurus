@@ -36,13 +36,14 @@ int main()
     // auto &dictionary = TermDictionary::getInstance();
     std::cout << "Current path is " << std::filesystem::current_path() << '\n';
 
-    auto manager = GrammarPatternManager::getInstance();
+    const auto &manager = GrammarPatternManager::getInstance();
 
     try
     {
         std::string filePath = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/patterns.txt";
 
         manager->readPatterns(filePath);
+        manager->printPatterns();
     }
     catch (const std::exception &e)
     {
@@ -54,8 +55,6 @@ int main()
         std::cerr << "Unknown exception caught" << std::endl;
         return EXIT_FAILURE;
     }
-
-    manager->printPatterns();
 
     Options opts;
 

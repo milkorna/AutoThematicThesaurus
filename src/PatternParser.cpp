@@ -7,8 +7,6 @@
 
 #include <algorithm>
 
-// обязательно ли для каждого заголовочного файла иметь файл cpp или реализацию можно прописать прямо в .h файле? и наоборот - можно ли иметь набор полезных функций в .cpp файле и не заморачиваться с определением .h файла?
-
 // Utilize a unified logging function for simplicity and centralized log management
 void log(const std::string &message)
 {
@@ -41,6 +39,7 @@ std::pair<UniString, UniString> ParserUtils::ParseData(const UniString &str)
     }
 
     compData = (pipePos != std::string::npos) ? str.subString(0, pipePos) : str;
+
     return std::make_pair(compData, tags);
 }
 
@@ -74,6 +73,20 @@ std::string ParserUtils::ExtractSubstringInQuotes(const std::string &str)
     return "";
 }
 
+std::string ParserUtils::ExtractSubstringInSq(const std::string &str)
+{
+    size_t firstQuotePos = str.find("[");
+    if (firstQuotePos != std::string::npos)
+    {
+        size_t secondQuotePos = str.find("]", firstQuotePos + 1);
+        if (secondQuotePos != std::string::npos)
+        {
+            return str.substr(firstQuotePos + 1, secondQuotePos - firstQuotePos - 1);
+        }
+    }
+    return "";
+}
+
 // Parsing a name from a quoted string
 std::string Parser::ParseName(const std::string &line) const
 {
@@ -96,7 +109,7 @@ SyntaxRole Parser::ParseRoleAndCut(std::string &line) const
         if (pos != std::string::npos && pos > 0)
         {
             char role = line[pos + 1];
-            line.erase(pos, 2); // Adjusted to remove correct part of string
+            line = line.substr(pos + 3); // Adjusted to remove correct part of string
             switch (role)
             {
             case 'h':
@@ -106,7 +119,10 @@ SyntaxRole Parser::ParseRoleAndCut(std::string &line) const
             case 'd':
                 return SyntaxRole::Dependent;
             default:
-                log("Unknown role: " + std::string(1, role));
+                if (this->logs)
+                {
+                    log("Unknown role: " + std::string(1, role));
+                }
                 return SyntaxRole::Independent;
             }
         }
@@ -152,7 +168,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line)
         UniSPTag spTag(data[0].getRawString());
         UniMorphTag morphTag;
 
-        if (data.size() > 1 && data[1].contains('[') && data[1].contains(']'))
+        if (data.size() > 1 && data[1].length() > 1 && data[1].contains('[') && data[1].contains(']'))
         {
             morphTag = ParseUniMorphTag(data[1].getRawString());
         }
@@ -166,28 +182,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line)
     }
 }
 
-std::pair<std::string, UniMorphTag> Parser::ProcessModel(const X::UniString &line)
-{
-    try
-    {
-        std::vector<X::UniString> data = line.split(' ');
-        UniMorphTag morphTag;
-
-        if (data.size() > 1 && data[1].contains('[') && data[1].contains(']'))
-        {
-            morphTag = ParseUniMorphTag(data[1].getRawString());
-        }
-
-        return std::make_pair(ParserUtils::ExtractSubstringInQuotes(data[0].getRawString()), morphTag);
-    }
-    catch (const std::exception &e)
-    {
-        log("Error in ProcessModel: " + std::string(e.what()));
-        return std::make_pair("", UniMorphTag()); // Return empty and default tag on failure
-    }
-}
-
-const Additional Parser::ParseTags(const std::string &line) const
+Additional Parser::ParseTags(const std::string &line)
 {
     try
     {
@@ -266,23 +261,33 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
     try
     {
         const SyntaxRole synRole = this->ParseRoleAndCut(line);
-        auto modelData = ParserUtils::ParseData(X::UniString{line});
-        const auto &m = ProcessModel(modelData.first);
+        auto modelData = ParserUtils::ParseData(line);
+        const auto &patName = ParserUtils::ExtractSubstringInQuotes(modelData.first);
+        UniMorphTag morphTag;
+        if (line.find("[") != std::string::npos && line.find("]") != std::string::npos)
+        {
+            std::string patTags = ParserUtils::ExtractSubstringInSq(modelData.first);
+
+            morphTag = ParseUniMorphTag(patTags);
+        }
 
         GrammarPatternManager *manager = GrammarPatternManager::getInstance();
-        auto model = manager->getPattern(m.first);
+        auto model = manager->getPattern(patName);
         if (!model)
         {
-            log("Failed to find model: " + std::string(m.first));
+            if (this->logs)
+            {
+                log("Failed to find model: " + patName);
+            }
             return nullptr;
         }
 
         Additional addcond;
-        if (!modelData.second.isEmpty())
+        if (!modelData.second.empty())
         {
-            addcond = ParseTags(modelData.second.getRawString());
+            addcond = ParseTags(modelData.second);
         }
-        return std::make_shared<ModelComp>(ModelComp{m.first, model->getComponents(), Condition{synRole, m.second, addcond}});
+        return std::make_shared<ModelComp>(ModelComp{patName, model->getComponents(), Condition{synRole, morphTag, addcond}});
     }
     catch (const std::exception &e)
     {
@@ -306,6 +311,7 @@ void Parser::Parse()
 
         while (std::getline(fileStream, line))
         {
+
             std::istringstream iss(line);
 
             if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
@@ -316,12 +322,20 @@ void Parser::Parse()
             if (line.find("name:") != std::string::npos)
             {
                 name = ParserUtils::ExtractSubstringInQuotes(line);
+                if (this->logs)
+                {
+                    log("Pattern name parsed successfully!");
+                }
                 continue;
             }
 
             if (line.find("body: {") != std::string::npos)
             {
                 isInBody = true;
+                if (this->logs)
+                {
+                    log("Started parsing body for pattern: " + name);
+                }
                 continue;
             }
 
@@ -330,24 +344,68 @@ void Parser::Parse()
                 if (line.find("w:") != std::string::npos)
                 {
                     auto word = this->ParseWordComp(line);
-                    comps.push_back(word);
+                    if (word)
+                    {
+                        comps.push_back(word);
+                        if (this->logs)
+                        {
+                            log("Word component parsed successfully: " + line);
+                        }
+                    }
+                    else
+                    {
+                        if (this->logs)
+                        {
+                            log("Word component parsing failed: " + line);
+                        }
+                    }
                     continue;
                 }
                 else if (line.find("m:") != std::string::npos)
                 {
                     auto model = this->ParseModelComp(line);
-                    comps.push_back(model);
+                    if (model)
+                    {
+                        comps.push_back(model);
+                        if (this->logs)
+                        {
+                            log("Model component parsed successfully: " + line);
+                        }
+                    }
+                    else
+                    {
+                        if (this->logs)
+                        {
+                            log("Model component parsing failed: " + line);
+                        }
+                    }
                     continue;
                 }
 
                 if (line.find("}") != std::string::npos)
                 {
                     isInBody = false;
-                    continue;
+                    if (this->logs)
+                    {
+                        std::cout << "Adding pattern with key: " << name << std::endl;
+                    }
+                    manager->addPattern(name, std::make_shared<Model>(Model{name, comps}));
+                    if (this->logs)
+                    {
+                        std::cout << "Current number of patterns: " << manager->size() << std::endl;
+                    }
+                    if (this->logs)
+                    {
+                        log("Finished parsing body for pattern: " + name);
+                    }
+                    comps.clear();
                 }
             }
-
-            manager->addPattern(name, std::make_shared<Model>(Model{name, comps}));
+        }
+        if (this->logs)
+        {
+            log("Parsing completed successfully.");
+            log("Number of patterns after parsing: " + manager->size());
         }
     }
     catch (const std::exception &e)

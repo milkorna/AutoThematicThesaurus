@@ -16,8 +16,6 @@ GrammarPatternManager *GrammarPatternManager::getInstance()
     return instance;
 }
 
-GrammarPatternManager::GrammarPatternManager() : patterns{} {}
-
 void GrammarPatternManager::addPattern(const std::string &key, const std::shared_ptr<Model> &model)
 {
     patterns[key] = model;
@@ -47,22 +45,22 @@ void GrammarPatternManager::readPatterns(const std::string &filePath)
 {
     Parser parser(filePath);
     parser.Parse();
-    patterns = parser.getParsedPatterns();
 }
 
 void GrammarPatternManager::printPatterns() const
 {
+    std::cout << "printPatterns: " << patterns.size() << std::endl;
     for (const auto &[key, model] : patterns)
     {
-        std::cout << model->getForm() << ": ";
-
-        // std::cout << model->getSPTag() << ": ";
-        for (const auto &comp : model->getComponents())
-        {
-            std::cout << comp->getSPTag() << " ";
-        }
+        std::cout << "model form: " << model->getForm() << ", comps: " << std::endl;
+        model->printWords();
         std::cout << std::endl;
     }
+}
+
+size_t GrammarPatternManager::size() const
+{
+    return patterns.size();
 }
 
 void GrammarPatternManager::divide()
@@ -90,5 +88,5 @@ void GrammarPatternManager::divide()
     }
 
     // Optionally clear patterns if they should not be retained after division
-    patterns.clear();
+    // patterns.clear();
 }
