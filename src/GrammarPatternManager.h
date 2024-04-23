@@ -21,10 +21,7 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Model>> patterns;
 
     // Private constructors for Singleton pattern
-    GrammarPatternManager()
-    {
-        std::cout << "Creating a new instance of GrammarPatternManager\n";
-    }
+    GrammarPatternManager(){};
 
 public:
     // Singleton access method

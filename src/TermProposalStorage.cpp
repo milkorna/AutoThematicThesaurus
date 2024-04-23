@@ -2,80 +2,57 @@
 #include <TermProposalStorage.h>
 #include <GrammarPatternManager.h>
 
-TermPropCollector *TermPropCollector::instance = nullptr;
+WCModelCollection *WCModelCollection::instance = nullptr;
 
-TermPropInfo::TermPropInfo() : count(0), documentCount(0) {}
-
-void TermPropInfo::addOccurrence(const std::string &documentName)
-{
-    ++count;
-    if (documents.insert(documentName).second)
-    { // Returns true if the document was not already present
-        ++documentCount;
-    }
-}
-
-// TermDictionary::TermDictionary() {}
-
-// TermDictionary& TermDictionary::getInstance() {
-//     if (!instance) {
-//         instance.reset(new TermDictionary());
-//     }
-//     return *instance;
-// }
-
-// void TermDictionary::addTerm(const std::string& term, const std::string& documentName) {
-//     dictionary[term].addOccurrence(documentName);
-// }
-
-// const TermPropInfo* TermDictionary::getTermInfo(const std::string& term) const {
-//     auto it = dictionary.find(term);
-//     if (it != dictionary.end()) {
-//         return &it->second;
-//     }
-//     return nullptr;
-// }
-
-// Implementations for TermProposal methods go here
-TermProposal::TermProposal()
-{
-    // Constructor implementation
-}
-
-const std::string TermProposal::NormalizePhrase() const
-{
-    // Method implementation
-    return std::string(); // Placeholder return
-}
-
-const X::WordFormPtr TermProposal::GetHead() const
-{
-    // Method implementation
-    return nullptr; // Placeholder return
-}
-
-///////////////////////////////
-
-TermPropCollector *TermPropCollector::getInstance()
+WCModelCollection *WCModelCollection::getInstance()
 {
     if (!instance)
     {
-        instance = new TermPropCollector();
+        instance = new WCModelCollection();
     }
     return instance;
 }
 
-void TermPropCollector::addTermProp(const std::string &term, const std::string &documentName)
+// void WCModelCollection::addModel(const std::string &key)
+// {
+//     dictionary[key] = {};
+// }
+
+void WCModelCollection::addWordComplex(const std::string &key, const WordComplex &wc)
 {
-    // dictionary[term].addOccurrence(documentName);
+    // Check if the key exists in the dictionary
+    if (dictionary.find(key) == dictionary.end())
+    {
+        // If the key does not exist, initialize it with an empty WordComplexCollection
+        dictionary[key] = WordComplexCollection();
+    }
+
+    // Check if there are any aggregates already, and if not, create one
+    if (dictionary[key].empty())
+    {
+        WordComplexAgregate newAggregate;
+        newAggregate.wordComplexes.push_back(wc);
+        newAggregate.amount = 1;
+        newAggregate.size = wc.words.size();
+        newAggregate.normalizedForm = wc.textForm; // some logic to normalize form from text !
+        // Assume other initializations as needed
+
+        dictionary[key].push_back(newAggregate);
+    }
+    else
+    {
+        // If aggregates already exist, add to the first one or based on some logic
+        dictionary[key][0].wordComplexes.push_back(wc);
+        dictionary[key][0].amount += 1; // TODO: add logic to find needed word complex
+    }
 }
 
-BaseInfos TermPropCollector::collectBases(const std::vector<WordFormPtr> &forms)
+WordComplexCollection WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms)
 {
     const auto &manager = GrammarPatternManager::getInstance();
     const auto &bases = manager->getBases();
 
-    BaseInfos collectedBases;
+    WordComplexCollection collectedBases;
 
     // auto matchingForms = manager->findMatchingForms(forms);
 
@@ -93,11 +70,11 @@ BaseInfos TermPropCollector::collectBases(const std::vector<WordFormPtr> &forms)
     return collectedBases;
 }
 
-void TermPropCollector::collectAssemblies(const std::vector<WordFormPtr> &forms)
+void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms)
 {
 }
 
-void TermPropCollector::collect(const std::vector<WordFormPtr> &forms)
+void WCModelCollection::collect(const std::vector<WordFormPtr> &forms)
 {
     const auto &manager = GrammarPatternManager::getInstance();
     const auto &baseInfos = this->collectBases(forms);

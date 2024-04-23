@@ -8,106 +8,65 @@
 #include <set>
 #include <memory>
 
-#include <unordered_map>
 #include <xmorphy/morph/WordForm.h>
 
 #include <GrammarComponent.h>
 
-struct TermProposal
+struct Position
 {
+    size_t start;
+    size_t end;
+    size_t docNum;
+    size_t sentNum;
+};
+
+struct WordComplex
+{
+    std::vector<WordFormPtr> words;
+    std::string textForm;
+    Position pos;
+};
+
+struct WordComplexAgregate
+{
+    size_t amount;
     size_t size;
-    std::shared_ptr<Model> model;
-    Condition m_cond;
-    std::string normalizedPhrase;
-    size_t m_start;
-    size_t m_end;
+    std::vector<WordComplex> wordComplexes; // maybe set
+    std::string normalizedForm;
+    Components comps;
     double m_weight;
-
-    TermProposal();
-
-    // Normalizes the phrase associated with the term proposal
-    const std::string NormalizePhrase() const;
-
-    // Returns the head word form of the term proposal
-    const X::WordFormPtr GetHead() const; // Assuming WordFormPtr is a defined type
 };
 
-struct BaseInfo
-{
-    std::shared_ptr<TermProposal> termPropPtr;
-    size_t sentenceStartPos;
-    size_t sentenceEndPos;
-};
+using WordComplexCollection = std::vector<WordComplexAgregate>;
 
-using BaseInfos = std::vector<std::shared_ptr<BaseInfo>>;
-
-// struct TermPropID{
-//     std::string
-// }
-
-using TermProposals = std::vector<std::shared_ptr<TermProposal>>;
-
-struct TermPropInfo
-{
-    size_t count;                    // Total number of occurrences across all documents
-    size_t documentCount;            // Number of documents where the term appears
-    std::set<std::string> documents; // Names of the documents
-
-    TermPropInfo();
-
-    // Records an occurrence of the term in a specific document
-    void addOccurrence(const std::string &documentName);
-};
-
-class TermPropCollector
+class WCModelCollection
 {
 private:
-    std::unordered_map<std::string, TermProposal> collection; //????????
-    static TermPropCollector *instance;
+    std::unordered_map<std::string, WordComplexCollection> dictionary;
+    static WCModelCollection *instance;
 
-    TermPropCollector(){};
+    // Private constructor for Singleton pattern
+    WCModelCollection(){};
+
+    void addWordComplex(const std::string &key, const WordComplex &wordComplex);
+
+    // void addModel(const std::string &key);
 
 public:
-    TermPropCollector(const TermPropCollector &) = delete;
-    TermPropCollector &operator=(const TermPropCollector &) = delete;
-
     // Singleton access method
-    static TermPropCollector *getInstance();
+    static WCModelCollection *getInstance();
 
-    // Adds a term proposal along with the document name where it appeared
-    void addTermProp(const std::string &term, const std::string &documentName);
+    // Deleting copy constructor and assignment operator to prevent copies
+    WCModelCollection(const WCModelCollection &) = delete;
+    WCModelCollection &operator=(const WCModelCollection &) = delete;
+
+    size_t size() const;
 
     void collect(const std::vector<WordFormPtr> &forms);
 
-    BaseInfos collectBases(const std::vector<WordFormPtr> &forms);
+    WordComplexCollection collectBases(const std::vector<WordFormPtr> &forms);
 
     void collectAssemblies(const std::vector<WordFormPtr> &forms);
 };
-
-//////////////////////////////////////////////
-
-// class TermDictionary
-// {
-// private:
-//     std::unordered_map<std::string, TermPropInfo> dictionary;
-//     static std::unique_ptr<TermDictionary> instance;
-
-//     // Private constructor for Singleton pattern
-//     TermDictionary();
-
-// public:
-//     // Deleting copy constructor and assignment operator to prevent copies
-//     TermDictionary(const TermDictionary &) = delete;
-//     TermDictionary &operator=(const TermDictionary &) = delete;
-
-//     // Singleton access method
-//     static TermDictionary &getInstance();
-
-//     // Adds a term along with the document name where it appeared
-//     void addTerm(const std::string &term, const std::string &documentName);
-
-//     // Retrieves information about a term
-//     //const TermPropInfo *getTermInfo(const std::string &term) const;
-// };
 
 #endif

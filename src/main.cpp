@@ -94,8 +94,8 @@ int main()
             }
         }
 
-        // auto termPropCollector = TermPropCollector::getInstance();
-        // termPropCollector->collect(forms);
+        const auto &wcCollection = WCModelCollection::getInstance();
+        wcCollection->collect(forms);
 
         os->flush();
     } while (!ssplitter.eof());
