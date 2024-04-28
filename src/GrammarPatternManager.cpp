@@ -1,9 +1,6 @@
 #include "GrammarPatternManager.h"
 #include "PatternParser.h"
-#include "GrammarComponent.h" // Include this if GrammarComponent definitions are required
-
-// Assuming Model is defined elsewhere
-// Include necessary headers for Model and any other used classes
+#include "GrammarComponent.h"
 
 GrammarPatternManager *GrammarPatternManager::instance = nullptr;
 
@@ -58,10 +55,9 @@ void GrammarPatternManager::printPatterns() const
     }
 }
 
-size_t GrammarPatternManager::size() const
-{
-    return patterns.size();
-}
+size_t GrammarPatternManager::patternsAmount() const { return patterns.size(); }
+size_t GrammarPatternManager::basesAmount() const { return bases.size(); }
+size_t GrammarPatternManager::assemsAmount() const { return assemblies.size(); }
 
 void GrammarPatternManager::divide()
 {

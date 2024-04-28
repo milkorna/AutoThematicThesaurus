@@ -392,7 +392,7 @@ void Parser::Parse()
                     manager->addPattern(name, std::make_shared<Model>(Model{name, comps}));
                     if (this->logs)
                     {
-                        std::cout << "Current number of patterns: " << manager->size() << std::endl;
+                        std::cout << "Current number of patterns: " << manager->patternsAmount() << std::endl;
                     }
                     if (this->logs)
                     {
@@ -402,10 +402,16 @@ void Parser::Parse()
                 }
             }
         }
+
+        manager->divide();
+
         if (this->logs)
         {
             log("Parsing completed successfully.");
-            log("Number of patterns after parsing: " + manager->size());
+            log("Number of patterns after parsing: " + manager->patternsAmount());
+
+            log("Number of base patterns: " + manager->basesAmount());
+            log("Number of assem patterns: " + manager->assemsAmount());
         }
     }
     catch (const std::exception &e)

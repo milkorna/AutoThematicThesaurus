@@ -29,14 +29,15 @@ struct WordComplex
 
 struct WordComplexAgregate
 {
-    size_t amount;
     size_t size;
     std::vector<WordComplex> wordComplexes; // maybe set
-    std::string normalizedForm;
+    std::string form;
     Components comps;
     double m_weight;
 };
 
+using WordComplexAgregates = std::unordered_map<std::string, WordComplexAgregate>;
+// string -- seq of word in normalized form
 using WordComplexCollection = std::vector<WordComplexAgregate>;
 
 class WCModelCollection

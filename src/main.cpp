@@ -58,8 +58,8 @@ int main()
 
     Options opts;
 
-    std::string input_file;
-    std::string output_file;
+    std::string input_file = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
+    std::string output_file = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
     std::istream *is = new ifstream(input_file);
     std::ostream *os = new ofstream(output_file);

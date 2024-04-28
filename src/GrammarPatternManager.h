@@ -45,7 +45,9 @@ public:
 
     void printPatterns() const;
 
-    size_t size() const;
+    size_t patternsAmount() const;
+    size_t basesAmount() const;
+    size_t assemsAmount() const;
 
     void divide();
 };

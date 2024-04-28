@@ -24,7 +24,7 @@ namespace ParserUtils
 class Parser
 {
 public:
-    Parser(const std::string &filePath) : filePath(filePath), fileStream(filePath)
+    Parser(const std::string &filePath) : fileStream(filePath)
     {
         if (!fileStream)
         {
@@ -36,7 +36,6 @@ public:
 
 private:
     bool logs = false;
-    std::string filePath;
     std::ifstream fileStream;
     std::unordered_map<std::string, std::shared_ptr<Model>> models;
 
