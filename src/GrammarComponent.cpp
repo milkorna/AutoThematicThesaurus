@@ -82,6 +82,8 @@ size_t Model::getHeadPos() const // TODO: Make shorter
             }
         }
     }
+    // std optional or smf
+    return 0;
 }
 
 size_t Model::getSize() const

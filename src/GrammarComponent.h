@@ -24,6 +24,29 @@ struct Additional
     std::vector<std::string> m_themes = {};
 
     bool isEmpty() const { return m_themes.empty() && m_exLex.empty(); }
+    bool exLexCheck(const X::MorphInfo &morphForm) const
+    {
+        if (const X::UniString exLex(m_exLex); !exLex.isEmpty())
+        {
+            if (exLex == morphForm.normalForm)
+            {
+                // exLex matched
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    bool themesCheck() const
+    {
+        if (const auto &theme = m_themes; !theme.empty())
+        {
+            // TODO: Add logic to compare themes
+        }
+        return true;
+    }
 };
 
 class Condition
@@ -44,6 +67,61 @@ public:
     bool isEmpty() const { return m_tag == UniMorphTag::UNKN && m_addcond.isEmpty(); }
 
     const bool matches() const;
+
+    bool morphTagCheck(const X::MorphInfo &morphForm) const
+    {
+        const auto &baseHeadMorphTag = this->getMorphTag();
+        if (baseHeadMorphTag.hasAnimacy())
+        {
+            if (morphForm.tag.hasAnimacy())
+            {
+                if (baseHeadMorphTag.getAnimacy() == morphForm.tag.getAnimacy())
+                {
+                    // animacy matched
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        // make it shorter
+        // if (baseHeadMorphTag.hasNumber())
+        //{
+        // }
+        // if (baseHeadMorphTag.hasCase())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasTense())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasCmp())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasVerbForm())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasMood())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasPerson())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasVariance())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasVoice())
+        // {
+        // }
+        // if (baseHeadMorphTag.hasAspect())
+        // {
+        // }
+        return true;
+    }
 };
 
 class Component;
@@ -73,7 +151,10 @@ public:
     const std::string getForm() const override { return ""; }
     const Components getComponents() const override { return {}; }
 
-    const bool isWord() const override { return true; }
+    const bool isWord() const override
+    {
+        return true;
+    }
     const bool isModel() const override { return false; }
 
     const bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
@@ -88,6 +169,7 @@ public:
     WordComp(const UniSPTag &sp = UniSPTag::X, const Condition &cond = Condition()) : Word(sp), m_cond(cond) {}
 
     const Condition getCondition() const { return m_cond; }
+    const bool isRec() { return m_cond.getAdditional().m_rec; }
 
     ~WordComp() override {}
 
@@ -120,6 +202,8 @@ public:
     bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
 
     std::shared_ptr<WordComp> getHead() const;
+    size_t getHeadPos() const;
+    size_t getSize() const;
 
     void printWords() const;
 };

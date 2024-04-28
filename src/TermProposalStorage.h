@@ -11,6 +11,7 @@
 #include <xmorphy/morph/WordForm.h>
 
 #include <GrammarComponent.h>
+#include <deque>
 
 struct Position
 {
@@ -22,7 +23,7 @@ struct Position
 
 struct WordComplex
 {
-    std::vector<WordFormPtr> words;
+    std::deque<WordFormPtr> words;
     std::string textForm;
     Position pos;
 };
@@ -38,7 +39,9 @@ struct WordComplexAgregate
 
 using WordComplexAgregates = std::unordered_map<std::string, WordComplexAgregate>;
 // string -- seq of word in normalized form
-using WordComplexCollection = std::vector<WordComplexAgregate>;
+using WordComplexCollection = std::vector<WordComplexAgregates>;
+
+using WordComplexPtr = std::shared_ptr<WordComplex>;
 
 class WCModelCollection
 {
@@ -65,9 +68,9 @@ public:
 
     void collect(const std::vector<WordFormPtr> &forms);
 
-    WordComplexCollection collectBases(const std::vector<WordFormPtr> &forms);
+    std::vector<WordComplexPtr> collectBases(const std::vector<WordFormPtr> &forms);
 
-    void collectAssemblies(const std::vector<WordFormPtr> &forms);
+    void collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos);
 };
 
 #endif

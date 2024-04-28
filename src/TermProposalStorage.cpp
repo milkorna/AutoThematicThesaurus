@@ -2,6 +2,7 @@
 #include <TermProposalStorage.h>
 #include <GrammarPatternManager.h>
 #include <memory>
+#include <deque>
 
 WCModelCollection *WCModelCollection::instance = nullptr;
 
@@ -38,96 +39,42 @@ void WCModelCollection::addWordComplex(const std::string &key, const WordComplex
         // newAggregate.normalizedForm = wc.textForm; // some logic to normalize form from text !
         //  Assume other initializations as needed
 
-        dictionary[key].push_back(newAggregate);
+        //        dictionary[key].push_back(newAggregate); !!
     }
     else
     {
         // If aggregates already exist, add to the first one or based on some logic
-        dictionary[key][0].wordComplexes.push_back(wc);
+
+        // dictionary[key][0].wordComplexes.push_back(wc); !!
+
         // dictionary[key][0].amount += 1; // TODO: add logic to find needed word complex
     }
 }
 
-static bool CheckHead(const std::shared_ptr<Model> &baseModel, X::WordFormPtr form)
+static bool ConditionsCheck(const std::shared_ptr<WordComp> &baseHead, const X::WordFormPtr &form)
 {
-    const auto &baseHead = baseModel->getHead();
     const auto &spBaseHeadTag = baseHead->getSPTag();
     for (const auto &morphForm : form->getMorphInfo())
     {
         if (morphForm.sp == spBaseHeadTag)
         {
-
             // dont need to check if a word comp bs collectedBases works only with wordcomps
             const auto &baseHeadCond = baseHead->getCondition();
-            const auto &baseHeadMorphTag = baseHeadCond.getMorphTag();
-            if (baseHeadMorphTag.hasAnimacy())
+
+            if (!baseHeadCond.morphTagCheck(morphForm))
             {
-                if (morphForm.tag.hasAnimacy())
-                {
-                    if (baseHeadMorphTag.getAnimacy() == morphForm.tag.getAnimacy())
-                    {
-                        // animacy matched
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
+                return false;
+            }
+
+            if (const auto &additCond = baseHeadCond.getAdditional(); !additCond.isEmpty())
+            {
+                if (!additCond.exLexCheck(morphForm))
                 {
                     return false;
                 }
-            }
-            // make it shorter
-            // if (baseHeadMorphTag.hasNumber())
-            //{
-            // }
-            // if (baseHeadMorphTag.hasCase())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasTense())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasCmp())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasVerbForm())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasMood())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasPerson())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasVariance())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasVoice())
-            // {
-            // }
-            // if (baseHeadMorphTag.hasAspect())
-            // {
-            // }
-            if (const auto &additCond = baseHeadCond.getAdditional(); !additCond.isEmpty())
-            {
-                if (const X::UniString exLex(additCond.m_exLex); !exLex.isEmpty())
+                if (!additCond.themesCheck())
                 {
-                    if (exLex == morphForm.normalForm)
-                    {
-                        // exLex matched
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                if (const auto &themes = additCond.m_themes; !themes.empty())
-                {
-                    for (const auto &theme : themes)
-                    {
-                        // TODO: Add logic to compare themes
-                    }
+                    return false;
                 }
             }
         }
@@ -139,45 +86,100 @@ static bool CheckHead(const std::shared_ptr<Model> &baseModel, X::WordFormPtr fo
     return true;
 }
 
-static void CheckLeft(const std::shared_ptr<Model> &baseModel, X::WordFormPtr form)
+static bool HeadCheck(const std::shared_ptr<Model> &baseModel, const X::WordFormPtr &form)
 {
+    if (!ConditionsCheck(baseModel->getHead(), form))
+    {
+        return false;
+    }
+    return true;
 }
 
-static void CheckRight(const std::shared_ptr<Model> &baseModel, X::WordFormPtr form)
+static bool LeftCheck(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, const size_t currCompInd, const std::vector<WordFormPtr> &forms, const size_t currFormInd)
 {
+    const auto &leftComp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[currCompInd]);
+
+    if (!ConditionsCheck(leftComp, forms[currFormInd]))
+    {
+        return false;
+    }
+
+    if (leftComp->isRec())
+    {
+        if (LeftCheck(wc, model, currCompInd, forms, currFormInd - 1))
+        {
+            wc->words.push_front(forms[currFormInd - 1]);
+        }
+    }
+    return true;
 }
 
-WordComplexCollection WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms)
+static bool RightCheck(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, const size_t currCompInd, const std::vector<WordFormPtr> &forms, const size_t currFormInd)
+{
+    const auto &rightComp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[currCompInd]);
+
+    if (!ConditionsCheck(rightComp, forms[currFormInd]))
+    {
+        return false;
+    }
+    if (rightComp->isRec())
+    {
+        if (RightCheck(wc, model, currCompInd, forms, currFormInd + 1))
+        {
+            wc->words.push_back(forms[currFormInd + 1]);
+        }
+    }
+    return true;
+}
+
+std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms)
 {
     const auto &manager = GrammarPatternManager::getInstance();
+    const auto &wcCollection = WCModelCollection::getInstance();
     const auto &bases = manager->getBases();
 
     WordComplexAgregate wcAgregate;
-    std::vector<WordComplex> matchedWordComplexes;
-    std::string agregateForm;
 
-    WordComplexCollection collectedBases;
+    std::vector<WordComplexPtr> matchedWordComplexes;
+    // std::string agregateForm;
+
+    // WordComplexCollection collectedBases;
     for (size_t currFormInd = 0; currFormInd < forms.size(); currFormInd++)
     {
         for (const auto &base : bases)
         {
-            bool headIsMatched = CheckHead(base.second, forms[currFormInd]);
+            bool headIsMatched = HeadCheck(base.second, forms[currFormInd]);
             if (headIsMatched)
             {
-
+                WordComplexPtr wc;
+                wc->words.push_back(forms[currFormInd]);
+                std::string formFromText = forms[currFormInd]->getWordForm().getRawString();
                 size_t headPos = base.second->getHeadPos();
                 if (headPos != 0)
                 {
-                    CheckLeft(base.second, forms[currFormInd - 1]);
+                    if (LeftCheck(wc, base.second, headPos - 1, forms, currFormInd - 1))
+                    {
+                        wc->words.push_front(forms[currFormInd - 1]);
+                        formFromText.insert(0, forms[currFormInd - 1]->getWordForm().getRawString());
+                        wc->pos.start = currFormInd - 1;
+                    }
                 }
                 if (headPos != base.second->getSize() - 1)
                 {
-                    CheckRight(base.second, forms[currFormInd + 1]);
+                    if (RightCheck(wc, base.second, headPos + 1, forms, currFormInd + 1))
+                    {
+                        wc->words.push_back(forms[currFormInd + 1]);
+                        formFromText.append(forms[currFormInd + 1]->getWordForm().getRawString());
+                        wc->pos.end = currFormInd + 1;
+                    }
                 }
+
+                // add to wcCollection with base.second.form key
+                matchedWordComplexes.push_back(wc);
             }
             else
             {
-                // break;
+                continue;
             }
 
             // if (base.second->checkComponentsMatch(forms[currFormInd]))
@@ -187,10 +189,10 @@ WordComplexCollection WCModelCollection::collectBases(const std::vector<WordForm
         }
     }
 
-    return collectedBases;
+    return matchedWordComplexes;
 }
 
-void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms)
+void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos)
 {
 }
 
@@ -200,5 +202,5 @@ void WCModelCollection::collect(const std::vector<WordFormPtr> &forms)
     const auto &baseInfos = this->collectBases(forms);
 
     const auto &asems = manager->getAssemblies();
-    this->collectAssemblies(forms);
+    this->collectAssemblies(forms, baseInfos);
 }
