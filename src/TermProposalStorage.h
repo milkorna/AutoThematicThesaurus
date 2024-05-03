@@ -12,6 +12,7 @@
 
 #include <GrammarComponent.h>
 #include <deque>
+#include <Logger.h>
 
 struct Position
 {
@@ -23,8 +24,8 @@ struct Position
 
 struct WordComplex
 {
-    std::deque<WordFormPtr> words;
-    std::string textForm;
+    std::deque<WordFormPtr> words = {};
+    std::string textForm = "";
     Position pos;
 };
 

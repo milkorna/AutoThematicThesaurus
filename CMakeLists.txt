@@ -24,6 +24,7 @@ src/GrammarComponent.cpp
 src/GrammarPatternManager.cpp
 src/PatternParser.cpp
 src/TermProposalStorage.cpp
+src/Logger.cpp
 src/GrammarComponent.h
 src/GrammarPatternManager.h
 src/PatternParser.h

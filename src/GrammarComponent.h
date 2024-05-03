@@ -7,6 +7,7 @@
 #include <xmorphy/morph/WordForm.h>
 #include <xmorphy/tag/UniMorphTag.h>
 #include <xmorphy/tag/UniSPTag.h>
+#include <Logger.h>
 
 using namespace X;
 
@@ -68,60 +69,7 @@ public:
 
     const bool matches() const;
 
-    bool morphTagCheck(const X::MorphInfo &morphForm) const
-    {
-        const auto &baseHeadMorphTag = this->getMorphTag();
-        if (baseHeadMorphTag.hasAnimacy())
-        {
-            if (morphForm.tag.hasAnimacy())
-            {
-                if (baseHeadMorphTag.getAnimacy() == morphForm.tag.getAnimacy())
-                {
-                    // animacy matched
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        // make it shorter
-        // if (baseHeadMorphTag.hasNumber())
-        //{
-        // }
-        // if (baseHeadMorphTag.hasCase())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasTense())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasCmp())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasVerbForm())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasMood())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasPerson())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasVariance())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasVoice())
-        // {
-        // }
-        // if (baseHeadMorphTag.hasAspect())
-        // {
-        // }
-        return true;
-    }
+    bool morphTagCheck(const X::MorphInfo &morphForm) const;
 };
 
 class Component;

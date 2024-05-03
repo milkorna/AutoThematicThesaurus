@@ -7,11 +7,11 @@
 
 #include <algorithm>
 
-// Utilize a unified logging function for simplicity and centralized log management
-void log(const std::string &message)
-{
-    std::cerr << "LOG: " << message << std::endl;
-}
+// // Utilize a unified logging function for simplicity and centralized log management
+// void log(const std::string &message)
+// {
+//     std::cerr << "LOG: " << message << std::endl;
+// }
 
 // Remove spaces from a std::string
 void ParserUtils::RemoveSpaces(std::string &str)
@@ -96,7 +96,7 @@ std::string Parser::ParseName(const std::string &line) const
     }
     catch (const std::exception &e)
     {
-        log("Failed to parse name: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse name: " + std::string(e.what()));
         return "";
     }
 }
@@ -121,7 +121,7 @@ SyntaxRole Parser::ParseRoleAndCut(std::string &line) const
             default:
                 if (this->logs)
                 {
-                    log("Unknown role: " + std::string(1, role));
+                    Logger::log("PatternParser", LogLevel::Warning, "Unknown role: " + std::string(1, role));
                 }
                 return SyntaxRole::Independent;
             }
@@ -129,7 +129,7 @@ SyntaxRole Parser::ParseRoleAndCut(std::string &line) const
     }
     catch (const std::exception &e)
     {
-        log("Error in ParseRoleAndCut: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Error in ParseRoleAndCut: " + std::string(e.what()));
     }
     return SyntaxRole::Independent;
 }
@@ -155,7 +155,9 @@ UniMorphTag Parser::ParseUniMorphTag(const std::string &line) const
     }
     catch (const std::exception &e)
     {
-        log("Error in ParseUniMorphTag: " + std::string(e.what()));
+
+        Logger::log("PatternParser", LogLevel::Error, "Error in ParseUniMorphTag: " + std::string(e.what()));
+
         return UniMorphTag(); // Return an empty or default tag on failure
     }
 }
@@ -177,7 +179,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line)
     }
     catch (const std::exception &e)
     {
-        log("Error in ProcessWord: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Error in ProcessWord: " + std::string(e.what()));
         return std::make_pair(UniSPTag(), UniMorphTag()); // Return default tags on failure
     }
 }
@@ -227,7 +229,8 @@ Additional Parser::ParseTags(const std::string &line)
     }
     catch (const std::exception &e)
     {
-        log("Error in ParseTags: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Error in ParseTags: " + std::string(e.what()));
+
         return Additional(); // Return an empty Additional structure on failure
     }
 }
@@ -250,7 +253,7 @@ std::shared_ptr<WordComp> Parser::ParseWordComp(std::string &line)
     }
     catch (const std::exception &e)
     {
-        log("Failed to parse word component: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse word component: " + std::string(e.what()));
         return nullptr;
     }
 }
@@ -267,7 +270,6 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
         if (line.find("[") != std::string::npos && line.find("]") != std::string::npos)
         {
             std::string patTags = ParserUtils::ExtractSubstringInSq(modelData.first);
-
             morphTag = ParseUniMorphTag(patTags);
         }
 
@@ -277,7 +279,7 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
         {
             if (this->logs)
             {
-                log("Failed to find model: " + patName);
+                Logger::log("PatternParser", LogLevel::Warning, "Failed to find model: " + patName);
             }
             return nullptr;
         }
@@ -291,7 +293,7 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
     }
     catch (const std::exception &e)
     {
-        log("Failed to parse model component: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse model component: " + std::string(e.what()));
         return nullptr;
     }
 }
@@ -311,7 +313,6 @@ void Parser::Parse()
 
         while (std::getline(fileStream, line))
         {
-
             std::istringstream iss(line);
 
             if (line.empty() || line.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
@@ -324,7 +325,7 @@ void Parser::Parse()
                 name = ParserUtils::ExtractSubstringInQuotes(line);
                 if (this->logs)
                 {
-                    log("Pattern name parsed successfully!");
+                    Logger::log("PatternParser", LogLevel::Info, "Pattern name parsed successfully!");
                 }
                 continue;
             }
@@ -334,7 +335,7 @@ void Parser::Parse()
                 isInBody = true;
                 if (this->logs)
                 {
-                    log("Started parsing body for pattern: " + name);
+                    Logger::log("PatternParser", LogLevel::Info, "Started parsing body for pattern: " + name);
                 }
                 continue;
             }
@@ -349,14 +350,14 @@ void Parser::Parse()
                         comps.push_back(word);
                         if (this->logs)
                         {
-                            log("Word component parsed successfully: " + line);
+                            Logger::log("PatternParser", LogLevel::Info, "Word component parsed successfully: " + line);
                         }
                     }
                     else
                     {
                         if (this->logs)
                         {
-                            log("Word component parsing failed: " + line);
+                            Logger::log("PatternParser", LogLevel::Error, "Word component parsing failed: " + line);
                         }
                     }
                     continue;
@@ -369,14 +370,14 @@ void Parser::Parse()
                         comps.push_back(model);
                         if (this->logs)
                         {
-                            log("Model component parsed successfully: " + line);
+                            Logger::log("PatternParser", LogLevel::Error, "Model component parsed successfully: " + line);
                         }
                     }
                     else
                     {
                         if (this->logs)
                         {
-                            log("Model component parsing failed: " + line);
+                            Logger::log("PatternParser", LogLevel::Error, "Model component parsing failed: " + line);
                         }
                     }
                     continue;
@@ -387,16 +388,16 @@ void Parser::Parse()
                     isInBody = false;
                     if (this->logs)
                     {
-                        std::cout << "Adding pattern with key: " << name << std::endl;
+                        Logger::log("PatternParser", LogLevel::Info, "Adding pattern with key: " + name);
                     }
                     manager->addPattern(name, std::make_shared<Model>(Model{name, comps}));
                     if (this->logs)
                     {
-                        std::cout << "Current number of patterns: " << manager->patternsAmount() << std::endl;
+                        Logger::log("PatternParser", LogLevel::Info, "Current number of patterns: " + manager->patternsAmount());
                     }
                     if (this->logs)
                     {
-                        log("Finished parsing body for pattern: " + name);
+                        Logger::log("PatternParser", LogLevel::Info, "Finished parsing body for pattern: " + name);
                     }
                     comps.clear();
                 }
@@ -407,17 +408,17 @@ void Parser::Parse()
 
         if (this->logs)
         {
-            log("Parsing completed successfully.");
-            log("Number of patterns after parsing: " + manager->patternsAmount());
-
-            log("Number of base patterns: " + manager->basesAmount());
-            log("Number of assem patterns: " + manager->assemsAmount());
+            Logger::log("PatternParser", LogLevel::Info,
+                        std::string("Parsing completed successfully.\n") +
+                            "Number of patterns after parsing: " + std::to_string(manager->patternsAmount()) +
+                            std::string("\nNumber of base patterns: ") + std::to_string(manager->basesAmount()) +
+                            std::string("\nNumber of assem patterns: ") + std::to_string(manager->assemsAmount()));
         }
     }
     catch (const std::exception &e)
     {
         // Handle parsing exceptions and log them
-        std::cerr << "Parsing failed: " << e.what() << std::endl;
+        Logger::log("PatternParser", LogLevel::Error, "Parsing failed: " + std::string(e.what()));
         throw; // Rethrow exception to handle it further up if necessary
     }
 }

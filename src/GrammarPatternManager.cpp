@@ -1,6 +1,7 @@
 #include "GrammarPatternManager.h"
 #include "PatternParser.h"
 #include "GrammarComponent.h"
+#include <Logger.h>
 
 GrammarPatternManager *GrammarPatternManager::instance = nullptr;
 
@@ -46,7 +47,8 @@ void GrammarPatternManager::readPatterns(const std::string &filePath)
 
 void GrammarPatternManager::printPatterns() const
 {
-    std::cout << "printPatterns: " << patterns.size() << std::endl;
+    Logger::log("GrammarPatternManager", LogLevel::Info, "printPatterns: " + patterns.size());
+
     for (const auto &[key, model] : patterns)
     {
         std::cout << "model form: " << model->getForm() << ", comps: " << std::endl;

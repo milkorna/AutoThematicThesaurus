@@ -2,13 +2,15 @@
 
 void WordComp::print() const
 {
-    std::cout << "\t\tword sp: " << this->getSPTag().toString();
+    Logger::log("GrammarComponent", LogLevel::Info, "\t\tword sp: " + this->getSPTag().toString());
+
     if (const auto &cond = this->getCondition(); !cond.isEmpty())
     {
-        std::cout << ", mt: " << cond.getMorphTag().toString();
+        Logger::log("GrammarComponent", LogLevel::Info, ", mt: " + cond.getMorphTag().toString());
+
         if (const auto &addCond = cond.getAdditional(); !addCond.isEmpty())
         {
-            std::cout << ", lex: " << addCond.m_exLex;
+            Logger::log("GrammarComponent", LogLevel::Info, ", lex: " + addCond.m_exLex);
         }
     }
     std::cout << std::endl;
@@ -26,7 +28,7 @@ void Model::printWords() const
         }
         else
         {
-            std::cout << "\tmodel form: " << c->getForm() << ", comps: " << std::endl;
+            Logger::log("GrammarComponent", LogLevel::Info, "\tmodel form: " + c->getForm() + ", comps: ");
             Model *m = dynamic_cast<Model *>(c);
             m->printWords();
             std::cout << std::endl;
@@ -94,6 +96,34 @@ size_t Model::getSize() const
     }
     else
         return 0; // or 1, whatever
+}
+
+template <typename AttrType>
+static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
+                           AttrType (X::UniMorphTag::*getAttribute)() const,
+                           const X::UniMorphTag &baseTag,
+                           const X::UniMorphTag &formTag)
+{
+    if ((baseTag.*hasAttribute)())
+    {
+        return (formTag.*hasAttribute)() && (baseTag.*getAttribute)() == (formTag.*getAttribute)();
+    }
+    return true;
+}
+
+bool Condition::morphTagCheck(const MorphInfo &morphForm) const
+{
+    const auto &compMorphTag = this->getMorphTag();
+    return checkAttribute(&X::UniMorphTag::hasAnimacy, &X::UniMorphTag::getAnimacy, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasNumber, &X::UniMorphTag::getNumber, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasTense, &X::UniMorphTag::getTense, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasCmp, &X::UniMorphTag::getCmp, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasVerbForm, &X::UniMorphTag::getVerbForm, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasMood, &X::UniMorphTag::getMood, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasPerson, &X::UniMorphTag::getPerson, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasVariance, &X::UniMorphTag::getVariance, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasVoice, &X::UniMorphTag::getVoice, compMorphTag, morphForm.tag) &&
+           checkAttribute(&X::UniMorphTag::hasAspect, &X::UniMorphTag::getAspect, compMorphTag, morphForm.tag);
 }
 
 bool Model::checkComponentsMatch(const WordFormPtr &wordForm) const

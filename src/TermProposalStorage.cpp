@@ -148,10 +148,12 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
     {
         for (const auto &base : bases)
         {
+            size_t correct = 0;
             bool headIsMatched = HeadCheck(base.second, forms[currFormInd]);
             if (headIsMatched)
             {
-                WordComplexPtr wc;
+                ++correct;
+                WordComplexPtr wc = std::make_shared<WordComplex>();
                 wc->words.push_back(forms[currFormInd]);
                 std::string formFromText = forms[currFormInd]->getWordForm().getRawString();
                 size_t headPos = base.second->getHeadPos();
@@ -162,6 +164,7 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
                         wc->words.push_front(forms[currFormInd - 1]);
                         formFromText.insert(0, forms[currFormInd - 1]->getWordForm().getRawString());
                         wc->pos.start = currFormInd - 1;
+                        ++correct;
                     }
                 }
                 if (headPos != base.second->getSize() - 1)
@@ -171,11 +174,15 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
                         wc->words.push_back(forms[currFormInd + 1]);
                         formFromText.append(forms[currFormInd + 1]->getWordForm().getRawString());
                         wc->pos.end = currFormInd + 1;
+                        ++correct;
                     }
                 }
 
                 // add to wcCollection with base.second.form key
-                matchedWordComplexes.push_back(wc);
+                if (correct > base.second->getSize())
+                {
+                    matchedWordComplexes.push_back(wc);
+                }
             }
             else
             {
@@ -194,6 +201,18 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
 
 void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos)
 {
+    const auto &manager = GrammarPatternManager::getInstance();
+    const auto &asems = manager->getAssemblies(); // instead of asems a set of asems where are bases
+
+    for (size_t currFormInd = 0; currFormInd < forms.size(); currFormInd++)
+    {
+        for (const auto &asem : asems)
+        {
+            for (size_t baseInd = 0; baseInd < baseInfos.size(); baseInd++)
+            {
+            }
+        }
+    }
 }
 
 void WCModelCollection::collect(const std::vector<WordFormPtr> &forms)
@@ -201,6 +220,5 @@ void WCModelCollection::collect(const std::vector<WordFormPtr> &forms)
     const auto &manager = GrammarPatternManager::getInstance();
     const auto &baseInfos = this->collectBases(forms);
 
-    const auto &asems = manager->getAssemblies();
     this->collectAssemblies(forms, baseInfos);
 }

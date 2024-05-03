@@ -4,6 +4,7 @@
 #include <fstream>
 #include "GrammarComponent.h"
 #include "GrammarPatternManager.h"
+#include <Logger.h>
 
 namespace ParserUtils
 {

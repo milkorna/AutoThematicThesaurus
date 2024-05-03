@@ -3,6 +3,7 @@
 #include <string>
 #include <filesystem>
 #include <GrammarPatternManager.h>
+#include <Logger.h>
 #include <TermProposalStorage.h>
 #include <GrammarComponent.h>
 #include <boost/program_options.hpp>
@@ -33,8 +34,12 @@ struct Options
 
 int main()
 {
+    Logger::enableLogging(true);
+    Logger::setGlobalLogLevel(LogLevel::Debug); // Setting the global logging level
+    // Logger::setModuleLogLevel("MyClass", LogLevel::Debug); // Setting the logging level for a specific module
+
     // auto &dictionary = TermDictionary::getInstance();
-    std::cout << "Current path is " << std::filesystem::current_path() << '\n';
+    Logger::log("main", LogLevel::Debug, "Current path is " + std::string(std::filesystem::current_path()));
 
     const auto &manager = GrammarPatternManager::getInstance();
 
@@ -47,12 +52,13 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+        // std::cerr << "Exception caught: " << e.what() << std::endl;
+        Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
     }
     catch (...)
     {
-        std::cerr << "Unknown exception caught" << std::endl;
+        Logger::log("main", LogLevel::Error, "Unknown exception caught");
         return EXIT_FAILURE;
     }
 

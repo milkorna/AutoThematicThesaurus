@@ -1,3 +1,6 @@
+#ifndef LOGGER_H
+#define LOGGER_H
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -23,74 +26,25 @@ private:
 
 public:
     // Enables or disables logging globally.
-    static void enableLogging(bool enable)
-    {
-        Logger::enabled = enable;
-    }
+    static void enableLogging(bool enable);
 
     // Sets the global log level.
-    static void setGlobalLogLevel(LogLevel level)
-    {
-        Logger::globalLogLevel = level;
-    }
+    static void setGlobalLogLevel(LogLevel level);
 
     // Sets the log level for a specific module.
-    static void setModuleLogLevel(const std::string &module, LogLevel level)
-    {
-        moduleLogLevels[module] = level;
-    }
+    static void setModuleLogLevel(const std::string &module, LogLevel level);
 
     // Disables logging for a specific module.
-    static void disableModuleLogging(const std::string &module)
-    {
-        disabledModules.insert(module);
-    }
+    static void disableModuleLogging(const std::string &module);
 
     // Enables logging for a previously disabled module.
-    static void enableModuleLogging(const std::string &module)
-    {
-        disabledModules.erase(module);
-    }
+    static void enableModuleLogging(const std::string &module);
 
     // Logs a message if the specified log level is at or above the configured log level.
-    static void log(const std::string &module, LogLevel level, const std::string &message)
-    {
-        if (Logger::enabled && disabledModules.find(module) == disabledModules.end())
-        {
-            LogLevel effectiveLevel = globalLogLevel;
-            if (moduleLogLevels.find(module) != moduleLogLevels.end())
-            {
-                effectiveLevel = moduleLogLevels[module]; // Override global level with module-specific level.
-            }
-
-            if (level >= effectiveLevel)
-            {
-                std::cout << "[" << toString(level) << "] " << module << ": " << message << std::endl;
-            }
-        }
-    }
+    static void log(const std::string &module, LogLevel level, const std::string &message);
 
     // Converts LogLevel to a readable string.
-    static std::string toString(LogLevel level)
-    {
-        switch (level)
-        {
-        case LogLevel::Debug:
-            return "DEBUG";
-        case LogLevel::Info:
-            return "INFO";
-        case LogLevel::Warning:
-            return "WARNING";
-        case LogLevel::Error:
-            return "ERROR";
-        default:
-            return "UNKNOWN";
-        }
-    }
+    static std::string toString(LogLevel level);
 };
 
-// Static member initializations
-bool Logger::enabled = true;                             // Logging is enabled by default.
-LogLevel Logger::globalLogLevel = LogLevel::Debug;       // Default global log level is set to Debug.
-std::map<std::string, LogLevel> Logger::moduleLogLevels; // Empty initial module-specific log levels.
-std::set<std::string> Logger::disabledModules;           // No modules are disabled initially.
+#endif // LOGGER_H
