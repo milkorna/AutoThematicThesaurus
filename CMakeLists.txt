@@ -28,6 +28,7 @@ src/GrammarComponent.h
 src/GrammarPatternManager.h
 src/PatternParser.h
 src/TermProposalStorage.h
+src/Logger.h
 )
 
 
@@ -54,6 +55,8 @@ set(XMorphy_INCLUDE_DIR "${XMORPHY_PROJECT_PATH}/src")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+add_definitions(-DTF_LITE_DISABLE_XNNPACK_DELEGATE)
+add_definitions(-DMIN_LOG_LEVEL=2)
 
 set(TENSORFLOW_SOURCE_DIR "" CACHE PATH
   "Directory that contains the TensorFlow project")
@@ -128,7 +131,7 @@ include_directories(${XMORPHY_PROJECT_PATH}/src)
 
 target_link_libraries(AutoThematicThesaurus PRIVATE ${XMORPHY_LIBRARY})
 
-target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error)
+target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG-w)
 target_link_libraries(AutoThematicThesaurus PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
 
 if(NOT EXISTS ${XMORPHY_LIBRARY})
