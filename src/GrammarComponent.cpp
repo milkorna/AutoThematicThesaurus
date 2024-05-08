@@ -106,8 +106,11 @@ static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
 {
     if ((baseTag.*hasAttribute)())
     {
-        return (formTag.*hasAttribute)() && (baseTag.*getAttribute)() == (formTag.*getAttribute)();
+        bool result = (formTag.*hasAttribute)() && (baseTag.*getAttribute)() == (formTag.*getAttribute)();
+        Logger::log("checkAttribute", LogLevel::Debug, "Attribute check: " + std::to_string(result));
+        return result;
     }
+    // Logger::log("checkAttribute", LogLevel::Debug, "No attribute to check, returning true.");
     return true;
 }
 

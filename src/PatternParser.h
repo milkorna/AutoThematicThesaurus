@@ -47,7 +47,7 @@ private:
     Additional ParseTags(const std::string &line);
 
     UniMorphTag ParseUniMorphTag(const std::string &line) const;
-    std::pair<UniSPTag, UniMorphTag> ProcessWord(const X::UniString &line);
+    std::pair<UniSPTag, UniMorphTag> ProcessWord(const X::UniString &line, const bool isHead);
     std::pair<std::string, UniMorphTag> ProcessModel(const X::UniString &line);
 
     const std::map<std::string, UniMorphTag> tagMap = {

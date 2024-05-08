@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 #include <unordered_map>
+#include <unordered_set>
 
 // Forward declaration
 class Model;
@@ -20,6 +21,8 @@ private:
 
     std::unordered_map<std::string, std::shared_ptr<Model>> patterns;
 
+    std::unordered_set<std::string> usedHeadSpVars;
+    std::unordered_set<std::string> usedSpVars;
     // Private constructors for Singleton pattern
     GrammarPatternManager(){};
 
@@ -44,6 +47,11 @@ public:
     void readPatterns(const std::string &filename);
 
     void printPatterns() const;
+
+    void addUsedSp(const std::string sp, const bool isHead);
+
+    std::unordered_set<std::string> getUsedHeadSp() const;
+    std::unordered_set<std::string> getUsedSp() const;
 
     size_t patternsAmount() const;
     size_t basesAmount() const;

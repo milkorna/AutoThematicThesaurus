@@ -162,12 +162,15 @@ UniMorphTag Parser::ParseUniMorphTag(const std::string &line) const
     }
 }
 
-std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line)
+std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line, const bool isHead)
 {
     try
     {
         std::vector<X::UniString> data = line.split(' ');
         UniSPTag spTag(data[0].getRawString());
+
+        GrammarPatternManager::getInstance()->addUsedSp(spTag.toString(), isHead);
+
         UniMorphTag morphTag;
 
         if (data.size() > 1 && data[1].length() > 1 && data[1].contains('[') && data[1].contains(']'))
@@ -242,7 +245,7 @@ std::shared_ptr<WordComp> Parser::ParseWordComp(std::string &line)
     {
         SyntaxRole synRole = this->ParseRoleAndCut(line);
         auto wordData = ParserUtils::ParseData(X::UniString{line});
-        auto w = ProcessWord(wordData.first);
+        auto w = ProcessWord(wordData.first, synRole == SyntaxRole::Head ? true : false);
 
         Additional addcond;
         if (!wordData.second.isEmpty())

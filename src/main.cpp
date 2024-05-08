@@ -32,6 +32,17 @@ struct Options
     bool morphemic_split = true;
 };
 
+void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
+{
+    forms.erase(
+        std::remove_if(forms.begin(), forms.end(),
+                       [](const WordFormPtr &form)
+                       {
+                           return form->getTokenType() == TokenTypeTag::SEPR;
+                       }),
+        forms.end());
+}
+
 int main()
 {
     Logger::enableLogging(true);
@@ -81,27 +92,40 @@ int main()
     {
         std::string sentence;
         ssplitter.readSentence(sentence);
+
         if (sentence.empty())
             continue;
 
         std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
         std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
+        removeSeparatorTokens(forms);
+
         disamb.disambiguate(forms);
+        Logger::log("Disambiguation", LogLevel::Debug, "Performed initial disambiguation.");
+
         bool joined_model_failed = true;
         joined_model_failed = !joiner.disambiguateAndMorphemicSplit(forms); //?
 
-        if (joined_model_failed)
+        // if (joined_model_failed)
+        // {
+        tf_disambig.disambiguate(forms);
+        Logger::log("TFDisambiguation", LogLevel::Debug, "TF disambiguation performed due to joiner failure.");
+        //}
+
+        for (auto &form : forms)
         {
-            tf_disambig.disambiguate(forms);
-            for (auto &form : forms)
-            {
-                morphemic_splitter.split(form);
-            }
+            morphemic_splitter.split(form);
+            Logger::log("MorphemicSplit", LogLevel::Debug, "Morphemic split applied on normal form: " + form->getWordForm().getRawString());
         }
+
+        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
+        Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
+        Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
         const auto &wcCollection = WCModelCollection::getInstance();
         wcCollection->collect(forms);
+        Logger::log("WordComplexCollection", LogLevel::Debug, "Collected word complexes.");
 
         os->flush();
     } while (!ssplitter.eof());

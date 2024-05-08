@@ -57,6 +57,21 @@ void GrammarPatternManager::printPatterns() const
     }
 }
 
+void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead)
+{
+    if (const auto &res = isHead ? usedHeadSpVars.insert(sp) : usedSpVars.insert(sp); res.second)
+    {
+        Logger::log("GrammarPatternManager", LogLevel::Info, "Addde new part of speach: " + sp);
+    }
+    else
+    {
+        Logger::log("GrammarPatternManager", LogLevel::Info, "Part of speach: " + sp + " was already in the set.");
+    }
+}
+
+std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const { return usedHeadSpVars; }
+std::unordered_set<std::string> GrammarPatternManager::getUsedSp() const { return usedSpVars; }
+
 size_t GrammarPatternManager::patternsAmount() const { return patterns.size(); }
 size_t GrammarPatternManager::basesAmount() const { return bases.size(); }
 size_t GrammarPatternManager::assemsAmount() const { return assemblies.size(); }
