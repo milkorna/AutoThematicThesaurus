@@ -35,8 +35,7 @@ void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
 
 void processText(const std::string &inputFile, const std::string &outputFile)
 {
-    size_t sentCount = 0;
-    Process process(inputFile, outputFile, sentCount++);
+    Process process(inputFile, outputFile);
 
     Tokenizer tok;
     TFDisambiguator tf_disambig;
@@ -85,6 +84,7 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         wcCollection->collect(forms, process);
 
         process.m_output.flush();
+        process.m_sentNum++;
 
     } while (!ssplitter.eof());
 }

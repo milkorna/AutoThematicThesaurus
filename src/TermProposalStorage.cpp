@@ -158,12 +158,14 @@ static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const 
     if (isLeft)
     {
         wc->words.push_front(forms[formIndex]);
-        wc->textForm.insert(0, forms[formIndex]->getWordForm().getRawString() + " ");
+        wc->pos.start--;
+        wc->textForm.insert(0, formFromText + " ");
     }
     else
     {
         wc->words.push_back(forms[formIndex]);
-        wc->textForm.append(" " + forms[formIndex]->getWordForm().getRawString());
+        wc->pos.end++;
+        wc->textForm.append(" " + formFromText);
     }
 
     ++correct;
@@ -230,19 +232,19 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
                 WordComplexPtr wc = std::make_shared<WordComplex>();
                 wc->words.push_back(forms[currFormInd]);
                 wc->textForm = forms[currFormInd]->getWordForm().getRawString();
-                wc->pos.start = currFormInd; // TODO: deal with pos
-                wc->pos.end = currFormInd;
+                wc->pos = {currFormInd,
+                           currFormInd,
+                           process.m_docNum,
+                           process.m_sentNum};
 
                 if (headPos != 0 && currFormInd != 0)
                 {
-                    size_t offset = 1;
-                    if (checkAside(matchedWordComplexes, wc, base.second, headPos - offset, forms, currFormInd - offset, correct, true))
+                    if (checkAside(matchedWordComplexes, wc, base.second, headPos - 1, forms, currFormInd - 1, correct, true))
                         break;
                 }
                 if (headPos != base.second->getSize() - 1)
                 {
-                    size_t offset = 1;
-                    if (checkAside(matchedWordComplexes, wc, base.second, headPos + offset, forms, currFormInd + offset, correct, false))
+                    if (checkAside(matchedWordComplexes, wc, base.second, headPos + 1, forms, currFormInd + 1, correct, false))
                         break;
                 }
                 // add to wcCollection with base.second.form key
@@ -256,7 +258,7 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
     Logger::log("collectBases", LogLevel::Debug, "Added WordComplexes to matched collection.");
     for (const auto &wc : matchedWordComplexes)
     {
-        process.m_output << wc->textForm << std::endl;
+        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << std::endl;
     }
     return matchedWordComplexes;
 }

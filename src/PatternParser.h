@@ -42,7 +42,7 @@ struct Process
     {
     }
 
-    Process(const std::string &inputFile, const std::string &outputFile, const size_t sentNum) : m_input(inputFile), m_output(outputFile), m_docNum(ParserUtils::extractNumberFromPath(inputFile)), m_sentNum(sentNum)
+    Process(const std::string &inputFile, const std::string &outputFile, const size_t sentNum = 0) : m_input(inputFile), m_output(outputFile), m_docNum(ParserUtils::extractNumberFromPath(inputFile)), m_sentNum(sentNum)
     {
     }
 };
