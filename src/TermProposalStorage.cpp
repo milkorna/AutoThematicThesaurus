@@ -196,7 +196,7 @@ static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const 
     return false;
 }
 
-std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms, std::ostream &output)
+std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms, Process &process)
 {
     Logger::log("collectBases", LogLevel::Debug, "Starting base collection process.");
     const auto &manager = GrammarPatternManager::getInstance();
@@ -256,12 +256,12 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
     Logger::log("collectBases", LogLevel::Debug, "Added WordComplexes to matched collection.");
     for (const auto &wc : matchedWordComplexes)
     {
-        output << wc->textForm << std::endl;
+        process.m_output << wc->textForm << std::endl;
     }
     return matchedWordComplexes;
 }
 
-void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos)
+void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos, Process &process)
 {
     Logger::log("collectAssemblies", LogLevel::Debug, "Starting assembly collection process.");
     const auto &manager = GrammarPatternManager::getInstance();
@@ -278,12 +278,12 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
     }
 }
 
-void WCModelCollection::collect(const std::vector<WordFormPtr> &forms, std::ostream &output)
+void WCModelCollection::collect(const std::vector<WordFormPtr> &forms, Process &process)
 {
     Logger::log("collect", LogLevel::Debug, "Starting collection process.");
     const auto &manager = GrammarPatternManager::getInstance();
-    const auto &baseInfos = this->collectBases(forms, output);
+    const auto &baseInfos = this->collectBases(forms, process);
     Logger::log("collect", LogLevel::Debug, "Completed collection process.");
 
-    this->collectAssemblies(forms, baseInfos);
+    this->collectAssemblies(forms, baseInfos, process);
 }

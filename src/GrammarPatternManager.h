@@ -8,6 +8,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "PatternParser.h"
+
 // Forward declaration
 class Model;
 

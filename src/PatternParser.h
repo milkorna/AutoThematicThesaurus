@@ -9,6 +9,9 @@
 // Namespace containing utilities for parsing operations.
 namespace ParserUtils
 {
+
+    size_t extractNumberFromPath(const std::string &filePath);
+
     // Removes spaces from a std::string.
     void RemoveSpaces(std::string &str);
 
@@ -27,6 +30,22 @@ namespace ParserUtils
     // Extracts a substring enclosed in single quotes.
     std::string ExtractSubstringInSq(const std::string &str);
 }
+
+struct Process
+{
+    std::ifstream m_input;
+    std::ofstream m_output;
+    size_t m_docNum;
+    size_t m_sentNum;
+
+    Process(const std::string &inputFile, const std::string &outputFile, const size_t docNum, const size_t sentNum) : m_input(inputFile), m_output(outputFile), m_docNum(docNum), m_sentNum(sentNum)
+    {
+    }
+
+    Process(const std::string &inputFile, const std::string &outputFile, const size_t sentNum) : m_input(inputFile), m_output(outputFile), m_docNum(ParserUtils::extractNumberFromPath(inputFile)), m_sentNum(sentNum)
+    {
+    }
+};
 
 // Parser class responsible for parsing linguistic data from a file.
 class Parser

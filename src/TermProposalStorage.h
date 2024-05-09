@@ -11,6 +11,7 @@
 #include <xmorphy/morph/WordForm.h>
 
 #include <GrammarComponent.h>
+#include "PatternParser.h"
 #include <deque>
 #include <Logger.h>
 
@@ -67,11 +68,11 @@ public:
 
     size_t size() const;
 
-    void collect(const std::vector<WordFormPtr> &forms, std::ostream &output);
+    void collect(const std::vector<WordFormPtr> &forms, Process &process);
 
-    std::vector<WordComplexPtr> collectBases(const std::vector<WordFormPtr> &forms, std::ostream &output);
+    std::vector<WordComplexPtr> collectBases(const std::vector<WordFormPtr> &forms, Process &process);
 
-    void collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos);
+    void collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos, Process &process);
 };
 
 #endif

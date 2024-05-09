@@ -7,6 +7,23 @@
 
 #include <algorithm>
 
+#include <regex>
+
+size_t ParserUtils::extractNumberFromPath(const std::string &filePath)
+{
+    std::regex regexPattern(R"(\d+)");
+    std::smatch matches;
+
+    if (std::regex_search(filePath, matches, regexPattern))
+    {
+        if (!matches.empty())
+        {
+            return std::stoull(matches[0]);
+        }
+    }
+    return 0;
+}
+
 // Remove spaces from a std::string
 void ParserUtils::RemoveSpaces(std::string &str)
 {

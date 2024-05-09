@@ -1,5 +1,5 @@
 #include "GrammarPatternManager.h"
-#include "PatternParser.h"
+
 #include "GrammarComponent.h"
 #include <Logger.h>
 

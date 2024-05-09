@@ -22,9 +22,6 @@
 #include <xmorphy/morph/WordFormPrinter.h>
 #include <xmorphy/utils/UniString.h>
 
-using namespace X;
-using namespace std;
-
 void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
 {
     forms.erase(
@@ -36,17 +33,22 @@ void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
         forms.end());
 }
 
-void processText(std::istream &input, std::ostream &output)
+void processText(const std::string &inputFile, const std::string &outputFile)
 {
+    size_t sentCount = 0;
+    Process process(inputFile, outputFile, sentCount++);
+
     Tokenizer tok;
     TFDisambiguator tf_disambig;
     TFMorphemicSplitter morphemic_splitter;
-    SentenceSplitter ssplitter(input);
+    SentenceSplitter ssplitter(process.m_input);
     Processor analyzer;
     SingleWordDisambiguate disamb;
     TFJoinedModel joiner;
+
     do
     {
+
         std::string sentence;
         ssplitter.readSentence(sentence);
 
@@ -80,9 +82,10 @@ void processText(std::istream &input, std::ostream &output)
         Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
         const auto &wcCollection = WCModelCollection::getInstance();
-        wcCollection->collect(forms, output);
+        wcCollection->collect(forms, process);
 
-        output.flush();
+        process.m_output.flush();
+
     } while (!ssplitter.eof());
 }
 
@@ -119,11 +122,12 @@ int main()
     std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
     std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
-    std::ifstream input(inputFile);
-    std::ofstream output(outputFile);
+    // std::ifstream input(inputFile);
+    // std::ofstream output(outputFile);
+
     try
     {
-        processText(input, output);
+        processText(inputFile, outputFile);
     }
     catch (const std::exception &e)
     {
