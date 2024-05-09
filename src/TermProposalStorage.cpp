@@ -52,24 +52,24 @@ void WCModelCollection::addWordComplex(const std::string &key, const WordComplex
     }
 }
 
-static bool ConditionsCheck(const std::shared_ptr<WordComp> &baseHead, const X::WordFormPtr &form)
+static bool ConditionsCheck(const std::shared_ptr<WordComp> &base, const X::WordFormPtr &form)
 {
-    const auto &spBaseHeadTag = baseHead->getSPTag();
+    const auto &spBaseTag = base->getSPTag();
     for (const auto &morphForm : form->getMorphInfo())
     {
-        Logger::log("ConditionsCheck", LogLevel::Debug, "Checking morphForm against spBaseHeadTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " + morphForm.sp.toString() + "\t\tspBaseHeadTag: " + spBaseHeadTag.toString());
-        if (morphForm.sp == spBaseHeadTag)
+        Logger::log("ConditionsCheck", LogLevel::Debug, "Checking morphForm against spBaseTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " + morphForm.sp.toString() + "\t\tspBaseHeadTag: " + spBaseTag.toString());
+        if (morphForm.sp == spBaseTag)
         {
             // dont need to check if a word comp bs collectedBases works only with wordcomps
-            const auto &baseHeadCond = baseHead->getCondition();
+            const auto &baseCond = base->getCondition();
 
-            if (!baseHeadCond.morphTagCheck(morphForm))
+            if (!baseCond.morphTagCheck(morphForm))
             {
                 Logger::log("ConditionsCheck", LogLevel::Debug, "morphTagCheck failed.");
                 return false;
             }
 
-            if (const auto &additCond = baseHeadCond.getAdditional(); !additCond.isEmpty())
+            if (const auto &additCond = baseCond.getAdditional(); !additCond.isEmpty())
             {
                 Logger::log("ConditionsCheck", LogLevel::Debug, "Checking additional conditions.");
                 if (!additCond.exLexCheck(morphForm))
@@ -102,70 +102,6 @@ static bool HeadCheck(const std::shared_ptr<Model> &baseModel, const X::WordForm
         return false;
     }
     Logger::log("HeadCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
-    return true;
-}
-
-static bool LeftCheck(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, const size_t currCompInd, const std::vector<WordFormPtr> &forms, const size_t currFormInd, size_t &correct)
-{
-    Logger::log("LeftCheck", LogLevel::Debug, "Starting LeftCheck for component index: " + std::to_string(currFormInd));
-    const auto &leftComp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[currCompInd]);
-
-    std::string formFromText = forms[currFormInd]->getWordForm().getRawString();
-    Logger::log("LeftCheck", LogLevel::Debug, "FormFromText: " + formFromText);
-
-    if (!ConditionsCheck(leftComp, forms[currFormInd]))
-    {
-        Logger::log("LeftCheck", LogLevel::Debug, "ConditionsCheck failed for leftComp.");
-        return false;
-    }
-
-    if (leftComp->isRec())
-    {
-        if (LeftCheck(wc, model, currCompInd, forms, currFormInd - 1, correct))
-        {
-            wc->words.push_front(forms[currFormInd - 1]);
-            //++correct;
-            Logger::log("Recursive LeftCheck", LogLevel::Debug, "Succeeded, added form to front.");
-        }
-        else
-        {
-            Logger::log("Recursive LeftCheck", LogLevel::Debug, "Failed, stop recursive.");
-            // return false;  TODO: fix
-        }
-    }
-    Logger::log("LeftCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
-
-    return true;
-}
-
-static bool RightCheck(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, const size_t currCompInd, const std::vector<WordFormPtr> &forms, const size_t currFormInd, size_t &correct)
-{
-    Logger::log("RightCheck", LogLevel::Debug, "Starting RightCheck for component index: " + std::to_string(currFormInd));
-    const auto &rightComp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[currCompInd]);
-
-    std::string formFromText = forms[currFormInd]->getWordForm().getRawString();
-    Logger::log("RightCheck", LogLevel::Debug, "FormFromText: " + formFromText);
-
-    if (!ConditionsCheck(rightComp, forms[currFormInd]))
-    {
-        Logger::log("RightCheck", LogLevel::Debug, "ConditionsCheck failed for rightComp.");
-        return false;
-    }
-    if (rightComp->isRec())
-    {
-        if (RightCheck(wc, model, currCompInd, forms, currFormInd + 1))
-        {
-            wc->words.push_back(forms[currFormInd + 1]);
-            Logger::log("Recursive RightCheck", LogLevel::Debug, "Succeeded, added form to back.");
-        }
-        else
-        {
-            Logger::log("Recursive RightCheck", LogLevel::Debug, "Failed, stop recursive.");
-            // return false; TODO: fix
-        }
-    }
-    Logger::log("RightCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
-
     return true;
 }
 
@@ -207,6 +143,59 @@ static bool haveSp(const std::unordered_set<X::MorphInfo> &currFormMorphInfo)
     return false;
 }
 
+static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, bool isLeft)
+{
+    const auto &comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
+    std::string formFromText = forms[formIndex]->getWordForm().getRawString();
+    Logger::log("checkAside", LogLevel::Debug, "FormFromText: " + formFromText);
+
+    if (!ConditionsCheck(comp, forms[formIndex]))
+    {
+        Logger::log("checkAside", LogLevel::Debug, "ConditionsCheck failed.");
+        return false;
+    }
+
+    if (isLeft)
+    {
+        wc->words.push_front(forms[formIndex]);
+        wc->textForm.insert(0, forms[formIndex]->getWordForm().getRawString() + " ");
+    }
+    else
+    {
+        wc->words.push_back(forms[formIndex]);
+        wc->textForm.append(" " + forms[formIndex]->getWordForm().getRawString());
+    }
+
+    ++correct;
+    size_t offset = 1;
+    size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
+    size_t nextFormIndex = isLeft ? formIndex - offset : formIndex + offset;
+
+    if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->getSize() - 1))
+    {
+        checkAside(matchedWordComplexes, wc, model, nextCompIndex, forms, nextFormIndex, correct, isLeft);
+    }
+    else
+    {
+        matchedWordComplexes.push_back(std::make_shared<WordComplex>(*wc));
+        if (comp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < forms.size() - 1)))
+        {
+            if (checkAside(matchedWordComplexes, wc, model, compIndex, forms, nextFormIndex, correct, isLeft))
+            {
+                return true;
+            }
+            else
+            {
+                Logger::log("Recursive checkAside", LogLevel::Debug, "Failed, stop recursive.");
+                return false;
+            }
+        }
+    }
+
+    Logger::log("checkAside", LogLevel::Debug, "Exiting function, the return value is TRUE.");
+    return false;
+}
+
 std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms)
 {
     Logger::log("collectBases", LogLevel::Debug, "Starting base collection process.");
@@ -237,72 +226,38 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
             if (headIsMatched)
             {
                 size_t headPos = base.second->getHeadPos();
-                if (headPos != 0)
-                {
-                    if (!haveSp(forms[currFormInd - 1]->getMorphInfo()))
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    if (headPos != base.second->getSize() - 1)
-                    {
-                        if (!haveSp(forms[currFormInd + 1]->getMorphInfo()))
-                        {
-                            break;
-                        }
-                    }
-                }
                 ++correct;
                 WordComplexPtr wc = std::make_shared<WordComplex>();
                 wc->words.push_back(forms[currFormInd]);
-                std::string formFromText = forms[currFormInd]->getWordForm().getRawString();
-                // Logger::log("collectBases", LogLevel::Debug, "FormFromText: " + formFromText);
-                // Logger::log("collectBases", LogLevel::Debug, "HeadPos: " + std::to_string(headPos));
+                wc->textForm = forms[currFormInd]->getWordForm().getRawString();
+                wc->pos.start = currFormInd; // TODO: deal with pos
+                wc->pos.end = currFormInd;
+
                 if (headPos != 0)
                 {
                     size_t offset = 1;
-                    while (LeftCheck(wc, base.second, headPos - offset, forms, currFormInd - offset, correct))
-                    {
-                        wc->words.push_front(forms[currFormInd - offset]);
-                        formFromText.insert(0, forms[currFormInd - offset]->getWordForm().getRawString());
-                        wc->pos.start = currFormInd - offset;
-                        ++correct;
-                        ++offset;
-                    }
+                    if (checkAside(matchedWordComplexes, wc, base.second, headPos - offset, forms, currFormInd - offset, correct, true))
+                        break;
                 }
                 if (headPos != base.second->getSize() - 1)
                 {
                     size_t offset = 1;
-                    while (RightCheck(wc, base.second, headPos + offset, forms, currFormInd + offset, correct))
-                    {
-                        wc->words.push_back(forms[currFormInd + offset]);
-                        formFromText.append(forms[currFormInd + offset]->getWordForm().getRawString());
-                        wc->pos.end = currFormInd + offset;
-                        ++correct;
-                        ++offset;
-                    }
+                    if (checkAside(matchedWordComplexes, wc, base.second, headPos + offset, forms, currFormInd + offset, correct, false))
+                        break;
                 }
-
                 // add to wcCollection with base.second.form key
-                if (correct > base.second->getSize())
-                {
-                    matchedWordComplexes.push_back(wc);
-                }
             }
             else
             {
                 continue;
             }
-
-            // if (base.second->checkComponentsMatch(forms[currFormInd]))
-            // {
-            //     // collectedBases.push_back(base);
-            // }
         }
     }
-    Logger::log("collectBases", LogLevel::Debug, "Added WordComplex to matched collection.");
+    Logger::log("collectBases", LogLevel::Debug, "Added WordComplexes to matched collection.");
+    for (const auto &wc : matchedWordComplexes)
+    {
+        std::cout << wc->textForm << std::endl;
+    }
     return matchedWordComplexes;
 }
 
