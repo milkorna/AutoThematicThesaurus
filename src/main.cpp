@@ -25,13 +25,6 @@
 using namespace X;
 using namespace std;
 
-struct Options
-{
-    bool disambiguate = true;
-    bool context_disambiguate = true;
-    bool morphemic_split = true;
-};
-
 void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
 {
     forms.erase(
@@ -41,6 +34,56 @@ void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
                            return form->getTokenType() == TokenTypeTag::SEPR;
                        }),
         forms.end());
+}
+
+void processText(std::istream &input, std::ostream &output)
+{
+    Tokenizer tok;
+    TFDisambiguator tf_disambig;
+    TFMorphemicSplitter morphemic_splitter;
+    SentenceSplitter ssplitter(input);
+    Processor analyzer;
+    SingleWordDisambiguate disamb;
+    TFJoinedModel joiner;
+    do
+    {
+        std::string sentence;
+        ssplitter.readSentence(sentence);
+
+        if (sentence.empty())
+            continue;
+
+        std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
+        std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
+
+        removeSeparatorTokens(forms);
+
+        disamb.disambiguate(forms);
+
+        bool joined_model_failed = true;
+        joined_model_failed = !joiner.disambiguateAndMorphemicSplit(forms); //?
+
+        // if (joined_model_failed)
+        // {
+        tf_disambig.disambiguate(forms);
+        // Logger::log("TFDisambiguation", LogLevel::Debug, "TF disambiguation performed due to joiner failure.");
+        // }
+
+        for (auto &form : forms)
+        {
+            morphemic_splitter.split(form);
+            // Logger::log("MorphemicSplit", LogLevel::Debug, "Morphemic split applied on normal form: " + form->getWordForm().getRawString());
+        }
+
+        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
+        Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
+        Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
+
+        const auto &wcCollection = WCModelCollection::getInstance();
+        wcCollection->collect(forms, output);
+
+        output.flush();
+    } while (!ssplitter.eof());
 }
 
 int main()
@@ -73,62 +116,25 @@ int main()
         return EXIT_FAILURE;
     }
 
-    Options opts;
+    std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
+    std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
-    std::string input_file = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
-    std::string output_file = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
-
-    std::istream *is = new ifstream(input_file);
-    std::ostream *os = new ofstream(output_file);
-
-    Tokenizer tok;
-    TFDisambiguator tf_disambig;
-    TFMorphemicSplitter morphemic_splitter;
-    SentenceSplitter ssplitter(*is);
-    Processor analyzer;
-    SingleWordDisambiguate disamb;
-    TFJoinedModel joiner;
-    do
+    std::ifstream input(inputFile);
+    std::ofstream output(outputFile);
+    try
     {
-        std::string sentence;
-        ssplitter.readSentence(sentence);
-
-        if (sentence.empty())
-            continue;
-
-        std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
-        std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
-
-        removeSeparatorTokens(forms);
-
-        disamb.disambiguate(forms);
-        Logger::log("Disambiguation", LogLevel::Debug, "Performed initial disambiguation.");
-
-        bool joined_model_failed = true;
-        joined_model_failed = !joiner.disambiguateAndMorphemicSplit(forms); //?
-
-        // if (joined_model_failed)
-        // {
-        tf_disambig.disambiguate(forms);
-        Logger::log("TFDisambiguation", LogLevel::Debug, "TF disambiguation performed due to joiner failure.");
-        //}
-
-        for (auto &form : forms)
-        {
-            morphemic_splitter.split(form);
-            Logger::log("MorphemicSplit", LogLevel::Debug, "Morphemic split applied on normal form: " + form->getWordForm().getRawString());
-        }
-
-        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
-        Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
-        Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
-
-        const auto &wcCollection = WCModelCollection::getInstance();
-        wcCollection->collect(forms);
-        Logger::log("WordComplexCollection", LogLevel::Debug, "Collected word complexes.");
-
-        os->flush();
-    } while (!ssplitter.eof());
+        processText(input, output);
+    }
+    catch (const std::exception &e)
+    {
+        Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+        return EXIT_FAILURE;
+    }
+    catch (...)
+    {
+        Logger::log("main", LogLevel::Error, "Unknown exception caught");
+        return EXIT_FAILURE;
+    }
 
     return 0;
 }

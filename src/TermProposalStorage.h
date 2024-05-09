@@ -67,9 +67,9 @@ public:
 
     size_t size() const;
 
-    void collect(const std::vector<WordFormPtr> &forms);
+    void collect(const std::vector<WordFormPtr> &forms, std::ostream &output);
 
-    std::vector<WordComplexPtr> collectBases(const std::vector<WordFormPtr> &forms);
+    std::vector<WordComplexPtr> collectBases(const std::vector<WordFormPtr> &forms, std::ostream &output);
 
     void collectAssemblies(const std::vector<WordFormPtr> &forms, const std::vector<WordComplexPtr> &baseInfos);
 };

@@ -196,7 +196,7 @@ static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const 
     return false;
 }
 
-std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms)
+std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms, std::ostream &output)
 {
     Logger::log("collectBases", LogLevel::Debug, "Starting base collection process.");
     const auto &manager = GrammarPatternManager::getInstance();
@@ -233,7 +233,7 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
                 wc->pos.start = currFormInd; // TODO: deal with pos
                 wc->pos.end = currFormInd;
 
-                if (headPos != 0)
+                if (headPos != 0 && currFormInd != 0)
                 {
                     size_t offset = 1;
                     if (checkAside(matchedWordComplexes, wc, base.second, headPos - offset, forms, currFormInd - offset, correct, true))
@@ -256,7 +256,7 @@ std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<Wo
     Logger::log("collectBases", LogLevel::Debug, "Added WordComplexes to matched collection.");
     for (const auto &wc : matchedWordComplexes)
     {
-        std::cout << wc->textForm << std::endl;
+        output << wc->textForm << std::endl;
     }
     return matchedWordComplexes;
 }
@@ -278,11 +278,11 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
     }
 }
 
-void WCModelCollection::collect(const std::vector<WordFormPtr> &forms)
+void WCModelCollection::collect(const std::vector<WordFormPtr> &forms, std::ostream &output)
 {
     Logger::log("collect", LogLevel::Debug, "Starting collection process.");
     const auto &manager = GrammarPatternManager::getInstance();
-    const auto &baseInfos = this->collectBases(forms);
+    const auto &baseInfos = this->collectBases(forms, output);
     Logger::log("collect", LogLevel::Debug, "Completed collection process.");
 
     this->collectAssemblies(forms, baseInfos);
