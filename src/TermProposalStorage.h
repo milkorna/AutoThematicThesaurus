@@ -28,6 +28,7 @@ struct WordComplex
     std::deque<WordFormPtr> words = {};
     std::string textForm = "";
     Position pos;
+    std::string baseName;
 };
 
 struct WordComplexAgregate

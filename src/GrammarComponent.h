@@ -32,7 +32,7 @@ struct Additional
         {
             if (exLex == morphForm.normalForm)
             {
-                // exLex matched
+                // exLex matched return true;
             }
             else
             {
@@ -116,6 +116,7 @@ public:
 
     const Condition getCondition() const { return m_cond; }
     const bool isRec() { return m_cond.getAdditional().m_rec; }
+    const bool isHead() { return m_cond.getSyntaxRole() == SyntaxRole::Head; }
 
     ~WordComp() override {}
 
@@ -159,6 +160,8 @@ public:
     ModelComp(const std::string &form = "", const Components &comps = {}, const Condition &cond = {}) : Model(form, comps), m_cond(cond){};
 
     const Condition getCondition() const { return m_cond; }
+
+    const bool isHead() { return m_cond.getSyntaxRole() == SyntaxRole::Head; }
 
     void addComponent(const std::shared_ptr<Component> &component);
 };
