@@ -63,7 +63,7 @@ std::shared_ptr<WordComp> Model::getHead() const
     return nullptr;
 }
 
-size_t Model::getHeadPos() const // TODO: Make shorter
+std::optional<size_t> Model::getHeadPos() const // TODO: Make shorter
 {
     for (size_t compInd = 0; compInd < m_comps.size(); compInd++)
     {
@@ -84,8 +84,23 @@ size_t Model::getHeadPos() const // TODO: Make shorter
             }
         }
     }
+    return std::nullopt;
+}
+
+std::optional<size_t> Model::getModelCompIndByForm(const std::string &form) const // TODO: Make shorter
+{
+    for (size_t compInd = 0; compInd < m_comps.size(); compInd++)
+    {
+        if (auto modelComp = std::dynamic_pointer_cast<ModelComp>(m_comps[compInd]))
+        {
+            if (modelComp->getForm() == form)
+            {
+                return compInd;
+            }
+        }
+    }
     // std optional or smf
-    return 0;
+    return std::nullopt;
 }
 
 size_t Model::getSize() const
@@ -129,78 +144,7 @@ bool Condition::morphTagCheck(const MorphInfo &morphForm) const
            checkAttribute(&X::UniMorphTag::hasAspect, &X::UniMorphTag::getAspect, compMorphTag, morphForm.tag);
 }
 
-bool Model::checkComponentsMatch(const WordFormPtr &wordForm) const
-{
-    // for (const auto &comp : m_comps)
-    // {
-    //     if (!comp->matches(wordForm))
-    //     {
-    //         return false;
-    //     }
-    // }
-    return true;
-}
-
-const bool ModelComp::matches(const std::vector<WordFormPtr> &lexemes, size_t position) const
-{
-    return true; // checkComponentsMatch(wordForm);
-}
-
-const bool WordComp::matches(const WordFormPtr &wordForm, size_t &position) const
-{
-
-    // for (const auto &morphInfo : wordForm->getMorphInfo())
-    // {
-    //     if (morphInfo.tag == this->m_cond.getMorphTag())
-    //     {
-    //         return true;
-    //     }
-    // }
-    return false;
-}
-
-const bool Word::matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const
-{
-    size_t startPosition = position;
-    bool matched = false;
-    // while (position < lexemes.size() /*&& TODO*/)
-    // {
-    //     matched = true;
-    //     ++position;
-    //     if (!m_cond.m_rec)
-    //         break;
-    // }
-    return matched;
-}
-
-const bool Word::matches(const WordFormPtr &wordForm, size_t &position) const
-{
-    return false;
-}
-
 void Model::addComponent(const std::shared_ptr<Component> &component)
 {
     m_comps.push_back(component);
-}
-
-bool Model::matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const
-{
-    size_t tempPosition = position;
-    // do
-    // {
-    //     tempPosition = position;
-    //     for (const auto &component : m_comps)
-    //     {
-    //         if (!component->matches(lexemes, tempPosition))
-    //         {
-    //             position = tempPosition;
-    //             return m_cond.m_rec ? true : false;
-    //         }
-    //     }
-    //     if (!m_cond.m_rec)
-    //         break;
-    // } while (tempPosition != position);
-
-    // position = tempPosition;
-    return true;
 }

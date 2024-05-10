@@ -285,8 +285,7 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
             morphTag = ParseUniMorphTag(patTags);
         }
 
-        GrammarPatternManager *manager = GrammarPatternManager::getInstance();
-        auto model = manager->getPattern(patName);
+        auto model = GrammarPatternManager::getInstance()->getPattern(patName);
         if (!model)
         {
             Logger::log("PatternParser", LogLevel::Warning, "Failed to find model: " + patName);

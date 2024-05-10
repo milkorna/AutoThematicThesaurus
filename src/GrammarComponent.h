@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <optional>
 #include <xmorphy/morph/WordForm.h>
 #include <xmorphy/tag/UniMorphTag.h>
 #include <xmorphy/tag/UniSPTag.h>
@@ -104,9 +105,6 @@ public:
         return true;
     }
     const bool isModel() const override { return false; }
-
-    const bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
-    const bool matches(const WordFormPtr &lexeme, size_t &position) const;
 };
 
 class WordComp : public Word
@@ -122,9 +120,6 @@ public:
     ~WordComp() override {}
 
     void print() const;
-
-    const bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
-    const bool matches(const WordFormPtr &wordForm, size_t &position) const;
 };
 
 class Model : public Component
@@ -147,10 +142,10 @@ public:
 
     void addComponent(const std::shared_ptr<Component> &component);
 
-    bool matches(const std::vector<WordFormPtr> &lexemes, size_t &position) const;
+    std::optional<size_t> getModelCompIndByForm(const std::string &form) const;
 
     std::shared_ptr<WordComp> getHead() const;
-    size_t getHeadPos() const;
+    std::optional<size_t> getHeadPos() const;
     size_t getSize() const;
 
     void printWords() const;
@@ -166,7 +161,6 @@ public:
     const Condition getCondition() const { return m_cond; }
 
     void addComponent(const std::shared_ptr<Component> &component);
-    const bool matches(const std::vector<WordFormPtr> &lexemes, size_t position) const;
 };
 
 #endif // GRAMMARCOMPONENTS_H
