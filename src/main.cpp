@@ -122,9 +122,6 @@ int main()
     std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
     std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
-    // std::ifstream input(inputFile);
-    // std::ofstream output(outputFile);
-
     try
     {
         processText(inputFile, outputFile);

@@ -357,7 +357,7 @@ void Parser::Parse()
                     }
                     else
                     {
-                        Logger::log("PatternParser", LogLevel::Debug, "Word component parsing failed: " + line);
+                        Logger::log("PatternParser", LogLevel::Error, "Word component parsing failed: " + line);
                     }
                     continue;
                 }
@@ -368,7 +368,7 @@ void Parser::Parse()
                     {
                         comps.push_back(model);
 
-                        Logger::log("PatternParser", LogLevel::Error, "Model component parsed successfully: " + line);
+                        Logger::log("PatternParser", LogLevel::Debug, "Model component parsed successfully: " + line);
                     }
                     else
                     {
