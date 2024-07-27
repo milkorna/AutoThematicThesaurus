@@ -46,7 +46,6 @@ void processText(const std::string &inputFile, const std::string &outputFile)
 
     do
     {
-
         std::string sentence;
         ssplitter.readSentence(sentence);
 
@@ -58,7 +57,7 @@ void processText(const std::string &inputFile, const std::string &outputFile)
 
         removeSeparatorTokens(forms);
         disamb.disambiguate(forms);
-        joiner.disambiguateAndMorphemicSplit(forms); //?
+        joiner.disambiguateAndMorphemicSplit(forms);
 
         for (auto &form : forms)
         {

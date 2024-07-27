@@ -178,11 +178,30 @@ static bool haveSp(const std::unordered_set<X::MorphInfo> &currFormMorphInfo)
     return false;
 }
 
-static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, const bool isLeft)
+static bool CheckForMisclassifications(const X::WordFormPtr &form)
+{
+    std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'};
+    const auto str = form->getWordForm().getRawString();
+
+    for (char c : str)
+    {
+        if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+static bool
+checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, const bool isLeft)
 {
     const auto &comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     std::string formFromText = forms[formIndex]->getWordForm().getRawString();
     Logger::log("checkAside", LogLevel::Debug, "FormFromText: " + formFromText);
+
+    if (CheckForMisclassifications(forms[formIndex]))
+        return false;
 
     if (!ConditionsCheck(comp, forms[formIndex]))
     {
