@@ -38,7 +38,6 @@ void processText(const std::string &inputFile, const std::string &outputFile)
     Process process(inputFile, outputFile);
 
     Tokenizer tok;
-    TFDisambiguator tf_disambig;
     TFMorphemicSplitter morphemic_splitter;
     SentenceSplitter ssplitter(process.m_input);
     Processor analyzer;
@@ -58,17 +57,8 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
         removeSeparatorTokens(forms);
-
         disamb.disambiguate(forms);
-
-        bool joined_model_failed = true;
-        joined_model_failed = !joiner.disambiguateAndMorphemicSplit(forms); //?
-
-        // if (joined_model_failed)
-        // {
-        tf_disambig.disambiguate(forms);
-        // Logger::log("TFDisambiguation", LogLevel::Debug, "TF disambiguation performed due to joiner failure.");
-        // }
+        joiner.disambiguateAndMorphemicSplit(forms); //?
 
         for (auto &form : forms)
         {
