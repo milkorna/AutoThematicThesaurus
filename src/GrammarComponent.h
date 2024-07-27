@@ -35,9 +35,9 @@ struct Additional
     {
         if (const X::UniString exLex(m_exLex); !exLex.isEmpty())
         {
-            if (exLex == morphForm.normalForm)
+            if (exLex == morphForm.normalForm.toLowerCase())
             {
-                // exLex matched return true;
+                return true;
             }
             else
             {

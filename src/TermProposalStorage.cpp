@@ -82,7 +82,7 @@ static bool ConditionsCheck(const std::shared_ptr<WordComp> &base, const X::Word
             }
 
             if (!AdditionalConditionCheck(baseCond, morphForm))
-                continue;
+                return false;
         }
         else
         {
@@ -190,6 +190,8 @@ static bool checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const 
         return false;
     }
     // also need to update found themes and lex
+
+    // add exception check like 2 = adj
 
     if (isLeft)
     {
