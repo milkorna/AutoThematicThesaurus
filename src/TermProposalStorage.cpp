@@ -111,7 +111,7 @@ static bool ConditionsCheck(const std::shared_ptr<WordComp> &base, const X::Word
 
             if (!AdditionalConditionCheck(baseCond, morphForm))
             {
-                continue;
+                return false;
             }
             else
             {
@@ -382,12 +382,17 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
         }
         else
         {
-            matchedWordComplexes.push_back(std::make_shared<WordComplex>(*wc));
+            if (matchedWordComplexes.empty() || wc->textForm != matchedWordComplexes.back()->textForm)
+            {
+                matchedWordComplexes.push_back(std::make_shared<WordComplex>(*wc));
+            }
+
             if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < forms.size() - 1)))
             {
                 if (checkAsideWithAssemDraft(basesWC, basePos, wc, model, compIndex, forms, nextFormIndex,
                                              correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC, matchedWordComplexes))
                 {
+
                     return true;
                 }
                 else
@@ -451,7 +456,7 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
                     {
                         if (!AdditionalConditionCheck(modelComp->getCondition(), morphForm))
                         {
-                            continue;
+                            return false;
                         }
                         else
                         {
@@ -504,7 +509,10 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
 
             if (foundLex && foundTheme && headIsChecked && headIsMatched && compIndex == model->getSize() - 1 && correct >= model->getSize())
             {
-                matchedWordComplexes.push_back(std::make_shared<WordComplex>(*wc));
+                if (matchedWordComplexes.empty() || wc->textForm != matchedWordComplexes.back()->textForm)
+                {
+                    matchedWordComplexes.push_back(std::make_shared<WordComplex>(*wc));
+                }
             }
         }
 
