@@ -422,10 +422,10 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
             if (baseWCOffset == baseNumFromBasesWC)
                 continue;
 
-            // if (isLeft && basesWC[baseWCOffset]->pos.start >= basesWC[baseNumFromBasesWC]->pos.end) // TODO: check with time
-            //     continue;
-            // if (!isLeft && basesWC[baseWCOffset]->pos.start <= basesWC[baseNumFromBasesWC]->pos.end)
-            //    continue;
+            if (isLeft && basesWC[baseWCOffset]->pos.start >= wc->pos.end) // TODO: check with time
+                continue;
+            if (!isLeft && basesWC[baseWCOffset]->pos.start <= wc->pos.end)
+                continue;
 
             Logger::log("checkAsideWithAssemDraft", LogLevel::Debug,
                         "\n\tbaseNumFromBasesWC = " + std::to_string(baseNumFromBasesWC) +
