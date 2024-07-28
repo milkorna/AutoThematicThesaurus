@@ -361,14 +361,18 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
             wc->words.push_front(forms[formIndex]);
             wc->pos.start--;
             wc->textForm.insert(0, formFromText + " ");
+            Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
         }
         else
         {
             wc->words.push_back(forms[formIndex]);
             wc->pos.end++;
             wc->textForm.append(" " + formFromText);
+            Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
         }
+
         ++correct;
+
         size_t offset = 1;
         size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
         if (isLeft && formIndex == 0)
@@ -392,7 +396,6 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
                 if (checkAsideWithAssemDraft(basesWC, basePos, wc, model, compIndex, forms, nextFormIndex,
                                              correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC, matchedWordComplexes))
                 {
-
                     return true;
                 }
                 else
@@ -411,11 +414,19 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
 
         for (size_t baseWCOffset = 0; baseWCOffset < basesWC.size(); baseWCOffset++)
         {
+            Logger::log("CURRENT basesWC[baseWCOffset]", LogLevel::Debug, std::to_string(baseWCOffset) + " " + basesWC[baseWCOffset]->textForm + " " + std::to_string(basesWC[baseWCOffset]->pos.start) + "-" + std::to_string(basesWC[baseWCOffset]->pos.end));
+            Logger::log("CURRENT basesWC[baseNumFromBasesWC]", LogLevel::Debug, std::to_string(baseNumFromBasesWC) + " " + basesWC[baseNumFromBasesWC]->textForm + " " + std::to_string(basesWC[baseNumFromBasesWC]->pos.start) + "-" + std::to_string(basesWC[baseNumFromBasesWC]->pos.end));
 
             if (baseWCOffset > basesWC.size() || baseWCOffset < 0)
                 return false;
             if (baseWCOffset == baseNumFromBasesWC)
                 continue;
+
+            // if (isLeft && basesWC[baseWCOffset]->pos.start >= basesWC[baseNumFromBasesWC]->pos.end) // TODO: check with time
+            //     continue;
+            // if (!isLeft && basesWC[baseWCOffset]->pos.start <= basesWC[baseNumFromBasesWC]->pos.end)
+            //    continue;
+
             Logger::log("checkAsideWithAssemDraft", LogLevel::Debug,
                         "\n\tbaseNumFromBasesWC = " + std::to_string(baseNumFromBasesWC) +
                             "\n\tbaseWCOffset = " + std::to_string(baseWCOffset) +
@@ -472,6 +483,7 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
             size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
             size_t nextFormIndex = isLeft ? formIndex - offset : formIndex + offset;
             size_t nextBaseForm = isLeft ? baseNumFromBasesWC - 1 : baseNumFromBasesWC + 1;
+            Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
 
             if (isLeft && basesWC[baseWCOffset]->pos.end == formIndex)
             {
@@ -480,8 +492,9 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
                     wc->words.push_front(std::move(*rit));
                 }
                 correct++;
-                wc->pos.start - basesWC[baseWCOffset]->pos.start;
+                wc->pos.start = basesWC[baseWCOffset]->pos.start;
                 wc->textForm.insert(0, basesWC[baseWCOffset]->textForm + " ");
+                Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
             else if (basesWC[baseWCOffset]->pos.start == formIndex)
             {
@@ -490,8 +503,9 @@ static bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC,
                     wc->words.push_back(std::move(elem));
                 }
                 correct++;
-                wc->pos.end + basesWC[baseWCOffset]->pos.end;
+                wc->pos.end = basesWC[baseWCOffset]->pos.end;
                 wc->textForm.append(" " + basesWC[baseWCOffset]->textForm);
+                Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
 
             if (basePos != 0 && wc->pos.start != 0 && basesWC[baseNumFromBasesWC]->pos.start - 1 == nextFormIndex)
@@ -600,12 +614,23 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
 
     std::vector<WordComplexPtr> matchedWordComplexes;
 
+    Logger::log("", LogLevel::Debug, "Coolected bases:");
+    int counter = 0;
+    for (const auto b : basesWC)
+    {
+        Logger::log("", LogLevel::Debug, std::to_string(counter++) + " " + b->textForm);
+    }
+
     // Iterate over each base word complex provided in sentence
     for (size_t baseNumFromBasesWC = 0; baseNumFromBasesWC < basesWC.size(); baseNumFromBasesWC++)
     {
+        Logger::log("CURRENT BASE", LogLevel::Info, basesWC[baseNumFromBasesWC]->textForm + " || " + basesWC[baseNumFromBasesWC]->baseName);
+
         // Iterate over each assembly in the Grammar Pattern Manager
         for (const auto &asem : GrammarPatternManager::getInstance()->getAssemblies())
         {
+            Logger::log("CURRENT ASSEMBLY", LogLevel::Info, asem.first);
+
             // Get the model component index that matches the base word complex name
             auto basePos = asem.second->getModelCompIndByForm(basesWC[baseNumFromBasesWC]->baseName); // todo save logic
             if (basePos)
@@ -629,14 +654,16 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
 
             if (asem.second->getForm() == "(Прил + С) + Предл + (Прил + С)")
             {
-                std::cout << "gpcha" << std::endl;
+                std::cout << "gocha" << std::endl;
             }
+
+            Logger::log("CURRENT COMP", LogLevel::Info, comp->getForm());
 
             std::cout << comp->getForm();
             // Cast the component to a ModelComp pointer
             auto baseModelComp = std::dynamic_pointer_cast<ModelComp>(comp);
 
-            Logger::log("collectAssemblies", LogLevel::Debug, "Current base: " + baseModelComp->getForm());
+            Logger::log("CURRENT baseModelComp", LogLevel::Debug, baseModelComp->getForm());
 
             bool foundLex = false;
             bool foundTheme = false; // TODO! if there are many themes (???)
@@ -650,9 +677,12 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
                 wc->textForm = basesWC[baseNumFromBasesWC]->textForm;
                 wc->pos = basesWC[baseNumFromBasesWC]->pos;
                 wc->baseName = asem.second->getForm();
+                Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
             else
             {
+                Logger::log("CheckBase failed", LogLevel::Debug, "");
+
                 continue;
             }
 
