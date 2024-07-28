@@ -14,11 +14,22 @@ public:
 
     void Collect(const std::vector<WordFormPtr> &forms, Process &process);
 
+    void Clear() { m_collection.clear(); }
+
 private:
-    ComplexPhrasesCollector() {}
+    std::vector<WordComplexPtr> m_collection;
+
+    ComplexPhrasesCollector()
+    {
+    }
     ~ComplexPhrasesCollector() {}
     ComplexPhrasesCollector(const ComplexPhrasesCollector &) = delete;
     ComplexPhrasesCollector &operator=(const ComplexPhrasesCollector &) = delete;
+
+    bool checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC, size_t basePos, const std::shared_ptr<WordComplex> &wc,
+                                  const std::shared_ptr<Model> &model, size_t compIndex,
+                                  const std::vector<WordFormPtr> &forms, size_t formIndex,
+                                  size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC);
 };
 
 #endif

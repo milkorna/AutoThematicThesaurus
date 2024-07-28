@@ -178,7 +178,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString &line, c
         std::vector<X::UniString> data = line.split(' ');
         UniSPTag spTag(data[0].getRawString());
 
-        GrammarPatternManager::getInstance()->addUsedSp(spTag.toString(), isHead);
+        GrammarPatternManager::GetManager()->addUsedSp(spTag.toString(), isHead);
 
         UniMorphTag morphTag;
 
@@ -285,7 +285,7 @@ std::shared_ptr<ModelComp> Parser::ParseModelComp(std::string &line)
             morphTag = ParseUniMorphTag(patTags);
         }
 
-        auto model = GrammarPatternManager::getInstance()->getPattern(patName);
+        auto model = GrammarPatternManager::GetManager()->getPattern(patName);
         if (!model)
         {
             Logger::log("PatternParser", LogLevel::Warning, "Failed to find model: " + patName);
@@ -312,7 +312,7 @@ void Parser::Parse()
 {
     try
     {
-        GrammarPatternManager *manager = GrammarPatternManager::getInstance();
+        GrammarPatternManager *manager = GrammarPatternManager::GetManager();
 
         bool isInBody = false;
         std::string line;

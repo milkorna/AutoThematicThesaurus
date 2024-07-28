@@ -30,7 +30,7 @@ private:
 
 public:
     // Singleton access method
-    static GrammarPatternManager *getInstance();
+    static GrammarPatternManager *GetManager();
 
     // Deleting copy constructor and assignment operator
     GrammarPatternManager(const GrammarPatternManager &) = delete;

@@ -53,13 +53,23 @@ public:
         return instance;
     }
 
+    std::vector<WordComplexPtr> GetCollection() { return m_collection; }
+
     void Collect(const std::vector<WordFormPtr> &forms, Process &process);
 
+    void Clear() { m_collection.clear(); }
+
 private:
-    SimplePhrasesCollector() {}
+    std::vector<WordComplexPtr> m_collection;
+
+    SimplePhrasesCollector()
+    {
+    }
     ~SimplePhrasesCollector() {}
     SimplePhrasesCollector(const SimplePhrasesCollector &) = delete;
     SimplePhrasesCollector &operator=(const SimplePhrasesCollector &) = delete;
+
+    bool CheckAside(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, const bool isLeft);
 };
 
 #endif

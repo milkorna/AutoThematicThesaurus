@@ -22,6 +22,9 @@ public:
     {
         SimplePhrasesCollector::GetCollector().Collect(forms, process);
         ComplexPhrasesCollector::GetCollector().Collect(forms, process);
+
+        SimplePhrasesCollector::GetCollector().Clear();
+        ComplexPhrasesCollector::GetCollector().Clear();
     }
 
     void addPhrase(const std::string &phrase)
