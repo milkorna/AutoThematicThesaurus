@@ -1,6 +1,5 @@
-#include "GrammarPatternManager.h"
-
-#include "GrammarComponent.h"
+#include <GrammarPatternManager.h>
+#include <GrammarComponent.h>
 #include <Logger.h>
 
 GrammarPatternManager *GrammarPatternManager::instance = nullptr;
@@ -29,14 +28,14 @@ std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string &key)
     return nullptr;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getBases() const
+const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getSimplePatterns() const
 {
-    return bases;
+    return simplePatterns;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getAssemblies() const
+const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getComplexPatterns() const
 {
-    return assemblies;
+    return complexPatterns;
 }
 
 void GrammarPatternManager::readPatterns(const std::string &filePath)
@@ -60,43 +59,37 @@ void GrammarPatternManager::printPatterns() const
 void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead)
 {
     if (const auto &res = isHead ? usedHeadSpVars.insert(sp) : usedSpVars.insert(sp); res.second)
-    {
-        Logger::log("GrammarPatternManager", LogLevel::Info, "Addde new part of speach: " + sp);
-    }
-    else
-    {
-        Logger::log("GrammarPatternManager", LogLevel::Info, "Part of speach: " + sp + " was already in the set.");
-    }
+        Logger::log("GrammarPatternManager", LogLevel::Info, "Addded new part of speach: " + sp);
 }
 
 std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const { return usedHeadSpVars; }
 std::unordered_set<std::string> GrammarPatternManager::getUsedSp() const { return usedSpVars; }
 
 size_t GrammarPatternManager::patternsAmount() const { return patterns.size(); }
-size_t GrammarPatternManager::basesAmount() const { return bases.size(); }
-size_t GrammarPatternManager::assemsAmount() const { return assemblies.size(); }
+size_t GrammarPatternManager::simplePatternsAmount() const { return simplePatterns.size(); }
+size_t GrammarPatternManager::complexPatternsAmount() const { return complexPatterns.size(); }
 
 void GrammarPatternManager::divide()
 {
     for (auto &pattern : patterns)
     {
-        bool isAssembly = false;
+        bool isComplex = false;
         for (const auto &comp : pattern.second->getComponents())
         {
             if (comp->isModel())
             {
-                isAssembly = true;
+                isComplex = true;
                 break;
             }
         }
 
-        if (isAssembly)
+        if (isComplex)
         {
-            assemblies[pattern.first] = pattern.second;
+            complexPatterns[pattern.first] = pattern.second;
         }
         else
         {
-            bases[pattern.first] = pattern.second;
+            simplePatterns[pattern.first] = pattern.second;
         }
     }
 

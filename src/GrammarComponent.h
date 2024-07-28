@@ -99,7 +99,7 @@ public:
 
     std::shared_ptr<WordComp> getHead() const;
     std::optional<size_t> getHeadPos() const;
-    size_t getSize() const;
+    size_t size() const;
 
     void printWords() const;
 };
@@ -118,13 +118,9 @@ public:
     {
         auto role = m_cond.getSyntaxRole();
         if (role == SyntaxRole::Head)
-        {
             return true;
-        }
         if (role == SyntaxRole::Dependent || role == SyntaxRole::Independent)
-        {
             return false;
-        }
         return std::nullopt;
     }
 

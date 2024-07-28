@@ -18,8 +18,8 @@ class GrammarPatternManager
 private:
     static GrammarPatternManager *instance;
 
-    std::unordered_map<std::string, std::shared_ptr<Model>> bases;
-    std::unordered_map<std::string, std::shared_ptr<Model>> assemblies;
+    std::unordered_map<std::string, std::shared_ptr<Model>> simplePatterns;
+    std::unordered_map<std::string, std::shared_ptr<Model>> complexPatterns;
 
     std::unordered_map<std::string, std::shared_ptr<Model>> patterns;
 
@@ -42,8 +42,8 @@ public:
     // Method to retrieve a pattern by key
     std::shared_ptr<Model> getPattern(const std::string &key) const;
 
-    const std::unordered_map<std::string, std::shared_ptr<Model>> getBases() const;
-    const std::unordered_map<std::string, std::shared_ptr<Model>> getAssemblies() const;
+    const std::unordered_map<std::string, std::shared_ptr<Model>> getSimplePatterns() const;
+    const std::unordered_map<std::string, std::shared_ptr<Model>> getComplexPatterns() const;
 
     // Method to parse document strings and create/fill models
     void readPatterns(const std::string &filename);
@@ -56,8 +56,8 @@ public:
     std::unordered_set<std::string> getUsedSp() const;
 
     size_t patternsAmount() const;
-    size_t basesAmount() const;
-    size_t assemsAmount() const;
+    size_t simplePatternsAmount() const;
+    size_t complexPatternsAmount() const;
 
     void divide();
 };

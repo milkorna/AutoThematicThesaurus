@@ -103,14 +103,9 @@ std::optional<size_t> Model::getModelCompIndByForm(const std::string &form) cons
     return std::nullopt;
 }
 
-size_t Model::getSize() const
+size_t Model::size() const
 {
-    if (this->isModel())
-    {
-        return this->m_comps.size();
-    }
-    else
-        return 0; // or 1, whatever
+    return this->isModel() ? this->m_comps.size() : 0;
 }
 
 template <typename AttrType>

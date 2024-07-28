@@ -257,7 +257,7 @@ std::shared_ptr<WordComp> Parser::ParseWordComp(std::string &line)
         auto w = ProcessWord(wordData.first, synRole == SyntaxRole::Head ? true : false);
 
         Additional addcond;
-        if (!wordData.second.empty())
+        if (!wordData.second.isEmpty())
         {
             addcond = ParseTags(wordData.second.getRawString());
         }
@@ -400,8 +400,8 @@ void Parser::Parse()
             Logger::log("PatternParser", LogLevel::Info,
                         std::string("Parsing completed successfully.\n") +
                             "Number of patterns after parsing: " + std::to_string(manager->patternsAmount()) +
-                            std::string("\nNumber of base patterns: ") + std::to_string(manager->basesAmount()) +
-                            std::string("\nNumber of assem patterns: ") + std::to_string(manager->assemsAmount()));
+                            std::string("\nNumber of simple patterns: ") + std::to_string(manager->simplePatternsAmount()) +
+                            std::string("\nNumber of complex patterns: ") + std::to_string(manager->complexPatternsAmount()));
         }
     }
     catch (const std::exception &e)
