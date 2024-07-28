@@ -21,6 +21,7 @@ endif()
 
 set(SOURCE_FILES
 src/GrammarComponent.cpp
+src/GrammarCondition.cpp
 src/GrammarPatternManager.cpp
 src/ComplexPhrasesCollector.cpp
 src/PatternParser.cpp
@@ -28,6 +29,7 @@ src/PatternPhrasesStorage.cpp
 src/SimplePhrasesCollector.cpp
 src/Logger.cpp
 src/GrammarComponent.h
+src/GrammarCondition.h
 src/GrammarPatternManager.h
 src/ComplexPhrasesCollector.h
 src/PatternParser.h

@@ -7,7 +7,7 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
 
     // Check BASE
     const auto &baseAddCond = baseModelComp->getCondition().getAdditional();
-    if (baseAddCond.isEmpty())
+    if (baseAddCond.empty())
     {
         baseAddCondIsMatched = true;
     } // Index to track word components within the base model component
@@ -23,7 +23,7 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
                 const auto &baseCond = baseModelComp->getHead()->getCondition();
                 if (!baseCond.morphTagCheck(morphForm))
                 {
-                    Logger::log("ConditionsCheck", LogLevel::Debug, "morphTagCheck failed.");
+                    Logger::log("check", LogLevel::Debug, "morphTagCheck failed.");
                     continue;
                 }
                 else
@@ -71,57 +71,10 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
     return true;
 }
 
-static bool AdditionalConditionCheck(const Condition &baseCond, const X::MorphInfo &morphForm)
-{
-    if (const auto &additCond = baseCond.getAdditional(); !additCond.isEmpty())
-    {
-        Logger::log("AdditionalConditionCheck", LogLevel::Debug, "Checking additional conditions.");
-        if (!additCond.exLexCheck(morphForm))
-        {
-            Logger::log("AdditionalConditionCheck", LogLevel::Debug, "exLexCheck failed.");
-            return false;
-        }
-        if (!additCond.themesCheck())
-        {
-            Logger::log("AdditionalConditionCheck", LogLevel::Debug, "themesCheck failed.");
-            return false;
-        }
-    }
-    return true;
-}
-
-static bool ConditionsCheck(const std::shared_ptr<WordComp> &base, const X::WordFormPtr &form)
-{
-    const auto &spBaseTag = base->getSPTag();
-    for (const auto &morphForm : form->getMorphInfo())
-    {
-        Logger::log("ConditionsCheck", LogLevel::Debug, "Checking morphForm against spBaseTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " + morphForm.sp.toString() + "\t\tspBaseHeadTag: " + spBaseTag.toString());
-        if (morphForm.sp == spBaseTag)
-        {
-            const auto &baseCond = base->getCondition();
-            if (!baseCond.morphTagCheck(morphForm))
-            {
-                Logger::log("ConditionsCheck", LogLevel::Debug, "morphTagCheck failed.");
-                return false;
-            }
-
-            if (!AdditionalConditionCheck(baseCond, morphForm))
-                return false;
-        }
-        else
-        {
-            Logger::log("ConditionsCheck", LogLevel::Debug, "spBaseHeadTag does not match.");
-            return false;
-        }
-    }
-    Logger::log("ConditionsCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
-    return true;
-}
-
-bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordComplexPtr> &basesWC, size_t basePos, const std::shared_ptr<WordComplex> &wc,
-                                                       const std::shared_ptr<Model> &model, size_t compIndex,
-                                                       const std::vector<WordFormPtr> &forms, size_t formIndex,
-                                                       size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC)
+bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &basesWC, size_t basePos, const std::shared_ptr<WordComplex> &wc,
+                                         const std::shared_ptr<Model> &model, size_t compIndex,
+                                         const std::vector<WordFormPtr> &forms, size_t formIndex,
+                                         size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC)
 {
     auto comp = model->getComponents()[compIndex];
 
@@ -129,11 +82,11 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp))
     {
         std::string formFromText = forms[formIndex]->getWordForm().getRawString();
-        Logger::log("checkAsideWithAssemDraft", LogLevel::Debug, "FormFromText: " + formFromText);
+        Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
-        if (!ConditionsCheck(wordComp, forms[formIndex]))
+        if (!wordComp->getCondition().check(wordComp->getSPTag(), forms[formIndex]))
         {
-            Logger::log("checkAsideWithAssemDraft", LogLevel::Debug, "ConditionsCheck failed.");
+            Logger::log("CheckAside", LogLevel::Debug, "check failed.");
             return false;
         }
         else
@@ -170,8 +123,8 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
 
         if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->getSize() - 1))
         {
-            checkAsideWithAssemDraft(basesWC, basePos, wc, model, nextCompIndex, forms, nextFormIndex,
-                                     correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC);
+            CheckAside(basesWC, basePos, wc, model, nextCompIndex, forms, nextFormIndex,
+                       correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC);
         }
         else
         {
@@ -182,8 +135,8 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
 
             if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < forms.size() - 1)))
             {
-                if (checkAsideWithAssemDraft(basesWC, basePos, wc, model, compIndex, forms, nextFormIndex,
-                                             correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(basesWC, basePos, wc, model, compIndex, forms, nextFormIndex,
+                               correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
                 {
                     return true;
                 }
@@ -216,7 +169,7 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
             if (!isLeft && basesWC[baseWCOffset]->pos.start <= wc->pos.end)
                 continue;
 
-            Logger::log("checkAsideWithAssemDraft", LogLevel::Debug,
+            Logger::log("CheckAside", LogLevel::Debug,
                         "\n\tbaseNumFromBasesWC = " + std::to_string(baseNumFromBasesWC) +
                             "\n\tbaseWCOffset = " + std::to_string(baseWCOffset) +
                             "\n\tbasesWC[baseWCOffset]->baseName = " + basesWC[baseWCOffset]->baseName +
@@ -225,7 +178,7 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
             if (basesWC[baseWCOffset]->baseName != modelComp->getForm())
                 continue;
 
-            Logger::log("checkAsideWithAssemDraft", LogLevel::Debug,
+            Logger::log("CheckAside", LogLevel::Debug,
                         "\n\tformIndex = " + std::to_string(formIndex) +
                             "\n\tbasesWC[baseWCOffset]->pos.start = " + std::to_string(basesWC[baseWCOffset]->pos.start) +
                             "\n\tbasesWC[baseWCOffset]->pos.end = " + std::to_string(basesWC[baseWCOffset]->pos.end));
@@ -234,14 +187,14 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
             {
                 if (modelComp->isHead())
                 {
-                    if (ConditionsCheck(modelComp->getHead(), forms[formIndex + *modelComp->getHeadPos()]))
+                    if (modelComp->getHead()->getCondition().check(modelComp->getHead()->getSPTag(), forms[formIndex + *modelComp->getHeadPos()]))
                     {
                         headIsChecked = true;
                         headIsMatched = true;
                     }
                     else
                     {
-                        Logger::log("checkAsideWithAssemDraft", LogLevel::Debug, "ConditionsCheck failed.");
+                        Logger::log("CheckAside", LogLevel::Debug, "check failed.");
                         return false;
                     }
                 }
@@ -254,7 +207,7 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
                 {
                     for (const auto &morphForm : forms[formIndex + offset]->getMorphInfo())
                     {
-                        if (!AdditionalConditionCheck(modelComp->getCondition(), morphForm))
+                        if (!modelComp->getCondition().getAdditional().check(morphForm))
                         {
                             return false;
                         }
@@ -299,14 +252,14 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
 
             if (basePos != 0 && wc->pos.start != 0 && basesWC[baseNumFromBasesWC]->pos.start - 1 == nextFormIndex)
             {
-                if (checkAsideWithAssemDraft(basesWC, basePos, wc, model, basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
-                                             isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
+                if (CheckAside(basesWC, basePos, wc, model, basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
+                               isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
                     break;
             }
             if (basePos != model->getSize() - 1 && basesWC[baseNumFromBasesWC]->pos.end + 1 == nextFormIndex)
             {
-                if (checkAsideWithAssemDraft(basesWC, basePos, wc, model, basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
-                                             isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
+                if (CheckAside(basesWC, basePos, wc, model, basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
+                               isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
                     break;
             }
 
@@ -328,7 +281,7 @@ bool ComplexPhrasesCollector::checkAsideWithAssemDraft(const std::vector<WordCom
 
 void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Process &process)
 {
-    Logger::log("collectAssemblies", LogLevel::Debug, "Starting assembly collection process.");
+    Logger::log("Collect", LogLevel::Debug, "Starting assembly collection process.");
 
     const auto &basesWC = SimplePhrasesCollector::GetCollector().GetCollection();
 
@@ -406,14 +359,14 @@ void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Pro
 
             if (*basePos != 0 && wc->pos.start != 0)
             {
-                if (checkAsideWithAssemDraft(basesWC, *basePos, wc, asem.second, *basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
-                                             true, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(basesWC, *basePos, wc, asem.second, *basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
+                               true, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
                     break;
             }
             if (*basePos != asem.second->getSize() - 1)
             {
-                if (checkAsideWithAssemDraft(basesWC, *basePos, wc, asem.second, *basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
-                                             false, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(basesWC, *basePos, wc, asem.second, *basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
+                               false, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
                     break;
             }
         }

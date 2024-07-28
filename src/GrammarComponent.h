@@ -1,87 +1,9 @@
-#ifndef GRAMMARCOMPONENTS_H
-#define GRAMMARCOMPONENTS_H
+#ifndef GRAMMAR_COMPONENTS_H
+#define GRAMMAR_COMPONENTS_H
 
-#include <vector>
-#include <memory>
-#include <string>
-#include <optional>
-#include <xmorphy/morph/WordForm.h>
-#include <xmorphy/tag/UniMorphTag.h>
-#include <xmorphy/tag/UniSPTag.h>
-#include <Logger.h>
+#include <GrammarCondition.h>
 
 using namespace X;
-
-// Enum to describe syntactic roles of components within a sentence.
-enum class SyntaxRole
-{
-    Head,       // The central word of a phrase.
-    Dependent,  // Dependent on the head.
-    Independent // Neither dependent nor a head.
-};
-
-// Struct to manage additional grammatical conditions.
-struct Additional
-{
-    bool m_rec = false;                     // Flag for recursion, if needed.
-    std::string m_exLex = "";               // Example lexicon (specific words to match).
-    std::vector<std::string> m_themes = {}; // Themes associated with this condition.
-
-    // Checks if the Additional instance has no data.
-    bool isEmpty() const { return m_themes.empty() && m_exLex.empty(); }
-
-    // Checks if a specific word form matches the example lexicon.
-    bool exLexCheck(const X::MorphInfo &morphForm) const
-    {
-        if (const X::UniString exLex(m_exLex); !exLex.isEmpty())
-        {
-            if (exLex == morphForm.normalForm.toLowerCase())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Placeholder for logic to compare themes.
-    bool themesCheck() const
-    {
-        if (const auto &theme = m_themes; !theme.empty())
-        {
-            // TODO: Add logic to compare themes
-        }
-        return true;
-    }
-};
-
-// Class to define conditions for matching grammatical components.
-class Condition
-{
-private:
-    SyntaxRole m_role;
-    UniMorphTag m_tag;
-    Additional m_addcond;
-
-public:
-    Condition(SyntaxRole role = SyntaxRole::Independent, UniMorphTag morphTag = UniMorphTag::UNKN, Additional cond = Additional())
-        : m_role(role), m_tag(morphTag), m_addcond(cond){};
-
-    const UniMorphTag getMorphTag() const { return m_tag; };
-    const Additional getAdditional() const { return m_addcond; };
-    const SyntaxRole getSyntaxRole() const { return m_role; };
-
-    // Checks if the Condition instance contains default or empty values.
-    bool isEmpty() const { return m_tag == UniMorphTag::UNKN && m_addcond.isEmpty(); }
-
-    const bool matches() const;
-
-    // Method to determine if a given morphological form matches the condition.
-    bool morphTagCheck(const X::MorphInfo &morphForm) const;
-};
 
 class Component;
 
@@ -209,4 +131,4 @@ public:
     void addComponent(const std::shared_ptr<Component> &component);
 };
 
-#endif // GRAMMARCOMPONENTS_H
+#endif // GRAMMAR_COMPONENTS_H

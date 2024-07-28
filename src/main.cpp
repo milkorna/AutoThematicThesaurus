@@ -69,9 +69,6 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
         Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
-        // const auto &wcCollection = WCModelCollection::getInstance();
-        // wcCollection->collect(forms, process);
-
         PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
         process.m_output.flush();

@@ -257,7 +257,7 @@ std::shared_ptr<WordComp> Parser::ParseWordComp(std::string &line)
         auto w = ProcessWord(wordData.first, synRole == SyntaxRole::Head ? true : false);
 
         Additional addcond;
-        if (!wordData.second.isEmpty())
+        if (!wordData.second.empty())
         {
             addcond = ParseTags(wordData.second.getRawString());
         }

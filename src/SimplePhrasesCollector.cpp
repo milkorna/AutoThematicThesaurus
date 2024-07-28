@@ -1,57 +1,10 @@
 #include <SimplePhrasesCollector.h>
 
-static bool AdditionalConditionCheck(const Condition &baseCond, const X::MorphInfo &morphForm)
-{
-    if (const auto &additCond = baseCond.getAdditional(); !additCond.isEmpty())
-    {
-        Logger::log("AdditionalConditionCheck", LogLevel::Debug, "Checking additional conditions.");
-        if (!additCond.exLexCheck(morphForm))
-        {
-            Logger::log("AdditionalConditionCheck", LogLevel::Debug, "exLexCheck failed.");
-            return false;
-        }
-        if (!additCond.themesCheck())
-        {
-            Logger::log("AdditionalConditionCheck", LogLevel::Debug, "themesCheck failed.");
-            return false;
-        }
-    }
-    return true;
-}
-
-static bool ConditionsCheck(const std::shared_ptr<WordComp> &base, const X::WordFormPtr &form)
-{
-    const auto &spBaseTag = base->getSPTag();
-    for (const auto &morphForm : form->getMorphInfo())
-    {
-        Logger::log("ConditionsCheck", LogLevel::Debug, "Checking morphForm against spBaseTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " + morphForm.sp.toString() + "\t\tspBaseHeadTag: " + spBaseTag.toString());
-        if (morphForm.sp == spBaseTag)
-        {
-            const auto &baseCond = base->getCondition();
-            if (!baseCond.morphTagCheck(morphForm))
-            {
-                Logger::log("ConditionsCheck", LogLevel::Debug, "morphTagCheck failed.");
-                return false;
-            }
-
-            if (!AdditionalConditionCheck(baseCond, morphForm))
-                return false;
-        }
-        else
-        {
-            Logger::log("ConditionsCheck", LogLevel::Debug, "spBaseHeadTag does not match.");
-            return false;
-        }
-    }
-    Logger::log("ConditionsCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
-    return true;
-}
-
 static bool HeadCheck(const std::shared_ptr<Model> &baseModel, const X::WordFormPtr &form)
 {
-    if (!ConditionsCheck(baseModel->getHead(), form))
+    if (!baseModel->getHead()->getCondition().check(baseModel->getHead()->getSPTag(), form))
     {
-        Logger::log("HeadCheck", LogLevel::Debug, "ConditionsCheck returned false.");
+        Logger::log("HeadCheck", LogLevel::Debug, "check returned false.");
         return false;
     }
     Logger::log("HeadCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
@@ -101,9 +54,9 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
     if (CheckForMisclassifications(forms[formIndex]))
         return false;
 
-    if (!ConditionsCheck(comp, forms[formIndex]))
+    if (!comp->getCondition().check(comp->getSPTag(), forms[formIndex]))
     {
-        Logger::log("CheckAside", LogLevel::Debug, "ConditionsCheck failed.");
+        Logger::log("CheckAside", LogLevel::Debug, "check failed.");
         return false;
     }
     // also need to update found themes and lex
