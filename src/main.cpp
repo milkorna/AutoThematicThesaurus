@@ -6,6 +6,7 @@
 #include <Logger.h>
 #include <TermProposalStorage.h>
 #include <GrammarComponent.h>
+#include <PatternPhrasesStorage.h>
 #include <boost/program_options.hpp>
 #include <xmorphy/graphem/SentenceSplitter.h>
 #include <xmorphy/graphem/Tokenizer.h>
@@ -72,6 +73,8 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         const auto &wcCollection = WCModelCollection::getInstance();
         wcCollection->collect(forms, process);
 
+        // PatternPhrasesStorage::GetStorage().Collect(forms, process);
+
         process.m_output.flush();
         process.m_sentNum++;
 
@@ -87,7 +90,7 @@ int main()
     // auto &dictionary = TermDictionary::getInstance();
     Logger::log("main", LogLevel::Debug, "Current path is " + std::string(std::filesystem::current_path()));
 
-    const auto &manager = GrammarPatternManager::getInstance();
+    const auto &manager = GrammarPatternManager::GetManager();
 
     try
     {

@@ -5,7 +5,7 @@
 
 GrammarPatternManager *GrammarPatternManager::instance = nullptr;
 
-GrammarPatternManager *GrammarPatternManager::getInstance()
+GrammarPatternManager *GrammarPatternManager::GetManager()
 {
     if (!instance)
     {

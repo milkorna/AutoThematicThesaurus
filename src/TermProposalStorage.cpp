@@ -145,7 +145,7 @@ static bool haveSpHead(const std::unordered_set<X::MorphInfo> &currFormMorphInfo
     for (const auto &morphForm : currFormMorphInfo)
     {
         Logger::log("haveSpHead", LogLevel::Debug, "MorphForm: " + morphForm.normalForm.getRawString());
-        const auto &spSet = GrammarPatternManager::getInstance()->getUsedHeadSp();
+        const auto &spSet = GrammarPatternManager::GetManager()->getUsedHeadSp();
         if (spSet.find(morphForm.sp.toString()) == spSet.end())
         {
             Logger::log("haveSpHead", LogLevel::Debug, "No head with " + morphForm.sp.toString() + " speach of word");
@@ -164,7 +164,7 @@ static bool haveSp(const std::unordered_set<X::MorphInfo> &currFormMorphInfo)
     for (const auto &morphForm : currFormMorphInfo)
     {
         Logger::log("haveSp", LogLevel::Debug, "MorphForm: " + morphForm.normalForm.getRawString());
-        const auto &spSet = GrammarPatternManager::getInstance()->getUsedSp();
+        const auto &spSet = GrammarPatternManager::GetManager()->getUsedSp();
         if (spSet.find(morphForm.sp.toString()) == spSet.end())
         {
             Logger::log("haveSp", LogLevel::Debug, "No word component with " + morphForm.sp.toString() + " speach of word");
@@ -258,7 +258,7 @@ checkAside(std::vector<WordComplexPtr> &matchedWordComplexes, const std::shared_
 std::vector<WordComplexPtr> WCModelCollection::collectBases(const std::vector<WordFormPtr> &forms, Process &process)
 {
     Logger::log("collectBases", LogLevel::Debug, "Starting base collection process.");
-    const auto &manager = GrammarPatternManager::getInstance();
+    const auto &manager = GrammarPatternManager::GetManager();
     const auto &wcCollection = WCModelCollection::getInstance();
     const auto &bases = manager->getBases();
 
@@ -627,7 +627,7 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
         Logger::log("CURRENT BASE", LogLevel::Info, basesWC[baseNumFromBasesWC]->textForm + " || " + basesWC[baseNumFromBasesWC]->baseName);
 
         // Iterate over each assembly in the Grammar Pattern Manager
-        for (const auto &asem : GrammarPatternManager::getInstance()->getAssemblies())
+        for (const auto &asem : GrammarPatternManager::GetManager()->getAssemblies())
         {
             Logger::log("CURRENT ASSEMBLY", LogLevel::Info, asem.first);
 
@@ -709,7 +709,7 @@ void WCModelCollection::collectAssemblies(const std::vector<WordFormPtr> &forms,
 void WCModelCollection::collect(const std::vector<WordFormPtr> &forms, Process &process)
 {
     Logger::log("collect", LogLevel::Debug, "Starting collection process.");
-    const auto &manager = GrammarPatternManager::getInstance();
+    const auto &manager = GrammarPatternManager::GetManager();
     const auto &baseInfos = this->collectBases(forms, process);
     Logger::log("collect", LogLevel::Debug, "Completed collection process.");
 
