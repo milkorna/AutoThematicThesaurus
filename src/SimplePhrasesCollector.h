@@ -61,15 +61,15 @@ public:
 
 private:
     std::vector<WordComplexPtr> m_collection;
+    std::vector<WordFormPtr> m_sentence;
+    const GrammarPatternManager &manager;
 
-    SimplePhrasesCollector()
-    {
-    }
+    SimplePhrasesCollector() : manager(*GrammarPatternManager::GetManager()) {}
     ~SimplePhrasesCollector() {}
     SimplePhrasesCollector(const SimplePhrasesCollector &) = delete;
     SimplePhrasesCollector &operator=(const SimplePhrasesCollector &) = delete;
 
-    bool CheckAside(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, const bool isLeft);
+    bool CheckAside(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, size_t formIndex, size_t &correct, const bool isLeft);
 };
 
 #endif

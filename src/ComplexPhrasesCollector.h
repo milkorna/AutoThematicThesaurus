@@ -18,18 +18,21 @@ public:
 
 private:
     std::vector<WordComplexPtr> m_collection;
+    std::vector<WordFormPtr> m_sentence;
+    const GrammarPatternManager &manager;
+    const SimplePhrasesCollector &simplePhrasesCollector;
+    std::vector<WordComplexPtr> m_simplePhrasesCollection;
 
-    ComplexPhrasesCollector()
-    {
-    }
+    ComplexPhrasesCollector() : manager(*GrammarPatternManager::GetManager()), simplePhrasesCollector(SimplePhrasesCollector::GetCollector()) {}
     ~ComplexPhrasesCollector() {}
     ComplexPhrasesCollector(const ComplexPhrasesCollector &) = delete;
     ComplexPhrasesCollector &operator=(const ComplexPhrasesCollector &) = delete;
 
-    bool CheckAside(const std::vector<WordComplexPtr> &basesWC, size_t basePos, const std::shared_ptr<WordComplex> &wc,
-                                  const std::shared_ptr<Model> &model, size_t compIndex,
-                                  const std::vector<WordFormPtr> &forms, size_t formIndex,
-                                  size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC);
+    bool CheckBase(const WordComplexPtr &base, const std::shared_ptr<ModelComp> &baseModelComp, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme);
+
+    bool CheckAside(size_t basePos, const std::shared_ptr<WordComplex> &wc,
+                    const std::shared_ptr<Model> &model, size_t compIndex, size_t formIndex,
+                    size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC);
 };
 
 #endif

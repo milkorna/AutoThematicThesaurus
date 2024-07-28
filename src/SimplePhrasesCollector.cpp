@@ -1,13 +1,12 @@
 #include <SimplePhrasesCollector.h>
+#include <utility>
 
 static bool HeadCheck(const std::shared_ptr<Model> &baseModel, const X::WordFormPtr &form)
 {
     if (!baseModel->getHead()->getCondition().check(baseModel->getHead()->getSPTag(), form))
     {
-        Logger::log("HeadCheck", LogLevel::Debug, "check returned false.");
         return false;
     }
-    Logger::log("HeadCheck", LogLevel::Debug, "Exiting function, the return value is TRUE.");
     return true;
 }
 
@@ -38,23 +37,39 @@ static bool CheckForMisclassifications(const X::WordFormPtr &form)
     for (char c : str)
     {
         if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
-        {
             return false;
-        }
     }
     return true;
 }
 
-bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, const std::vector<WordFormPtr> &forms, size_t formIndex, size_t &correct, const bool isLeft)
+static void updateWordComplex(const std::shared_ptr<WordComplex> &wc, const WordFormPtr &form, const std::string &formFromText, bool isLeft)
+{
+    if (isLeft)
+    {
+        wc->words.push_front(form);
+        wc->pos.start--;
+        wc->textForm.insert(0, formFromText + " ");
+    }
+    else
+    {
+        wc->words.push_back(form);
+        wc->pos.end++;
+        wc->textForm.append(" " + formFromText);
+    }
+}
+
+bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, const std::shared_ptr<Model> &model, size_t compIndex, size_t tokenInd, size_t &correct, const bool isLeft)
 {
     const auto &comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
-    std::string formFromText = forms[formIndex]->getWordForm().getRawString();
+    const auto &token = m_sentence[tokenInd];
+
+    std::string formFromText = token->getWordForm().getRawString();
     Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
-    if (CheckForMisclassifications(forms[formIndex]))
+    if (CheckForMisclassifications(token))
         return false;
 
-    if (!comp->getCondition().check(comp->getSPTag(), forms[formIndex]))
+    if (!comp->getCondition().check(comp->getSPTag(), token))
     {
         Logger::log("CheckAside", LogLevel::Debug, "check failed.");
         return false;
@@ -63,34 +78,34 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
 
     // add exception check like 2 = adj
 
+    // updateWordComplex(wc, token, formFromText, isLeft);
     if (isLeft)
     {
-        wc->words.push_front(forms[formIndex]);
+        wc->words.push_front(token);
         wc->pos.start--;
         wc->textForm.insert(0, formFromText + " ");
     }
     else
     {
-        wc->words.push_back(forms[formIndex]);
+        wc->words.push_back(token);
         wc->pos.end++;
         wc->textForm.append(" " + formFromText);
     }
 
     ++correct;
-    size_t offset = 1;
-    size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
-    size_t nextFormIndex = isLeft ? formIndex - offset : formIndex + offset;
+    size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
+    size_t nextTokenInd = isLeft ? tokenInd - 1 : tokenInd + 1;
 
-    if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->getSize() - 1))
+    if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1))
     {
-        CheckAside(wc, model, nextCompIndex, forms, nextFormIndex, correct, isLeft);
+        CheckAside(wc, model, nextCompIndex, nextTokenInd, correct, isLeft);
     }
     else
     {
         m_collection.push_back(std::make_shared<WordComplex>(*wc));
-        if (comp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < forms.size() - 1)))
+        if (comp->isRec() && ((isLeft && tokenInd > 0) || (!isLeft && tokenInd < m_sentence.size() - 1)))
         {
-            if (CheckAside(wc, model, compIndex, forms, nextFormIndex, correct, isLeft))
+            if (CheckAside(wc, model, compIndex, nextTokenInd, correct, isLeft))
             {
                 return true;
             }
@@ -106,61 +121,69 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
     return false;
 }
 
+static WordComplexPtr inicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName, const Process &process)
+{
+    WordComplexPtr wc = std::make_shared<WordComplex>();
+    wc->words.push_back(token);
+    wc->textForm = token->getWordForm().getRawString();
+    wc->pos = {tokenInd,
+               tokenInd,
+               process.m_docNum,
+               process.m_sentNum};
+    wc->baseName = modelName;
+
+    return wc;
+}
+
 void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Process &process)
 {
     Logger::log("Collect", LogLevel::Debug, "Starting base collection process.");
-    const auto &manager = GrammarPatternManager::GetManager();
     const auto &collection = SimplePhrasesCollector::GetCollector();
-    const auto &bases = manager->getBases();
+    const auto &simplePatterns = manager.getSimplePatterns();
 
     WordComplexAgregate wcAgregate;
+
+    m_sentence = forms;
 
     // std::string agregateForm;
 
     // WordComplexCollection collectedBases;
-    for (size_t currFormInd = 0; currFormInd < forms.size(); currFormInd++)
+    for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++)
     {
-        Logger::log("Collect", LogLevel::Debug, "Processing form index: " + std::to_string(currFormInd));
-        if (!HaveSpHead(forms[currFormInd]->getMorphInfo()))
-        {
-            continue;
-        }
+        const auto token = m_sentence[tokenInd];
 
-        for (const auto &base : bases)
+        if (!HaveSpHead(token->getMorphInfo()))
+            continue;
+
+        for (const auto &[name, model] : simplePatterns)
         {
-            Logger::log("Collect", LogLevel::Debug, "Current base: " + base.second->getForm());
+            Logger::log("Collect", LogLevel::Debug, "Current base: " + model->getForm());
 
             size_t correct = 0;
-            bool headIsMatched = HeadCheck(base.second, forms[currFormInd]);
+            bool headIsMatched = HeadCheck(model, token);
             if (!headIsMatched)
                 continue;
-            size_t headPos = *base.second->getHeadPos(); // TODO: make save logic
+            size_t headPos = *model->getHeadPos(); // TODO: make save logic
             ++correct;
-            WordComplexPtr wc = std::make_shared<WordComplex>();
-            wc->words.push_back(forms[currFormInd]);
-            wc->textForm = forms[currFormInd]->getWordForm().getRawString();
-            wc->pos = {currFormInd,
-                       currFormInd,
-                       process.m_docNum,
-                       process.m_sentNum};
-            wc->baseName = base.second->getForm();
 
-            if (headPos != 0 && currFormInd != 0)
+            auto wc = inicializeWordComplex(tokenInd, token, model->getForm(), process);
+
+            if (headPos != 0 && tokenInd != 0 &&
+                CheckAside(wc, model, headPos - 1, tokenInd - 1, correct, true))
             {
-                if (CheckAside(wc, base.second, headPos - 1, forms, currFormInd - 1, correct, true))
-
-                    break;
+                break;
             }
-            if (headPos != base.second->getSize() - 1)
+
+            if (headPos != model->size() - 1 &&
+                CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false))
             {
-                if (CheckAside(wc, base.second, headPos + 1, forms, currFormInd + 1, correct, false))
-
-                    break;
+                break;
             }
+
             // add to collection with base.second.form key
         }
     }
-    Logger::log("Collect", LogLevel::Debug, "Added WordComplexes to matched collection.");
+
     for (const auto &wc : m_collection)
     {
         process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->baseName << std::endl;

@@ -1,15 +1,15 @@
 #include <ComplexPhrasesCollector.h>
 
-static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPtr &base, const std::shared_ptr<ModelComp> &baseModelComp, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme)
+bool ComplexPhrasesCollector::CheckBase(const WordComplexPtr &base, const std::shared_ptr<ModelComp> &baseModelComp, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme)
 {
-    bool baseMorphIsMatched = false;
-    bool baseAddCondIsMatched = false;
+    bool simplePhrMorph = false;
+    bool simplePhrAddCond = false;
 
     // Check BASE
     const auto &baseAddCond = baseModelComp->getCondition().getAdditional();
     if (baseAddCond.empty())
     {
-        baseAddCondIsMatched = true;
+        simplePhrAddCond = true;
     } // Index to track word components within the base model component
     size_t wcInd = 0;
     for (const auto &wordCompFromBMC : baseModelComp->getComponents())
@@ -18,7 +18,7 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
         if (const auto &wc = std::dynamic_pointer_cast<WordComp>(wordCompFromBMC))
         {
             // Check morphological tags for each form associated with the head
-            for (const auto &morphForm : forms[base->pos.start + wcInd++]->getMorphInfo())
+            for (const auto &morphForm : m_sentence[base->pos.start + wcInd++]->getMorphInfo())
             {
                 const auto &baseCond = baseModelComp->getHead()->getCondition();
                 if (!baseCond.morphTagCheck(morphForm))
@@ -28,12 +28,12 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
                 }
                 else
                 {
-                    baseMorphIsMatched = true;
+                    simplePhrMorph = true;
                     // Check if the word component is the head of the model
                     if (wc->isHead())
                     {
                         headIsChecked = true;
-                        headIsMatched = baseMorphIsMatched;
+                        headIsMatched = simplePhrMorph;
                     }
 
                     if (baseAddCond.exLexCheck(morphForm))
@@ -46,13 +46,13 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
                         foundTheme = true;
                     }
 
-                    if (baseMorphIsMatched && foundLex && foundTheme)
+                    if (simplePhrMorph && foundLex && foundTheme)
                     {
                         break;
                     }
                 }
             }
-            if (!baseMorphIsMatched)
+            if (!simplePhrMorph)
                 continue;
             else
                 break;
@@ -65,26 +65,41 @@ static bool CheckBase(const std::vector<WordFormPtr> &forms, const WordComplexPt
         return false;
     }
 
-    if (!baseAddCondIsMatched)
+    if (!simplePhrAddCond)
         return false;
 
     return true;
 }
 
-bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &basesWC, size_t basePos, const std::shared_ptr<WordComplex> &wc,
-                                         const std::shared_ptr<Model> &model, size_t compIndex,
-                                         const std::vector<WordFormPtr> &forms, size_t formIndex,
-                                         size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC)
+static void updateWordComplex(const std::shared_ptr<WordComplex> &wc, const WordFormPtr &form, const std::string &formFromText, bool isLeft)
+{
+    if (isLeft)
+    {
+        wc->words.push_front(form);
+        wc->pos.start--;
+        wc->textForm.insert(0, formFromText + " ");
+    }
+    else
+    {
+        wc->words.push_back(form);
+        wc->pos.end++;
+        wc->textForm.append(" " + formFromText);
+    }
+}
+
+bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const std::shared_ptr<WordComplex> &wc,
+                                         const std::shared_ptr<Model> &model, size_t compIndex, size_t formIndex,
+                                         size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t curSimplePhrInd)
 {
     auto comp = model->getComponents()[compIndex];
 
     // Check if the component is a WordComp
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp))
     {
-        std::string formFromText = forms[formIndex]->getWordForm().getRawString();
+        std::string formFromText = m_sentence[formIndex]->getWordForm().getRawString();
         Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
-        if (!wordComp->getCondition().check(wordComp->getSPTag(), forms[formIndex]))
+        if (!wordComp->getCondition().check(wordComp->getSPTag(), m_sentence[formIndex]))
         {
             Logger::log("CheckAside", LogLevel::Debug, "check failed.");
             return false;
@@ -98,33 +113,19 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
             }
         }
 
-        if (isLeft)
-        {
-            wc->words.push_front(forms[formIndex]);
-            wc->pos.start--;
-            wc->textForm.insert(0, formFromText + " ");
-            Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
-        }
-        else
-        {
-            wc->words.push_back(forms[formIndex]);
-            wc->pos.end++;
-            wc->textForm.append(" " + formFromText);
-            Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
-        }
+        updateWordComplex(wc, m_sentence[formIndex], formFromText, isLeft);
 
         ++correct;
+        size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
+        size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
 
-        size_t offset = 1;
-        size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
         if (isLeft && formIndex == 0)
             return false;
-        size_t nextFormIndex = isLeft ? formIndex - offset : formIndex + offset;
 
-        if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->getSize() - 1))
+        if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1))
         {
-            CheckAside(basesWC, basePos, wc, model, nextCompIndex, forms, nextFormIndex,
-                       correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC);
+            CheckAside(curSPhPosCmp, wc, model, nextCompIndex, nextFormIndex,
+                       correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, curSimplePhrInd);
         }
         else
         {
@@ -133,10 +134,10 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
                 m_collection.push_back(std::make_shared<WordComplex>(*wc));
             }
 
-            if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < forms.size() - 1)))
+            if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < m_sentence.size() - 1)))
             {
-                if (CheckAside(basesWC, basePos, wc, model, compIndex, forms, nextFormIndex,
-                               correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(curSPhPosCmp, wc, model, compIndex, nextFormIndex,
+                               correct, isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, curSimplePhrInd))
                 {
                     return true;
                 }
@@ -151,43 +152,30 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
     // If the component is a ModelComp
     else if (auto modelComp = std::dynamic_pointer_cast<ModelComp>(comp))
     {
-        if (baseNumFromBasesWC > basesWC.size())
+        if (curSimplePhrInd > m_simplePhrasesCollection.size())
             return false;
 
-        for (size_t baseWCOffset = 0; baseWCOffset < basesWC.size(); baseWCOffset++)
+        for (size_t baseWCOffset = 0; baseWCOffset < m_simplePhrasesCollection.size(); baseWCOffset++)
         {
-            Logger::log("CURRENT basesWC[baseWCOffset]", LogLevel::Debug, std::to_string(baseWCOffset) + " " + basesWC[baseWCOffset]->textForm + " " + std::to_string(basesWC[baseWCOffset]->pos.start) + "-" + std::to_string(basesWC[baseWCOffset]->pos.end));
-            Logger::log("CURRENT basesWC[baseNumFromBasesWC]", LogLevel::Debug, std::to_string(baseNumFromBasesWC) + " " + basesWC[baseNumFromBasesWC]->textForm + " " + std::to_string(basesWC[baseNumFromBasesWC]->pos.start) + "-" + std::to_string(basesWC[baseNumFromBasesWC]->pos.end));
+            Logger::log("CURRENT basesWC[baseWCOffset]", LogLevel::Debug, std::to_string(baseWCOffset) + " " + m_simplePhrasesCollection[baseWCOffset]->textForm + " " + std::to_string(m_simplePhrasesCollection[baseWCOffset]->pos.start) + "-" + std::to_string(m_simplePhrasesCollection[baseWCOffset]->pos.end));
+            Logger::log("CURRENT basesWC[curSimplePhrInd]", LogLevel::Debug, std::to_string(curSimplePhrInd) + " " + m_simplePhrasesCollection[curSimplePhrInd]->textForm + " " + std::to_string(m_simplePhrasesCollection[curSimplePhrInd]->pos.start) + "-" + std::to_string(m_simplePhrasesCollection[curSimplePhrInd]->pos.end));
 
-            if (baseWCOffset > basesWC.size() || baseWCOffset < 0)
+            if (baseWCOffset > m_simplePhrasesCollection.size() || baseWCOffset < 0)
                 return false;
-            if (baseWCOffset == baseNumFromBasesWC)
+            if (baseWCOffset == curSimplePhrInd)
                 continue;
-
-            if (isLeft && basesWC[baseWCOffset]->pos.start >= wc->pos.end) // TODO: check with time
+            if (isLeft && m_simplePhrasesCollection[baseWCOffset]->pos.start >= wc->pos.end) // TODO: check with time
                 continue;
-            if (!isLeft && basesWC[baseWCOffset]->pos.start <= wc->pos.end)
+            if (!isLeft && m_simplePhrasesCollection[baseWCOffset]->pos.start <= wc->pos.end)
                 continue;
-
-            Logger::log("CheckAside", LogLevel::Debug,
-                        "\n\tbaseNumFromBasesWC = " + std::to_string(baseNumFromBasesWC) +
-                            "\n\tbaseWCOffset = " + std::to_string(baseWCOffset) +
-                            "\n\tbasesWC[baseWCOffset]->baseName = " + basesWC[baseWCOffset]->baseName +
-                            "\n\tmodelComp->getForm() = " + modelComp->getForm());
-
-            if (basesWC[baseWCOffset]->baseName != modelComp->getForm())
+            if (m_simplePhrasesCollection[baseWCOffset]->baseName != modelComp->getForm())
                 continue;
-
-            Logger::log("CheckAside", LogLevel::Debug,
-                        "\n\tformIndex = " + std::to_string(formIndex) +
-                            "\n\tbasesWC[baseWCOffset]->pos.start = " + std::to_string(basesWC[baseWCOffset]->pos.start) +
-                            "\n\tbasesWC[baseWCOffset]->pos.end = " + std::to_string(basesWC[baseWCOffset]->pos.end));
 
             if (!headIsChecked)
             {
                 if (modelComp->isHead())
                 {
-                    if (modelComp->getHead()->getCondition().check(modelComp->getHead()->getSPTag(), forms[formIndex + *modelComp->getHeadPos()]))
+                    if (modelComp->getHead()->getCondition().check(modelComp->getHead()->getSPTag(), m_sentence[formIndex + *modelComp->getHeadPos()]))
                     {
                         headIsChecked = true;
                         headIsMatched = true;
@@ -199,13 +187,12 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
                     }
                 }
             }
-            // chrck head and if ok then ...
 
             if (!foundLex || !foundTheme)
             {
-                for (size_t offset = 0; offset < basesWC[baseNumFromBasesWC]->words.size(); offset++)
+                for (size_t offset = 0; offset < m_simplePhrasesCollection[curSimplePhrInd]->words.size(); offset++)
                 {
-                    for (const auto &morphForm : forms[formIndex + offset]->getMorphInfo())
+                    for (const auto &morphForm : m_sentence[formIndex + offset]->getMorphInfo())
                     {
                         if (!modelComp->getCondition().getAdditional().check(morphForm))
                         {
@@ -219,51 +206,49 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
                     }
                 }
             }
-            // const std::vector<WordComplexPtr> &basesWC, size_t basePos,
 
-            size_t offset = 1;
-            size_t nextCompIndex = isLeft ? compIndex - offset : compIndex + offset;
-            size_t nextFormIndex = isLeft ? formIndex - offset : formIndex + offset;
-            size_t nextBaseForm = isLeft ? baseNumFromBasesWC - 1 : baseNumFromBasesWC + 1;
+            size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
+            size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
+            size_t nextBaseForm = isLeft ? curSimplePhrInd - 1 : curSimplePhrInd + 1;
             Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
 
-            if (isLeft && basesWC[baseWCOffset]->pos.end == formIndex)
+            if (isLeft && m_simplePhrasesCollection[baseWCOffset]->pos.end == formIndex)
             {
-                for (auto rit = basesWC[baseWCOffset]->words.rbegin(); rit != basesWC[baseWCOffset]->words.rend(); ++rit)
+                for (auto rit = m_simplePhrasesCollection[baseWCOffset]->words.rbegin(); rit != m_simplePhrasesCollection[baseWCOffset]->words.rend(); ++rit)
                 {
                     wc->words.push_front(std::move(*rit));
                 }
                 correct++;
-                wc->pos.start = basesWC[baseWCOffset]->pos.start;
-                wc->textForm.insert(0, basesWC[baseWCOffset]->textForm + " ");
+                wc->pos.start = m_simplePhrasesCollection[baseWCOffset]->pos.start;
+                wc->textForm.insert(0, m_simplePhrasesCollection[baseWCOffset]->textForm + " ");
                 Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
-            else if (basesWC[baseWCOffset]->pos.start == formIndex)
+            else if (m_simplePhrasesCollection[baseWCOffset]->pos.start == formIndex)
             {
-                for (auto &elem : basesWC[baseWCOffset]->words)
+                for (auto &elem : m_simplePhrasesCollection[baseWCOffset]->words)
                 {
                     wc->words.push_back(std::move(elem));
                 }
                 correct++;
-                wc->pos.end = basesWC[baseWCOffset]->pos.end;
-                wc->textForm.append(" " + basesWC[baseWCOffset]->textForm);
+                wc->pos.end = m_simplePhrasesCollection[baseWCOffset]->pos.end;
+                wc->textForm.append(" " + m_simplePhrasesCollection[baseWCOffset]->textForm);
                 Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
 
-            if (basePos != 0 && wc->pos.start != 0 && basesWC[baseNumFromBasesWC]->pos.start - 1 == nextFormIndex)
+            if (curSPhPosCmp != 0 && wc->pos.start != 0 && m_simplePhrasesCollection[curSimplePhrInd]->pos.start - 1 == nextFormIndex)
             {
-                if (CheckAside(basesWC, basePos, wc, model, basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
+                if (CheckAside(curSPhPosCmp, wc, model, curSPhPosCmp - 1, m_simplePhrasesCollection[curSimplePhrInd]->pos.start - 1, correct,
                                isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
                     break;
             }
-            if (basePos != model->getSize() - 1 && basesWC[baseNumFromBasesWC]->pos.end + 1 == nextFormIndex)
+            if (curSPhPosCmp != model->size() - 1 && m_simplePhrasesCollection[curSimplePhrInd]->pos.end + 1 == nextFormIndex)
             {
-                if (CheckAside(basesWC, basePos, wc, model, basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
+                if (CheckAside(curSPhPosCmp, wc, model, curSPhPosCmp + 1, m_simplePhrasesCollection[curSimplePhrInd]->pos.end + 1, correct,
                                isLeft, headIsMatched, headIsChecked, foundLex, foundTheme, baseWCOffset))
                     break;
             }
 
-            if (foundLex && foundTheme && headIsChecked && headIsMatched && compIndex == model->getSize() - 1 && correct >= model->getSize())
+            if (foundLex && foundTheme && headIsChecked && headIsMatched && compIndex == model->size() - 1 && correct >= model->size())
             {
                 if (m_collection.empty() || wc->textForm != m_collection.back()->textForm)
                 {
@@ -271,107 +256,80 @@ bool ComplexPhrasesCollector::CheckAside(const std::vector<WordComplexPtr> &base
                 }
             }
         }
-
-        // auto headWordComp = modelComp->getHead();
     }
-
-    // Logger::log("checkAside", LogLevel::Debug, "Exiting function, the return value is TRUE.");
     return false;
 }
 
 void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Process &process)
 {
-    Logger::log("Collect", LogLevel::Debug, "Starting assembly collection process.");
+    m_sentence = forms;
 
-    const auto &basesWC = SimplePhrasesCollector::GetCollector().GetCollection();
+    m_simplePhrasesCollection = simplePhrasesCollector.GetCollector().GetCollection();
+    // const autom_simplePhrasesCollection =m_simplePhrasesCollectionCollector::GetCollector().GetCollection();
 
-    Logger::log("", LogLevel::Debug, "Coolected bases:");
-    int counter = 0;
-    for (const auto b : basesWC)
+    // Iterate over each simple phrase (as word complex component) provided in sentence
+    for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrasesCollection.size(); curSimplePhrInd++)
     {
-        Logger::log("", LogLevel::Debug, std::to_string(counter++) + " " + b->textForm);
-    }
+        const auto curSimplePhr = m_simplePhrasesCollection[curSimplePhrInd];
 
-    // Iterate over each base word complex provided in sentence
-    for (size_t baseNumFromBasesWC = 0; baseNumFromBasesWC < basesWC.size(); baseNumFromBasesWC++)
-    {
-        Logger::log("CURRENT BASE", LogLevel::Info, basesWC[baseNumFromBasesWC]->textForm + " || " + basesWC[baseNumFromBasesWC]->baseName);
+        Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Info, curSimplePhr->textForm + " || " + curSimplePhr->baseName);
 
         // Iterate over each assembly in the Grammar Pattern Manager
-        for (const auto &asem : GrammarPatternManager::GetManager()->getAssemblies())
+        for (const auto &[name, model] : manager.getComplexPatterns())
         {
-            Logger::log("CURRENT ASSEMBLY", LogLevel::Info, asem.first);
+            Logger::log("CURRENT COMPLEX MODEL", LogLevel::Info, name);
 
-            // Get the model component index that matches the base word complex name
-            auto basePos = asem.second->getModelCompIndByForm(basesWC[baseNumFromBasesWC]->baseName); // todo save logic
-            if (basePos)
-            {
-                Logger::log("Collect", LogLevel::Info, "ModelCompInd which coincides with base: " + std::to_string(*basePos));
-            }
-            else
-            {
-                Logger::log("Collect", LogLevel::Info, "No ModelComp which coincides with base.");
+            // Get the simple phrase position as model component index (match with the word complex name)
+            auto curSPhPosCmp = model->getModelCompIndByForm(curSimplePhr->baseName);
+            if (!curSPhPosCmp)
                 continue;
-            }
 
             size_t correct = 0;
-            bool baseMorphIsMatched = false;
-            bool baseAddCondIsMatched = false;
+            bool simplePhrMorph = false;
+            bool simplePhrAddCond = false;
             bool headIsMatched = false;
             bool headIsChecked = false;
 
             // Access the component corresponding to the base index
-            auto comp = asem.second->getComponents()[*basePos];
-
-            if (asem.second->getForm() == "(Прил + С) + Предл + (Прил + С)")
-            {
-                std::cout << "gocha" << std::endl;
-            }
-
-            Logger::log("CURRENT COMP", LogLevel::Info, comp->getForm());
-
-            std::cout << comp->getForm();
-            // Cast the component to a ModelComp pointer
+            auto comp = model->getComponents()[*curSPhPosCmp];
             auto baseModelComp = std::dynamic_pointer_cast<ModelComp>(comp);
 
-            Logger::log("CURRENT baseModelComp", LogLevel::Debug, baseModelComp->getForm());
+            Logger::log("CURRENT COMPONENT", LogLevel::Info, comp->getForm());
 
             bool foundLex = false;
             bool foundTheme = false; // TODO! if there are many themes (???)
 
             WordComplexPtr wc = std::make_shared<WordComplex>();
 
-            if (CheckBase(forms, basesWC[baseNumFromBasesWC], baseModelComp, headIsMatched, headIsChecked, foundLex, foundTheme))
+            if (CheckBase(curSimplePhr, baseModelComp, headIsMatched, headIsChecked, foundLex, foundTheme))
             {
                 ++correct;
-                wc->words = basesWC[baseNumFromBasesWC]->words;
-                wc->textForm = basesWC[baseNumFromBasesWC]->textForm;
-                wc->pos = basesWC[baseNumFromBasesWC]->pos;
-                wc->baseName = asem.second->getForm();
+                wc->words = curSimplePhr->words;
+                wc->textForm = curSimplePhr->textForm;
+                wc->pos = curSimplePhr->pos;
+                wc->baseName = model->getForm();
                 Logger::log("CURRENT WC", LogLevel::Debug, wc->textForm + " " + std::to_string(wc->pos.start) + "-" + std::to_string(wc->pos.end));
             }
             else
             {
-                Logger::log("CheckBase failed", LogLevel::Debug, "");
-
                 continue;
             }
 
-            if (*basePos != 0 && wc->pos.start != 0)
+            if (*curSPhPosCmp != 0 && wc->pos.start != 0)
             {
-                if (CheckAside(basesWC, *basePos, wc, asem.second, *basePos - 1, forms, basesWC[baseNumFromBasesWC]->pos.start - 1, correct,
-                               true, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(*curSPhPosCmp, wc, model, *curSPhPosCmp - 1, curSimplePhr->pos.start - 1, correct,
+                               true, headIsMatched, headIsChecked, foundLex, foundTheme, curSimplePhrInd))
                     break;
             }
-            if (*basePos != asem.second->getSize() - 1)
+            if (*curSPhPosCmp != model->size() - 1)
             {
-                if (CheckAside(basesWC, *basePos, wc, asem.second, *basePos + 1, forms, basesWC[baseNumFromBasesWC]->pos.end + 1, correct,
-                               false, headIsMatched, headIsChecked, foundLex, foundTheme, baseNumFromBasesWC))
+                if (CheckAside(*curSPhPosCmp, wc, model, *curSPhPosCmp + 1, curSimplePhr->pos.end + 1, correct,
+                               false, headIsMatched, headIsChecked, foundLex, foundTheme, curSimplePhrInd))
                     break;
             }
         }
     }
-    Logger::log("Collect", LogLevel::Debug, "Added WordComplexes to matched collection.");
+
     for (const auto &wc : m_collection)
     {
         process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->baseName << std::endl;
