@@ -26,7 +26,7 @@ struct WordComplex
     std::deque<WordFormPtr> words = {};
     std::string textForm = "";
     Position pos;
-    std::string baseName;
+    std::string modelName;
 };
 
 struct WordComplexAgregate
@@ -53,7 +53,7 @@ public:
         return instance;
     }
 
-    std::vector<WordComplexPtr> GetCollection() { return m_collection; }
+    std::vector<WordComplexPtr> &GetCollection() { return m_collection; }
 
     void Collect(const std::vector<WordFormPtr> &forms, Process &process);
 

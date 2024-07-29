@@ -1,11 +1,3 @@
-#include <vector>
-#include <memory>
-#include <string>
-#include <filesystem>
-#include <GrammarPatternManager.h>
-#include <Logger.h>
-#include <GrammarComponent.h>
-#include <PatternPhrasesStorage.h>
 #include <boost/program_options.hpp>
 #include <xmorphy/graphem/SentenceSplitter.h>
 #include <xmorphy/graphem/Tokenizer.h>
@@ -21,6 +13,17 @@
 #include <xmorphy/morph/TSVFormater.h>
 #include <xmorphy/morph/WordFormPrinter.h>
 #include <xmorphy/utils/UniString.h>
+
+#include <GrammarPatternManager.h>
+#include <PatternPhrasesStorage.h>
+#include <GrammarComponent.h>
+#include <Logger.h>
+
+#include <vector>
+#include <memory>
+#include <string>
+#include <filesystem>
+#include <chrono>
 
 void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
 {
@@ -62,7 +65,6 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         for (auto &form : forms)
         {
             morphemic_splitter.split(form);
-            // Logger::log("MorphemicSplit", LogLevel::Debug, "Morphemic split applied on normal form: " + form->getWordForm().getRawString());
         }
 
         Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
@@ -91,13 +93,11 @@ int main()
     try
     {
         std::string filePath = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/patterns.txt";
-
         manager->readPatterns(filePath);
         manager->printPatterns();
     }
     catch (const std::exception &e)
     {
-        // std::cerr << "Exception caught: " << e.what() << std::endl;
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
     }
@@ -112,7 +112,16 @@ int main()
 
     try
     {
+        auto start = std::chrono::high_resolution_clock::now();
         processText(inputFile, outputFile);
+
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+
+        Logger::log("main", LogLevel::Info, "processText() took " + std::to_string(duration.count()) + " seconds.");
+
+        // 4.532991 with continue for 1 text
+        // 4.608362 without
     }
     catch (const std::exception &e)
     {

@@ -42,7 +42,7 @@ static bool CheckForMisclassifications(const X::WordFormPtr &form)
     return true;
 }
 
-static void updateWordComplex(const std::shared_ptr<WordComplex> &wc, const WordFormPtr &form, const std::string &formFromText, bool isLeft)
+static void UpdateWordComplex(const std::shared_ptr<WordComplex> &wc, const WordFormPtr &form, const std::string &formFromText, bool isLeft)
 {
     if (isLeft)
     {
@@ -78,19 +78,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
 
     // add exception check like 2 = adj
 
-    // updateWordComplex(wc, token, formFromText, isLeft);
-    if (isLeft)
-    {
-        wc->words.push_front(token);
-        wc->pos.start--;
-        wc->textForm.insert(0, formFromText + " ");
-    }
-    else
-    {
-        wc->words.push_back(token);
-        wc->pos.end++;
-        wc->textForm.append(" " + formFromText);
-    }
+    UpdateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;
     size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
@@ -121,7 +109,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
     return false;
 }
 
-static WordComplexPtr inicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName, const Process &process)
+static WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName, const Process &process)
 {
     WordComplexPtr wc = std::make_shared<WordComplex>();
     wc->words.push_back(token);
@@ -130,7 +118,7 @@ static WordComplexPtr inicializeWordComplex(const size_t tokenInd, const WordFor
                tokenInd,
                process.m_docNum,
                process.m_sentNum};
-    wc->baseName = modelName;
+    wc->modelName = modelName;
 
     return wc;
 }
@@ -166,7 +154,7 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Proc
             size_t headPos = *model->getHeadPos(); // TODO: make save logic
             ++correct;
 
-            auto wc = inicializeWordComplex(tokenInd, token, model->getForm(), process);
+            WordComplexPtr wc = InicializeWordComplex(tokenInd, token, model->getForm(), process);
 
             if (headPos != 0 && tokenInd != 0 &&
                 CheckAside(wc, model, headPos - 1, tokenInd - 1, correct, true))
@@ -186,6 +174,6 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr> &forms, Proc
 
     for (const auto &wc : m_collection)
     {
-        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->baseName << std::endl;
+        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName << std::endl;
     }
 }

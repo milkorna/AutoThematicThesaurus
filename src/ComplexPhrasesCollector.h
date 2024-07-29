@@ -3,6 +3,15 @@
 
 #include <SimplePhrasesCollector.h>
 
+struct CurrentPhraseStatus
+{
+    size_t correct = 0;
+    bool headIsMatched = false;
+    bool headIsChecked = false;
+    bool foundLex = false;
+    bool foundTheme = false;
+};
+
 class ComplexPhrasesCollector
 {
 public:
@@ -20,19 +29,18 @@ private:
     std::vector<WordComplexPtr> m_collection;
     std::vector<WordFormPtr> m_sentence;
     const GrammarPatternManager &manager;
-    const SimplePhrasesCollector &simplePhrasesCollector;
-    std::vector<WordComplexPtr> m_simplePhrasesCollection;
+    const std::vector<WordComplexPtr> &m_simplePhrases;
 
-    ComplexPhrasesCollector() : manager(*GrammarPatternManager::GetManager()), simplePhrasesCollector(SimplePhrasesCollector::GetCollector()) {}
+    ComplexPhrasesCollector() : manager(*GrammarPatternManager::GetManager()), m_simplePhrases(SimplePhrasesCollector::GetCollector().GetCollection()) {}
     ~ComplexPhrasesCollector() {}
     ComplexPhrasesCollector(const ComplexPhrasesCollector &) = delete;
     ComplexPhrasesCollector &operator=(const ComplexPhrasesCollector &) = delete;
 
-    bool CheckBase(const WordComplexPtr &base, const std::shared_ptr<ModelComp> &baseModelComp, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme);
+    bool CheckCurrentSimplePhrase(const WordComplexPtr &base, const std::shared_ptr<ModelComp> &baseModelComp, CurrentPhraseStatus &curPhrStatus);
 
     bool CheckAside(size_t basePos, const std::shared_ptr<WordComplex> &wc,
                     const std::shared_ptr<Model> &model, size_t compIndex, size_t formIndex,
-                    size_t &correct, const bool isLeft, bool &headIsMatched, bool &headIsChecked, bool &foundLex, bool &foundTheme, size_t baseNumFromBasesWC);
+                    const bool isLeft, CurrentPhraseStatus &curPhrStatus, size_t baseNumFromBasesWC);
 };
 
 #endif
