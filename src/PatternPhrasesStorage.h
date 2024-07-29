@@ -4,21 +4,20 @@
 #include <ComplexPhrasesCollector.h>
 
 #include <iostream>
-#include <vector>
-#include <string>
 #include <memory>
 #include <mutex>
+#include <string>
+#include <vector>
 
-class PatternPhrasesStorage
-{
+class PatternPhrasesStorage {
 public:
-    static PatternPhrasesStorage &GetStorage()
+    static PatternPhrasesStorage& GetStorage()
     {
         static PatternPhrasesStorage starage;
         return starage;
     }
 
-    void Collect(const std::vector<WordFormPtr> &forms, Process &process)
+    void Collect(const std::vector<WordFormPtr>& forms, Process& process)
     {
         SimplePhrasesCollector::GetCollector().Collect(forms, process);
         ComplexPhrasesCollector::GetCollector().Collect(forms, process);
@@ -27,21 +26,25 @@ public:
         ComplexPhrasesCollector::GetCollector().Clear();
     }
 
-    void addPhrase(const std::string &phrase)
+    void addPhrase(const std::string& phrase)
     {
         phrases.push_back(phrase);
     }
 
-    const std::vector<std::string> &getPhrases() const
+    const std::vector<std::string>& getPhrases() const
     {
         return phrases;
     }
 
 private:
-    PatternPhrasesStorage() {}
-    ~PatternPhrasesStorage() {}
-    PatternPhrasesStorage(const PatternPhrasesStorage &) = delete;
-    PatternPhrasesStorage &operator=(const PatternPhrasesStorage &) = delete;
+    PatternPhrasesStorage()
+    {
+    }
+    ~PatternPhrasesStorage()
+    {
+    }
+    PatternPhrasesStorage(const PatternPhrasesStorage&) = delete;
+    PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
 
     std::vector<std::string> phrases;
 };

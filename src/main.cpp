@@ -14,29 +14,25 @@
 #include <xmorphy/morph/WordFormPrinter.h>
 #include <xmorphy/utils/UniString.h>
 
-#include <GrammarPatternManager.h>
-#include <PatternPhrasesStorage.h>
 #include <GrammarComponent.h>
+#include <GrammarPatternManager.h>
 #include <Logger.h>
+#include <PatternPhrasesStorage.h>
 
-#include <vector>
+#include <chrono>
+#include <filesystem>
 #include <memory>
 #include <string>
-#include <filesystem>
-#include <chrono>
+#include <vector>
 
-void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
+void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
 {
-    forms.erase(
-        std::remove_if(forms.begin(), forms.end(),
-                       [](const WordFormPtr &form)
-                       {
-                           return form->getTokenType() == TokenTypeTag::SEPR;
-                       }),
-        forms.end());
+    forms.erase(std::remove_if(forms.begin(), forms.end(),
+                               [](const WordFormPtr& form) { return form->getTokenType() == TokenTypeTag::SEPR; }),
+                forms.end());
 }
 
-void processText(const std::string &inputFile, const std::string &outputFile)
+void processText(const std::string& inputFile, const std::string& outputFile)
 {
     Process process(inputFile, outputFile);
 
@@ -47,8 +43,7 @@ void processText(const std::string &inputFile, const std::string &outputFile)
     SingleWordDisambiguate disamb;
     TFJoinedModel joiner;
 
-    do
-    {
+    do {
         std::string sentence;
         ssplitter.readSentence(sentence);
 
@@ -62,8 +57,7 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         disamb.disambiguate(forms);
         joiner.disambiguateAndMorphemicSplit(forms);
 
-        for (auto &form : forms)
-        {
+        for (auto& form : forms) {
             morphemic_splitter.split(form);
         }
 
@@ -88,21 +82,16 @@ int main()
     // auto &dictionary = TermDictionary::getInstance();
     Logger::log("main", LogLevel::Debug, "Current path is " + std::string(std::filesystem::current_path()));
 
-    const auto &manager = GrammarPatternManager::GetManager();
+    const auto& manager = GrammarPatternManager::GetManager();
 
-    try
-    {
+    try {
         std::string filePath = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/patterns.txt";
         manager->readPatterns(filePath);
         manager->printPatterns();
-    }
-    catch (const std::exception &e)
-    {
+    } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
-    }
-    catch (...)
-    {
+    } catch (...) {
         Logger::log("main", LogLevel::Error, "Unknown exception caught");
         return EXIT_FAILURE;
     }
@@ -110,8 +99,7 @@ int main()
     std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
     std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
-    try
-    {
+    try {
         auto start = std::chrono::high_resolution_clock::now();
         processText(inputFile, outputFile);
 
@@ -122,14 +110,10 @@ int main()
 
         // 4.532991 with continue for 1 text
         // 4.608362 without
-    }
-    catch (const std::exception &e)
-    {
+    } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
-    }
-    catch (...)
-    {
+    } catch (...) {
         Logger::log("main", LogLevel::Error, "Unknown exception caught");
         return EXIT_FAILURE;
     }

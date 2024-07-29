@@ -1,22 +1,21 @@
 #ifndef GPAMMARPATTERNMANAGER_H
 #define GPAMMARPATTERNMANAGER_H
 
-#include <string>
-#include <vector>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 #include "PatternParser.h"
 
 // Forward declaration
 class Model;
 
-class GrammarPatternManager
-{
+class GrammarPatternManager {
 private:
-    static GrammarPatternManager *instance;
+    static GrammarPatternManager* instance;
 
     std::unordered_map<std::string, std::shared_ptr<Model>> simplePatterns;
     std::unordered_map<std::string, std::shared_ptr<Model>> complexPatterns;
@@ -26,27 +25,27 @@ private:
     std::unordered_set<std::string> usedHeadSpVars;
     std::unordered_set<std::string> usedSpVars;
     // Private constructors for Singleton pattern
-    GrammarPatternManager(){};
+    GrammarPatternManager() {};
 
 public:
     // Singleton access method
-    static GrammarPatternManager *GetManager();
+    static GrammarPatternManager* GetManager();
 
     // Deleting copy constructor and assignment operator
-    GrammarPatternManager(const GrammarPatternManager &) = delete;
-    GrammarPatternManager &operator=(const GrammarPatternManager &) = delete;
+    GrammarPatternManager(const GrammarPatternManager&) = delete;
+    GrammarPatternManager& operator=(const GrammarPatternManager&) = delete;
 
     // Method to add a pattern to the manager
-    void addPattern(const std::string &key, const std::shared_ptr<Model> &model);
+    void addPattern(const std::string& key, const std::shared_ptr<Model>& model);
 
     // Method to retrieve a pattern by key
-    std::shared_ptr<Model> getPattern(const std::string &key) const;
+    std::shared_ptr<Model> getPattern(const std::string& key) const;
 
     const std::unordered_map<std::string, std::shared_ptr<Model>> getSimplePatterns() const;
     const std::unordered_map<std::string, std::shared_ptr<Model>> getComplexPatterns() const;
 
     // Method to parse document strings and create/fill models
-    void readPatterns(const std::string &filename);
+    void readPatterns(const std::string& filename);
 
     void printPatterns() const;
 
