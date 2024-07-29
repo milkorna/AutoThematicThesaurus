@@ -3,7 +3,6 @@
 
 #include <ComplexPhrasesCollector.h>
 
-#include <iostream>
 #include <mutex>
 
 class PatternPhrasesStorage {
@@ -46,4 +45,4 @@ private:
     std::vector<std::string> phrases;
 };
 
-#endif
+#endif // PATTERN_PHRASES_STORAGE_H

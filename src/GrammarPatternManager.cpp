@@ -1,6 +1,5 @@
 #include <Component.h>
 #include <GrammarPatternManager.h>
-#include <Logger.h>
 
 GrammarPatternManager* GrammarPatternManager::instance = nullptr;
 

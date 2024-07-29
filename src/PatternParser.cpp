@@ -323,7 +323,7 @@ void Parser::Parse()
                     isInBody = false;
                     Logger::log("PatternParser", LogLevel::Debug, "Adding pattern with key: " + name);
 
-                    manager->addPattern(name, std::make_shared<Model>(Model{name, comps}));
+                    manager->addPattern(name, std::make_shared<Model>(name, comps));
 
                     Logger::log("PatternParser", LogLevel::Debug,
                                 "Current number of patterns: " + manager->patternsAmount());

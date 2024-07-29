@@ -11,7 +11,8 @@ class Model : public Component {
     Components m_comps;
 
 public:
-    Model(const std::string& form = "", const Components& comps = {});
+    explicit Model(const std::string& form = "", const Components& comps = {});
+    ~Model() = default;
 
     const X::UniSPTag getSPTag() const override;
 
@@ -36,7 +37,9 @@ public:
     std::optional<size_t> getModelCompIndByForm(const std::string& form) const;
 
     std::shared_ptr<WordComp> getHead() const;
+
     std::optional<size_t> getHeadPos() const;
+
     size_t size() const;
 
     void printWords() const;
@@ -52,8 +55,6 @@ public:
     const Condition getCondition() const;
 
     const std::optional<bool> isHead() const;
-
-    // void addComponent(const std::shared_ptr<Component>& component);
 };
 
-#endif // GRAMMAR_COMPONENTS_H
+#endif // MODEL_COMPONENT_H

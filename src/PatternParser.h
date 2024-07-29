@@ -35,23 +35,26 @@ struct Process {
     size_t m_docNum;
     size_t m_sentNum;
 
-    Process(const std::string& inputFile, const std::string& outputFile, const size_t docNum, const size_t sentNum)
+    explicit Process(const std::string& inputFile, const std::string& outputFile, const size_t docNum,
+                     const size_t sentNum)
         : m_input(inputFile), m_output(outputFile), m_docNum(docNum), m_sentNum(sentNum)
     {
     }
 
-    Process(const std::string& inputFile, const std::string& outputFile, const size_t sentNum = 0)
+    explicit Process(const std::string& inputFile, const std::string& outputFile, const size_t sentNum = 0)
         : m_input(inputFile), m_output(outputFile), m_docNum(ParserUtils::extractNumberFromPath(inputFile)),
           m_sentNum(sentNum)
     {
     }
+
+    ~Process() = default;
 };
 
 // Parser class responsible for parsing linguistic data from a file.
 class Parser {
 public:
     // Constructs a parser object for the given file path and throws if the file cannot be opened.
-    Parser(const std::string& filePath) : fileStream(filePath)
+    explicit Parser(const std::string& filePath) : fileStream(filePath)
     {
         if (!fileStream) {
             throw std::runtime_error("Error opening file: " + filePath);
@@ -59,6 +62,8 @@ public:
     }
     // Parses the data from the associated file.
     void Parse();
+
+    ~Parser() = default;
 
 private:
     bool logs = false;                                              // Flag to control logging
@@ -112,4 +117,4 @@ private:
         {"Aspect=Imp", UniMorphTag::Imp}};
 };
 
-#endif
+#endif // PATTERN_PARSER_H

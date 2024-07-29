@@ -61,4 +61,4 @@ private:
                                PHUtils::WordComplexPtr& wc);
 };
 
-#endif
+#endif // COMPLEX_PHRASES_COLLECTOR_H

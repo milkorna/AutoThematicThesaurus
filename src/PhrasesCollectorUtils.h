@@ -8,6 +8,7 @@
 #include <PhrasesCollectorUtils.h>
 
 #include <deque>
+#include <memory>
 #include <set>
 #include <string>
 #include <unordered_map>
@@ -71,4 +72,4 @@ namespace PhrasesCollectorUtils {
 
 namespace PHUtils = PhrasesCollectorUtils;
 
-#endif
+#endif // PHRASES_COLLECTOR_UTILS_H

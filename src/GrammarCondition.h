@@ -9,8 +9,6 @@
 
 #include <memory>
 #include <optional>
-#include <string>
-#include <vector>
 
 using namespace X;
 
@@ -49,6 +47,7 @@ private:
 public:
     Condition(SyntaxRole role = SyntaxRole::Independent, UniMorphTag morphTag = UniMorphTag::UNKN,
               Additional cond = Additional());
+    ~Condition() = default;
 
     bool morphTagCheck(const MorphInfo& morphForm) const;
 
@@ -62,4 +61,4 @@ public:
     bool check(const X::UniSPTag spBaseTag, const X::WordFormPtr& form) const;
 };
 
-#endif
+#endif // GRAMMAR_CONDITION_H

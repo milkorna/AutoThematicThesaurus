@@ -5,11 +5,8 @@
 
 #include <GrammarPatternManager.h>
 #include <ModelComponent.h>
-#include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
 
-#include <deque>
-#include <set>
 #include <unordered_map>
 
 class SimplePhrasesCollector {
@@ -43,6 +40,7 @@ private:
     ~SimplePhrasesCollector()
     {
     }
+
     SimplePhrasesCollector(const SimplePhrasesCollector&) = delete;
     SimplePhrasesCollector& operator=(const SimplePhrasesCollector&) = delete;
 
@@ -50,4 +48,4 @@ private:
                     size_t formIndex, size_t& correct, const bool isLeft);
 };
 
-#endif
+#endif // SIMPLE_PHRASES_COLLECTOR_H

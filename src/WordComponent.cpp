@@ -10,10 +10,12 @@ const X::UniSPTag Word::getSPTag() const
 {
     return m_sp;
 }
+
 const std::string Word::getForm() const
 {
     return "";
 }
+
 const Components Word::getComponents() const
 {
     return {};
@@ -23,13 +25,10 @@ const bool Word::isWord() const
 {
     return true;
 }
+
 const bool Word::isModel() const
 {
     return false;
-}
-const std::optional<bool> Word::isHead() const
-{
-    return std::nullopt;
 }
 
 void WordComp::print() const
@@ -55,7 +54,7 @@ const Condition WordComp::getCondition() const
     return m_cond;
 }
 
-const bool WordComp::isRec()
+const bool WordComp::isRec() const
 {
     return m_cond.getAdditional().m_rec;
 }

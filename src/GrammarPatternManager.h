@@ -1,14 +1,10 @@
-#ifndef GPAMMARPATTERNMANAGER_H
-#define GPAMMARPATTERNMANAGER_H
+#ifndef GPAMMAR_PATTERN_MANAGER_H
+#define GPAMMAR_PATTERN_MANAGER_H
 
 #include <PatternParser.h>
 
-#include <iostream>
-#include <memory>
-#include <string>
 #include <unordered_map>
 #include <unordered_set>
-#include <vector>
 
 // Forward declaration
 class Model;
@@ -61,4 +57,4 @@ public:
     void divide();
 };
 
-#endif // GPAMMARPATTERNMANAGER_H
+#endif // GPAMMAR_PATTERN_MANAGER_H
