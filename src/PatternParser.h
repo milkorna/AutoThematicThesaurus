@@ -1,9 +1,9 @@
 #ifndef PATTERN_PARSER_H
 #define PATTERN_PARSER_H
 
-#include <GrammarComponent.h>
 #include <GrammarPatternManager.h>
 #include <Logger.h>
+#include <ModelComponent.h>
 
 #include <fstream>
 #include <string>

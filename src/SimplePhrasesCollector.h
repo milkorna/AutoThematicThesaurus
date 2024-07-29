@@ -3,8 +3,8 @@
 
 #include <xmorphy/morph/WordForm.h>
 
-#include <GrammarComponent.h>
 #include <Logger.h>
+#include <ModelComponent.h>
 #include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
 
