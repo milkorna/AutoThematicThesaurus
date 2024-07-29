@@ -55,6 +55,42 @@ namespace PhrasesCollectorUtils {
         }
     }
 
+    WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName)
+    {
+        WordComplexPtr wc = std::make_shared<WordComplex>();
+        wc->words = curSimplePhr->words;
+        wc->textForm = curSimplePhr->textForm;
+        wc->pos = curSimplePhr->pos;
+        wc->modelName = modelName;
+        return wc;
+    }
+
+    WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName,
+                                         const Process& process)
+    {
+        WordComplexPtr wc = std::make_shared<WordComplex>();
+        wc->words.push_back(token);
+        wc->textForm = token->getWordForm().getRawString();
+        wc->pos = {tokenInd, tokenInd, process.m_docNum, process.m_sentNum};
+        wc->modelName = modelName;
+
+        return wc;
+    }
+
+    bool CheckForMisclassifications(const WordFormPtr& form)
+    {
+        std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
+                                                ',', '-',  '.', '/', ':', ';', '<',  '=', '>', '?', '@',
+                                                '[', '\\', ']', '^', '_', '`', '{',  '|', '}', '~'};
+        const auto str = form->getWordForm().getRawString();
+
+        for (char c : str) {
+            if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
+                return false;
+        }
+        return true;
+    }
+
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
     {
         for (const auto& wc : collection) {

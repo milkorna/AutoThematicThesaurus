@@ -210,16 +210,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
     return false;
 }
 
-static WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName)
-{
-    WordComplexPtr wc = std::make_shared<WordComplex>();
-    wc->words = curSimplePhr->words;
-    wc->textForm = curSimplePhr->textForm;
-    wc->pos = curSimplePhr->pos;
-    wc->modelName = modelName;
-    return wc;
-}
-
 bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>& model,
                                                     const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
                                                     CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc)

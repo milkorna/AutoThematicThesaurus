@@ -62,6 +62,12 @@ namespace PhrasesCollectorUtils {
     void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
                             CurrentPhraseStatus& curPhrStatus, bool isLeft);
 
+    WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName);
+    WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName,
+                                         const Process& process);
+
+    bool CheckForMisclassifications(const X::WordFormPtr& form);
+
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process);
 }
 
