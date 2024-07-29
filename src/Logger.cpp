@@ -13,37 +13,35 @@ void Logger::setGlobalLogLevel(LogLevel level)
 }
 
 // Sets the log level for a specific module.
-void Logger::setModuleLogLevel(const std::string &module, LogLevel level)
+void Logger::setModuleLogLevel(const std::string& module, LogLevel level)
 {
     moduleLogLevels[module] = level;
 }
 
 // Disables logging for a specific module.
-void Logger::disableModuleLogging(const std::string &module)
+void Logger::disableModuleLogging(const std::string& module)
 {
     disabledModules.insert(module);
 }
 
 // Enables logging for a previously disabled module.
-void Logger::enableModuleLogging(const std::string &module)
+void Logger::enableModuleLogging(const std::string& module)
 {
     disabledModules.erase(module);
 }
 
 // Logs a message if the specified log level is at or above the configured log level.
-void Logger::log(const std::string &module, LogLevel level, const std::string &message)
+void Logger::log(const std::string& module, LogLevel level, const std::string& message)
 {
-    if (enabled && disabledModules.find(module) == disabledModules.end())
-    {
+    if (enabled && disabledModules.find(module) == disabledModules.end()) {
         LogLevel effectiveLevel = globalLogLevel;
-        if (moduleLogLevels.find(module) != moduleLogLevels.end())
-        {
+        if (moduleLogLevels.find(module) != moduleLogLevels.end()) {
             effectiveLevel = moduleLogLevels[module];
         }
 
-        if (level >= effectiveLevel)
-        {
-            std::cout << "[" << std::to_string(static_cast<int>(level)) << "] " << module << ": " << message << std::endl;
+        if (level >= effectiveLevel) {
+            std::cout << "[" << std::to_string(static_cast<int>(level)) << "] " << module << ": " << message
+                      << std::endl;
         }
     }
 }

@@ -1,11 +1,3 @@
-#include <vector>
-#include <memory>
-#include <string>
-#include <filesystem>
-#include <GrammarPatternManager.h>
-#include <Logger.h>
-#include <TermProposalStorage.h>
-#include <GrammarComponent.h>
 #include <boost/program_options.hpp>
 #include <xmorphy/graphem/SentenceSplitter.h>
 #include <xmorphy/graphem/Tokenizer.h>
@@ -22,32 +14,32 @@
 #include <xmorphy/morph/WordFormPrinter.h>
 #include <xmorphy/utils/UniString.h>
 
-void removeSeparatorTokens(std::vector<WordFormPtr> &forms)
+#include <Component.h>
+#include <Logger.h>
+#include <PatternPhrasesStorage.h>
+
+#include <chrono>
+#include <filesystem>
+
+void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
 {
-    forms.erase(
-        std::remove_if(forms.begin(), forms.end(),
-                       [](const WordFormPtr &form)
-                       {
-                           return form->getTokenType() == TokenTypeTag::SEPR;
-                       }),
-        forms.end());
+    forms.erase(std::remove_if(forms.begin(), forms.end(),
+                               [](const WordFormPtr& form) { return form->getTokenType() == TokenTypeTag::SEPR; }),
+                forms.end());
 }
 
-void processText(const std::string &inputFile, const std::string &outputFile)
+void processText(const std::string& inputFile, const std::string& outputFile)
 {
     Process process(inputFile, outputFile);
 
     Tokenizer tok;
-    TFDisambiguator tf_disambig;
     TFMorphemicSplitter morphemic_splitter;
     SentenceSplitter ssplitter(process.m_input);
     Processor analyzer;
     SingleWordDisambiguate disamb;
     TFJoinedModel joiner;
 
-    do
-    {
-
+    do {
         std::string sentence;
         ssplitter.readSentence(sentence);
 
@@ -58,30 +50,18 @@ void processText(const std::string &inputFile, const std::string &outputFile)
         std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
         removeSeparatorTokens(forms);
-
         disamb.disambiguate(forms);
+        joiner.disambiguateAndMorphemicSplit(forms);
 
-        bool joined_model_failed = true;
-        joined_model_failed = !joiner.disambiguateAndMorphemicSplit(forms); //?
-
-        // if (joined_model_failed)
-        // {
-        tf_disambig.disambiguate(forms);
-        // Logger::log("TFDisambiguation", LogLevel::Debug, "TF disambiguation performed due to joiner failure.");
-        // }
-
-        for (auto &form : forms)
-        {
+        for (auto& form : forms) {
             morphemic_splitter.split(form);
-            // Logger::log("MorphemicSplit", LogLevel::Debug, "Morphemic split applied on normal form: " + form->getWordForm().getRawString());
         }
 
         Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
         Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
         Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
-        const auto &wcCollection = WCModelCollection::getInstance();
-        wcCollection->collect(forms, process);
+        PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
         process.m_output.flush();
         process.m_sentNum++;
@@ -98,23 +78,16 @@ int main()
     // auto &dictionary = TermDictionary::getInstance();
     Logger::log("main", LogLevel::Debug, "Current path is " + std::string(std::filesystem::current_path()));
 
-    const auto &manager = GrammarPatternManager::getInstance();
+    const auto& manager = GrammarPatternManager::GetManager();
 
-    try
-    {
+    try {
         std::string filePath = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/patterns.txt";
-
         manager->readPatterns(filePath);
         manager->printPatterns();
-    }
-    catch (const std::exception &e)
-    {
-        // std::cerr << "Exception caught: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
-    }
-    catch (...)
-    {
+    } catch (...) {
         Logger::log("main", LogLevel::Error, "Unknown exception caught");
         return EXIT_FAILURE;
     }
@@ -122,17 +95,21 @@ int main()
     std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
     std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
 
-    try
-    {
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
         processText(inputFile, outputFile);
-    }
-    catch (const std::exception &e)
-    {
+
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+
+        Logger::log("main", LogLevel::Info, "processText() took " + std::to_string(duration.count()) + " seconds.");
+
+        // 4.532991 with continue for 1 text
+        // 4.608362 without
+    } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
-    }
-    catch (...)
-    {
+    } catch (...) {
         Logger::log("main", LogLevel::Error, "Unknown exception caught");
         return EXIT_FAILURE;
     }

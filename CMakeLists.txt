@@ -20,16 +20,28 @@ if(POLICY CMP0127)
 endif()
 
 set(SOURCE_FILES
-src/GrammarComponent.cpp
+src/GrammarCondition.cpp
 src/GrammarPatternManager.cpp
+src/ComplexPhrasesCollector.cpp
 src/PatternParser.cpp
-src/TermProposalStorage.cpp
+src/PatternPhrasesStorage.cpp
+src/SimplePhrasesCollector.cpp
 src/Logger.cpp
-src/GrammarComponent.h
+src/PhrasesCollectorUtils.cpp
+src/ModelComponent.cpp
+src/WordComponent.cpp
+
+src/Component.h
+src/GrammarCondition.h
 src/GrammarPatternManager.h
+src/ComplexPhrasesCollector.h
 src/PatternParser.h
-src/TermProposalStorage.h
+src/PatternPhrasesStorage.h
+src/SimplePhrasesCollector.h
 src/Logger.h
+src/PhrasesCollectorUtils.h
+src/ModelComponent.h
+src/WordComponent.h
 )
 
 

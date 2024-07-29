@@ -16,7 +16,7 @@ body: {
 	w:i NOUN [Case=Gen] | rec
 }
 
-name: "Сущ + Предл + Сущ"
+name: "С + Предл + С"
 body: {
 	w:h NOUN
 	w:i ADP
