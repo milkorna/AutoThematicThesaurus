@@ -37,21 +37,32 @@ private:
           m_simplePhrases(SimplePhrasesCollector::GetCollector().GetCollection())
     {
     }
+
     ~ComplexPhrasesCollector()
     {
     }
+
     ComplexPhrasesCollector(const ComplexPhrasesCollector&) = delete;
     ComplexPhrasesCollector& operator=(const ComplexPhrasesCollector&) = delete;
 
-    bool CheckCurrentSimplePhrase(const WordComplexPtr& base, const std::shared_ptr<ModelComp>& baseModelComp,
+    bool CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr, const std::shared_ptr<ModelComp>& curModelComp,
                                   CurrentPhraseStatus& curPhrStatus);
 
-    bool CheckAside(size_t basePos, const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
+    bool CheckAside(size_t curSPhPosCmp, const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
                     size_t compIndex, size_t formIndex, const bool isLeft, CurrentPhraseStatus& curPhrStatus,
-                    size_t baseNumFromBasesWC);
+                    size_t curSimplePhrInd);
 
-    bool shouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const std::shared_ptr<WordComplex>& wc,
+    bool ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const std::shared_ptr<WordComplex>& wc,
                     std::shared_ptr<ModelComp> modelComp);
+
+    bool CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms, const Condition& baseCond,
+                                CurrentPhraseStatus& curPhrStatus);
+
+    bool CheckWordComponents(const WordComplexPtr& curSimplePhr, const std::shared_ptr<ModelComp>& curModelComp,
+                             CurrentPhraseStatus& curPhrStatus);
+
+    bool ProcessModelComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& curSimplePhr,
+                               const size_t curSimplePhrInd, CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc);
 };
 
 #endif

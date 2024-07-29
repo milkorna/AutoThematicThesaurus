@@ -1,7 +1,10 @@
-#pragma once
-#include "GrammarComponent.h"
-#include "GrammarPatternManager.h"
+#ifndef PATTERN_PARSER_H
+#define PATTERN_PARSER_H
+
+#include <GrammarComponent.h>
+#include <GrammarPatternManager.h>
 #include <Logger.h>
+
 #include <fstream>
 #include <string>
 #include <vector>
@@ -112,3 +115,5 @@ private:
         {"NumForm=Digit", UniMorphTag::Digit}, {"Aspect=Perf", UniMorphTag::Perf},
         {"Aspect=Imp", UniMorphTag::Imp}};
 };
+
+#endif

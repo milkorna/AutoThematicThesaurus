@@ -71,8 +71,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     }
     // also need to update found themes and lex
 
-    // add exception check like 2 = adj
-
     UpdateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;
@@ -93,7 +91,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
         }
     }
 
-    // Logger::log("checkAside", LogLevel::Debug, "Exiting function, the return value is TRUE.");
     return false;
 }
 
@@ -107,6 +104,15 @@ static WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFor
     wc->modelName = modelName;
 
     return wc;
+}
+
+void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
+{
+    for (const auto& wc : collection) {
+        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
+                         << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
+                         << std::endl;
+    }
 }
 
 void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
@@ -131,14 +137,14 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
         for (const auto& [name, model] : simplePatterns) {
             Logger::log("Collect", LogLevel::Debug, "Current base: " + model->getForm());
 
-            size_t correct = 0;
-            bool headIsMatched = HeadCheck(model, token);
-            if (!headIsMatched)
+            if (!HeadCheck(model, token))
                 continue;
-            size_t headPos = *model->getHeadPos(); // TODO: make save logic
-            ++correct;
+
+            size_t headPos = *model->getHeadPos();
+            size_t correct = 0;
 
             WordComplexPtr wc = InicializeWordComplex(tokenInd, token, model->getForm(), process);
+            ++correct;
 
             if (headPos != 0 && tokenInd != 0 && CheckAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {
                 break;
@@ -152,9 +158,5 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
         }
     }
 
-    for (const auto& wc : m_collection) {
-        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
-                         << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
-                         << std::endl;
-    }
+    OutputResults(m_collection, process);
 }

@@ -1,13 +1,12 @@
 #include <PatternParser.h>
-#include <map>
-#include <string>
-#include <tuple>
 
 #include <xmorphy/utils/UniString.h>
 
 #include <algorithm>
-
+#include <map>
 #include <regex>
+#include <string>
+#include <tuple>
 
 size_t ParserUtils::extractNumberFromPath(const std::string& filePath)
 {

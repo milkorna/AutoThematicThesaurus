@@ -89,35 +89,6 @@ size_t Model::size() const
     return this->isModel() ? this->m_comps.size() : 0;
 }
 
-template <typename AttrType>
-static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
-                           AttrType (X::UniMorphTag::*getAttribute)() const, const X::UniMorphTag& baseTag,
-                           const X::UniMorphTag& formTag)
-{
-    if ((baseTag.*hasAttribute)()) {
-        bool result = (formTag.*hasAttribute)() && (baseTag.*getAttribute)() == (formTag.*getAttribute)();
-        Logger::log("checkAttribute", LogLevel::Debug, "Attribute check: " + std::to_string(result));
-        return result;
-    }
-    // Logger::log("checkAttribute", LogLevel::Debug, "No attribute to check, returning true.");
-    return true;
-}
-
-bool Condition::morphTagCheck(const MorphInfo& morphForm) const
-{
-    const auto& compMorphTag = this->getMorphTag();
-    return checkAttribute(&X::UniMorphTag::hasCase, &X::UniMorphTag::getCase, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasAnimacy, &X::UniMorphTag::getAnimacy, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasNumber, &X::UniMorphTag::getNumber, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasTense, &X::UniMorphTag::getTense, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasCmp, &X::UniMorphTag::getCmp, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasVerbForm, &X::UniMorphTag::getVerbForm, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasMood, &X::UniMorphTag::getMood, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasPerson, &X::UniMorphTag::getPerson, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasVariance, &X::UniMorphTag::getVariance, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasVoice, &X::UniMorphTag::getVoice, compMorphTag, morphForm.tag) &&
-           checkAttribute(&X::UniMorphTag::hasAspect, &X::UniMorphTag::getAspect, compMorphTag, morphForm.tag);
-}
 
 void Model::addComponent(const std::shared_ptr<Component>& component)
 {
