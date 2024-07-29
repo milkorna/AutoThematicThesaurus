@@ -1,15 +1,8 @@
 #ifndef COMPLEX_PHRASES_COLLECTOR_H
 #define COMPLEX_PHRASES_COLLECTOR_H
 
+#include <PhrasesCollectorUtils.h>
 #include <SimplePhrasesCollector.h>
-
-struct CurrentPhraseStatus {
-    size_t correct = 0;
-    bool headIsMatched = false;
-    bool headIsChecked = false;
-    bool foundLex = false;
-    bool foundTheme = false;
-};
 
 class ComplexPhrasesCollector {
 public:
@@ -27,10 +20,10 @@ public:
     }
 
 private:
-    std::vector<WordComplexPtr> m_collection;
+    std::vector<PHUtils::WordComplexPtr> m_collection;
     std::vector<WordFormPtr> m_sentence;
     const GrammarPatternManager& manager;
-    const std::vector<WordComplexPtr>& m_simplePhrases;
+    const std::vector<PHUtils::WordComplexPtr>& m_simplePhrases;
 
     ComplexPhrasesCollector()
         : manager(*GrammarPatternManager::GetManager()),
@@ -45,24 +38,27 @@ private:
     ComplexPhrasesCollector(const ComplexPhrasesCollector&) = delete;
     ComplexPhrasesCollector& operator=(const ComplexPhrasesCollector&) = delete;
 
-    bool CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr, const std::shared_ptr<ModelComp>& curModelComp,
-                                  CurrentPhraseStatus& curPhrStatus);
+    bool CheckCurrentSimplePhrase(const PHUtils::WordComplexPtr& curSimplePhr,
+                                  const std::shared_ptr<ModelComp>& curModelComp,
+                                  PHUtils::CurrentPhraseStatus& curPhrStatus);
 
-    bool CheckAside(size_t curSPhPosCmp, const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
-                    size_t compIndex, size_t formIndex, const bool isLeft, CurrentPhraseStatus& curPhrStatus,
+    bool CheckAside(size_t curSPhPosCmp, const PHUtils::WordComplexPtr& wc, const std::shared_ptr<Model>& model,
+                    size_t compIndex, size_t formIndex, const bool isLeft, PHUtils::CurrentPhraseStatus& curPhrStatus,
                     size_t curSimplePhrInd);
 
-    bool ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const std::shared_ptr<WordComplex>& wc,
+    bool ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const PHUtils::WordComplexPtr& wc,
                     std::shared_ptr<ModelComp> modelComp);
 
     bool CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms, const Condition& baseCond,
-                                CurrentPhraseStatus& curPhrStatus);
+                                PHUtils::CurrentPhraseStatus& curPhrStatus);
 
-    bool CheckWordComponents(const WordComplexPtr& curSimplePhr, const std::shared_ptr<ModelComp>& curModelComp,
-                             CurrentPhraseStatus& curPhrStatus);
+    bool CheckWordComponents(const PHUtils::WordComplexPtr& curSimplePhr,
+                             const std::shared_ptr<ModelComp>& curModelComp,
+                             PHUtils::CurrentPhraseStatus& curPhrStatus);
 
-    bool ProcessModelComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& curSimplePhr,
-                               const size_t curSimplePhrInd, CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc);
+    bool ProcessModelComponent(const std::shared_ptr<Model>& model, const PHUtils::WordComplexPtr& curSimplePhr,
+                               const size_t curSimplePhrInd, PHUtils::CurrentPhraseStatus& curPhrStatus,
+                               PHUtils::WordComplexPtr& wc);
 };
 
 #endif

@@ -28,6 +28,8 @@ src/PatternParser.cpp
 src/PatternPhrasesStorage.cpp
 src/SimplePhrasesCollector.cpp
 src/Logger.cpp
+src/PhrasesCollectorUtils.cpp
+
 src/GrammarComponent.h
 src/GrammarCondition.h
 src/GrammarPatternManager.h
@@ -36,6 +38,7 @@ src/PatternParser.h
 src/PatternPhrasesStorage.h
 src/SimplePhrasesCollector.h
 src/Logger.h
+src/PhrasesCollectorUtils.h
 )
 
 

@@ -1,6 +1,8 @@
 #include <SimplePhrasesCollector.h>
 #include <utility>
 
+using namespace PhrasesCollectorUtils;
+
 static bool HeadCheck(const std::shared_ptr<Model>& baseModel, const X::WordFormPtr& form)
 {
     if (!baseModel->getHead()->getCondition().check(baseModel->getHead()->getSPTag(), form)) {
@@ -37,20 +39,6 @@ static bool CheckForMisclassifications(const X::WordFormPtr& form)
             return false;
     }
     return true;
-}
-
-static void UpdateWordComplex(const std::shared_ptr<WordComplex>& wc, const WordFormPtr& form,
-                              const std::string& formFromText, bool isLeft)
-{
-    if (isLeft) {
-        wc->words.push_front(form);
-        wc->pos.start--;
-        wc->textForm.insert(0, formFromText + " ");
-    } else {
-        wc->words.push_back(form);
-        wc->pos.end++;
-        wc->textForm.append(" " + formFromText);
-    }
 }
 
 bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
@@ -104,15 +92,6 @@ static WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFor
     wc->modelName = modelName;
 
     return wc;
-}
-
-void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
-{
-    for (const auto& wc : collection) {
-        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
-                         << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
-                         << std::endl;
-    }
 }
 
 void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)

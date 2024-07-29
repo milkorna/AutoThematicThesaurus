@@ -1,5 +1,7 @@
 #include <ComplexPhrasesCollector.h>
 
+using namespace PhrasesCollectorUtils;
+
 bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms,
                                                      const Condition& baseCond, CurrentPhraseStatus& curPhrStatus)
 {
@@ -61,22 +63,8 @@ bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& cur
     return simplePhrMorph;
 }
 
-static void UpdateWordComplex(const std::shared_ptr<WordComplex>& wc, const WordFormPtr& form,
-                              const std::string& formFromText, bool isLeft)
-{
-    if (isLeft) {
-        wc->words.push_front(form);
-        wc->pos.start--;
-        wc->textForm.insert(0, formFromText + " ");
-    } else {
-        wc->words.push_back(form);
-        wc->pos.end++;
-        wc->textForm.append(" " + formFromText);
-    }
-}
-
 bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft,
-                                         const std::shared_ptr<WordComplex>& wc, std::shared_ptr<ModelComp> modelComp)
+                                         const WordComplexPtr& wc, std::shared_ptr<ModelComp> modelComp)
 {
     if (smpPhrOffset >= m_simplePhrases.size() || smpPhrOffset < 0) {
         return true;
@@ -101,34 +89,7 @@ bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePh
     return false;
 }
 
-static void AddWordsToFront(const std::shared_ptr<WordComplex>& wc, const WordComplexPtr& asidePhrase)
-{
-    for (auto rit = asidePhrase->words.rbegin(); rit != asidePhrase->words.rend(); ++rit) {
-        wc->words.push_front(*rit);
-    }
-}
-
-static void AddWordsToBack(const std::shared_ptr<WordComplex>& wc, const WordComplexPtr& asidePhrase)
-{
-    for (const auto& word : asidePhrase->words) {
-        wc->words.push_back(word);
-    }
-}
-
-static void UpdatePhraseStatus(const std::shared_ptr<WordComplex>& wc, const WordComplexPtr& asidePhrase,
-                               CurrentPhraseStatus& curPhrStatus, bool isLeft)
-{
-    curPhrStatus.correct++;
-    if (isLeft) {
-        wc->pos.start = asidePhrase->pos.start;
-        wc->textForm.insert(0, asidePhrase->textForm + " ");
-    } else {
-        wc->pos.end = asidePhrase->pos.end;
-        wc->textForm.append(" " + asidePhrase->textForm);
-    }
-}
-
-bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const std::shared_ptr<WordComplex>& wc,
+bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
                                          const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
                                          const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd)
 {
@@ -259,16 +220,6 @@ static WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, 
     return wc;
 }
 
-void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
-{
-    Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Info, curSimplePhr->textForm + " || " + curSimplePhr->modelName);
-}
-
-void LogCurrentComplexModel(const std::string& name)
-{
-    Logger::log("CURRENT COMPLEX MODEL", LogLevel::Info, name);
-}
-
 bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>& model,
                                                     const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
                                                     CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc)
@@ -296,16 +247,6 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
     return false;
 }
 
-// TODO: Create CollectorsUtils
-void OutputComplexResults(const std::vector<WordComplexPtr>& collection, Process& process)
-{
-    for (const auto& wc : collection) {
-        process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
-                         << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
-                         << std::endl;
-    }
-}
-
 void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
 {
     m_sentence = forms;
@@ -326,5 +267,5 @@ void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Pro
         }
     }
 
-    OutputComplexResults(m_collection, process);
+    OutputResults(m_collection, process);
 }
