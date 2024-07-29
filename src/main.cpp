@@ -14,16 +14,12 @@
 #include <xmorphy/morph/WordFormPrinter.h>
 #include <xmorphy/utils/UniString.h>
 
-#include <GrammarComponent.h>
-#include <GrammarPatternManager.h>
+#include <Component.h>
 #include <Logger.h>
 #include <PatternPhrasesStorage.h>
 
 #include <chrono>
 #include <filesystem>
-#include <memory>
-#include <string>
-#include <vector>
 
 void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
 {

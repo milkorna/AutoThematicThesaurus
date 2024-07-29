@@ -1,13 +1,9 @@
 #ifndef PATTERN_PARSER_H
 #define PATTERN_PARSER_H
 
-#include <GrammarPatternManager.h>
-#include <Logger.h>
 #include <ModelComponent.h>
 
 #include <fstream>
-#include <string>
-#include <vector>
 
 // Namespace containing utilities for parsing operations.
 namespace ParserUtils {

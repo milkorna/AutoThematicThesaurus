@@ -23,4 +23,4 @@ public:
     virtual const std::optional<bool> isHead() const = 0;
 };
 
-#endif // GRAMMAR_COMPONENTS_H
+#endif // GRAMMAR_COMPONENT_H

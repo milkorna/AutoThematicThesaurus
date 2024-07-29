@@ -4,10 +4,7 @@
 #include <ComplexPhrasesCollector.h>
 
 #include <iostream>
-#include <memory>
 #include <mutex>
-#include <string>
-#include <vector>
 
 class PatternPhrasesStorage {
 public:

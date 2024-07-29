@@ -11,48 +11,25 @@ class Model : public Component {
     Components m_comps;
 
 public:
-    Model(const std::string& form = "", const Components& comps = {}) : m_form(form), m_comps(comps) {};
+    Model(const std::string& form = "", const Components& comps = {});
 
-    const X::UniSPTag getSPTag() const override
-    {
-        return UniSPTag::X;
-    }
-    const std::string getForm() const override
-    {
-        return m_form;
-    }
-    const Components getComponents() const override
-    {
-        return m_comps;
-    }
-    const std::shared_ptr<Component> getComponent(const size_t ind) const
-    {
-        return m_comps[ind];
-    }
-    const std::shared_ptr<WordComp> getWordComponent(const size_t ind) const
-    {
-        return std::dynamic_pointer_cast<WordComp>(m_comps[ind]);
-    }
-    const std::shared_ptr<ModelComp> getModelComponent(const size_t ind) const
-    {
-        return std::dynamic_pointer_cast<ModelComp>(m_comps[ind]);
-    }
+    const X::UniSPTag getSPTag() const override;
 
-    const bool isWord() const override
-    {
-        return false;
-    }
-    const bool isModel() const override
-    {
-        return true;
-    }
-    const std::optional<bool> isHead() const
-    {
-        return std::nullopt;
-    }
+    const std::string getForm() const override;
 
-    void addCondition(const std::shared_ptr<Condition>& Condition);
-    bool checkComponentsMatch(const X::WordFormPtr& wordForm) const;
+    const Components getComponents() const override;
+
+    const std::shared_ptr<Component> getComponent(const size_t ind) const;
+
+    const std::shared_ptr<WordComp> getWordComponent(const size_t ind) const;
+
+    const std::shared_ptr<ModelComp> getModelComponent(const size_t ind) const;
+
+    const bool isWord() const override;
+
+    const bool isModel() const override;
+
+    const std::optional<bool> isHead() const;
 
     void addComponent(const std::shared_ptr<Component>& component);
 
@@ -70,25 +47,13 @@ class ModelComp : public Model {
     Condition m_cond;
 
 public:
-    ModelComp(const std::string& form = "", const Components& comps = {}, const Condition& cond = {})
-        : Model(form, comps), m_cond(cond) {};
+    ModelComp(const std::string& form = "", const Components& comps = {}, const Condition& cond = {});
 
-    const Condition getCondition() const
-    {
-        return m_cond;
-    }
+    const Condition getCondition() const;
 
-    const std::optional<bool> isHead() const
-    {
-        auto role = m_cond.getSyntaxRole();
-        if (role == SyntaxRole::Head)
-            return true;
-        if (role == SyntaxRole::Dependent || role == SyntaxRole::Independent)
-            return false;
-        return std::nullopt;
-    }
+    const std::optional<bool> isHead() const;
 
-    void addComponent(const std::shared_ptr<Component>& component);
+    // void addComponent(const std::shared_ptr<Component>& component);
 };
 
 #endif // GRAMMAR_COMPONENTS_H

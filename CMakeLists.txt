@@ -20,7 +20,6 @@ if(POLICY CMP0127)
 endif()
 
 set(SOURCE_FILES
-src/GrammarComponent.cpp
 src/GrammarCondition.cpp
 src/GrammarPatternManager.cpp
 src/ComplexPhrasesCollector.cpp
@@ -32,7 +31,7 @@ src/PhrasesCollectorUtils.cpp
 src/ModelComponent.cpp
 src/WordComponent.cpp
 
-src/GrammarComponent.h
+src/Component.h
 src/GrammarCondition.h
 src/GrammarPatternManager.h
 src/ComplexPhrasesCollector.h

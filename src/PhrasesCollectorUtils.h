@@ -3,13 +3,11 @@
 
 #include <xmorphy/morph/WordForm.h>
 
-#include <Logger.h>
 #include <ModelComponent.h>
 #include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
 
 #include <deque>
-#include <memory>
 #include <set>
 #include <string>
 #include <unordered_map>

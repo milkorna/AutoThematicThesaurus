@@ -1,3 +1,4 @@
+#include <GrammarPatternManager.h>
 #include <PatternParser.h>
 
 #include <xmorphy/utils/UniString.h>

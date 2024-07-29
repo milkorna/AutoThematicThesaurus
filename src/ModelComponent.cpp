@@ -2,6 +2,48 @@
 
 using namespace X;
 
+Model::Model(const std::string& form, const Components& comps) : m_form(form), m_comps(comps)
+{
+}
+
+const UniSPTag Model::getSPTag() const
+{
+    return UniSPTag::X;
+}
+const std::string Model::getForm() const
+{
+    return m_form;
+}
+const Components Model::getComponents() const
+{
+    return m_comps;
+}
+const std::shared_ptr<Component> Model::getComponent(const size_t ind) const
+{
+    return m_comps[ind];
+}
+const std::shared_ptr<WordComp> Model::getWordComponent(const size_t ind) const
+{
+    return std::dynamic_pointer_cast<WordComp>(m_comps[ind]);
+}
+const std::shared_ptr<ModelComp> Model::getModelComponent(const size_t ind) const
+{
+    return std::dynamic_pointer_cast<ModelComp>(m_comps[ind]);
+}
+
+const bool Model::isWord() const
+{
+    return false;
+}
+const bool Model::isModel() const
+{
+    return true;
+}
+const std::optional<bool> Model::isHead() const
+{
+    return std::nullopt;
+}
+
 void Model::printWords() const
 {
     for (const auto& comps : this->getComponents()) {
@@ -80,4 +122,24 @@ size_t Model::size() const
 void Model::addComponent(const std::shared_ptr<Component>& component)
 {
     m_comps.push_back(component);
+}
+
+ModelComp::ModelComp(const std::string& form, const Components& comps, const Condition& cond)
+    : Model(form, comps), m_cond(cond)
+{
+}
+
+const Condition ModelComp::getCondition() const
+{
+    return m_cond;
+}
+
+const std::optional<bool> ModelComp::isHead() const
+{
+    auto role = m_cond.getSyntaxRole();
+    if (role == SyntaxRole::Head)
+        return true;
+    if (role == SyntaxRole::Dependent || role == SyntaxRole::Independent)
+        return false;
+    return std::nullopt;
 }

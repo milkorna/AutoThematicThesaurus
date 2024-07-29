@@ -1,4 +1,4 @@
-#include <GrammarComponent.h>
+#include <Component.h>
 #include <GrammarPatternManager.h>
 #include <Logger.h>
 
