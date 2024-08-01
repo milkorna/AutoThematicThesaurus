@@ -1,3 +1,4 @@
+#include <GrammarPatternManager.h>
 #include <PhrasesCollectorUtils.h>
 
 using namespace X;
@@ -24,6 +25,16 @@ namespace PhrasesCollectorUtils {
 
         return token->getWordForm().length() == 1 && token->getMorphInfo().size() == 1 &&
                isDesiredPOS(token->getMorphInfo().begin()->sp);
+    }
+
+    bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo)
+    {
+        for (const auto& morphForm : currFormMorphInfo) {
+            const auto& spSet = GrammarPatternManager::GetManager()->getUsedSp();
+            if (spSet.find(morphForm.sp.toString()) != spSet.end())
+                return true;
+        }
+        return false;
     }
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)

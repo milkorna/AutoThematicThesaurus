@@ -49,7 +49,7 @@ private:
     bool ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const PHUtils::WordComplexPtr& wc,
                     std::shared_ptr<ModelComp> modelComp);
 
-    bool CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms, const Condition& baseCond,
+    bool CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms, const Condition& cond,
                                 PHUtils::CurrentPhraseStatus& curPhrStatus);
 
     bool CheckWordComponents(const PHUtils::WordComplexPtr& curSimplePhr,
