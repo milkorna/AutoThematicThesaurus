@@ -5,32 +5,33 @@
 
 #include <mutex>
 
+using namespace PhrasesCollectorUtils;
+
 class PatternPhrasesStorage {
+
+    struct WordComplexCluster {
+        size_t phraseSize;
+        double m_weight;
+        std::string key; // string with normalized words
+        std::string modelName;
+        std::vector<WordComplexPtr> wordComplexes; // maybe set
+    };
+
 public:
     static PatternPhrasesStorage& GetStorage()
     {
-        static PatternPhrasesStorage starage;
-        return starage;
+        static PatternPhrasesStorage storage;
+        return storage;
     }
 
-    void Collect(const std::vector<WordFormPtr>& forms, Process& process)
-    {
-        SimplePhrasesCollector::GetCollector().Collect(forms, process);
-        ComplexPhrasesCollector::GetCollector().Collect(forms, process);
+    void Collect(const std::vector<WordFormPtr>& forms, Process& process);
 
-        SimplePhrasesCollector::GetCollector().Clear();
-        ComplexPhrasesCollector::GetCollector().Clear();
-    }
+    void AddPhrase(const std::string& phrase);
 
-    void addPhrase(const std::string& phrase)
-    {
-        phrases.push_back(phrase);
-    }
+    const std::vector<std::string>& GetPhrases() const;
 
-    const std::vector<std::string>& getPhrases() const
-    {
-        return phrases;
-    }
+    void AddWordComplex(const WordComplexPtr& wc);
+    void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
 private:
     PatternPhrasesStorage()
@@ -43,6 +44,8 @@ private:
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
 
     std::vector<std::string> phrases;
+    std::unordered_map<std::string, WordComplexCluster> clusters;
+    std::mutex mutex_;
 };
 
 #endif // PATTERN_PHRASES_STORAGE_H

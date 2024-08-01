@@ -1,3 +1,4 @@
+#include <PatternPhrasesStorage.h>
 #include <SimplePhrasesCollector.h>
 #include <utility>
 
@@ -74,13 +75,8 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
     const auto& collection = SimplePhrasesCollector::GetCollector();
     const auto& simplePatterns = manager.getSimplePatterns();
 
-    WordComplexAgregate wcAgregate;
-
     m_sentence = forms;
 
-    // std::string agregateForm;
-
-    // WordComplexCollection collectedBases;
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
 
@@ -106,10 +102,8 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
             if (headPos != model->size() - 1 && CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
                 break;
             }
-
-            // add to collection with base.second.form key
         }
     }
-
+    PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
     OutputResults(m_collection, process);
 }

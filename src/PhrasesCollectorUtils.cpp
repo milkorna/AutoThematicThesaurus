@@ -4,6 +4,17 @@ using namespace X;
 
 namespace PhrasesCollectorUtils {
 
+    MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet)
+    {
+        auto maxElement = *morphSet.begin();
+        for (const auto& elem : morphSet) {
+            if (elem.probability > maxElement.probability) {
+                maxElement = elem;
+            }
+        }
+        return maxElement;
+    }
+
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
     {
         Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Info, curSimplePhr->textForm + " || " + curSimplePhr->modelName);

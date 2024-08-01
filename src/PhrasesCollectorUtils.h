@@ -15,6 +15,8 @@
 
 namespace PhrasesCollectorUtils {
 
+    MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet);
+
     struct Position {
         size_t start;
         size_t end;
@@ -27,19 +29,37 @@ namespace PhrasesCollectorUtils {
         std::string textForm = "";
         Position pos;
         std::string modelName;
-    };
 
-    struct WordComplexAgregate {
-        size_t size;
-        std::vector<WordComplex> wordComplexes; // maybe set
-        std::string form;
-        Components comps;
-        double m_weight;
-    };
+        bool operator==(const WordComplex& other) const
+        {
+            if (modelName != other.modelName) {
+                return false;
+            }
 
-    using WordComplexAgregates = std::unordered_map<std::string, WordComplexAgregate>;
-    // string -- seq of word in normalized form
-    using WordComplexCollection = std::vector<WordComplexAgregates>;
+            if (words.size() != other.words.size()) {
+                return false;
+            }
+
+            for (size_t i = 0; i < words.size(); ++i) {
+
+                if (GetMostProbableMorphInfo(words[i]->getMorphInfo()).normalForm !=
+                    GetMostProbableMorphInfo(other.words[i]->getMorphInfo()).normalForm) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        std::string GetKey()
+        {
+            std::string key;
+            for (const auto& w : words) {
+                key.append(GetMostProbableMorphInfo(w->getMorphInfo()).normalForm.getRawString());
+            }
+            return key;
+        }
+    };
 
     using WordComplexPtr = std::shared_ptr<WordComplex>;
 

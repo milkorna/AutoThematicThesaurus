@@ -1,4 +1,5 @@
 #include <ComplexPhrasesCollector.h>
+#include <PatternPhrasesStorage.h>
 
 using namespace PhrasesCollectorUtils;
 
@@ -257,5 +258,6 @@ void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Pro
         }
     }
 
+    PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
     OutputResults(m_collection, process);
 }
