@@ -22,6 +22,8 @@
 #include <chrono>
 #include <filesystem>
 
+namespace fs = std::filesystem;
+
 void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
 {
     forms.erase(std::remove_if(forms.begin(), forms.end(),
@@ -65,8 +67,8 @@ void processText(const std::string& inputFile, const std::string& outputFile)
         redirector.restore();
 
         Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
-        Logger::log("TokenAnalysis", LogLevel::Info, "Token count: " + std::to_string(tokens.size()));
-        Logger::log("FormAnalysis", LogLevel::Info, "Form count: " + std::to_string(forms.size()));
+        Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
+        Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
         PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
@@ -80,14 +82,16 @@ int main()
     Logger::enableLogging(true);
     Logger::setGlobalLogLevel(LogLevel::Info);
 
-    Logger::log("main", LogLevel::Info, "Current path is " + std::string(std::filesystem::current_path()));
+    fs::path repoPath = fs::current_path();
+    fs::path inputDir = repoPath / "my_data/texts";
+    fs::path outputDir = repoPath / "res";
 
-    const auto& manager = GrammarPatternManager::GetManager();
+    fs::create_directories(outputDir);
 
     try {
         std::string filePath = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/patterns.txt";
-        manager->readPatterns(filePath);
-        manager->printPatterns();
+        GrammarPatternManager::GetManager()->readPatterns(filePath);
+        // GrammarPatternManager::GetManager()->printPatterns();
     } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
@@ -96,20 +100,27 @@ int main()
         return EXIT_FAILURE;
     }
 
-    std::string inputFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt";
-    std::string outputFile = "/home/milkorna/Documents/AutoThematicThesaurus/res/res_art325014_text.txt";
-
     try {
-        auto start = std::chrono::high_resolution_clock::now();
-        processText(inputFile, outputFile);
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> duration = end - start;
+        for (const auto& entry : fs::directory_iterator(inputDir)) {
+            if (entry.is_regular_file()) {
+                std::string inputFile = entry.path().string();
+                std::string filename = entry.path().filename().string();
 
-        Logger::log("main", LogLevel::Info, "processText() took " + std::to_string(duration.count()) + " seconds.");
+                if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
+                    std::string outputFile = (outputDir / ("res_" + filename)).string();
 
-        // 4.532991 with continue for 1 text
-        // 4.608362 without
+                    auto start = std::chrono::high_resolution_clock::now();
+                    processText(inputFile, outputFile);
+                    auto end = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> duration = end - start;
+
+                    Logger::log("main", LogLevel::Info,
+                                "processText() for " + filename + " took " + std::to_string(duration.count()) +
+                                    " seconds.");
+                }
+            }
+        }
     } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;

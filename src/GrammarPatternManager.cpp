@@ -54,7 +54,7 @@ void GrammarPatternManager::printPatterns() const
 void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead)
 {
     if (const auto& res = isHead ? usedHeadSpVars.insert(sp) : usedSpVars.insert(sp); res.second)
-        Logger::log("GrammarPatternManager", LogLevel::Info, "Addded new part of speach: " + sp);
+        Logger::log("GrammarPatternManager", LogLevel::Debug, "Addded new part of speach: " + sp);
 }
 
 std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const
