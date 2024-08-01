@@ -98,6 +98,10 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
     // Check if the component is a WordComp
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
+
+        if (MorphAnanlysisError(m_sentence[formIndex]))
+            return false;
+
         std::string formFromText = m_sentence[formIndex]->getWordForm().getRawString();
         Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 

@@ -34,6 +34,9 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
 
+    if (MorphAnanlysisError(token))
+        return false;
+
     std::string formFromText = token->getWordForm().getRawString();
     Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 

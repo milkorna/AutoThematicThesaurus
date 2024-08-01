@@ -15,6 +15,17 @@ namespace PhrasesCollectorUtils {
         return maxElement;
     }
 
+    bool MorphAnanlysisError(const WordFormPtr& token)
+    {
+        auto isDesiredPOS = [](const UniSPTag& tag) -> bool {
+            static const std::unordered_set<std::string> desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};
+            return desiredPOS.find(tag.toString()) != desiredPOS.end();
+        };
+
+        return token->getWordForm().length() == 1 && token->getMorphInfo().size() == 1 &&
+               isDesiredPOS(token->getMorphInfo().begin()->sp);
+    }
+
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
     {
         Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Debug,
