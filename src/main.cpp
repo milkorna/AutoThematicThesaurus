@@ -16,6 +16,7 @@
 
 #include <Component.h>
 #include <Logger.h>
+#include <OutputRedirector.h>
 #include <PatternPhrasesStorage.h>
 
 #include <chrono>
@@ -30,6 +31,7 @@ void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
 
 void processText(const std::string& inputFile, const std::string& outputFile)
 {
+    OutputRedirector redir("log.txt");
     Process process(inputFile, outputFile);
 
     Tokenizer tok;
@@ -38,6 +40,7 @@ void processText(const std::string& inputFile, const std::string& outputFile)
     Processor analyzer;
     SingleWordDisambiguate disamb;
     TFJoinedModel joiner;
+    redir.restore();
 
     do {
         std::string sentence;
@@ -49,6 +52,8 @@ void processText(const std::string& inputFile, const std::string& outputFile)
         std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
         std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
+        OutputRedirector redirector("log.txt");
+
         removeSeparatorTokens(forms);
         disamb.disambiguate(forms);
         joiner.disambiguateAndMorphemicSplit(forms);
@@ -57,26 +62,25 @@ void processText(const std::string& inputFile, const std::string& outputFile)
             morphemic_splitter.split(form);
         }
 
-        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
-        Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
-        Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
+        redirector.restore();
+
+        Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
+        Logger::log("TokenAnalysis", LogLevel::Info, "Token count: " + std::to_string(tokens.size()));
+        Logger::log("FormAnalysis", LogLevel::Info, "Form count: " + std::to_string(forms.size()));
 
         PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
         process.m_output.flush();
         process.m_sentNum++;
-
     } while (!ssplitter.eof());
 }
 
 int main()
 {
     Logger::enableLogging(true);
-    Logger::setGlobalLogLevel(LogLevel::Debug); // Setting the global logging level
-    // Logger::setModuleLogLevel("MyClass", LogLevel::Debug); // Setting the logging level for a specific module
+    Logger::setGlobalLogLevel(LogLevel::Info);
 
-    // auto &dictionary = TermDictionary::getInstance();
-    Logger::log("main", LogLevel::Debug, "Current path is " + std::string(std::filesystem::current_path()));
+    Logger::log("main", LogLevel::Info, "Current path is " + std::string(std::filesystem::current_path()));
 
     const auto& manager = GrammarPatternManager::GetManager();
 

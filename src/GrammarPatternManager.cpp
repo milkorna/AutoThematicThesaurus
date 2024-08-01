@@ -46,9 +46,8 @@ void GrammarPatternManager::printPatterns() const
     Logger::log("GrammarPatternManager", LogLevel::Info, "printPatterns: " + patterns.size());
 
     for (const auto& [key, model] : patterns) {
-        std::cout << "model form: " << model->getForm() << ", comps: " << std::endl;
+        Logger::log("model form", LogLevel::Info, model->getForm());
         model->printWords();
-        std::cout << std::endl;
     }
 }
 

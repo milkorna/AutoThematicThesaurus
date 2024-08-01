@@ -17,12 +17,13 @@ namespace PhrasesCollectorUtils {
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
     {
-        Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Info, curSimplePhr->textForm + " || " + curSimplePhr->modelName);
+        Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Debug,
+                    curSimplePhr->textForm + " || " + curSimplePhr->modelName);
     }
 
     void LogCurrentComplexModel(const std::string& name)
     {
-        Logger::log("CURRENT COMPLEX MODEL", LogLevel::Info, name);
+        Logger::log("CURRENT COMPLEX MODEL", LogLevel::Debug, name);
     }
 
     void UpdateWordComplex(const WordComplexPtr& wc, const WordFormPtr& form, const std::string& formFromText,

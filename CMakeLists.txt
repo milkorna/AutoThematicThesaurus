@@ -20,29 +20,30 @@ if(POLICY CMP0127)
 endif()
 
 set(SOURCE_FILES
-src/GrammarCondition.cpp
-src/GrammarPatternManager.cpp
 src/ComplexPhrasesCollector.cpp
-src/PatternParser.cpp
-src/PatternPhrasesStorage.cpp
-src/SimplePhrasesCollector.cpp
-src/Logger.cpp
-src/PhrasesCollectorUtils.cpp
-src/ModelComponent.cpp
-src/WordComponent.cpp
-
-src/Component.h
-src/GrammarCondition.h
-src/GrammarPatternManager.h
 src/ComplexPhrasesCollector.h
-src/PatternParser.h
-src/PatternPhrasesStorage.h
-src/SimplePhrasesCollector.h
+src/Component.h
+src/GrammarCondition.cpp
+src/GrammarCondition.h
+src/GrammarPatternManager.cpp
+src/GrammarPatternManager.h
+src/Logger.cpp
 src/Logger.h
-src/PhrasesCollectorUtils.h
+src/ModelComponent.cpp
 src/ModelComponent.h
+src/OutputRedirector.h
+src/PatternParser.cpp
+src/PatternParser.h
+src/PatternPhrasesStorage.cpp
+src/PatternPhrasesStorage.h
+src/PhrasesCollectorUtils.cpp
+src/PhrasesCollectorUtils.h
+src/SimplePhrasesCollector.cpp
+src/SimplePhrasesCollector.h
+src/WordComponent.cpp
 src/WordComponent.h
 )
+
 
 
 include_directories(src)
