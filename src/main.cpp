@@ -66,7 +66,7 @@ void processText(const std::string& inputFile, const std::string& outputFile)
 
         redirector.restore();
 
-        Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
+        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
         Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
         Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
@@ -101,19 +101,27 @@ int main()
     }
 
     try {
-
+        int counter = 0;
+        auto start = std::chrono::high_resolution_clock::now();
         for (const auto& entry : fs::directory_iterator(inputDir)) {
-            if (entry.is_regular_file()) {
-                std::string inputFile = entry.path().string();
-                std::string filename = entry.path().filename().string();
+            std::string inputFile = entry.path().string();
+            std::string filename = entry.path().filename().string();
 
+            if (entry.is_regular_file()) {
                 if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
+                    if (counter == 10)
+                        break;
+                    else
+                        ++counter;
+
+                    std::cout << counter << std::endl;
+                    std::cout << inputFile << std::endl;
                     std::string outputFile = (outputDir / ("res_" + filename)).string();
 
-                    auto start = std::chrono::high_resolution_clock::now();
+                    auto startProcessText = std::chrono::high_resolution_clock::now();
                     processText(inputFile, outputFile);
-                    auto end = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> duration = end - start;
+                    auto endProccesText = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> duration = endProccesText - startProcessText;
 
                     Logger::log("main", LogLevel::Info,
                                 "processText() for " + filename + " took " + std::to_string(duration.count()) +
@@ -121,6 +129,13 @@ int main()
                 }
             }
         }
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+
+        Logger::log("main", LogLevel::Info,
+                    "Processing " + std::to_string(counter) + " took " + std::to_string(duration.count()) +
+                        " seconds.");
+
     } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
