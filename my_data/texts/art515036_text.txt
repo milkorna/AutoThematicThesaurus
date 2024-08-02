@@ -9,38 +9,38 @@
 в каждой статье написано, что они превзошли предшественников, но сравнения проводились на разных датасетах и нет возможности сделать рейтинг.
 Поэтому ниже обзорно — сравнительный анализ 7 разных методов векторизации предложений на одном датасете.
 Содержание.
-Подготовка Функция оценки..
+Подготовка Функция оценки.
 Методы BOW.
 1.1. простой BOW.
 1.2. BOW c леммами слов.
-1.3. BOW с леммами и очисткой стопслов
-1.4. LDA..
+1.3. BOW с леммами и очисткой стопслов.
+1.4. LDA.
 Методы, использующие эмбединги токенов.
 2.1 Среднее по эмбедингу всех слов.
-2.2 Среднее по эмбедингу с очисткой стоп слов
-2.3 Среднее по эмбедингу с весами tf-idf..
+2.2 Среднее по эмбедингу с очисткой стоп слов.
+2.3 Среднее по эмбедингу с весами tf-idf.
 Languade Models.
-3.1 Language Model on embedings
-3.2 Language Model on index..
+3.1 Language Model on embedings.
+3.2 Language Model on index.
 BERT.
 4.1 rubert_cased_L-12_H-768_A-12_pt.
 4.2 ru_conversational_cased_L-12_H-768_A-12_pt.
 4.3 sentence_ru_cased_L-12_H-768_A-12_pt.
 4.4 elmo_ru-news_wmt11-16_1.5M_steps.
-4.5 elmo_ru-wiki_600k_steps
-4.6 elmo_ru-twitter_2013-01_2018-04_600k_steps..
+4.5 elmo_ru-wiki_600k_steps.
+4.6 elmo_ru-twitter_2013-01_2018-04_600k_steps.
 Автоэнкодеры.
 5.1 Автоэнкодер embedings -> embedings.
 5.2 Автоэнкодер embedings -> indexes.
-5.3 Автоэнкодер архитектура LSTM -> LSTM
-5.4 Автоэнкодер архитектура LSTM -> LSTM -> indexes..
+5.3 Автоэнкодер архитектура LSTM -> LSTM.
+5.4 Автоэнкодер архитектура LSTM -> LSTM -> indexes.
 Эмбединги на Transfer Learning.
 6.1 Эмбединги на BOW.
 6.2 Эмбединг на LSTM + MaxPooling.
-6.3 Эмбединг на LSTM + Conv1D + AveragePooling
-6.4 Эмбединг на LSTM + Inception + Attention..
+6.3 Эмбединг на LSTM + Conv1D + AveragePooling.
+6.4 Эмбединг на LSTM + Inception + Attention.
 Triplet loss.
-7.1 Triplet loss на BOW
+7.1 Triplet loss на BOW.
 7.2 Triplet loss на embedings.
 Подготовка.
 База знаний.

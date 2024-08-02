@@ -22,12 +22,12 @@ OpenAssistent объединяет все знания в одном месте:
 1. Скачать и распаковать файлы из архива. 2. Скачать модель и поместить в ту же директорию. 3. Открыть терминал (cmd.exe) и запустить с помощью команды: main.exe -m D:\LLaMA_cpp\qunt4_0.bin -n -1 --ctx_size 2048 --batch_size 16 --keep 512 --repeat_penalty 1.0 -t 32 --temp 0.4 --top_k 30 --top_p 0.18 --interactive-first -ins --color где D:\LLaMA_cpp\qunt4_0.bin  - это путь до скачанной модели.
 Тесты.
 Тесты проводились на модели в 30 млрд:
-На русском языке:.
+На русском языке:
 Справилась! Или был пример в датасете?
 Вроде как да, но вроде и нет?
 Ну такое.
 На английском языке:
-Ошибка!. Верный ответ: Option D. This is an alternating number of subtraction series. First, 1 is subtracted, then 2 is added.
+Ошибка! Верный ответ: Option D. This is an alternating number of subtraction series. First, 1 is subtracted, then 2 is added.
 Правильный ответ: D. Book. Rest are all parts of a book.
 Логично!
 Ну вроде адекватный ответ.
