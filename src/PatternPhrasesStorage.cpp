@@ -14,7 +14,6 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
 
 void PatternPhrasesStorage::AddPhrase(const std::string& phrase)
 {
-    // std::lock_guard<std::mutex> lock(mutex_);
     phrases.push_back(phrase);
 }
 
@@ -26,9 +25,12 @@ const std::vector<std::string>& PatternPhrasesStorage::GetPhrases() const
 void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
 {
     Logger::log("AddWordComplex", LogLevel::Info, wc->GetKey());
-
-    // std::lock_guard<std::mutex> lock(mutex_);
     const std::string& key = wc->GetKey();
+
+    if (clusters.empty() && clusters.size() == 0) {
+        Logger::log("Error", LogLevel::Error, "Clusters is not initialized properly");
+        return;
+    }
 
     auto it = clusters.find(key);
     if (it != clusters.end()) {
@@ -43,19 +45,9 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
 }
 void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection)
 {
-    // Logger::log("AddWordComplexes", LogLevel::Info, "std::lock_guard<std::mutex> lock(mutex_);");
     {
-        // std::lock_guard<std::mutex> lock(mutex_);
-        // Logger::log("AddWordComplexes", LogLevel::Info, "Inside mutex lock");
-
-        // Logger::log("AddWordComplexes", LogLevel::Info, "Collection size: " + std::to_string(collection.size()));
-
-        // Logger::log("AddWordComplexes", LogLevel::Info, "for (const auto& elem : collection)");
         for (const auto& elem : collection) {
-            //  Logger::log("AddWordComplexes", LogLevel::Info, "Processing element in collection");
             AddWordComplex(elem);
-            // Logger::log("AddWordComplexes", LogLevel::Info, "Processed element in collection");
         }
     }
-    //    Logger::log("AddWordComplexes", LogLevel::Info, "Mutex lock released");
 }

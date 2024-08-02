@@ -15,11 +15,6 @@ public:
 
     void Collect(Process& process);
 
-    void Clear()
-    {
-        m_collection.clear();
-    }
-
     ~ComplexPhrasesCollector() = default;
 
 private:

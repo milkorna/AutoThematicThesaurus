@@ -116,12 +116,21 @@ namespace PhrasesCollectorUtils {
         std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
                                                 ',', '-',  '.', '/', ':', ';', '<',  '=', '>', '?', '@',
                                                 '[', '\\', ']', '^', '_', '`', '{',  '|', '}', '~'};
-        const auto str = form->getWordForm().getRawString();
 
-        for (char c : str) {
-            if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
-                return false;
+        try {
+            const auto str = form->getWordForm().getRawString();
+
+            for (char c : str) {
+                if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
+                    return false;
+            }
+            return true;
+        } catch (const std::exception& e) {
+            return false;
+        } catch (...) {
+            return false;
         }
+
         return true;
     }
 
