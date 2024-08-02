@@ -2,16 +2,19 @@
 
 void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
 {
-    SimplePhrasesCollector::GetCollector().Collect(forms, process);
-    ComplexPhrasesCollector::GetCollector().Collect(forms, process);
+    Logger::log("PatternPhrasesStorage", LogLevel::Info, "Entering Collect method.");
 
-    SimplePhrasesCollector::GetCollector().Clear();
-    ComplexPhrasesCollector::GetCollector().Clear();
+    SimplePhrasesCollector simplePhrasesCollector(forms);
+    simplePhrasesCollector.Collect(process);
+    ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.GetCollection(), forms);
+    complexPhrasesCollector.Collect(process);
+
+    Logger::log("PatternPhrasesStorage", LogLevel::Info, "Leaving Collect method.");
 }
 
 void PatternPhrasesStorage::AddPhrase(const std::string& phrase)
 {
-    std::lock_guard<std::mutex> lock(mutex_);
+    // std::lock_guard<std::mutex> lock(mutex_);
     phrases.push_back(phrase);
 }
 
@@ -22,7 +25,9 @@ const std::vector<std::string>& PatternPhrasesStorage::GetPhrases() const
 
 void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
 {
-    std::lock_guard<std::mutex> lock(mutex_);
+    Logger::log("AddWordComplex", LogLevel::Info, wc->GetKey());
+
+    // std::lock_guard<std::mutex> lock(mutex_);
     const std::string& key = wc->GetKey();
 
     auto it = clusters.find(key);
@@ -38,7 +43,19 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
 }
 void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection)
 {
-    for (const auto& elem : collection) {
-        AddWordComplex(elem);
+    // Logger::log("AddWordComplexes", LogLevel::Info, "std::lock_guard<std::mutex> lock(mutex_);");
+    {
+        // std::lock_guard<std::mutex> lock(mutex_);
+        // Logger::log("AddWordComplexes", LogLevel::Info, "Inside mutex lock");
+
+        // Logger::log("AddWordComplexes", LogLevel::Info, "Collection size: " + std::to_string(collection.size()));
+
+        // Logger::log("AddWordComplexes", LogLevel::Info, "for (const auto& elem : collection)");
+        for (const auto& elem : collection) {
+            //  Logger::log("AddWordComplexes", LogLevel::Info, "Processing element in collection");
+            AddWordComplex(elem);
+            // Logger::log("AddWordComplexes", LogLevel::Info, "Processed element in collection");
+        }
     }
+    //    Logger::log("AddWordComplexes", LogLevel::Info, "Mutex lock released");
 }

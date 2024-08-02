@@ -3,7 +3,10 @@
 
 #include <ComplexPhrasesCollector.h>
 
+#include <condition_variable>
 #include <mutex>
+
+#include <ThreadController.h>
 
 using namespace PhrasesCollectorUtils;
 
@@ -33,6 +36,8 @@ public:
     void AddWordComplex(const WordComplexPtr& wc);
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
+    ThreadController::ThreadController threadController;
+
 private:
     PatternPhrasesStorage()
     {
@@ -45,7 +50,8 @@ private:
 
     std::vector<std::string> phrases;
     std::unordered_map<std::string, WordComplexCluster> clusters;
-    std::mutex mutex_;
+    // std::mutex mutex_;
+    // std::condition_variable cv_;
 };
 
 #endif // PATTERN_PHRASES_STORAGE_H

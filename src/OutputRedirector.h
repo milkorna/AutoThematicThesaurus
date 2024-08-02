@@ -4,6 +4,7 @@
 
 class OutputRedirector {
 public:
+    static std::mutex mutex_;
     OutputRedirector(const std::string& log_file)
     {
         log_fd = open(log_file.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
@@ -39,3 +40,5 @@ private:
     int saved_stderr;
     int log_fd = -1;
 };
+
+std::mutex OutputRedirector::mutex_;

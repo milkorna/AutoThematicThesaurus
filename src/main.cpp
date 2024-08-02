@@ -31,18 +31,32 @@ void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
                 forms.end());
 }
 
-void processText(const std::string& inputFile, const std::string& outputFile)
+void processTextFile(const fs::path& inputFile, const fs::path& outputDir, int& counter, std::mutex& counterMutex)
 {
-    OutputRedirector redir("log.txt");
-    Process process(inputFile, outputFile);
+    std::ostringstream oss;
+    oss << std::this_thread::get_id();
+    std::string thread_id = oss.str();
+    Logger::log("processTextFile", LogLevel::Info,
+                "Thread " + thread_id + " starting file processing: " + inputFile.string());
 
+    std::string filename = inputFile.filename().string();
+    {
+        std::lock_guard<std::mutex> lock(counterMutex);
+        ++counter;
+        std::cout << counter << std::endl;
+    }
+    std::string outputFile = (outputDir / ("res_" + filename)).string();
+    auto startProcessText = std::chrono::high_resolution_clock::now();
+
+    // std::lock_guard<std::mutex> lock(OutputRedirector::mutex_);
+    // OutputRedirector redirector("log.txt");
     Tokenizer tok;
     TFMorphemicSplitter morphemic_splitter;
+    Process process(inputFile, outputFile);
     SentenceSplitter ssplitter(process.m_input);
     Processor analyzer;
     SingleWordDisambiguate disamb;
     TFJoinedModel joiner;
-    redir.restore();
 
     do {
         std::string sentence;
@@ -54,8 +68,6 @@ void processText(const std::string& inputFile, const std::string& outputFile)
         std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
         std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
-        OutputRedirector redirector("log.txt");
-
         removeSeparatorTokens(forms);
         disamb.disambiguate(forms);
         joiner.disambiguateAndMorphemicSplit(forms);
@@ -64,9 +76,9 @@ void processText(const std::string& inputFile, const std::string& outputFile)
             morphemic_splitter.split(form);
         }
 
-        redirector.restore();
+        // redirector.restore();
 
-        Logger::log("SentenceReading", LogLevel::Debug, "Read sentence: " + sentence);
+        Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
         Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
         Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
 
@@ -75,6 +87,11 @@ void processText(const std::string& inputFile, const std::string& outputFile)
         process.m_output.flush();
         process.m_sentNum++;
     } while (!ssplitter.eof());
+
+    auto endProccesText = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = endProccesText - startProcessText;
+    Logger::log("main", LogLevel::Info,
+                "processText() for " + filename + " took " + std::to_string(duration.count()) + " seconds.");
 }
 
 int main()
@@ -101,32 +118,33 @@ int main()
     }
 
     try {
-        int counter = 0;
+
         auto start = std::chrono::high_resolution_clock::now();
+
+        std::vector<fs::path> files_to_process;
         for (const auto& entry : fs::directory_iterator(inputDir)) {
-            std::string inputFile = entry.path().string();
-            std::string filename = entry.path().filename().string();
-
             if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
                 if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
-                    if (counter == 10)
-                        break;
-                    else
-                        ++counter;
-
-                    std::cout << counter << std::endl;
-                    std::cout << inputFile << std::endl;
-                    std::string outputFile = (outputDir / ("res_" + filename)).string();
-
-                    auto startProcessText = std::chrono::high_resolution_clock::now();
-                    processText(inputFile, outputFile);
-                    auto endProccesText = std::chrono::high_resolution_clock::now();
-                    std::chrono::duration<double> duration = endProccesText - startProcessText;
-
-                    Logger::log("main", LogLevel::Info,
-                                "processText() for " + filename + " took " + std::to_string(duration.count()) +
-                                    " seconds.");
+                    files_to_process.push_back(entry.path());
                 }
+            }
+        }
+
+        unsigned int numThreads = std::thread::hardware_concurrency();
+        Logger::log("main", LogLevel::Info, "Amount of threads: " + std::to_string(numThreads));
+
+        std::vector<std::thread> threads;
+        int counter = 0;
+        std::mutex counterMutex;
+
+        for (unsigned int i = 0; i < files_to_process.size() && i < 2; ++i) {
+            threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter, counterMutex); });
+        }
+
+        for (auto& thread : threads) {
+            if (thread.joinable()) {
+                thread.join();
             }
         }
         auto end = std::chrono::high_resolution_clock::now();

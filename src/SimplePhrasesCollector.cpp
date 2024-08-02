@@ -1,5 +1,6 @@
 #include <PatternPhrasesStorage.h>
 #include <SimplePhrasesCollector.h>
+
 #include <utility>
 
 using namespace PhrasesCollectorUtils;
@@ -69,17 +70,16 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     return false;
 }
 
-void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
+void SimplePhrasesCollector::Collect(Process& process)
 {
-    Logger::log("Collect", LogLevel::Debug, "Starting simple models collection process.");
-    const auto& collection = SimplePhrasesCollector::GetCollector();
-    const auto& simplePatterns = manager.getSimplePatterns();
+    Logger::log("Collect", LogLevel::Info, "Starting simple models collection process.");
 
-    m_sentence = forms;
+    Logger::log("Collect", LogLevel::Info, "Got a collector");
+    const auto& simplePatterns = manager.getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
-
+        Logger::log("Collect", LogLevel::Info, "tokenInd = " + std::to_string(tokenInd));
         if (!HaveSp(token->getMorphInfo()))
             continue;
 
@@ -107,6 +107,11 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
             }
         }
     }
+    Logger::log("Collect", LogLevel::Info, "Stop itteration");
+
+    PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
     PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
+    PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
+
     OutputResults(m_collection, process);
 }

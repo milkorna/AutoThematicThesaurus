@@ -242,10 +242,8 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
     return false;
 }
 
-void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
+void ComplexPhrasesCollector::Collect(Process& process)
 {
-    m_sentence = forms;
-
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 
@@ -261,7 +259,8 @@ void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Pro
                 break;
         }
     }
-
+    PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
     PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
+    PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
     OutputResults(m_collection, process);
 }

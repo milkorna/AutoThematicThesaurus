@@ -42,6 +42,8 @@ src/SimplePhrasesCollector.cpp
 src/SimplePhrasesCollector.h
 src/WordComponent.cpp
 src/WordComponent.h
+
+src/ThreadController.h
 )
 
 

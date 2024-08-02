@@ -6,37 +6,27 @@
 
 class ComplexPhrasesCollector {
 public:
-    static ComplexPhrasesCollector& GetCollector()
+    explicit ComplexPhrasesCollector(const std::vector<PHUtils::WordComplexPtr>& simplePhrases,
+                                     const std::vector<WordFormPtr>& forms)
+        : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{},
+          manager(*GrammarPatternManager::GetManager())
     {
-        static ComplexPhrasesCollector collector;
-        return collector;
     }
 
-    void Collect(const std::vector<WordFormPtr>& forms, Process& process);
+    void Collect(Process& process);
 
     void Clear()
     {
         m_collection.clear();
     }
 
+    ~ComplexPhrasesCollector() = default;
+
 private:
+    const std::vector<PHUtils::WordComplexPtr> m_simplePhrases;
     std::vector<PHUtils::WordComplexPtr> m_collection;
     std::vector<WordFormPtr> m_sentence;
     const GrammarPatternManager& manager;
-    const std::vector<PHUtils::WordComplexPtr>& m_simplePhrases;
-
-    ComplexPhrasesCollector()
-        : manager(*GrammarPatternManager::GetManager()),
-          m_simplePhrases(SimplePhrasesCollector::GetCollector().GetCollection())
-    {
-    }
-
-    ~ComplexPhrasesCollector()
-    {
-    }
-
-    ComplexPhrasesCollector(const ComplexPhrasesCollector&) = delete;
-    ComplexPhrasesCollector& operator=(const ComplexPhrasesCollector&) = delete;
 
     bool CheckCurrentSimplePhrase(const PHUtils::WordComplexPtr& curSimplePhr,
                                   const std::shared_ptr<ModelComp>& curModelComp,
