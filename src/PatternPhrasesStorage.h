@@ -15,6 +15,7 @@ class PatternPhrasesStorage {
     struct WordComplexCluster {
         size_t phraseSize;
         double m_weight;
+        bool topicMatch;
         std::string key; // string with normalized words
         std::string modelName;
         std::vector<WordComplexPtr> wordComplexes; // maybe set
@@ -50,8 +51,6 @@ private:
 
     std::vector<std::string> phrases;
     std::unordered_map<std::string, WordComplexCluster> clusters;
-    // std::mutex mutex_;
-    // std::condition_variable cv_;
 };
 
 #endif // PATTERN_PHRASES_STORAGE_H

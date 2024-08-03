@@ -1,6 +1,11 @@
 #include <GrammarPatternManager.h>
 #include <PhrasesCollectorUtils.h>
 
+#include <cctype>
+#include <unicode/locid.h>
+#include <unicode/unistr.h>
+#include <unicode/ustream.h>
+
 using namespace X;
 
 namespace PhrasesCollectorUtils {
@@ -35,6 +40,55 @@ namespace PhrasesCollectorUtils {
                 return true;
         }
         return false;
+    }
+
+    const std::unordered_set<std::string> GetTopics()
+    {
+        static std::unordered_set<std::string> topics;
+        static bool initialized = false;
+
+        if (initialized) {
+            return topics;
+        }
+
+        fs::path repoPath = fs::current_path();
+        fs::path inputPath = repoPath / "my_data/tags_and_hubs_line_counts.txt";
+
+        std::ifstream file(inputPath);
+        if (!file.is_open()) {
+            throw std::runtime_error("Could not open file " + inputPath.string());
+        }
+
+        std::string line;
+        while (std::getline(file, line)) {
+
+            // Check if the line contains "Блог компании"
+            if (line.find("Блог компании") != std::string::npos) {
+                continue;
+            }
+
+            // Remove trailing digits
+            line.erase(
+                std::find_if(line.rbegin(), line.rend(), [](unsigned char ch) { return !std::isdigit(ch); }).base(),
+                line.end());
+
+            // Remove trailing spaces
+            line.erase(
+                std::find_if(line.rbegin(), line.rend(), [](unsigned char ch) { return !std::isspace(ch); }).base(),
+                line.end());
+
+            // Convert to lowercase using ICU
+            icu::UnicodeString ustr(line.c_str(), "UTF-8");
+            ustr.toLower(icu::Locale("ru_RU"));
+            std::string lowerLine;
+            ustr.toUTF8String(lowerLine);
+
+            if (lowerLine.size() > 3)
+                topics.insert(lowerLine);
+        }
+
+        initialized = true;
+        return topics;
     }
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)

@@ -12,12 +12,14 @@
 #include <set>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
 namespace PhrasesCollectorUtils {
 
     MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet);
     bool MorphAnanlysisError(const WordFormPtr& token);
     bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
+    const std::unordered_set<std::string> GetTopics();
 
     struct Position {
         size_t start;

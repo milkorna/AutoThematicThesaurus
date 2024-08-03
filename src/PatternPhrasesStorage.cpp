@@ -39,15 +39,14 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
             cluster.wordComplexes.push_back(wc);
         }
     } else {
-        WordComplexCluster newCluster = {wc->words.size(), 1.0, key, wc->modelName, {wc}};
+        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, {wc}};
         clusters[key] = newCluster;
     }
 }
 void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection)
 {
-    {
-        for (const auto& elem : collection) {
-            AddWordComplex(elem);
-        }
+
+    for (const auto& elem : collection) {
+        AddWordComplex(elem);
     }
 }
