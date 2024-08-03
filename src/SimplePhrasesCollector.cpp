@@ -45,8 +45,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
         Logger::log("CheckAside", LogLevel::Debug, "check failed.");
         return false;
     }
-    // also need to update found themes and lex
-
     UpdateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;

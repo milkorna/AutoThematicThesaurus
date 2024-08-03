@@ -16,9 +16,6 @@ bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<Mo
             if (cond.getAdditional().exLexCheck(morphForm)) {
                 curPhrStatus.foundLex = true;
             }
-            if (cond.getAdditional().themesCheck()) {
-                curPhrStatus.foundTheme = true;
-            }
             return true;
         }
     }
@@ -170,14 +167,13 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
             const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 
-            if (!curPhrStatus.foundLex || !curPhrStatus.foundTheme) {
+            if (!curPhrStatus.foundLex) {
                 for (size_t offset = 0; offset < curSimplePhr->words.size(); offset++) {
                     for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
                         if (!modelComp->getCondition().getAdditional().check(morphForm)) {
                             return false;
                         } else {
                             curPhrStatus.foundLex = true;
-                            curPhrStatus.foundTheme = true;
                         }
                     }
                 }
@@ -204,8 +200,8 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
                     break;
             }
 
-            if (curPhrStatus.foundLex && curPhrStatus.foundTheme && curPhrStatus.headIsChecked &&
-                curPhrStatus.headIsMatched && compIndex == model->size() - 1 && curPhrStatus.correct >= model->size()) {
+            if (curPhrStatus.foundLex && curPhrStatus.headIsChecked && curPhrStatus.headIsMatched &&
+                compIndex == model->size() - 1 && curPhrStatus.correct >= model->size()) {
                 if (m_collection.empty() || wc->textForm != m_collection.back()->textForm) {
                     m_collection.push_back(std::make_shared<WordComplex>(*wc));
                 }
@@ -259,6 +255,7 @@ void ComplexPhrasesCollector::Collect(Process& process)
                 break;
         }
     }
+
     PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
     PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
     PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();

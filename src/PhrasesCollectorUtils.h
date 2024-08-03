@@ -70,7 +70,6 @@ namespace PhrasesCollectorUtils {
         bool headIsMatched = false;
         bool headIsChecked = false;
         bool foundLex = false;
-        bool foundTheme = false;
     };
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr);

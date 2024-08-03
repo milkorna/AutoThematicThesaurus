@@ -21,18 +21,14 @@ enum class SyntaxRole {
 
 // Struct to manage additional grammatical conditions.
 struct Additional {
-    bool m_rec = false;                     // Flag for recursion, if needed.
-    std::string m_exLex = "";               // Example lexicon (specific words to match).
-    std::vector<std::string> m_themes = {}; // Themes associated with this condition.
+    bool m_rec = false;       // Flag for recursion, if needed.
+    std::string m_exLex = ""; // Example lexicon (specific words to match).
 
     // Checks if the Additional instance has no data.
     bool empty() const;
 
     // Checks if a specific word form matches the example lexicon.
     bool exLexCheck(const X::MorphInfo& morphForm) const;
-
-    // Placeholder for logic to compare themes.
-    bool themesCheck() const;
 
     bool check(const X::MorphInfo& morphForm) const;
 };

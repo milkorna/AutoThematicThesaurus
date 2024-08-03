@@ -176,7 +176,6 @@ Additional Parser::ParseTags(const std::string& line)
     try {
         bool isRec = false;
         std::string exlexWord = "";
-        std::vector<std::string> themes;
 
         if (line.find("rec") != std::string::npos) {
             isRec = true;
@@ -191,21 +190,7 @@ Additional Parser::ParseTags(const std::string& line)
             }
         }
 
-        auto themesStart = line.find("themes:\"");
-        if (themesStart != std::string::npos) {
-            auto start = themesStart + 8;
-            auto end = line.find("\"", start);
-            if (end != std::string::npos) {
-                std::string themesStr = line.substr(start, end - start);
-                std::istringstream themesStream(themesStr);
-                std::string theme;
-                while (std::getline(themesStream, theme, ',')) {
-                    themes.push_back(theme);
-                }
-            }
-        }
-
-        return Additional{isRec, exlexWord, themes};
+        return Additional{isRec, exlexWord};
     } catch (const std::exception& e) {
         Logger::log("PatternParser", LogLevel::Error, "Error in ParseTags: " + std::string(e.what()));
 
@@ -346,7 +331,6 @@ void Parser::Parse()
                     std::string("\nNumber of complex patterns: ") + std::to_string(manager->complexPatternsAmount()));
         }
     } catch (const std::exception& e) {
-        // Handle parsing exceptions and log them
         Logger::log("PatternParser", LogLevel::Error, "Parsing failed: " + std::string(e.what()));
         throw; // Rethrow exception to handle it further up if necessary
     }
