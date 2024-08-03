@@ -6,6 +6,8 @@
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
+#include <filesystem>
+
 using namespace X;
 
 namespace PhrasesCollectorUtils {
@@ -51,8 +53,8 @@ namespace PhrasesCollectorUtils {
             return topics;
         }
 
-        fs::path repoPath = fs::current_path();
-        fs::path inputPath = repoPath / "my_data/tags_and_hubs_line_counts.txt";
+        std::filesystem::path repoPath = std::filesystem::current_path();
+        std::filesystem::path inputPath = repoPath / "my_data/tags_and_hubs_line_counts.txt";
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
