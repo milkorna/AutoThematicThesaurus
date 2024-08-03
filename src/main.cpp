@@ -119,6 +119,7 @@ int main()
         auto start = std::chrono::high_resolution_clock::now();
 
         std::vector<fs::path> files_to_process;
+        files_to_process.push_back("/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt");
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -136,7 +137,7 @@ int main()
         int counter = 0;
         std::mutex counterMutex;
 
-        for (unsigned int i = 0; i < files_to_process.size() && i < numThreads; ++i) {
+        for (unsigned int i = 0; i < files_to_process.size() && i < 10; ++i) {
             threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter, counterMutex); });
         }
 
