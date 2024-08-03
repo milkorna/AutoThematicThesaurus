@@ -56,13 +56,11 @@ void Model::printWords() const
     for (const auto& comps : this->getComponents()) {
         if (const auto& c = comps.get(); c->isWord()) {
             WordComp* wc = dynamic_cast<WordComp*>(c);
-            // std::cout << "word form: " << this->getForm() << ", sp: " << this->getSPTag().toString();
             wc->print();
         } else {
-            Logger::log("GrammarComponent", LogLevel::Info, "\tmodel form: " + c->getForm() + ", comps: ");
+            Logger::log("\tmodel comp", LogLevel::Info, c->getForm() + ", comps: ");
             Model* m = dynamic_cast<Model*>(c);
             m->printWords();
-            std::cout << std::endl;
         }
     }
 }

@@ -1,5 +1,3 @@
-
-
 Working with speech recognition models we often encounter misconceptions among potential customers and users (mostly related to the fact that people have a hard time distinguishing substance over form). People also tend to believe that punctuation marks and spaces are somehow obviously present in spoken speech, when in fact real spoken speech and written speech are entirely different beasts.
 Of course you can just start each sentence with a capital letter and put a full stop at the end. But it is preferable to have some relatively simple and universal solution for "restoring" punctuation marks and capital letters in sentences that our speech recognition system generates. And it would be really nice if such a system worked with any texts in general.
 For this reason, we would like to share a system that:
@@ -9,11 +7,11 @@ By design is domain agnostic and is not based on any hard-coded rules;
 Has non-trivial metrics and succeeds in the task of improving text readability;
 To reiterate — the purpose of such a system is only to improve the readability of the text. It does not add information to the text that did not originally exist.
 The problem and the solution.
-Let's assume that the input is a sentence in lowercase letters without any punctuation, i.e. similar to the outputs of any speech recognition systems . We ideally need a model that makes texts proper, i.e. restores capital letters and punctuation marks. A set of punctuation marks .,—!?- was chosen based on characters most used on average.
+Let's assume that the input is a sentence in lowercase letters without any punctuation, i.e. similar to the outputs of any speech recognition systems. We ideally need a model that makes texts proper, i.e. restores capital letters and punctuation marks. A set of punctuation marks.,—!?- was chosen based on characters most used on average.
 Also we embraced the assumption that the model should insert only one symbol after each token (a punctuation mark or a space). This automatically rules out complex punctuation cases (i.e. direct speech). This is an intentional simplification, because the main task is to improve readability as opposed to achieving grammatically ideal text.
 The solution had to be universal enough to support several key languages. By design we can easily extend our system to an arbitrary number of languages should need arise.
 Initially we envisaged the solution to be small BERT-like model with some classifiers on top. We used internal text corpora for training.
-We acquainted ourselves with a solution of a similar problem from here . However, for our purposes we needed:
+We acquainted ourselves with a solution of a similar problem from here. However, for our purposes we needed:
 A lighter model with a more general specialization;
 An implementation that does not directly use extrnal APIs and a lot of third-party libraries;
 As a result, our solution mostly depends only on PyTorch.
@@ -30,10 +28,10 @@ Validation subsets of our private text corpora (5,000 sentences per language);
 Audiobooks, we use the caito dataset, which has texts in all the languages the model was trained on (20,000 random sentences for each language);
 We use the following metrics:
 WER (word error rate) as a percentage: separately calculated for repunctuation WER_p (both sentences are transformed to lowercase) and for recapitalization WER_c (here we throw out all punctuation marks);
-Precision / recall / F1 to check the quality of classification (i) between the space and the punctuation marks mentioned above .,-!?- , and (ii) for the restoration of capital letters — between classes a token of lowercase letters / a token starts with a capital / a token of all caps . Also we provide confusion matrices for visualization;
+Precision / recall / F1 to check the quality of classification (i) between the space and the punctuation marks mentioned above.,-!?-, and (ii) for the restoration of capital letters — between classes a token of lowercase letters / a token starts with a capital / a token of all caps. Also we provide confusion matrices for visualization;
 Results.
 For the correct and informative metrics calculation, the following transformations were applied to the texts beforehand:
-Punctuation characters other than .,-!?- were removed;
+Punctuation characters other than.,-!?- were removed;
 Punctuation at the beginning of a sentence was removed;
 In case of multiple consecutive punctuation marks we keep only the first one;
 For Spanish ¿¡ were discarded from the model predictions, because they aren't in the texts of the books, but in general the model places them as well;
@@ -50,16 +48,12 @@ For reference here are some available F1 metrics for different solutions of simi
 Confusion matrices.
 Confusion matrices for books:
 en.
-
 de.
-
 ru.
-
 es.
-
 Model output examples.
 How to run it.
-The model is published in the repository silero-models . And here is a simple snippet for model usage (more detailed examples can be found in colab ):
+The model is published in the repository silero-models. And here is a simple snippet for model usage (more detailed examples can be found in colab ):
 Limitations and future work.
 We had to put a full stop somewhere (pun intended), so the following ideas were left for future work:
 Support inputs consisting of several sentences;

@@ -10,7 +10,7 @@ class Component;
 // Type definition for a vector of shared pointers to Components.
 using Components = std::vector<std::shared_ptr<Component>>;
 
-// Abstract base class for grammatical components.
+// Abstract class for grammatical components.
 class Component {
 public:
     virtual ~Component() = default;

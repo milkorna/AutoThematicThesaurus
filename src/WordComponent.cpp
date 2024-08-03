@@ -33,16 +33,15 @@ const bool Word::isModel() const
 
 void WordComp::print() const
 {
-    Logger::log("GrammarComponent", LogLevel::Info, "\t\tword sp: " + this->getSPTag().toString());
+    Logger::log("\t\tsp", LogLevel::Info, this->getSPTag().toString());
 
     if (const auto& cond = this->getCondition(); !cond.empty()) {
-        Logger::log("GrammarComponent", LogLevel::Info, ", mt: " + cond.getMorphTag().toString());
+        Logger::log("\t\t\t\tmt", LogLevel::Info, cond.getMorphTag().toString());
 
         if (const auto& addCond = cond.getAdditional(); !addCond.empty()) {
-            Logger::log("GrammarComponent", LogLevel::Info, ", lex: " + addCond.m_exLex);
+            Logger::log("\t\t\t\tlex", LogLevel::Info, addCond.m_exLex);
         }
     }
-    std::cout << std::endl;
 }
 
 WordComp::WordComp(const UniSPTag& sp, const Condition& cond) : Word(sp), m_cond(cond)

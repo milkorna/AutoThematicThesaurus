@@ -1,11 +1,13 @@
+#include <PatternPhrasesStorage.h>
 #include <SimplePhrasesCollector.h>
+
 #include <utility>
 
 using namespace PhrasesCollectorUtils;
 
-static bool HeadCheck(const std::shared_ptr<Model>& baseModel, const X::WordFormPtr& form)
+static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form)
 {
-    if (!baseModel->getHead()->getCondition().check(baseModel->getHead()->getSPTag(), form)) {
+    if (!simpleModel->getHead()->getCondition().check(simpleModel->getHead()->getSPTag(), form)) {
         return false;
     }
     return true;
@@ -33,11 +35,11 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
 
+    if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+        return false;
+
     std::string formFromText = token->getWordForm().getRawString();
     Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
-
-    if (CheckForMisclassifications(token))
-        return false;
 
     if (!comp->getCondition().check(comp->getSPTag(), token)) {
         Logger::log("CheckAside", LogLevel::Debug, "check failed.");
@@ -68,27 +70,25 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     return false;
 }
 
-void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
+void SimplePhrasesCollector::Collect(Process& process)
 {
-    Logger::log("Collect", LogLevel::Debug, "Starting base collection process.");
-    const auto& collection = SimplePhrasesCollector::GetCollector();
+    Logger::log("Collect", LogLevel::Info, "Starting simple models collection process.");
+
+    Logger::log("Collect", LogLevel::Info, "Got a collector");
     const auto& simplePatterns = manager.getSimplePatterns();
 
-    WordComplexAgregate wcAgregate;
-
-    m_sentence = forms;
-
-    // std::string agregateForm;
-
-    // WordComplexCollection collectedBases;
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
+        Logger::log("Collect", LogLevel::Info, "tokenInd = " + std::to_string(tokenInd));
+
+        if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+            continue;
 
         if (!HaveSpHead(token->getMorphInfo()))
             continue;
 
         for (const auto& [name, model] : simplePatterns) {
-            Logger::log("Collect", LogLevel::Debug, "Current base: " + model->getForm());
+            Logger::log("Collect", LogLevel::Debug, "Current simple model: " + model->getForm());
 
             if (!HeadCheck(model, token))
                 continue;
@@ -106,10 +106,13 @@ void SimplePhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Proc
             if (headPos != model->size() - 1 && CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
                 break;
             }
-
-            // add to collection with base.second.form key
         }
     }
+    Logger::log("Collect", LogLevel::Info, "Stop itteration");
+
+    PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
+    PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
+    PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
 
     OutputResults(m_collection, process);
 }

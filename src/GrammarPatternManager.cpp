@@ -46,16 +46,15 @@ void GrammarPatternManager::printPatterns() const
     Logger::log("GrammarPatternManager", LogLevel::Info, "printPatterns: " + patterns.size());
 
     for (const auto& [key, model] : patterns) {
-        std::cout << "model form: " << model->getForm() << ", comps: " << std::endl;
+        Logger::log("model form", LogLevel::Info, model->getForm());
         model->printWords();
-        std::cout << std::endl;
     }
 }
 
 void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead)
 {
     if (const auto& res = isHead ? usedHeadSpVars.insert(sp) : usedSpVars.insert(sp); res.second)
-        Logger::log("GrammarPatternManager", LogLevel::Info, "Addded new part of speach: " + sp);
+        Logger::log("GrammarPatternManager", LogLevel::Debug, "Addded new part of speach: " + sp);
 }
 
 std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const

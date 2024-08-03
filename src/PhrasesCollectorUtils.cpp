@@ -1,17 +1,51 @@
+#include <GrammarPatternManager.h>
 #include <PhrasesCollectorUtils.h>
 
 using namespace X;
 
 namespace PhrasesCollectorUtils {
 
+    MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet)
+    {
+        auto maxElement = *morphSet.begin();
+        for (const auto& elem : morphSet) {
+            if (elem.probability > maxElement.probability) {
+                maxElement = elem;
+            }
+        }
+        return maxElement;
+    }
+
+    bool MorphAnanlysisError(const WordFormPtr& token)
+    {
+        auto isDesiredPOS = [](const UniSPTag& tag) -> bool {
+            static const std::unordered_set<std::string> desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};
+            return desiredPOS.find(tag.toString()) != desiredPOS.end();
+        };
+
+        return token->getWordForm().length() == 1 && token->getMorphInfo().size() == 1 &&
+               isDesiredPOS(token->getMorphInfo().begin()->sp);
+    }
+
+    bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo)
+    {
+        for (const auto& morphForm : currFormMorphInfo) {
+            const auto& spSet = GrammarPatternManager::GetManager()->getUsedSp();
+            if (spSet.find(morphForm.sp.toString()) != spSet.end())
+                return true;
+        }
+        return false;
+    }
+
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
     {
-        Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Info, curSimplePhr->textForm + " || " + curSimplePhr->modelName);
+        Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Debug,
+                    curSimplePhr->textForm + " || " + curSimplePhr->modelName);
     }
 
     void LogCurrentComplexModel(const std::string& name)
     {
-        Logger::log("CURRENT COMPLEX MODEL", LogLevel::Info, name);
+        Logger::log("CURRENT COMPLEX MODEL", LogLevel::Debug, name);
     }
 
     void UpdateWordComplex(const WordComplexPtr& wc, const WordFormPtr& form, const std::string& formFromText,
@@ -82,12 +116,21 @@ namespace PhrasesCollectorUtils {
         std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
                                                 ',', '-',  '.', '/', ':', ';', '<',  '=', '>', '?', '@',
                                                 '[', '\\', ']', '^', '_', '`', '{',  '|', '}', '~'};
-        const auto str = form->getWordForm().getRawString();
 
-        for (char c : str) {
-            if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
-                return false;
+        try {
+            const auto str = form->getWordForm().getRawString();
+
+            for (char c : str) {
+                if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
+                    return false;
+            }
+            return true;
+        } catch (const std::exception& e) {
+            return false;
+        } catch (...) {
+            return false;
         }
+
         return true;
     }
 

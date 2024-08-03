@@ -11,10 +11,9 @@
 
 class SimplePhrasesCollector {
 public:
-    static SimplePhrasesCollector& GetCollector()
+    explicit SimplePhrasesCollector(const std::vector<WordFormPtr>& forms)
+        : m_sentence(forms), m_collection{}, manager(*GrammarPatternManager::GetManager())
     {
-        static SimplePhrasesCollector instance;
-        return instance;
     }
 
     std::vector<PHUtils::WordComplexPtr>& GetCollection()
@@ -22,27 +21,14 @@ public:
         return m_collection;
     }
 
-    void Collect(const std::vector<WordFormPtr>& forms, Process& process);
+    void Collect(Process& process);
 
-    void Clear()
-    {
-        m_collection.clear();
-    }
+    ~SimplePhrasesCollector() = default;
 
 private:
     std::vector<PHUtils::WordComplexPtr> m_collection;
     std::vector<WordFormPtr> m_sentence;
     const GrammarPatternManager& manager;
-
-    SimplePhrasesCollector() : manager(*GrammarPatternManager::GetManager())
-    {
-    }
-    ~SimplePhrasesCollector()
-    {
-    }
-
-    SimplePhrasesCollector(const SimplePhrasesCollector&) = delete;
-    SimplePhrasesCollector& operator=(const SimplePhrasesCollector&) = delete;
 
     bool CheckAside(const PHUtils::WordComplexPtr& wc, const std::shared_ptr<Model>& model, size_t compIndex,
                     size_t formIndex, size_t& correct, const bool isLeft);

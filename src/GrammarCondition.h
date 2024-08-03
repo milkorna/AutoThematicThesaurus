@@ -58,7 +58,7 @@ public:
     // Checks if the Condition instance contains default or empty values.
     bool empty() const;
 
-    bool check(const X::UniSPTag spBaseTag, const X::WordFormPtr& form) const;
+    bool check(const X::UniSPTag spTag, const X::WordFormPtr& form) const;
 };
 
 #endif // GRAMMAR_CONDITION_H

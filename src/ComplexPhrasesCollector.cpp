@@ -1,21 +1,22 @@
 #include <ComplexPhrasesCollector.h>
+#include <PatternPhrasesStorage.h>
 
 using namespace PhrasesCollectorUtils;
 
 bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms,
-                                                     const Condition& baseCond, CurrentPhraseStatus& curPhrStatus)
+                                                     const Condition& cond, CurrentPhraseStatus& curPhrStatus)
 {
     for (const auto& morphForm : morphForms) {
-        if (!baseCond.morphTagCheck(morphForm)) {
+        if (!cond.morphTagCheck(morphForm)) {
             Logger::log("CheckCurrentSimplePhrase", LogLevel::Debug, "morphTagCheck failed.");
             continue;
         } else {
             curPhrStatus.headIsChecked = true;
             curPhrStatus.headIsMatched = true;
-            if (baseCond.getAdditional().exLexCheck(morphForm)) {
+            if (cond.getAdditional().exLexCheck(morphForm)) {
                 curPhrStatus.foundLex = true;
             }
-            if (baseCond.getAdditional().themesCheck()) {
+            if (cond.getAdditional().themesCheck()) {
                 curPhrStatus.foundTheme = true;
             }
             return true;
@@ -48,8 +49,8 @@ bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& cur
                                                        const std::shared_ptr<ModelComp>& curModelComp,
                                                        CurrentPhraseStatus& curPhrStatus)
 {
-    const auto& baseAddCond = curModelComp->getCondition().getAdditional();
-    bool simplePhrAddCond = baseAddCond.empty();
+    const auto& addCond = curModelComp->getCondition().getAdditional();
+    bool simplePhrAddCond = addCond.empty();
     bool simplePhrMorph = CheckWordComponents(curSimplePhr, curModelComp, curPhrStatus);
 
     if (curPhrStatus.headIsChecked && !curPhrStatus.headIsMatched) {
@@ -97,6 +98,10 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
     // Check if the component is a WordComp
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
+
+        if (MorphAnanlysisError(m_sentence[formIndex]) || !HaveSp(m_sentence[formIndex]->getMorphInfo()))
+            return false;
+
         std::string formFromText = m_sentence[formIndex]->getWordForm().getRawString();
         Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
@@ -237,10 +242,8 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
     return false;
 }
 
-void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Process& process)
+void ComplexPhrasesCollector::Collect(Process& process)
 {
-    m_sentence = forms;
-
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 
@@ -256,6 +259,8 @@ void ComplexPhrasesCollector::Collect(const std::vector<WordFormPtr>& forms, Pro
                 break;
         }
     }
-
+    PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
+    PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
+    PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
     OutputResults(m_collection, process);
 }

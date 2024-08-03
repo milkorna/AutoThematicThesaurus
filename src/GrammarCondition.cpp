@@ -54,11 +54,11 @@ const SyntaxRole Condition::getSyntaxRole() const
 
 template <typename AttrType>
 static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
-                           AttrType (X::UniMorphTag::*getAttribute)() const, const X::UniMorphTag& baseTag,
+                           AttrType (X::UniMorphTag::*getAttribute)() const, const X::UniMorphTag& tag,
                            const X::UniMorphTag& formTag)
 {
-    if ((baseTag.*hasAttribute)()) {
-        bool result = (formTag.*hasAttribute)() && (baseTag.*getAttribute)() == (formTag.*getAttribute)();
+    if ((tag.*hasAttribute)()) {
+        bool result = (formTag.*hasAttribute)() && (tag.*getAttribute)() == (formTag.*getAttribute)();
         Logger::log("checkAttribute", LogLevel::Debug, "Attribute check: " + std::to_string(result));
         return result;
     }
@@ -88,13 +88,13 @@ bool Condition::empty() const
     return m_tag == UniMorphTag::UNKN && m_addcond.empty();
 }
 
-bool Condition::check(const X::UniSPTag spBaseTag, const X::WordFormPtr& form) const
+bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const
 {
     for (const auto& morphForm : form->getMorphInfo()) {
         Logger::log("check", LogLevel::Debug,
-                    "Checking morphForm against spBaseTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() +
-                        ", " + morphForm.sp.toString() + "\t\tspBaseHeadTag: " + spBaseTag.toString());
-        if (morphForm.sp == spBaseTag) {
+                    "Checking morphForm against spTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " +
+                        morphForm.sp.toString() + "\t\tspHeadTag: " + spTag.toString());
+        if (morphForm.sp == spTag) {
             if (!morphTagCheck(morphForm)) {
                 Logger::log("check", LogLevel::Debug, "morphTagCheck failed.");
                 return false;
@@ -102,7 +102,7 @@ bool Condition::check(const X::UniSPTag spBaseTag, const X::WordFormPtr& form) c
             if (!m_addcond.check(morphForm))
                 return false;
         } else {
-            Logger::log("check", LogLevel::Debug, "spBaseHeadTag does not match.");
+            Logger::log("check", LogLevel::Debug, "spTagHeadTag does not match.");
             return false;
         }
     }
