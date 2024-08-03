@@ -37,6 +37,8 @@ public:
     void AddWordComplex(const WordComplexPtr& wc);
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
+    void OutputClustersToFile(const std::string& filename) const;
+
     ThreadController::ThreadController threadController;
 
 private:

@@ -156,6 +156,9 @@ int main()
                     "Processing " + std::to_string(counter) + "texts took " + std::to_string(duration.count()) +
                         " seconds.");
 
+        std::string totalResultsFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.txt";
+        PatternPhrasesStorage::GetStorage().OutputClustersToFile(totalResultsFile);
+
     } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;

@@ -27,11 +27,6 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
     Logger::log("AddWordComplex", LogLevel::Info, wc->GetKey());
     const std::string& key = wc->GetKey();
 
-    if (clusters.empty() && clusters.size() == 0) {
-        Logger::log("Error", LogLevel::Error, "Clusters is not initialized properly");
-        return;
-    }
-
     auto it = clusters.find(key);
     if (it != clusters.end()) {
         auto& cluster = it->second;
@@ -49,4 +44,40 @@ void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorU
     for (const auto& elem : collection) {
         AddWordComplex(elem);
     }
+}
+
+// Function to output data to a file
+void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) const
+{
+    std::ofstream outFile(filename);
+
+    if (!outFile.is_open()) {
+        throw std::runtime_error("Could not open file for writing");
+    }
+
+    for (const auto& pair : clusters) {
+        const auto& key = pair.first;
+        const auto& cluster = pair.second;
+
+        outFile << "Key: " << key << "\n"
+                << "Phrase Size: " << cluster.phraseSize << "\n"
+                << "Weight: " << cluster.m_weight << "\n"
+                << "Topic Match: " << (cluster.topicMatch ? "true" : "false") << "\n"
+                << "Model Name: " << cluster.modelName << "\n"
+                << "Word Complexes: " << cluster.wordComplexes.size() << "\n"
+                << "\n";
+
+        if (true) {
+            outFile << "Phrases:\n";
+            for (const auto& wordComplex : cluster.wordComplexes) {
+                outFile << "  Text Form: " << wordComplex->textForm << "\n"
+                        << "    Position - Start: " << wordComplex->pos.start << ", End: " << wordComplex->pos.end
+                        << ", DocNum: " << wordComplex->pos.docNum << ", SentNum: " << wordComplex->pos.sentNum << "\n";
+            }
+        }
+
+        outFile << "\n";
+    }
+
+    outFile.close();
 }
