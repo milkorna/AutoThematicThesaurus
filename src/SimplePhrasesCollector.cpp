@@ -35,7 +35,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
 
-    if (MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()) || CheckForMisclassifications(token))
+    if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
         return false;
 
     std::string formFromText = token->getWordForm().getRawString();
@@ -80,7 +80,8 @@ void SimplePhrasesCollector::Collect(Process& process)
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
         Logger::log("Collect", LogLevel::Info, "tokenInd = " + std::to_string(tokenInd));
-        if (!HaveSp(token->getMorphInfo()))
+
+        if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))

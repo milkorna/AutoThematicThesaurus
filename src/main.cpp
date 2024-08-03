@@ -48,8 +48,6 @@ void processTextFile(const fs::path& inputFile, const fs::path& outputDir, int& 
     std::string outputFile = (outputDir / ("res_" + filename)).string();
     auto startProcessText = std::chrono::high_resolution_clock::now();
 
-    // std::lock_guard<std::mutex> lock(OutputRedirector::mutex_);
-    // OutputRedirector redirector("log.txt");
     Tokenizer tok;
     TFMorphemicSplitter morphemic_splitter;
     Process process(inputFile, outputFile);
@@ -75,8 +73,6 @@ void processTextFile(const fs::path& inputFile, const fs::path& outputDir, int& 
         for (auto& form : forms) {
             morphemic_splitter.split(form);
         }
-
-        // redirector.restore();
 
         Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
         Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
@@ -117,8 +113,9 @@ int main()
         return EXIT_FAILURE;
     }
 
-    try {
+    PatternPhrasesStorage::GetStorage();
 
+    try {
         auto start = std::chrono::high_resolution_clock::now();
 
         std::vector<fs::path> files_to_process;
@@ -132,13 +129,14 @@ int main()
         }
 
         unsigned int numThreads = std::thread::hardware_concurrency();
+        PatternPhrasesStorage::GetStorage().threadController.setTotalThreads(numThreads);
         Logger::log("main", LogLevel::Info, "Amount of threads: " + std::to_string(numThreads));
 
         std::vector<std::thread> threads;
         int counter = 0;
         std::mutex counterMutex;
 
-        for (unsigned int i = 0; i < files_to_process.size() && i < 2; ++i) {
+        for (unsigned int i = 0; i < files_to_process.size() && i < numThreads; ++i) {
             threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter, counterMutex); });
         }
 
@@ -148,10 +146,13 @@ int main()
             }
         }
         auto end = std::chrono::high_resolution_clock::now();
+
         std::chrono::duration<double> duration = end - start;
 
-        Logger::log("main", LogLevel::Info,
-                    "Processing " + std::to_string(counter) + " took " + std::to_string(duration.count()) +
+        PatternPhrasesStorage::GetStorage().threadController.pauseUntilAllThreadsReach();
+
+        Logger::log("\n\n\n\nmain", LogLevel::Info,
+                    "Processing " + std::to_string(counter) + "texts took " + std::to_string(duration.count()) +
                         " seconds.");
 
     } catch (const std::exception& e) {
