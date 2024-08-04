@@ -55,9 +55,16 @@ void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) co
         throw std::runtime_error("Could not open file for writing");
     }
 
+    std::vector<std::string> keys;
+    keys.reserve(clusters.size());
     for (const auto& pair : clusters) {
-        const auto& key = pair.first;
-        const auto& cluster = pair.second;
+        keys.push_back(pair.first);
+    }
+
+    std::sort(keys.begin(), keys.end());
+
+    for (const auto& key : keys) {
+        const auto& cluster = clusters.at(key);
 
         outFile << "Key: " << key << "\n"
                 << "Phrase Size: " << cluster.phraseSize << "\n"
@@ -67,13 +74,11 @@ void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) co
                 << "Word Complexes: " << cluster.wordComplexes.size() << "\n"
                 << "\n";
 
-        if (true) {
-            outFile << "Phrases:\n";
-            for (const auto& wordComplex : cluster.wordComplexes) {
-                outFile << "  Text Form: " << wordComplex->textForm << "\n"
-                        << "    Position - Start: " << wordComplex->pos.start << ", End: " << wordComplex->pos.end
-                        << ", DocNum: " << wordComplex->pos.docNum << ", SentNum: " << wordComplex->pos.sentNum << "\n";
-            }
+        outFile << "Phrases:\n";
+        for (const auto& wordComplex : cluster.wordComplexes) {
+            outFile << "  Text Form: " << wordComplex->textForm << "\n"
+                    << "    Position - Start: " << wordComplex->pos.start << ", End: " << wordComplex->pos.end
+                    << ", DocNum: " << wordComplex->pos.docNum << ", SentNum: " << wordComplex->pos.sentNum << "\n";
         }
 
         outFile << "\n";

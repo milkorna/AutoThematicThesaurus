@@ -256,8 +256,8 @@ void ComplexPhrasesCollector::Collect(Process& process)
         }
     }
 
-    PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
+    // PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
     PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
-    PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
+    // PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
     OutputResults(m_collection, process);
 }

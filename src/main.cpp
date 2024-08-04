@@ -137,20 +137,25 @@ int main()
         int counter = 0;
         std::mutex counterMutex;
 
-        for (unsigned int i = 0; i < files_to_process.size() && i < 10; ++i) {
-            threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter, counterMutex); });
+        for (unsigned int i = 0; i < 10; ++i) {
+            processTextFile(files_to_process[i], outputDir, counter, counterMutex);
         }
 
-        for (auto& thread : threads) {
-            if (thread.joinable()) {
-                thread.join();
-            }
-        }
+        // for (unsigned int i = 0; i < files_to_process.size() && i < 10; ++i) {
+        //     threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter,
+        //     counterMutex); });
+        // }
+
+        // for (auto& thread : threads) {
+        //     if (thread.joinable()) {
+        //         thread.join();
+        //     }
+        // }
         auto end = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double> duration = end - start;
 
-        PatternPhrasesStorage::GetStorage().threadController.pauseUntilAllThreadsReach();
+        // PatternPhrasesStorage::GetStorage().threadController.pauseUntilAllThreadsReach();
 
         Logger::log("\n\n\n\nmain", LogLevel::Info,
                     "Processing " + std::to_string(counter) + "texts took " + std::to_string(duration.count()) +
@@ -158,7 +163,6 @@ int main()
 
         std::string totalResultsFile = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.txt";
         PatternPhrasesStorage::GetStorage().OutputClustersToFile(totalResultsFile);
-
     } catch (const std::exception& e) {
         Logger::log("main", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         return EXIT_FAILURE;
