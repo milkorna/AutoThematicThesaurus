@@ -19,31 +19,39 @@ if(POLICY CMP0127)
     cmake_policy(SET CMP0127 NEW)
 endif()
 
-set(SOURCE_FILES
-src/ComplexPhrasesCollector.cpp
-src/ComplexPhrasesCollector.h
-src/Component.h
-src/GrammarCondition.cpp
-src/GrammarCondition.h
-src/GrammarPatternManager.cpp
-src/GrammarPatternManager.h
-src/Logger.cpp
-src/Logger.h
-src/ModelComponent.cpp
-src/ModelComponent.h
-src/OutputRedirector.h
-src/PatternParser.cpp
-src/PatternParser.h
-src/PatternPhrasesStorage.cpp
-src/PatternPhrasesStorage.h
-src/PhrasesCollectorUtils.cpp
-src/PhrasesCollectorUtils.h
-src/SimplePhrasesCollector.cpp
-src/SimplePhrasesCollector.h
-src/WordComponent.cpp
-src/WordComponent.h
+include_directories(
+    src/grammar_component
+    src/phrases_collecting
+    src/utils
+)
 
-src/ThreadController.h
+set(SOURCE_FILES
+src/grammar_component/Component.h
+src/grammar_component/GrammarCondition.cpp
+src/grammar_component/GrammarCondition.h
+src/grammar_component/WordComponent.cpp
+src/grammar_component/WordComponent.h
+src/grammar_component/ModelComponent.cpp
+src/grammar_component/ModelComponent.h
+
+src/phrases_collecting/PatternPhrasesStorage.cpp
+src/phrases_collecting/PatternPhrasesStorage.h
+src/phrases_collecting/PhrasesCollectorUtils.cpp
+src/phrases_collecting/PhrasesCollectorUtils.h
+src/phrases_collecting/SimplePhrasesCollector.cpp
+src/phrases_collecting/SimplePhrasesCollector.h
+src/phrases_collecting/ComplexPhrasesCollector.cpp
+src/phrases_collecting/ComplexPhrasesCollector.h
+
+src/utils/ThreadController.h
+src/utils/Trie.h
+src/utils/OutputRedirector.h
+src/utils/PatternParser.cpp
+src/utils/PatternParser.h
+src/utils/Logger.cpp
+src/utils/Logger.h
+src/utils/GrammarPatternManager.cpp
+src/utils/GrammarPatternManager.h
 )
 
 
