@@ -20,6 +20,7 @@ namespace PhrasesCollectorUtils {
     bool MorphAnanlysisError(const WordFormPtr& token);
     bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
     const std::unordered_set<std::string> GetTopics();
+    const std::unordered_set<std::string> GetStopWords();
 
     struct Position {
         size_t start;

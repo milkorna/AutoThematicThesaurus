@@ -44,6 +44,43 @@ namespace PhrasesCollectorUtils {
         return false;
     }
 
+    const std::string GetLowerCase(const std::string& line)
+    {
+        // Convert to lowercase using ICU
+        icu::UnicodeString ustr(line.c_str(), "UTF-8");
+        ustr.toLower(icu::Locale("ru_RU"));
+        std::string lowerLine;
+        ustr.toUTF8String(lowerLine);
+        return lowerLine;
+    }
+
+    const std::unordered_set<std::string> GetStopWords()
+    {
+        static std::unordered_set<std::string> stopWords;
+        static bool initialized = false;
+
+        if (initialized) {
+            return stopWords;
+        }
+
+        std::filesystem::path repoPath = std::filesystem::current_path();
+        std::filesystem::path inputPath = repoPath / "my_data/stop_words.txt";
+
+        std::ifstream file(inputPath);
+        if (!file.is_open()) {
+            throw std::runtime_error("Could not open file " + inputPath.string());
+        }
+
+        std::string line;
+        while (std::getline(file, line)) {
+            const auto lowerLine = GetLowerCase(line);
+            stopWords.insert(lowerLine);
+        }
+
+        initialized = true;
+        return stopWords;
+    }
+
     const std::unordered_set<std::string> GetTopics()
     {
         static std::unordered_set<std::string> topics;
@@ -79,12 +116,7 @@ namespace PhrasesCollectorUtils {
                 std::find_if(line.rbegin(), line.rend(), [](unsigned char ch) { return !std::isspace(ch); }).base(),
                 line.end());
 
-            // Convert to lowercase using ICU
-            icu::UnicodeString ustr(line.c_str(), "UTF-8");
-            ustr.toLower(icu::Locale("ru_RU"));
-            std::string lowerLine;
-            ustr.toUTF8String(lowerLine);
-
+            const auto lowerLine = GetLowerCase(line);
             if (lowerLine.size() > 3)
                 topics.insert(lowerLine);
         }
