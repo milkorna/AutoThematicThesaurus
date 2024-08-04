@@ -38,6 +38,7 @@ public:
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
     void OutputClustersToFile(const std::string& filename) const;
+    void CalculateWeights();
 
     ThreadController::ThreadController threadController;
 

@@ -95,14 +95,25 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
     // Check if the component is a WordComp
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
+        const auto token = m_sentence[formIndex];
+        const auto& stopWords = GetStopWords();
 
-        if (MorphAnanlysisError(m_sentence[formIndex]) || !HaveSp(m_sentence[formIndex]->getMorphInfo()))
+        if (g_options.cleaningStopWords) {
+            if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
+                return false;
+
+            const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
+            if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+                return false;
+        }
+
+        if (MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
             return false;
 
-        std::string formFromText = m_sentence[formIndex]->getWordForm().getRawString();
+        std::string formFromText = token->getWordForm().getRawString();
         Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
-        if (!wordComp->getCondition().check(wordComp->getSPTag(), m_sentence[formIndex])) {
+        if (!wordComp->getCondition().check(wordComp->getSPTag(), token)) {
             Logger::log("CheckAside", LogLevel::Debug, "check failed.");
             return false;
         } else {
@@ -112,7 +123,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             }
         }
 
-        UpdateWordComplex(wc, m_sentence[formIndex], formFromText, isLeft);
+        UpdateWordComplex(wc, token, formFromText, isLeft);
 
         curPhrStatus.correct++;
         size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;

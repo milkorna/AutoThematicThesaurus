@@ -1,4 +1,21 @@
+#include <boost/program_options.hpp>
+#include <xmorphy/graphem/SentenceSplitter.h>
+#include <xmorphy/graphem/Tokenizer.h>
+#include <xmorphy/ml/Disambiguator.h>
+#include <xmorphy/ml/MorphemicSplitter.h>
+#include <xmorphy/ml/SingleWordDisambiguate.h>
+#include <xmorphy/ml/TFDisambiguator.h>
+#include <xmorphy/ml/TFJoinedModel.h>
+#include <xmorphy/ml/TFMorphemicSplitter.h>
+#include <xmorphy/morph/JSONEachSentenceFormater.h>
+#include <xmorphy/morph/PrettyFormater.h>
+#include <xmorphy/morph/Processor.h>
+#include <xmorphy/morph/TSVFormater.h>
+#include <xmorphy/morph/WordFormPrinter.h>
+#include <xmorphy/utils/UniString.h>
+
 #include <GrammarPatternManager.h>
+#include <PatternPhrasesStorage.h>
 #include <PhrasesCollectorUtils.h>
 
 #include <cctype>
@@ -6,11 +23,140 @@
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
-#include <filesystem>
-
 using namespace X;
 
 namespace PhrasesCollectorUtils {
+    Options g_options;
+
+    std::vector<fs::path> GetFilesToProcess()
+    {
+        fs::path repoPath = fs::current_path();
+        fs::path inputDir = repoPath / "my_data/texts";
+        std::vector<fs::path> files_to_process;
+        files_to_process.push_back(
+            "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in stable
+        for (const auto& entry : fs::directory_iterator(inputDir)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
+                    files_to_process.push_back(entry.path());
+                }
+            }
+        }
+
+        return files_to_process;
+    }
+
+    void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
+    {
+        forms.erase(std::remove_if(forms.begin(), forms.end(),
+                                   [](const WordFormPtr& form) { return form->getTokenType() == TokenTypeTag::SEPR; }),
+                    forms.end());
+    }
+
+    void ProcessFile(const fs::path& inputFile, const fs::path& outputDir, int& counter, std::mutex& counterMutex)
+    {
+        std::ostringstream oss;
+        oss << std::this_thread::get_id();
+        std::string thread_id = oss.str();
+        Logger::log("processTextFile", LogLevel::Info,
+                    "Thread " + thread_id + " starting file processing: " + inputFile.string());
+
+        std::string filename = inputFile.filename().string();
+        {
+            std::lock_guard<std::mutex> lock(counterMutex);
+            ++counter;
+            std::cout << counter << std::endl;
+        }
+        std::string outputFile = (outputDir / ("res_" + filename)).string();
+        auto startProcessText = std::chrono::high_resolution_clock::now();
+
+        Tokenizer tok;
+        TFMorphemicSplitter morphemic_splitter;
+        Process process(inputFile, outputFile);
+        SentenceSplitter ssplitter(process.m_input);
+        Processor analyzer;
+        SingleWordDisambiguate disamb;
+        TFJoinedModel joiner;
+
+        do {
+            std::string sentence;
+            ssplitter.readSentence(sentence);
+
+            if (sentence.empty())
+                continue;
+
+            std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
+            std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
+
+            removeSeparatorTokens(forms);
+            disamb.disambiguate(forms);
+            joiner.disambiguateAndMorphemicSplit(forms);
+
+            for (auto& form : forms) {
+                morphemic_splitter.split(form);
+            }
+
+            Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
+            Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
+            Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
+
+            PatternPhrasesStorage::GetStorage().Collect(forms, process);
+
+            process.m_output.flush();
+            process.m_sentNum++;
+        } while (!ssplitter.eof());
+
+        auto endProccesText = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = endProccesText - startProcessText;
+        Logger::log("main", LogLevel::Info,
+                    "processText() for " + filename + " took " + std::to_string(duration.count()) + " seconds.");
+    }
+
+    void BuildPhraseStorage()
+    {
+        fs::path repoPath = fs::current_path();
+        fs::path outputDir = repoPath / "res";
+        fs::create_directories(outputDir);
+
+        auto& storage = PatternPhrasesStorage::GetStorage();
+        try {
+            std::vector<fs::path> files_to_process = GetFilesToProcess();
+            unsigned int numThreads = std::thread::hardware_concurrency();
+            storage.threadController.setTotalThreads(numThreads);
+            Logger::log("main", LogLevel::Info, "Amount of threads: " + std::to_string(numThreads));
+
+            std::vector<std::thread> threads;
+            int counter = 0;
+            std::mutex counterMutex;
+
+            for (unsigned int i = 0; i < 20; ++i) {
+                ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
+            }
+
+            // for (unsigned int i = 0; i < files_to_process.size() && i < 10; ++i) {
+            //     threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter,
+            //     counterMutex); });
+            // }
+
+            // for (auto& thread : threads) {
+            //     if (thread.joinable()) {
+            //         thread.join();
+            //     }
+            // }
+
+            // storage.threadController.pauseUntilAllThreadsReach();
+
+            // storage.CalculateWeights();
+
+            fs::path totalResultsFile = repoPath / "my_data/total_results.txt";
+            storage.OutputClustersToFile(totalResultsFile);
+        } catch (const std::exception& e) {
+            Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+        } catch (...) {
+            Logger::log("", LogLevel::Error, "Unknown exception caught");
+        }
+    }
 
     MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet)
     {
@@ -136,34 +282,6 @@ namespace PhrasesCollectorUtils {
         Logger::log("CURRENT COMPLEX MODEL", LogLevel::Debug, name);
     }
 
-    void UpdateWordComplex(const WordComplexPtr& wc, const WordFormPtr& form, const std::string& formFromText,
-                           bool isLeft)
-    {
-        if (isLeft) {
-            wc->words.push_front(form);
-            wc->pos.start--;
-            wc->textForm.insert(0, formFromText + " ");
-        } else {
-            wc->words.push_back(form);
-            wc->pos.end++;
-            wc->textForm.append(" " + formFromText);
-        }
-    }
-
-    void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase)
-    {
-        for (auto rit = asidePhrase->words.rbegin(); rit != asidePhrase->words.rend(); ++rit) {
-            wc->words.push_front(*rit);
-        }
-    }
-
-    void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase)
-    {
-        for (const auto& word : asidePhrase->words) {
-            wc->words.push_back(word);
-        }
-    }
-
     void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
                             CurrentPhraseStatus& curPhrStatus, bool isLeft)
     {
@@ -175,28 +293,6 @@ namespace PhrasesCollectorUtils {
             wc->pos.end = asidePhrase->pos.end;
             wc->textForm.append(" " + asidePhrase->textForm);
         }
-    }
-
-    WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName)
-    {
-        WordComplexPtr wc = std::make_shared<WordComplex>();
-        wc->words = curSimplePhr->words;
-        wc->textForm = curSimplePhr->textForm;
-        wc->pos = curSimplePhr->pos;
-        wc->modelName = modelName;
-        return wc;
-    }
-
-    WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName,
-                                         const Process& process)
-    {
-        WordComplexPtr wc = std::make_shared<WordComplex>();
-        wc->words.push_back(token);
-        wc->textForm = token->getWordForm().getRawString();
-        wc->pos = {tokenInd, tokenInd, process.m_docNum, process.m_sentNum};
-        wc->modelName = modelName;
-
-        return wc;
     }
 
     bool CheckForMisclassifications(const WordFormPtr& form)

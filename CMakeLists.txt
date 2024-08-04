@@ -42,9 +42,10 @@ src/phrases_collecting/SimplePhrasesCollector.cpp
 src/phrases_collecting/SimplePhrasesCollector.h
 src/phrases_collecting/ComplexPhrasesCollector.cpp
 src/phrases_collecting/ComplexPhrasesCollector.h
+src/phrases_collecting/WordComplex.cpp
+src/phrases_collecting/WordComplex.h
 
 src/utils/ThreadController.h
-src/utils/Trie.h
 src/utils/OutputRedirector.h
 src/utils/PatternParser.cpp
 src/utils/PatternParser.h

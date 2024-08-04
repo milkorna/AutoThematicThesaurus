@@ -46,6 +46,27 @@ void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorU
     }
 }
 
+void PatternPhrasesStorage::CalculateWeights()
+{
+    std::unordered_map<std::string, int> substringCount;
+
+    for (const auto& [key, _] : clusters) {
+        substringCount[key] = 0;
+        for (const auto& [otherKey, __] : clusters) {
+            if (key != otherKey && otherKey.find(key) != std::string::npos) {
+                substringCount[key]++;
+            }
+        }
+    }
+
+    for (auto& [key, wc] : clusters) {
+        int count = substringCount[key] + 1;
+        if (wc.phraseSize > 2) {
+            wc.m_weight /= count;
+        }
+    }
+}
+
 // Function to output data to a file
 void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) const
 {

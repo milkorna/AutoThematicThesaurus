@@ -37,8 +37,14 @@ const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternMana
 
 void GrammarPatternManager::readPatterns(const std::string& filePath)
 {
-    Parser parser(filePath);
-    parser.Parse();
+    try {
+        Parser parser(filePath);
+        parser.Parse();
+    } catch (const std::exception& e) {
+        Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+    } catch (...) {
+        Logger::log("", LogLevel::Error, "Unknown exception caught");
+    }
 }
 
 void GrammarPatternManager::printPatterns() const
