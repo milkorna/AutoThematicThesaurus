@@ -1909,22 +1909,11 @@ Phrases:
   Text Form: базовым подходом
     Position - Start: 1, End: 2, DocNum: 551130, SentNum: 29
 
-Key: БАЗОВЫЙПОДХОДКРЕШЕНИЕ
-Phrase Size: 4
-Weight: 1
-Topic Match: false
-Model Name: (Прил + С) + Предл + С
-Word Complexes: 1
-
-Phrases:
-  Text Form: Базовый подход к решению
-    Position - Start: 0, End: 3, DocNum: 551130, SentNum: 22
-
 Key: БАЗОВЫЙПОДХОДКРЕШЕНИЕЗАДАЧА
 Phrase Size: 5
 Weight: 1
 Topic Match: false
-Model Name: (Прил + С) + Предл + (С + Срд)
+Model Name: (Прил + С) + Предл + (Прил + С)
 Word Complexes: 1
 
 Phrases:
@@ -7186,10 +7175,12 @@ Key: ГРАФАЗНАНИЕ
 Phrase Size: 2
 Weight: 1
 Topic Match: false
-Model Name: С + Срд
-Word Complexes: 2
+Model Name: Прил + С
+Word Complexes: 3
 
 Phrases:
+  Text Form: графе знаний
+    Position - Start: 3, End: 4, DocNum: 713124, SentNum: 45
   Text Form: графе знаний
     Position - Start: 21, End: 22, DocNum: 713124, SentNum: 50
   Text Form: графа знаний
@@ -7200,11 +7191,9 @@ Phrase Size: 2
 Weight: 1
 Topic Match: false
 Model Name: С + Срд
-Word Complexes: 3
+Word Complexes: 2
 
 Phrases:
-  Text Form: графе знаний
-    Position - Start: 3, End: 4, DocNum: 713124, SentNum: 45
   Text Form: Граф знаний
     Position - Start: 0, End: 1, DocNum: 713124, SentNum: 46
   Text Form: граф знаний
@@ -22057,6 +22046,17 @@ Phrases:
   Text Form: неопределённые догадки
     Position - Start: 28, End: 29, DocNum: 544420, SentNum: 145
 
+Key: НЕОПТИМАЛЬНЫЙГЕНЕРАЦИЯ
+Phrase Size: 2
+Weight: 1
+Topic Match: false
+Model Name: Прил + С
+Word Complexes: 1
+
+Phrases:
+  Text Form: неоптимальной генерации
+    Position - Start: 4, End: 5, DocNum: 551130, SentNum: 52
+
 Key: НЕОСЛАБНЫЙВНИМАНИЕ
 Phrase Size: 2
 Weight: 1
@@ -24809,6 +24809,28 @@ Phrases:
   Text Form: определения степени соответствия
     Position - Start: 1, End: 3, DocNum: 544420, SentNum: 69
 
+Key: ОПРЕДЕЛЕНИЕСХОДСТВО
+Phrase Size: 2
+Weight: 1
+Topic Match: false
+Model Name: С + Срд
+Word Complexes: 1
+
+Phrases:
+  Text Form: определению сходства
+    Position - Start: 11, End: 12, DocNum: 325014, SentNum: 35
+
+Key: ОПРЕДЕЛЕНИЕСХОДСТВОВАКАНСИЯ
+Phrase Size: 3
+Weight: 1
+Topic Match: false
+Model Name: С + Срд
+Word Complexes: 1
+
+Phrases:
+  Text Form: определению сходства вакансий
+    Position - Start: 11, End: 13, DocNum: 325014, SentNum: 35
+
 Key: ОПТИМАЛЬНЫЙДЛИНА
 Phrase Size: 2
 Weight: 1
@@ -25717,11 +25739,11 @@ Phrases:
   Text Form: отбор признаков
     Position - Start: 7, End: 8, DocNum: 551130, SentNum: 65
 
-Key: ОТВЕТВГРАФЗНАНИЕ
+Key: ОТВЕТВГРАФАЗНАНИЕ
 Phrase Size: 4
 Weight: 1
 Topic Match: false
-Model Name: С + Предл + (С + Срд)
+Model Name: С + Предл + (Прил + С)
 Word Complexes: 1
 
 Phrases:
@@ -28141,7 +28163,7 @@ Key: ПОДХОДКРЕШЕНИЕЗАДАЧА
 Phrase Size: 4
 Weight: 1
 Topic Match: false
-Model Name: С + Предл + (С + Срд)
+Model Name: С + Предл + (Прил + С)
 Word Complexes: 1
 
 Phrases:
@@ -28629,17 +28651,6 @@ Word Complexes: 1
 Phrases:
   Text Form: полей с предсказаниями моделей
     Position - Start: 9, End: 12, DocNum: 551130, SentNum: 74
-
-Key: ПОЛНОКАДРОВЫЙИЗОБРАЖЕНИЕ
-Phrase Size: 2
-Weight: 1
-Topic Match: false
-Model Name: Прил + С
-Word Complexes: 1
-
-Phrases:
-  Text Form: полнокадровые изображения
-    Position - Start: 5, End: 6, DocNum: 522622, SentNum: 50
 
 Key: ПОЛНОРАЗМЕРНЫЙМНОГОЯЗЫЧНЫЙВЕРСИЯ
 Phrase Size: 3
@@ -30610,9 +30621,11 @@ Phrase Size: 3
 Weight: 1
 Topic Match: false
 Model Name: C + (Прил + С)рд
-Word Complexes: 1
+Word Complexes: 2
 
 Phrases:
+  Text Form: пределами языкового моделирования
+    Position - Start: 4, End: 6, DocNum: 490842, SentNum: 22
   Text Form: пределами языкового моделирования
     Position - Start: 4, End: 6, DocNum: 490842, SentNum: 267
 
@@ -34380,17 +34393,6 @@ Word Complexes: 1
 Phrases:
   Text Form: рамках соревнования
     Position - Start: 1, End: 2, DocNum: 551130, SentNum: 5
-
-Key: РАМКАСОРЕВНОВАНИЕАЛЬФА-БАТТЛ
-Phrase Size: 3
-Weight: 1
-Topic Match: false
-Model Name: С + Срд
-Word Complexes: 1
-
-Phrases:
-  Text Form: рамках соревнования Альфа-Баттл
-    Position - Start: 1, End: 3, DocNum: 551130, SentNum: 5
 
 Key: РАМКАЯЗЫКОВЫЙМОДЕЛИРОВАНИЕ
 Phrase Size: 3
@@ -39087,17 +39089,6 @@ Phrases:
   Text Form: сопроводительного письма
     Position - Start: 21, End: 22, DocNum: 544420, SentNum: 146
 
-Key: СОРЕВНОВАНИЕАЛЬФА-БАТТЛ
-Phrase Size: 2
-Weight: 1
-Topic Match: false
-Model Name: С + Срд
-Word Complexes: 1
-
-Phrases:
-  Text Form: соревнования Альфа-Баттл
-    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 5
-
 Key: СОРЕВНОВАНИЕСЛИЧНЫЙНОУТБУК
 Phrase Size: 4
 Weight: 1
@@ -43519,6 +43510,28 @@ Word Complexes: 1
 Phrases:
   Text Form: требованием наибольшей величины
     Position - Start: 3, End: 5, DocNum: 325014, SentNum: 31
+
+Key: ТРЕБОВАНИЕКОПРЕДЕЛЕНИЕСХОДСТВО
+Phrase Size: 4
+Weight: 1
+Topic Match: false
+Model Name: С + Предл + (С + Срд)
+Word Complexes: 1
+
+Phrases:
+  Text Form: требованиям к определению сходства
+    Position - Start: 9, End: 12, DocNum: 325014, SentNum: 35
+
+Key: ТРЕБОВАНИЕКОПРЕДЕЛЕНИЕСХОДСТВОВАКАНСИЯ
+Phrase Size: 5
+Weight: 1
+Topic Match: false
+Model Name: С + Предл + (С + Срд)
+Word Complexes: 1
+
+Phrases:
+  Text Form: требованиям к определению сходства вакансий
+    Position - Start: 9, End: 13, DocNum: 325014, SentNum: 35
 
 Key: ТРЕБУЕМЫЙРЕЗУЛЬТАТ
 Phrase Size: 2
@@ -48329,13 +48342,19 @@ Phrase Size: 2
 Weight: 1
 Topic Match: false
 Model Name: Прил + С
-Word Complexes: 12
+Word Complexes: 15
 
 Phrases:
   Text Form: языкового моделирования
     Position - Start: 33, End: 34, DocNum: 490842, SentNum: 4
+  Text Form: языковое моделирование
+    Position - Start: 5, End: 6, DocNum: 490842, SentNum: 6
   Text Form: языкового моделирования
     Position - Start: 2, End: 3, DocNum: 490842, SentNum: 8
+  Text Form: языкового моделирования
+    Position - Start: 5, End: 6, DocNum: 490842, SentNum: 22
+  Text Form: языковое моделирование
+    Position - Start: 5, End: 6, DocNum: 490842, SentNum: 29
   Text Form: языковое моделирование
     Position - Start: 3, End: 4, DocNum: 490842, SentNum: 30
   Text Form: языкового моделирования
