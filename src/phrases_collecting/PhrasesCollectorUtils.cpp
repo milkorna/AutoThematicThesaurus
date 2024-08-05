@@ -33,8 +33,8 @@ namespace PhrasesCollectorUtils {
         fs::path repoPath = fs::current_path();
         fs::path inputDir = repoPath / "my_data/texts";
         std::vector<fs::path> files_to_process;
-        files_to_process.push_back(
-            "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in stable
+        // files_to_process.push_back(
+        //    "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in stable
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -43,7 +43,6 @@ namespace PhrasesCollectorUtils {
                 }
             }
         }
-
         return files_to_process;
     }
 
@@ -127,8 +126,8 @@ namespace PhrasesCollectorUtils {
             std::vector<fs::path> files_to_process = GetFilesToProcess();
             if (g_options.multithreading) {
 
-                const size_t batchSize = 10;
-                for (size_t batchStart = 0; batchStart < 20 /*files_to_process.size()*/; batchStart += batchSize) {
+                const size_t batchSize = 15;
+                for (size_t batchStart = 0; batchStart < files_to_process.size(); batchStart += batchSize) {
                     std::vector<std::thread> threads;
                     size_t batchEnd = std::min(batchStart + batchSize, files_to_process.size());
                     for (size_t i = batchStart; i < batchEnd; ++i) {
@@ -145,7 +144,7 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < 20; ++i) {
+                for (unsigned int i = 0; i < files_to_process.size(); ++i) {
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }
@@ -160,6 +159,8 @@ namespace PhrasesCollectorUtils {
             }
 
             storage.OutputClustersToFile(totalResultsFile);
+
+            Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));

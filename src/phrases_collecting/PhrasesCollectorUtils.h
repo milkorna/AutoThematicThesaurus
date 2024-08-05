@@ -19,7 +19,7 @@ namespace fs = std::filesystem;
 namespace PhrasesCollectorUtils {
 
     struct Options {
-        bool multithreading = true;
+        bool multithreading = false;
         bool cleaningStopWords = true;
         bool tags = false;
     };
