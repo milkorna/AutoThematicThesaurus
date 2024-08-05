@@ -305,10 +305,10 @@ Model Name: С + Срд
 Word Complexes: 2
 
 Phrases:
-  Text Form: абзацем текста
-    Position - Start: 17, End: 18, DocNum: 713124, SentNum: 58
   Text Form: абзацах текста
     Position - Start: 20, End: 21, DocNum: 522622, SentNum: 14
+  Text Form: абзацем текста
+    Position - Start: 17, End: 18, DocNum: 713124, SentNum: 58
 
 Key: АБСТРАКТНЫЙСУЩНОСТЬ
 Phrase Size: 2
@@ -1409,10 +1409,10 @@ Word Complexes: 3
 Phrases:
   Text Form: английском языке
     Position - Start: 12, End: 13, DocNum: 792098, SentNum: 101
-  Text Form: английского языков
-    Position - Start: 11, End: 12, DocNum: 704844, SentNum: 60
   Text Form: английского языка
     Position - Start: 9, End: 10, DocNum: 491260, SentNum: 41
+  Text Form: английского языков
+    Position - Start: 11, End: 12, DocNum: 704844, SentNum: 60
 
 Key: АНСАМБЛЕВЫЙМЕТОД
 Phrase Size: 2
@@ -1698,12 +1698,12 @@ Model Name: С + Срд
 Word Complexes: 11
 
 Phrases:
-  Text Form: базы данных
-    Position - Start: 8, End: 9, DocNum: 707956, SentNum: 106
   Text Form: базу данных
     Position - Start: 7, End: 8, DocNum: 785892, SentNum: 61
   Text Form: базу данных
     Position - Start: 2, End: 3, DocNum: 785892, SentNum: 77
+  Text Form: базы данных
+    Position - Start: 8, End: 9, DocNum: 707956, SentNum: 106
   Text Form: база данных
     Position - Start: 9, End: 10, DocNum: 752744, SentNum: 5
   Text Form: база данных
@@ -1909,11 +1909,22 @@ Phrases:
   Text Form: базовым подходом
     Position - Start: 1, End: 2, DocNum: 551130, SentNum: 29
 
+Key: БАЗОВЫЙПОДХОДКРЕШЕНИЕ
+Phrase Size: 4
+Weight: 1
+Topic Match: false
+Model Name: (Прил + С) + Предл + С
+Word Complexes: 1
+
+Phrases:
+  Text Form: Базовый подход к решению
+    Position - Start: 0, End: 3, DocNum: 551130, SentNum: 22
+
 Key: БАЗОВЫЙПОДХОДКРЕШЕНИЕЗАДАЧА
 Phrase Size: 5
 Weight: 1
 Topic Match: false
-Model Name: (Прил + С) + Предл + (Прил + С)
+Model Name: (Прил + С) + Предл + (С + Срд)
 Word Complexes: 1
 
 Phrases:
@@ -2138,9 +2149,9 @@ Word Complexes: 4
 
 Phrases:
   Text Form: бинарной классификации
-    Position - Start: 21, End: 22, DocNum: 551130, SentNum: 43
-  Text Form: бинарной классификации
     Position - Start: 9, End: 10, DocNum: 687796, SentNum: 58
+  Text Form: бинарной классификации
+    Position - Start: 21, End: 22, DocNum: 551130, SentNum: 43
   Text Form: бинарной классификации
     Position - Start: 14, End: 15, DocNum: 687796, SentNum: 95
   Text Form: бинарной классификации
@@ -2481,16 +2492,16 @@ Word Complexes: 6
 Phrases:
   Text Form: большее количество
     Position - Start: 12, End: 13, DocNum: 325014, SentNum: 9
-  Text Form: большего количества
-    Position - Start: 21, End: 22, DocNum: 325014, SentNum: 85
   Text Form: наибольшему количеству
     Position - Start: 22, End: 23, DocNum: 707956, SentNum: 57
   Text Form: большее количество
     Position - Start: 24, End: 25, DocNum: 551130, SentNum: 50
-  Text Form: большее количество
-    Position - Start: 6, End: 7, DocNum: 707760, SentNum: 101
+  Text Form: большего количества
+    Position - Start: 21, End: 22, DocNum: 325014, SentNum: 85
   Text Form: наибольшее количество
     Position - Start: 19, End: 20, DocNum: 544420, SentNum: 109
+  Text Form: большее количество
+    Position - Start: 6, End: 7, DocNum: 707760, SentNum: 101
 
 Key: БОЛЬШИЙКОЛИЧЕСТВОГИПОТЕЗА
 Phrase Size: 3
@@ -3059,6 +3070,10 @@ Word Complexes: 18
 Phrases:
   Text Form: векторов Запроса
     Position - Start: 3, End: 4, DocNum: 490842, SentNum: 16
+  Text Form: вектору запроса
+    Position - Start: 24, End: 25, DocNum: 785892, SentNum: 35
+  Text Form: векторов запроса
+    Position - Start: 2, End: 3, DocNum: 785892, SentNum: 50
   Text Form: вектора запроса
     Position - Start: 1, End: 2, DocNum: 490842, SentNum: 137
   Text Form: векторов Запроса
@@ -3089,10 +3104,6 @@ Phrases:
     Position - Start: 11, End: 12, DocNum: 490842, SentNum: 226
   Text Form: векторов Запроса
     Position - Start: 8, End: 9, DocNum: 490842, SentNum: 232
-  Text Form: вектору запроса
-    Position - Start: 24, End: 25, DocNum: 785892, SentNum: 35
-  Text Form: векторов запроса
-    Position - Start: 2, End: 3, DocNum: 785892, SentNum: 50
 
 Key: ВЕКТОРЗАПРОСИКЛЮЧ
 Phrase Size: 4
@@ -3183,9 +3194,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: векторизации текста
-    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 38
-  Text Form: векторизации текста
     Position - Start: 12, End: 13, DocNum: 785892, SentNum: 36
+  Text Form: векторизации текста
+    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 38
 
 Key: ВЕКТОРИЗАЦИЯТЕКСТИЗСЕТЬ
 Phrase Size: 4
@@ -3379,16 +3390,16 @@ Model Name: Прил + С
 Word Complexes: 6
 
 Phrases:
-  Text Form: векторных представлений
-    Position - Start: 9, End: 10, DocNum: 490842, SentNum: 285
+  Text Form: векторное представление
+    Position - Start: 10, End: 11, DocNum: 785892, SentNum: 35
   Text Form: векторное представление
     Position - Start: 5, End: 6, DocNum: 551130, SentNum: 27
   Text Form: векторного представление
     Position - Start: 3, End: 4, DocNum: 551130, SentNum: 37
   Text Form: векторного представления
     Position - Start: 27, End: 28, DocNum: 551130, SentNum: 37
-  Text Form: векторное представление
-    Position - Start: 10, End: 11, DocNum: 785892, SentNum: 35
+  Text Form: векторных представлений
+    Position - Start: 9, End: 10, DocNum: 490842, SentNum: 285
   Text Form: векторным представлением
     Position - Start: 18, End: 19, DocNum: 522622, SentNum: 24
 
@@ -4381,10 +4392,10 @@ Model Name: C + (Прил + С)рд
 Word Complexes: 2
 
 Phrases:
-  Text Form: внедрении машинного обучения
-    Position - Start: 7, End: 9, DocNum: 707760, SentNum: 65
   Text Form: внедрения машинного обучения
     Position - Start: 11, End: 13, DocNum: 595423, SentNum: 4
+  Text Form: внедрении машинного обучения
+    Position - Start: 7, End: 9, DocNum: 707760, SentNum: 65
 
 Key: ВНЕШНИЙРАЗДРАЖИТЕЛЬ
 Phrase Size: 2
@@ -5296,10 +5307,10 @@ Model Name: С + Срд
 Word Complexes: 3
 
 Phrases:
-  Text Form: время обучения
-    Position - Start: 1, End: 2, DocNum: 490842, SentNum: 161
   Text Form: времени обучения
     Position - Start: 11, End: 12, DocNum: 567794, SentNum: 118
+  Text Form: время обучения
+    Position - Start: 1, End: 2, DocNum: 490842, SentNum: 161
   Text Form: время обучения
     Position - Start: 1, End: 2, DocNum: 707760, SentNum: 63
 
@@ -5539,11 +5550,11 @@ Word Complexes: 3
 
 Phrases:
   Text Form: входного вектора
+    Position - Start: 1, End: 2, DocNum: 687796, SentNum: 94
+  Text Form: входного вектора
     Position - Start: 1, End: 2, DocNum: 490842, SentNum: 227
   Text Form: входной вектор
     Position - Start: 8, End: 9, DocNum: 490842, SentNum: 263
-  Text Form: входного вектора
-    Position - Start: 1, End: 2, DocNum: 687796, SentNum: 94
 
 Key: ВХОДНОЙВЕКТОРНАВЕКТОР
 Phrase Size: 4
@@ -5586,18 +5597,18 @@ Model Name: Прил + С
 Word Complexes: 7
 
 Phrases:
-  Text Form: входные данные
-    Position - Start: 3, End: 4, DocNum: 490842, SentNum: 225
   Text Form: входных данных
     Position - Start: 17, End: 18, DocNum: 567794, SentNum: 16
-  Text Form: входных данных
-    Position - Start: 13, End: 14, DocNum: 567794, SentNum: 120
   Text Form: входных данных
     Position - Start: 22, End: 23, DocNum: 551130, SentNum: 55
   Text Form: входные данные
     Position - Start: 8, End: 9, DocNum: 687796, SentNum: 82
   Text Form: входных данных
     Position - Start: 7, End: 8, DocNum: 687796, SentNum: 92
+  Text Form: входных данных
+    Position - Start: 13, End: 14, DocNum: 567794, SentNum: 120
+  Text Form: входные данные
+    Position - Start: 3, End: 4, DocNum: 490842, SentNum: 225
   Text Form: входных данных
     Position - Start: 17, End: 18, DocNum: 522622, SentNum: 38
 
@@ -5657,16 +5668,16 @@ Phrases:
     Position - Start: 31, End: 32, DocNum: 490842, SentNum: 51
   Text Form: входная последовательность
     Position - Start: 1, End: 2, DocNum: 490842, SentNum: 64
+  Text Form: входная последовательность
+    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 78
   Text Form: входную последовательность
     Position - Start: 8, End: 9, DocNum: 490842, SentNum: 94
+  Text Form: входная последовательность
+    Position - Start: 6, End: 7, DocNum: 707956, SentNum: 141
   Text Form: входной последовательности
     Position - Start: 5, End: 6, DocNum: 490842, SentNum: 289
   Text Form: входной последовательности
     Position - Start: 13, End: 14, DocNum: 490842, SentNum: 289
-  Text Form: входная последовательность
-    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 78
-  Text Form: входная последовательность
-    Position - Start: 6, End: 7, DocNum: 707956, SentNum: 141
   Text Form: входной последовательности
     Position - Start: 8, End: 9, DocNum: 522622, SentNum: 49
 
@@ -5689,12 +5700,12 @@ Model Name: Прил + С
 Word Complexes: 3
 
 Phrases:
-  Text Form: входное слово
-    Position - Start: 3, End: 4, DocNum: 490842, SentNum: 109
   Text Form: входного слова
     Position - Start: 34, End: 35, DocNum: 567794, SentNum: 8
   Text Form: Входное слово
     Position - Start: 0, End: 1, DocNum: 567794, SentNum: 85
+  Text Form: входное слово
+    Position - Start: 3, End: 4, DocNum: 490842, SentNum: 109
 
 Key: ВХОДНОЙСЛОВОПЕРЕДПОСТУПЛЕНИЕ
 Phrase Size: 4
@@ -5751,13 +5762,13 @@ Phrases:
   Text Form: входной токен
     Position - Start: 5, End: 6, DocNum: 490842, SentNum: 88
   Text Form: входного токена
+    Position - Start: 6, End: 7, DocNum: 567794, SentNum: 102
+  Text Form: входного токена
     Position - Start: 4, End: 5, DocNum: 490842, SentNum: 178
   Text Form: входного токена
     Position - Start: 24, End: 25, DocNum: 490842, SentNum: 184
   Text Form: входной токен
     Position - Start: 10, End: 11, DocNum: 490842, SentNum: 249
-  Text Form: входного токена
-    Position - Start: 6, End: 7, DocNum: 567794, SentNum: 102
 
 Key: ВХОДНОЙТОКЕНДЛЯПОДСЧЕТ
 Phrase Size: 4
@@ -6448,14 +6459,14 @@ Model Name: Прил + С
 Word Complexes: 4
 
 Phrases:
-  Text Form: выходные последовательности
-    Position - Start: 20, End: 21, DocNum: 490842, SentNum: 283
   Text Form: выходную последовательность
     Position - Start: 20, End: 21, DocNum: 707956, SentNum: 72
   Text Form: выходной последовательности
     Position - Start: 17, End: 18, DocNum: 707956, SentNum: 74
   Text Form: выходную последовательность
     Position - Start: 15, End: 16, DocNum: 707956, SentNum: 82
+  Text Form: выходные последовательности
+    Position - Start: 20, End: 21, DocNum: 490842, SentNum: 283
 
 Key: ВЫХОДСЕТЬ
 Phrase Size: 2
@@ -6544,10 +6555,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: вычислительной мощности
-    Position - Start: 24, End: 25, DocNum: 796555, SentNum: 74
   Text Form: вычислительных мощностях
     Position - Start: 2, End: 3, DocNum: 785892, SentNum: 106
+  Text Form: вычислительной мощности
+    Position - Start: 24, End: 25, DocNum: 796555, SentNum: 74
 
 Key: ВЫЧИСЛИТЕЛЬНЫЙМОЩНОСТЬИПАМЯТЬ
 Phrase Size: 4
@@ -6590,10 +6601,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: вычислительными ресурсами
-    Position - Start: 4, End: 5, DocNum: 796555, SentNum: 76
   Text Form: вычислительных ресурсов
     Position - Start: 4, End: 5, DocNum: 551130, SentNum: 50
+  Text Form: вычислительными ресурсами
+    Position - Start: 4, End: 5, DocNum: 796555, SentNum: 76
 
 Key: ВЫЧИСЛИТЕЛЬНЫЙСЛОЖНОСТЬ
 Phrase Size: 2
@@ -6992,10 +7003,10 @@ Word Complexes: 4
 Phrases:
   Text Form: глубокого обучения
     Position - Start: 14, End: 15, DocNum: 707956, SentNum: 6
-  Text Form: глубокое обучение
-    Position - Start: 12, End: 13, DocNum: 707956, SentNum: 96
   Text Form: глубоком обучении
     Position - Start: 7, End: 8, DocNum: 687796, SentNum: 91
+  Text Form: глубокое обучение
+    Position - Start: 12, End: 13, DocNum: 707956, SentNum: 96
   Text Form: глубокого обучения
     Position - Start: 2, End: 3, DocNum: 522622, SentNum: 59
 
@@ -7074,15 +7085,15 @@ Word Complexes: 5
 
 Phrases:
   Text Form: голосовые помощники
+    Position - Start: 1, End: 2, DocNum: 554072, SentNum: 0
+  Text Form: голосовые помощники
     Position - Start: 7, End: 8, DocNum: 713124, SentNum: 1
+  Text Form: голосовые помощники
+    Position - Start: 3, End: 4, DocNum: 554072, SentNum: 9
   Text Form: голосовых помощниках
     Position - Start: 18, End: 19, DocNum: 713124, SentNum: 14
   Text Form: голосового помощника
     Position - Start: 30, End: 31, DocNum: 713124, SentNum: 67
-  Text Form: голосовые помощники
-    Position - Start: 1, End: 2, DocNum: 554072, SentNum: 0
-  Text Form: голосовые помощники
-    Position - Start: 3, End: 4, DocNum: 554072, SentNum: 9
 
 Key: ГОРОДСКОЙПЛАНИРОВАНИЕ
 Phrase Size: 2
@@ -7114,12 +7125,12 @@ Model Name: Прил + С
 Word Complexes: 3
 
 Phrases:
-  Text Form: градиентного бустинга
-    Position - Start: 8, End: 9, DocNum: 551130, SentNum: 64
   Text Form: градиентный бустинг
     Position - Start: 15, End: 16, DocNum: 687796, SentNum: 61
   Text Form: Градиентный бустинг
     Position - Start: 0, End: 1, DocNum: 687796, SentNum: 68
+  Text Form: градиентного бустинга
+    Position - Start: 8, End: 9, DocNum: 551130, SentNum: 64
 
 Key: ГРАДИЕНТНЫЙСПУСК
 Phrase Size: 2
@@ -7175,12 +7186,10 @@ Key: ГРАФАЗНАНИЕ
 Phrase Size: 2
 Weight: 1
 Topic Match: false
-Model Name: Прил + С
-Word Complexes: 3
+Model Name: С + Срд
+Word Complexes: 2
 
 Phrases:
-  Text Form: графе знаний
-    Position - Start: 3, End: 4, DocNum: 713124, SentNum: 45
   Text Form: графе знаний
     Position - Start: 21, End: 22, DocNum: 713124, SentNum: 50
   Text Form: графа знаний
@@ -7191,9 +7200,11 @@ Phrase Size: 2
 Weight: 1
 Topic Match: false
 Model Name: С + Срд
-Word Complexes: 2
+Word Complexes: 3
 
 Phrases:
+  Text Form: графе знаний
+    Position - Start: 3, End: 4, DocNum: 713124, SentNum: 45
   Text Form: Граф знаний
     Position - Start: 0, End: 1, DocNum: 713124, SentNum: 46
   Text Form: граф знаний
@@ -7398,12 +7409,12 @@ Model Name: С + Срд
 Word Complexes: 3
 
 Phrases:
-  Text Form: группы слов
-    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 77
   Text Form: групп слов
     Position - Start: 23, End: 24, DocNum: 554072, SentNum: 31
   Text Form: группы слов
     Position - Start: 11, End: 12, DocNum: 554072, SentNum: 32
+  Text Form: группы слов
+    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 77
 
 Key: ГРУППАУЧЕНЫЙ
 Phrase Size: 2
@@ -7516,10 +7527,10 @@ Phrases:
     Position - Start: 16, End: 17, DocNum: 704844, SentNum: 2
   Text Form: дальнейшей обработки
     Position - Start: 14, End: 15, DocNum: 704844, SentNum: 4
-  Text Form: дальнейшую обработку
-    Position - Start: 20, End: 21, DocNum: 576888, SentNum: 79
   Text Form: дальнейшей обработки
     Position - Start: 2, End: 3, DocNum: 554072, SentNum: 27
+  Text Form: дальнейшую обработку
+    Position - Start: 20, End: 21, DocNum: 576888, SentNum: 79
 
 Key: ДАЛЬНЕЙШИЙПЕРЕИСПОЛЬЗОВАНИЕ
 Phrase Size: 2
@@ -7647,10 +7658,10 @@ Phrases:
     Position - Start: 35, End: 37, DocNum: 490842, SentNum: 44
   Text Form: данными для обучения
     Position - Start: 3, End: 5, DocNum: 687796, SentNum: 50
-  Text Form: Данные для обучения
-    Position - Start: 0, End: 2, DocNum: 704844, SentNum: 12
   Text Form: данные для обучения
     Position - Start: 35, End: 37, DocNum: 707760, SentNum: 5
+  Text Form: Данные для обучения
+    Position - Start: 0, End: 2, DocNum: 704844, SentNum: 12
   Text Form: данных для обучения
     Position - Start: 8, End: 10, DocNum: 707760, SentNum: 68
   Text Form: данными для обучения
@@ -8076,10 +8087,10 @@ Model Name: Прил + С
 Word Complexes: 3
 
 Phrases:
-  Text Form: данная статья
-    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 63
   Text Form: данной статье
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 1
+  Text Form: данная статья
+    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 63
   Text Form: данной статье
     Position - Start: 1, End: 2, DocNum: 522622, SentNum: 15
 
@@ -9160,12 +9171,12 @@ Word Complexes: 4
 Phrases:
   Text Form: достаточного количества
     Position - Start: 2, End: 3, DocNum: 707956, SentNum: 104
+  Text Form: достаточном количестве
+    Position - Start: 4, End: 5, DocNum: 491260, SentNum: 41
   Text Form: достаточным количеством
     Position - Start: 9, End: 10, DocNum: 713124, SentNum: 75
   Text Form: достаточное количество
     Position - Start: 6, End: 7, DocNum: 522622, SentNum: 55
-  Text Form: достаточном количестве
-    Position - Start: 4, End: 5, DocNum: 491260, SentNum: 41
 
 Key: ДОСТАТОЧНЫЙКОЛИЧЕСТВОАКТУАЛЬНЫЙФАКТ
 Phrase Size: 4
@@ -9527,17 +9538,17 @@ Word Complexes: 7
 
 Phrases:
   Text Form: естественного языка
-    Position - Start: 3, End: 4, DocNum: 551130, SentNum: 33
-  Text Form: естественного языка
     Position - Start: 3, End: 4, DocNum: 687796, SentNum: 2
   Text Form: естественного языка
     Position - Start: 14, End: 15, DocNum: 687796, SentNum: 9
   Text Form: естественного языка
+    Position - Start: 3, End: 4, DocNum: 551130, SentNum: 33
+  Text Form: естественных языках
+    Position - Start: 11, End: 12, DocNum: 544420, SentNum: 5
+  Text Form: естественного языка
     Position - Start: 17, End: 18, DocNum: 704844, SentNum: 52
   Text Form: естественного языка
     Position - Start: 28, End: 29, DocNum: 522622, SentNum: 57
-  Text Form: естественных языках
-    Position - Start: 11, End: 12, DocNum: 544420, SentNum: 5
   Text Form: естественных языках
     Position - Start: 5, End: 6, DocNum: 544420, SentNum: 147
 
@@ -9944,10 +9955,10 @@ Model Name: C + (Прил + С)рд
 Word Complexes: 3
 
 Phrases:
-  Text Form: задачи бинарной классификации
-    Position - Start: 20, End: 22, DocNum: 551130, SentNum: 43
   Text Form: задач бинарной классификации
     Position - Start: 8, End: 10, DocNum: 687796, SentNum: 58
+  Text Form: задачи бинарной классификации
+    Position - Start: 20, End: 22, DocNum: 551130, SentNum: 43
   Text Form: задачей бинарной классификации
     Position - Start: 13, End: 15, DocNum: 687796, SentNum: 95
 
@@ -10116,10 +10127,10 @@ Word Complexes: 3
 Phrases:
   Text Form: задачу обработки
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 2
-  Text Form: задач обработки
-    Position - Start: 15, End: 16, DocNum: 704844, SentNum: 52
   Text Form: задачам обработки
     Position - Start: 9, End: 10, DocNum: 522622, SentNum: 52
+  Text Form: задач обработки
+    Position - Start: 15, End: 16, DocNum: 704844, SentNum: 52
 
 Key: ЗАДАЧАОБРАБОТКАИЗОБРАЖЕНИЕ
 Phrase Size: 3
@@ -12668,14 +12679,18 @@ Model Name: Прил + С
 Word Complexes: 11
 
 Phrases:
-  Text Form: искусственного интеллекта
-    Position - Start: 21, End: 22, DocNum: 792098, SentNum: 36
   Text Form: искусственному интеллекту
     Position - Start: 13, End: 14, DocNum: 785892, SentNum: 5
+  Text Form: искусственного интеллекта
+    Position - Start: 21, End: 22, DocNum: 792098, SentNum: 36
+  Text Form: Искусственный интеллект
+    Position - Start: 3, End: 4, DocNum: 554072, SentNum: 2
   Text Form: искусственного интеллекта
     Position - Start: 4, End: 5, DocNum: 707760, SentNum: 2
   Text Form: искусственным интеллектом
     Position - Start: 7, End: 8, DocNum: 544420, SentNum: 2
+  Text Form: искусственный интеллект
+    Position - Start: 15, End: 16, DocNum: 554072, SentNum: 4
   Text Form: искусственный интеллект
     Position - Start: 7, End: 8, DocNum: 544420, SentNum: 110
   Text Form: искусственным интеллектом
@@ -12684,10 +12699,6 @@ Phrases:
     Position - Start: 13, End: 14, DocNum: 544420, SentNum: 124
   Text Form: искусственного интеллекта
     Position - Start: 18, End: 19, DocNum: 544420, SentNum: 149
-  Text Form: Искусственный интеллект
-    Position - Start: 3, End: 4, DocNum: 554072, SentNum: 2
-  Text Form: искусственный интеллект
-    Position - Start: 15, End: 16, DocNum: 554072, SentNum: 4
   Text Form: искусственного интеллекта
     Position - Start: 2, End: 3, DocNum: 554072, SentNum: 183
 
@@ -13866,10 +13877,10 @@ Word Complexes: 4
 Phrases:
   Text Form: качества работы
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 53
-  Text Form: качества работы
-    Position - Start: 12, End: 13, DocNum: 713124, SentNum: 25
   Text Form: качество работы
     Position - Start: 9, End: 10, DocNum: 595423, SentNum: 9
+  Text Form: качества работы
+    Position - Start: 12, End: 13, DocNum: 713124, SentNum: 25
   Text Form: качества работы
     Position - Start: 6, End: 7, DocNum: 595423, SentNum: 38
 
@@ -14326,14 +14337,14 @@ Word Complexes: 5
 Phrases:
   Text Form: классификации текстов
     Position - Start: 11, End: 12, DocNum: 551130, SentNum: 32
-  Text Form: классификации текста
-    Position - Start: 7, End: 8, DocNum: 704844, SentNum: 57
-  Text Form: классификации текста
-    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 59
   Text Form: Классификации текстов
     Position - Start: 2, End: 3, DocNum: 554072, SentNum: 39
   Text Form: классификацию текста
     Position - Start: 3, End: 4, DocNum: 554072, SentNum: 42
+  Text Form: классификации текста
+    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 59
+  Text Form: классификации текста
+    Position - Start: 7, End: 8, DocNum: 704844, SentNum: 57
 
 Key: КЛАССИФИКАЦИЯТЕКСТПОЭМОЦИОНАЛЬНЫЙОКРАСКА
 Phrase Size: 5
@@ -14578,6 +14589,8 @@ Model Name: Прил + С
 Word Complexes: 18
 
 Phrases:
+  Text Form: ключевые слова
+    Position - Start: 1, End: 2, DocNum: 595423, SentNum: 25
   Text Form: ключевых слов
     Position - Start: 27, End: 28, DocNum: 707760, SentNum: 55
   Text Form: ключевые слова
@@ -14612,8 +14625,6 @@ Phrases:
     Position - Start: 28, End: 29, DocNum: 544420, SentNum: 130
   Text Form: ключевых слов
     Position - Start: 4, End: 5, DocNum: 544420, SentNum: 138
-  Text Form: ключевые слова
-    Position - Start: 1, End: 2, DocNum: 595423, SentNum: 25
 
 Key: КЛЮЧЕВОЙСЛОВОВРЕЗЮМЕ
 Phrase Size: 4
@@ -15040,11 +15051,11 @@ Word Complexes: 3
 
 Phrases:
   Text Form: количество параметров
+    Position - Start: 5, End: 6, DocNum: 551130, SentNum: 35
+  Text Form: количество параметров
     Position - Start: 1, End: 2, DocNum: 567794, SentNum: 108
   Text Form: количеством параметров
     Position - Start: 8, End: 9, DocNum: 567794, SentNum: 109
-  Text Form: количество параметров
-    Position - Start: 5, End: 6, DocNum: 551130, SentNum: 35
 
 Key: КОЛИЧЕСТВОПЕРСОНАЛ
 Phrase Size: 2
@@ -16937,12 +16948,12 @@ Phrases:
     Position - Start: 14, End: 15, DocNum: 567794, SentNum: 66
   Text Form: линейный слой
     Position - Start: 2, End: 3, DocNum: 567794, SentNum: 75
+  Text Form: линейного слоя
+    Position - Start: 4, End: 5, DocNum: 707956, SentNum: 74
   Text Form: линейный слой
     Position - Start: 6, End: 7, DocNum: 567794, SentNum: 86
   Text Form: линейный слой
     Position - Start: 30, End: 31, DocNum: 567794, SentNum: 89
-  Text Form: линейного слоя
-    Position - Start: 4, End: 5, DocNum: 707956, SentNum: 74
   Text Form: линейного слоя
     Position - Start: 14, End: 15, DocNum: 704844, SentNum: 11
 
@@ -17141,12 +17152,12 @@ Model Name: Прил + С
 Word Complexes: 4
 
 Phrases:
-  Text Form: логистической регрессии
-    Position - Start: 13, End: 14, DocNum: 551130, SentNum: 48
   Text Form: Логистическая регрессия
     Position - Start: 0, End: 1, DocNum: 687796, SentNum: 55
   Text Form: логистической регрессии
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 58
+  Text Form: логистической регрессии
+    Position - Start: 13, End: 14, DocNum: 551130, SentNum: 48
   Text Form: логистическая регрессия
     Position - Start: 16, End: 17, DocNum: 687796, SentNum: 122
 
@@ -17413,10 +17424,10 @@ Phrases:
     Position - Start: 0, End: 1, DocNum: 325014, SentNum: 72
   Text Form: максимальное значение
     Position - Start: 20, End: 21, DocNum: 325014, SentNum: 73
-  Text Form: максимального значения
-    Position - Start: 20, End: 21, DocNum: 704844, SentNum: 116
   Text Form: максимальным значением
     Position - Start: 12, End: 13, DocNum: 752744, SentNum: 24
+  Text Form: максимального значения
+    Position - Start: 20, End: 21, DocNum: 704844, SentNum: 116
 
 Key: МАКСИМАЛЬНЫЙЗНАЧЕНИЕНАДЛИНА
 Phrase Size: 4
@@ -17864,10 +17875,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: матричных вычислений
-    Position - Start: 5, End: 6, DocNum: 704844, SentNum: 103
   Text Form: матричных вычислениях
     Position - Start: 33, End: 34, DocNum: 554072, SentNum: 28
+  Text Form: матричных вычислений
+    Position - Start: 5, End: 6, DocNum: 704844, SentNum: 103
 
 Key: МАТРИЧНЫЙРАЗЛОЖЕНИЕ
 Phrase Size: 2
@@ -17902,63 +17913,63 @@ Phrases:
   Text Form: машинного обучения
     Position - Start: 8, End: 9, DocNum: 490842, SentNum: 0
   Text Form: машинного обучения
-    Position - Start: 18, End: 19, DocNum: 490842, SentNum: 32
-  Text Form: машинного обучения
-    Position - Start: 14, End: 15, DocNum: 707956, SentNum: 19
-  Text Form: машинного обучения
-    Position - Start: 23, End: 24, DocNum: 707956, SentNum: 96
+    Position - Start: 14, End: 15, DocNum: 687796, SentNum: 1
   Text Form: машинного обучения
     Position - Start: 16, End: 17, DocNum: 551130, SentNum: 3
-  Text Form: машинному обучению
-    Position - Start: 3, End: 4, DocNum: 551130, SentNum: 48
-  Text Form: машинного обучения
-    Position - Start: 14, End: 15, DocNum: 687796, SentNum: 1
   Text Form: машинного обучения
     Position - Start: 13, End: 14, DocNum: 687796, SentNum: 8
   Text Form: машинного обучения
+    Position - Start: 14, End: 15, DocNum: 707956, SentNum: 19
+  Text Form: машинного обучения
+    Position - Start: 18, End: 19, DocNum: 490842, SentNum: 32
+  Text Form: машинного обучения
     Position - Start: 3, End: 4, DocNum: 687796, SentNum: 28
-  Text Form: машинного обучения
-    Position - Start: 1, End: 2, DocNum: 687796, SentNum: 31
-  Text Form: машинного обучения
-    Position - Start: 14, End: 15, DocNum: 687796, SentNum: 49
-  Text Form: машинного обучения
-    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 61
   Text Form: машинное обучение
     Position - Start: 2, End: 3, DocNum: 785892, SentNum: 29
+  Text Form: машинного обучения
+    Position - Start: 1, End: 2, DocNum: 687796, SentNum: 31
   Text Form: машинному обучению
     Position - Start: 3, End: 4, DocNum: 785892, SentNum: 34
+  Text Form: машинного обучения
+    Position - Start: 14, End: 15, DocNum: 687796, SentNum: 49
   Text Form: машинное обучение
     Position - Start: 27, End: 28, DocNum: 785892, SentNum: 55
+  Text Form: машинного обучения
+    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 61
+  Text Form: машинному обучению
+    Position - Start: 3, End: 4, DocNum: 551130, SentNum: 48
   Text Form: машинному обучению
     Position - Start: 7, End: 8, DocNum: 785892, SentNum: 91
   Text Form: машинного обучения
+    Position - Start: 23, End: 24, DocNum: 707956, SentNum: 96
+  Text Form: машинного обучения
+    Position - Start: 7, End: 8, DocNum: 595423, SentNum: 1
+  Text Form: машинного обучения
+    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 3
+  Text Form: машинного обучения
+    Position - Start: 12, End: 13, DocNum: 595423, SentNum: 4
+  Text Form: машинного обучения
     Position - Start: 13, End: 14, DocNum: 704844, SentNum: 7
+  Text Form: машинное обучение
+    Position - Start: 4, End: 5, DocNum: 713124, SentNum: 14
+  Text Form: Машинное обучение
+    Position - Start: 21, End: 22, DocNum: 554072, SentNum: 11
+  Text Form: машинное обучение
+    Position - Start: 18, End: 19, DocNum: 595423, SentNum: 24
   Text Form: машинного обучения
     Position - Start: 7, End: 8, DocNum: 704844, SentNum: 33
   Text Form: машинного обучения
     Position - Start: 10, End: 11, DocNum: 704844, SentNum: 37
   Text Form: машинного обучения
-    Position - Start: 8, End: 9, DocNum: 704844, SentNum: 123
-  Text Form: Машинное обучение
-    Position - Start: 0, End: 1, DocNum: 704844, SentNum: 137
-  Text Form: машинного обучения
-    Position - Start: 11, End: 12, DocNum: 707760, SentNum: 3
-  Text Form: машинного обучения
     Position - Start: 15, End: 16, DocNum: 707760, SentNum: 59
   Text Form: машинного обучения
     Position - Start: 8, End: 9, DocNum: 707760, SentNum: 65
-  Text Form: машинное обучение
-    Position - Start: 4, End: 5, DocNum: 713124, SentNum: 14
   Text Form: машинного обучения
     Position - Start: 9, End: 10, DocNum: 544420, SentNum: 125
   Text Form: машинного обучения
-    Position - Start: 7, End: 8, DocNum: 595423, SentNum: 1
-  Text Form: машинного обучения
-    Position - Start: 12, End: 13, DocNum: 595423, SentNum: 4
-  Text Form: машинное обучение
-    Position - Start: 18, End: 19, DocNum: 595423, SentNum: 24
+    Position - Start: 8, End: 9, DocNum: 704844, SentNum: 123
   Text Form: Машинное обучение
-    Position - Start: 21, End: 22, DocNum: 554072, SentNum: 11
+    Position - Start: 0, End: 1, DocNum: 704844, SentNum: 137
 
 Key: МАШИННЫЙОБУЧЕНИЕВПРОЦЕСС
 Phrase Size: 4
@@ -18023,14 +18034,10 @@ Model Name: Прил + С
 Word Complexes: 10
 
 Phrases:
-  Text Form: Машинный перевод
-    Position - Start: 0, End: 1, DocNum: 490842, SentNum: 23
-  Text Form: машинного перевода
-    Position - Start: 4, End: 5, DocNum: 490842, SentNum: 43
-  Text Form: Машинный перевод
-    Position - Start: 0, End: 1, DocNum: 490842, SentNum: 271
   Text Form: машинный перевод
     Position - Start: 9, End: 10, DocNum: 707956, SentNum: 7
+  Text Form: Машинный перевод
+    Position - Start: 0, End: 1, DocNum: 490842, SentNum: 23
   Text Form: машинного перевода
     Position - Start: 5, End: 6, DocNum: 707956, SentNum: 23
   Text Form: машинного перевода
@@ -18038,9 +18045,13 @@ Phrases:
   Text Form: машинного перевода
     Position - Start: 19, End: 20, DocNum: 707956, SentNum: 34
   Text Form: машинного перевода
+    Position - Start: 4, End: 5, DocNum: 490842, SentNum: 43
+  Text Form: машинного перевода
     Position - Start: 6, End: 7, DocNum: 707956, SentNum: 42
   Text Form: машинного перевода
     Position - Start: 20, End: 21, DocNum: 707956, SentNum: 60
+  Text Form: Машинный перевод
+    Position - Start: 0, End: 1, DocNum: 490842, SentNum: 271
   Text Form: машинного перевода
     Position - Start: 4, End: 5, DocNum: 522622, SentNum: 20
 
@@ -18251,9 +18262,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: месяц работы
-    Position - Start: 1, End: 2, DocNum: 707760, SentNum: 98
-  Text Form: месяц работы
     Position - Start: 9, End: 10, DocNum: 595423, SentNum: 63
+  Text Form: месяц работы
+    Position - Start: 1, End: 2, DocNum: 707760, SentNum: 98
 
 Key: МЕСЯЦРАБОТАСДАННЫЙ
 Phrase Size: 4
@@ -18400,9 +18411,9 @@ Word Complexes: 3
 
 Phrases:
   Text Form: методы машинного обучения
-    Position - Start: 15, End: 17, DocNum: 551130, SentNum: 3
-  Text Form: методы машинного обучения
     Position - Start: 13, End: 15, DocNum: 687796, SentNum: 1
+  Text Form: методы машинного обучения
+    Position - Start: 15, End: 17, DocNum: 551130, SentNum: 3
   Text Form: методы машинного обучения
     Position - Start: 6, End: 8, DocNum: 687796, SentNum: 61
 
@@ -18721,13 +18732,13 @@ Phrases:
   Text Form: механизм внимания
     Position - Start: 7, End: 8, DocNum: 707956, SentNum: 75
   Text Form: механизм внимания
-    Position - Start: 1, End: 2, DocNum: 752744, SentNum: 46
-  Text Form: механизм внимания
     Position - Start: 4, End: 5, DocNum: 522622, SentNum: 10
   Text Form: Механизм внимания
     Position - Start: 0, End: 1, DocNum: 522622, SentNum: 26
   Text Form: механизма внимания
     Position - Start: 6, End: 7, DocNum: 522622, SentNum: 28
+  Text Form: механизм внимания
+    Position - Start: 1, End: 2, DocNum: 752744, SentNum: 46
 
 Key: МЕХАНИЗМВНИМАНИЕДЛЯПЕРЕВОД
 Phrase Size: 4
@@ -18901,10 +18912,10 @@ Phrases:
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 34
   Text Form: мешка слов
     Position - Start: 3, End: 4, DocNum: 704844, SentNum: 8
-  Text Form: мешок слов
-    Position - Start: 5, End: 6, DocNum: 704844, SentNum: 19
   Text Form: Мешок слов
     Position - Start: 13, End: 14, DocNum: 554072, SentNum: 27
+  Text Form: мешок слов
+    Position - Start: 5, End: 6, DocNum: 704844, SentNum: 19
 
 Key: МЕШОКСЛОВОВКАЧЕСТВО
 Phrase Size: 4
@@ -19408,10 +19419,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: мобильные приложения
-    Position - Start: 12, End: 13, DocNum: 707760, SentNum: 13
   Text Form: мобильных приложений
     Position - Start: 14, End: 15, DocNum: 576888, SentNum: 3
+  Text Form: мобильные приложения
+    Position - Start: 12, End: 13, DocNum: 707760, SentNum: 13
 
 Key: МОБИЛЬНЫЙПРИЛОЖЕНИЕИЧАТ-БОТ
 Phrase Size: 4
@@ -20387,22 +20398,20 @@ Word Complexes: 13
 Phrases:
   Text Form: наборе данных
     Position - Start: 18, End: 19, DocNum: 490842, SentNum: 3
+  Text Form: набор данных
+    Position - Start: 11, End: 12, DocNum: 785892, SentNum: 18
+  Text Form: наборов данных
+    Position - Start: 11, End: 12, DocNum: 796555, SentNum: 21
+  Text Form: набора данных
+    Position - Start: 13, End: 14, DocNum: 687796, SentNum: 67
+  Text Form: наборе данных
+    Position - Start: 6, End: 7, DocNum: 707956, SentNum: 102
+  Text Form: наборы данных
+    Position - Start: 10, End: 11, DocNum: 796555, SentNum: 85
   Text Form: набора данных
     Position - Start: 6, End: 7, DocNum: 490842, SentNum: 210
   Text Form: набора данных
     Position - Start: 6, End: 7, DocNum: 490842, SentNum: 211
-  Text Form: наборов данных
-    Position - Start: 11, End: 12, DocNum: 796555, SentNum: 21
-  Text Form: наборы данных
-    Position - Start: 10, End: 11, DocNum: 796555, SentNum: 85
-  Text Form: наборе данных
-    Position - Start: 6, End: 7, DocNum: 707956, SentNum: 102
-  Text Form: набора данных
-    Position - Start: 13, End: 14, DocNum: 687796, SentNum: 67
-  Text Form: набор данных
-    Position - Start: 11, End: 12, DocNum: 785892, SentNum: 18
-  Text Form: наборах данных
-    Position - Start: 31, End: 32, DocNum: 713124, SentNum: 103
   Text Form: наборов данных
     Position - Start: 13, End: 14, DocNum: 522622, SentNum: 44
   Text Form: набора данных
@@ -20411,6 +20420,8 @@ Phrases:
     Position - Start: 9, End: 10, DocNum: 522622, SentNum: 55
   Text Form: наборов данных
     Position - Start: 10, End: 11, DocNum: 522622, SentNum: 59
+  Text Form: наборах данных
+    Position - Start: 31, End: 32, DocNum: 713124, SentNum: 103
 
 Key: НАБОРДАННЫЙВВИД
 Phrase Size: 4
@@ -21712,11 +21723,57 @@ Word Complexes: 45
 
 Phrases:
   Text Form: нейронной сети
+    Position - Start: 1, End: 2, DocNum: 551130, SentNum: 31
+  Text Form: нейронной сети
+    Position - Start: 1, End: 2, DocNum: 551130, SentNum: 44
+  Text Form: нейронной сети
+    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 45
+  Text Form: нейронной сети
+    Position - Start: 31, End: 32, DocNum: 551130, SentNum: 48
+  Text Form: нейронной сети
+    Position - Start: 11, End: 12, DocNum: 707956, SentNum: 63
+  Text Form: нейронной сети
+    Position - Start: 6, End: 7, DocNum: 551130, SentNum: 51
+  Text Form: нейронной сети
+    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 71
+  Text Form: нейронную сеть
+    Position - Start: 2, End: 3, DocNum: 687796, SentNum: 72
+  Text Form: нейронную сеть
+    Position - Start: 25, End: 26, DocNum: 551130, SentNum: 55
+  Text Form: нейронных сетей
+    Position - Start: 5, End: 6, DocNum: 687796, SentNum: 73
+  Text Form: нейронных сетей
+    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 74
+  Text Form: нейронной сети
+    Position - Start: 6, End: 7, DocNum: 687796, SentNum: 80
+  Text Form: нейронную сеть
+    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 85
+  Text Form: нейронных сетей
+    Position - Start: 16, End: 17, DocNum: 551130, SentNum: 64
+  Text Form: нейронных сетей
+    Position - Start: 27, End: 28, DocNum: 551130, SentNum: 64
+  Text Form: нейронной сети
+    Position - Start: 10, End: 11, DocNum: 687796, SentNum: 89
+  Text Form: Нейронные сети
+    Position - Start: 0, End: 1, DocNum: 551130, SentNum: 76
+  Text Form: нейронной сети
     Position - Start: 19, End: 20, DocNum: 490842, SentNum: 113
   Text Form: нейронную сеть
+    Position - Start: 6, End: 7, DocNum: 687796, SentNum: 115
+  Text Form: нейронной сети
+    Position - Start: 13, End: 14, DocNum: 687796, SentNum: 116
+  Text Form: нейронную сеть
+    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 123
+  Text Form: нейронную сеть
     Position - Start: 34, End: 35, DocNum: 490842, SentNum: 123
+  Text Form: нейронной сети
+    Position - Start: 10, End: 11, DocNum: 687796, SentNum: 124
+  Text Form: нейронными сетями
+    Position - Start: 22, End: 23, DocNum: 687796, SentNum: 124
   Text Form: нейронную сеть
     Position - Start: 7, End: 8, DocNum: 490842, SentNum: 126
+  Text Form: нейронной сети
+    Position - Start: 22, End: 23, DocNum: 707956, SentNum: 121
   Text Form: нейронной сети
     Position - Start: 17, End: 18, DocNum: 490842, SentNum: 143
   Text Form: нейронную сеть
@@ -21731,76 +21788,30 @@ Phrases:
     Position - Start: 17, End: 18, DocNum: 490842, SentNum: 251
   Text Form: нейронная сеть
     Position - Start: 1, End: 2, DocNum: 490842, SentNum: 256
-  Text Form: нейронной сети
-    Position - Start: 11, End: 12, DocNum: 707956, SentNum: 63
-  Text Form: нейронной сети
-    Position - Start: 22, End: 23, DocNum: 707956, SentNum: 121
-  Text Form: нейронной сети
-    Position - Start: 1, End: 2, DocNum: 551130, SentNum: 31
-  Text Form: нейронной сети
-    Position - Start: 1, End: 2, DocNum: 551130, SentNum: 44
-  Text Form: нейронной сети
-    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 45
-  Text Form: нейронной сети
-    Position - Start: 31, End: 32, DocNum: 551130, SentNum: 48
-  Text Form: нейронной сети
-    Position - Start: 6, End: 7, DocNum: 551130, SentNum: 51
-  Text Form: нейронную сеть
-    Position - Start: 25, End: 26, DocNum: 551130, SentNum: 55
+  Text Form: нейронные сети
+    Position - Start: 4, End: 5, DocNum: 522622, SentNum: 2
   Text Form: нейронных сетей
-    Position - Start: 16, End: 17, DocNum: 551130, SentNum: 64
-  Text Form: нейронных сетей
-    Position - Start: 27, End: 28, DocNum: 551130, SentNum: 64
-  Text Form: Нейронные сети
-    Position - Start: 0, End: 1, DocNum: 551130, SentNum: 76
-  Text Form: нейронной сети
-    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 71
-  Text Form: нейронную сеть
-    Position - Start: 2, End: 3, DocNum: 687796, SentNum: 72
-  Text Form: нейронных сетей
-    Position - Start: 5, End: 6, DocNum: 687796, SentNum: 73
-  Text Form: нейронных сетей
-    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 74
-  Text Form: нейронной сети
-    Position - Start: 6, End: 7, DocNum: 687796, SentNum: 80
-  Text Form: нейронную сеть
-    Position - Start: 4, End: 5, DocNum: 687796, SentNum: 85
-  Text Form: нейронной сети
-    Position - Start: 10, End: 11, DocNum: 687796, SentNum: 89
-  Text Form: нейронную сеть
-    Position - Start: 6, End: 7, DocNum: 687796, SentNum: 115
-  Text Form: нейронной сети
-    Position - Start: 13, End: 14, DocNum: 687796, SentNum: 116
-  Text Form: нейронную сеть
-    Position - Start: 7, End: 8, DocNum: 687796, SentNum: 123
-  Text Form: нейронной сети
-    Position - Start: 10, End: 11, DocNum: 687796, SentNum: 124
-  Text Form: нейронными сетями
-    Position - Start: 22, End: 23, DocNum: 687796, SentNum: 124
+    Position - Start: 14, End: 15, DocNum: 554072, SentNum: 8
   Text Form: нейронных сетей
     Position - Start: 8, End: 9, DocNum: 704844, SentNum: 22
   Text Form: нейронных сетей
     Position - Start: 17, End: 18, DocNum: 704844, SentNum: 28
-  Text Form: нейронные сети
-    Position - Start: 1, End: 2, DocNum: 704844, SentNum: 103
-  Text Form: нейронных сетей
-    Position - Start: 5, End: 6, DocNum: 752744, SentNum: 47
-  Text Form: нейронные сети
-    Position - Start: 4, End: 5, DocNum: 522622, SentNum: 2
   Text Form: нейронной сети
     Position - Start: 2, End: 3, DocNum: 522622, SentNum: 29
+  Text Form: нейронных сетей
+    Position - Start: 5, End: 6, DocNum: 752744, SentNum: 47
   Text Form: нейронной сети
     Position - Start: 3, End: 4, DocNum: 522622, SentNum: 34
   Text Form: нейронной сети
     Position - Start: 5, End: 6, DocNum: 522622, SentNum: 39
-  Text Form: нейронных сетей
-    Position - Start: 14, End: 15, DocNum: 554072, SentNum: 8
   Text Form: нейронная сеть
     Position - Start: 5, End: 6, DocNum: 554072, SentNum: 61
   Text Form: нейронная сеть
     Position - Start: 15, End: 16, DocNum: 554072, SentNum: 68
   Text Form: нейронных сетей
     Position - Start: 13, End: 14, DocNum: 554072, SentNum: 93
+  Text Form: нейронные сети
+    Position - Start: 1, End: 2, DocNum: 704844, SentNum: 103
 
 Key: НЕЙРОННЫЙСЕТЬПРЯМОЙРАСПРОСТРАНЕНИЕ
 Phrase Size: 4
@@ -22824,11 +22835,11 @@ Word Complexes: 5
 
 Phrases:
   Text Form: обработки естественного языка
-    Position - Start: 2, End: 4, DocNum: 551130, SentNum: 33
-  Text Form: обработки естественного языка
     Position - Start: 2, End: 4, DocNum: 687796, SentNum: 2
   Text Form: обработке естественного языка
     Position - Start: 13, End: 15, DocNum: 687796, SentNum: 9
+  Text Form: обработки естественного языка
+    Position - Start: 2, End: 4, DocNum: 551130, SentNum: 33
   Text Form: обработки естественного языка
     Position - Start: 16, End: 18, DocNum: 704844, SentNum: 52
   Text Form: обработки естественного языка
@@ -22924,31 +22935,31 @@ Phrases:
   Text Form: обработки текста
     Position - Start: 7, End: 8, DocNum: 707956, SentNum: 1
   Text Form: обработки текста
-    Position - Start: 13, End: 14, DocNum: 707956, SentNum: 41
-  Text Form: обработки текста
-    Position - Start: 11, End: 12, DocNum: 707956, SentNum: 46
-  Text Form: обработки текста
     Position - Start: 20, End: 21, DocNum: 687796, SentNum: 1
   Text Form: обработке текста
     Position - Start: 3, End: 4, DocNum: 687796, SentNum: 8
   Text Form: обработки текста
     Position - Start: 7, End: 8, DocNum: 687796, SentNum: 13
+  Text Form: обработки текста
+    Position - Start: 13, End: 14, DocNum: 707956, SentNum: 41
+  Text Form: обработки текста
+    Position - Start: 11, End: 12, DocNum: 707956, SentNum: 46
   Text Form: обработка текста
     Position - Start: 4, End: 5, DocNum: 687796, SentNum: 49
-  Text Form: обработки текста
-    Position - Start: 21, End: 22, DocNum: 522622, SentNum: 52
   Text Form: обработки текстов
     Position - Start: 8, End: 9, DocNum: 544420, SentNum: 5
-  Text Form: Обработка текста
-    Position - Start: 0, End: 1, DocNum: 544420, SentNum: 43
-  Text Form: обработки текстов
-    Position - Start: 2, End: 3, DocNum: 544420, SentNum: 147
-  Text Form: обработки текста
-    Position - Start: 10, End: 11, DocNum: 576888, SentNum: 85
   Text Form: обработкой текста
     Position - Start: 1, End: 2, DocNum: 554072, SentNum: 16
   Text Form: обработке текстов
     Position - Start: 8, End: 9, DocNum: 554072, SentNum: 19
+  Text Form: Обработка текста
+    Position - Start: 0, End: 1, DocNum: 544420, SentNum: 43
+  Text Form: обработки текста
+    Position - Start: 10, End: 11, DocNum: 576888, SentNum: 85
+  Text Form: обработки текста
+    Position - Start: 21, End: 22, DocNum: 522622, SentNum: 52
+  Text Form: обработки текстов
+    Position - Start: 2, End: 3, DocNum: 544420, SentNum: 147
 
 Key: ОБРАБОТКАТЕКСТИИЗВЛЕЧЕНИЕ
 Phrase Size: 4
@@ -23282,17 +23293,17 @@ Phrases:
   Text Form: обучающая выборка
     Position - Start: 15, End: 16, DocNum: 551130, SentNum: 62
   Text Form: обучающей выборке
-    Position - Start: 30, End: 31, DocNum: 704844, SentNum: 26
-  Text Form: обучающей выборки
-    Position - Start: 3, End: 4, DocNum: 491260, SentNum: 42
-  Text Form: обучающей выборке
     Position - Start: 11, End: 12, DocNum: 554072, SentNum: 12
   Text Form: обучающей выборке
     Position - Start: 11, End: 12, DocNum: 554072, SentNum: 16
+  Text Form: обучающей выборке
+    Position - Start: 30, End: 31, DocNum: 704844, SentNum: 26
   Text Form: Обучающую выборку
     Position - Start: 0, End: 1, DocNum: 554072, SentNum: 34
   Text Form: обучающей выборки
     Position - Start: 16, End: 17, DocNum: 554072, SentNum: 35
+  Text Form: обучающей выборки
+    Position - Start: 3, End: 4, DocNum: 491260, SentNum: 42
   Text Form: обучающей выборке
     Position - Start: 1, End: 2, DocNum: 554072, SentNum: 40
   Text Form: обучающей выборке
@@ -23443,18 +23454,18 @@ Model Name: С + Срд
 Word Complexes: 6
 
 Phrases:
-  Text Form: Обучение модели
-    Position - Start: 0, End: 1, DocNum: 567794, SentNum: 103
   Text Form: обучения модели
     Position - Start: 20, End: 21, DocNum: 551130, SentNum: 50
   Text Form: обучения модели
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 104
+  Text Form: Обучение модели
+    Position - Start: 0, End: 1, DocNum: 567794, SentNum: 103
+  Text Form: обучении модели
+    Position - Start: 6, End: 7, DocNum: 752744, SentNum: 5
   Text Form: обучения модели
     Position - Start: 2, End: 3, DocNum: 704844, SentNum: 12
   Text Form: обучении модели
     Position - Start: 15, End: 16, DocNum: 704844, SentNum: 47
-  Text Form: обучении модели
-    Position - Start: 6, End: 7, DocNum: 752744, SentNum: 5
 
 Key: ОБУЧЕНИЕНАБАЗАТЕКСТ
 Phrase Size: 4
@@ -23566,6 +23577,8 @@ Word Complexes: 5
 
 Phrases:
   Text Form: обученная модель
+    Position - Start: 9, End: 10, DocNum: 785892, SentNum: 36
+  Text Form: обученная модель
     Position - Start: 6, End: 7, DocNum: 490842, SentNum: 51
   Text Form: обученная модель
     Position - Start: 17, End: 18, DocNum: 490842, SentNum: 87
@@ -23573,8 +23586,6 @@ Phrases:
     Position - Start: 28, End: 29, DocNum: 490842, SentNum: 102
   Text Form: обученной модели
     Position - Start: 1, End: 2, DocNum: 490842, SentNum: 108
-  Text Form: обученная модель
-    Position - Start: 9, End: 10, DocNum: 785892, SentNum: 36
 
 Key: ОБУЧЕННЫЙМОДЕЛЬДЛЯВЕКТОРИЗАЦИЯ
 Phrase Size: 4
@@ -23751,8 +23762,6 @@ Model Name: С + Срд
 Word Complexes: 5
 
 Phrases:
-  Text Form: объемах данных
-    Position - Start: 18, End: 19, DocNum: 490842, SentNum: 279
   Text Form: объем данных
     Position - Start: 4, End: 5, DocNum: 551130, SentNum: 2
   Text Form: объем данных
@@ -23761,6 +23770,8 @@ Phrases:
     Position - Start: 4, End: 5, DocNum: 551130, SentNum: 17
   Text Form: объем данных
     Position - Start: 2, End: 3, DocNum: 551130, SentNum: 19
+  Text Form: объемах данных
+    Position - Start: 18, End: 19, DocNum: 490842, SentNum: 279
 
 Key: ОБЪЕМДАННЫЙВОТКРЫТЫЙДОСТУП
 Phrase Size: 5
@@ -25514,10 +25525,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: основных шагов
-    Position - Start: 6, End: 7, DocNum: 490842, SentNum: 176
   Text Form: основные шаги
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 13
+  Text Form: основных шагов
+    Position - Start: 6, End: 7, DocNum: 490842, SentNum: 176
 
 Key: ОСНОВНЫЙЭТАП
 Phrase Size: 2
@@ -25739,11 +25750,11 @@ Phrases:
   Text Form: отбор признаков
     Position - Start: 7, End: 8, DocNum: 551130, SentNum: 65
 
-Key: ОТВЕТВГРАФАЗНАНИЕ
+Key: ОТВЕТВГРАФЗНАНИЕ
 Phrase Size: 4
 Weight: 1
 Topic Match: false
-Model Name: С + Предл + (Прил + С)
+Model Name: С + Предл + (С + Срд)
 Word Complexes: 1
 
 Phrases:
@@ -25958,10 +25969,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: отдельных векторов
-    Position - Start: 19, End: 20, DocNum: 490842, SentNum: 171
   Text Form: отдельные векторы
     Position - Start: 13, End: 14, DocNum: 785892, SentNum: 39
+  Text Form: отдельных векторов
+    Position - Start: 19, End: 20, DocNum: 490842, SentNum: 171
 
 Key: ОТДЕЛЬНЫЙПАМЯТЬ
 Phrase Size: 2
@@ -26160,10 +26171,10 @@ Model Name: Прич + С
 Word Complexes: 3
 
 Phrases:
-  Text Form: открытом коде
-    Position - Start: 14, End: 15, DocNum: 490842, SentNum: 266
   Text Form: открытым кодом
     Position - Start: 14, End: 15, DocNum: 707956, SentNum: 59
+  Text Form: открытом коде
+    Position - Start: 14, End: 15, DocNum: 490842, SentNum: 266
   Text Form: открытым кодом
     Position - Start: 23, End: 24, DocNum: 491260, SentNum: 41
 
@@ -28163,7 +28174,7 @@ Key: ПОДХОДКРЕШЕНИЕЗАДАЧА
 Phrase Size: 4
 Weight: 1
 Topic Match: false
-Model Name: С + Предл + (Прил + С)
+Model Name: С + Предл + (С + Срд)
 Word Complexes: 1
 
 Phrases:
@@ -28651,6 +28662,17 @@ Word Complexes: 1
 Phrases:
   Text Form: полей с предсказаниями моделей
     Position - Start: 9, End: 12, DocNum: 551130, SentNum: 74
+
+Key: ПОЛНОКАДРОВЫЙИЗОБРАЖЕНИЕ
+Phrase Size: 2
+Weight: 1
+Topic Match: false
+Model Name: Прил + С
+Word Complexes: 1
+
+Phrases:
+  Text Form: полнокадровые изображения
+    Position - Start: 5, End: 6, DocNum: 522622, SentNum: 50
 
 Key: ПОЛНОРАЗМЕРНЫЙМНОГОЯЗЫЧНЫЙВЕРСИЯ
 Phrase Size: 3
@@ -29337,9 +29359,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: популярным методом
-    Position - Start: 8, End: 9, DocNum: 551130, SentNum: 28
-  Text Form: популярным методом
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 38
+  Text Form: популярным методом
+    Position - Start: 8, End: 9, DocNum: 551130, SentNum: 28
 
 Key: ПОПУЛЯРНЫЙМЕТОДДЛЯВЕКТОРИЗАЦИЯ
 Phrase Size: 4
@@ -33350,10 +33372,10 @@ Word Complexes: 3
 Phrases:
   Text Form: работы алгоритма
     Position - Start: 1, End: 2, DocNum: 707956, SentNum: 48
-  Text Form: работы алгоритма
-    Position - Start: 5, End: 6, DocNum: 707956, SentNum: 61
   Text Form: работы алгоритмов
     Position - Start: 2, End: 3, DocNum: 687796, SentNum: 53
+  Text Form: работы алгоритма
+    Position - Start: 5, End: 6, DocNum: 707956, SentNum: 61
 
 Key: РАБОТАИЛИЧНЫЙЖИЗНЬ
 Phrase Size: 4
@@ -34142,14 +34164,14 @@ Phrases:
     Position - Start: 19, End: 20, DocNum: 551130, SentNum: 33
   Text Form: размера словаря
     Position - Start: 14, End: 15, DocNum: 551130, SentNum: 35
+  Text Form: размер словаря
+    Position - Start: 22, End: 23, DocNum: 752744, SentNum: 7
   Text Form: размером словаря
     Position - Start: 4, End: 5, DocNum: 704844, SentNum: 58
   Text Form: размером словаря
     Position - Start: 4, End: 5, DocNum: 704844, SentNum: 59
   Text Form: размером словаря
     Position - Start: 13, End: 14, DocNum: 704844, SentNum: 61
-  Text Form: размер словаря
-    Position - Start: 22, End: 23, DocNum: 752744, SentNum: 7
 
 Key: РАЗМЕТКАДАННЫЙ
 Phrase Size: 2
@@ -34260,10 +34282,10 @@ Model Name: С + Срд
 Word Complexes: 2
 
 Phrases:
-  Text Form: разработке моделей
-    Position - Start: 16, End: 17, DocNum: 704844, SentNum: 123
   Text Form: разработке модели
     Position - Start: 7, End: 8, DocNum: 595423, SentNum: 116
+  Text Form: разработке моделей
+    Position - Start: 16, End: 17, DocNum: 704844, SentNum: 123
 
 Key: РАЗРАБОТКАМУЛЬТИАГЕНТНЫЙСИСТЕМА
 Phrase Size: 3
@@ -34393,6 +34415,17 @@ Word Complexes: 1
 Phrases:
   Text Form: рамках соревнования
     Position - Start: 1, End: 2, DocNum: 551130, SentNum: 5
+
+Key: РАМКАСОРЕВНОВАНИЕАЛЬФА-БАТТЛ
+Phrase Size: 3
+Weight: 1
+Topic Match: false
+Model Name: С + Срд
+Word Complexes: 1
+
+Phrases:
+  Text Form: рамках соревнования Альфа-Баттл
+    Position - Start: 1, End: 3, DocNum: 551130, SentNum: 5
 
 Key: РАМКАЯЗЫКОВЫЙМОДЕЛИРОВАНИЕ
 Phrase Size: 3
@@ -35184,9 +35217,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: режиме вывода
-    Position - Start: 7, End: 8, DocNum: 490842, SentNum: 159
-  Text Form: режиме вывода
     Position - Start: 25, End: 26, DocNum: 687796, SentNum: 105
+  Text Form: режиме вывода
+    Position - Start: 7, End: 8, DocNum: 490842, SentNum: 159
 
 Key: РЕЖИМВЫВОДДЛЯПЕРЕДАВАЕМЫЙДАННЫЙ
 Phrase Size: 5
@@ -35456,10 +35489,10 @@ Phrases:
     Position - Start: 0, End: 1, DocNum: 707956, SentNum: 48
   Text Form: результатами работы
     Position - Start: 4, End: 5, DocNum: 707956, SentNum: 61
-  Text Form: результат работы
-    Position - Start: 4, End: 5, DocNum: 707956, SentNum: 114
   Text Form: Результаты работы
     Position - Start: 0, End: 1, DocNum: 687796, SentNum: 117
+  Text Form: результат работы
+    Position - Start: 4, End: 5, DocNum: 707956, SentNum: 114
 
 Key: РЕЗУЛЬТАТРАБОТААЛГОРИТМ
 Phrase Size: 3
@@ -35708,10 +35741,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: рекуррентных слоев
-    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 57
   Text Form: рекуррентные слои
     Position - Start: 6, End: 7, DocNum: 687796, SentNum: 77
+  Text Form: рекуррентных слоев
+    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 57
 
 Key: РЕЛЕВАНТНОСТЬПОИСК
 Phrase Size: 2
@@ -36031,22 +36064,22 @@ Model Name: С + Срд
 Word Complexes: 9
 
 Phrases:
-  Text Form: решения задач
-    Position - Start: 11, End: 12, DocNum: 490842, SentNum: 254
+  Text Form: решения задачи
+    Position - Start: 5, End: 6, DocNum: 551130, SentNum: 3
   Text Form: решении задач
     Position - Start: 23, End: 24, DocNum: 796555, SentNum: 7
   Text Form: решению задачи
     Position - Start: 6, End: 7, DocNum: 707956, SentNum: 24
-  Text Form: решения задачи
-    Position - Start: 5, End: 6, DocNum: 551130, SentNum: 3
   Text Form: решению задачи
     Position - Start: 3, End: 4, DocNum: 551130, SentNum: 22
   Text Form: решении задач
     Position - Start: 20, End: 21, DocNum: 687796, SentNum: 65
-  Text Form: решение задач
-    Position - Start: 16, End: 17, DocNum: 704844, SentNum: 15
+  Text Form: решения задач
+    Position - Start: 11, End: 12, DocNum: 490842, SentNum: 254
   Text Form: решении задач
     Position - Start: 1, End: 2, DocNum: 491260, SentNum: 0
+  Text Form: решение задач
+    Position - Start: 16, End: 17, DocNum: 704844, SentNum: 15
   Text Form: решение задачи
     Position - Start: 5, End: 6, DocNum: 491260, SentNum: 48
 
@@ -36170,20 +36203,20 @@ Word Complexes: 8
 Phrases:
   Text Form: решения проблем
     Position - Start: 13, End: 14, DocNum: 796555, SentNum: 39
+  Text Form: решений проблемы
+    Position - Start: 8, End: 9, DocNum: 707956, SentNum: 54
   Text Form: решения проблем
     Position - Start: 5, End: 6, DocNum: 796555, SentNum: 42
   Text Form: решение проблем
     Position - Start: 8, End: 9, DocNum: 796555, SentNum: 58
   Text Form: решения проблем
     Position - Start: 6, End: 7, DocNum: 796555, SentNum: 59
-  Text Form: решений проблемы
-    Position - Start: 8, End: 9, DocNum: 707956, SentNum: 54
   Text Form: решению проблемы
     Position - Start: 16, End: 17, DocNum: 707956, SentNum: 115
   Text Form: решения проблем
-    Position - Start: 1, End: 2, DocNum: 704844, SentNum: 37
-  Text Form: решения проблем
     Position - Start: 5, End: 6, DocNum: 522622, SentNum: 16
+  Text Form: решения проблем
+    Position - Start: 1, End: 2, DocNum: 704844, SentNum: 37
 
 Key: РЕШЕНИЕПРОБЛЕМАИМОДЕЛИРОВАНИЕ
 Phrase Size: 4
@@ -37479,8 +37512,6 @@ Model Name: Прич + С
 Word Complexes: 35
 
 Phrases:
-  Text Form: скрытых состояний
-    Position - Start: 4, End: 5, DocNum: 490842, SentNum: 244
   Text Form: скрытым состоянием
     Position - Start: 44, End: 45, DocNum: 567794, SentNum: 8
   Text Form: скрытых состояний
@@ -37549,6 +37580,8 @@ Phrases:
     Position - Start: 10, End: 11, DocNum: 567794, SentNum: 102
   Text Form: скрытое состояние
     Position - Start: 22, End: 23, DocNum: 567794, SentNum: 102
+  Text Form: скрытых состояний
+    Position - Start: 4, End: 5, DocNum: 490842, SentNum: 244
 
 Key: СКРЫТЫЙСОСТОЯНИЕВДЕКОДЕР
 Phrase Size: 4
@@ -38828,6 +38861,8 @@ Word Complexes: 6
 Phrases:
   Text Form: Создание векторов
     Position - Start: 2, End: 3, DocNum: 490842, SentNum: 16
+  Text Form: создания вектора
+    Position - Start: 23, End: 24, DocNum: 567794, SentNum: 63
   Text Form: Создание векторов
     Position - Start: 0, End: 1, DocNum: 490842, SentNum: 177
   Text Form: Создание векторов
@@ -38836,8 +38871,6 @@ Phrases:
     Position - Start: 6, End: 7, DocNum: 490842, SentNum: 222
   Text Form: создания векторов
     Position - Start: 47, End: 48, DocNum: 490842, SentNum: 224
-  Text Form: создания вектора
-    Position - Start: 23, End: 24, DocNum: 567794, SentNum: 63
 
 Key: СОЗДАНИЕВЕКТОР-КЛЮЧ
 Phrase Size: 2
@@ -39088,6 +39121,17 @@ Word Complexes: 1
 Phrases:
   Text Form: сопроводительного письма
     Position - Start: 21, End: 22, DocNum: 544420, SentNum: 146
+
+Key: СОРЕВНОВАНИЕАЛЬФА-БАТТЛ
+Phrase Size: 2
+Weight: 1
+Topic Match: false
+Model Name: С + Срд
+Word Complexes: 1
+
+Phrases:
+  Text Form: соревнования Альфа-Баттл
+    Position - Start: 2, End: 3, DocNum: 551130, SentNum: 5
 
 Key: СОРЕВНОВАНИЕСЛИЧНЫЙНОУТБУК
 Phrase Size: 4
@@ -42230,9 +42274,9 @@ Phrases:
   Text Form: текстовых данных
     Position - Start: 16, End: 17, DocNum: 707956, SentNum: 150
   Text Form: текстовых данных
-    Position - Start: 10, End: 11, DocNum: 704844, SentNum: 119
-  Text Form: текстовых данных
     Position - Start: 18, End: 19, DocNum: 522622, SentNum: 57
+  Text Form: текстовых данных
+    Position - Start: 10, End: 11, DocNum: 704844, SentNum: 119
 
 Key: ТЕКСТОВЫЙДАННЫЙДЛЯОБУЧЕНИЕ
 Phrase Size: 4
@@ -42712,12 +42756,12 @@ Model Name: Прил + С
 Word Complexes: 4
 
 Phrases:
-  Text Form: тестовой выборке
-    Position - Start: 6, End: 7, DocNum: 567794, SentNum: 117
   Text Form: тестовая выборка
     Position - Start: 11, End: 12, DocNum: 551130, SentNum: 15
   Text Form: тестовую выборку
     Position - Start: 3, End: 4, DocNum: 687796, SentNum: 88
+  Text Form: тестовой выборке
+    Position - Start: 6, End: 7, DocNum: 567794, SentNum: 117
   Text Form: тестовой выборке
     Position - Start: 17, End: 18, DocNum: 704844, SentNum: 14
 
@@ -43045,10 +43089,10 @@ Model Name: С + Срд
 Word Complexes: 2
 
 Phrases:
-  Text Form: токенизация текста
-    Position - Start: 25, End: 26, DocNum: 704844, SentNum: 81
   Text Form: Токенизации текста
     Position - Start: 6, End: 7, DocNum: 554072, SentNum: 21
+  Text Form: токенизация текста
+    Position - Start: 25, End: 26, DocNum: 704844, SentNum: 81
 
 Key: ТОКЕНИЧИСЛОПАРАМЕТР
 Phrase Size: 4
@@ -43587,10 +43631,10 @@ Model Name: Прил + С
 Word Complexes: 2
 
 Phrases:
-  Text Form: тренировочных данных
-    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 124
   Text Form: тренировочные данные
     Position - Start: 1, End: 2, DocNum: 687796, SentNum: 105
+  Text Form: тренировочных данных
+    Position - Start: 3, End: 4, DocNum: 707956, SentNum: 124
 
 Key: ТРЕНИРОВОЧНЫЙНАБОР
 Phrase Size: 2
@@ -44043,9 +44087,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: улучшения качества
-    Position - Start: 12, End: 13, DocNum: 707956, SentNum: 142
-  Text Form: улучшения качества
     Position - Start: 2, End: 3, DocNum: 785892, SentNum: 62
+  Text Form: улучшения качества
+    Position - Start: 12, End: 13, DocNum: 707956, SentNum: 142
 
 Key: УЛУЧШЕНИЕКАЧЕСТВОПОИСК
 Phrase Size: 3
@@ -45746,9 +45790,9 @@ Phrases:
   Text Form: формирования ответов
     Position - Start: 6, End: 7, DocNum: 713124, SentNum: 39
   Text Form: формирования ответа
-    Position - Start: 12, End: 13, DocNum: 713124, SentNum: 113
-  Text Form: формирования ответа
     Position - Start: 30, End: 31, DocNum: 576888, SentNum: 83
+  Text Form: формирования ответа
+    Position - Start: 12, End: 13, DocNum: 713124, SentNum: 113
 
 Key: ФОРМИРОВАНИЕТЕКСТ
 Phrase Size: 2
@@ -46338,18 +46382,18 @@ Model Name: С + Срд
 Word Complexes: 6
 
 Phrases:
-  Text Form: функцию потерь
-    Position - Start: 1, End: 2, DocNum: 567794, SentNum: 111
   Text Form: функции потерь
     Position - Start: 4, End: 5, DocNum: 687796, SentNum: 83
   Text Form: функции потерь
     Position - Start: 20, End: 21, DocNum: 687796, SentNum: 105
   Text Form: функция потерь
     Position - Start: 16, End: 17, DocNum: 687796, SentNum: 112
-  Text Form: функциями потерь
-    Position - Start: 25, End: 26, DocNum: 752744, SentNum: 47
+  Text Form: функцию потерь
+    Position - Start: 1, End: 2, DocNum: 567794, SentNum: 111
   Text Form: функцию потерь
     Position - Start: 28, End: 29, DocNum: 554072, SentNum: 45
+  Text Form: функциями потерь
+    Position - Start: 25, End: 26, DocNum: 752744, SentNum: 47
 
 Key: ФУНКЦИЯПОТЕРЯИАЛГОРИТМ
 Phrase Size: 4
@@ -46885,9 +46929,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: цикл обучения
-    Position - Start: 3, End: 4, DocNum: 567794, SentNum: 112
-  Text Form: цикл обучения
     Position - Start: 19, End: 20, DocNum: 551130, SentNum: 50
+  Text Form: цикл обучения
+    Position - Start: 3, End: 4, DocNum: 567794, SentNum: 112
 
 Key: ЦИКЛОБУЧЕНИЕМОДЕЛЬ
 Phrase Size: 3
@@ -47758,9 +47802,9 @@ Word Complexes: 2
 
 Phrases:
   Text Form: электронной почте
-    Position - Start: 20, End: 21, DocNum: 707760, SentNum: 59
-  Text Form: электронной почте
     Position - Start: 10, End: 11, DocNum: 554072, SentNum: 39
+  Text Form: электронной почте
+    Position - Start: 20, End: 21, DocNum: 707760, SentNum: 59
 
 Key: ЭЛЕКТРОННЫЙРЕГИСТРАЦИЯ
 Phrase Size: 2
@@ -48108,12 +48152,12 @@ Model Name: С + Срд
 Word Complexes: 4
 
 Phrases:
-  Text Form: этапе обучения
-    Position - Start: 2, End: 3, DocNum: 490842, SentNum: 162
   Text Form: этапах обучения
     Position - Start: 8, End: 9, DocNum: 687796, SentNum: 108
   Text Form: этапе обучения
     Position - Start: 9, End: 10, DocNum: 687796, SentNum: 109
+  Text Form: этапе обучения
+    Position - Start: 2, End: 3, DocNum: 490842, SentNum: 162
   Text Form: этапе обучения
     Position - Start: 35, End: 36, DocNum: 704844, SentNum: 41
 
@@ -48410,6 +48454,8 @@ Phrases:
     Position - Start: 23, End: 24, DocNum: 490842, SentNum: 1
   Text Form: языковая модель
     Position - Start: 9, End: 10, DocNum: 490842, SentNum: 3
+  Text Form: языковых моделей
+    Position - Start: 3, End: 4, DocNum: 796555, SentNum: 3
   Text Form: языковая модель
     Position - Start: 2, End: 3, DocNum: 490842, SentNum: 7
   Text Form: языковая модель
@@ -48418,40 +48464,38 @@ Phrases:
     Position - Start: 10, End: 11, DocNum: 490842, SentNum: 32
   Text Form: языковая модель
     Position - Start: 2, End: 3, DocNum: 490842, SentNum: 33
+  Text Form: языковая модель
+    Position - Start: 10, End: 11, DocNum: 796555, SentNum: 20
   Text Form: языковые модели
     Position - Start: 15, End: 16, DocNum: 490842, SentNum: 50
-  Text Form: языковые модели
-    Position - Start: 21, End: 22, DocNum: 490842, SentNum: 72
-  Text Form: языковая модель
-    Position - Start: 2, End: 3, DocNum: 490842, SentNum: 74
-  Text Form: языковая модель
-    Position - Start: 22, End: 23, DocNum: 490842, SentNum: 78
-  Text Form: языковой модели
-    Position - Start: 11, End: 12, DocNum: 490842, SentNum: 262
   Text Form: языковые модели
     Position - Start: 4, End: 5, DocNum: 792098, SentNum: 41
   Text Form: языковые модели
     Position - Start: 7, End: 8, DocNum: 792098, SentNum: 47
   Text Form: языковая модель
     Position - Start: 3, End: 4, DocNum: 792098, SentNum: 53
+  Text Form: языковые модели
+    Position - Start: 21, End: 22, DocNum: 490842, SentNum: 72
+  Text Form: языковая модель
+    Position - Start: 2, End: 3, DocNum: 490842, SentNum: 74
   Text Form: языковой модели
     Position - Start: 8, End: 9, DocNum: 792098, SentNum: 65
+  Text Form: языковая модель
+    Position - Start: 22, End: 23, DocNum: 490842, SentNum: 78
   Text Form: Языковая модель
     Position - Start: 0, End: 1, DocNum: 792098, SentNum: 78
-  Text Form: языковой модели
-    Position - Start: 5, End: 6, DocNum: 792098, SentNum: 80
-  Text Form: языковых моделей
-    Position - Start: 3, End: 4, DocNum: 796555, SentNum: 3
-  Text Form: языковая модель
-    Position - Start: 10, End: 11, DocNum: 796555, SentNum: 20
   Text Form: языковые модели
     Position - Start: 19, End: 20, DocNum: 796555, SentNum: 66
+  Text Form: языковой модели
+    Position - Start: 5, End: 6, DocNum: 792098, SentNum: 80
   Text Form: языковых моделей
     Position - Start: 8, End: 9, DocNum: 796555, SentNum: 67
   Text Form: языковых моделях
     Position - Start: 15, End: 16, DocNum: 796555, SentNum: 74
   Text Form: языковые модели
     Position - Start: 13, End: 14, DocNum: 707956, SentNum: 105
+  Text Form: языковой модели
+    Position - Start: 11, End: 12, DocNum: 490842, SentNum: 262
 
 Key: ЯЗЫКОВЫЙМОДЕЛЬДЛЯПРЕДСКАЗАНИЕ
 Phrase Size: 4

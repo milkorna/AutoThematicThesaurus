@@ -47,7 +47,7 @@ namespace PhrasesCollectorUtils {
         return files_to_process;
     }
 
-    void removeSeparatorTokens(std::vector<WordFormPtr>& forms)
+    void RemoveSeparatorTokens(std::vector<WordFormPtr>& forms)
     {
         forms.erase(std::remove_if(forms.begin(), forms.end(),
                                    [](const WordFormPtr& form) { return form->getTokenType() == TokenTypeTag::SEPR; }),
@@ -56,20 +56,20 @@ namespace PhrasesCollectorUtils {
 
     void ProcessFile(const fs::path& inputFile, const fs::path& outputDir, int& counter, std::mutex& counterMutex)
     {
-        std::ostringstream oss;
-        oss << std::this_thread::get_id();
-        std::string thread_id = oss.str();
-        Logger::log("processTextFile", LogLevel::Info,
-                    "Thread " + thread_id + " starting file processing: " + inputFile.string());
-
         std::string filename = inputFile.filename().string();
+        std::string outputFile = (outputDir / ("res_" + filename)).string();
+        auto startProcessText = std::chrono::high_resolution_clock::now();
+
+        if (g_options.multithreading) {
+            std::ostringstream oss;
+            oss << std::this_thread::get_id();
+            std::string thread_id = oss.str();
+            Logger::log("Thread", LogLevel::Info, thread_id + " starting file processing: " + inputFile.string());
+        }
         {
             std::lock_guard<std::mutex> lock(counterMutex);
             ++counter;
-            std::cout << counter << std::endl;
         }
-        std::string outputFile = (outputDir / ("res_" + filename)).string();
-        auto startProcessText = std::chrono::high_resolution_clock::now();
 
         Tokenizer tok;
         TFMorphemicSplitter morphemic_splitter;
@@ -89,7 +89,7 @@ namespace PhrasesCollectorUtils {
             std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
             std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
 
-            removeSeparatorTokens(forms);
+            RemoveSeparatorTokens(forms);
             disamb.disambiguate(forms);
             joiner.disambiguateAndMorphemicSplit(forms);
 
@@ -109,7 +109,7 @@ namespace PhrasesCollectorUtils {
 
         auto endProccesText = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duration = endProccesText - startProcessText;
-        Logger::log("main", LogLevel::Info,
+        Logger::log("", LogLevel::Info,
                     "processText() for " + filename + " took " + std::to_string(duration.count()) + " seconds.");
     }
 
@@ -121,36 +121,46 @@ namespace PhrasesCollectorUtils {
 
         auto& storage = PatternPhrasesStorage::GetStorage();
         try {
-            std::vector<fs::path> files_to_process = GetFilesToProcess();
-            unsigned int numThreads = std::thread::hardware_concurrency();
-            storage.threadController.setTotalThreads(numThreads);
-            Logger::log("main", LogLevel::Info, "Amount of threads: " + std::to_string(numThreads));
-
-            std::vector<std::thread> threads;
             int counter = 0;
             std::mutex counterMutex;
 
-            for (unsigned int i = 0; i < 20; ++i) {
-                ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
+            std::vector<fs::path> files_to_process = GetFilesToProcess();
+            if (g_options.multithreading) {
+
+                const size_t batchSize = 10;
+                for (size_t batchStart = 0; batchStart < 20 /*files_to_process.size()*/; batchStart += batchSize) {
+                    std::vector<std::thread> threads;
+                    size_t batchEnd = std::min(batchStart + batchSize, files_to_process.size());
+                    for (size_t i = batchStart; i < batchEnd; ++i) {
+                        threads.emplace_back(
+                            [&, i]() { ProcessFile(files_to_process[i], outputDir, counter, counterMutex); });
+                    }
+
+                    for (auto& thread : threads) {
+                        if (thread.joinable()) {
+                            thread.join();
+                        }
+                    }
+                }
+                // storage.threadController.pauseUntilAllThreadsReach();
+
+            } else {
+                for (unsigned int i = 0; i < 20; ++i) {
+                    ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
+                }
             }
-
-            // for (unsigned int i = 0; i < files_to_process.size() && i < 10; ++i) {
-            //     threads.emplace_back([&, i]() { processTextFile(files_to_process[i], outputDir, counter,
-            //     counterMutex); });
-            // }
-
-            // for (auto& thread : threads) {
-            //     if (thread.joinable()) {
-            //         thread.join();
-            //     }
-            // }
-
-            // storage.threadController.pauseUntilAllThreadsReach();
 
             // storage.CalculateWeights();
 
-            fs::path totalResultsFile = repoPath / "my_data/total_results.txt";
+            fs::path totalResultsFile;
+            if (g_options.cleaningStopWords) {
+                totalResultsFile = repoPath / "my_data/total_results_no_sw.txt";
+            } else {
+                totalResultsFile = repoPath / "my_data/total_results_sw.txt";
+            }
+
             storage.OutputClustersToFile(totalResultsFile);
+
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
