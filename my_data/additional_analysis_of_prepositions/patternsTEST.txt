@@ -1,0 +1,6 @@
+﻿name: "С + Предл + С"
+body: {
+	w:h NOUN
+	w:i ADP
+	w:i NOUN
+}

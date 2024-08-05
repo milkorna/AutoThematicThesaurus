@@ -16,10 +16,10 @@ body: {
 	w:i NOUN [Case=Gen] | rec
 }
 
-name: "С + Предл + С"
+name: "С + Предл(Для) + С"
 body: {
 	w:h NOUN
-	w:i ADP
+	w:i ADP | exlex:"для"
 	w:i NOUN
 }
 
