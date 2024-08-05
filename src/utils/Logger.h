@@ -1,6 +1,8 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <set>
@@ -21,6 +23,7 @@ private:
     static LogLevel globalLogLevel;                         // The global log level threshold.
     static std::map<std::string, LogLevel> moduleLogLevels; // Log levels specific to modules.
     static std::set<std::string> disabledModules;           // Set of modules with logging disabled.
+    static std::ofstream logFile;                           // File stream for logging.
 
 public:
     // Enables or disables logging globally.
@@ -43,6 +46,9 @@ public:
 
     // Converts LogLevel to a readable string.
     static std::string toString(LogLevel level);
+
+    // Initialize the log file
+    static void initializeLogFile(const std::string& filePath);
 };
 
 #endif // LOGGER_H

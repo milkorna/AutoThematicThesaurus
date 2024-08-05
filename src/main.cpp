@@ -12,8 +12,10 @@ int main()
 {
     Logger::enableLogging(true);
     Logger::setGlobalLogLevel(LogLevel::Info);
-
     fs::path repoPath = fs::current_path();
+    std::string logFilePath = (repoPath / "my_logs.txt").string();
+    Logger::initializeLogFile(logFilePath);
+
     fs::path patternsPath = repoPath / "my_data/patterns.txt";
     GrammarPatternManager::GetManager()->readPatterns(patternsPath);
 

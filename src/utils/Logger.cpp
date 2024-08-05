@@ -1,4 +1,11 @@
-#include "Logger.h"
+#include <Logger.h>
+
+// Initialize static members
+bool Logger::enabled = true;                             // Logging is enabled by default.
+LogLevel Logger::globalLogLevel = LogLevel::Debug;       // Default global log level is set to Debug.
+std::map<std::string, LogLevel> Logger::moduleLogLevels; // Empty initial module-specific log levels.
+std::set<std::string> Logger::disabledModules;           // No modules are disabled initially.
+std::ofstream Logger::logFile;                           // Log file stream.
 
 // Enables or disables logging globally.
 void Logger::enableLogging(bool enable)
@@ -40,14 +47,21 @@ void Logger::log(const std::string& module, LogLevel level, const std::string& m
         }
 
         if (level >= effectiveLevel) {
-            std::cout << "[" << std::to_string(static_cast<int>(level)) << "] " << module << ": " << message
-                      << std::endl;
+            if (logFile.is_open()) {
+                logFile << "[" << std::to_string(static_cast<int>(level)) << "] " << module << ": " << message
+                        << std::endl;
+            } else {
+                std::cerr << "Log file not open!" << std::endl;
+            }
         }
     }
 }
 
-// Static member initializations
-bool Logger::enabled = true;                             // Logging is enabled by default.
-LogLevel Logger::globalLogLevel = LogLevel::Debug;       // Default global log level is set to Debug.
-std::map<std::string, LogLevel> Logger::moduleLogLevels; // Empty initial module-specific log levels.
-std::set<std::string> Logger::disabledModules;           // No modules are disabled initially.
+// Initialize the log file
+void Logger::initializeLogFile(const std::string& filePath)
+{
+    logFile.open(filePath, std::ios::out | std::ios::app);
+    if (!logFile) {
+        std::cerr << "Failed to open log file: " << filePath << std::endl;
+    }
+}
