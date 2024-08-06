@@ -1,5 +1,7 @@
 #include <PatternPhrasesStorage.h>
 
+using json = nlohmann::json;
+
 void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
 {
     Logger::log("PatternPhrasesStorage", LogLevel::Info, "Entering Collect method.");
@@ -109,7 +111,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
 }
 
 // Function to output data to a file
-void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) const
+void PatternPhrasesStorage::OutputClustersToTextFile(const std::string& filename) const
 {
     std::ofstream outFile(filename);
 
@@ -146,5 +148,51 @@ void PatternPhrasesStorage::OutputClustersToFile(const std::string& filename) co
         outFile << "\n";
     }
 
+    outFile.close();
+}
+
+void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename) const
+{
+    json j;
+
+    std::vector<std::string> keys;
+    keys.reserve(clusters.size());
+    for (const auto& pair : clusters) {
+        keys.push_back(pair.first);
+    }
+
+    std::sort(keys.begin(), keys.end());
+
+    for (const auto& key : keys) {
+        const auto& cluster = clusters.at(key);
+
+        json clusterJson;
+        clusterJson["Phrase Size"] = cluster.phraseSize;
+        clusterJson["Weight"] = cluster.m_weight;
+        clusterJson["Topic Match"] = cluster.topicMatch;
+        clusterJson["Model Name"] = cluster.modelName;
+        clusterJson["Word Complexes"] = cluster.wordComplexes.size();
+
+        std::vector<json> phrases;
+        for (const auto& wordComplex : cluster.wordComplexes) {
+            json phraseJson;
+            phraseJson["Text Form"] = wordComplex->textForm;
+            phraseJson["Position"] = {{"Start", wordComplex->pos.start},
+                                      {"End", wordComplex->pos.end},
+                                      {"DocNum", wordComplex->pos.docNum},
+                                      {"SentNum", wordComplex->pos.sentNum}};
+            phrases.push_back(phraseJson);
+        }
+        clusterJson["Phrases"] = phrases;
+
+        j[key] = clusterJson;
+    }
+
+    std::ofstream outFile(filename);
+    if (!outFile.is_open()) {
+        throw std::runtime_error("Could not open file for writing");
+    }
+
+    outFile << j.dump(4);
     outFile.close();
 }

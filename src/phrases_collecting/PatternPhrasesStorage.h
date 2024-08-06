@@ -5,6 +5,9 @@
 #include <TextCorpus.h>
 #include <ThreadController.h>
 
+#include <nlohmann/json.hpp>
+
+#include <algorithm>
 #include <condition_variable>
 #include <mutex>
 
@@ -47,7 +50,8 @@ public:
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
     void ComputeTextMetrics();
-    void OutputClustersToFile(const std::string& filename) const;
+    void OutputClustersToTextFile(const std::string& filename) const;
+    void OutputClustersToJsonFile(const std::string& filename) const;
 
     // not used
     void CalculateWeights();

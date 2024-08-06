@@ -163,7 +163,7 @@ namespace PhrasesCollectorUtils {
             }
 
             storage.ComputeTextMetrics();
-            storage.OutputClustersToFile(totalResultsFile);
+            storage.OutputClustersToTextFile(totalResultsFile);
 
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 
