@@ -162,7 +162,7 @@ namespace PhrasesCollectorUtils {
                 totalResultsFile = repoPath / "my_data/total_results_sw.txt";
             }
 
-            storage.CalculateTFIDF();
+            storage.ComputeTextMetrics();
             storage.OutputClustersToFile(totalResultsFile);
 
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");

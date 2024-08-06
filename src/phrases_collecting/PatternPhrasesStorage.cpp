@@ -68,7 +68,7 @@ void PatternPhrasesStorage::CalculateWeights()
     }
 }
 
-void PatternPhrasesStorage::CalculateTFIDF()
+void PatternPhrasesStorage::ComputeTextMetrics()
 {
     int totalDocuments = corpus.GetTotalDocuments();
 
@@ -78,22 +78,27 @@ void PatternPhrasesStorage::CalculateTFIDF()
         cluster.tf.resize(cluster.phraseSize, 0.0);
         cluster.idf.resize(cluster.phraseSize, 0.0);
         cluster.tfidf.resize(cluster.phraseSize, 0.0);
+        cluster.wordVectors.resize(cluster.phraseSize);
 
         for (const auto& wordComplex : cluster.wordComplexes) {
             std::unordered_map<std::string, int> termFrequency;
             for (const auto& wordForm : wordComplex->words) {
                 std::string word = wordForm->getWordForm().toLowerCase().getRawString();
+                boost::to_lower(word);
                 termFrequency[word]++;
             }
 
             for (size_t i = 0; i < wordComplex->words.size(); ++i) {
                 std::string word = wordComplex->words[i]->getWordForm().toLowerCase().getRawString();
+                boost::to_lower(word);
                 cluster.tf[i] += static_cast<double>(termFrequency[word]) / wordComplex->words.size();
+                cluster.wordVectors[i] = corpus.GetWordVector(word);
             }
         }
 
         for (size_t i = 0; i < cluster.phraseSize; ++i) {
             std::string word = cluster.wordComplexes[0]->words[i]->getWordForm().toLowerCase().getRawString();
+            boost::to_lower(word);
             cluster.idf[i] = log(static_cast<double>(totalDocuments) / (1 + corpus.GetDocumentFrequency(word)));
         }
 

@@ -22,6 +22,7 @@ class PatternPhrasesStorage {
         std::vector<double> tf;
         std::vector<double> idf;
         std::vector<double> tfidf;
+        std::vector<std::shared_ptr<fasttext::Vector>> wordVectors;
     };
 
 public:
@@ -45,7 +46,7 @@ public:
     void AddWordComplex(const WordComplexPtr& wc);
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
-    void CalculateTFIDF();
+    void ComputeTextMetrics();
     void OutputClustersToFile(const std::string& filename) const;
 
     // not used

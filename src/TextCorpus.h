@@ -1,4 +1,6 @@
 #include <boost/algorithm/string.hpp>
+#include <cmath>
+#include <fasttext.h>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -8,6 +10,11 @@
 class TextCorpus {
 public:
     TextCorpus() = default;
+
+    TextCorpus(const std::string& modelPath)
+    {
+        model.loadModel(modelPath);
+    }
 
     void AddDocument(const std::string& document)
     {
@@ -24,9 +31,20 @@ public:
                     documentFrequency[word]++;
                     seenWords[word] = true;
                 }
+
+                if (wordVectors.find(word) == wordVectors.end()) {
+                    auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
+                    model.getWordVector(*vec, word);
+                    wordVectors[word] = vec;
+                }
             }
         }
         totalDocuments++;
+    }
+
+    const std::shared_ptr<fasttext::Vector> GetWordVector(const std::string& word) const
+    {
+        return wordVectors.at(word);
     }
 
     void LoadDocumentsFromFile(const std::string& filename)
@@ -87,5 +105,7 @@ private:
     std::vector<std::string> documents;
     std::unordered_map<std::string, int> wordFrequency;
     std::unordered_map<std::string, int> documentFrequency;
+    std::unordered_map<std::string, std::shared_ptr<fasttext::Vector>> wordVectors;
     int totalDocuments = 0;
+    fasttext::FastText model;
 };
