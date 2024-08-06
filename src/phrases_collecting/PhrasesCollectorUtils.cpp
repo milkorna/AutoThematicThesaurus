@@ -17,6 +17,7 @@
 #include <GrammarPatternManager.h>
 #include <PatternPhrasesStorage.h>
 #include <PhrasesCollectorUtils.h>
+#include <TextCorpus.h>
 
 #include <cctype>
 #include <unicode/locid.h>
@@ -119,6 +120,7 @@ namespace PhrasesCollectorUtils {
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
+        auto& corpus = storage.GetCorpus();
         try {
             int counter = 0;
             std::mutex counterMutex;
@@ -131,8 +133,10 @@ namespace PhrasesCollectorUtils {
                     std::vector<std::thread> threads;
                     size_t batchEnd = std::min(batchStart + batchSize, files_to_process.size());
                     for (size_t i = batchStart; i < batchEnd; ++i) {
-                        threads.emplace_back(
-                            [&, i]() { ProcessFile(files_to_process[i], outputDir, counter, counterMutex); });
+                        threads.emplace_back([&, i]() {
+                            corpus.LoadDocumentsFromFile(files_to_process[i]);
+                            ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
+                        });
                     }
 
                     for (auto& thread : threads) {
@@ -145,6 +149,7 @@ namespace PhrasesCollectorUtils {
 
             } else {
                 for (unsigned int i = 0; i < files_to_process.size(); ++i) {
+                    corpus.LoadDocumentsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }

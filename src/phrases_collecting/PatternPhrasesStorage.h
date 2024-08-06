@@ -28,6 +28,11 @@ public:
         return storage;
     }
 
+    TextCorpus& GetCorpus()
+    {
+        return corpus;
+    }
+
     void Collect(const std::vector<WordFormPtr>& forms, Process& process);
 
     void AddPhrase(const std::string& phrase);
@@ -43,6 +48,8 @@ public:
     ThreadController::ThreadController threadController;
 
 private:
+    TextCorpus corpus;
+
     PatternPhrasesStorage()
     {
     }

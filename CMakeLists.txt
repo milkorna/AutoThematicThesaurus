@@ -1,16 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
 project(AutoThematicThesaurus VERSION 1.0)
 
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM)
+    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+    set(CMAKE_VERBOSE_MAKEFILE OFF)
+endif()
+
+message(STATUS "Using ccache: ${CCACHE_PROGRAM}")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(ABSL_PROPAGATE_CXX_STD ON CACHE BOOL "Enable C++ standard propagation to Abseil" FORCE)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -ffast-math -march=native -fno-omit-frame-pointer")
-set (CMAKE_CXX_FLAGS                     "${CMAKE_CXX_FLAGS} ${COMPILER_FLAGS} ${PLATFORM_EXTRA_CXX_FLAG} ${COMMON_WARNING_FLAGS} ${CXX_WARNING_FLAGS}")
-set (CMAKE_CXX_FLAGS_RELWITHDEBINFO      "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O3 ${CMAKE_CXX_FLAGS_ADD}")
-set (CMAKE_CXX_FLAGS_DEBUG               "${CMAKE_CXX_FLAGS_DEBUG} -O0 -g3 -ggdb3 -fno-inline ${CMAKE_CXX_FLAGS_ADD}")
-set (CMAKE_C_FLAGS                       "${CMAKE_C_FLAGS} ${COMPILER_FLAGS} ${COMMON_WARNING_FLAGS} ${CMAKE_C_FLAGS_ADD} -ffast-math -march=native -fno-omit-frame-pointer")
-set (CMAKE_C_FLAGS_RELWITHDEBINFO        "${CMAKE_C_FLAGS_RELWITHDEBINFO} -O3 ${CMAKE_C_FLAGS_ADD}")
-set (CMAKE_C_FLAGS_DEBUG                 "${CMAKE_C_FLAGS_DEBUG} -O0 -g3 -ggdb3 -fno-inline ${CMAKE_C_FLAGS_ADD}")
+set(COMMON_OPTIMIZATION_FLAGS "-ffast-math -march=native -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 ${COMMON_OPTIMIZATION_FLAGS}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_OPTIMIZATION_FLAGS}")
 
 if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
@@ -53,9 +57,9 @@ src/utils/Logger.cpp
 src/utils/Logger.h
 src/utils/GrammarPatternManager.cpp
 src/utils/GrammarPatternManager.h
+
+src/TextCorpus.h
 )
-
-
 
 include_directories(src)
 
@@ -64,7 +68,6 @@ target_compile_options(AutoThematicThesaurus PRIVATE -Wno-unused -Werror)
 
 target_include_directories(AutoThematicThesaurus PRIVATE ${PROJECT_SOURCE_DIR}/src)
 add_compile_options(-w) 
-
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build." FORCE)
@@ -81,7 +84,7 @@ set(XMorphy_INCLUDE_DIR "${XMORPHY_PROJECT_PATH}/src")
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_definitions(-DTF_LITE_DISABLE_XNNPACK_DELEGATE)
-add_definitions(-DMIN_LOG_LEVEL=2)
+add_definitions(-DMIN_LOG_LEVEL=4)
 
 set(TENSORFLOW_SOURCE_DIR "" CACHE PATH
   "Directory that contains the TensorFlow project")
@@ -107,8 +110,6 @@ file(COPY ${XMORPHY_PROJECT_PATH}/data/dicts DESTINATION ${CMAKE_CURRENT_BINARY_
 file(COPY ${XMORPHY_PROJECT_PATH}/data/models DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(${XMORPHY_PROJECT_PATH}/contrib ${CMAKE_CURRENT_BINARY_DIR}/xmorphy-contrib)
-
-
 
 set(XMORPHY_SOURCE_DIR "${XMORPHY_PROJECT_PATH}/src/xmorphy")
 file(GLOB_RECURSE XMORPHY_SOURCES "${XMORPHY_SOURCE_DIR}/*.cpp" "${XMORPHY_SOURCE_DIR}/*.h")
@@ -147,6 +148,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
   ${incbin_INCLUDE_DIR}
   ${XMORPHY_PROJECT_PATH}/contrib/tabulate/include
     )
+
 include_directories(${PROJECT_SOURCE_DIR}/my_data)
 include_directories(${PROJECT_SOURCE_DIR}/x_morphy_resuls)
 
@@ -156,7 +158,7 @@ include_directories(${XMORPHY_PROJECT_PATH}/src)
 
 target_link_libraries(AutoThematicThesaurus PRIVATE ${XMORPHY_LIBRARY})
 
-target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG-w)
+target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG -w)
 target_link_libraries(AutoThematicThesaurus PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
 
 if(NOT EXISTS ${XMORPHY_LIBRARY})
