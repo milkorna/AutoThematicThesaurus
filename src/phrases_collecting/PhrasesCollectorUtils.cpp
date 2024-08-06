@@ -17,7 +17,6 @@
 #include <GrammarPatternManager.h>
 #include <PatternPhrasesStorage.h>
 #include <PhrasesCollectorUtils.h>
-#include <TextCorpus.h>
 
 #include <cctype>
 #include <unicode/locid.h>
@@ -163,6 +162,7 @@ namespace PhrasesCollectorUtils {
                 totalResultsFile = repoPath / "my_data/total_results_sw.txt";
             }
 
+            storage.CalculateTFIDF();
             storage.OutputClustersToFile(totalResultsFile);
 
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");

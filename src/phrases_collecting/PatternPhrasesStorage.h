@@ -2,11 +2,11 @@
 #define PATTERN_PHRASES_STORAGE_H
 
 #include <ComplexPhrasesCollector.h>
+#include <TextCorpus.h>
+#include <ThreadController.h>
 
 #include <condition_variable>
 #include <mutex>
-
-#include <ThreadController.h>
 
 using namespace PhrasesCollectorUtils;
 
@@ -19,6 +19,9 @@ class PatternPhrasesStorage {
         std::string key; // string with normalized words
         std::string modelName;
         std::vector<WordComplexPtr> wordComplexes; // maybe set
+        std::vector<double> tf;
+        std::vector<double> idf;
+        std::vector<double> tfidf;
     };
 
 public:
@@ -42,7 +45,10 @@ public:
     void AddWordComplex(const WordComplexPtr& wc);
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
 
+    void CalculateTFIDF();
     void OutputClustersToFile(const std::string& filename) const;
+
+    // not used
     void CalculateWeights();
 
     ThreadController::ThreadController threadController;

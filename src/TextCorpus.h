@@ -14,9 +14,16 @@ public:
         documents.push_back(document);
         std::vector<std::string> words;
         boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
-        for (const auto& word : words) {
+        std::unordered_map<std::string, bool> seenWords;
+
+        for (auto& word : words) {
             if (!word.empty()) {
+                boost::to_lower(word);
                 wordFrequency[word]++;
+                if (!seenWords[word]) {
+                    documentFrequency[word]++;
+                    seenWords[word] = true;
+                }
             }
         }
         totalDocuments++;
@@ -32,41 +39,53 @@ public:
         file.close();
     }
 
-    double ComputeTF(const std::string& word, const std::string& document)
+    int GetTotalDocuments() const
     {
-        std::vector<std::string> words;
-        boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
-        int wordCount = 0;
-        int totalWords = 0;
-        for (const auto& token : words) {
-            if (!token.empty()) {
-                if (token == word) {
-                    wordCount++;
-                }
-                totalWords++;
-            }
-        }
-        return static_cast<double>(wordCount) / totalWords;
+        return totalDocuments;
     }
 
-    double ComputeIDF(const std::string& word)
+    int GetDocumentFrequency(const std::string& word) const
     {
-        int docsWithWord = 0;
-        for (const auto& doc : documents) {
-            if (doc.find(word) != std::string::npos) {
-                docsWithWord++;
-            }
-        }
-        return log(static_cast<double>(totalDocuments) / (1 + docsWithWord));
+        auto it = documentFrequency.find(word);
+        return (it != documentFrequency.end()) ? it->second : 0;
     }
 
-    double ComputeTFIDF(const std::string& word, const std::string& document)
-    {
-        return ComputeTF(word, document) * ComputeIDF(word);
-    }
+    // double ComputeTF(const std::string& word, const std::string& document)
+    // {
+    //     std::vector<std::string> words;
+    //     boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
+    //     int wordCount = 0;
+    //     int totalWords = 0;
+    //     for (const auto& token : words) {
+    //         if (!token.empty()) {
+    //             if (token == word) {
+    //                 wordCount++;
+    //             }
+    //             totalWords++;
+    //         }
+    //     }
+    //     return static_cast<double>(wordCount) / totalWords;
+    // }
+
+    // double ComputeIDF(const std::string& word)
+    // {
+    //     int docsWithWord = 0;
+    //     for (const auto& doc : documents) {
+    //         if (doc.find(word) != std::string::npos) {
+    //             docsWithWord++;
+    //         }
+    //     }
+    //     return log(static_cast<double>(totalDocuments) / (1 + docsWithWord));
+    // }
+
+    // double ComputeTFIDF(const std::string& word, const std::string& document)
+    // {
+    //     return ComputeTF(word, document) * ComputeIDF(word);
+    // }
 
 private:
     std::vector<std::string> documents;
     std::unordered_map<std::string, int> wordFrequency;
+    std::unordered_map<std::string, int> documentFrequency;
     int totalDocuments = 0;
 };
