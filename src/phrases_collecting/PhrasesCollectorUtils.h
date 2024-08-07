@@ -99,6 +99,8 @@ namespace PhrasesCollectorUtils {
     // \param collection    A vector of collected word complexes.
     // \param process       The process associated with the phrase collection.
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process);
+
+    const std::string GetLemma(const WordFormPtr& form);
 }
 
 #endif // PHRASES_COLLECTOR_UTILS_H

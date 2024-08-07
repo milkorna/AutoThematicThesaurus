@@ -342,4 +342,9 @@ namespace PhrasesCollectorUtils {
                              << std::endl;
         }
     }
+
+    const std::string GetLemma(const WordFormPtr& form)
+    {
+        return GetMostProbableMorphInfo(form->getMorphInfo()).normalForm.toLowerCase().getRawString();
+    }
 }

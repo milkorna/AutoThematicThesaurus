@@ -6,6 +6,20 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
 {
     Logger::log("PatternPhrasesStorage", LogLevel::Info, "Entering Collect method.");
 
+    std::unordered_set<std::string> wordsInSentence;
+    for (const auto& form : forms) {
+        std::string word = GetLemma(form);
+        wordsInSentence.insert(word);
+    }
+
+    for (const auto& word1 : wordsInSentence) {
+        for (const auto& word2 : wordsInSentence) {
+            if (word1 != word2) {
+                coOccurrenceMap[word1][word2]++;
+            }
+        }
+    }
+
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.Collect(process);
     ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.GetCollection(), forms);
@@ -184,6 +198,16 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             phrases.push_back(phraseJson);
         }
         clusterJson["Phrases"] = phrases;
+
+        clusterJson["CoOccurrences"] = nlohmann::json::object();
+        for (const auto& coPair : coOccurrenceMap) {
+            const auto& word1 = coPair.first;
+            for (const auto& coPair2 : coPair.second) {
+                const auto& word2 = coPair2.first;
+                int frequency = coPair2.second;
+                clusterJson["CoOccurrences"][word1][word2] = frequency;
+            }
+        }
 
         j[key] = clusterJson;
     }

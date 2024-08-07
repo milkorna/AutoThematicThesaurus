@@ -41,8 +41,8 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
             return false;
 
-        const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
-        if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+        const auto normalForm = GetLemma(token);
+        if (stopWords.find(normalForm) != stopWords.end())
             return false;
     }
 
@@ -95,8 +95,8 @@ void SimplePhrasesCollector::Collect(Process& process)
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 continue;
 
-            const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
-            if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+            const auto normalForm = GetLemma(token);
+            if (stopWords.find(normalForm) != stopWords.end())
                 continue;
         }
 

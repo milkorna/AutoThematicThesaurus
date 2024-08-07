@@ -12,6 +12,7 @@
 #include <mutex>
 
 using namespace PhrasesCollectorUtils;
+using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
 
 // \class PatternPhrasesStorage
 // \brief This class manages the storage and processing of pattern phrases. It includes methods for collecting phrases,
@@ -31,6 +32,8 @@ class PatternPhrasesStorage {
         std::vector<double> idf;                                    ///< Vector of IDF values for the words.
         std::vector<double> tfidf;                                  ///< Vector of TF-IDF values for the words.
         std::vector<std::shared_ptr<fasttext::Vector>> wordVectors; ///< Vector of FastText vectors for the words.
+        std::vector<std::vector<double>> coOccurrences;
+        std::vector<std::shared_ptr<fasttext::Vector>> contextualVectors;
     };
 
 public:
@@ -88,6 +91,7 @@ public:
 
 private:
     TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
+    CoOccurrenceMap coOccurrenceMap;
 
     // \brief Default constructor.
     PatternPhrasesStorage()
