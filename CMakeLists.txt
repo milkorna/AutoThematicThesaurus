@@ -123,6 +123,8 @@ message("
   ${fasttext_INCLUDE_DIR}
   ${incbin_INCLUDE_DIR}" )
 
+  find_package(SQLite3 REQUIRED)
+
 
 target_include_directories (Xmorphy SYSTEM PUBLIC ${XMORPHY_PROJECT_PATH}/src ${MIMALLOC_INCLUDE_DIR} ${TFLITE_INCLUDE_DIRS}
     ${BOOST_HEADERONLY_INCLUDE_DIR}
@@ -147,7 +149,7 @@ include_directories(${PROJECT_SOURCE_DIR}/src
   ${fasttext_INCLUDE_DIR}
   ${incbin_INCLUDE_DIR}
   ${XMORPHY_PROJECT_PATH}/contrib/tabulate/include
-    )
+  ${SQLite3_INCLUDE_DIRS}  )
 
 include_directories(${PROJECT_SOURCE_DIR}/my_data)
 include_directories(${PROJECT_SOURCE_DIR}/x_morphy_resuls)
@@ -156,7 +158,7 @@ set(XMORPHY_LIBRARY "${XMORPHY_PROJECT_PATH}/build/temp.linux-x86_64-3.10/libXmo
 
 include_directories(${XMORPHY_PROJECT_PATH}/src)
 
-target_link_libraries(AutoThematicThesaurus PRIVATE ${XMORPHY_LIBRARY})
+target_link_libraries(AutoThematicThesaurus PRIVATE ${XMORPHY_LIBRARY} ${SQLite3_LIBRARIES})
 
 target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG -w)
 target_link_libraries(AutoThematicThesaurus PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
