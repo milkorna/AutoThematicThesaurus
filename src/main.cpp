@@ -22,10 +22,9 @@ int main()
     std::string logFilePath = (repoPath / "my_logs.txt").string();
     Logger::initializeLogFile(logFilePath);
 
-    //    std::string semantic_data = (repoPath / "wikiwordnet.db").string();
-    //    SemanticRelationsDB db(semantic_data);
-
-    DB::RunTest();
+    // std::string semantic_data = (repoPath / "wikiwordnet.db").string();
+    // SemanticRelationsDB db(semantic_data);
+    // DB::RunTest();
 
     fs::path patternsPath = repoPath / "my_data/patterns.txt";
     GrammarPatternManager::GetManager()->readPatterns(patternsPath);

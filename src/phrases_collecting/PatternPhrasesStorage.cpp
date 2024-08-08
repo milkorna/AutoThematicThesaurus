@@ -1,4 +1,5 @@
 #include <PatternPhrasesStorage.h>
+#include <PhrasesCollectorUtils.h>
 
 using json = nlohmann::json;
 
@@ -54,6 +55,7 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
         clusters[key] = newCluster;
     }
 }
+
 void PatternPhrasesStorage::AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection)
 {
 
@@ -80,6 +82,22 @@ void PatternPhrasesStorage::CalculateWeights()
         int count = substringCount[key] + 1;
         if (wc.phraseSize > 2) {
             wc.m_weight /= count;
+        }
+    }
+}
+
+void PatternPhrasesStorage::AddSemanticRelationsToCluster(WordComplexCluster& cluster)
+{
+    static fs::path repoPath = fs::current_path();
+    static std::string semantic_data = (repoPath / "wikiwordnet.db").string();
+    SemanticRelationsDB db(semantic_data);
+    for (const auto& wordComplex : cluster.wordComplexes) {
+        for (const auto& word : wordComplex->words) {
+            std::string textForm = word->getWordForm().toLowerCase().getRawString();
+            boost::to_lower(textForm);
+            // cluster.synonyms[textForm] = db.GetRelations(textForm, "synonym");
+            cluster.hypernyms[textForm] = db.GetRelations(textForm, "hypernym");
+            cluster.hyponyms[textForm] = db.GetRelations(textForm, "hyponym");
         }
     }
 }
@@ -158,6 +176,29 @@ void PatternPhrasesStorage::OutputClustersToTextFile(const std::string& filename
                     << "    Position - Start: " << wordComplex->pos.start << ", End: " << wordComplex->pos.end
                     << ", DocNum: " << wordComplex->pos.docNum << ", SentNum: " << wordComplex->pos.sentNum << "\n";
         }
+        outFile << "\n";
+
+        // Output hypernyms
+        outFile << "Hypernyms:\n";
+        for (const auto& synPair : cluster.hypernyms) {
+            outFile << "  " << synPair.first << ": ";
+            for (const auto& syn : synPair.second) {
+                outFile << syn << " ";
+            }
+            outFile << "\n";
+        }
+
+        outFile << "\n";
+
+        // Output hyponyms
+        outFile << "Hyponyms:\n";
+        for (const auto& synPair : cluster.hyponyms) {
+            outFile << "  " << synPair.first << ": ";
+            for (const auto& syn : synPair.second) {
+                outFile << syn << " ";
+            }
+            outFile << "\n";
+        }
 
         outFile << "\n";
     }
@@ -208,6 +249,18 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
                 clusterJson["CoOccurrences"][word1][word2] = frequency;
             }
         }
+
+        nlohmann::json hypernymsJson = nlohmann::json::object();
+        for (const auto& synPair : cluster.hypernyms) {
+            hypernymsJson[synPair.first] = synPair.second;
+        }
+        clusterJson["Hypernyms"] = hypernymsJson;
+
+        nlohmann::json hyponymsJson = nlohmann::json::object();
+        for (const auto& synPair : cluster.hyponyms) {
+            hyponymsJson[synPair.first] = synPair.second;
+        }
+        clusterJson["Hyponyms"] = hyponymsJson;
 
         j[key] = clusterJson;
     }

@@ -52,6 +52,8 @@ src/phrases_collecting/WordComplex.h
 src/utils/OutputRedirector.h
 src/utils/PatternParser.cpp
 src/utils/PatternParser.h
+src/utils/SemanticRelations.cpp
+src/utils/SemanticRelations.h
 src/utils/ThreadController.h
 src/utils/TextCorpus.cpp
 src/utils/TextCorpus.h

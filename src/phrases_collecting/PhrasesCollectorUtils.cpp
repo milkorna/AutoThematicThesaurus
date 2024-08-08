@@ -128,9 +128,10 @@ namespace PhrasesCollectorUtils {
             if (g_options.multithreading) {
 
                 const size_t batchSize = 15;
-                for (size_t batchStart = 0; batchStart < files_to_process.size(); batchStart += batchSize) {
+                for (size_t batchStart = 0; batchStart < 10 /*files_to_process.size()*/; batchStart += batchSize) {
                     std::vector<std::thread> threads;
-                    size_t batchEnd = std::min(batchStart + batchSize, files_to_process.size());
+                    size_t batchEnd =
+                        std::min(batchStart + batchSize, static_cast<unsigned long>(10) /*files_to_process.size()*/);
                     for (size_t i = batchStart; i < batchEnd; ++i) {
                         threads.emplace_back([&, i]() {
                             corpus.LoadDocumentsFromFile(files_to_process[i]);
@@ -147,7 +148,7 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < files_to_process.size(); ++i) {
+                for (unsigned int i = 0; i < 10 /*files_to_process.size()*/; ++i) {
                     corpus.LoadDocumentsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }

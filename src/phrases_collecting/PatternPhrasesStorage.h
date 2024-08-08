@@ -2,6 +2,7 @@
 #define PATTERN_PHRASES_STORAGE_H
 
 #include <ComplexPhrasesCollector.h>
+#include <SemanticRelations.h>
 #include <TextCorpus.h>
 #include <ThreadController.h>
 
@@ -32,8 +33,10 @@ class PatternPhrasesStorage {
         std::vector<double> idf;                                    ///< Vector of IDF values for the words.
         std::vector<double> tfidf;                                  ///< Vector of TF-IDF values for the words.
         std::vector<std::shared_ptr<fasttext::Vector>> wordVectors; ///< Vector of FastText vectors for the words.
-        std::vector<std::vector<double>> coOccurrences;
-        std::vector<std::shared_ptr<fasttext::Vector>> contextualVectors;
+        std::vector<std::vector<double>> coOccurrences;             ///< Co-occurrence matrix.
+        std::vector<std::shared_ptr<fasttext::Vector>> contextualVectors; ///< Contextual vectors.
+        std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
+        std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
     };
 
 public:
@@ -72,6 +75,8 @@ public:
     // \brief Adds multiple word complexes to the storage.
     // \param collection A vector of WordComplexPtr to add.
     void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
+
+    void AddSemanticRelationsToCluster(WordComplexCluster& cluster);
 
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
