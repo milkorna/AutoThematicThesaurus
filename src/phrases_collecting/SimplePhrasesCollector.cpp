@@ -82,8 +82,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 void SimplePhrasesCollector::Collect(Process& process)
 {
     Logger::log("Collect", LogLevel::Info, "Starting simple models collection process.");
-
-    Logger::log("Collect", LogLevel::Info, "Got a collector");
     const auto& simplePatterns = manager.getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {

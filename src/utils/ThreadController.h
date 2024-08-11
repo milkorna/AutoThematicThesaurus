@@ -1,3 +1,6 @@
+#ifndef THREAD_CONTROLLER_H
+#define THREAD_CONTROLLER_H
+
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
@@ -54,3 +57,5 @@ private:
     int waiting_threads = 0;    ///< Counter for the number of threads waiting at the checkpoint.
     int total_threads = 0;      ///< Total number of threads participating in the barrier.
 };
+
+#endif // THREAD_CONTROLLER_H

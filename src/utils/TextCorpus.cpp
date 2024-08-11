@@ -8,34 +8,45 @@ TextCorpus::TextCorpus(const std::string& modelPath)
 void TextCorpus::AddDocument(const std::string& document)
 {
     documents.push_back(document);
-    std::vector<std::string> words;
-    boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
-    std::unordered_map<std::string, bool> seenWords;
+    // std::vector<std::string> words;
+    // boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
+    // std::unordered_map<std::string, bool> seenWords;
 
-    for (auto& word : words) {
-        if (!word.empty()) {
-            boost::to_lower(word);
-            wordFrequency[word]++;
-            if (!seenWords[word]) {
-                documentFrequency[word]++;
-                seenWords[word] = true;
-            }
+    // for (auto& word : words) {
+    //     if (!word.empty()) {
+    //         boost::to_lower(word);
+    //         wordFrequency[word]++;
+    //         if (!seenWords[word]) {
+    //             documentFrequency[word]++;
+    //             seenWords[word] = true;
+    //         }
 
-            // Retrieve FastText vector for the word
-            if (wordVectors.find(word) == wordVectors.end()) {
-                auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
-                model.getWordVector(*vec, word);
-                wordVectors[word] = vec;
-            }
-        }
-    }
+    //         // Retrieve FastText vector for the word
+    //         if (wordVectors.find(word) == wordVectors.end()) {
+    //             auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
+    //             model.getWordVector(*vec, word);
+    //             wordVectors[word] = vec;
+    //         }
+    //     }
+    // }
     totalDocuments++;
 }
 
-const std::shared_ptr<fasttext::Vector> TextCorpus::GetWordVector(const std::string& word) const
+void TextCorpus::UpdateWordFrequency(const std::string& lemma)
 {
-    return wordVectors.at(word);
+    wordFrequency[lemma]++;
+    totalWords++;
 }
+
+void TextCorpus::UpdateDocumentFrequency(const std::string& lemma)
+{
+    documentFrequency[lemma]++;
+}
+
+// const std::shared_ptr<fasttext::Vector> TextCorpus::GetWordVector(const std::string& word) const
+// {
+//     return wordVectors.at(word);
+// }
 
 void TextCorpus::LoadDocumentsFromFile(const std::string& filename)
 {
@@ -52,8 +63,25 @@ int TextCorpus::GetTotalDocuments() const
     return totalDocuments;
 }
 
-int TextCorpus::GetDocumentFrequency(const std::string& word) const
+int TextCorpus::GetWordFrequency(const std::string& lemma) const
 {
-    auto it = documentFrequency.find(word);
-    return (it != documentFrequency.end()) ? it->second : 0;
+    auto it = wordFrequency.find(lemma);
+    if (it != wordFrequency.end()) {
+        return it->second;
+    }
+    return 0;
+}
+
+int TextCorpus::GetDocumentFrequency(const std::string& lemma) const
+{
+    auto it = documentFrequency.find(lemma);
+    if (it != documentFrequency.end()) {
+        return it->second;
+    }
+    return 0;
+}
+
+int TextCorpus::GetTotalWords() const
+{
+    return totalWords;
 }

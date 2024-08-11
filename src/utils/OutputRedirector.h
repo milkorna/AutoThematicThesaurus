@@ -1,3 +1,6 @@
+#ifndef OUTPUT_REDIRECTOR_H
+#define OUTPUT_REDIRECTOR_H
+
 #include <fcntl.h>
 #include <string>
 #include <unistd.h>
@@ -53,3 +56,5 @@ private:
     int saved_stderr; ///< File descriptor to save the original stderr.
     int log_fd = -1;  ///< File descriptor for the log file.
 };
+
+#endif // OUTPUT_REDIRECTOR_H

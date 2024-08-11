@@ -78,6 +78,9 @@ namespace PhrasesCollectorUtils {
         SingleWordDisambiguate disamb;
         TFJoinedModel joiner;
 
+        auto& storage = PatternPhrasesStorage::GetStorage();
+        auto& corpus = storage.GetCorpus();
+
         do {
             std::string sentence;
             ssplitter.readSentence(sentence);
@@ -94,6 +97,18 @@ namespace PhrasesCollectorUtils {
 
             for (auto& form : forms) {
                 morphemic_splitter.split(form);
+            }
+
+            std::unordered_map<std::string, bool> seenWords;
+            for (const auto& form : forms) {
+                std::string lemma = GetLemma(form);
+
+                corpus.UpdateWordFrequency(lemma);
+
+                if (!seenWords[lemma]) {
+                    corpus.UpdateDocumentFrequency(lemma);
+                    seenWords[lemma] = true;
+                }
             }
 
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
@@ -148,7 +163,7 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < 10 /*files_to_process.size()*/; ++i) {
+                for (unsigned int i = 0; i < 1 /*files_to_process.size()*/; ++i) {
                     corpus.LoadDocumentsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
@@ -158,13 +173,20 @@ namespace PhrasesCollectorUtils {
 
             fs::path totalResultsFile;
             if (g_options.cleaningStopWords) {
-                totalResultsFile = repoPath / "my_data/total_results_no_sw.txt";
+                totalResultsFile = repoPath / "my_data/total_results_no_sw";
             } else {
-                totalResultsFile = repoPath / "my_data/total_results_sw.txt";
+                totalResultsFile = repoPath / "my_data/total_results_sw";
             }
 
+            fs::path textFilePath = totalResultsFile;
+            textFilePath.replace_extension(".txt");
+
+            fs::path jsonFilePath = totalResultsFile;
+            jsonFilePath.replace_extension(".json");
+
             storage.ComputeTextMetrics();
-            storage.OutputClustersToTextFile(totalResultsFile);
+            storage.OutputClustersToTextFile(textFilePath);
+            storage.OutputClustersToJsonFile(jsonFilePath);
 
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 

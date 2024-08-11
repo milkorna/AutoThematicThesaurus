@@ -51,7 +51,12 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
             cluster.wordComplexes.push_back(wc);
         }
     } else {
-        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, {wc}};
+        std::vector<std::string> lemmas;
+        for (const auto& w : wc->words) {
+            lemmas.push_back(GetLemma(w));
+        }
+
+        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, lemmas, {wc}};
         clusters[key] = newCluster;
     }
 }
@@ -114,30 +119,15 @@ void PatternPhrasesStorage::ComputeTextMetrics()
         cluster.tfidf.resize(cluster.phraseSize, 0.0);
         cluster.wordVectors.resize(cluster.phraseSize);
 
-        for (const auto& wordComplex : cluster.wordComplexes) {
-            std::unordered_map<std::string, int> termFrequency;
-            for (const auto& wordForm : wordComplex->words) {
-                std::string word = wordForm->getWordForm().toLowerCase().getRawString();
-                boost::to_lower(word);
-                termFrequency[word]++;
-            }
-
-            for (size_t i = 0; i < wordComplex->words.size(); ++i) {
-                std::string word = wordComplex->words[i]->getWordForm().toLowerCase().getRawString();
-                boost::to_lower(word);
-                cluster.tf[i] += static_cast<double>(termFrequency[word]) / wordComplex->words.size();
-                cluster.wordVectors[i] = corpus.GetWordVector(word);
-            }
-        }
-
         for (size_t i = 0; i < cluster.phraseSize; ++i) {
-            std::string word = cluster.wordComplexes[0]->words[i]->getWordForm().toLowerCase().getRawString();
-            boost::to_lower(word);
-            cluster.idf[i] = log(static_cast<double>(totalDocuments) / (1 + corpus.GetDocumentFrequency(word)));
-        }
+            const std::string& lemma = cluster.lemmas[i];
+            int termFrequency = corpus.GetWordFrequency(lemma);
+            int documentFrequency = corpus.GetDocumentFrequency(lemma);
 
-        for (size_t i = 0; i < cluster.phraseSize; ++i) {
+            cluster.tf[i] = static_cast<double>(termFrequency) / corpus.GetTotalWords();
+            cluster.idf[i] = log(static_cast<double>(totalDocuments) / (1 + documentFrequency));
             cluster.tfidf[i] = cluster.tf[i] * cluster.idf[i];
+            cluster.wordVectors[i] = std::make_shared<WordEmbedding>(lemma);
         }
     }
 }
@@ -166,9 +156,16 @@ void PatternPhrasesStorage::OutputClustersToTextFile(const std::string& filename
                 << "Phrase Size: " << cluster.phraseSize << "\n"
                 << "Weight: " << cluster.m_weight << "\n"
                 << "Topic Match: " << (cluster.topicMatch ? "true" : "false") << "\n"
-                << "Model Name: " << cluster.modelName << "\n"
-                << "Word Complexes: " << cluster.wordComplexes.size() << "\n"
-                << "\n";
+                << "Model Name: " << cluster.modelName << "\n";
+
+        outFile << "Lemmas:\n";
+        for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
+            outFile << "  Lemma: " << cluster.lemmas[i] << "\n"
+                    << "    TF: " << cluster.tf[i] << "\n"
+                    << "    IDF: " << cluster.idf[i] << "\n"
+                    << "    TF-IDF: " << cluster.tfidf[i] << "\n";
+        }
+        outFile << "\nWord Complexes: " << cluster.wordComplexes.size() << "\n";
 
         outFile << "Phrases:\n";
         for (const auto& wordComplex : cluster.wordComplexes) {
@@ -226,8 +223,36 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         clusterJson["Weight"] = cluster.m_weight;
         clusterJson["Topic Match"] = cluster.topicMatch;
         clusterJson["Model Name"] = cluster.modelName;
-        clusterJson["Word Complexes"] = cluster.wordComplexes.size();
 
+        std::vector<json> lemmasJson;
+        for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
+            json lemmaJson;
+            lemmaJson["Lemma"] = cluster.lemmas[i];
+            lemmaJson["TF"] = cluster.tf[i];
+            lemmaJson["IDF"] = cluster.idf[i];
+            lemmaJson["TF-IDF"] = cluster.tfidf[i];
+
+            nlohmann::json coOccurrencesJson = nlohmann::json::object();
+            auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
+            if (it1 != coOccurrenceMap.end()) {
+                for (const auto& coPair : it1->second) {
+                    const auto& otherLemma = coPair.first;
+                    int frequency = coPair.second;
+
+                    if (otherLemma.length() > 2 && frequency > 2) {
+                        coOccurrencesJson[otherLemma] = frequency;
+                    }
+                }
+            }
+            lemmaJson["CoOccurrences"] = coOccurrencesJson;
+
+            // std::vector<float> vectorValues = cluster.wordVectors[i]->GetVector();
+            // lemmaJson["Vector"] = vectorValues;
+            lemmasJson.push_back(lemmaJson);
+        }
+        clusterJson["Lemmas"] = lemmasJson;
+
+        clusterJson["Word Complexes"] = cluster.wordComplexes.size();
         std::vector<json> phrases;
         for (const auto& wordComplex : cluster.wordComplexes) {
             json phraseJson;
@@ -239,16 +264,6 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             phrases.push_back(phraseJson);
         }
         clusterJson["Phrases"] = phrases;
-
-        clusterJson["CoOccurrences"] = nlohmann::json::object();
-        for (const auto& coPair : coOccurrenceMap) {
-            const auto& word1 = coPair.first;
-            for (const auto& coPair2 : coPair.second) {
-                const auto& word2 = coPair2.first;
-                int frequency = coPair2.second;
-                clusterJson["CoOccurrences"][word1][word2] = frequency;
-            }
-        }
 
         nlohmann::json hypernymsJson = nlohmann::json::object();
         for (const auto& synPair : cluster.hypernyms) {

@@ -1,3 +1,6 @@
+#ifndef TEXT_CORPUS_H
+#define TEXT_CORPUS_H
+
 #include <boost/algorithm/string.hpp>
 #include <cmath>
 #include <fasttext.h>
@@ -25,10 +28,23 @@ public:
     // \param document      The document text to be added.
     void AddDocument(const std::string& document);
 
+    void UpdateWordFrequency(const std::string& lemma);
+
+    void UpdateDocumentFrequency(const std::string& lemma);
+
+    // void TextCorpus::UpdateWordVector(const std::string& lemma)
+    // {
+    //     if (wordVectors.find(lemma) == wordVectors.end()) {
+    //         auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
+    //         model.getWordVector(*vec, lemma);
+    //         wordVectors[lemma] = vec;
+    //     }
+    // }
+
     // \brief Retrieves the FastText vector for a given word.
     // \param word          The word for which to retrieve the vector.
     // \return              A shared pointer to the FastText vector of the word.
-    const std::shared_ptr<fasttext::Vector> GetWordVector(const std::string& word) const;
+    // const std::shared_ptr<fasttext::Vector> GetWordVector(const std::string& word) const;
 
     // \brief Loads documents from a file and adds them to the corpus.
     // \param filename      The path to the file containing the documents.
@@ -38,16 +54,23 @@ public:
     // \return              The total number of documents.
     int GetTotalDocuments() const;
 
+    int GetWordFrequency(const std::string& lemma) const;
+
     // \brief Gets the document frequency of a given word.
     // \param word          The word for which to get the document frequency.
     // \return              The document frequency of the word.
     int GetDocumentFrequency(const std::string& word) const;
 
+    int GetTotalWords() const;
+
 private:
     std::vector<std::string> documents;                     ///< Vector to store the documents in the corpus.
     std::unordered_map<std::string, int> wordFrequency;     ///< Map to store the frequency of words in the corpus.
     std::unordered_map<std::string, int> documentFrequency; ///< Map to store the document frequency of words.
-    std::unordered_map<std::string, VectorPtr> wordVectors; ///< Map to store the FastText vectors of words.
-    int totalDocuments = 0;                                 ///< Total number of documents in the corpus.
-    fasttext::FastText model;                               ///< FastText model for generating word vectors.
+    // std::unordered_map<std::string, VectorPtr> wordVectors; ///< Map to store the FastText vectors of words.
+    int totalWords;           ///< Total number of words (lemmas) in the corpus.
+    int totalDocuments = 0;   ///< Total number of documents in the corpus.
+    fasttext::FastText model; ///< FastText model for generating word vectors.
 };
+
+#endif // TEXT_CORPUS_H

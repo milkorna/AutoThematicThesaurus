@@ -38,6 +38,8 @@ src/grammar_component/WordComponent.h
 src/grammar_component/ModelComponent.cpp
 src/grammar_component/ModelComponent.h
 
+src/phrases_collecting/Embedding.cpp
+src/phrases_collecting/Embedding.h
 src/phrases_collecting/PatternPhrasesStorage.cpp
 src/phrases_collecting/PatternPhrasesStorage.h
 src/phrases_collecting/PhrasesCollectorUtils.cpp
@@ -69,6 +71,7 @@ add_executable(AutoThematicThesaurus src/main.cpp ${SOURCE_FILES})
 target_compile_options(AutoThematicThesaurus PRIVATE -Wno-unused -Werror)
 
 target_include_directories(AutoThematicThesaurus PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
 add_compile_options(-w) 
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
