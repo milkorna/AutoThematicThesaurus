@@ -33,8 +33,10 @@ namespace PhrasesCollectorUtils {
         fs::path repoPath = fs::current_path();
         fs::path inputDir = repoPath / "my_data/texts";
         std::vector<fs::path> files_to_process;
+        files_to_process.reserve(g_options.textToProcessCount);
         // files_to_process.push_back(
-        //    "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in stable
+        //    "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in
+        //    stable
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -143,10 +145,10 @@ namespace PhrasesCollectorUtils {
             if (g_options.multithreading) {
 
                 const size_t batchSize = 15;
-                for (size_t batchStart = 0; batchStart < 10 /*files_to_process.size()*/; batchStart += batchSize) {
+                for (size_t batchStart = 0; batchStart < g_options.textToProcessCount; batchStart += batchSize) {
                     std::vector<std::thread> threads;
                     size_t batchEnd =
-                        std::min(batchStart + batchSize, static_cast<unsigned long>(10) /*files_to_process.size()*/);
+                        std::min(batchStart + batchSize, static_cast<unsigned long>(g_options.textToProcessCount));
                     for (size_t i = batchStart; i < batchEnd; ++i) {
                         threads.emplace_back([&, i]() {
                             corpus.LoadDocumentsFromFile(files_to_process[i]);
@@ -163,7 +165,7 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < 1 /*files_to_process.size()*/; ++i) {
+                for (unsigned int i = 0; i < g_options.textToProcessCount; ++i) {
                     corpus.LoadDocumentsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }

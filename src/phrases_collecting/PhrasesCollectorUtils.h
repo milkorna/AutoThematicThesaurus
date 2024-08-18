@@ -21,6 +21,7 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
+        int textToProcessCount = 1;
         bool multithreading = false;   ///< Indicates if multithreading is enabled.
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
         bool tags = false;             ///< Indicates if tags should be processed.
