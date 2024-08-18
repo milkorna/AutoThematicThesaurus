@@ -102,8 +102,8 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 return false;
 
-            const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
-            if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+            const auto normalForm = GetLemma(token);
+            if (stopWords.find(normalForm) != stopWords.end())
                 return false;
         }
 

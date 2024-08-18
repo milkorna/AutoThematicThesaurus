@@ -4,3 +4,7 @@ install
 err.txt
 log.txt
 my_logs.txt
+wikiwordnet.db
+model.bin
+model.vec
+my_custom_fasttext_model_finetuned.bin

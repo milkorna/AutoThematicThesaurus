@@ -4,8 +4,14 @@
 #include <PhrasesCollectorUtils.h>
 #include <SimplePhrasesCollector.h>
 
+// \class ComplexPhrasesCollector
+// \brief This class collects complex phrases from a given set of simple phrases and word forms.
+//        It utilizes the GrammarPatternManager to identify and collect complex phrases based on grammar patterns.
 class ComplexPhrasesCollector {
 public:
+    // \brief Constructor that initializes the ComplexPhrasesCollector with simple phrases and word forms.
+    // \param simplePhrases     A vector of WordComplexPtr representing the simple phrases to analyze.
+    // \param forms             A vector of WordFormPtr representing the sentence to analyze.
     explicit ComplexPhrasesCollector(const std::vector<PHUtils::WordComplexPtr>& simplePhrases,
                                      const std::vector<WordFormPtr>& forms)
         : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{},
@@ -13,15 +19,18 @@ public:
     {
     }
 
+    // \brief Collects complex phrases from the sentence using the provided process.
+    // \param process           The process used for phrase collection.
     void Collect(Process& process);
 
+    // \brief Default destructor for the ComplexPhrasesCollector class.
     ~ComplexPhrasesCollector() = default;
 
 private:
-    const std::vector<PHUtils::WordComplexPtr> m_simplePhrases;
-    std::vector<PHUtils::WordComplexPtr> m_collection;
-    std::vector<WordFormPtr> m_sentence;
-    const GrammarPatternManager& manager;
+    const std::vector<PHUtils::WordComplexPtr> m_simplePhrases; ///< Vector of simple phrases.
+    std::vector<PHUtils::WordComplexPtr> m_collection;          ///< Collection of word complexes.
+    std::vector<WordFormPtr> m_sentence;                        ///< Vector of word forms representing the sentence.
+    const GrammarPatternManager& manager;                       ///< Reference to the GrammarPatternManager instance.
 
     bool CheckCurrentSimplePhrase(const PHUtils::WordComplexPtr& curSimplePhr,
                                   const std::shared_ptr<ModelComp>& curModelComp,

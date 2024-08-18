@@ -3,10 +3,17 @@
 #include <OutputRedirector.h>
 #include <PatternPhrasesStorage.h>
 
+#include <Embedding.h>
+#include <SemanticRelations.h>
+
 #include <chrono>
 #include <filesystem>
 
 namespace fs = std::filesystem;
+
+void printFirstFiveRows(const std::string& table_name)
+{
+}
 
 int main()
 {
@@ -24,7 +31,7 @@ int main()
     auto end = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<double> duration = end - start;
-    Logger::log("\n\nmain", LogLevel::Info, "Processing texts took " + std::to_string(duration.count()) + " seconds.");
+    Logger::log("\n\nmain", LogLevel::Info, "Processing texts took " + std::to_string(duration.count()) + "seconds.");
 
     return 0;
 }

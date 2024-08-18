@@ -78,6 +78,7 @@ std::string ParserUtils::ExtractSubstringInQuotes(const std::string& str)
     return "";
 }
 
+// Extracts a substring enclosed in single quotes.
 std::string ParserUtils::ExtractSubstringInSq(const std::string& str)
 {
     size_t firstQuotePos = str.find("[");
@@ -150,6 +151,7 @@ UniMorphTag Parser::ParseUniMorphTag(const std::string& line) const
     }
 }
 
+// Processes a word and returns the syntactic tag and morphological tag.
 std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString& line, const bool isHead)
 {
     try {
@@ -171,6 +173,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString& line, c
     }
 }
 
+// Parses additional tags from the line.
 Additional Parser::ParseTags(const std::string& line)
 {
     try {

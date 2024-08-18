@@ -41,8 +41,8 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
             return false;
 
-        const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
-        if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+        const auto normalForm = GetLemma(token);
+        if (stopWords.find(normalForm) != stopWords.end())
             return false;
     }
 
@@ -82,8 +82,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 void SimplePhrasesCollector::Collect(Process& process)
 {
     Logger::log("Collect", LogLevel::Info, "Starting simple models collection process.");
-
-    Logger::log("Collect", LogLevel::Info, "Got a collector");
     const auto& simplePatterns = manager.getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
@@ -95,8 +93,8 @@ void SimplePhrasesCollector::Collect(Process& process)
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 continue;
 
-            const auto normalForm = GetMostProbableMorphInfo(token->getMorphInfo()).normalForm;
-            if (stopWords.find(normalForm.toLowerCase().getRawString()) != stopWords.end())
+            const auto normalForm = GetLemma(token);
+            if (stopWords.find(normalForm) != stopWords.end())
                 continue;
         }
 

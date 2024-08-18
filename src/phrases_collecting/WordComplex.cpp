@@ -22,8 +22,9 @@ namespace PhrasesCollectorUtils {
     {
         std::string key;
         for (const auto& w : words) {
-            key.append(GetMostProbableMorphInfo(w->getMorphInfo()).normalForm.getRawString());
+            key.append(GetLemma(w) + " ");
         }
+        key.pop_back();
         return key;
     }
 
