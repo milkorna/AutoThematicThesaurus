@@ -100,6 +100,9 @@ private:
     ::Embedding embedding;
     SemanticRelationsDB semanticDB;
 
+    std::unordered_map<std::string, std::set<std::string>> hypernymCache;
+    std::unordered_map<std::string, std::set<std::string>> hyponymCache;
+
     // \brief Default constructor.
     PatternPhrasesStorage()
     {

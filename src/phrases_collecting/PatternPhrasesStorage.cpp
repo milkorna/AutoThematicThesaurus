@@ -60,10 +60,21 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
             lemmas.push_back(lemma);
             lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
 
-            auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
-            lemmHypernyms[lemma] = hypernyms;
-            auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
-            lemmHyponyms[lemma] = hyponyms;
+            if (hypernymCache.find(lemma) != hypernymCache.end()) {
+                lemmHypernyms[lemma] = hypernymCache[lemma];
+            } else {
+                auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
+                hypernymCache[lemma] = hypernyms;
+                lemmHypernyms[lemma] = hypernyms;
+            }
+
+            if (hyponymCache.find(lemma) != hyponymCache.end()) {
+                lemmHyponyms[lemma] = hyponymCache[lemma];
+            } else {
+                auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
+                hyponymCache[lemma] = hyponyms;
+                lemmHyponyms[lemma] = hyponyms;
+            }
         }
 
         WordComplexCluster newCluster = {wc->words.size(), 1.0,           false,       key, wc->modelName,

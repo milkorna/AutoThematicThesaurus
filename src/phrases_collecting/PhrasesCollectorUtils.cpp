@@ -34,9 +34,6 @@ namespace PhrasesCollectorUtils {
         fs::path inputDir = repoPath / "my_data/texts";
         std::vector<fs::path> files_to_process;
         files_to_process.reserve(g_options.textToProcessCount);
-        // files_to_process.push_back(
-        //    "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in
-        //    stable
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -170,9 +167,6 @@ namespace PhrasesCollectorUtils {
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }
-
-            // storage.CalculateWeights();
-
             fs::path totalResultsFile;
             if (g_options.cleaningStopWords) {
                 totalResultsFile = repoPath / "my_data/total_results_no_sw";
