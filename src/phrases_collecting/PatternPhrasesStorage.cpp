@@ -53,14 +53,22 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
     } else {
         std::vector<std::string> lemmas;
         std::vector<WordEmbeddingPtr> lemVectors;
+        std::unordered_map<std::string, std::set<std::string>> lemmHypernyms;
+        std::unordered_map<std::string, std::set<std::string>> lemmHyponyms;
         for (const auto& w : wc->words) {
             const auto lemma = GetLemma(w);
             lemmas.push_back(lemma);
             lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
+
+            auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
+            lemmHypernyms[lemma] = hypernyms;
+            auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
+            lemmHyponyms[lemma] = hyponyms;
         }
 
-        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, lemmas, {wc}, {}, {}, {},
-                                         lemVectors};
+        WordComplexCluster newCluster = {wc->words.size(), 1.0,           false,       key, wc->modelName,
+                                         lemmas,           {wc},          {},          {},  {},
+                                         lemVectors,       lemmHypernyms, lemmHyponyms};
         clusters[key] = newCluster;
     }
 }
@@ -233,6 +241,8 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             lemmaJson["TF"] = cluster.tf[i];
             lemmaJson["IDF"] = cluster.idf[i];
             lemmaJson["TF-IDF"] = cluster.tfidf[i];
+            lemmaJson["Hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
+            lemmaJson["Hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
 
             json coOccurrencesJson = nlohmann::json::object();
             auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
@@ -275,17 +285,17 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         }
         clusterJson["Phrases"] = phrases;
 
-        json hypernymsJson = nlohmann::json::object();
-        for (const auto& synPair : cluster.hypernyms) {
-            hypernymsJson[synPair.first] = synPair.second;
-        }
-        clusterJson["Hypernyms"] = hypernymsJson;
+        // json hypernymsJson = nlohmann::json::object();
+        // for (const auto& synPair : cluster.hypernyms) {
+        //     hypernymsJson[synPair.first] = synPair.second;
+        // }
+        // clusterJson["Hypernyms"] = hypernymsJson;
 
-        json hyponymsJson = nlohmann::json::object();
-        for (const auto& synPair : cluster.hyponyms) {
-            hyponymsJson[synPair.first] = synPair.second;
-        }
-        clusterJson["Hyponyms"] = hyponymsJson;
+        // json hyponymsJson = nlohmann::json::object();
+        // for (const auto& synPair : cluster.hyponyms) {
+        //     hyponymsJson[synPair.first] = synPair.second;
+        // }
+        // clusterJson["Hyponyms"] = hyponymsJson;
 
         j[key] = clusterJson;
     }
