@@ -5,9 +5,12 @@
 
 namespace fs = std::filesystem;
 
-SemanticRelationsDB::SemanticRelationsDB(const std::string& db_name)
+SemanticRelationsDB::SemanticRelationsDB()
 {
-    if (sqlite3_open(db_name.c_str(), &db) != SQLITE_OK) {
+    fs::path repoPath = fs::current_path();
+    std::string semantic_data = (repoPath / "wikiwordnet.db").string();
+
+    if (sqlite3_open(semantic_data.c_str(), &db) != SQLITE_OK) {
         throw std::runtime_error("Could not open database");
     }
 }
@@ -124,9 +127,7 @@ void SemanticRelationsDB::PrintTableSchema(const std::string& table_name)
 void DB::RunTest()
 {
     try {
-        fs::path repoPath = fs::current_path();
-        std::string semantic_data = (repoPath / "wikiwordnet.db").string();
-        SemanticRelationsDB db(semantic_data);
+        SemanticRelationsDB db;
 
         std::cout << "Tables in the database:" << std::endl;
         db.PrintAllTables();

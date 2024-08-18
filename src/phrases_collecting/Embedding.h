@@ -14,7 +14,6 @@ private:
     static void LoadModel(std::string model_path);
 
 public:
-    Embedding(const std::string model_path);
     Embedding();
 
     static std::vector<float> GetWordVector(const std::string& word);

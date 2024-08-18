@@ -13,7 +13,7 @@ struct SemanticRelation {
 
 class SemanticRelationsDB {
 public:
-    SemanticRelationsDB(const std::string& db_name);
+    SemanticRelationsDB();
     ~SemanticRelationsDB();
 
     sqlite3* getDB() const;

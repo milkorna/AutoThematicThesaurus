@@ -52,11 +52,15 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
         }
     } else {
         std::vector<std::string> lemmas;
+        std::vector<WordEmbeddingPtr> lemVectors;
         for (const auto& w : wc->words) {
-            lemmas.push_back(GetLemma(w));
+            const auto lemma = GetLemma(w);
+            lemmas.push_back(lemma);
+            lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
         }
 
-        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, lemmas, {wc}};
+        WordComplexCluster newCluster = {wc->words.size(), 1.0, false, key, wc->modelName, lemmas, {wc}, {}, {}, {},
+                                         lemVectors};
         clusters[key] = newCluster;
     }
 }
@@ -91,21 +95,21 @@ void PatternPhrasesStorage::CalculateWeights()
     }
 }
 
-void PatternPhrasesStorage::AddSemanticRelationsToCluster(WordComplexCluster& cluster)
-{
-    static fs::path repoPath = fs::current_path();
-    static std::string semantic_data = (repoPath / "wikiwordnet.db").string();
-    SemanticRelationsDB db(semantic_data);
-    for (const auto& wordComplex : cluster.wordComplexes) {
-        for (const auto& word : wordComplex->words) {
-            std::string textForm = word->getWordForm().toLowerCase().getRawString();
-            boost::to_lower(textForm);
-            // cluster.synonyms[textForm] = db.GetRelations(textForm, "synonym");
-            cluster.hypernyms[textForm] = db.GetRelations(textForm, "hypernym");
-            cluster.hyponyms[textForm] = db.GetRelations(textForm, "hyponym");
-        }
-    }
-}
+// void PatternPhrasesStorage::AddSemanticRelationsToCluster(WordComplexCluster& cluster)
+// {
+//     static fs::path repoPath = fs::current_path();
+//     static std::string semantic_data = (repoPath / "wikiwordnet.db").string();
+//     SemanticRelationsDB db(semantic_data);
+//     for (const auto& wordComplex : cluster.wordComplexes) {
+//         for (const auto& word : wordComplex->words) {
+//             std::string textForm = word->getWordForm().toLowerCase().getRawString();
+//             boost::to_lower(textForm);
+//             // cluster.synonyms[textForm] = db.GetRelations(textForm, "synonym");
+//             cluster.hypernyms[textForm] = db.GetRelations(textForm, "hypernym");
+//             cluster.hyponyms[textForm] = db.GetRelations(textForm, "hyponym");
+//         }
+//     }
+// }
 
 void PatternPhrasesStorage::ComputeTextMetrics()
 {
@@ -117,7 +121,6 @@ void PatternPhrasesStorage::ComputeTextMetrics()
         cluster.tf.resize(cluster.phraseSize, 0.0);
         cluster.idf.resize(cluster.phraseSize, 0.0);
         cluster.tfidf.resize(cluster.phraseSize, 0.0);
-        cluster.wordVectors.resize(cluster.phraseSize);
 
         for (size_t i = 0; i < cluster.phraseSize; ++i) {
             const std::string& lemma = cluster.lemmas[i];
@@ -127,7 +130,6 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             cluster.tf[i] = static_cast<double>(termFrequency) / corpus.GetTotalWords();
             cluster.idf[i] = log(static_cast<double>(totalDocuments) / (1 + documentFrequency));
             cluster.tfidf[i] = cluster.tf[i] * cluster.idf[i];
-            cluster.wordVectors[i] = std::make_shared<WordEmbedding>(lemma);
         }
     }
 }

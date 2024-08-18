@@ -22,11 +22,6 @@ void Embedding::LoadModel(std::string model_path = "")
     }
 }
 
-Embedding::Embedding(const std::string model_path)
-{
-    LoadModel();
-}
-
 Embedding::Embedding()
 {
     LoadModel();
