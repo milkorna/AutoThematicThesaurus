@@ -232,14 +232,22 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             lemmaJson["IDF"] = cluster.idf[i];
             lemmaJson["TF-IDF"] = cluster.tfidf[i];
 
-            nlohmann::json coOccurrencesJson = nlohmann::json::object();
+            json coOccurrencesJson = nlohmann::json::object();
             auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
             if (it1 != coOccurrenceMap.end()) {
                 for (const auto& coPair : it1->second) {
                     const auto& otherLemma = coPair.first;
                     int frequency = coPair.second;
+                    const auto length = static_cast<float>(otherLemma.size()) * 0.5;
 
-                    if (otherLemma.length() > 2 && frequency > 2) {
+                    if (g_options.cleaningStopWords) {
+                        const auto& stopWords = GetStopWords();
+
+                        if (stopWords.find(otherLemma) != stopWords.end())
+                            continue;
+                    }
+
+                    if (length > 3.0 && frequency > 2) {
                         coOccurrencesJson[otherLemma] = frequency;
                     }
                 }
@@ -265,13 +273,13 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         }
         clusterJson["Phrases"] = phrases;
 
-        nlohmann::json hypernymsJson = nlohmann::json::object();
+        json hypernymsJson = nlohmann::json::object();
         for (const auto& synPair : cluster.hypernyms) {
             hypernymsJson[synPair.first] = synPair.second;
         }
         clusterJson["Hypernyms"] = hypernymsJson;
 
-        nlohmann::json hyponymsJson = nlohmann::json::object();
+        json hyponymsJson = nlohmann::json::object();
         for (const auto& synPair : cluster.hyponyms) {
             hyponymsJson[synPair.first] = synPair.second;
         }
