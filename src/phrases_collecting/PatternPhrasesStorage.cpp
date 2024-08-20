@@ -81,7 +81,7 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
                         const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
 
                         float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
-                        if (cosineSim > 0.97) {
+                        if (cosineSim > g_options.topicsHyponymThreshold) {
                             validHyponyms.insert(hyp);
                         }
                     }
@@ -194,7 +194,6 @@ void PatternPhrasesStorage::ComputeTextMetrics()
 
         const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(cluster.key);
         std::vector<std::string> topics;
-        float threshold = 0.6;
         float cosineWeight = 0.6;
         float euclideanWeight = 0.2;
         float manhattanWeight = 0.2;
@@ -210,18 +209,18 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             float combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
                                   manhattanWeight * (1.0f / (1.0f + manhattanDist));
 
-            if (combinedScore > threshold) {
+            if (combinedScore > g_options.topicsThreshold) {
                 topics.push_back(topicWord);
             }
             totalTopics[cluster.key] = topics;
         }
     }
-    int frequencyThreshold = static_cast<int>(clusters.size() * 0.12);
+    int frequencyThreshold = static_cast<int>(clusters.size() * g_options.freqTrecholdCoeff);
     ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
-            if (iter->second.size() > 0 && iter->second.size() < 7) {
+            if (iter->second.size() > 0 && iter->second.size() < g_options.upperTresholdTopicsNum) {
                 cluster.topicMatch = true;
             }
         }

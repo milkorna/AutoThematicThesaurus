@@ -23,9 +23,13 @@ namespace PhrasesCollectorUtils {
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
         int textToProcessCount = 1;
+        int upperTresholdTopicsNum = 7;
         bool multithreading = false;   ///< Indicates if multithreading is enabled.
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
-        bool tags = false;             ///< Indicates if tags should be processed.
+        // bool tags = false;             ///< Indicates if tags should be processed.
+        float topicsThreshold = 0.6;
+        float topicsHyponymThreshold = 0.97;
+        float freqTrecholdCoeff = 0.12;
     };
 
     extern Options g_options; ///< Global options for phrase collection.
