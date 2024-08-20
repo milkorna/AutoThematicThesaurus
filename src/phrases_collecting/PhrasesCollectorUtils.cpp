@@ -262,6 +262,16 @@ namespace PhrasesCollectorUtils {
         return stopWords;
     }
 
+    bool contains_no_latin(const std::string& str)
+    {
+        for (char ch : str) {
+            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const std::unordered_set<std::string> GetTopics()
     {
         static std::unordered_set<std::string> topics;
@@ -287,6 +297,13 @@ namespace PhrasesCollectorUtils {
                 continue;
             }
 
+            if (line.find(" 1") != std::string::npos) {
+                continue;
+            }
+
+            if (!contains_no_latin(line))
+                continue;
+
             // Remove trailing digits
             line.erase(
                 std::find_if(line.rbegin(), line.rend(), [](unsigned char ch) { return !std::isdigit(ch); }).base(),
@@ -304,6 +321,24 @@ namespace PhrasesCollectorUtils {
 
         initialized = true;
         return topics;
+    }
+
+    const std::unordered_map<std::string, WordEmbeddingPtr>& GetTopicVectors()
+    {
+        static std::unordered_map<std::string, WordEmbeddingPtr> topicVectors;
+        static bool initialized = false;
+
+        if (!initialized) {
+            std::unordered_set<std::string> topics = GetTopics();
+
+            for (const auto& t : topics) {
+                topicVectors[t] = std::make_shared<WordEmbedding>(t);
+            }
+
+            initialized = true;
+        }
+
+        return topicVectors;
     }
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)

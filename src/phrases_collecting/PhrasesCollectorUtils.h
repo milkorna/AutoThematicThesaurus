@@ -3,6 +3,7 @@
 
 #include <xmorphy/morph/WordForm.h>
 
+#include <Embedding.h>
 #include <ModelComponent.h>
 #include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
@@ -91,6 +92,8 @@ namespace PhrasesCollectorUtils {
     // \brief Retrieves the set of topics for phrase collection.
     // \return              A set of topic strings.
     const std::unordered_set<std::string> GetTopics();
+
+    const std::unordered_map<std::string, WordEmbeddingPtr>& GetTopicVectors();
 
     // \brief Retrieves the set of stop words for cleaning.
     // \return              A set of stop word strings.

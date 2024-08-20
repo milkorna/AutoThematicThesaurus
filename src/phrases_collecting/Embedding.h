@@ -35,6 +35,12 @@ public:
 
     float CosineSimilarity(const WordEmbedding& other) const;
 
+    float EuclideanDistance(const WordEmbedding& other) const;
+
+    float ManhattanDistance(const WordEmbedding& other) const;
+
+    float JaccardSimilarity(const WordEmbedding& other) const;
+
     float Magnitude() const;
 
     float DotProduct(const WordEmbedding& other) const;

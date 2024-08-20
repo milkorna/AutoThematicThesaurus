@@ -72,8 +72,23 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
                 lemmHyponyms[lemma] = hyponymCache[lemma];
             } else {
                 auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
-                hyponymCache[lemma] = hyponyms;
-                lemmHyponyms[lemma] = hyponyms;
+                std::set<std::string> validHyponyms;
+                for (const auto& hyp : hyponyms) {
+                    const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
+                    const auto& topicVectors = GetTopicVectors();
+                    for (const auto& topicVecPair : topicVectors) {
+                        const std::string& topicWord = topicVecPair.first;
+                        const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
+
+                        float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+                        if (cosineSim > 0.97) {
+                            validHyponyms.insert(hyp);
+                        }
+                    }
+                }
+
+                hyponymCache[lemma] = validHyponyms;
+                lemmHyponyms[lemma] = validHyponyms;
             }
         }
 
@@ -130,9 +145,35 @@ void PatternPhrasesStorage::CalculateWeights()
 //     }
 // }
 
+std::map<std::string, int>
+CalculateTopicFrequency(const std::unordered_map<std::string, std::vector<std::string>>& similar_words)
+{
+    std::map<std::string, int> topicFrequency;
+    for (const auto& pair : similar_words) {
+        for (const auto& topic : pair.second) {
+            topicFrequency[topic]++;
+        }
+    }
+    return topicFrequency;
+}
+
+void ApplyTopicFrequencyPenalty(std::unordered_map<std::string, std::vector<std::string>>& similar_words,
+                                int frequencyThreshold)
+{
+    auto topicFrequency = CalculateTopicFrequency(similar_words);
+    for (auto& pair : similar_words) {
+        pair.second.erase(
+            std::remove_if(pair.second.begin(), pair.second.end(),
+                           [&](const std::string& topic) { return topicFrequency[topic] > frequencyThreshold; }),
+            pair.second.end());
+    }
+}
+
 void PatternPhrasesStorage::ComputeTextMetrics()
 {
     int totalDocuments = corpus.GetTotalDocuments();
+    const auto& topicVectors = GetTopicVectors();
+    static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
 
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
@@ -149,6 +190,40 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             cluster.tf[i] = static_cast<double>(termFrequency) / corpus.GetTotalWords();
             cluster.idf[i] = log(static_cast<double>(totalDocuments) / (1 + documentFrequency));
             cluster.tfidf[i] = cluster.tf[i] * cluster.idf[i];
+        }
+
+        const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(cluster.key);
+        std::vector<std::string> topics;
+        float threshold = 0.6;
+        float cosineWeight = 0.6;
+        float euclideanWeight = 0.2;
+        float manhattanWeight = 0.2;
+
+        for (const auto& topicVecPair : topicVectors) {
+            const std::string& topicWord = topicVecPair.first;
+            const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
+
+            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+            float euclideanDist = myEmbedding->EuclideanDistance(*topicEmbedding);
+            float manhattanDist = myEmbedding->ManhattanDistance(*topicEmbedding);
+
+            float combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
+                                  manhattanWeight * (1.0f / (1.0f + manhattanDist));
+
+            if (combinedScore > threshold) {
+                topics.push_back(topicWord);
+            }
+            totalTopics[cluster.key] = topics;
+        }
+    }
+    int frequencyThreshold = static_cast<int>(clusters.size() * 0.12);
+    ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
+    for (auto& clusterPair : clusters) {
+        auto& cluster = clusterPair.second;
+        if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
+            if (iter->second.size() > 0 && iter->second.size() < 7) {
+                cluster.topicMatch = true;
+            }
         }
     }
 }
@@ -270,7 +345,7 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
                             continue;
                     }
 
-                    if (length > 3.0 && frequency > 2) {
+                    if (length > 3.0 && frequency > 5) {
                         coOccurrencesJson[otherLemma] = frequency;
                     }
                 }

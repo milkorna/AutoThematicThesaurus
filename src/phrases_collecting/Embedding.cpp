@@ -62,9 +62,46 @@ float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const
     float magA = Magnitude();
     float magB = other.Magnitude();
     if (magA == 0.0f || magB == 0.0f) {
-        throw std::runtime_error("Zero magnitude vector, cannot calculate cosine similarity.");
+        return 0;
+        // throw std::runtime_error("Zero magnitude vector, cannot calculate cosine similarity.");
     }
     return dot / (magA * magB);
+}
+
+float WordEmbedding::EuclideanDistance(const WordEmbedding& other) const
+{
+    float sum = 0.0f;
+    for (size_t i = 0; i < vector.size(); ++i) {
+        float diff = vector[i] - other.vector[i];
+        sum += diff * diff;
+    }
+    return std::sqrt(sum);
+}
+
+float WordEmbedding::ManhattanDistance(const WordEmbedding& other) const
+{
+    float sum = 0.0f;
+    for (size_t i = 0; i < vector.size(); ++i) {
+        sum += std::abs(vector[i] - other.vector[i]);
+    }
+    return sum;
+}
+
+float WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const
+{
+    float intersection = 0.0f;
+    float union_set = 0.0f;
+
+    for (size_t i = 0; i < vector.size(); ++i) {
+        intersection += std::min(vector[i], other.vector[i]);
+        union_set += std::max(vector[i], other.vector[i]);
+    }
+
+    if (union_set == 0.0f) {
+        return 0.0f;
+    }
+
+    return intersection / union_set;
 }
 
 float WordEmbedding::Magnitude() const

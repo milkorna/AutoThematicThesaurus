@@ -11,10 +11,6 @@
 
 namespace fs = std::filesystem;
 
-void printFirstFiveRows(const std::string& table_name)
-{
-}
-
 int main()
 {
     Logger::enableLogging(true);
@@ -22,6 +18,8 @@ int main()
     fs::path repoPath = fs::current_path();
     std::string logFilePath = (repoPath / "my_logs.txt").string();
     Logger::initializeLogFile(logFilePath);
+
+    Embedding e;
 
     fs::path patternsPath = repoPath / "my_data/patterns.txt";
     GrammarPatternManager::GetManager()->readPatterns(patternsPath);
