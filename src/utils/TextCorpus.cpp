@@ -1,34 +1,8 @@
 #include <TextCorpus.h>
 
-TextCorpus::TextCorpus(const std::string& modelPath)
-{
-    model.loadModel(modelPath);
-}
-
 void TextCorpus::AddDocument(const std::string& document)
 {
     documents.push_back(document);
-    // std::vector<std::string> words;
-    // boost::split(words, document, boost::is_any_of(" \t\n.,;:!?'\"()"), boost::token_compress_on);
-    // std::unordered_map<std::string, bool> seenWords;
-
-    // for (auto& word : words) {
-    //     if (!word.empty()) {
-    //         boost::to_lower(word);
-    //         wordFrequency[word]++;
-    //         if (!seenWords[word]) {
-    //             documentFrequency[word]++;
-    //             seenWords[word] = true;
-    //         }
-
-    //         // Retrieve FastText vector for the word
-    //         if (wordVectors.find(word) == wordVectors.end()) {
-    //             auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
-    //             model.getWordVector(*vec, word);
-    //             wordVectors[word] = vec;
-    //         }
-    //     }
-    // }
     totalDocuments++;
 }
 
@@ -42,11 +16,6 @@ void TextCorpus::UpdateDocumentFrequency(const std::string& lemma)
 {
     documentFrequency[lemma]++;
 }
-
-// const std::shared_ptr<fasttext::Vector> TextCorpus::GetWordVector(const std::string& word) const
-// {
-//     return wordVectors.at(word);
-// }
 
 void TextCorpus::LoadDocumentsFromFile(const std::string& filename)
 {
@@ -84,4 +53,54 @@ int TextCorpus::GetDocumentFrequency(const std::string& lemma) const
 int TextCorpus::GetTotalWords() const
 {
     return totalWords;
+}
+
+double TextCorpus::CalculateTF(const std::string& lemma) const
+{
+    if (wordFrequency.find(lemma) != wordFrequency.end()) {
+        return static_cast<double>(wordFrequency.at(lemma)) / totalWords;
+    }
+    return 0.0;
+}
+
+double TextCorpus::CalculateIDF(const std::string& lemma) const
+{
+    if (documentFrequency.find(lemma) != documentFrequency.end()) {
+        return log(static_cast<double>(totalDocuments) / (1 + documentFrequency.at(lemma)));
+    }
+    return 0.0;
+}
+
+double TextCorpus::CalculateTFIDF(const std::string& lemma) const
+{
+    return CalculateTF(lemma) * CalculateIDF(lemma);
+}
+
+json TextCorpus::Serialize() const
+{
+    json j;
+    j["documents"] = documents;
+    j["wordFrequency"] = wordFrequency;
+    j["documentFrequency"] = documentFrequency;
+    j["totalWords"] = totalWords;
+    j["totalDocuments"] = totalDocuments;
+    return j;
+}
+
+void TextCorpus::Deserialize(const json& j)
+{
+    documents = j.at("documents").get<std::vector<std::string>>();
+    wordFrequency = j.at("wordFrequency").get<std::unordered_map<std::string, int>>();
+    documentFrequency = j.at("documentFrequency").get<std::unordered_map<std::string, int>>();
+    totalWords = j.at("totalWords").get<int>();
+    totalDocuments = j.at("totalDocuments").get<int>();
+}
+
+void TextCorpus::SaveCorpusToFile(const std::string& filename)
+{
+    std::ofstream file(filename);
+    if (file.is_open()) {
+        file << Serialize().dump(4);
+        file.close();
+    }
 }

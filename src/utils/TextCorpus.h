@@ -10,6 +10,10 @@
 #include <unordered_map>
 #include <vector>
 
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
 using VectorPtr = std::shared_ptr<fasttext::Vector>;
 
 // \class TextCorpus
@@ -20,9 +24,11 @@ public:
     // \brief Default constructor for the TextCorpus class.
     TextCorpus() = default;
 
-    // \brief Parameterized constructor to initialize the FastText model.
-    // \param modelPath     The path to the FastText model file.
-    TextCorpus(const std::string& modelPath);
+    static TextCorpus& GetCorpus()
+    {
+        static TextCorpus corpus;
+        return corpus;
+    }
 
     // \brief Adds a document to the corpus.
     // \param document      The document text to be added.
@@ -31,20 +37,6 @@ public:
     void UpdateWordFrequency(const std::string& lemma);
 
     void UpdateDocumentFrequency(const std::string& lemma);
-
-    // void TextCorpus::UpdateWordVector(const std::string& lemma)
-    // {
-    //     if (wordVectors.find(lemma) == wordVectors.end()) {
-    //         auto vec = std::make_shared<fasttext::Vector>(model.getDimension());
-    //         model.getWordVector(*vec, lemma);
-    //         wordVectors[lemma] = vec;
-    //     }
-    // }
-
-    // \brief Retrieves the FastText vector for a given word.
-    // \param word          The word for which to retrieve the vector.
-    // \return              A shared pointer to the FastText vector of the word.
-    // const std::shared_ptr<fasttext::Vector> GetWordVector(const std::string& word) const;
 
     // \brief Loads documents from a file and adds them to the corpus.
     // \param filename      The path to the file containing the documents.
@@ -61,16 +53,36 @@ public:
     // \return              The document frequency of the word.
     int GetDocumentFrequency(const std::string& word) const;
 
+    double CalculateTF(const std::string& lemma) const;
+    double CalculateIDF(const std::string& lemma) const;
+    double CalculateTFIDF(const std::string& lemma) const;
+
+    json Serialize() const;
+    void Deserialize(const json& j);
+
     int GetTotalWords() const;
+
+    void SaveCorpusToFile(const std::string& filename);
+
+    static TextCorpus LoadCorpusFromFile(const std::string& filename)
+    {
+        std::ifstream file(filename);
+        if (file.is_open()) {
+            json j;
+            file >> j;
+            TextCorpus corpus;
+            corpus.Deserialize(j);
+            return corpus;
+        }
+        return TextCorpus();
+    }
 
 private:
     std::vector<std::string> documents;                     ///< Vector to store the documents in the corpus.
     std::unordered_map<std::string, int> wordFrequency;     ///< Map to store the frequency of words in the corpus.
     std::unordered_map<std::string, int> documentFrequency; ///< Map to store the document frequency of words.
-    // std::unordered_map<std::string, VectorPtr> wordVectors; ///< Map to store the FastText vectors of words.
-    int totalWords;           ///< Total number of words (lemmas) in the corpus.
-    int totalDocuments = 0;   ///< Total number of documents in the corpus.
-    fasttext::FastText model; ///< FastText model for generating word vectors.
+    int totalWords = 0;                                     ///< Total number of words (lemmas) in the corpus.
+    int totalDocuments = 0;                                 ///< Total number of documents in the corpus.
 };
 
 #endif // TEXT_CORPUS_H
