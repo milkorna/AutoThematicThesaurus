@@ -47,6 +47,23 @@ namespace PhrasesCollectorUtils {
         return files_to_process;
     }
 
+    std::vector<fs::path> GetResFiles()
+    {
+        fs::path repoPath = fs::current_path();
+        fs::path inputDir = repoPath / "res";
+        std::vector<fs::path> files_to_process;
+        files_to_process.reserve(g_options.textToProcessCount);
+        for (const auto& entry : fs::directory_iterator(inputDir)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                if (filename.find("res") == 0 && filename.find("_art.txt") != std::string::npos) {
+                    files_to_process.push_back(entry.path());
+                }
+            }
+        }
+        return files_to_process;
+    }
+
     void RemoveSeparatorTokens(std::vector<WordFormPtr>& forms)
     {
         forms.erase(std::remove_if(forms.begin(), forms.end(),
@@ -80,7 +97,7 @@ namespace PhrasesCollectorUtils {
         TFJoinedModel joiner;
 
         auto& storage = PatternPhrasesStorage::GetStorage();
-        auto& corpus = storage.GetCorpus();
+        auto& corpus = TextCorpus::GetCorpus();
 
         do {
             std::string sentence;
@@ -100,17 +117,17 @@ namespace PhrasesCollectorUtils {
                 morphemic_splitter.split(form);
             }
 
-            std::unordered_map<std::string, bool> seenWords;
-            for (const auto& form : forms) {
-                std::string lemma = GetLemma(form);
+            // std::unordered_map<std::string, bool> seenWords;
+            // for (const auto& form : forms) {
+            //     std::string lemma = GetLemma(form);
 
-                corpus.UpdateWordFrequency(lemma);
+            //     corpus.UpdateWordFrequency(lemma);
 
-                if (!seenWords[lemma]) {
-                    corpus.UpdateDocumentFrequency(lemma);
-                    seenWords[lemma] = true;
-                }
-            }
+            //     if (!seenWords[lemma]) {
+            //         corpus.UpdateDocumentFrequency(lemma);
+            //         seenWords[lemma] = true;
+            //     }
+            // }
 
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
             Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
@@ -135,7 +152,7 @@ namespace PhrasesCollectorUtils {
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
-        auto& corpus = storage.GetCorpus();
+        auto& corpus = TextCorpus::GetCorpus();
         try {
             int counter = 0;
             std::mutex counterMutex;
@@ -169,20 +186,22 @@ namespace PhrasesCollectorUtils {
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }
-            fs::path totalResultsFile;
-            if (g_options.cleaningStopWords) {
-                totalResultsFile = repoPath / "my_data/total_results_no_sw";
-            } else {
-                totalResultsFile = repoPath / "my_data/total_results_sw";
-            }
 
-            fs::path textFilePath = totalResultsFile;
-            textFilePath.replace_extension(".txt");
+            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpusDict").string());
+            // fs::path totalResultsFile;
+            // if (g_options.cleaningStopWords) {
+            //     totalResultsFile = repoPath / "my_data/total_results_no_sw";
+            // } else {
+            //     totalResultsFile = repoPath / "my_data/total_results_sw";
+            // }
 
-            fs::path jsonFilePath = totalResultsFile;
-            jsonFilePath.replace_extension(".json");
+            // fs::path textFilePath = totalResultsFile;
+            // textFilePath.replace_extension(".txt");
 
-            storage.ComputeTextMetrics();
+            // fs::path jsonFilePath = totalResultsFile;
+            // jsonFilePath.replace_extension(".json");
+
+            // storage.ComputeTextMetrics();
             // storage.OutputClustersToTextFile(textFilePath);
             // storage.OutputClustersToJsonFile(jsonFilePath);
 
@@ -401,6 +420,11 @@ namespace PhrasesCollectorUtils {
                 key.pop_back();
             }
 
+            json lemmas_json = json::array();
+            for (const auto& lemma : wc->lemmas) {
+                lemmas_json.push_back(lemma);
+            }
+
             json j = json::object();
             j["0_key"] = key;
             j["1_textForm"] = wc->textForm;
@@ -409,6 +433,7 @@ namespace PhrasesCollectorUtils {
             j["4_sentNum"] = process.m_sentNum;
             j["5_start_ind"] = wc->pos.start;
             j["6_end_ind"] = wc->pos.end;
+            j["7_lemmas"] = lemmas_json;
 
             process.m_output << j.dump(4) << std::endl;
         }

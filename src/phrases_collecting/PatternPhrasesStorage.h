@@ -14,7 +14,7 @@
 #include <mutex>
 
 using namespace PhrasesCollectorUtils;
-using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
+// using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
 
 // \class PatternPhrasesStorage
 // \brief This class manages the storage and processing of pattern phrases. It includes methods for collecting phrases,
@@ -48,12 +48,7 @@ public:
         return storage;
     }
 
-    // \brief Gets the TextCorpus object.
-    // \return          Reference to the TextCorpus object.
-    TextCorpus& GetCorpus()
-    {
-        return corpus;
-    }
+    PatternPhrasesStorage& LoadPhraseStorage();
 
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
@@ -95,8 +90,8 @@ public:
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
-    TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
-    CoOccurrenceMap coOccurrenceMap;
+    // TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
+    //  CoOccurrenceMap coOccurrenceMap;
     ::Embedding embedding;
     SemanticRelationsDB semanticDB;
 

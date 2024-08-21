@@ -7,6 +7,7 @@
 #include <ModelComponent.h>
 #include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
+#include <TextCorpus.h>
 #include <WordComplex.h>
 
 #include <filesystem>
@@ -22,7 +23,7 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 10;
+        int textToProcessCount = 1;
         int upperTresholdTopicsNum = 7;
         int coOccurrenceFrequency = textToProcessCount * 5;
         bool multithreading = false;   ///< Indicates if multithreading is enabled.
@@ -49,6 +50,8 @@ namespace PhrasesCollectorUtils {
     // \brief Retrieves a list of files to process.
     // \return              A vector of paths to the files to be processed.
     std::vector<fs::path> GetFilesToProcess();
+
+    std::vector<fs::path> GetResFiles();
 
     // \brief Processes a single file and outputs the results to the specified directory.
     // \param inputFile     The path to the input file.
