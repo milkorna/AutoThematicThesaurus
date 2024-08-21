@@ -421,8 +421,8 @@ namespace PhrasesCollectorUtils {
             }
 
             json lemmas_json = json::array();
-            for (const auto& lemma : wc->lemmas) {
-                lemmas_json.push_back(lemma);
+            for (size_t i = 0; i < wc->lemmas.size(); i++) {
+                lemmas_json.push_back(std::to_string(i) + "_" + wc->lemmas[i]);
             }
 
             json j = json::object();
