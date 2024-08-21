@@ -22,13 +22,16 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 1;
+        int textToProcessCount = 10;
         int upperTresholdTopicsNum = 7;
+        int coOccurrenceFrequency = textToProcessCount * 5;
         bool multithreading = false;   ///< Indicates if multithreading is enabled.
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
+        bool boundariesValidation = true;
+        bool semanticRelations = false;
         // bool tags = false;             ///< Indicates if tags should be processed.
         float topicsThreshold = 0.6;
-        float topicsHyponymThreshold = 0.97;
+        float topicsHyponymThreshold = 0.98;
         float freqTrecholdCoeff = 0.12;
     };
 

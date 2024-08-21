@@ -10,6 +10,15 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     std::unordered_set<std::string> wordsInSentence;
     for (const auto& form : forms) {
         std::string word = GetLemma(form);
+        const auto& stopWords = GetStopWords();
+
+        if (g_options.cleaningStopWords) {
+            if (stopWords.find(form->getWordForm().toLowerCase().getRawString()) != stopWords.end())
+                continue;
+            const auto normalForm = GetLemma(form);
+            if (stopWords.find(normalForm) != stopWords.end())
+                continue;
+        }
         wordsInSentence.insert(word);
     }
 
@@ -60,35 +69,41 @@ void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
             lemmas.push_back(lemma);
             lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
 
-            if (hypernymCache.find(lemma) != hypernymCache.end()) {
-                lemmHypernyms[lemma] = hypernymCache[lemma];
-            } else {
-                auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
-                hypernymCache[lemma] = hypernyms;
-                lemmHypernyms[lemma] = hypernyms;
-            }
+            if (g_options.semanticRelations) {
 
-            if (hyponymCache.find(lemma) != hyponymCache.end()) {
-                lemmHyponyms[lemma] = hyponymCache[lemma];
-            } else {
-                auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
-                std::set<std::string> validHyponyms;
-                for (const auto& hyp : hyponyms) {
-                    const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
-                    const auto& topicVectors = GetTopicVectors();
-                    for (const auto& topicVecPair : topicVectors) {
-                        const std::string& topicWord = topicVecPair.first;
-                        const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
-
-                        float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
-                        if (cosineSim > g_options.topicsHyponymThreshold) {
-                            validHyponyms.insert(hyp);
-                        }
-                    }
+                if (hypernymCache.find(lemma) != hypernymCache.end()) {
+                    lemmHypernyms[lemma] = hypernymCache[lemma];
+                } else {
+                    auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
+                    hypernymCache[lemma] = hypernyms;
+                    lemmHypernyms[lemma] = hypernyms;
                 }
 
-                hyponymCache[lemma] = validHyponyms;
-                lemmHyponyms[lemma] = validHyponyms;
+                if (hyponymCache.find(lemma) != hyponymCache.end()) {
+                    lemmHyponyms[lemma] = hyponymCache[lemma];
+                } else {
+                    auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
+                    std::set<std::string> validHyponyms;
+                    for (const auto& hyp : hyponyms) {
+                        const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
+                        const auto& topicVectors = GetTopicVectors();
+                        for (const auto& topicVecPair : topicVectors) {
+                            const std::string& topicWord = topicVecPair.first;
+                            const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
+
+                            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+                            if (cosineSim > g_options.topicsHyponymThreshold) {
+                                validHyponyms.insert(hyp);
+                            }
+                        }
+                    }
+
+                    hyponymCache[lemma] = validHyponyms;
+                    lemmHyponyms[lemma] = validHyponyms;
+                }
+            } else {
+                lemmHypernyms[lemma] = {};
+                lemmHyponyms[lemma] = {};
             }
         }
 
@@ -344,7 +359,7 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
                             continue;
                     }
 
-                    if (length > 3.0 && frequency > 5) {
+                    if (length > 3.0 && frequency > g_options.coOccurrenceFrequency) {
                         coOccurrencesJson[otherLemma] = frequency;
                     }
                 }

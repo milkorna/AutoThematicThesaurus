@@ -4,6 +4,8 @@
 #include <PhrasesCollectorUtils.h>
 #include <SimplePhrasesCollector.h>
 
+#include <regex>
+
 // \class ComplexPhrasesCollector
 // \brief This class collects complex phrases from a given set of simple phrases and word forms.
 //        It utilizes the GrammarPatternManager to identify and collect complex phrases based on grammar patterns.
@@ -22,6 +24,8 @@ public:
     // \brief Collects complex phrases from the sentence using the provided process.
     // \param process           The process used for phrase collection.
     void Collect(Process& process);
+
+    void ValidateBoundares();
 
     // \brief Default destructor for the ComplexPhrasesCollector class.
     ~ComplexPhrasesCollector() = default;
