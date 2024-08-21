@@ -19,10 +19,12 @@
 #include <PhrasesCollectorUtils.h>
 
 #include <cctype>
+#include <nlohmann/json.hpp>
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
+using json = nlohmann::json;
 using namespace X;
 
 namespace PhrasesCollectorUtils {
@@ -181,8 +183,8 @@ namespace PhrasesCollectorUtils {
             jsonFilePath.replace_extension(".json");
 
             storage.ComputeTextMetrics();
-            storage.OutputClustersToTextFile(textFilePath);
-            storage.OutputClustersToJsonFile(jsonFilePath);
+            // storage.OutputClustersToTextFile(textFilePath);
+            // storage.OutputClustersToJsonFile(jsonFilePath);
 
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 
@@ -391,9 +393,24 @@ namespace PhrasesCollectorUtils {
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
     {
         for (const auto& wc : collection) {
-            process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
-                             << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
-                             << std::endl;
+            std::string key;
+            for (const auto& w : wc->words) {
+                key.append(GetLemma(w) + " ");
+            }
+            if (!key.empty()) {
+                key.pop_back();
+            }
+
+            json j = json::object();
+            j["0_key"] = key;
+            j["1_textForm"] = wc->textForm;
+            j["2_modelName"] = wc->modelName;
+            j["3_docNum"] = process.m_docNum;
+            j["4_sentNum"] = process.m_sentNum;
+            j["5_start_ind"] = wc->pos.start;
+            j["6_end_ind"] = wc->pos.end;
+
+            process.m_output << j.dump(4) << std::endl;
         }
     }
 
