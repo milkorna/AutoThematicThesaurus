@@ -13,6 +13,8 @@ namespace PhrasesCollectorUtils {
                 GetMostProbableMorphInfo(other.words[i]->getMorphInfo()).normalForm) {
                 return false;
             }
+            if (lemmas[i] != other.lemmas[i])
+                return false;
         }
 
         return true;
@@ -21,8 +23,8 @@ namespace PhrasesCollectorUtils {
     const std::string WordComplex::GetKey() const
     {
         std::string key;
-        for (const auto& w : words) {
-            key.append(GetLemma(w) + " ");
+        for (const auto& l : lemmas) {
+            key.append(l + " ");
         }
         key.pop_back();
         return key;
@@ -32,6 +34,7 @@ namespace PhrasesCollectorUtils {
     {
         WordComplexPtr wc = std::make_shared<WordComplex>();
         wc->words = curSimplePhr->words;
+        wc->lemmas = curSimplePhr->lemmas;
         wc->textForm = curSimplePhr->textForm;
         wc->pos = curSimplePhr->pos;
         wc->modelName = modelName;
@@ -43,6 +46,7 @@ namespace PhrasesCollectorUtils {
     {
         WordComplexPtr wc = std::make_shared<WordComplex>();
         wc->words.push_back(token);
+        wc->lemmas.push_back(GetLemma(token));
         wc->textForm = token->getWordForm().getRawString();
         wc->pos = {tokenInd, tokenInd, process.m_docNum, process.m_sentNum};
         wc->modelName = modelName;
@@ -55,10 +59,12 @@ namespace PhrasesCollectorUtils {
     {
         if (isLeft) {
             wc->words.push_front(form);
+            wc->lemmas.push_back(GetLemma(form));
             wc->pos.start--;
             wc->textForm.insert(0, formFromText + " ");
         } else {
             wc->words.push_back(form);
+            wc->lemmas.push_back(GetLemma(form));
             wc->pos.end++;
             wc->textForm.append(" " + formFromText);
         }
@@ -68,6 +74,7 @@ namespace PhrasesCollectorUtils {
     {
         for (auto rit = asidePhrase->words.rbegin(); rit != asidePhrase->words.rend(); ++rit) {
             wc->words.push_front(*rit);
+            wc->lemmas.push_front(GetLemma(*rit));
         }
     }
 
@@ -75,6 +82,7 @@ namespace PhrasesCollectorUtils {
     {
         for (const auto& word : asidePhrase->words) {
             wc->words.push_back(word);
+            wc->lemmas.push_back(GetLemma(word));
         }
     }
 }
