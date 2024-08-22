@@ -55,6 +55,8 @@ public:
     // \param process   The process used for phrase collection.
     void Collect(const std::vector<WordFormPtr>& forms, Process& process);
 
+    void FinalizeDocumentProcessing();
+
     // \brief Adds a phrase to the storage.
     // \param phrase    The phrase to add.
     void AddPhrase(const std::string& phrase);
@@ -107,6 +109,9 @@ private:
     ~PatternPhrasesStorage()
     {
     }
+
+    int lastDocumentId = -1;
+    std::unordered_set<std::string> uniqueLemmasInDoc;
 
     // \brief Deleted copy constructor to enforce singleton pattern.
     PatternPhrasesStorage(const PatternPhrasesStorage&) = delete;

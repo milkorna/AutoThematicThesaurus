@@ -117,18 +117,6 @@ namespace PhrasesCollectorUtils {
                 morphemic_splitter.split(form);
             }
 
-            // std::unordered_map<std::string, bool> seenWords;
-            // for (const auto& form : forms) {
-            //     std::string lemma = GetLemma(form);
-
-            //     corpus.UpdateWordFrequency(lemma);
-
-            //     if (!seenWords[lemma]) {
-            //         corpus.UpdateDocumentFrequency(lemma);
-            //         seenWords[lemma] = true;
-            //     }
-            // }
-
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
             Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
             Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
@@ -138,6 +126,7 @@ namespace PhrasesCollectorUtils {
             process.m_output.flush();
             process.m_sentNum++;
         } while (!ssplitter.eof());
+        PatternPhrasesStorage::GetStorage().FinalizeDocumentProcessing();
 
         auto endProccesText = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duration = endProccesText - startProcessText;
@@ -167,7 +156,7 @@ namespace PhrasesCollectorUtils {
                         std::min(batchStart + batchSize, static_cast<unsigned long>(g_options.textToProcessCount));
                     for (size_t i = batchStart; i < batchEnd; ++i) {
                         threads.emplace_back([&, i]() {
-                            corpus.LoadDocumentsFromFile(files_to_process[i]);
+                            corpus.LoadTextsFromFile(files_to_process[i]);
                             ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                         });
                     }
@@ -182,29 +171,12 @@ namespace PhrasesCollectorUtils {
 
             } else {
                 for (unsigned int i = 0; i < g_options.textToProcessCount; ++i) {
-                    corpus.LoadDocumentsFromFile(files_to_process[i]);
+                    corpus.LoadTextsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }
 
-            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpusDict").string());
-            // fs::path totalResultsFile;
-            // if (g_options.cleaningStopWords) {
-            //     totalResultsFile = repoPath / "my_data/total_results_no_sw";
-            // } else {
-            //     totalResultsFile = repoPath / "my_data/total_results_sw";
-            // }
-
-            // fs::path textFilePath = totalResultsFile;
-            // textFilePath.replace_extension(".txt");
-
-            // fs::path jsonFilePath = totalResultsFile;
-            // jsonFilePath.replace_extension(".json");
-
-            // storage.ComputeTextMetrics();
-            // storage.OutputClustersToTextFile(textFilePath);
-            // storage.OutputClustersToJsonFile(jsonFilePath);
-
+            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 
         } catch (const std::exception& e) {

@@ -115,46 +115,22 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     Logger::log("PatternPhrasesStorage", LogLevel::Info, "Entering Collect method.");
     auto& corpus = TextCorpus::GetCorpus();
 
-    // std::unordered_set<std::string> wordsInSentence;
-    //  for (const auto& form : forms) {
-    //      std::string word = GetLemma(form);
-    //      const auto& stopWords = GetStopWords();
+    if (lastDocumentId != -1 && lastDocumentId != process.m_docNum) {
+        for (const auto& lemma : uniqueLemmasInDoc) {
+            corpus.UpdateDocumentFrequency(lemma);
+        }
+        uniqueLemmasInDoc.clear();
+    }
 
-    //     if (g_options.cleaningStopWords) {
-    //         if (stopWords.find(form->getWordForm().toLowerCase().getRawString()) != stopWords.end())
-    //             continue;
-    //         const auto normalForm = GetLemma(form);
-    //         if (stopWords.find(normalForm) != stopWords.end())
-    //             continue;
-    //     }
-    //     wordsInSentence.insert(word);
-    // }
-
-    // for (const auto& word1 : wordsInSentence) {
-    //     for (const auto& word2 : wordsInSentence) {
-    //         if (word1 != word2) {
-    //             coOccurrenceMap[word1][word2]++;
-    //         }
-    //     }
-    // }
-
-    std::unordered_set<std::string> uniqueLemmas; // To track unique lemmas for document frequency
-
-    // Iterate over each form to get the lemma and update frequencies
+    std::unordered_set<std::string> uniqueLemmasInSentence;
     for (const auto& form : forms) {
         std::string lemma = GetLemma(form);
-
-        // Update term frequency
         corpus.UpdateWordFrequency(lemma);
-
-        // Track unique lemmas for document frequency
-        uniqueLemmas.insert(lemma);
+        uniqueLemmasInSentence.insert(lemma);
     }
 
-    // Update document frequency for each unique lemma
-    for (const auto& lemma : uniqueLemmas) {
-        corpus.UpdateDocumentFrequency(lemma);
-    }
+    uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
+    lastDocumentId = process.m_docNum;
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.Collect(process);
@@ -162,6 +138,15 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     complexPhrasesCollector.Collect(process);
 
     Logger::log("PatternPhrasesStorage", LogLevel::Info, "Leaving Collect method.");
+}
+
+void PatternPhrasesStorage::FinalizeDocumentProcessing()
+{
+    auto& corpus = TextCorpus::GetCorpus();
+    for (const auto& lemma : uniqueLemmasInDoc) {
+        corpus.UpdateDocumentFrequency(lemma);
+    }
+    uniqueLemmasInDoc.clear();
 }
 
 void PatternPhrasesStorage::AddPhrase(const std::string& phrase)
