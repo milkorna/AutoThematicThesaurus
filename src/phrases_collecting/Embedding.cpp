@@ -68,6 +68,31 @@ float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const
     return dot / (magA * magB);
 }
 
+float NormalizedLevenshteinDistance(const std::string& s1, const std::string& s2)
+{
+    int len1 = s1.size();
+    int len2 = s2.size();
+    std::vector<std::vector<int>> dp(len1 + 1, std::vector<int>(len2 + 1));
+
+    for (int i = 0; i <= len1; ++i) {
+        for (int j = 0; j <= len2; ++j) {
+            if (i == 0) {
+                dp[i][j] = j;
+            } else if (j == 0) {
+                dp[i][j] = i;
+            } else {
+                int cost = (s1[i - 1] == s2[j - 1]) ? 0 : 1;
+                dp[i][j] = std::min({dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost});
+            }
+        }
+    }
+
+    int levenshteinDistance = dp[len1][len2];
+    int maxLength = std::max(len1, len2);
+
+    return static_cast<float>(levenshteinDistance) / maxLength;
+}
+
 float WordEmbedding::EuclideanDistance(const WordEmbedding& other) const
 {
     float sum = 0.0f;
