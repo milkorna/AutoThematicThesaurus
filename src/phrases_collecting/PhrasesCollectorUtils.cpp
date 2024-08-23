@@ -19,10 +19,12 @@
 #include <PhrasesCollectorUtils.h>
 
 #include <cctype>
+#include <nlohmann/json.hpp>
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
+using json = nlohmann::json;
 using namespace X;
 
 namespace PhrasesCollectorUtils {
@@ -33,12 +35,28 @@ namespace PhrasesCollectorUtils {
         fs::path repoPath = fs::current_path();
         fs::path inputDir = repoPath / "my_data/texts";
         std::vector<fs::path> files_to_process;
-        // files_to_process.push_back(
-        //    "/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts/art325014_text.txt"); // remove in stable
+        files_to_process.reserve(g_options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
                 if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
+                    files_to_process.push_back(entry.path());
+                }
+            }
+        }
+        return files_to_process;
+    }
+
+    std::vector<fs::path> GetResFiles()
+    {
+        fs::path repoPath = fs::current_path();
+        fs::path inputDir = repoPath / "res";
+        std::vector<fs::path> files_to_process;
+        files_to_process.reserve(g_options.textToProcessCount);
+        for (const auto& entry : fs::directory_iterator(inputDir)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                if (filename.find("res") == 0 && filename.find("_art.txt") != std::string::npos) {
                     files_to_process.push_back(entry.path());
                 }
             }
@@ -79,7 +97,7 @@ namespace PhrasesCollectorUtils {
         TFJoinedModel joiner;
 
         auto& storage = PatternPhrasesStorage::GetStorage();
-        auto& corpus = storage.GetCorpus();
+        auto& corpus = TextCorpus::GetCorpus();
 
         do {
             std::string sentence;
@@ -99,18 +117,6 @@ namespace PhrasesCollectorUtils {
                 morphemic_splitter.split(form);
             }
 
-            std::unordered_map<std::string, bool> seenWords;
-            for (const auto& form : forms) {
-                std::string lemma = GetLemma(form);
-
-                corpus.UpdateWordFrequency(lemma);
-
-                if (!seenWords[lemma]) {
-                    corpus.UpdateDocumentFrequency(lemma);
-                    seenWords[lemma] = true;
-                }
-            }
-
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
             Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
             Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
@@ -120,6 +126,7 @@ namespace PhrasesCollectorUtils {
             process.m_output.flush();
             process.m_sentNum++;
         } while (!ssplitter.eof());
+        PatternPhrasesStorage::GetStorage().FinalizeDocumentProcessing();
 
         auto endProccesText = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> duration = endProccesText - startProcessText;
@@ -134,7 +141,7 @@ namespace PhrasesCollectorUtils {
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
-        auto& corpus = storage.GetCorpus();
+        auto& corpus = TextCorpus::GetCorpus();
         try {
             int counter = 0;
             std::mutex counterMutex;
@@ -143,13 +150,13 @@ namespace PhrasesCollectorUtils {
             if (g_options.multithreading) {
 
                 const size_t batchSize = 15;
-                for (size_t batchStart = 0; batchStart < 10 /*files_to_process.size()*/; batchStart += batchSize) {
+                for (size_t batchStart = 0; batchStart < g_options.textToProcessCount; batchStart += batchSize) {
                     std::vector<std::thread> threads;
                     size_t batchEnd =
-                        std::min(batchStart + batchSize, static_cast<unsigned long>(10) /*files_to_process.size()*/);
+                        std::min(batchStart + batchSize, static_cast<unsigned long>(g_options.textToProcessCount));
                     for (size_t i = batchStart; i < batchEnd; ++i) {
                         threads.emplace_back([&, i]() {
-                            corpus.LoadDocumentsFromFile(files_to_process[i]);
+                            corpus.LoadTextsFromFile(files_to_process[i]);
                             ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                         });
                     }
@@ -163,31 +170,13 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < 1 /*files_to_process.size()*/; ++i) {
-                    corpus.LoadDocumentsFromFile(files_to_process[i]);
+                for (unsigned int i = 0; i < g_options.textToProcessCount; ++i) {
+                    corpus.LoadTextsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
             }
 
-            // storage.CalculateWeights();
-
-            fs::path totalResultsFile;
-            if (g_options.cleaningStopWords) {
-                totalResultsFile = repoPath / "my_data/total_results_no_sw";
-            } else {
-                totalResultsFile = repoPath / "my_data/total_results_sw";
-            }
-
-            fs::path textFilePath = totalResultsFile;
-            textFilePath.replace_extension(".txt");
-
-            fs::path jsonFilePath = totalResultsFile;
-            jsonFilePath.replace_extension(".json");
-
-            storage.ComputeTextMetrics();
-            storage.OutputClustersToTextFile(textFilePath);
-            storage.OutputClustersToJsonFile(jsonFilePath);
-
+            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
             Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
 
         } catch (const std::exception& e) {
@@ -266,6 +255,16 @@ namespace PhrasesCollectorUtils {
         return stopWords;
     }
 
+    bool contains_no_latin(const std::string& str)
+    {
+        for (char ch : str) {
+            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const std::unordered_set<std::string> GetTopics()
     {
         static std::unordered_set<std::string> topics;
@@ -291,6 +290,13 @@ namespace PhrasesCollectorUtils {
                 continue;
             }
 
+            if (line.find(" 1") != std::string::npos) {
+                continue;
+            }
+
+            if (!contains_no_latin(line))
+                continue;
+
             // Remove trailing digits
             line.erase(
                 std::find_if(line.rbegin(), line.rend(), [](unsigned char ch) { return !std::isdigit(ch); }).base(),
@@ -308,6 +314,24 @@ namespace PhrasesCollectorUtils {
 
         initialized = true;
         return topics;
+    }
+
+    const std::unordered_map<std::string, WordEmbeddingPtr>& GetTopicVectors()
+    {
+        static std::unordered_map<std::string, WordEmbeddingPtr> topicVectors;
+        static bool initialized = false;
+
+        if (!initialized) {
+            std::unordered_set<std::string> topics = GetTopics();
+
+            for (const auto& t : topics) {
+                topicVectors[t] = std::make_shared<WordEmbedding>(t);
+            }
+
+            initialized = true;
+        }
+
+        return topicVectors;
     }
 
     void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr)
@@ -360,9 +384,30 @@ namespace PhrasesCollectorUtils {
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
     {
         for (const auto& wc : collection) {
-            process.m_output << process.m_docNum << " " << process.m_sentNum << " start_ind = " << wc->pos.start
-                             << " end_ind = " << wc->pos.end << "\t||\t" << wc->textForm << "\t||\t" << wc->modelName
-                             << std::endl;
+            std::string key;
+            for (const auto& w : wc->words) {
+                key.append(GetLemma(w) + " ");
+            }
+            if (!key.empty()) {
+                key.pop_back();
+            }
+
+            json lemmas_json = json::array();
+            for (size_t i = 0; i < wc->lemmas.size(); i++) {
+                lemmas_json.push_back(std::to_string(i) + "_" + wc->lemmas[i]);
+            }
+
+            json j = json::object();
+            j["0_key"] = key;
+            j["1_textForm"] = wc->textForm;
+            j["2_modelName"] = wc->modelName;
+            j["3_docNum"] = process.m_docNum;
+            j["4_sentNum"] = process.m_sentNum;
+            j["5_start_ind"] = wc->pos.start;
+            j["6_end_ind"] = wc->pos.end;
+            j["7_lemmas"] = lemmas_json;
+
+            process.m_output << j.dump(4) << std::endl;
         }
     }
 

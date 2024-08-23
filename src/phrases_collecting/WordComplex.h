@@ -28,9 +28,10 @@ namespace PhrasesCollectorUtils {
     class WordComplex {
     public:
         std::deque<X::WordFormPtr> words = {}; ///< Deque containing word forms.
-        std::string textForm = "";             ///< Text form of the word or phrase.
-        Position pos;                          ///< Position of the word or phrase within the document.
-        std::string modelName;                 ///< Name of the model associated with the word or phrase.
+        std::deque<std::string> lemmas = {};
+        std::string textForm = ""; ///< Text form of the word or phrase.
+        Position pos;              ///< Position of the word or phrase within the document.
+        std::string modelName;     ///< Name of the model associated with the word or phrase.
 
         // \brief Equality operator for comparing two WordComplex objects.
         // \param other     The other WordComplex object to compare with.

@@ -114,7 +114,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
         Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
         if (!wordComp->getCondition().check(wordComp->getSPTag(), token)) {
-            Logger::log("CheckAside", LogLevel::Debug, "check failed.");
             return false;
         } else {
             if (!curPhrStatus.headIsChecked) {
@@ -144,7 +143,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
                                curSimplePhrInd)) {
                     return true;
                 } else {
-                    Logger::log("Recursive checkAside", LogLevel::Debug, "Failed, stop recursive.");
                     return false;
                 }
             }
@@ -170,7 +168,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
                         curPhrStatus.headIsChecked = true;
                         curPhrStatus.headIsMatched = true;
                     } else {
-                        Logger::log("CheckAside", LogLevel::Debug, "check failed.");
                         return false;
                     }
                 }
@@ -222,6 +219,58 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
     return false;
 }
 
+bool isMatchingPattern(const std::string& str)
+{
+    // Define a regular expression pattern that matches strings of the form (*+*) + * + (*+*)
+    std::regex pattern(R"(\(.*\)\s*\+\s*.*\s*\+\s*\(.*\))");
+    return std::regex_match(str, pattern);
+}
+
+void ComplexPhrasesCollector::ValidateBoundares()
+{
+    if (m_collection.empty()) {
+        return;
+    }
+
+    // A new container to store only the valid elements after validation
+    std::vector<PHUtils::WordComplexPtr> validatedCollection;
+
+    for (const auto& it : m_collection) {
+        if (it == nullptr) {
+            continue;
+        }
+
+        bool isNested = false;
+
+        const auto s = it->pos.start;
+        const auto e = it->pos.end;
+
+        for (const auto& innerIt : m_collection) {
+            if (innerIt == it) {
+                continue;
+            }
+
+            const auto& innerWC = innerIt;
+
+            // Mark the current element as nested if its start position is the same as the inner element's start, and
+            // its end position is less than or equal to the inner element's end position (indicating that the current
+            // element is within the inner one)
+            if (innerWC->pos.start == s && innerWC->pos.end >= e) {
+                isNested = true;
+                break;
+            }
+        }
+
+        // If the current element is not nested within another element, add it to the validated collection
+        if (!isNested) {
+            validatedCollection.push_back(it);
+        }
+    }
+
+    // Replace the old collection with the new collection containing only valid elements
+    m_collection = std::move(validatedCollection);
+}
+
 bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>& model,
                                                     const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
                                                     CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc)
@@ -267,8 +316,12 @@ void ComplexPhrasesCollector::Collect(Process& process)
         }
     }
 
+    if (g_options.boundariesValidation) {
+        ValidateBoundares();
+    }
+
     // PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
-    PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
+    // PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
     // PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
     OutputResults(m_collection, process);
 }

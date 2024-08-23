@@ -3,9 +3,11 @@
 
 #include <xmorphy/morph/WordForm.h>
 
+#include <Embedding.h>
 #include <ModelComponent.h>
 #include <PatternParser.h>
 #include <PhrasesCollectorUtils.h>
+#include <TextCorpus.h>
 #include <WordComplex.h>
 
 #include <filesystem>
@@ -21,9 +23,17 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
+        int textToProcessCount = 1;
+        int upperTresholdTopicsNum = 7;
+        int coOccurrenceFrequency = textToProcessCount * 5;
         bool multithreading = false;   ///< Indicates if multithreading is enabled.
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
-        bool tags = false;             ///< Indicates if tags should be processed.
+        bool boundariesValidation = true;
+        bool semanticRelations = false;
+        // bool tags = false;             ///< Indicates if tags should be processed.
+        float topicsThreshold = 0.6;
+        float topicsHyponymThreshold = 0.98;
+        float freqTrecholdCoeff = 0.12;
     };
 
     extern Options g_options; ///< Global options for phrase collection.
@@ -40,6 +50,8 @@ namespace PhrasesCollectorUtils {
     // \brief Retrieves a list of files to process.
     // \return              A vector of paths to the files to be processed.
     std::vector<fs::path> GetFilesToProcess();
+
+    std::vector<fs::path> GetResFiles();
 
     // \brief Processes a single file and outputs the results to the specified directory.
     // \param inputFile     The path to the input file.
@@ -90,6 +102,8 @@ namespace PhrasesCollectorUtils {
     // \brief Retrieves the set of topics for phrase collection.
     // \return              A set of topic strings.
     const std::unordered_set<std::string> GetTopics();
+
+    const std::unordered_map<std::string, WordEmbeddingPtr>& GetTopicVectors();
 
     // \brief Retrieves the set of stop words for cleaning.
     // \return              A set of stop word strings.
