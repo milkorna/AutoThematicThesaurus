@@ -93,9 +93,6 @@ public:
     // Returns the total number of words (lemmas) in the corpus.
     int GetTotalWords() const;
 
-    // Returns the list of all texts (paragraphs) in the corpus.
-    // const std::vector<std::string>& GetTexts() const;
-
     // Returns the frequency map of all words (lemmas) in the corpus.
     const std::unordered_map<std::string, int>& GetWordFrequencies() const;
 
@@ -103,11 +100,11 @@ public:
     void SaveCorpusToFile(const std::string& filename);
 
     // Loads the corpus data from a file, deserializes it, and returns the restored TextCorpus object.
-    static TextCorpus LoadCorpusFromFile(const std::string& filename);
+    void LoadCorpusFromFile(const std::string& filename);
 
 private:
-    std::unordered_map<std::string, std::vector<std::string>>
-        texts; ///< Map to store paragraphs associated with each document (filename).
+    std::unordered_map<std::string, std::vector<std::string>> texts; ///< Map to store paragraphs associated with
+                                                                     ///< each document (filename).
     std::unordered_map<std::string, int> wordFrequency;     ///< Map to store the frequency of words in the corpus.
     std::unordered_map<std::string, int> documentFrequency; ///< Map to store the document frequency of words.
     int totalWords = 0;                                     ///< Total number of words (lemmas) in the corpus.
