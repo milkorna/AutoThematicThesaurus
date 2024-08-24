@@ -9,20 +9,6 @@
 
 using json = nlohmann::json;
 
-void sortLemmasByLeadingNumber(std::deque<std::string>& lemmas)
-{
-    std::sort(lemmas.begin(), lemmas.end(), [](const std::string& a, const std::string& b) {
-        int numA = 0, numB = 0;
-        if (!a.empty() && std::isdigit(a[0])) {
-            numA = a[0] - '0';
-        }
-        if (!b.empty() && std::isdigit(b[0])) {
-            numB = b[0] - '0';
-        }
-        return numA < numB;
-    });
-}
-
 void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
 {
     fs::path repoPath = fs::current_path();
@@ -79,7 +65,6 @@ void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
                 std::deque<std::string> lemmas;
                 if (obj.contains("7_lemmas")) {
                     lemmas = obj.at("7_lemmas").get<std::deque<std::string>>();
-                    // sortLemmasByLeadingNumber(lemmas);
                     for (auto& lemma : lemmas) {
                         size_t pos = lemma.find('_');
                         if (pos != std::string::npos) {
@@ -206,7 +191,6 @@ void PatternPhrasesStorage::LoadStorageFromFile(const std::string& filename)
 
 void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
 {
-    Logger::log("PPStorage", LogLevel::Info, "Entering Collect method.");
     auto& corpus = TextCorpus::GetCorpus();
 
     if (lastDocumentId != -1 && lastDocumentId != process.m_docNum) {
@@ -230,8 +214,6 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     simplePhrasesCollector.Collect(process);
     ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.GetCollection(), forms);
     complexPhrasesCollector.Collect(process);
-
-    Logger::log("PPStorage", LogLevel::Info, "Leaving Collect method.");
 }
 
 void PatternPhrasesStorage::FinalizeDocumentProcessing()
