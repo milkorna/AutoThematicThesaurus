@@ -9,46 +9,56 @@
 #include <chrono>
 #include <filesystem>
 
+#include <sys/stat.h>
+
 namespace fs = std::filesystem;
 
 int main()
 {
+    auto start = std::chrono::high_resolution_clock::now();
+
     Logger::enableLogging(true);
     Logger::setGlobalLogLevel(LogLevel::Info);
     fs::path repoPath = fs::current_path();
     std::string logFilePath = (repoPath / "my_logs.txt").string();
     Logger::initializeLogFile(logFilePath);
 
-    Embedding e;
+    fs::path jsonFilePath = repoPath / "my_data" / "total_results_no_sw.json";
 
-    fs::path patternsPath = repoPath / "my_data/patterns.txt";
-    GrammarPatternManager::GetManager()->readPatterns(patternsPath);
+    // collecting phrases for each text and saving phrases for each text in a separate file
+    // also collecting a corpus of texts and saving it
+    // {
+    //     fs::path patternsPath = repoPath / "my_data/patterns.txt";
+    //     GrammarPatternManager::GetManager()->readPatterns(patternsPath);
+    //     BuildPhraseStorage();
+    // }
 
-    auto start = std::chrono::high_resolution_clock::now();
-    BuildPhraseStorage();
-    auto end = std::chrono::high_resolution_clock::now();
+    // the corpus of texts is filtered during diserialization, now the result is saved and the corpus is parsed filtered
 
-    fs::path totalResultsFile;
-    if (g_options.cleaningStopWords) {
-        totalResultsFile = repoPath / "my_data/total_results_no_sw";
-    } else {
-        totalResultsFile = repoPath / "my_data/total_results_sw";
+    // steps to combine clusters mistakenly separated due to inaccurate morphological analysis, TF-IDF counting and
+    // topic matching. the result is saved so that it is not recalculated every time
+    // {
+    //     auto& corpus = TextCorpus::GetCorpus();
+    //     corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+    //     auto& storage = PatternPhrasesStorage::GetStorage();
+    //     storage.LoadPhraseStorageFromResultsDir();
+    //     storage.MergeSimilarClusters();
+    //     storage.ComputeTextMetrics();
+    //     storage.OutputClustersToJsonFile(jsonFilePath.string());
+    // }
+
+    // getting ready-made results without waiting for intermediate steps
+    {
+        auto& corpus = TextCorpus::GetCorpus();
+        corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+        auto& storage = PatternPhrasesStorage::GetStorage();
+        storage.LoadStorageFromFile(jsonFilePath.string());
+        storage.OutputClustersToJsonFile(jsonFilePath);
     }
 
-    const auto& corpus = TextCorpus::LoadCorpusFromFile((repoPath / "my_data" / "corpusDict.txt").string());
-    auto& storage = PatternPhrasesStorage::GetStorage();
-    storage.LoadPhraseStorage();
-    fs::path textFilePath = totalResultsFile;
-    textFilePath.replace_extension(".txt");
-
-    fs::path jsonFilePath = totalResultsFile;
-    jsonFilePath.replace_extension(".json");
-
-    storage.ComputeTextMetrics();
-    storage.OutputClustersToJsonFile(jsonFilePath);
-
+    auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = end - start;
-    Logger::log("\n\nmain", LogLevel::Info, "Processing texts took " + std::to_string(duration.count()) + "seconds.");
+    std::cout << "Processing took " + std::to_string(duration.count()) + "seconds.";
 
     return 0;
 }

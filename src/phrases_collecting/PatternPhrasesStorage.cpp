@@ -124,8 +124,8 @@ void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
             }
         }
     }
-    Logger::log("PPStorage", LogLevel::Debug, "LoadPhraseStorage completed.");
 }
+
 void PatternPhrasesStorage::Deserialize(const json& j)
 {
     try {
