@@ -48,7 +48,7 @@ public:
         return storage;
     }
 
-    PatternPhrasesStorage& LoadPhraseStorage();
+    void LoadPhraseStorage();
 
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.

@@ -56,7 +56,7 @@ namespace PhrasesCollectorUtils {
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
-                if (filename.find("res") == 0 && filename.find("_art.txt") != std::string::npos) {
+                if (filename.find("res") == 0 && filename.find("_text.json") != std::string::npos) {
                     files_to_process.push_back(entry.path());
                 }
             }
@@ -170,7 +170,7 @@ namespace PhrasesCollectorUtils {
                 // storage.threadController.pauseUntilAllThreadsReach();
 
             } else {
-                for (unsigned int i = 0; i < g_options.textToProcessCount; ++i) {
+                for (unsigned int i = 0; i < files_to_process.size(); ++i) {
                     corpus.LoadTextsFromFile(files_to_process[i]);
                     ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
                 }
