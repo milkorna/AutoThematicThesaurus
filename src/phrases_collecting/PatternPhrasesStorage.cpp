@@ -52,6 +52,9 @@ void PatternPhrasesStorage::LoadPhraseStorage()
             try {
                 // Extract data from JSON
                 std::string key = obj.at("0_key").get<std::string>();
+                if (key.find('_') != std::string::npos) {
+                    continue;
+                }
                 bool skip = false;
                 icu::UnicodeString unicodeText = icu::UnicodeString::fromUTF8(key);
                 for (int32_t i = 0; i < unicodeText.length(); ++i) {
@@ -66,18 +69,12 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                 }
                 std::string textForm = obj.at("1_textForm").get<std::string>();
                 std::string modelName = obj.at("2_modelName").get<std::string>();
-                Logger::log("PPStorage", LogLevel::Debug,
-                            "Extracted key: " + key + ", textForm: " + textForm + ", modelName: " + modelName);
 
                 Position pos;
                 pos.docNum = obj.at("3_docNum").get<size_t>();
                 pos.sentNum = obj.at("4_sentNum").get<size_t>();
                 pos.start = obj.at("5_start_ind").get<size_t>();
                 pos.end = obj.at("6_end_ind").get<size_t>();
-                Logger::log("PPStorage", LogLevel::Debug,
-                            "Extracted position data: start=" + std::to_string(pos.start) +
-                                ", end=" + std::to_string(pos.end) + ", docNum=" + std::to_string(pos.docNum) +
-                                ", sentNum=" + std::to_string(pos.sentNum));
 
                 std::deque<std::string> lemmas;
                 if (obj.contains("7_lemmas")) {
@@ -90,8 +87,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                         }
                     }
                 }
-                Logger::log("PPStorage", LogLevel::Debug,
-                            "Extracted lemmas: " + std::to_string(lemmas.size()) + " lemmas found.");
 
                 // Create a WordComplex object
                 WordComplexPtr wc = std::make_shared<WordComplex>();
@@ -106,8 +101,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                     if (std::find(cluster.wordComplexes.begin(), cluster.wordComplexes.end(), wc) ==
                         cluster.wordComplexes.end()) {
                         cluster.wordComplexes.push_back(wc);
-                        Logger::log("PPStorage", LogLevel::Debug,
-                                    "Added WordComplex to existing cluster for key: " + key);
                     }
                 } else {
                     std::vector<std::string> lemmas;
@@ -117,7 +110,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                     for (const auto& lemma : wc->lemmas) {
                         lemmas.push_back(lemma);
                         lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
-                        Logger::log("PPStorage", LogLevel::Debug, "Processed lemma: " + lemma);
 
                         if (g_options.semanticRelations) {
 
@@ -127,8 +119,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                                 auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
                                 hypernymCache[lemma] = hypernyms;
                                 lemmHypernyms[lemma] = hypernyms;
-                                Logger::log("PPStorage", LogLevel::Debug,
-                                            "Retrieved hypernyms from DB for lemma: " + lemma);
                             }
 
                             if (hyponymCache.find(lemma) != hyponymCache.end()) {
@@ -152,7 +142,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
 
                                 hyponymCache[lemma] = validHyponyms;
                                 lemmHyponyms[lemma] = validHyponyms;
-                                Logger::log("PPStorage", LogLevel::Debug, "Processed hyponyms for lemma: " + lemma);
                             }
                         } else {
                             lemmHypernyms[lemma] = {};
@@ -164,7 +153,6 @@ void PatternPhrasesStorage::LoadPhraseStorage()
                         wc->lemmas.size(), 1.0,           false,       key, wc->modelName, lemmas, {wc}, {}, {}, {},
                         lemVectors,        lemmHypernyms, lemmHyponyms};
                     clusters[key] = newCluster;
-                    Logger::log("PPStorage", LogLevel::Debug, "Created new cluster for key: " + key);
                 }
             } catch (const std::exception& e) {
                 Logger::log("PPStorage", LogLevel::Error, "Error parsing JSON object: " + std::string(e.what()));
@@ -211,16 +199,6 @@ void PatternPhrasesStorage::FinalizeDocumentProcessing()
         corpus.UpdateDocumentFrequency(lemma);
     }
     uniqueLemmasInDoc.clear();
-}
-
-void PatternPhrasesStorage::AddPhrase(const std::string& phrase)
-{
-    phrases.push_back(phrase);
-}
-
-const std::vector<std::string>& PatternPhrasesStorage::GetPhrases() const
-{
-    return phrases;
 }
 
 void PatternPhrasesStorage::AddWordComplex(const WordComplexPtr& wc)
