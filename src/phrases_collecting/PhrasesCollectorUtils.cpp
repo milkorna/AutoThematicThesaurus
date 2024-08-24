@@ -71,22 +71,10 @@ namespace PhrasesCollectorUtils {
                     forms.end());
     }
 
-    void ProcessFile(const fs::path& inputFile, const fs::path& outputDir, int& counter, std::mutex& counterMutex)
+    void ProcessFile(const fs::path& inputFile, const fs::path& outputDir)
     {
         std::string filename = inputFile.filename().string();
         std::string outputFile = (outputDir / ("res_" + filename)).string();
-        auto startProcessText = std::chrono::high_resolution_clock::now();
-
-        if (g_options.multithreading) {
-            std::ostringstream oss;
-            oss << std::this_thread::get_id();
-            std::string thread_id = oss.str();
-            Logger::log("Thread", LogLevel::Info, thread_id + " starting file processing: " + inputFile.string());
-        }
-        {
-            std::lock_guard<std::mutex> lock(counterMutex);
-            ++counter;
-        }
 
         Tokenizer tok;
         TFMorphemicSplitter morphemic_splitter;
@@ -102,7 +90,6 @@ namespace PhrasesCollectorUtils {
         do {
             std::string sentence;
             ssplitter.readSentence(sentence);
-
             if (sentence.empty())
                 continue;
 
@@ -118,20 +105,12 @@ namespace PhrasesCollectorUtils {
             }
 
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
-            Logger::log("TokenAnalysis", LogLevel::Debug, "Token count: " + std::to_string(tokens.size()));
-            Logger::log("FormAnalysis", LogLevel::Debug, "Form count: " + std::to_string(forms.size()));
-
             PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
             process.m_output.flush();
             process.m_sentNum++;
         } while (!ssplitter.eof());
         PatternPhrasesStorage::GetStorage().FinalizeDocumentProcessing();
-
-        auto endProccesText = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> duration = endProccesText - startProcessText;
-        Logger::log("", LogLevel::Info,
-                    "processText() for " + filename + " took " + std::to_string(duration.count()) + " seconds.");
     }
 
     void BuildPhraseStorage()
@@ -143,42 +122,14 @@ namespace PhrasesCollectorUtils {
         auto& storage = PatternPhrasesStorage::GetStorage();
         auto& corpus = TextCorpus::GetCorpus();
         try {
-            int counter = 0;
-            std::mutex counterMutex;
-
             std::vector<fs::path> files_to_process = GetFilesToProcess();
-            if (g_options.multithreading) {
 
-                const size_t batchSize = 15;
-                for (size_t batchStart = 0; batchStart < g_options.textToProcessCount; batchStart += batchSize) {
-                    std::vector<std::thread> threads;
-                    size_t batchEnd =
-                        std::min(batchStart + batchSize, static_cast<unsigned long>(g_options.textToProcessCount));
-                    for (size_t i = batchStart; i < batchEnd; ++i) {
-                        threads.emplace_back([&, i]() {
-                            corpus.LoadTextsFromFile(files_to_process[i]);
-                            ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
-                        });
-                    }
-
-                    for (auto& thread : threads) {
-                        if (thread.joinable()) {
-                            thread.join();
-                        }
-                    }
-                }
-                // storage.threadController.pauseUntilAllThreadsReach();
-
-            } else {
-                for (unsigned int i = 0; i < files_to_process.size(); ++i) {
-                    corpus.LoadTextsFromFile(files_to_process[i]);
-                    ProcessFile(files_to_process[i], outputDir, counter, counterMutex);
-                }
+            for (unsigned int i = 0; i < files_to_process.size(); ++i) {
+                corpus.LoadTextsFromFile(files_to_process[i]);
+                ProcessFile(files_to_process[i], outputDir);
             }
 
             TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
-            Logger::log("\n\nProcessed", LogLevel::Info, std::to_string(counter) + " files");
-
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {

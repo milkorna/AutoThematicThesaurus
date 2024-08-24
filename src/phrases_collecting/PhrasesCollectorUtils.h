@@ -26,7 +26,6 @@ namespace PhrasesCollectorUtils {
         int textToProcessCount = 1;
         int upperTresholdTopicsNum = 7;
         int coOccurrenceFrequency = textToProcessCount * 5;
-        bool multithreading = false;   ///< Indicates if multithreading is enabled.
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
         bool boundariesValidation = true;
         bool semanticRelations = false;

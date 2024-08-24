@@ -20,6 +20,7 @@ private:
 
     std::unordered_set<std::string> usedHeadSpVars;
     std::unordered_set<std::string> usedSpVars;
+
     // Private constructors for Singleton pattern
     GrammarPatternManager() {};
 

@@ -28,10 +28,12 @@ const UniMorphTag Condition::getMorphTag() const
 {
     return m_tag;
 };
+
 const Additional Condition::getAdditional() const
 {
     return m_addcond;
 };
+
 const SyntaxRole Condition::getSyntaxRole() const
 {
     return m_role;
@@ -44,7 +46,6 @@ static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
 {
     if ((tag.*hasAttribute)()) {
         bool result = (formTag.*hasAttribute)() && (tag.*getAttribute)() == (formTag.*getAttribute)();
-        Logger::log("checkAttribute", LogLevel::Debug, "Attribute check: " + std::to_string(result));
         return result;
     }
     return true;
@@ -75,21 +76,15 @@ bool Condition::empty() const
 bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const
 {
     for (const auto& morphForm : form->getMorphInfo()) {
-        Logger::log("check", LogLevel::Debug,
-                    "Checking morphForm against spTag.\n\tmorphForm: " + morphForm.normalForm.getRawString() + ", " +
-                        morphForm.sp.toString() + "\t\tspHeadTag: " + spTag.toString());
         if (morphForm.sp == spTag) {
             if (!morphTagCheck(morphForm)) {
-                Logger::log("check", LogLevel::Debug, "morphTagCheck failed.");
                 return false;
             }
             if (!m_addcond.check(morphForm))
                 return false;
         } else {
-            Logger::log("check", LogLevel::Debug, "spTagHeadTag does not match.");
             return false;
         }
     }
-    Logger::log("check", LogLevel::Debug, "Exiting function, the return value is TRUE.");
     return true;
 }
