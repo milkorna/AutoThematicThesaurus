@@ -50,6 +50,10 @@ public:
 
     void LoadPhraseStorage();
 
+    void MergeSimilarClusters();
+
+    bool AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff = 3);
+
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
     // \param process   The process used for phrase collection.
