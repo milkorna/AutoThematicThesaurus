@@ -127,11 +127,5 @@ void SimplePhrasesCollector::Collect(Process& process)
             }
         }
     }
-    Logger::log("Collect", LogLevel::Info, "Stop itteration");
-
-    // PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
-    // PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
-    // PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
-
     OutputResults(m_collection, process);
 }

@@ -48,7 +48,15 @@ public:
         return storage;
     }
 
-    PatternPhrasesStorage& LoadPhraseStorage();
+    void Deserialize(const json& j);
+
+    void LoadStorageFromFile(const std::string& filename);
+
+    void LoadPhraseStorageFromResultsDir();
+
+    void MergeSimilarClusters();
+
+    bool AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff = 3);
 
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
@@ -57,30 +65,10 @@ public:
 
     void FinalizeDocumentProcessing();
 
-    // \brief Adds a phrase to the storage.
-    // \param phrase    The phrase to add.
-    void AddPhrase(const std::string& phrase);
-
-    // \brief Gets the collected phrases.
-    // \return          A const reference to the vector of collected phrases.
-    const std::vector<std::string>& GetPhrases() const;
-
-    // \brief Adds a word complex to the storage.
-    // \param wc        A shared pointer to the WordComplex to add.
-    void AddWordComplex(const WordComplexPtr& wc);
-
-    // \brief Adds multiple word complexes to the storage.
-    // \param collection A vector of WordComplexPtr to add.
-    void AddWordComplexes(const std::vector<PhrasesCollectorUtils::WordComplexPtr> collection);
-
     // void AddSemanticRelationsToCluster(WordComplexCluster& cluster);
 
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
-
-    // \brief Outputs the clusters to a text file.
-    // \param filename  The path to the output text file.
-    void OutputClustersToTextFile(const std::string& filename) const;
 
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
@@ -118,8 +106,6 @@ private:
 
     // \brief Deleted assignment operator to enforce singleton pattern.
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
-
-    std::vector<std::string> phrases;                             ///< Vector of collected phrases.
     std::unordered_map<std::string, WordComplexCluster> clusters; ///< Map of word complex clusters.
 };
 

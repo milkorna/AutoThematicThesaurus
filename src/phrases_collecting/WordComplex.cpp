@@ -59,7 +59,7 @@ namespace PhrasesCollectorUtils {
     {
         if (isLeft) {
             wc->words.push_front(form);
-            wc->lemmas.push_back(GetLemma(form));
+            wc->lemmas.push_front(GetLemma(form));
             wc->pos.start--;
             wc->textForm.insert(0, formFromText + " ");
         } else {

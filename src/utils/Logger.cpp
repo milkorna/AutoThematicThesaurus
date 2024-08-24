@@ -57,6 +57,23 @@ void Logger::log(const std::string& module, LogLevel level, const std::string& m
     }
 }
 
+// Converts LogLevel to a readable string.
+std::string Logger::toString(LogLevel level)
+{
+    switch (level) {
+        case LogLevel::Debug:
+            return "Debug";
+        case LogLevel::Info:
+            return "Info";
+        case LogLevel::Warning:
+            return "Warning";
+        case LogLevel::Error:
+            return "Error";
+        default:
+            return "Unknown";
+    }
+}
+
 // Initialize the log file
 void Logger::initializeLogFile(const std::string& filePath)
 {

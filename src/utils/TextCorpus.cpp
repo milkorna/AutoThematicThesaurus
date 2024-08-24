@@ -134,7 +134,7 @@ double TextCorpus::CalculateTF(const std::string& lemma) const
 double TextCorpus::CalculateIDF(const std::string& lemma) const
 {
     if (documentFrequency.find(lemma) != documentFrequency.end()) {
-        return log(static_cast<double>(totalDocuments) / (1 + documentFrequency.at(lemma)));
+        return log(static_cast<double>(totalDocuments) / (1.0 + documentFrequency.at(lemma)));
     }
     return 0.0;
 }

@@ -319,9 +319,5 @@ void ComplexPhrasesCollector::Collect(Process& process)
     if (g_options.boundariesValidation) {
         ValidateBoundares();
     }
-
-    // PatternPhrasesStorage::GetStorage().threadController.reachCheckpoint();
-    // PatternPhrasesStorage::GetStorage().AddWordComplexes(m_collection);
-    // PatternPhrasesStorage::GetStorage().threadController.waitForCheckpoint();
     OutputResults(m_collection, process);
 }

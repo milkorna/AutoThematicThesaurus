@@ -25,6 +25,7 @@ endif()
 
 include_directories(
     src/grammar_component
+    src/grammar_patterns
     src/phrases_collecting
     src/utils
 )
@@ -37,6 +38,12 @@ src/grammar_component/WordComponent.cpp
 src/grammar_component/WordComponent.h
 src/grammar_component/ModelComponent.cpp
 src/grammar_component/ModelComponent.h
+
+
+src/grammar_patterns/PatternParser.cpp
+src/grammar_patterns/PatternParser.h
+src/grammar_patterns/GrammarPatternManager.cpp
+src/grammar_patterns/GrammarPatternManager.h
 
 src/phrases_collecting/Embedding.cpp
 src/phrases_collecting/Embedding.h
@@ -52,8 +59,6 @@ src/phrases_collecting/WordComplex.cpp
 src/phrases_collecting/WordComplex.h
 
 src/utils/OutputRedirector.h
-src/utils/PatternParser.cpp
-src/utils/PatternParser.h
 src/utils/SemanticRelations.cpp
 src/utils/SemanticRelations.h
 src/utils/ThreadController.h
@@ -61,8 +66,6 @@ src/utils/TextCorpus.cpp
 src/utils/TextCorpus.h
 src/utils/Logger.cpp
 src/utils/Logger.h
-src/utils/GrammarPatternManager.cpp
-src/utils/GrammarPatternManager.h
 )
 
 include_directories(src)
