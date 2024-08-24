@@ -57,14 +57,6 @@ public:
 
     void FinalizeDocumentProcessing();
 
-    // \brief Adds a phrase to the storage.
-    // \param phrase    The phrase to add.
-    void AddPhrase(const std::string& phrase);
-
-    // \brief Gets the collected phrases.
-    // \return          A const reference to the vector of collected phrases.
-    const std::vector<std::string>& GetPhrases() const;
-
     // \brief Adds a word complex to the storage.
     // \param wc        A shared pointer to the WordComplex to add.
     void AddWordComplex(const WordComplexPtr& wc);
@@ -118,8 +110,6 @@ private:
 
     // \brief Deleted assignment operator to enforce singleton pattern.
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
-
-    std::vector<std::string> phrases;                             ///< Vector of collected phrases.
     std::unordered_map<std::string, WordComplexCluster> clusters; ///< Map of word complex clusters.
 };
 
