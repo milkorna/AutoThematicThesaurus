@@ -47,6 +47,16 @@ int main()
     //     storage.OutputClustersToJsonFile(jsonFilePath.string());
     // }
 
+    // load hyperonyms and hyponyms for lemmas from WikiWordNet
+    // {
+    //     auto& corpus = TextCorpus::GetCorpus();
+    //     corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+    //     auto& storage = PatternPhrasesStorage::GetStorage();
+    //     storage.LoadStorageFromFile(jsonFilePath.string());
+    //     storage.LoadWikiWNRelations();
+    //     storage.OutputClustersToJsonFile(jsonFilePath);
+    // }
+
     // getting ready-made results without waiting for intermediate steps
     {
         auto& corpus = TextCorpus::GetCorpus();

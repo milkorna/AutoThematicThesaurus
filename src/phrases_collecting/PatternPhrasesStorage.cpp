@@ -128,38 +128,42 @@ void PatternPhrasesStorage::Deserialize(const json& j)
 
             WordComplexCluster cluster;
             cluster.key = key;
-            cluster.phraseSize = obj.at("Phrase Size").get<size_t>();
-            cluster.m_weight = obj.at("Weight").get<double>();
-            cluster.topicMatch = obj.at("Topic Match").get<bool>();
-            cluster.modelName = obj.at("Model Name").get<std::string>();
+            cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
+            cluster.m_weight = obj.at("1_weight").get<double>();
+            cluster.topicMatch = obj.at("2_topic_match").get<bool>();
+            cluster.modelName = obj.at("3_model_name").get<std::string>();
 
             // Deserialize Lemmas
-            const json& lemmas_json = obj.at("Lemmas");
+            const json& lemmas_json = obj.at("4_lemmas");
             for (const auto& lemma_obj : lemmas_json) {
-                cluster.lemmas.push_back(lemma_obj.at("Lemma").get<std::string>());
-                cluster.tf.push_back(lemma_obj.at("TF").get<double>());
-                cluster.idf.push_back(lemma_obj.at("IDF").get<double>());
-                cluster.tfidf.push_back(lemma_obj.at("TF-IDF").get<double>());
-
-                std::string lemma = lemma_obj.at("Lemma").get<std::string>();
-                cluster.hypernyms[lemma] = lemma_obj.at("Hypernyms").get<std::set<std::string>>();
-                cluster.hyponyms[lemma] = lemma_obj.at("Hyponyms").get<std::set<std::string>>();
+                std::string lemmaStr = "";
+                auto lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
+                size_t pos = lemmaStrNumbered.find('_');
+                if (pos != std::string::npos) {
+                    lemmaStr = lemmaStrNumbered.substr(pos + 1);
+                }
+                cluster.lemmas.push_back(lemmaStr);
+                cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
+                cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
+                cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
+                cluster.hypernyms[lemmaStr] = {}; // lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
+                cluster.hyponyms[lemmaStr] = {};  // lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
 
                 // Add word embedding (assuming you need to create an embedding for each lemma)
-                cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemma));
+                cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
             }
 
             // Deserialize WordComplexes (Phrases in your JSON)
-            const json& phrases_json = obj.at("Phrases");
+            const json& phrases_json = obj.at("6_phrases");
             for (const auto& phrase_obj : phrases_json) {
                 WordComplexPtr wc = std::make_shared<WordComplex>();
-                wc->textForm = phrase_obj.at("Text Form").get<std::string>();
+                wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
                 wc->modelName = cluster.modelName;
 
-                wc->pos.docNum = phrase_obj.at("Position").at("DocNum").get<size_t>();
-                wc->pos.sentNum = phrase_obj.at("Position").at("SentNum").get<size_t>();
-                wc->pos.start = phrase_obj.at("Position").at("Start").get<size_t>();
-                wc->pos.end = phrase_obj.at("Position").at("End").get<size_t>();
+                wc->pos.start = phrase_obj.at("1_position").at("0_start").get<size_t>();
+                wc->pos.end = phrase_obj.at("1_position").at("1_end").get<size_t>();
+                wc->pos.docNum = phrase_obj.at("1_position").at("2_doc_num").get<size_t>();
+                wc->pos.sentNum = phrase_obj.at("1_position").at("3_sent_num").get<size_t>();
 
                 wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
 
@@ -448,6 +452,50 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
     return diffCount <= maxDiff;
 }
 
+void PatternPhrasesStorage::LoadWikiWNRelations()
+{
+    for (auto& clusterPair : clusters) {
+        WordComplexCluster& cluster = clusterPair.second;
+        std::cout << cluster.key << std::endl;
+
+        for (auto lemma : cluster.lemmas) {
+
+            if (hypernymCache.find(lemma) != hypernymCache.end()) {
+                cluster.hypernyms[lemma] = hypernymCache[lemma];
+            } else {
+                auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
+                hypernymCache[lemma] = hypernyms;
+                cluster.hypernyms[lemma] = hypernyms;
+            }
+
+            if (hyponymCache.find(lemma) != hyponymCache.end()) {
+                cluster.hyponyms[lemma] = hyponymCache[lemma];
+            } else {
+                auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
+                std::set<std::string> validHyponyms;
+                if (hyponyms.size() < 150) {
+                    for (const auto& hyp : hyponyms) {
+                        const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
+                        const auto& topicVectors = GetTopicVectors();
+
+                        for (const auto& topicVecPair : topicVectors) {
+                            const std::string& topicWord = topicVecPair.first;
+                            const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
+
+                            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+                            if (cosineSim > g_options.topicsHyponymThreshold) {
+                                validHyponyms.insert(hyp);
+                            }
+                        }
+                    }
+                }
+                hyponymCache[lemma] = validHyponyms;
+                cluster.hyponyms[lemma] = validHyponyms;
+            }
+        }
+    }
+}
+
 void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename) const
 {
     json j;
@@ -464,20 +512,21 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         const auto& cluster = clusters.at(key);
 
         json clusterJson;
-        clusterJson["Phrase Size"] = cluster.phraseSize;
-        clusterJson["Weight"] = cluster.m_weight;
-        clusterJson["Topic Match"] = cluster.topicMatch;
-        clusterJson["Model Name"] = cluster.modelName;
+        clusterJson["0_phrase_size"] = cluster.phraseSize;
+        clusterJson["1_weight"] = cluster.m_weight;
+        clusterJson["2_topic_match"] = cluster.topicMatch;
+        clusterJson["3_model_name"] = cluster.modelName;
 
         std::vector<json> lemmasJson;
         for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
             json lemmaJson;
-            lemmaJson["Lemma"] = cluster.lemmas[i];
-            lemmaJson["TF"] = cluster.tf[i];
-            lemmaJson["IDF"] = cluster.idf[i];
-            lemmaJson["TF-IDF"] = cluster.tfidf[i];
-            lemmaJson["Hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
-            lemmaJson["Hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
+            std::string lemmaStrNumbered = std::to_string(i) + "_" + cluster.lemmas[i];
+            lemmaJson["0_lemma"] = lemmaStrNumbered;
+            lemmaJson["1_tf"] = cluster.tf[i];
+            lemmaJson["2_idf"] = cluster.idf[i];
+            lemmaJson["3_tf-idf"] = cluster.tfidf[i];
+            lemmaJson["4_hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
+            lemmaJson["5_hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
 
             // json coOccurrencesJson = nlohmann::json::object();
             // auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
@@ -505,33 +554,20 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             // lemmaJson["Vector"] = vectorValues;
             lemmasJson.push_back(lemmaJson);
         }
-        clusterJson["Lemmas"] = lemmasJson;
+        clusterJson["4_lemmas"] = lemmasJson;
 
-        clusterJson["Word Complexes"] = cluster.wordComplexes.size();
+        clusterJson["5_phrases_count"] = cluster.wordComplexes.size();
         std::vector<json> phrases;
         for (const auto& wordComplex : cluster.wordComplexes) {
             json phraseJson;
-            phraseJson["Text Form"] = wordComplex->textForm;
-            phraseJson["Position"] = {{"Start", wordComplex->pos.start},
-                                      {"End", wordComplex->pos.end},
-                                      {"DocNum", wordComplex->pos.docNum},
-                                      {"SentNum", wordComplex->pos.sentNum}};
+            phraseJson["0_text_form"] = wordComplex->textForm;
+            phraseJson["1_position"] = {{"0_start", wordComplex->pos.start},
+                                        {"1_end", wordComplex->pos.end},
+                                        {"2_doc_num", wordComplex->pos.docNum},
+                                        {"3_sent_num", wordComplex->pos.sentNum}};
             phrases.push_back(phraseJson);
         }
-        clusterJson["Phrases"] = phrases;
-
-        // json hypernymsJson = nlohmann::json::object();
-        // for (const auto& synPair : cluster.hypernyms) {
-        //     hypernymsJson[synPair.first] = synPair.second;
-        // }
-        // clusterJson["Hypernyms"] = hypernymsJson;
-
-        // json hyponymsJson = nlohmann::json::object();
-        // for (const auto& synPair : cluster.hyponyms) {
-        //     hyponymsJson[synPair.first] = synPair.second;
-        // }
-        // clusterJson["Hyponyms"] = hyponymsJson;
-
+        clusterJson["6_phrases"] = phrases;
         j[key] = clusterJson;
     }
 

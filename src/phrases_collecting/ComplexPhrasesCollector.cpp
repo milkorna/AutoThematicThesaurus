@@ -8,7 +8,6 @@ bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<Mo
 {
     for (const auto& morphForm : morphForms) {
         if (!cond.morphTagCheck(morphForm)) {
-            Logger::log("CheckCurrentSimplePhrase", LogLevel::Debug, "morphTagCheck failed.");
             continue;
         } else {
             curPhrStatus.headIsChecked = true;
@@ -111,7 +110,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             return false;
 
         std::string formFromText = token->getWordForm().getRawString();
-        Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
         if (!wordComp->getCondition().check(wordComp->getSPTag(), token)) {
             return false;
@@ -156,7 +154,6 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
         for (size_t smpPhrOffset = 0; smpPhrOffset < m_simplePhrases.size(); smpPhrOffset++) {
 
             const auto asidePhrase = m_simplePhrases[smpPhrOffset];
-
             if (ShouldSkip(smpPhrOffset, curSimplePhrInd, isLeft, wc, modelComp)) {
                 continue;
             }
@@ -303,13 +300,8 @@ void ComplexPhrasesCollector::Collect(Process& process)
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 
-        LogCurrentSimplePhrase(curSimplePhr);
-
         for (const auto& [name, model] : manager.getComplexPatterns()) {
-            LogCurrentComplexModel(name);
-
             CurrentPhraseStatus curPhrStatus;
-
             WordComplexPtr wc;
             if (ProcessModelComponent(model, curSimplePhr, curSimplePhrInd, curPhrStatus, wc))
                 break;
@@ -319,5 +311,6 @@ void ComplexPhrasesCollector::Collect(Process& process)
     if (g_options.boundariesValidation) {
         ValidateBoundares();
     }
+
     OutputResults(m_collection, process);
 }

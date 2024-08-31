@@ -28,8 +28,6 @@ namespace PhrasesCollectorUtils {
         int coOccurrenceFrequency = textToProcessCount * 5;
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
         bool boundariesValidation = true;
-        bool semanticRelations = false;
-        // bool tags = false;             ///< Indicates if tags should be processed.
         float topicsThreshold = 0.6;
         float topicsHyponymThreshold = 0.98;
         float freqTrecholdCoeff = 0.12;

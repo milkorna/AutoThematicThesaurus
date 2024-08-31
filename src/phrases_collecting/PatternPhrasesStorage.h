@@ -74,6 +74,8 @@ public:
     // \param filename  The path to the output JSON file.
     void OutputClustersToJsonFile(const std::string& filename) const;
 
+    void LoadWikiWNRelations();
+
     // \brief Calculates weights for the word complexes (not used).
     void CalculateWeights();
 
