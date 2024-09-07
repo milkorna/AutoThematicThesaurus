@@ -60,6 +60,8 @@ namespace PhrasesCollectorUtils {
     // \brief Builds the phrase storage for processing.
     void BuildPhraseStorage();
 
+    void BuildTokenizedSentenceCorpus();
+
     // \brief Retrieves the most probable morphological information from a set.
     // \param morphSet      A set of morphological information.
     // \return              The most probable MorphInfo object.
@@ -74,11 +76,6 @@ namespace PhrasesCollectorUtils {
     // \param currFormMorphInfo A set of morphological information of the current form.
     // \return                  True if the property is found, false otherwise.
     bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
-
-    // \brief Checks for misclassifications in the given word form.
-    // \param form          The WordFormPtr form to check.
-    // \return              True if there are misclassifications, false otherwise.
-    bool CheckForMisclassifications(const X::WordFormPtr& form);
 
     // \brief Logs the current simple phrase being processed.
     // \param curSimplePhr  A shared pointer to the current simple phrase.

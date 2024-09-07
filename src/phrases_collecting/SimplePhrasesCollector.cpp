@@ -1,5 +1,6 @@
 #include <PatternPhrasesStorage.h>
 #include <SimplePhrasesCollector.h>
+#include <StringFilters.h>
 
 #include <utility>
 
@@ -46,7 +47,8 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
             return false;
     }
 
-    if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+    if (StringFilters::CheckForMisclassifications(token) || MorphAnanlysisError(token) ||
+        !HaveSp(token->getMorphInfo()))
         return false;
 
     std::string formFromText = token->getWordForm().getRawString();
@@ -93,7 +95,8 @@ void SimplePhrasesCollector::Collect(Process& process)
                 continue;
         }
 
-        if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+        if (StringFilters::CheckForMisclassifications(token) || MorphAnanlysisError(token) ||
+            !HaveSp(token->getMorphInfo()))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))

@@ -146,8 +146,8 @@ void PatternPhrasesStorage::Deserialize(const json& j)
                 cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
                 cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
                 cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
-                cluster.hypernyms[lemmaStr] = {}; // lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
-                cluster.hyponyms[lemmaStr] = {};  // lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
+                cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
+                cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
 
                 // Add word embedding (assuming you need to create an embedding for each lemma)
                 cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
