@@ -48,8 +48,9 @@ public:
         return words;
     }
 
-    static void AnalyzeTopics(const MatrixXd& U, const std::vector<std::string>& words, int numTopics = 5,
-                              int topWords = 10);
+    const std::unordered_map<int, std::vector<std::string>>& GetTopics() const;
+
+    void AnalyzeTopics(int numTopics = 5, int topWords = 10);
 
     static double CosineSimilarity(const VectorXd& vec1, const VectorXd& vec2);
 
@@ -60,10 +61,11 @@ public:
 
 private:
     const TokenizedSentenceCorpus& corpus; // Reference to the TokenizedSentenceCorpus object containing data
-    MatrixXd U;                            // Left singular matrix
-    MatrixXd Sigma;                        // Singular value matrix
-    MatrixXd V;                            // Right singular matrix
-    std::vector<std::string> words;        // List of words used in the term-document matrix
+    std::unordered_map<int, std::vector<std::string>> topics;
+    MatrixXd U;                     // Left singular matrix
+    MatrixXd Sigma;                 // Singular value matrix
+    MatrixXd V;                     // Right singular matrix
+    std::vector<std::string> words; // List of words used in the term-document matrix
     std::unordered_set<std::string> LSAStopWords = {"мочь", "для", "или", "при", "стр"};
 };
 

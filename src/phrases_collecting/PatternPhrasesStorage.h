@@ -3,6 +3,7 @@
 
 #include <ComplexPhrasesCollector.h>
 #include <Embedding.h>
+#include <LSA.h>
 #include <SemanticRelations.h>
 #include <TextCorpus.h>
 #include <ThreadController.h>
@@ -24,9 +25,11 @@ class PatternPhrasesStorage {
     // \brief This structure represents a cluster of word complexes, including their TF, IDF, and TF-IDF values, as well
     // as FastText vectors.
     struct WordComplexCluster {
-        size_t phraseSize;     ///< Size of the phrase.
-        double m_weight;       ///< Weight of the cluster.
-        bool topicMatch;       ///< Indicates if the cluster matches a topic.
+        size_t phraseSize; ///< Size of the phrase.
+        double m_weight;   ///< Weight of the cluster.
+        bool tagMatch;     ///< Indicates if the cluster matches a topic.
+        double topicRelevance;
+        double centralityScore;
         std::string key;       ///< String with normalized words.
         std::string modelName; ///< Name of the model associated with the cluster.
         std::vector<std::string> lemmas;
@@ -70,6 +73,15 @@ public:
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
 
+    double CalculateTopicRelevance(const WordComplexCluster& cluster,
+                                   const std::unordered_map<int, std::vector<std::string>>& topics);
+
+    double CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
+                               const std::vector<std::string>& words);
+
+    void UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
+                              const std::unordered_map<int, std::vector<std::string>>& topics);
+
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
     void OutputClustersToJsonFile(const std::string& filename) const;
@@ -78,6 +90,8 @@ public:
 
     // \brief Calculates weights for the word complexes (not used).
     void CalculateWeights();
+
+    void EvaluateTermRelevance(const LSA& lsa);
 
     ThreadController threadController; ///< Controller for managing thread synchronization.
 

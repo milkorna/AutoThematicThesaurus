@@ -153,7 +153,7 @@ void LSA::PerformAnalysis(bool useSentences)
     this->words = words;
 }
 
-void LSA::AnalyzeTopics(const MatrixXd& U, const std::vector<std::string>& words, int numTopics, int topWords)
+void LSA::AnalyzeTopics(int numTopics, int topWords)
 {
     // Check that the number of words matches the number of rows in matrix U
     if (U.rows() != words.size()) {
@@ -168,12 +168,7 @@ void LSA::AnalyzeTopics(const MatrixXd& U, const std::vector<std::string>& words
 
         // Collect words and their values for the current topic
         for (int i = 0; i < U.rows(); ++i) {
-            // Check index validity
-            if (i < words.size()) {
-                topicWords.push_back({U(i, topic), words[i]});
-            } else {
-                std::cerr << "Warning: Index " << i << " is out of bounds for words array." << std::endl;
-            }
+            topicWords.push_back({U(i, topic), words[i]});
         }
 
         // Sort words by importance for the current topic
@@ -181,11 +176,21 @@ void LSA::AnalyzeTopics(const MatrixXd& U, const std::vector<std::string>& words
 
         // Output the most significant words for the current topic
         std::cout << "Topic " << topic + 1 << ": ";
+        std::vector<std::string> topWordsForTopic; // Vector to store top words for this topic
         for (int i = 0; i < topWords && i < topicWords.size(); ++i) {
             std::cout << topicWords[i].second << " (" << topicWords[i].first << "), ";
+            topWordsForTopic.push_back(topicWords[i].second); // Save the top word
         }
         std::cout << std::endl;
+
+        // Save the top words for this topic in the class variable
+        topics[topic] = topWordsForTopic; // Save words for each topic
     }
+}
+
+const std::unordered_map<int, std::vector<std::string>>& LSA::GetTopics() const
+{
+    return topics; // To access saved topics
 }
 
 double LSA::CosineSimilarity(const VectorXd& vec1, const VectorXd& vec2)
