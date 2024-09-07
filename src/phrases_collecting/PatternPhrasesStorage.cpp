@@ -130,7 +130,7 @@ void PatternPhrasesStorage::Deserialize(const json& j)
             cluster.key = key;
             cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
             cluster.m_weight = obj.at("1_weight").get<double>();
-            cluster.topicMatch = obj.at("2_topic_match").get<bool>();
+            cluster.topicMatch = obj.at("2_tag_match").get<bool>();
             cluster.modelName = obj.at("3_model_name").get<std::string>();
 
             // Deserialize Lemmas
@@ -514,7 +514,7 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         json clusterJson;
         clusterJson["0_phrase_size"] = cluster.phraseSize;
         clusterJson["1_weight"] = cluster.m_weight;
-        clusterJson["2_topic_match"] = cluster.topicMatch;
+        clusterJson["2_tag_match"] = cluster.topicMatch;
         clusterJson["3_model_name"] = cluster.modelName;
 
         std::vector<json> lemmasJson;
