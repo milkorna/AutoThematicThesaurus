@@ -74,6 +74,8 @@ src/utils/StringFilters.cpp
 src/utils/StringFilters.h
 src/utils/LSA.h
 src/utils/LSA.cpp
+src/utils/TermLSA.h
+src/utils/TermLSA.cpp
 )
 
 include_directories(src)

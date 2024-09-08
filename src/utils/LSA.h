@@ -56,8 +56,7 @@ public:
 
     static void CompareDocuments(const MatrixXd& V);
 
-    static void FindSimilarWords(const MatrixXd& U, const std::vector<std::string>& words,
-                                 const std::string& targetWord);
+    void FindSimilarWords(const std::string& targetWord);
 
 private:
     const TokenizedSentenceCorpus& corpus; // Reference to the TokenizedSentenceCorpus object containing data

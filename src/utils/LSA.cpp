@@ -225,7 +225,7 @@ void LSA::CompareDocuments(const MatrixXd& V)
     std::cout << "Document similarities have been written to 'document_similarity.txt'." << std::endl;
 }
 
-void LSA::FindSimilarWords(const MatrixXd& U, const std::vector<std::string>& words, const std::string& targetWord)
+void LSA::FindSimilarWords(const std::string& targetWord)
 {
     int targetIndex = -1;
     for (size_t i = 0; i < words.size(); ++i) {

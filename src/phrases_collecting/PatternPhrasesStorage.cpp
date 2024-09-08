@@ -211,6 +211,12 @@ void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
     }
 }
 
+const std::unordered_map<std::string, PatternPhrasesStorage::WordComplexCluster>
+PatternPhrasesStorage::GetClusters() const
+{
+    return clusters;
+}
+
 void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
 {
     auto& corpus = TextCorpus::GetCorpus();

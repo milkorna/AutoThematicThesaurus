@@ -92,6 +92,7 @@ public:
     void CalculateWeights();
 
     void EvaluateTermRelevance(const LSA& lsa);
+    const std::unordered_map<std::string, WordComplexCluster> GetClusters() const;
 
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
