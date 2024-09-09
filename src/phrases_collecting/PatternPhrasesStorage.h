@@ -59,7 +59,8 @@ public:
 
     void MergeSimilarClusters();
 
-    bool AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff = 3);
+    bool AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff = 3, size_t endLength = 2,
+                        bool CheckFirstOnly = false);
 
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.

@@ -458,7 +458,7 @@ void PatternPhrasesStorage::MergeSimilarClusters()
         std::string& currentKey = sortedKeys[i];
         std::string& previousKey = sortedKeys[i - 1];
 
-        if (AreKeysSimilar(previousKey, currentKey)) {
+        if (AreKeysSimilar(previousKey, currentKey) || AreKeysSimilar(previousKey, currentKey, 2, 4, true)) {
             // Move all wordComplexes from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
@@ -475,7 +475,8 @@ void PatternPhrasesStorage::MergeSimilarClusters()
     }
 }
 
-bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff)
+bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff,
+                                           size_t endLength, bool CheckFirstOnly)
 {
     // Split keys into words
     std::istringstream stream1(key1);
@@ -498,46 +499,75 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
     }
 
     size_t diffCount = 0;
+    bool firstWordChecked = false;
 
     // Compare the beginnings and endings of each word
     for (size_t i = 0; i < words1.size(); ++i) {
-        if ((words1[i].length() <= 8 || words2[i].length() <= 8) && words1[i] != words2[i])
+        if ((words1[i].length() <= 8 || words2[i].length() <= 8) && words1[i] != words2[i]) {
             return false;
-        // Extract the initial parts of the words (everything except the last two characters)
-        std::string start1 = (words1[i].length() > 2) ? words1[i].substr(0, words1[i].length() - 2) : "";
-        std::string start2 = (words2[i].length() > 2) ? words2[i].substr(0, words2[i].length() - 2) : "";
+        }
 
+        // Extract the initial parts of the words (everything except the last few characters)
+        std::string start1 =
+            (words1[i].length() > endLength) ? words1[i].substr(0, words1[i].length() - endLength) : "";
+        std::string start2 =
+            (words2[i].length() > endLength) ? words2[i].substr(0, words2[i].length() - endLength) : "";
+
+        // Check if the difference in length between the initial parts exceeds maxDiff
         if (std::abs(static_cast<long>(start1.length()) - static_cast<long>(start2.length())) >= maxDiff) {
             return false;
         }
 
-        // Handle the difference in the lengths of the initial parts
+        // Adjust the initial parts to be the same length
         if (start1.length() != start2.length()) {
             if (start1.length() > start2.length()) {
-                // Trim start1 to the length of start2
                 start1 = start1.substr(0, start2.length());
             } else {
-                // Trim start2 to the length of start1
                 start2 = start2.substr(0, start1.length());
             }
         }
-        if (start1.empty() || start2.empty())
+
+        // Skip comparison if either start is empty
+        if (start1.empty() || start2.empty()) {
             continue;
+        }
 
         // Compare the initial parts of the words
         if (start1 != start2) {
-            return false; // If the initial parts of the words do not match after trimming, the keys are different
+            // If initial parts do not match, keys are not similar
+            return false;
         }
 
-        // Extract the endings of the words (the last two characters)
-        std::string end1 = (words1[i].length() >= 2) ? words1[i].substr(words1[i].length() - 2) : words1[i];
-        std::string end2 = (words2[i].length() >= 2) ? words2[i].substr(words2[i].length() - 2) : words2[i];
+        // Extract the endings of the words
+        std::string end1 =
+            (words1[i].length() >= endLength) ? words1[i].substr(words1[i].length() - endLength) : words1[i];
+        std::string end2 =
+            (words2[i].length() >= endLength) ? words2[i].substr(words2[i].length() - endLength) : words2[i];
 
         // Compare the endings of the words
         if (end1 != end2) {
             ++diffCount;
-            if (diffCount > maxDiff) {
-                return false; // Exceeded the allowed number of differences
+
+            // If CheckFirstOnly is true, only check the first word for differences
+            if (CheckFirstOnly) {
+                // If the first word has been checked and the difference is not zero, subsequent words must match
+                // exactly
+                firstWordChecked = true;
+                if (diffCount > maxDiff) {
+                    return false;
+                }
+            } else {
+                // If not checking the first word only, ensure differences don't exceed maxDiff
+                if (diffCount > maxDiff) {
+                    return false;
+                }
+            }
+        }
+
+        // If CheckFirstOnly is true and the first word has been checked with differences, ensure remaining words match
+        if (CheckFirstOnly && firstWordChecked && i > 0) {
+            if (words1[i] != words2[i]) {
+                return false;
             }
         }
     }
