@@ -26,7 +26,6 @@ class PatternPhrasesStorage {
     // as FastText vectors.
     struct WordComplexCluster {
         size_t phraseSize; ///< Size of the phrase.
-        double m_weight;   ///< Weight of the cluster.
         bool tagMatch;     ///< Indicates if the cluster matches a topic.
         double topicRelevance;
         double centralityScore;
@@ -85,7 +84,7 @@ public:
 
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
-    void OutputClustersToJsonFile(const std::string& filename) const;
+    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false) const;
 
     void LoadWikiWNRelations();
 

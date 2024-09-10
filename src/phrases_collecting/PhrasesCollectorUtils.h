@@ -23,7 +23,7 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 1;
+        int textToProcessCount = 315;
         int upperTresholdTopicsNum = 7;
         int coOccurrenceFrequency = textToProcessCount * 5;
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
