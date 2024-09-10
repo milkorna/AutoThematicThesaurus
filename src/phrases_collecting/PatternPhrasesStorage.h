@@ -27,6 +27,7 @@ class PatternPhrasesStorage {
     struct WordComplexCluster {
         size_t phraseSize; ///< Size of the phrase.
         bool tagMatch;     ///< Indicates if the cluster matches a topic.
+        double frequency;
         double topicRelevance;
         double centralityScore;
         std::string key;       ///< String with normalized words.

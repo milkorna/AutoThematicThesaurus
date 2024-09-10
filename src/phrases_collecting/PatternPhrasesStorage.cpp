@@ -99,20 +99,9 @@ void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
                         lemmHyponyms[lemma] = {};
                     }
 
-                    WordComplexCluster newCluster = {wc->lemmas.size(),
-                                                     false,
-                                                     0.0,
-                                                     0.0,
-                                                     key,
-                                                     wc->modelName,
-                                                     lemmas,
-                                                     {wc},
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     lemVectors,
-                                                     lemmHypernyms,
-                                                     lemmHyponyms};
+                    WordComplexCluster newCluster = {wc->lemmas.size(), false,         1.0,         0.0, 0.0, key,
+                                                     wc->modelName,     lemmas,        {wc},        {},  {},  {},
+                                                     lemVectors,        lemmHypernyms, lemmHyponyms};
                     clusters[key] = newCluster;
                 }
             } catch (const std::exception& e) {
@@ -140,6 +129,7 @@ void PatternPhrasesStorage::Deserialize(const json& j)
             WordComplexCluster cluster;
             cluster.key = key;
             cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
+            cluster.frequency = obj.at("1_frequency").get<double>();
             cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
             cluster.centralityScore = obj.at("3_centrality_score").get<double>();
             cluster.tagMatch = obj.at("4_tag_match").get<bool>();
