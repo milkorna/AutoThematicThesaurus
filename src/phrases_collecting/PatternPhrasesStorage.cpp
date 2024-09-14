@@ -211,8 +211,7 @@ void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
     }
 }
 
-const std::unordered_map<std::string, PatternPhrasesStorage::WordComplexCluster>
-PatternPhrasesStorage::GetClusters() const
+const std::unordered_map<std::string, WordComplexCluster> PatternPhrasesStorage::GetClusters() const
 {
     return clusters;
 }
@@ -440,6 +439,16 @@ void PatternPhrasesStorage::MergeSimilarClusters()
             // Move all wordComplexes from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
+
+            previousCluster.tfidf.size();
+            for (i = 0; i < previousCluster.tfidf.size(); i++) {
+                if (currentCluster.tf[i] > previousCluster.tf[i])
+                    previousCluster.tf[i] = currentCluster.tf[i];
+                if (currentCluster.idf[i] > previousCluster.idf[i])
+                    previousCluster.idf[i] = currentCluster.idf[i];
+                if (currentCluster.tfidf[i] > previousCluster.tfidf[i])
+                    previousCluster.tfidf[i] = currentCluster.tfidf[i];
+            }
 
             previousCluster.tagMatch = currentCluster.tagMatch || previousCluster.tagMatch;
 

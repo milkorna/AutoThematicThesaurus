@@ -17,31 +17,31 @@
 using namespace PhrasesCollectorUtils;
 // using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
 
+// \struct WordComplexCluster
+// \brief This structure represents a cluster of word complexes, including their TF, IDF, and TF-IDF values, as well
+// as FastText vectors.
+struct WordComplexCluster {
+    size_t phraseSize; ///< Size of the phrase.
+    bool tagMatch;     ///< Indicates if the cluster matches a topic.
+    double frequency;
+    double topicRelevance;
+    double centralityScore;
+    std::string key;       ///< String with normalized words.
+    std::string modelName; ///< Name of the model associated with the cluster.
+    std::vector<std::string> lemmas;
+    std::vector<WordComplexPtr> wordComplexes;                        ///< Vector of word complexes in the cluster.
+    std::vector<double> tf;                                           ///< Vector of TF values for the words.
+    std::vector<double> idf;                                          ///< Vector of IDF values for the words.
+    std::vector<double> tfidf;                                        ///< Vector of TF-IDF values for the words.
+    std::vector<WordEmbeddingPtr> wordVectors;                        ///< Vector of FastText vectors for the words.
+    std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
+    std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
+};
+
 // \class PatternPhrasesStorage
 // \brief This class manages the storage and processing of pattern phrases. It includes methods for collecting phrases,
 //        adding word complexes, computing text metrics, and outputting data to text and JSON files.
 class PatternPhrasesStorage {
-    // \struct WordComplexCluster
-    // \brief This structure represents a cluster of word complexes, including their TF, IDF, and TF-IDF values, as well
-    // as FastText vectors.
-    struct WordComplexCluster {
-        size_t phraseSize; ///< Size of the phrase.
-        bool tagMatch;     ///< Indicates if the cluster matches a topic.
-        double frequency;
-        double topicRelevance;
-        double centralityScore;
-        std::string key;       ///< String with normalized words.
-        std::string modelName; ///< Name of the model associated with the cluster.
-        std::vector<std::string> lemmas;
-        std::vector<WordComplexPtr> wordComplexes;                        ///< Vector of word complexes in the cluster.
-        std::vector<double> tf;                                           ///< Vector of TF values for the words.
-        std::vector<double> idf;                                          ///< Vector of IDF values for the words.
-        std::vector<double> tfidf;                                        ///< Vector of TF-IDF values for the words.
-        std::vector<WordEmbeddingPtr> wordVectors;                        ///< Vector of FastText vectors for the words.
-        std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
-        std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
-    };
-
 public:
     // \brief Gets the singleton instance of PatternPhrasesStorage.
     // \return          Reference to the singleton instance of PatternPhrasesStorage.
@@ -88,9 +88,6 @@ public:
     void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false) const;
 
     void LoadWikiWNRelations();
-
-    // \brief Calculates weights for the word complexes (not used).
-    void CalculateWeights();
 
     void EvaluateTermRelevance(const LSA& lsa);
     const std::unordered_map<std::string, WordComplexCluster> GetClusters() const;
