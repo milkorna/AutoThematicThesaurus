@@ -23,13 +23,11 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 1;
+        int textToProcessCount = 315;
         int upperTresholdTopicsNum = 7;
         int coOccurrenceFrequency = textToProcessCount * 5;
         bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
         bool boundariesValidation = true;
-        bool semanticRelations = false;
-        // bool tags = false;             ///< Indicates if tags should be processed.
         float topicsThreshold = 0.6;
         float topicsHyponymThreshold = 0.98;
         float freqTrecholdCoeff = 0.12;
@@ -62,6 +60,8 @@ namespace PhrasesCollectorUtils {
     // \brief Builds the phrase storage for processing.
     void BuildPhraseStorage();
 
+    void BuildTokenizedSentenceCorpus();
+
     // \brief Retrieves the most probable morphological information from a set.
     // \param morphSet      A set of morphological information.
     // \return              The most probable MorphInfo object.
@@ -76,11 +76,6 @@ namespace PhrasesCollectorUtils {
     // \param currFormMorphInfo A set of morphological information of the current form.
     // \return                  True if the property is found, false otherwise.
     bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
-
-    // \brief Checks for misclassifications in the given word form.
-    // \param form          The WordFormPtr form to check.
-    // \return              True if there are misclassifications, false otherwise.
-    bool CheckForMisclassifications(const X::WordFormPtr& form);
 
     // \brief Logs the current simple phrase being processed.
     // \param curSimplePhr  A shared pointer to the current simple phrase.

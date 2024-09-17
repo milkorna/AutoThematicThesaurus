@@ -1,5 +1,6 @@
 #include <PatternPhrasesStorage.h>
 #include <SimplePhrasesCollector.h>
+#include <StringFilters.h>
 
 #include <utility>
 
@@ -46,16 +47,14 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
             return false;
     }
 
-    if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+    if (StringFilters::CheckForMisclassifications(token) || MorphAnanlysisError(token) ||
+        !HaveSp(token->getMorphInfo()))
         return false;
 
     std::string formFromText = token->getWordForm().getRawString();
-    Logger::log("CheckAside", LogLevel::Debug, "FormFromText: " + formFromText);
 
-    if (!comp->getCondition().check(comp->getSPTag(), token)) {
-        Logger::log("CheckAside", LogLevel::Debug, "check failed.");
+    if (!comp->getCondition().check(comp->getSPTag(), token))
         return false;
-    }
     UpdateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;
@@ -70,7 +69,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
             if (CheckAside(wc, model, compIndex, nextTokenInd, correct, isLeft)) {
                 return true;
             } else {
-                Logger::log("Recursive checkAside", LogLevel::Debug, "Failed, stop recursive.");
                 return false;
             }
         }
@@ -81,7 +79,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 
 void SimplePhrasesCollector::Collect(Process& process)
 {
-    Logger::log("Collect", LogLevel::Info, "Starting simple models collection process.");
     const auto& simplePatterns = manager.getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
@@ -98,16 +95,14 @@ void SimplePhrasesCollector::Collect(Process& process)
                 continue;
         }
 
-        Logger::log("Collect", LogLevel::Info, "tokenInd = " + std::to_string(tokenInd));
-
-        if (CheckForMisclassifications(token) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+        if (StringFilters::CheckForMisclassifications(token) || MorphAnanlysisError(token) ||
+            !HaveSp(token->getMorphInfo()))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))
             continue;
 
         for (const auto& [name, model] : simplePatterns) {
-            Logger::log("Collect", LogLevel::Debug, "Current simple model: " + model->getForm());
 
             if (!HeadCheck(model, token))
                 continue;

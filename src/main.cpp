@@ -1,10 +1,12 @@
 #include <Component.h>
 #include <Embedding.h>
+#include <LSA.h>
 #include <Logger.h>
 #include <OutputRedirector.h>
 #include <PatternPhrasesStorage.h>
 #include <SemanticRelations.h>
 #include <TextCorpus.h>
+#include <TokenizedSentenceCorpus.h>
 
 #include <chrono>
 #include <filesystem>
@@ -45,6 +47,51 @@ int main()
     //     storage.MergeSimilarClusters();
     //     storage.ComputeTextMetrics();
     //     storage.OutputClustersToJsonFile(jsonFilePath.string());
+    // }
+
+    // load hyperonyms and hyponyms for lemmas from WikiWordNet
+    // {
+    //     auto& corpus = TextCorpus::GetCorpus();
+    //     corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+    //     auto& storage = PatternPhrasesStorage::GetStorage();
+    //     storage.LoadStorageFromFile(jsonFilePath.string());
+    //     storage.LoadWikiWNRelations();
+    //     storage.OutputClustersToJsonFile(jsonFilePath);
+    // }
+
+    // build and save a tokenized sentence corpus based on the available text data
+    // this step tokenizes sentences and prepares them for LSA analysis
+    // {
+    //     BuildTokenizedSentenceCorpus();
+    // }
+
+    // load previously saved clusters and sentence data, perform LSA analysis, and update cluster metrics with topic
+    // relevance and centrality score
+    // {
+    //     auto& storage = PatternPhrasesStorage::GetStorage();
+    //     storage.LoadStorageFromFile(jsonFilePath.string());
+
+    //     auto& sentences = TokenizedSentenceCorpus::GetCorpus();
+    //     sentences.LoadFromFile((repoPath / "my_data" / "sentences.json").string());
+    //     std::cout << "Sentences loaded successfully. Total sentences: " << sentences.totalSentences << std::endl;
+    //     LSA lsa(sentences);
+    //     std::cout << "Starting LSA analysis..." << std::endl;
+    //     lsa.PerformAnalysis(false);
+    //     MatrixXd U = lsa.GetU();
+    //     MatrixXd Sigma = lsa.GetSigma();
+    //     MatrixXd V = lsa.GetV();
+    //     std::vector<std::string> words = lsa.GetWords();
+
+    //     std::cout << "LSA analysis completed successfully!" << std::endl;
+    //     std::cout << "Matrix U size: " << U.rows() << "x" << U.cols() << std::endl;
+    //     std::cout << "Matrix Sigma size: " << Sigma.rows() << "x" << Sigma.cols() << std::endl;
+    //     std::cout << "Matrix V size: " << V.rows() << "x" << V.cols() << std::endl;
+
+    //     std::cout << "\nAnalyzing top topics..." << std::endl;
+    //     lsa.AnalyzeTopics(5, 30);
+
+    //     storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
+    //     storage.OutputClustersToJsonFile(jsonFilePath);
     // }
 
     // getting ready-made results without waiting for intermediate steps

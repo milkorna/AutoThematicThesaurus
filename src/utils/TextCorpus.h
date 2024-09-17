@@ -1,6 +1,7 @@
 #ifndef TEXT_CORPUS_H
 #define TEXT_CORPUS_H
 
+#include <StringFilters.h>
 #include <boost/algorithm/string.hpp>
 #include <cmath>
 #include <fasttext.h>
@@ -8,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 #include <Eigen/Dense>
 #include <boost/algorithm/string.hpp>
@@ -111,39 +111,5 @@ private:
     int totalTexts = 0;
     int totalDocuments = 0; ///< Total number of documents (filenames) in the corpus.
 };
-
-class LSA {
-public:
-    // Constructor to perform Singular Value Decomposition (SVD) on the term-document matrix.
-    LSA(const MatrixXd& termDocumentMatrix)
-    {
-        JacobiSVD<MatrixXd> svd(termDocumentMatrix, ComputeThinU | ComputeThinV);
-        U = svd.matrixU();
-        V = svd.matrixV();
-        S = svd.singularValues();
-    }
-
-    // Constructor to perform Singular Value Decomposition (SVD) on the term-document matrix.
-    MatrixXd getTermMatrix(int k) const
-    {
-        return U.leftCols(k) * S.head(k).asDiagonal();
-    }
-
-    // Returns the document matrix after dimensionality reduction.
-    MatrixXd getDocumentMatrix(int k) const
-    {
-        return S.head(k).asDiagonal() * V.leftCols(k).transpose();
-    }
-
-private:
-    MatrixXd U; // Matrix of terms
-    MatrixXd V; // Matrix of documents
-    VectorXd S; // Vector of singular values
-};
-
-// Builds a term-document matrix from the TextCorpus.
-// Each row of the matrix corresponds to a term, and each column corresponds to a document (filename).
-// The values in the matrix represent the frequency of each term in the respective document.
-MatrixXd BuildTermDocumentMatrix(const TextCorpus& corpus);
 
 #endif // TEXT_CORPUS_H

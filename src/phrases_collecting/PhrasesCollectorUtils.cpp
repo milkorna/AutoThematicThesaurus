@@ -17,6 +17,8 @@
 #include <GrammarPatternManager.h>
 #include <PatternPhrasesStorage.h>
 #include <PhrasesCollectorUtils.h>
+#include <StringFilters.h>
+#include <TokenizedSentenceCorpus.h>
 
 #include <cctype>
 #include <nlohmann/json.hpp>
@@ -84,9 +86,6 @@ namespace PhrasesCollectorUtils {
         SingleWordDisambiguate disamb;
         TFJoinedModel joiner;
 
-        auto& storage = PatternPhrasesStorage::GetStorage();
-        auto& corpus = TextCorpus::GetCorpus();
-
         do {
             std::string sentence;
             ssplitter.readSentence(sentence);
@@ -130,6 +129,62 @@ namespace PhrasesCollectorUtils {
             }
 
             TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
+        } catch (const std::exception& e) {
+            Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+        } catch (...) {
+            Logger::log("", LogLevel::Error, "Unknown exception caught");
+        }
+    }
+
+    void BuildTokenizedSentenceCorpus()
+    {
+        fs::path repoPath = fs::current_path();
+        auto& sentences = TokenizedSentenceCorpus::GetCorpus();
+
+        try {
+            std::vector<fs::path> files_to_process = GetFilesToProcess();
+
+            for (unsigned int i = 0; i < files_to_process.size(); ++i) {
+                size_t docNum = ParserUtils::extractNumberFromPath(files_to_process[i].string());
+                size_t sentNum = 0;
+                Tokenizer tok;
+                TFMorphemicSplitter morphemic_splitter;
+                std::ifstream input = files_to_process[i];
+                SentenceSplitter ssplitter(input);
+                Processor analyzer;
+                SingleWordDisambiguate disamb;
+                TFJoinedModel joiner;
+
+                do {
+                    std::string data;
+                    ssplitter.readSentence(data);
+                    if (data.empty())
+                        continue;
+
+                    std::vector<TokenPtr> tokens = tok.analyze(UniString(data));
+                    std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
+
+                    RemoveSeparatorTokens(forms);
+                    disamb.disambiguate(forms);
+                    joiner.disambiguateAndMorphemicSplit(forms);
+
+                    std::string normalizedData;
+
+                    for (auto& form : forms) {
+                        morphemic_splitter.split(form);
+                        if (form->getTokenType() != TokenTypeTag::WORD)
+                            continue;
+                        normalizedData.append(GetLemma(form) + " ");
+                    }
+                    if (!normalizedData.empty()) {
+                        normalizedData.pop_back();
+                        sentences.AddSentence(docNum, sentNum, data, normalizedData);
+                    }
+                    sentNum++;
+                } while (!ssplitter.eof());
+            }
+
+            sentences.SaveToFile((repoPath / "my_data" / "sentences.json").string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -307,29 +362,6 @@ namespace PhrasesCollectorUtils {
             wc->pos.end = asidePhrase->pos.end;
             wc->textForm.append(" " + asidePhrase->textForm);
         }
-    }
-
-    bool CheckForMisclassifications(const WordFormPtr& form)
-    {
-        std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
-                                                ',', '-',  '.', '/', ':', ';', '<',  '=', '>', '?', '@',
-                                                '[', '\\', ']', '^', '_', '`', '{',  '|', '}', '~'};
-
-        try {
-            const auto str = form->getWordForm().getRawString();
-
-            for (char c : str) {
-                if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
-                    return false;
-            }
-            return true;
-        } catch (const std::exception& e) {
-            return false;
-        } catch (...) {
-            return false;
-        }
-
-        return true;
     }
 
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)

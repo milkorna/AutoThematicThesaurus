@@ -1,10 +1,4 @@
 #include <TextCorpus.h>
-#include <regex>
-#include <unicode/uchar.h>
-#include <unicode/unistr.h>
-#include <unicode/uscript.h>
-#include <unicode/ustream.h>
-#include <unicode/utypes.h>
 
 std::string TextCorpus::ExtractTitleFromFilename(const std::string& filename) const
 {
@@ -171,94 +165,19 @@ json TextCorpus::Serialize() const
     return j;
 }
 
-// This function checks whether a given text contains any unwanted characters.
-// The function uses ICU to handle Unicode strings and to check properties of each character.
-bool ContainsUnwantedCharacters(const std::string& text)
-{
-    // Convert the input UTF-8 string to an ICU UnicodeString for processing
-    icu::UnicodeString unicodeText = icu::UnicodeString::fromUTF8(text);
-
-    // Iterate through each character in the UnicodeString
-    for (int32_t i = 0; i < unicodeText.length(); ++i) {
-        UChar32 codepoint = unicodeText.char32At(i);
-
-        // Check if the character is a digit
-        if (u_isdigit(codepoint)) {
-            return true;
-        }
-
-        // Check if the character is an emoji using the extended pictographic property
-        if (u_hasBinaryProperty(codepoint, UCHAR_EXTENDED_PICTOGRAPHIC)) {
-            return true;
-        }
-
-        // Check if the character is a Chinese ideograph (Han script)
-        if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_HAN) {
-            return true;
-        }
-
-        // Check if the character is part of the Devanagari script
-        if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_DEVANAGARI) {
-            return true;
-        }
-
-        // Check if the character is part of the Arabic script
-        if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_ARABIC) {
-            return true;
-        }
-
-        // Check if the character is a mathematical or technical symbol
-        if (u_charType(codepoint) == U_MATH_SYMBOL || u_charType(codepoint) == U_OTHER_SYMBOL) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// This function checks whether a given key should be filtered out based on various conditions
-bool ShouldFilterOut(const std::string& key)
-{
-    // Elements that contain %, *, _, #, or $
-    if (key.find('%') != std::string::npos || key.find('*') != std::string::npos ||
-        key.find('_') != std::string::npos || key.find('#') != std::string::npos ||
-        key.find('$') != std::string::npos) {
-        return true;
-    }
-
-    // Elements that consist entirely of punctuation or non-alphabetic symbols, excluding Russian letters
-    if (std::regex_match(key, std::regex("^[^\\wа-яА-ЯёЁa-zA-Z¨]+$"))) {
-
-        return true;
-    }
-
-    // Elements consisting of only English letters, punctuation, and digits and are longer than 25 characters
-    if (key.size() > 25 && std::regex_match(key, std::regex("^[a-zA-Z0-9[:punct:]]+$"))) {
-        return true;
-    }
-
-    // Use the ContainsUnwantedCharacters function to check for other unwanted characters
-    if (ContainsUnwantedCharacters(key)) {
-        return true;
-    }
-
-    // If none of the conditions match, the key is not filtered out
-    return false;
-}
-
 void TextCorpus::Deserialize(const json& j)
 {
     try {
         // Filter and deserialize documentFrequencys
         for (const auto& item : j.at("3_documentFrequency").items()) {
-            if (!ShouldFilterOut(item.key())) {
+            if (!StringFilters::ShouldFilterOut(item.key())) {
                 documentFrequency[item.key()] = item.value();
             }
         }
 
         // Filter and deserialize wordFrequency
         for (const auto& item : j.at("4_wordFrequency").items()) {
-            if (!ShouldFilterOut(item.key())) {
+            if (!StringFilters::ShouldFilterOut(item.key())) {
                 wordFrequency[item.key()] = item.value();
             }
         }
@@ -310,54 +229,4 @@ void TextCorpus::LoadCorpusFromFile(const std::string& filename)
     } else {
         std::cerr << "Failed to open file: " << filename << std::endl;
     }
-}
-
-// Constructs the term-document matrix from the TextCorpus.
-// Each row of the matrix corresponds to a term, and each column corresponds to a document.
-// The values in the matrix represent the frequency of each term in each document.
-MatrixXd BuildTermDocumentMatrix(const TextCorpus& corpus)
-{
-    const auto& texts = corpus.GetTexts();
-    const auto& wordFrequency = corpus.GetWordFrequencies();
-
-    std::vector<std::string> terms;
-    std::unordered_map<std::string, int> termIndex;
-    int termCount = 0;
-
-    // Map each term to a row index in the matrix
-    for (const auto& pair : wordFrequency) {
-        termIndex[pair.first] = termCount++;
-        terms.push_back(pair.first);
-    }
-
-    // Initialize the term-document matrix with the appropriate dimensions
-    MatrixXd termDocumentMatrix(termCount, corpus.GetTotalDocuments());
-
-    // Fill the matrix with term frequencies for each document
-    int docId = 0;
-    for (const auto& doc : texts) {
-        std::unordered_map<std::string, int> termDocFrequency;
-
-        // Iterate over each paragraph (text) in the document
-        for (const auto& text : doc.second) {
-            std::vector<std::string> words;
-            boost::split(words, text, boost::is_any_of(" ")); // Split text into words
-
-            // Increment the frequency of each term in the current document
-            for (const auto& word : words) {
-                if (termIndex.find(word) != termIndex.end()) {
-                    termDocFrequency[word]++;
-                }
-            }
-        }
-
-        // Fill the term-document matrix with the calculated frequencies
-        for (const auto& termFreq : termDocFrequency) {
-            int row = termIndex[termFreq.first];
-            termDocumentMatrix(row, docId) = termFreq.second;
-        }
-        docId++;
-    }
-
-    return termDocumentMatrix;
 }

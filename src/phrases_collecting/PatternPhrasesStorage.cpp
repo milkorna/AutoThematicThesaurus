@@ -99,9 +99,9 @@ void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
                         lemmHyponyms[lemma] = {};
                     }
 
-                    WordComplexCluster newCluster = {
-                        wc->lemmas.size(), 1.0,           false,       key, wc->modelName, lemmas, {wc}, {}, {}, {},
-                        lemVectors,        lemmHypernyms, lemmHyponyms};
+                    WordComplexCluster newCluster = {wc->lemmas.size(), false,         1.0,         0.0, 0.0, key,
+                                                     wc->modelName,     lemmas,        {wc},        {},  {},  {},
+                                                     lemVectors,        lemmHypernyms, lemmHyponyms};
                     clusters[key] = newCluster;
                 }
             } catch (const std::exception& e) {
@@ -128,38 +128,44 @@ void PatternPhrasesStorage::Deserialize(const json& j)
 
             WordComplexCluster cluster;
             cluster.key = key;
-            cluster.phraseSize = obj.at("Phrase Size").get<size_t>();
-            cluster.m_weight = obj.at("Weight").get<double>();
-            cluster.topicMatch = obj.at("Topic Match").get<bool>();
-            cluster.modelName = obj.at("Model Name").get<std::string>();
+            cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
+            cluster.frequency = obj.at("1_frequency").get<double>();
+            cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
+            cluster.centralityScore = obj.at("3_centrality_score").get<double>();
+            cluster.tagMatch = obj.at("4_tag_match").get<bool>();
+            cluster.modelName = obj.at("5_model_name").get<std::string>();
 
             // Deserialize Lemmas
-            const json& lemmas_json = obj.at("Lemmas");
+            const json& lemmas_json = obj.at("6_lemmas");
             for (const auto& lemma_obj : lemmas_json) {
-                cluster.lemmas.push_back(lemma_obj.at("Lemma").get<std::string>());
-                cluster.tf.push_back(lemma_obj.at("TF").get<double>());
-                cluster.idf.push_back(lemma_obj.at("IDF").get<double>());
-                cluster.tfidf.push_back(lemma_obj.at("TF-IDF").get<double>());
-
-                std::string lemma = lemma_obj.at("Lemma").get<std::string>();
-                cluster.hypernyms[lemma] = lemma_obj.at("Hypernyms").get<std::set<std::string>>();
-                cluster.hyponyms[lemma] = lemma_obj.at("Hyponyms").get<std::set<std::string>>();
+                std::string lemmaStr = "";
+                auto lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
+                size_t pos = lemmaStrNumbered.find('_');
+                if (pos != std::string::npos) {
+                    lemmaStr = lemmaStrNumbered.substr(pos + 1);
+                }
+                cluster.lemmas.push_back(lemmaStr);
+                cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
+                cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
+                cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
+                cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
+                cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
 
                 // Add word embedding (assuming you need to create an embedding for each lemma)
-                cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemma));
+                cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
             }
 
             // Deserialize WordComplexes (Phrases in your JSON)
-            const json& phrases_json = obj.at("Phrases");
+            const json& phrases_json = obj.at("8_phrases");
             for (const auto& phrase_obj : phrases_json) {
                 WordComplexPtr wc = std::make_shared<WordComplex>();
-                wc->textForm = phrase_obj.at("Text Form").get<std::string>();
+                wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
                 wc->modelName = cluster.modelName;
 
-                wc->pos.docNum = phrase_obj.at("Position").at("DocNum").get<size_t>();
-                wc->pos.sentNum = phrase_obj.at("Position").at("SentNum").get<size_t>();
-                wc->pos.start = phrase_obj.at("Position").at("Start").get<size_t>();
-                wc->pos.end = phrase_obj.at("Position").at("End").get<size_t>();
+                wc->pos.start = phrase_obj.at("1_position").at("0_start").get<size_t>();
+                wc->pos.end = phrase_obj.at("1_position").at("1_end").get<size_t>();
+                wc->pos.docNum = phrase_obj.at("1_position").at("2_doc_num").get<size_t>();
+                wc->pos.sentNum = phrase_obj.at("1_position").at("3_sent_num").get<size_t>();
 
                 wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
 
@@ -187,6 +193,27 @@ void PatternPhrasesStorage::LoadStorageFromFile(const std::string& filename)
     } else {
         std::cerr << "Failed to open file: " << filename << std::endl;
     }
+}
+
+void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
+{
+    const auto& topics = lsa.GetTopics();
+    for (auto& [key, cluster] : clusters) {
+        int relevantCount = 0;
+        for (const auto& topic : topics) {
+            for (const auto& word : topic.second) {
+                if (std::find(cluster.lemmas.begin(), cluster.lemmas.end(), word) != cluster.lemmas.end()) {
+                    relevantCount++;
+                }
+            }
+        }
+        cluster.topicRelevance = static_cast<double>(relevantCount) / topics.size();
+    }
+}
+
+const std::unordered_map<std::string, WordComplexCluster> PatternPhrasesStorage::GetClusters() const
+{
+    return clusters;
 }
 
 void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
@@ -223,28 +250,6 @@ void PatternPhrasesStorage::FinalizeDocumentProcessing()
         corpus.UpdateDocumentFrequency(lemma);
     }
     uniqueLemmasInDoc.clear();
-}
-
-// not used
-void PatternPhrasesStorage::CalculateWeights()
-{
-    std::unordered_map<std::string, int> substringCount;
-
-    for (const auto& [key, _] : clusters) {
-        substringCount[key] = 0;
-        for (const auto& [otherKey, __] : clusters) {
-            if (key != otherKey && otherKey.find(key) != std::string::npos) {
-                substringCount[key]++;
-            }
-        }
-    }
-
-    for (auto& [key, wc] : clusters) {
-        int count = substringCount[key] + 1;
-        if (wc.phraseSize > 2) {
-            wc.m_weight /= count;
-        }
-    }
 }
 
 // void PatternPhrasesStorage::AddSemanticRelationsToCluster(WordComplexCluster& cluster)
@@ -284,6 +289,76 @@ void ApplyTopicFrequencyPenalty(std::unordered_map<std::string, std::vector<std:
             std::remove_if(pair.second.begin(), pair.second.end(),
                            [&](const std::string& topic) { return topicFrequency[topic] > frequencyThreshold; }),
             pair.second.end());
+    }
+}
+
+double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& cluster,
+                                                      const std::unordered_map<int, std::vector<std::string>>& topics)
+{
+    double relevanceScore = 0.0;
+
+    int matches = 0;
+    for (const auto& lemma : cluster.lemmas) {
+        for (const auto& topic : topics) {
+            if (std::find(topic.second.begin(), topic.second.end(), lemma) != topic.second.end()) {
+                matches++;
+                break;
+            }
+        }
+    }
+
+    if (!cluster.lemmas.empty()) {
+        relevanceScore = static_cast<double>(matches) / cluster.lemmas.size();
+    }
+
+    return relevanceScore;
+}
+
+double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
+                                                  const std::vector<std::string>& words)
+{
+    double centralityScore = 0.0;
+
+    std::vector<int> termIndices;
+    for (const auto& lemma : cluster.lemmas) {
+        auto it = std::find(words.begin(), words.end(), lemma);
+        if (it != words.end()) {
+            termIndices.push_back(std::distance(words.begin(), it));
+        }
+    }
+
+    if (!termIndices.empty()) {
+        std::vector<double> similarities;
+        for (size_t i = 0; i < termIndices.size(); ++i) {
+            for (size_t j = i + 1; j < termIndices.size(); ++j) {
+                int idx1 = termIndices[i];
+                int idx2 = termIndices[j];
+
+                VectorXd vec1 = U.row(idx1);
+                VectorXd vec2 = U.row(idx2);
+
+                double cosSim = vec1.dot(vec2) / (vec1.norm() * vec2.norm());
+                similarities.push_back(cosSim);
+            }
+        }
+
+        if (!similarities.empty()) {
+            centralityScore = std::accumulate(similarities.begin(), similarities.end(), 0.0) / similarities.size();
+        }
+    }
+
+    return centralityScore;
+}
+
+void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
+                                                 const std::unordered_map<int, std::vector<std::string>>& topics)
+{
+    for (auto& clusterPair : clusters) {
+        auto& cluster = clusterPair.second;
+
+        cluster.topicRelevance = CalculateTopicRelevance(cluster, topics);
+
+        cluster.centralityScore = CalculateCentrality(cluster, U, words);
     }
 }
 
@@ -337,7 +412,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
             if (iter->second.size() > 0 && iter->second.size() < g_options.upperTresholdTopicsNum) {
-                cluster.topicMatch = true;
+                cluster.tagMatch = true;
             }
         }
     }
@@ -360,12 +435,22 @@ void PatternPhrasesStorage::MergeSimilarClusters()
         std::string& currentKey = sortedKeys[i];
         std::string& previousKey = sortedKeys[i - 1];
 
-        if (AreKeysSimilar(previousKey, currentKey)) {
+        if (AreKeysSimilar(previousKey, currentKey) || AreKeysSimilar(previousKey, currentKey, 2, 4, true)) {
             // Move all wordComplexes from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
 
-            previousCluster.topicMatch = currentCluster.topicMatch || previousCluster.topicMatch;
+            previousCluster.tfidf.size();
+            for (i = 0; i < previousCluster.tfidf.size(); i++) {
+                if (currentCluster.tf[i] > previousCluster.tf[i])
+                    previousCluster.tf[i] = currentCluster.tf[i];
+                if (currentCluster.idf[i] > previousCluster.idf[i])
+                    previousCluster.idf[i] = currentCluster.idf[i];
+                if (currentCluster.tfidf[i] > previousCluster.tfidf[i])
+                    previousCluster.tfidf[i] = currentCluster.tfidf[i];
+            }
+
+            previousCluster.tagMatch = currentCluster.tagMatch || previousCluster.tagMatch;
 
             previousCluster.wordComplexes.insert(previousCluster.wordComplexes.end(),
                                                  currentCluster.wordComplexes.begin(),
@@ -377,7 +462,8 @@ void PatternPhrasesStorage::MergeSimilarClusters()
     }
 }
 
-bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff)
+bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff,
+                                           size_t endLength, bool CheckFirstOnly)
 {
     // Split keys into words
     std::istringstream stream1(key1);
@@ -400,46 +486,75 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
     }
 
     size_t diffCount = 0;
+    bool firstWordChecked = false;
 
     // Compare the beginnings and endings of each word
     for (size_t i = 0; i < words1.size(); ++i) {
-        if ((words1[i].length() <= 8 || words2[i].length() <= 8) && words1[i] != words2[i])
+        if ((words1[i].length() <= 8 || words2[i].length() <= 8) && words1[i] != words2[i]) {
             return false;
-        // Extract the initial parts of the words (everything except the last two characters)
-        std::string start1 = (words1[i].length() > 2) ? words1[i].substr(0, words1[i].length() - 2) : "";
-        std::string start2 = (words2[i].length() > 2) ? words2[i].substr(0, words2[i].length() - 2) : "";
+        }
 
+        // Extract the initial parts of the words (everything except the last few characters)
+        std::string start1 =
+            (words1[i].length() > endLength) ? words1[i].substr(0, words1[i].length() - endLength) : "";
+        std::string start2 =
+            (words2[i].length() > endLength) ? words2[i].substr(0, words2[i].length() - endLength) : "";
+
+        // Check if the difference in length between the initial parts exceeds maxDiff
         if (std::abs(static_cast<long>(start1.length()) - static_cast<long>(start2.length())) >= maxDiff) {
             return false;
         }
 
-        // Handle the difference in the lengths of the initial parts
+        // Adjust the initial parts to be the same length
         if (start1.length() != start2.length()) {
             if (start1.length() > start2.length()) {
-                // Trim start1 to the length of start2
                 start1 = start1.substr(0, start2.length());
             } else {
-                // Trim start2 to the length of start1
                 start2 = start2.substr(0, start1.length());
             }
         }
-        if (start1.empty() || start2.empty())
+
+        // Skip comparison if either start is empty
+        if (start1.empty() || start2.empty()) {
             continue;
+        }
 
         // Compare the initial parts of the words
         if (start1 != start2) {
-            return false; // If the initial parts of the words do not match after trimming, the keys are different
+            // If initial parts do not match, keys are not similar
+            return false;
         }
 
-        // Extract the endings of the words (the last two characters)
-        std::string end1 = (words1[i].length() >= 2) ? words1[i].substr(words1[i].length() - 2) : words1[i];
-        std::string end2 = (words2[i].length() >= 2) ? words2[i].substr(words2[i].length() - 2) : words2[i];
+        // Extract the endings of the words
+        std::string end1 =
+            (words1[i].length() >= endLength) ? words1[i].substr(words1[i].length() - endLength) : words1[i];
+        std::string end2 =
+            (words2[i].length() >= endLength) ? words2[i].substr(words2[i].length() - endLength) : words2[i];
 
         // Compare the endings of the words
         if (end1 != end2) {
             ++diffCount;
-            if (diffCount > maxDiff) {
-                return false; // Exceeded the allowed number of differences
+
+            // If CheckFirstOnly is true, only check the first word for differences
+            if (CheckFirstOnly) {
+                // If the first word has been checked and the difference is not zero, subsequent words must match
+                // exactly
+                firstWordChecked = true;
+                if (diffCount > maxDiff) {
+                    return false;
+                }
+            } else {
+                // If not checking the first word only, ensure differences don't exceed maxDiff
+                if (diffCount > maxDiff) {
+                    return false;
+                }
+            }
+        }
+
+        // If CheckFirstOnly is true and the first word has been checked with differences, ensure remaining words match
+        if (CheckFirstOnly && firstWordChecked && i > 0) {
+            if (words1[i] != words2[i]) {
+                return false;
             }
         }
     }
@@ -448,7 +563,51 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
     return diffCount <= maxDiff;
 }
 
-void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename) const
+void PatternPhrasesStorage::LoadWikiWNRelations()
+{
+    for (auto& clusterPair : clusters) {
+        WordComplexCluster& cluster = clusterPair.second;
+        std::cout << cluster.key << std::endl;
+
+        for (auto lemma : cluster.lemmas) {
+
+            if (hypernymCache.find(lemma) != hypernymCache.end()) {
+                cluster.hypernyms[lemma] = hypernymCache[lemma];
+            } else {
+                auto hypernyms = semanticDB.GetRelations(lemma, "hypernym");
+                hypernymCache[lemma] = hypernyms;
+                cluster.hypernyms[lemma] = hypernyms;
+            }
+
+            if (hyponymCache.find(lemma) != hyponymCache.end()) {
+                cluster.hyponyms[lemma] = hyponymCache[lemma];
+            } else {
+                auto hyponyms = semanticDB.GetRelations(lemma, "hyponym");
+                std::set<std::string> validHyponyms;
+                if (hyponyms.size() < 150) {
+                    for (const auto& hyp : hyponyms) {
+                        const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
+                        const auto& topicVectors = GetTopicVectors();
+
+                        for (const auto& topicVecPair : topicVectors) {
+                            const std::string& topicWord = topicVecPair.first;
+                            const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
+
+                            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+                            if (cosineSim > g_options.topicsHyponymThreshold) {
+                                validHyponyms.insert(hyp);
+                            }
+                        }
+                    }
+                }
+                hyponymCache[lemma] = validHyponyms;
+                cluster.hyponyms[lemma] = validHyponyms;
+            }
+        }
+    }
+}
+
+void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters) const
 {
     json j;
 
@@ -460,24 +619,31 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
 
     std::sort(keys.begin(), keys.end());
 
+    json* previousClusterJson = nullptr;
+    std::string previousKey;
+
     for (const auto& key : keys) {
         const auto& cluster = clusters.at(key);
+        double phrasesCount = static_cast<double>(cluster.wordComplexes.size());
 
         json clusterJson;
-        clusterJson["Phrase Size"] = cluster.phraseSize;
-        clusterJson["Weight"] = cluster.m_weight;
-        clusterJson["Topic Match"] = cluster.topicMatch;
-        clusterJson["Model Name"] = cluster.modelName;
+        clusterJson["0_phrase_size"] = cluster.phraseSize;
+        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(g_options.textToProcessCount);
+        clusterJson["2_topic_relevance"] = cluster.topicRelevance;
+        clusterJson["3_centrality_score"] = cluster.centralityScore;
+        clusterJson["4_tag_match"] = cluster.tagMatch;
+        clusterJson["5_model_name"] = cluster.modelName;
 
         std::vector<json> lemmasJson;
         for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
             json lemmaJson;
-            lemmaJson["Lemma"] = cluster.lemmas[i];
-            lemmaJson["TF"] = cluster.tf[i];
-            lemmaJson["IDF"] = cluster.idf[i];
-            lemmaJson["TF-IDF"] = cluster.tfidf[i];
-            lemmaJson["Hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
-            lemmaJson["Hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
+            std::string lemmaStrNumbered = std::to_string(i) + "_" + cluster.lemmas[i];
+            lemmaJson["0_lemma"] = lemmaStrNumbered;
+            lemmaJson["1_tf"] = cluster.tf[i];
+            lemmaJson["2_idf"] = cluster.idf[i];
+            lemmaJson["3_tf-idf"] = cluster.tfidf[i];
+            lemmaJson["4_hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
+            lemmaJson["5_hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
 
             // json coOccurrencesJson = nlohmann::json::object();
             // auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
@@ -505,34 +671,31 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             // lemmaJson["Vector"] = vectorValues;
             lemmasJson.push_back(lemmaJson);
         }
-        clusterJson["Lemmas"] = lemmasJson;
+        clusterJson["6_lemmas"] = lemmasJson;
 
-        clusterJson["Word Complexes"] = cluster.wordComplexes.size();
+        clusterJson["7_phrases_count"] = phrasesCount;
         std::vector<json> phrases;
         for (const auto& wordComplex : cluster.wordComplexes) {
             json phraseJson;
-            phraseJson["Text Form"] = wordComplex->textForm;
-            phraseJson["Position"] = {{"Start", wordComplex->pos.start},
-                                      {"End", wordComplex->pos.end},
-                                      {"DocNum", wordComplex->pos.docNum},
-                                      {"SentNum", wordComplex->pos.sentNum}};
+            phraseJson["0_text_form"] = wordComplex->textForm;
+            phraseJson["1_position"] = {{"0_start", wordComplex->pos.start},
+                                        {"1_end", wordComplex->pos.end},
+                                        {"2_doc_num", wordComplex->pos.docNum},
+                                        {"3_sent_num", wordComplex->pos.sentNum}};
             phrases.push_back(phraseJson);
         }
-        clusterJson["Phrases"] = phrases;
+        clusterJson["8_phrases"] = phrases;
 
-        // json hypernymsJson = nlohmann::json::object();
-        // for (const auto& synPair : cluster.hypernyms) {
-        //     hypernymsJson[synPair.first] = synPair.second;
-        // }
-        // clusterJson["Hypernyms"] = hypernymsJson;
-
-        // json hyponymsJson = nlohmann::json::object();
-        // for (const auto& synPair : cluster.hyponyms) {
-        //     hyponymsJson[synPair.first] = synPair.second;
-        // }
-        // clusterJson["Hyponyms"] = hyponymsJson;
-
-        j[key] = clusterJson;
+        // If mergeNestedClusters is true, check for substring relation with the previous key
+        if (mergeNestedClusters && previousClusterJson && key.find(previousKey) == 0) {
+            // If the key starts with the previous key, treat it as a nested cluster
+            (*previousClusterJson)["9_nested_clusters"].push_back(clusterJson);
+        } else {
+            // Save current clusterJson for potential nesting in the next iteration
+            j[key] = clusterJson;
+            previousClusterJson = &j[key];
+            previousKey = key;
+        }
     }
 
     std::ofstream outFile(filename);

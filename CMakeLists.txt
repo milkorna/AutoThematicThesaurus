@@ -31,6 +31,9 @@ include_directories(
 )
 
 set(SOURCE_FILES
+src/TermsStorage.h
+src/TermsStorage.cpp
+
 src/grammar_component/Component.h
 src/grammar_component/GrammarCondition.cpp
 src/grammar_component/GrammarCondition.h
@@ -66,6 +69,16 @@ src/utils/TextCorpus.cpp
 src/utils/TextCorpus.h
 src/utils/Logger.cpp
 src/utils/Logger.h
+src/utils/TokenizedSentenceCorpus.cpp
+src/utils/TokenizedSentenceCorpus.h
+
+
+src/utils/StringFilters.cpp
+src/utils/StringFilters.h
+src/utils/LSA.h
+src/utils/LSA.cpp
+src/utils/TermLSA.h
+src/utils/TermLSA.cpp
 )
 
 include_directories(src)
