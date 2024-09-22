@@ -100,7 +100,8 @@ int main()
         corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
         auto& storage = PatternPhrasesStorage::GetStorage();
         storage.LoadStorageFromFile(jsonFilePath.string());
-        storage.OutputClustersToJsonFile(jsonFilePath);
+        storage.CollectTerms();
+        // storage.OutputClustersToJsonFile(jsonFilePath);
     }
 
     auto end = std::chrono::high_resolution_clock::now();

@@ -36,6 +36,8 @@ struct WordComplexCluster {
     std::vector<WordEmbeddingPtr> wordVectors;                        ///< Vector of FastText vectors for the words.
     std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
     std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
+    Sentence context;
+    bool is_term;
 };
 
 // \class PatternPhrasesStorage
@@ -92,6 +94,8 @@ public:
     void EvaluateTermRelevance(const LSA& lsa);
     const std::unordered_map<std::string, WordComplexCluster> GetClusters() const;
 
+    void CollectTerms();
+
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
@@ -102,6 +106,8 @@ private:
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
     std::unordered_map<std::string, std::set<std::string>> hyponymCache;
+
+    std::unordered_set<std::string> clustersToInclude;
 
     // \brief Default constructor.
     PatternPhrasesStorage()

@@ -31,8 +31,6 @@ include_directories(
 )
 
 set(SOURCE_FILES
-src/TermsStorage.h
-src/TermsStorage.cpp
 
 src/grammar_component/Component.h
 src/grammar_component/GrammarCondition.cpp
