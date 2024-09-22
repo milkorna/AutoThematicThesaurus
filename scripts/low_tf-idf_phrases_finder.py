@@ -17,14 +17,15 @@ def find_phrases_with_low_tfidf(file_path, tfidf_threshold):
         # Check conditions for phrases_count and topic_relevance
         phrases_count = data.get("7_phrases_count", 0)
         topic_relevance = data.get("2_topic_relevance", 0)
-        tag_match = True if data.get("4_tag_match", False) == "true" else False
 
-        # Otherwise, check lemmas for low TF-IDF
         for lemma in data.get("6_lemmas", []):
             # Check if the TF-IDF value is below the specified threshold
             tfidf_value = lemma.get("3_tf-idf", 0)
-            if tfidf_value < tfidf_threshold and (not (phrases_count > 1 or topic_relevance > 0.4) or tag_match):
-                matching_phrases.append(phrase)
+            if tfidf_value < tfidf_threshold:
+                if phrases_count > 1 or topic_relevance > 0.4:
+                    matching_phrases.append(f"#{phrase}")
+                else:
+                    matching_phrases.append(phrase)
                 break  # Stop further checks once a low TF-IDF lemma is found in the phrase
 
     return matching_phrases
@@ -34,7 +35,7 @@ tfidf_threshold = float(input("Enter TF-IDF threshold value: "))  # Example inpu
 phrases = find_phrases_with_low_tfidf(file_path, tfidf_threshold)
 
 # Specify the output file path
-output_file_path = 'low_tfidf_phrases_2.txt'
+output_file_path = 'low_tfidf_phrases.txt'
 
 # Save the found phrases to a text file
 with open(output_file_path, 'w', encoding='utf-8') as file:
