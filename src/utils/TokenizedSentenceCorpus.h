@@ -13,15 +13,14 @@
 
 using json = nlohmann::json;
 
+struct TokenizedSentence {
+    size_t docNum;
+    size_t sentNum;
+    std::string originalStr;
+    std::string normalizedStr;
+};
+
 class TokenizedSentenceCorpus {
-
-    struct Sentence {
-        size_t docNum;
-        size_t sentNum;
-        std::string originalStr;
-        std::string normalizedStr;
-    };
-
 public:
     // Default constructor for the TokenizedSentenceCorpus class.
     TokenizedSentenceCorpus() = default;
@@ -50,9 +49,10 @@ public:
     void LoadFromFile(const std::string& filename);
 
     // Retrieves a sentence by document and sentence number.
-    const Sentence* GetSentence(size_t docNum, size_t sentNum) const;
+    const TokenizedSentence* GetSentence(size_t docNum, size_t sentNum) const;
 
-    std::unordered_map<size_t, std::unordered_map<size_t, Sentence>> sentenceMap; // Map for fast sentence retrieval
+    std::unordered_map<size_t, std::unordered_map<size_t, TokenizedSentence>>
+        sentenceMap; // Map for fast sentence retrieval
     int totalSentences = 0;
 };
 

@@ -5,13 +5,13 @@
 void TokenizedSentenceCorpus::AddSentence(const size_t docNum, const size_t sentNum, const std::string& data,
                                           const std::string& normalizedData)
 {
-    Sentence sentence = {docNum, sentNum, data, normalizedData};
+    TokenizedSentence sentence = {docNum, sentNum, data, normalizedData};
     sentenceMap[docNum][sentNum] = sentence; // Insert the sentence into the map
     totalSentences++;
 }
 
 // Retrieves a sentence by document and sentence number.
-const TokenizedSentenceCorpus::Sentence* TokenizedSentenceCorpus::GetSentence(size_t docNum, size_t sentNum) const
+const TokenizedSentence* TokenizedSentenceCorpus::GetSentence(size_t docNum, size_t sentNum) const
 {
     auto docIt = sentenceMap.find(docNum);
     if (docIt != sentenceMap.end()) {
@@ -51,7 +51,7 @@ void TokenizedSentenceCorpus::Deserialize(const json& j)
     for (const auto& item : j.at("sentences")) {
         if (item.at("normalizedStr").get<std::string>().size() < 50)
             continue;
-        Sentence sentence;
+        TokenizedSentence sentence;
         sentence.docNum = item.at("docNum").get<size_t>();
         sentence.sentNum = item.at("sentNum").get<size_t>();
         sentence.originalStr = item.at("originalStr").get<std::string>();

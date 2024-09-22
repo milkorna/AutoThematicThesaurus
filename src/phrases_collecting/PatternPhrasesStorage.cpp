@@ -9,6 +9,25 @@
 
 using json = nlohmann::json;
 
+void PatternPhrasesStorage::AddContextsToClusters()
+{
+    auto& corpus = TokenizedSentenceCorpus::GetCorpus();
+
+    for (auto& clusterPair : clusters) {
+        WordComplexCluster& cluster = clusterPair.second;
+        cluster.contexts.clear();
+
+        for (const auto& wordComplex : cluster.wordComplexes) {
+            const Position& pos = wordComplex->pos;
+            const TokenizedSentence* sentence = corpus.GetSentence(pos.docNum, pos.sentNum);
+
+            if (sentence) {
+                cluster.contexts.push_back(*sentence);
+            }
+        }
+    }
+}
+
 // Checks if the key of phrase1 is a prefix of phrase2's key
 bool IsPrefix(const std::string& phrase1Key, const std::string& phrase2Key)
 {
@@ -252,6 +271,11 @@ void PatternPhrasesStorage::Deserialize(const json& j)
             cluster.centralityScore = obj.at("3_centrality_score").get<double>();
             cluster.tagMatch = obj.at("4_tag_match").get<bool>();
             cluster.modelName = obj.at("5_model_name").get<std::string>();
+
+            std::unordered_set<std::string> synonyms;
+            if (obj.contains("9_synonyms")) {
+                cluster.synonyms = obj.at("9_synonyms").get<std::unordered_set<std::string>>();
+            }
 
             // Deserialize Lemmas
             const json& lemmas_json = obj.at("6_lemmas");
@@ -752,6 +776,9 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         clusterJson["4_tag_match"] = cluster.tagMatch;
         clusterJson["5_model_name"] = cluster.modelName;
 
+        std::vector<std::string> synonymsJson(cluster.synonyms.begin(), cluster.synonyms.end());
+        clusterJson["9_synonyms"] = synonymsJson;
+
         std::vector<json> lemmasJson;
         for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
             json lemmaJson;
@@ -775,6 +802,16 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
                                         {"1_end", wordComplex->pos.end},
                                         {"2_doc_num", wordComplex->pos.docNum},
                                         {"3_sent_num", wordComplex->pos.sentNum}};
+
+            for (const auto& contextSentence : cluster.contexts) {
+                const TokenizedSentence& context = contextSentence;
+
+                if (context.docNum == wordComplex->pos.docNum && context.sentNum == wordComplex->pos.sentNum) {
+                    phraseJson["2_context"] = context.originalStr;
+                    break;
+                }
+            }
+
             phrases.push_back(phraseJson);
         }
         clusterJson["8_phrases"] = phrases;

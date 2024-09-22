@@ -36,7 +36,8 @@ struct WordComplexCluster {
     std::vector<WordEmbeddingPtr> wordVectors;                        ///< Vector of FastText vectors for the words.
     std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
     std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
-    Sentence context;
+    std::unordered_set<std::string> synonyms;
+    std::vector<TokenizedSentence> contexts;
     bool is_term;
 };
 
@@ -52,6 +53,8 @@ public:
         static PatternPhrasesStorage storage;
         return storage;
     }
+
+    void AddContextsToClusters();
 
     void Deserialize(const json& j);
 
