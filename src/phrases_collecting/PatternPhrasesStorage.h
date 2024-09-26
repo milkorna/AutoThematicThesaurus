@@ -54,13 +54,13 @@ public:
         return storage;
     }
 
+    void AddCluster(const std::string& key, const WordComplexCluster& cluster);
+
+    void ReserveClusters(size_t count);
+
+    WordComplexCluster* FindCluster(const std::string& key);
+
     void AddContextsToClusters();
-
-    void Deserialize(const json& j);
-
-    void LoadStorageFromFile(const std::string& filename);
-
-    void LoadPhraseStorageFromResultsDir();
 
     void MergeSimilarClusters();
 
@@ -73,8 +73,6 @@ public:
     void Collect(const std::vector<WordFormPtr>& forms, Process& process);
 
     void FinalizeDocumentProcessing();
-
-    // void AddSemanticRelationsToCluster(WordComplexCluster& cluster);
 
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
@@ -90,7 +88,8 @@ public:
 
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
-    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false) const;
+    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false,
+                                  bool termsOnly = false) const;
 
     void LoadWikiWNRelations();
 
