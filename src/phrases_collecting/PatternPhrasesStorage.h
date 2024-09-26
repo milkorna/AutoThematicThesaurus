@@ -104,7 +104,6 @@ private:
     // TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
     //  CoOccurrenceMap coOccurrenceMap;
     ::Embedding embedding;
-    SemanticRelationsDB semanticDB;
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
     std::unordered_map<std::string, std::set<std::string>> hyponymCache;

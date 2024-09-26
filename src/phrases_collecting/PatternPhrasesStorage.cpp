@@ -519,6 +519,9 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
 
 void PatternPhrasesStorage::LoadWikiWNRelations()
 {
+
+    SemanticRelationsDB semanticDB;
+
     for (auto& clusterPair : clusters) {
         WordComplexCluster& cluster = clusterPair.second;
         std::cout << cluster.key << std::endl;
