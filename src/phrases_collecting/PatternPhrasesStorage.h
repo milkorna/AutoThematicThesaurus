@@ -7,6 +7,7 @@
 #include <SemanticRelations.h>
 #include <TextCorpus.h>
 #include <ThreadController.h>
+#include <regex>
 
 #include <nlohmann/json.hpp>
 
@@ -101,9 +102,7 @@ public:
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
-    // TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
     //  CoOccurrenceMap coOccurrenceMap;
-    ::Embedding embedding;
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
     std::unordered_map<std::string, std::set<std::string>> hyponymCache;

@@ -18,6 +18,7 @@ namespace fs = std::filesystem;
 
 int main()
 {
+    ::Embedding e;
     auto start = std::chrono::high_resolution_clock::now();
 
     Logger::enableLogging(true);

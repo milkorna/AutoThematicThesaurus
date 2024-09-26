@@ -93,16 +93,44 @@ void WriteClustersToFile(const std::unordered_set<std::string>& clustersToInclud
     outFile.close();
 }
 
+std::vector<std::string> Split(const std::string& str)
+{
+    std::istringstream iss(str);
+    std::vector<std::string> tokens;
+    std::string token;
+    while (iss >> token) {
+        tokens.push_back(token);
+    }
+    return tokens;
+}
+
 void PatternPhrasesStorage::CollectTerms()
 {
     std::set<std::string> sortedKeys;
     const auto& clusters = GetClusters();
 
-    for (const auto& pair : clusters) {
-        sortedKeys.insert(pair.first);
-        clustersToInclude.insert(pair.first);
-    }
+    std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
 
+    for (const auto& pair : clusters) {
+        const std::string& key = pair.first;
+
+        std::vector<std::string> words = Split(key);
+        bool hasRomanNumerals = false;
+
+        for (const std::string& word : words) {
+            if (std::regex_match(word, romanNumeralsRegex)) {
+                hasRomanNumerals = true;
+                break;
+            }
+        }
+
+        if (hasRomanNumerals) {
+            continue;
+        }
+
+        sortedKeys.insert(key);
+        clustersToInclude.insert(key);
+    }
     std::ifstream file("/home/milkorna/Documents/AutoThematicThesaurus/my_data/low_tfidf_phrases_manual_check.txt");
     std::string line;
 
@@ -146,11 +174,12 @@ void PatternPhrasesStorage::CollectTerms()
                 if (phrase1.centralityScore < 0.15 &&
                     ShouldExcludeBasedOnTfidfAndFrequency(phrase1, phrase2, phrase3)) {
                     // Log deletion with tf-idf and frequency
-                    std::cout << "tf-idf: " << std::to_string(phrase1.tfidf[0]) << " " << key1 << " "
-                              << ", freq: " << phrase1.frequency << " and " << key2 << ", freq: " << phrase2.frequency
-                              << " because of: " << trimmedKey << ", tf-idf: " << std::to_string(phrase3.tfidf[0])
-                              << " " << std::to_string(phrase3.tfidf[1]) << ", freq: " << phrase3.frequency
-                              << std::endl;
+                    // std::cout << "tf-idf: " << std::to_string(phrase1.tfidf[0]) << " " << key1 << " "
+                    //           << ", freq: " << phrase1.frequency << " and " << key2 << ", freq: " <<
+                    //           phrase2.frequency
+                    //           << " because of: " << trimmedKey << ", tf-idf: " << std::to_string(phrase3.tfidf[0])
+                    //           << " " << std::to_string(phrase3.tfidf[1]) << ", freq: " << phrase3.frequency
+                    //           << std::endl;
                     clustersToInclude.erase(key1);
                     clustersToInclude.erase(key2);
                 }
