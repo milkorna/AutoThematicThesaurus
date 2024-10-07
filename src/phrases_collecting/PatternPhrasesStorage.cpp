@@ -111,6 +111,13 @@ void PatternPhrasesStorage::CollectTerms()
 
     std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
 
+    std::ifstream jsonFile("/home/milkorna/Documents/AutoThematicThesaurus/scripts/classified_phrases.json");
+    nlohmann::json phraseLabels;
+    if (jsonFile.is_open()) {
+        jsonFile >> phraseLabels;
+    }
+    jsonFile.close();
+
     for (const auto& pair : clusters) {
         const std::string& key = pair.first;
 
@@ -139,6 +146,29 @@ void PatternPhrasesStorage::CollectTerms()
             if (line[0] != '#') {
                 clustersToInclude.erase(line);
                 sortedKeys.erase(line);
+            }
+        }
+    }
+
+    for (const auto& phraseData : phraseLabels) {
+        std::string phrase;
+        std::string label;
+
+        try {
+            phrase = phraseData.at("phrase").get<std::string>();
+            label = phraseData.at("label").get<std::string>();
+        } catch (std::exception& e) {
+            continue;
+        }
+
+        if ((label == "colloquial phrase" || label == "everyday expression") &&
+            clusters.find(phrase) != clusters.end()) {
+            const auto& cluster = clusters.at(phrase);
+
+            if ((cluster.topicRelevance < 0.5 && cluster.tagMatch != true) ||
+                (label == "everyday expression" && cluster.centralityScore < 0.2)) {
+                clustersToInclude.erase(phrase);
+                sortedKeys.erase(phrase);
             }
         }
     }
