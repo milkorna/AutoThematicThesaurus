@@ -6,6 +6,7 @@ def create_csv_from_json(
     total_results_path="total_results.json",
     classified_phrases_path="classified_phrases.json",
     terms_path="terms.json",
+    sentences_path="sentences.json",
     csv_path="data.csv"
 ):
     print("Starting create_csv_from_json function...")
@@ -22,7 +23,6 @@ def create_csv_from_json(
             data_classified = json.load(f)
         print(f"Successfully loaded data from '{classified_phrases_path}'. Items: {len(data_classified)}")
 
-        # Build a dictionary { phrase: label }
         for item in data_classified:
             phrase = item.get("phrase")
             label = item.get("label")
@@ -39,12 +39,26 @@ def create_csv_from_json(
             data_terms = json.load(f)
         print(f"Successfully loaded data from '{terms_path}'. Items: {len(data_terms)}")
 
-        # We assume data_terms is a dict similar to total_results.json
-        # We only need the keys (phrase texts) to build our set
         terms_set = set(data_terms.keys())
         print("Terms set has been created.")
     else:
         print(f"File '{terms_path}' does not exist. Skipping terms step.")
+
+    context_dict = {}
+    if os.path.exists(sentences_path):
+        print(f"'{sentences_path}' exists. Reading sentences for context...")
+        with open(sentences_path, "r", encoding="utf-8") as f:
+            data_sentences = json.load(f)
+        if "sentences" in data_sentences:
+            for s in data_sentences["sentences"]:
+                doc_num = s.get("docNum")
+                sent_num = s.get("sentNum")
+                norm_str = s.get("normalizedStr", "")
+                if doc_num is not None and sent_num is not None:
+                    context_dict[(doc_num, sent_num)] = norm_str
+        print("Context dictionary has been created.")
+    else:
+        print(f"File '{sentences_path}' does not exist. Skipping context step.")
 
     print(f"Writing CSV output to '{csv_path}'...")
     with open(csv_path, "w", encoding="utf-8", newline="") as csvfile:
@@ -61,7 +75,8 @@ def create_csv_from_json(
             "model_name",
             "phrases_count",
             "label",
-            "is_term"
+            "is_term_auto",
+            "context"
         ])
 
         print("Writing CSV rows...")
@@ -74,15 +89,25 @@ def create_csv_from_json(
             model_name = phrase_data.get("5_model_name")
             phrases_count = phrase_data.get("7_phrases_count")
 
-            # Retrieve label from labels_dict
             label = labels_dict.get(phrase_key, None)
 
-            # Determine is_term based on presence in terms_set
-            # If phrase_key is in terms_set => is_term = "", otherwise "0"
             if phrase_key in terms_set:
                 is_term = ""
             else:
                 is_term = "0"
+
+            context_list = []
+            eight_phrases = phrase_data.get("8_phrases", [])
+            for p in eight_phrases:
+                position = p.get("1_position", {})
+                doc_num = position.get("2_doc_num")
+                sent_num = position.get("3_sent_num")
+                if (doc_num, sent_num) in context_dict:
+                    context_list.append(context_dict[(doc_num, sent_num)])
+                else:
+                    pass
+            
+            context_str = " | ".join(context_list) if context_list else ""
 
             writer.writerow([
                 phrase_key,
@@ -94,7 +119,8 @@ def create_csv_from_json(
                 model_name,
                 phrases_count,
                 label,
-                is_term
+                is_term,
+                context_str
             ])
 
     print(f"CSV file '{csv_path}' has been created successfully.")
@@ -104,5 +130,6 @@ if __name__ == "__main__":
         total_results_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.json",
         classified_phrases_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/classified_phrases.json",
         terms_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/terms.json",
-        csv_path="data.csv"
+        sentences_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/nlp_corpus/sentences.json",
+        csv_path="data_auto.csv"
     )
