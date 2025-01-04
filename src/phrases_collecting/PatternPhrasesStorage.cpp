@@ -104,11 +104,21 @@ std::vector<std::string> Split(const std::string& str)
     return tokens;
 }
 
-void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
+static nlohmann::json LoadClassifiedPhrases(const std::string& filePath)
 {
-    std::set<std::string> sortedKeys;
-    const auto& clusters = GetClusters();
+    nlohmann::json phraseLabels;
+    std::ifstream jsonFile(filePath);
+    if (jsonFile.is_open()) {
+        jsonFile >> phraseLabels;
+        jsonFile.close();
+    }
+    return phraseLabels;
+}
 
+void PatternPhrasesStorage::InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
+                                                        std::unordered_set<std::string>& clustersToInclude)
+{
+    const auto& clusters = GetClusters();
     std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
 
     for (const auto& pair : clusters) {
@@ -117,14 +127,12 @@ void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
 
         std::vector<std::string> words = Split(key);
         bool hasRomanNumerals = false;
-
         for (const std::string& word : words) {
             if (std::regex_match(word, romanNumeralsRegex)) {
                 hasRomanNumerals = true;
                 break;
             }
         }
-
         if (hasRomanNumerals) {
             continue;
         }
@@ -147,13 +155,13 @@ void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
             }
         }
     }
+}
 
-    std::ifstream jsonFile("/home/milkorna/Documents/AutoThematicThesaurus/scripts/classified_phrases.json");
-    nlohmann::json phraseLabels;
-    if (jsonFile.is_open()) {
-        jsonFile >> phraseLabels;
-    }
-    jsonFile.close();
+void PatternPhrasesStorage::ApplyClassifiedPhrases(const nlohmann::json& phraseLabels,
+                                                   std::set<std::string>& sortedKeys,
+                                                   std::unordered_set<std::string>& clustersToInclude)
+{
+    const auto& clusters = GetClusters();
 
     for (const auto& phraseData : phraseLabels) {
         std::string phrase;
@@ -166,23 +174,36 @@ void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
             continue;
         }
 
-        if ((label == "colloquial phrase" || label == "everyday expression") &&
-            clusters.find(phrase) != clusters.end()) {
-            const auto& cluster = clusters.at(phrase);
+        if (clusters.find(phrase) == clusters.end()) {
+            continue;
+        }
+        const auto& cluster = clusters.at(phrase);
 
-            if ((cluster.topicRelevance < 0.5 && cluster.tagMatch != true) ||
+        if ((label == "colloquial phrase" || label == "everyday expression")) {
+            if ((cluster.topicRelevance < 0.5 && !cluster.tagMatch) ||
                 (label == "everyday expression" && cluster.centralityScore < 0.2)) {
                 clustersToInclude.erase(phrase);
                 sortedKeys.erase(phrase);
             }
         }
+
+        if (label == "general phrase") {
+            if (cluster.frequency < 0.0032 && cluster.topicRelevance <= 0.5 && cluster.centralityScore < 0.5) {
+                clustersToInclude.erase(phrase);
+                sortedKeys.erase(phrase);
+            }
+        }
     }
+}
+
+void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
+                                                          std::unordered_set<std::string>& clustersToInclude)
+{
+    const auto& clusters = GetClusters();
 
     auto it = sortedKeys.begin();
     while (it != sortedKeys.end()) {
         auto nextIt = std::next(it);
-
-        // Check if next exists
         if (nextIt == sortedKeys.end()) {
             break;
         }
@@ -193,39 +214,46 @@ void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
         const auto& phrase1 = clusters.at(key1);
         const auto& phrase2 = clusters.at(key2);
 
-        // Check models and prefix relationship
-        if (((phrase1.modelName == "Прил + С" && phrase2.modelName == "(Прил + С) + Срд") ||
-             (phrase1.modelName == "Прич + С" && phrase2.modelName == "(Прич + С) + Срд")) &&
-            IsPrefix(key1, key2)) {
-            // Find the part of key2 after the first space
-            std::string trimmedKey = key2.substr(key2.find(' ') + 1); // Get everything after the first space
+        bool conditionModel = ((phrase1.modelName == "Прил + С" && phrase2.modelName == "(Прил + С) + Срд") ||
+                               (phrase1.modelName == "Прич + С" && phrase2.modelName == "(Прич + С) + Срд")) &&
+                              IsPrefix(key1, key2);
 
-            // Check if the third key exists
-            auto thirdIt = clusters.find(trimmedKey);
-            if (thirdIt != clusters.end() && thirdIt->second.modelName == "С + Срд") {
-                const auto& phrase3 = thirdIt->second;
+        if (conditionModel) {
+            std::size_t pos = key2.find(' ');
+            if (pos != std::string::npos) {
+                std::string trimmedKey = key2.substr(pos + 1);
 
-                // Check exclusion conditions based on TF-IDF and frequency
-                if (phrase1.centralityScore < 0.15 &&
-                    ShouldExcludeBasedOnTfidfAndFrequency(phrase1, phrase2, phrase3)) {
-                    // Log deletion with tf-idf and frequency
-                    // std::cout << "tf-idf: " << std::to_string(phrase1.tfidf[0]) << " " << key1 << " "
-                    //           << ", freq: " << phrase1.frequency << " and " << key2 << ", freq: " <<
-                    //           phrase2.frequency
-                    //           << " because of: " << trimmedKey << ", tf-idf: " << std::to_string(phrase3.tfidf[0])
-                    //           << " " << std::to_string(phrase3.tfidf[1]) << ", freq: " << phrase3.frequency
-                    //           << std::endl;
-                    clustersToInclude.erase(key1);
-                    clustersToInclude.erase(key2);
+                auto thirdIt = clusters.find(trimmedKey);
+                if (thirdIt != clusters.end() && thirdIt->second.modelName == "С + Срд") {
+                    const auto& phrase3 = thirdIt->second;
+
+                    if (phrase1.centralityScore < 0.15 &&
+                        ShouldExcludeBasedOnTfidfAndFrequency(phrase1, phrase2, phrase3)) {
+                        clustersToInclude.erase(key1);
+                        clustersToInclude.erase(key2);
+                    }
                 }
             }
         }
 
-        // Move to the next element
         ++it;
     }
+}
 
-    // Write sorted clusters to a file
+void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
+{
+    std::set<std::string> sortedKeys;
+    const auto& clusters = GetClusters();
+
+    InitializeAndFilterClusters(tfidfThreshold, sortedKeys, clustersToInclude);
+
+    auto phraseLabels =
+        LoadClassifiedPhrases("/home/milkorna/Documents/AutoThematicThesaurus/my_data/classified_phrases.json");
+
+    ApplyClassifiedPhrases(phraseLabels, sortedKeys, clustersToInclude);
+
+    CheckModelPrefixRelationships(sortedKeys, clustersToInclude);
+
     WriteClustersToFile(clustersToInclude, "terms.txt");
 }
 

@@ -102,6 +102,15 @@ public:
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
+    void InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
+                                     std::unordered_set<std::string>& clustersToInclude);
+
+    void ApplyClassifiedPhrases(const nlohmann::json& phraseLabels, std::set<std::string>& sortedKeys,
+                                std::unordered_set<std::string>& clustersToInclude);
+
+    void CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
+                                       std::unordered_set<std::string>& clustersToInclude);
+
     //  CoOccurrenceMap coOccurrenceMap;
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
