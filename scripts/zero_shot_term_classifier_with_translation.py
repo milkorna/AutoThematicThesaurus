@@ -7,9 +7,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
 # Open the JSON file with Russian phrases
-with open('/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results_no_sw_synonyms_context.json', 'r', encoding='utf-8') as json_file:
+with open('/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.json', 'r', encoding='utf-8') as json_file:
     data = json.load(json_file)
 
+print("Initializing translator (ru -> en)...")
 # Create an instance of the translator from Russian to English
 translator = GoogleTranslator(source='ru', target='en')
 
@@ -30,9 +31,11 @@ candidate_labels_order = [
 # Define the threshold values for each label
 thresholds = {
     "NLP term": 0.68,
-    "machine learning term": 0.65,
-    "scientific term": 0.77,
-    "technical term": 0.75,
+    "machine learning term": 0.76,
+    "scientific term": 0.76,
+    "technical term": 0.76,
+    "colloquial phrase": 0.8,
+    "everyday expression": 0.8,
     "general phrase": 0.8  # default value for non-matched terms
 }
 
@@ -74,7 +77,7 @@ with ThreadPoolExecutor(max_workers=10) as executor:
         classified_phrases.append(result)
 
 # Write the classified phrases to a JSON file
-with open('classified_phrases_new.json', 'w', encoding='utf-8') as output_file:
+with open('classified_phrases.json', 'w', encoding='utf-8') as output_file:
     json.dump(classified_phrases, output_file, ensure_ascii=False, indent=4)
 
 print("Classified phrases have been saved to classified_phrases.json")
