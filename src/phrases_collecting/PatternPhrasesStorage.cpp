@@ -104,22 +104,16 @@ std::vector<std::string> Split(const std::string& str)
     return tokens;
 }
 
-void PatternPhrasesStorage::CollectTerms()
+void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
 {
     std::set<std::string> sortedKeys;
     const auto& clusters = GetClusters();
 
     std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
 
-    std::ifstream jsonFile("/home/milkorna/Documents/AutoThematicThesaurus/scripts/classified_phrases.json");
-    nlohmann::json phraseLabels;
-    if (jsonFile.is_open()) {
-        jsonFile >> phraseLabels;
-    }
-    jsonFile.close();
-
     for (const auto& pair : clusters) {
         const std::string& key = pair.first;
+        const WordComplexCluster& cluster = pair.second;
 
         std::vector<std::string> words = Split(key);
         bool hasRomanNumerals = false;
@@ -137,18 +131,29 @@ void PatternPhrasesStorage::CollectTerms()
 
         sortedKeys.insert(key);
         clustersToInclude.insert(key);
-    }
-    std::ifstream file("/home/milkorna/Documents/AutoThematicThesaurus/my_data/low_tfidf_phrases_manual_check.txt");
-    std::string line;
 
-    while (std::getline(file, line)) {
-        if (!line.empty()) {
-            if (line[0] != '#') {
-                clustersToInclude.erase(line);
-                sortedKeys.erase(line);
+        bool hasLowTfidf = false;
+        for (double val : cluster.tfidf) {
+            if (val < tfidfThreshold) {
+                hasLowTfidf = true;
+                break;
+            }
+        }
+
+        if (hasLowTfidf) {
+            if (cluster.frequency <= 1.0 && cluster.topicRelevance <= 0.4) {
+                clustersToInclude.erase(key);
+                sortedKeys.erase(key);
             }
         }
     }
+
+    std::ifstream jsonFile("/home/milkorna/Documents/AutoThematicThesaurus/scripts/classified_phrases.json");
+    nlohmann::json phraseLabels;
+    if (jsonFile.is_open()) {
+        jsonFile >> phraseLabels;
+    }
+    jsonFile.close();
 
     for (const auto& phraseData : phraseLabels) {
         std::string phrase;

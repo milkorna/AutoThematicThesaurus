@@ -97,7 +97,7 @@ public:
     void EvaluateTermRelevance(const LSA& lsa);
     const std::unordered_map<std::string, WordComplexCluster> GetClusters() const;
 
-    void CollectTerms();
+    void CollectTerms(double tfidfThreshold = 0.0000088);
 
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
