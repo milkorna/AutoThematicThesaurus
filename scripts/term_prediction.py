@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from gensim.models import KeyedVectors
 from gensim.models import fasttext
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
@@ -63,7 +64,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
       - binary col: tag_match (True/False -> 1/0)
       - binary col: is_term_auto (0/1)
       - categorical cols: model_name, label (using LabelEncoder)
-      - embeddings: key + context (both from fastText, concatenated)      
+      - embeddings: key + context (both from fastText, concatenated)
       - key_vector_norm
       - context_vector_norm
       - key_context_cosine (cosine similarity between key and context embeddings)
@@ -145,10 +146,9 @@ def build_stacking_classifier():
     Build a Stacking ensemble:
       - Level-0: RandomForest, GradientBoosting (ïðèìåð)
       - Meta-learner (final_estimator): LogisticRegression
-    You can add more base estimators as needed.
     """
     base_estimators = [
-        ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight={0: 1, 1: 2})),
+        ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')),
         ('gb', GradientBoostingClassifier(random_state=42))
     ]
     meta_learner = LogisticRegression(random_state=42)
@@ -157,7 +157,7 @@ def build_stacking_classifier():
         estimators=base_estimators,
         final_estimator=meta_learner,
         passthrough=False,
-        cv=5  # k-fold
+        cv=5
     )
     return stack_clf
 
@@ -218,24 +218,28 @@ def main():
     y_labeled = df_labeled['is_term_manual'].values  # e.g. 0/1 or "term"/"not_term"
     print("[INFO] Labeled features built.")
 
-    # 6) Build features for unlabeled data
-    print("[INFO] Building features for unlabeled data...")
-    X_unlabeled = create_feature_matrix(df_unlabeled, ft_model, label_encoders)
-    print("[INFO] Unlabeled features built.")
+    print("[INFO] Splitting labeled data into train and validation sets...")
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_labeled, y_labeled, test_size=0.2, random_state=42
+    )
+    print(f"[INFO] Train set size: {X_train.shape[0]}, Validation set size: {X_val.shape[0]}")
 
-    # 7) Build and train a Stacking ensemble
     print("[INFO] Building stacking classifier...")
     clf = build_stacking_classifier()
 
     print("[INFO] Training stacking classifier...")
-    clf.fit(X_labeled, y_labeled)
+    clf.fit(X_train, y_train)
     print("[INFO] Stacking model trained.")
 
-    # (Optional) Evaluate on labeled portion
-    print("[INFO] Evaluating on labeled portion (train set evaluation)...")
-    preds_train = clf.predict(X_labeled)
-    print("[RESULT] Train classification report:")
-    print(classification_report(y_labeled, preds_train))
+    print("[INFO] Evaluating on validation set...")
+    preds_val = clf.predict(X_val)
+    print("[RESULT] Validation classification report:")
+    print(classification_report(y_val, preds_val))
+
+    # 6) Build features for unlabeled data
+    print("[INFO] Building features for unlabeled data...")
+    X_unlabeled = create_feature_matrix(df_unlabeled, ft_model, label_encoders)
+    print("[INFO] Unlabeled features built.")
 
     # 8) Predict on unlabeled and get probabilities (for Active Learning)
     if X_unlabeled.shape[0] > 0:
@@ -261,18 +265,17 @@ def main():
         df_most_uncertain.to_excel(out_path_uncertain, index=False)
         print(f"[INFO] Saved {K} most uncertain examples to: {out_path_uncertain}")
 
-        threshold = 0.95
+        threshold = 0.9
         is_very_confident_mask = (probs[:, 1] >= threshold) | (probs[:, 1] <= (1 - threshold))
 
         df_very_confident = df_unlabeled.iloc[np.where(is_very_confident_mask)[0]]
-        df_very_confident['is_term_manual'] = df_very_confident['predicted_label']
+        df_very_confident.loc[:, 'is_term_manual'] = df_very_confident['predicted_label']
 
         out_path_confident = "/home/milkorna/Documents/AutoThematicThesaurus/certain_candidates.xlsx"
         df_very_confident.to_excel(out_path_confident, index=False)
         print(f"[INFO] Saved {df_very_confident.shape[0]} very confident examples to: {out_path_confident}")
     else:
         print("[INFO] No unlabeled data found, nothing to do for Active Learning.")
-
     print("[INFO] Script finished successfully.")
 
 if __name__ == "__main__":
