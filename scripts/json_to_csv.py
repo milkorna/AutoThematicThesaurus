@@ -92,7 +92,7 @@ def create_csv_from_json(
             label = labels_dict.get(phrase_key, None)
 
             if phrase_key in terms_set:
-                is_term = ""
+                is_term = "1"
             else:
                 is_term = "0"
 

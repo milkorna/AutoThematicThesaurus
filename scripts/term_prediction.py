@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from gensim.models import KeyedVectors
 from gensim.models import fasttext
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 import os
@@ -62,11 +63,10 @@ def create_feature_matrix(df, ft_model, label_encoders):
       - binary col: tag_match (True/False -> 1/0)
       - binary col: is_term_auto (0/1)
       - categorical cols: model_name, label (using LabelEncoder)
-      - embeddings: key + context (both from fastText, concatenated)
-      PLUS additional embedding-based features:
-        - key_vector_norm
-        - context_vector_norm
-        - key_context_cosine (cosine similarity between key and context embeddings)
+      - embeddings: key + context (both from fastText, concatenated)      
+      - key_vector_norm
+      - context_vector_norm
+      - key_context_cosine (cosine similarity between key and context embeddings)
     """
     print("[INFO] Creating feature matrix...")
     features = []
@@ -120,21 +120,17 @@ def create_feature_matrix(df, ft_model, label_encoders):
         context_str = str(row['context']) if not pd.isna(row['context']) else ""
         emb_context = get_phrase_embedding(context_str, ft_model)
 
-        # (NEW) Compute norms and cosines
         key_norm = vector_norm(emb_key)          # length of key embedding
         context_norm = vector_norm(emb_context)  # length of context embedding
         cos_key_context = cosine_similarity(emb_key, emb_context)
 
-        # Concatenate key and context embeddings (as before)
         emb_combined = np.concatenate([emb_key, emb_context])
 
         # --- 6) Combine everything into one vector ---
-        # We'll insert these new stats (key_norm, context_norm, cos_key_context)
-        # as separate numeric features between cat_vector and emb_combined
         combined = np.concatenate([
             numeric_vector,       # numeric + binary
             cat_vector,           # categorical
-            [key_norm, context_norm, cos_key_context],  # NEW embedding-based stats
+            [key_norm, context_norm, cos_key_context],
             emb_combined          # original 2 * embedding_dim
         ])
 
@@ -143,6 +139,27 @@ def create_feature_matrix(df, ft_model, label_encoders):
     features = np.array(features)
     print(f"[INFO] Feature matrix created. Shape: {features.shape}")
     return features
+
+def build_stacking_classifier():
+    """
+    Build a Stacking ensemble:
+      - Level-0: RandomForest, GradientBoosting (ïðèìåð)
+      - Meta-learner (final_estimator): LogisticRegression
+    You can add more base estimators as needed.
+    """
+    base_estimators = [
+        ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight={0: 1, 1: 2})),
+        ('gb', GradientBoostingClassifier(random_state=42))
+    ]
+    meta_learner = LogisticRegression(random_state=42)
+
+    stack_clf = StackingClassifier(
+        estimators=base_estimators,
+        final_estimator=meta_learner,
+        passthrough=False,
+        cv=5  # k-fold
+    )
+    return stack_clf
 
 def main():
     # Paths
@@ -206,12 +223,13 @@ def main():
     X_unlabeled = create_feature_matrix(df_unlabeled, ft_model, label_encoders)
     print("[INFO] Unlabeled features built.")
 
-    # 7) Train a classifier (e.g., RandomForest)
-    print("[INFO] Training a RandomForestClassifier...")
-    # Можно добавить class_weight, если дисбаланс
-    clf = RandomForestClassifier(n_estimators=100, random_state=42, class_weight={0: 1, 1: 2})
+    # 7) Build and train a Stacking ensemble
+    print("[INFO] Building stacking classifier...")
+    clf = build_stacking_classifier()
+
+    print("[INFO] Training stacking classifier...")
     clf.fit(X_labeled, y_labeled)
-    print("[INFO] RandomForestClassifier trained.")
+    print("[INFO] Stacking model trained.")
 
     # (Optional) Evaluate on labeled portion
     print("[INFO] Evaluating on labeled portion (train set evaluation)...")
@@ -223,21 +241,19 @@ def main():
     if X_unlabeled.shape[0] > 0:
         print("[INFO] Predicting on unlabeled data for Active Learning...")
 
-        preds = clf.predict(X_unlabeled)         # массив с 0 или 1
+        preds = clf.predict(X_unlabeled)
         unique_vals, counts = np.unique(preds, return_counts=True)
         print("[INFO] Predicted labels distribution on unlabeled:", dict(zip(unique_vals, counts)))
 
-        probs = clf.predict_proba(X_unlabeled)   # массив shape (N,2)
+        probs = clf.predict_proba(X_unlabeled)
 
-        # Сохраним предикты
         df_unlabeled['predicted_label'] = preds
         df_unlabeled['predicted_prob_class1'] = probs[:, 1]
 
-        # --- (A) Самые неуверенные ---
         uncertainty = np.abs(probs[:, 1] - 0.5)
         sorted_indices = np.argsort(uncertainty)
 
-        K = 400
+        K = 100
         top_k_indices = sorted_indices[:K]
         df_most_uncertain = df_unlabeled.iloc[top_k_indices]
 
@@ -245,8 +261,7 @@ def main():
         df_most_uncertain.to_excel(out_path_uncertain, index=False)
         print(f"[INFO] Saved {K} most uncertain examples to: {out_path_uncertain}")
 
-        # --- (B) «Очень уверенные» ---
-        threshold = 0.87
+        threshold = 0.95
         is_very_confident_mask = (probs[:, 1] >= threshold) | (probs[:, 1] <= (1 - threshold))
 
         df_very_confident = df_unlabeled.iloc[np.where(is_very_confident_mask)[0]]
