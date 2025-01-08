@@ -2,11 +2,13 @@ import pandas as pd
 import numpy as np
 from gensim.models import KeyedVectors
 from gensim.models import fasttext
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
 import os
 
 def load_fasttext_model(model_path):
@@ -76,7 +78,8 @@ def create_feature_matrix(df, ft_model, label_encoders):
     numeric_cols = [
         'frequency',
         'topic_relevance',
-        'centrality_score'
+        'centrality_score',
+        'inverse_rarity'
     ]
 
     for idx, row in df.iterrows():
@@ -91,19 +94,9 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         # --- 2) Binary feature: tag_match (True/False -> 1.0/0.0) ---
         tm_value = row['tag_match']
-        if tm_value == "True":
-            numeric_vector.append(1.0)
-        else:
-            numeric_vector.append(0.0)
+        numeric_vector.append(1.0 if tm_value == "True" else 0.0)
 
-        # --- 3) Binary feature: is_term_auto (0/1) ---
-        ita_val = row['is_term_auto']
-        if pd.isna(ita_val):
-            numeric_vector.append(0.0)
-        else:
-            numeric_vector.append(float(ita_val))
-
-        # --- 4) Categorical features (model_name, label) via label_encoders ---
+        # --- 3) Categorical features (model_name, label) via label_encoders ---
         cat_vector = []
         for cat_col in ['model_name', 'label']:
             raw_val = row[cat_col]
@@ -114,7 +107,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
             cat_idx = le.transform([raw_val])[0]
             cat_vector.append(float(cat_idx))
 
-        # --- 5) Embeddings: key + context ---
+        # --- 4) Embeddings: key + context ---
         phrase_key = str(row['key']) if not pd.isna(row['key']) else ""
         emb_key = get_phrase_embedding(phrase_key, ft_model)
 
@@ -127,7 +120,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         emb_combined = np.concatenate([emb_key, emb_context])
 
-        # --- 6) Combine everything into one vector ---
+        # --- 5) Combine everything into one vector ---
         combined = np.concatenate([
             numeric_vector,       # numeric + binary
             cat_vector,           # categorical
@@ -144,20 +137,22 @@ def create_feature_matrix(df, ft_model, label_encoders):
 def build_stacking_classifier():
     """
     Build a Stacking ensemble:
-      - Level-0: RandomForest, GradientBoosting (ïðèìåð)
+      - Level-0: RandomForest, GradientBoosting
       - Meta-learner (final_estimator): LogisticRegression
+      - Stratified K-Fold cross-validation
     """
     base_estimators = [
         ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')),
         ('gb', GradientBoostingClassifier(random_state=42))
     ]
     meta_learner = LogisticRegression(random_state=42)
+    stratified_kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
     stack_clf = StackingClassifier(
         estimators=base_estimators,
         final_estimator=meta_learner,
         passthrough=False,
-        cv=5
+        cv=stratified_kfold
     )
     return stack_clf
 
@@ -218,30 +213,61 @@ def main():
     y_labeled = df_labeled['is_term_manual'].values  # e.g. 0/1 or "term"/"not_term"
     print("[INFO] Labeled features built.")
 
+    # 6) Split labeled data into train and validation sets
     print("[INFO] Splitting labeled data into train and validation sets...")
     X_train, X_val, y_train, y_val = train_test_split(
         X_labeled, y_labeled, test_size=0.2, random_state=42
     )
     print(f"[INFO] Train set size: {X_train.shape[0]}, Validation set size: {X_val.shape[0]}")
 
+    # 7.1) Проверка и удаление малых классов
+    print("[INFO] Checking class distribution in training set...")
+    mask = check_and_handle_small_classes(y_train, threshold=2)  # Установим threshold=2, так как SMOTE требует минимум 2
+    if not mask.all():
+        X_train = X_train[mask]
+        y_train = y_train[mask]
+        print(f"[INFO] Updated training set size: {X_train.shape}")
+        class_dist = dict(zip(*np.unique(y_train, return_counts=True)))
+        print(f"[INFO] Updated class distribution: {class_dist}")
+
+    # 7.2) Балансировка классов
+    print("[INFO] Balancing classes in the training set...")
+    try:
+        X_train_resampled, y_train_resampled = balance_classes(X_train, y_train, method='smote')
+    except ValueError as ve:
+        print(f"[ERROR] Error during SMOTE: {ve}")
+        print("[INFO] Attempting to balance classes with k_neighbors=1...")
+        try:
+            smote = SMOTE(sampling_strategy='auto', random_state=42, k_neighbors=1)
+            X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+            print(f"[INFO] Data after SMOTE with k_neighbors=1: {X_train_resampled.shape[0]} samples.")
+            class_dist = dict(zip(*np.unique(y_train_resampled, return_counts=True)))
+            print(f"[INFO] Class distribution after SMOTE: {class_dist}")
+        except Exception as e:
+            print(f"[ERROR] Failed to apply SMOTE even with k_neighbors=1: {e}")
+            print(f"[INFO] Proceeding without applying SMOTE.")
+            X_train_resampled, y_train_resampled = X_train, y_train
+
+    # 8) Build and train stacking classifier
     print("[INFO] Building stacking classifier...")
     clf = build_stacking_classifier()
 
-    print("[INFO] Training stacking classifier...")
-    clf.fit(X_train, y_train)
+    print("[INFO] Training stacking classifier on resampled data...")
+    clf.fit(X_train_resampled, y_train_resampled)
     print("[INFO] Stacking model trained.")
 
+    # 9) Evaluate the model on validation set
     print("[INFO] Evaluating on validation set...")
     preds_val = clf.predict(X_val)
     print("[RESULT] Validation classification report:")
     print(classification_report(y_val, preds_val))
 
-    # 6) Build features for unlabeled data
+    # 10) Build features for unlabeled data
     print("[INFO] Building features for unlabeled data...")
     X_unlabeled = create_feature_matrix(df_unlabeled, ft_model, label_encoders)
     print("[INFO] Unlabeled features built.")
 
-    # 8) Predict on unlabeled and get probabilities (for Active Learning)
+    # 11) Predict on unlabeled and get probabilities (for Active Learning)
     if X_unlabeled.shape[0] > 0:
         print("[INFO] Predicting on unlabeled data for Active Learning...")
 
@@ -277,6 +303,46 @@ def main():
     else:
         print("[INFO] No unlabeled data found, nothing to do for Active Learning.")
     print("[INFO] Script finished successfully.")
+
+def check_and_handle_small_classes(y, threshold=5):
+    """
+    Checks class distribution and removes classes with fewer samples than the threshold.
+    """
+    class_counts = pd.Series(y).value_counts()
+    small_classes = class_counts[class_counts < threshold].index.tolist()
+    if small_classes:
+        print(f"[WARNING] Classes with fewer than {threshold} samples: {small_classes}. They will be removed.")
+        mask = ~pd.Series(y).isin(small_classes)
+        return mask
+    else:
+        print(f"[INFO] All classes have sufficient number of samples.")
+        return pd.Series([True] * len(y))
+
+def balance_classes(X, y, method='smote'):
+    """
+    Balances classes using the specified method.
+    Supported methods: 'smote', 'undersample', 'none'
+    """
+    if method == 'smote':
+        print("[INFO] Applying SMOTE for class balancing...")
+        smote = SMOTE(sampling_strategy='auto', random_state=42, k_neighbors=2)
+        X_res, y_res = smote.fit_resample(X, y)
+        print(f"[INFO] Data after SMOTE: {X_res.shape[0]} samples.")
+        class_distribution = dict(zip(*np.unique(y_res, return_counts=True)))
+        print(f"[INFO] Class distribution after SMOTE: {class_distribution}")
+        return X_res, y_res
+    elif method == 'undersample':
+        print("[INFO] Applying Random UnderSampling for class balancing...")
+        rus = RandomUnderSampler(sampling_strategy='auto', random_state=42)
+        X_res, y_res = rus.fit_resample(X, y)
+        print(f"[INFO] Data after UnderSampling: {X_res.shape[0]} samples.")
+        class_distribution = dict(zip(*np.unique(y_res, return_counts=True)))
+        print(f"[INFO] Class distribution after UnderSampling: {class_distribution}")
+        return X_res, y_res
+    else:
+        print("[INFO] No class balancing applied.")
+        return X, y
+
 
 if __name__ == "__main__":
     main()
