@@ -289,7 +289,7 @@ def main():
     y_labeled = df_labeled['is_term_manual'].values  # e.g. 0/1 or "term"/"not_term"
     print("[INFO] Labeled features built.")
 
-    # 6) Split labeled data into train and validation sets
+    # Split labeled data into train and validation sets
     print("[INFO] Splitting labeled data into train and validation sets...")
     indices = np.arange(len(X_labeled))
     train_indices, val_indices = train_test_split(
@@ -340,7 +340,7 @@ def main():
     # Retrieve the MLP classifier by its name from base_estimators
     mlp_estimator = clf.named_estimators_['mlp']  # "mlp" из base_estimators
 
-    # 2) Строим и сохраняем график loss_curve_
+    # Building and saving a schedule loss_curve_
     if hasattr(mlp_estimator, 'loss_curve_'):
         plt.figure(figsize=(8, 5))
         plt.plot(mlp_estimator.loss_curve_, label='Training Loss')
