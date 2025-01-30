@@ -7,7 +7,7 @@ import pymorphy2
 morph = pymorphy2.MorphAnalyzer()
 
 # Load the model and tokenizer
-model_name = "DeepPavlov/rubert-base-cased"  # You can replace this with another model
+model_name = "DeepPavlov/rubert-base-cased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForMaskedLM.from_pretrained(model_name)
 
@@ -69,10 +69,10 @@ def find_synonyms_in_set(phrase, phrases_set, top_n=20):
     if not matched_phrases:
         with open("script_logs.txt", "a", encoding="utf-8") as log_file:
             log_file.write(f"No exact matches found in the set for '{phrase}'. Generated phrases: {generated_phrases}\n")
-            
+
     return matched_phrases
 
-# Load data from your JSON file
+# Load data from JSON file
 file_path = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results_no_sw.json'  # Specify the path to your file
 with open(file_path, 'r', encoding='utf-8') as f:
     phrases_data = json.load(f)

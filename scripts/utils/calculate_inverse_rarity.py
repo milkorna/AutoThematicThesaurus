@@ -1,9 +1,8 @@
 import pandas as pd
 from collections import Counter
 
-# Load your dataset
-data_file = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"  # Replace with the path to your file
-
+# Load dataset
+data_file = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
 data = pd.read_excel(data_file)
 
 # Split phrases into words
@@ -28,5 +27,4 @@ data = data[columns]
 
 # Save the updated dataset
 data.to_excel("/home/milkorna/Documents/AutoThematicThesaurus/updated_dataset.xlsx", index=False)
-
 print("Inverse rarity coefficient has been added and saved in 'updated_dataset.xlsx'.")
