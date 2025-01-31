@@ -7,6 +7,7 @@
 #include <SemanticRelations.h>
 #include <TextCorpus.h>
 #include <ThreadController.h>
+#include <regex>
 
 #include <nlohmann/json.hpp>
 
@@ -36,6 +37,9 @@ struct WordComplexCluster {
     std::vector<WordEmbeddingPtr> wordVectors;                        ///< Vector of FastText vectors for the words.
     std::unordered_map<std::string, std::set<std::string>> hypernyms; ///< Hypernyms for each word in the phrase.
     std::unordered_map<std::string, std::set<std::string>> hyponyms;  ///< Hyponyms for each word in the phrase.
+    std::unordered_set<std::string> synonyms;
+    std::vector<TokenizedSentence> contexts;
+    bool is_term;
 };
 
 // \class PatternPhrasesStorage
@@ -51,11 +55,13 @@ public:
         return storage;
     }
 
-    void Deserialize(const json& j);
+    void AddCluster(const std::string& key, const WordComplexCluster& cluster);
 
-    void LoadStorageFromFile(const std::string& filename);
+    void ReserveClusters(size_t count);
 
-    void LoadPhraseStorageFromResultsDir();
+    WordComplexCluster* FindCluster(const std::string& key);
+
+    void AddContextsToClusters();
 
     void MergeSimilarClusters();
 
@@ -68,8 +74,6 @@ public:
     void Collect(const std::vector<WordFormPtr>& forms, Process& process);
 
     void FinalizeDocumentProcessing();
-
-    // void AddSemanticRelationsToCluster(WordComplexCluster& cluster);
 
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
@@ -85,23 +89,34 @@ public:
 
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
-    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false) const;
+    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false,
+                                  bool termsOnly = false) const;
 
     void LoadWikiWNRelations();
 
     void EvaluateTermRelevance(const LSA& lsa);
     const std::unordered_map<std::string, WordComplexCluster> GetClusters() const;
 
+    void CollectTerms(double tfidfThreshold = 0.0000088);
+
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
-    // TextCorpus corpus; ///< The text corpus used for analysis and metrics computation.
+    void InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
+                                     std::unordered_set<std::string>& clustersToInclude);
+
+    void ApplyClassifiedPhrases(const nlohmann::json& phraseLabels, std::set<std::string>& sortedKeys,
+                                std::unordered_set<std::string>& clustersToInclude);
+
+    void CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
+                                       std::unordered_set<std::string>& clustersToInclude);
+
     //  CoOccurrenceMap coOccurrenceMap;
-    ::Embedding embedding;
-    SemanticRelationsDB semanticDB;
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
     std::unordered_map<std::string, std::set<std::string>> hyponymCache;
+
+    std::unordered_set<std::string> clustersToInclude;
 
     // \brief Default constructor.
     PatternPhrasesStorage()

@@ -31,8 +31,6 @@ include_directories(
 )
 
 set(SOURCE_FILES
-src/TermsStorage.h
-src/TermsStorage.cpp
 
 src/grammar_component/Component.h
 src/grammar_component/GrammarCondition.cpp
@@ -48,6 +46,7 @@ src/grammar_patterns/PatternParser.h
 src/grammar_patterns/GrammarPatternManager.cpp
 src/grammar_patterns/GrammarPatternManager.h
 
+src/phrases_collecting/PhrasesStorageLoader.h
 src/phrases_collecting/Embedding.cpp
 src/phrases_collecting/Embedding.h
 src/phrases_collecting/PatternPhrasesStorage.cpp

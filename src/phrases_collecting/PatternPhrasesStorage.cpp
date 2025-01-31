@@ -9,190 +9,252 @@
 
 using json = nlohmann::json;
 
-void PatternPhrasesStorage::LoadPhraseStorageFromResultsDir()
+void PatternPhrasesStorage::AddCluster(const std::string& key, const WordComplexCluster& cluster)
 {
-    fs::path repoPath = fs::current_path();
-    fs::path outputDir = repoPath / "res";
-    fs::create_directories(outputDir);
-    std::vector<fs::path> res_files = GetResFiles();
+    clusters[key] = cluster;
+}
 
-    auto& corpus = TextCorpus::GetCorpus();
-    clusters.reserve(corpus.GetTotalTexts());
+WordComplexCluster* PatternPhrasesStorage::FindCluster(const std::string& key)
+{
+    auto it = clusters.find(key);
+    if (it != clusters.end()) {
+        return &(it->second);
+    }
+    return nullptr;
+}
 
-    for (const auto& file_path : res_files) {
-        std::ifstream file(file_path);
+void PatternPhrasesStorage::ReserveClusters(size_t count)
+{
+    clusters.reserve(count);
+}
 
-        if (!file.is_open()) {
-            continue;
-        }
+void PatternPhrasesStorage::AddContextsToClusters()
+{
+    auto& corpus = TokenizedSentenceCorpus::GetCorpus();
 
-        nlohmann::json j;
-        file >> j;
-        file.close();
+    for (auto& clusterPair : clusters) {
+        WordComplexCluster& cluster = clusterPair.second;
+        cluster.contexts.clear();
 
-        if (!j.is_array()) {
-            continue;
-        }
+        for (const auto& wordComplex : cluster.wordComplexes) {
+            const Position& pos = wordComplex->pos;
+            const TokenizedSentence* sentence = corpus.GetSentence(pos.docNum, pos.sentNum);
 
-        for (const auto& obj : j) {
-            try {
-                // Extract data from JSON
-                std::string key = obj.at("0_key").get<std::string>();
-                if (key.find('_') != std::string::npos) {
-                    continue;
-                }
-                bool skip = false;
-                icu::UnicodeString unicodeText = icu::UnicodeString::fromUTF8(key);
-                for (int32_t i = 0; i < unicodeText.length(); ++i) {
-                    UChar32 codepoint = unicodeText.char32At(i);
-                    // Check if the character is a digit
-                    if (u_isdigit(codepoint)) {
-                        skip = true;
-                    }
-                }
-                if (skip) {
-                    continue;
-                }
-                std::string textForm = obj.at("1_textForm").get<std::string>();
-                std::string modelName = obj.at("2_modelName").get<std::string>();
-
-                Position pos;
-                pos.docNum = obj.at("3_docNum").get<size_t>();
-                pos.sentNum = obj.at("4_sentNum").get<size_t>();
-                pos.start = obj.at("5_start_ind").get<size_t>();
-                pos.end = obj.at("6_end_ind").get<size_t>();
-
-                std::deque<std::string> lemmas;
-                if (obj.contains("7_lemmas")) {
-                    lemmas = obj.at("7_lemmas").get<std::deque<std::string>>();
-                    for (auto& lemma : lemmas) {
-                        size_t pos = lemma.find('_');
-                        if (pos != std::string::npos) {
-                            lemma = lemma.substr(pos + 1);
-                        }
-                    }
-                }
-
-                // Create a WordComplex object
-                WordComplexPtr wc = std::make_shared<WordComplex>();
-                wc->textForm = textForm;
-                wc->pos = pos;
-                wc->modelName = modelName;
-                wc->lemmas = lemmas;
-
-                auto it = clusters.find(key);
-                if (it != clusters.end()) {
-                    auto& cluster = it->second;
-                    if (std::find(cluster.wordComplexes.begin(), cluster.wordComplexes.end(), wc) ==
-                        cluster.wordComplexes.end()) {
-                        cluster.wordComplexes.push_back(wc);
-                    }
-                } else {
-                    std::vector<std::string> lemmas;
-                    std::vector<WordEmbeddingPtr> lemVectors;
-                    std::unordered_map<std::string, std::set<std::string>> lemmHypernyms;
-                    std::unordered_map<std::string, std::set<std::string>> lemmHyponyms;
-                    for (const auto& lemma : wc->lemmas) {
-                        lemmas.push_back(lemma);
-                        lemVectors.push_back(std::make_shared<WordEmbedding>(lemma));
-                        lemmHypernyms[lemma] = {};
-                        lemmHyponyms[lemma] = {};
-                    }
-
-                    WordComplexCluster newCluster = {wc->lemmas.size(), false,         1.0,         0.0, 0.0, key,
-                                                     wc->modelName,     lemmas,        {wc},        {},  {},  {},
-                                                     lemVectors,        lemmHypernyms, lemmHyponyms};
-                    clusters[key] = newCluster;
-                }
-            } catch (const std::exception& e) {
-                Logger::log("PPStorage", LogLevel::Error, "Error parsing JSON object: " + std::string(e.what()));
+            if (sentence) {
+                cluster.contexts.push_back(*sentence);
             }
         }
     }
 }
 
-void PatternPhrasesStorage::Deserialize(const json& j)
+// Checks if the key of phrase1 is a prefix of phrase2's key
+bool IsPrefix(const std::string& phrase1Key, const std::string& phrase2Key)
 {
-    try {
-        if (!j.is_object()) {
-            throw std::runtime_error("Expected a JSON object.");
+    return phrase2Key.find(phrase1Key) == 0; // Checks if phrase1Key is at the beginning of phrase2Key
+}
+
+// Checks exclusion conditions based on TF-IDF and frequency
+bool ShouldExcludeBasedOnTfidfAndFrequency(const WordComplexCluster& phrase1, const WordComplexCluster& phrase2,
+                                           const WordComplexCluster& phrase3)
+{
+    // Check TF-IDF conditions for phrase1 and phrase2
+    bool tfidfCondition =
+        !phrase1.tfidf.empty() && !phrase3.tfidf.empty() && phrase1.tfidf[0] < 0.0005 && phrase3.tfidf.back() > 0.0005;
+
+    // Check frequency conditions for phrase1 and phrase2 compared to phrase3
+    bool frequencyCondition =
+        phrase1.frequency < phrase3.frequency / 10.0 && phrase2.frequency < phrase3.frequency / 10.0;
+
+    // Return true if both conditions are met
+    return tfidfCondition && frequencyCondition;
+}
+
+void WriteClustersToFile(const std::unordered_set<std::string>& clustersToInclude, const std::string& filename)
+{
+    // Convert the unordered set to a vector for sorting
+    std::vector<std::string> sortedClusters(clustersToInclude.begin(), clustersToInclude.end());
+
+    // Sort the clusters alphabetically
+    std::sort(sortedClusters.begin(), sortedClusters.end());
+
+    // Open the file for writing
+    std::ofstream outFile(filename);
+    if (!outFile.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << " for writing." << std::endl;
+        return;
+    }
+
+    // Write each cluster to the file
+    for (const auto& cluster : sortedClusters) {
+        outFile << cluster << std::endl;
+    }
+
+    // Close the file
+    outFile.close();
+}
+
+std::vector<std::string> Split(const std::string& str)
+{
+    std::istringstream iss(str);
+    std::vector<std::string> tokens;
+    std::string token;
+    while (iss >> token) {
+        tokens.push_back(token);
+    }
+    return tokens;
+}
+
+static nlohmann::json LoadClassifiedPhrases(const std::string& filePath)
+{
+    nlohmann::json phraseLabels;
+    std::ifstream jsonFile(filePath);
+    if (jsonFile.is_open()) {
+        jsonFile >> phraseLabels;
+        jsonFile.close();
+    }
+    return phraseLabels;
+}
+
+void PatternPhrasesStorage::InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
+                                                        std::unordered_set<std::string>& clustersToInclude)
+{
+    const auto& clusters = GetClusters();
+    std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
+
+    for (const auto& pair : clusters) {
+        const std::string& key = pair.first;
+        const WordComplexCluster& cluster = pair.second;
+
+        std::vector<std::string> words = Split(key);
+        bool hasRomanNumerals = false;
+        for (const std::string& word : words) {
+            if (std::regex_match(word, romanNumeralsRegex)) {
+                hasRomanNumerals = true;
+                break;
+            }
+        }
+        if (hasRomanNumerals) {
+            continue;
         }
 
-        for (auto it = j.begin(); it != j.end(); ++it) {
-            std::string key = it.key();
-            const json& obj = it.value();
+        sortedKeys.insert(key);
+        clustersToInclude.insert(key);
 
-            if (!obj.is_object()) {
-                throw std::runtime_error("Expected a JSON object for each cluster.");
+        bool hasLowTfidf = false;
+        for (double val : cluster.tfidf) {
+            if (val < tfidfThreshold) {
+                hasLowTfidf = true;
+                break;
             }
-
-            WordComplexCluster cluster;
-            cluster.key = key;
-            cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
-            cluster.frequency = obj.at("1_frequency").get<double>();
-            cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
-            cluster.centralityScore = obj.at("3_centrality_score").get<double>();
-            cluster.tagMatch = obj.at("4_tag_match").get<bool>();
-            cluster.modelName = obj.at("5_model_name").get<std::string>();
-
-            // Deserialize Lemmas
-            const json& lemmas_json = obj.at("6_lemmas");
-            for (const auto& lemma_obj : lemmas_json) {
-                std::string lemmaStr = "";
-                auto lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
-                size_t pos = lemmaStrNumbered.find('_');
-                if (pos != std::string::npos) {
-                    lemmaStr = lemmaStrNumbered.substr(pos + 1);
-                }
-                cluster.lemmas.push_back(lemmaStr);
-                cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
-                cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
-                cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
-                cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
-                cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
-
-                // Add word embedding (assuming you need to create an embedding for each lemma)
-                cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
-            }
-
-            // Deserialize WordComplexes (Phrases in your JSON)
-            const json& phrases_json = obj.at("8_phrases");
-            for (const auto& phrase_obj : phrases_json) {
-                WordComplexPtr wc = std::make_shared<WordComplex>();
-                wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
-                wc->modelName = cluster.modelName;
-
-                wc->pos.start = phrase_obj.at("1_position").at("0_start").get<size_t>();
-                wc->pos.end = phrase_obj.at("1_position").at("1_end").get<size_t>();
-                wc->pos.docNum = phrase_obj.at("1_position").at("2_doc_num").get<size_t>();
-                wc->pos.sentNum = phrase_obj.at("1_position").at("3_sent_num").get<size_t>();
-
-                wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
-
-                cluster.wordComplexes.push_back(wc);
-            }
-
-            clusters[key] = cluster;
         }
-    } catch (json::exception& e) {
-        std::cerr << "Error parsing JSON: " << e.what() << std::endl;
-        throw;
-    } catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        throw;
+
+        if (hasLowTfidf) {
+            if (cluster.frequency <= 1.0 && cluster.topicRelevance <= 0.4) {
+                clustersToInclude.erase(key);
+                sortedKeys.erase(key);
+            }
+        }
     }
 }
 
-void PatternPhrasesStorage::LoadStorageFromFile(const std::string& filename)
+void PatternPhrasesStorage::ApplyClassifiedPhrases(const nlohmann::json& phraseLabels,
+                                                   std::set<std::string>& sortedKeys,
+                                                   std::unordered_set<std::string>& clustersToInclude)
 {
-    std::ifstream file(filename);
-    if (file.is_open()) {
-        json j;
-        file >> j;
-        Deserialize(j);
-    } else {
-        std::cerr << "Failed to open file: " << filename << std::endl;
+    const auto& clusters = GetClusters();
+
+    for (const auto& phraseData : phraseLabels) {
+        std::string phrase;
+        std::string label;
+
+        try {
+            phrase = phraseData.at("phrase").get<std::string>();
+            label = phraseData.at("label").get<std::string>();
+        } catch (std::exception& e) {
+            continue;
+        }
+
+        if (clusters.find(phrase) == clusters.end()) {
+            continue;
+        }
+        const auto& cluster = clusters.at(phrase);
+
+        if ((label == "colloquial phrase" || label == "everyday expression")) {
+            if ((cluster.topicRelevance < 0.5 && !cluster.tagMatch) ||
+                (label == "everyday expression" && cluster.centralityScore < 0.2)) {
+                clustersToInclude.erase(phrase);
+                sortedKeys.erase(phrase);
+            }
+        }
+
+        if (label == "general phrase") {
+            if (cluster.frequency < 0.0032 && cluster.topicRelevance <= 0.5 && cluster.centralityScore < 0.5) {
+                clustersToInclude.erase(phrase);
+                sortedKeys.erase(phrase);
+            }
+        }
     }
+}
+
+void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
+                                                          std::unordered_set<std::string>& clustersToInclude)
+{
+    const auto& clusters = GetClusters();
+
+    auto it = sortedKeys.begin();
+    while (it != sortedKeys.end()) {
+        auto nextIt = std::next(it);
+        if (nextIt == sortedKeys.end()) {
+            break;
+        }
+
+        const auto& key1 = *it;
+        const auto& key2 = *nextIt;
+
+        const auto& phrase1 = clusters.at(key1);
+        const auto& phrase2 = clusters.at(key2);
+
+        bool conditionModel = ((phrase1.modelName == "Прил + С" && phrase2.modelName == "(Прил + С) + Срд") ||
+                               (phrase1.modelName == "Прич + С" && phrase2.modelName == "(Прич + С) + Срд")) &&
+                              IsPrefix(key1, key2);
+
+        if (conditionModel) {
+            std::size_t pos = key2.find(' ');
+            if (pos != std::string::npos) {
+                std::string trimmedKey = key2.substr(pos + 1);
+
+                auto thirdIt = clusters.find(trimmedKey);
+                if (thirdIt != clusters.end() && thirdIt->second.modelName == "С + Срд") {
+                    const auto& phrase3 = thirdIt->second;
+
+                    if (phrase1.centralityScore < 0.15 &&
+                        ShouldExcludeBasedOnTfidfAndFrequency(phrase1, phrase2, phrase3)) {
+                        clustersToInclude.erase(key1);
+                        clustersToInclude.erase(key2);
+                    }
+                }
+            }
+        }
+
+        ++it;
+    }
+}
+
+void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
+{
+    std::set<std::string> sortedKeys;
+    const auto& clusters = GetClusters();
+
+    InitializeAndFilterClusters(tfidfThreshold, sortedKeys, clustersToInclude);
+
+    auto phraseLabels =
+        LoadClassifiedPhrases("/home/milkorna/Documents/AutoThematicThesaurus/my_data/classified_phrases.json");
+
+    ApplyClassifiedPhrases(phraseLabels, sortedKeys, clustersToInclude);
+
+    CheckModelPrefixRelationships(sortedKeys, clustersToInclude);
+
+    WriteClustersToFile(clustersToInclude, "terms.txt");
 }
 
 void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
@@ -251,22 +313,6 @@ void PatternPhrasesStorage::FinalizeDocumentProcessing()
     }
     uniqueLemmasInDoc.clear();
 }
-
-// void PatternPhrasesStorage::AddSemanticRelationsToCluster(WordComplexCluster& cluster)
-// {
-//     static fs::path repoPath = fs::current_path();
-//     static std::string semantic_data = (repoPath / "wikiwordnet.db").string();
-//     SemanticRelationsDB db(semantic_data);
-//     for (const auto& wordComplex : cluster.wordComplexes) {
-//         for (const auto& word : wordComplex->words) {
-//             std::string textForm = word->getWordForm().toLowerCase().getRawString();
-//             boost::to_lower(textForm);
-//             // cluster.synonyms[textForm] = db.GetRelations(textForm, "synonym");
-//             cluster.hypernyms[textForm] = db.GetRelations(textForm, "hypernym");
-//             cluster.hyponyms[textForm] = db.GetRelations(textForm, "hyponym");
-//         }
-//     }
-// }
 
 std::map<std::string, int>
 CalculateTopicFrequency(const std::unordered_map<std::string, std::vector<std::string>>& similar_words)
@@ -565,6 +611,9 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
 
 void PatternPhrasesStorage::LoadWikiWNRelations()
 {
+
+    SemanticRelationsDB semanticDB;
+
     for (auto& clusterPair : clusters) {
         WordComplexCluster& cluster = clusterPair.second;
         std::cout << cluster.key << std::endl;
@@ -607,14 +656,24 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
     }
 }
 
-void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters) const
+void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters,
+                                                     bool termsOnly) const
 {
     json j;
 
     std::vector<std::string> keys;
-    keys.reserve(clusters.size());
-    for (const auto& pair : clusters) {
-        keys.push_back(pair.first);
+
+    if (termsOnly) {
+        keys.reserve(clustersToInclude.size());
+        for (const auto& key : clustersToInclude) {
+            keys.push_back(key);
+        }
+
+    } else {
+        keys.reserve(clusters.size());
+        for (const auto& pair : clusters) {
+            keys.push_back(pair.first);
+        }
     }
 
     std::sort(keys.begin(), keys.end());
@@ -634,6 +693,9 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         clusterJson["4_tag_match"] = cluster.tagMatch;
         clusterJson["5_model_name"] = cluster.modelName;
 
+        std::vector<std::string> synonymsJson(cluster.synonyms.begin(), cluster.synonyms.end());
+        clusterJson["9_synonyms"] = synonymsJson;
+
         std::vector<json> lemmasJson;
         for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
             json lemmaJson;
@@ -644,31 +706,6 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
             lemmaJson["3_tf-idf"] = cluster.tfidf[i];
             lemmaJson["4_hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
             lemmaJson["5_hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
-
-            // json coOccurrencesJson = nlohmann::json::object();
-            // auto it1 = coOccurrenceMap.find(cluster.lemmas[i]);
-            // if (it1 != coOccurrenceMap.end()) {
-            //     for (const auto& coPair : it1->second) {
-            //         const auto& otherLemma = coPair.first;
-            //         int frequency = coPair.second;
-            //         const auto length = static_cast<float>(otherLemma.size()) * 0.5;
-
-            //         if (g_options.cleaningStopWords) {
-            //             const auto& stopWords = GetStopWords();
-
-            //             if (stopWords.find(otherLemma) != stopWords.end())
-            //                 continue;
-            //         }
-
-            //         if (length > 3.0 && frequency > g_options.coOccurrenceFrequency) {
-            //             coOccurrencesJson[otherLemma] = frequency;
-            //         }
-            //     }
-            // }
-            // lemmaJson["CoOccurrences"] = coOccurrencesJson;
-
-            // std::vector<float> vectorValues = cluster.wordVectors[i]->GetVector();
-            // lemmaJson["Vector"] = vectorValues;
             lemmasJson.push_back(lemmaJson);
         }
         clusterJson["6_lemmas"] = lemmasJson;
@@ -682,6 +719,16 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
                                         {"1_end", wordComplex->pos.end},
                                         {"2_doc_num", wordComplex->pos.docNum},
                                         {"3_sent_num", wordComplex->pos.sentNum}};
+
+            for (const auto& contextSentence : cluster.contexts) {
+                const TokenizedSentence& context = contextSentence;
+
+                if (context.docNum == wordComplex->pos.docNum && context.sentNum == wordComplex->pos.sentNum) {
+                    phraseJson["2_context"] = context.originalStr;
+                    break;
+                }
+            }
+
             phrases.push_back(phraseJson);
         }
         clusterJson["8_phrases"] = phrases;
@@ -689,7 +736,9 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
         // If mergeNestedClusters is true, check for substring relation with the previous key
         if (mergeNestedClusters && previousClusterJson && key.find(previousKey) == 0) {
             // If the key starts with the previous key, treat it as a nested cluster
-            (*previousClusterJson)["9_nested_clusters"].push_back(clusterJson);
+            json nestedClusterJson = clusterJson;
+            nestedClusterJson["00_key"] = key; // Add the key to the nested cluster
+            (*previousClusterJson)["nested_clusters"].push_back(nestedClusterJson);
         } else {
             // Save current clusterJson for potential nesting in the next iteration
             j[key] = clusterJson;

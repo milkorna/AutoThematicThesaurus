@@ -1,0 +1,3296 @@
+[
+    {
+        "group_key": "абзац текст",
+        "phrases": [
+            {
+                "key": "абзац текст",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.983177423477173
+            },
+            {
+                "key": "текст абзац",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.936909019947052
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "автоматизация решение",
+        "phrases": [
+            {
+                "key": "автоматизация решение",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.0641107112169266
+            },
+            {
+                "key": "решение автоматизация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0180525574833155
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "алгоритм визуализация",
+        "phrases": [
+            {
+                "key": "алгоритм визуализация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.917953670024872
+            },
+            {
+                "key": "визуализация алгоритм",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0824179425835609
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "алгоритм обучение",
+        "phrases": [
+            {
+                "key": "алгоритм обучение",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.982993721961975
+            },
+            {
+                "key": "обучение алгоритм",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.962803304195404
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "алгоритм оптимизация",
+        "phrases": [
+            {
+                "key": "алгоритм оптимизация",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.931710660457611
+            },
+            {
+                "key": "оптимизация алгоритм",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.872499763965607
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "алгоритм работа",
+        "phrases": [
+            {
+                "key": "алгоритм работа",
+                "is_term_manual": 1,
+                "frequency": 0.025396825396825,
+                "oof_prob_class": 0.869033753871918
+            },
+            {
+                "key": "работа алгоритм",
+                "is_term_manual": 1,
+                "frequency": 0.047619047619048,
+                "oof_prob_class": 0.731716990470886
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "алгоритм тестирование",
+        "phrases": [
+            {
+                "key": "алгоритм тестирование",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.380006462335586
+            },
+            {
+                "key": "тестирование алгоритм",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.423800438642502
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "анализ качество",
+        "phrases": [
+            {
+                "key": "анализ качество",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.951017081737518
+            },
+            {
+                "key": "качество анализ",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.72592830657959
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "анализ метод",
+        "phrases": [
+            {
+                "key": "анализ метод",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.90086030960083
+            },
+            {
+                "key": "метод анализ",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.404270172119141
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "анализ модель",
+        "phrases": [
+            {
+                "key": "анализ модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.973383665084839
+            },
+            {
+                "key": "модель анализ",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.9843869805336
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "анализ результат",
+        "phrases": [
+            {
+                "key": "анализ результат",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.82269674539566
+            },
+            {
+                "key": "результат анализ",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.594729781150818
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "архитектура модель",
+        "phrases": [
+            {
+                "key": "архитектура модель",
+                "is_term_manual": 1,
+                "frequency": 0.079365079365079,
+                "oof_prob_class": 0.984575688838959
+            },
+            {
+                "key": "модель архитектура",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.971476256847382
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "вектор внимание",
+        "phrases": [
+            {
+                "key": "вектор внимание",
+                "is_term_manual": 1,
+                "frequency": 0.044444444444444,
+                "oof_prob_class": 0.858337640762329
+            },
+            {
+                "key": "внимание вектор",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.605938136577606
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "вектор длина",
+        "phrases": [
+            {
+                "key": "вектор длина",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.953052461147308
+            },
+            {
+                "key": "длина вектор",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.0808955803513527
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "вектор значение",
+        "phrases": [
+            {
+                "key": "вектор значение",
+                "is_term_manual": 0,
+                "frequency": 0.041269841269841,
+                "oof_prob_class": 0.827296793460846
+            },
+            {
+                "key": "значение вектор",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.116318792104721
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вектор последовательность",
+        "phrases": [
+            {
+                "key": "вектор последовательность",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.478600293397903
+            },
+            {
+                "key": "последовательность вектор",
+                "is_term_manual": 1,
+                "frequency": 0.025396825396825,
+                "oof_prob_class": 0.844003915786743
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вектор представление",
+        "phrases": [
+            {
+                "key": "вектор представление",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.737865209579468
+            },
+            {
+                "key": "представление вектор",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0755309388041496
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вектор приближение",
+        "phrases": [
+            {
+                "key": "вектор приближение",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.514854669570923
+            },
+            {
+                "key": "приближение вектор",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.701471209526062
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вектор размерность",
+        "phrases": [
+            {
+                "key": "вектор размерность",
+                "is_term_manual": 0,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.866172194480896
+            },
+            {
+                "key": "размерность вектор",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.189978271722794
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вектор ключ размерность",
+        "phrases": [
+            {
+                "key": "вектор размерность ключ",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.611621201038361
+            },
+            {
+                "key": "размерность вектор ключ",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.240509793162346
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "векторный представление размерность",
+        "phrases": [
+            {
+                "key": "векторный представление размерность",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.935747385025024
+            },
+            {
+                "key": "размерность векторный представление",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.885265469551086
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вес матрица",
+        "phrases": [
+            {
+                "key": "вес матрица",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.968361973762512
+            },
+            {
+                "key": "матрица вес",
+                "is_term_manual": 1,
+                "frequency": 0.06031746031746,
+                "oof_prob_class": 0.968400418758392
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вес модель обученный",
+        "phrases": [
+            {
+                "key": "вес обученный модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.9175985455513
+            },
+            {
+                "key": "обученный вес модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.981713354587555
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вес ошибка",
+        "phrases": [
+            {
+                "key": "вес ошибка",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.313950031995773
+            },
+            {
+                "key": "ошибка вес",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.268296211957932
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "вес слово",
+        "phrases": [
+            {
+                "key": "вес слово",
+                "is_term_manual": 1,
+                "frequency": 0.022222222222222,
+                "oof_prob_class": 0.99025821685791
+            },
+            {
+                "key": "слово вес",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.962097883224487
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "весы модель предобученный",
+        "phrases": [
+            {
+                "key": "весы предобученный модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.983975946903229
+            },
+            {
+                "key": "модель предобученный весы",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.854340434074402
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "визуализация данный",
+        "phrases": [
+            {
+                "key": "визуализация данный",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.96654212474823
+            },
+            {
+                "key": "данный визуализация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0671285912394524
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "визуализация результат",
+        "phrases": [
+            {
+                "key": "визуализация результат",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.835506677627563
+            },
+            {
+                "key": "результат визуализация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.597997069358826
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "влияние оценка",
+        "phrases": [
+            {
+                "key": "влияние оценка",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.440535634756088
+            },
+            {
+                "key": "оценка влияние",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.00893731694668531
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "внешний документ коллекция",
+        "phrases": [
+            {
+                "key": "внешний коллекция документ",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.223945066332817
+            },
+            {
+                "key": "коллекция внешний документ",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.161792173981667
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "внимание модель",
+        "phrases": [
+            {
+                "key": "внимание модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.473854392766953
+            },
+            {
+                "key": "модель внимание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.755729138851166
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "вход последовательность",
+        "phrases": [
+            {
+                "key": "вход последовательность",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.675533771514893
+            },
+            {
+                "key": "последовательность вход",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.140961557626724
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "входной данный модель",
+        "phrases": [
+            {
+                "key": "входной данный модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.888294398784637
+            },
+            {
+                "key": "модель входной данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.909442722797394
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "входной данный формат",
+        "phrases": [
+            {
+                "key": "входной данный формат",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.259269177913666
+            },
+            {
+                "key": "формат входной данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.151898950338364
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "входной данный текстовый",
+        "phrases": [
+            {
+                "key": "входной текстовый данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.982703804969788
+            },
+            {
+                "key": "текстовый входной данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.951205015182495
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "выбор метод",
+        "phrases": [
+            {
+                "key": "выбор метод",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.142149195075035
+            },
+            {
+                "key": "метод выбор",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.403868943452835
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "генеративный модель текстовый",
+        "phrases": [
+            {
+                "key": "генеративный текстовый модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.990461111068726
+            },
+            {
+                "key": "текстовый генеративный модель",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.983130514621735
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "генерация модель",
+        "phrases": [
+            {
+                "key": "генерация модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.903162479400635
+            },
+            {
+                "key": "модель генерация",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.985887765884399
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный диалоговый контекст",
+        "phrases": [
+            {
+                "key": "данный диалоговый контекст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.9259033203125
+            },
+            {
+                "key": "контекст диалоговый данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.697961211204529
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "данный для задача классификация",
+        "phrases": [
+            {
+                "key": "данный для задача классификация",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.682459235191345
+            },
+            {
+                "key": "классификация для данный задача",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.927886962890625
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный источник",
+        "phrases": [
+            {
+                "key": "данный источник",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.458827584981918
+            },
+            {
+                "key": "источник данный",
+                "is_term_manual": 1,
+                "frequency": 0.047619047619048,
+                "oof_prob_class": 0.966794967651367
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный класс",
+        "phrases": [
+            {
+                "key": "данный класс",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.553859174251556
+            },
+            {
+                "key": "класс данный",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.123497612774372
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный корпус",
+        "phrases": [
+            {
+                "key": "данный корпус",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.959203898906708
+            },
+            {
+                "key": "корпус данный",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.973133265972137
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный массив",
+        "phrases": [
+            {
+                "key": "данный массив",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.270278841257095
+            },
+            {
+                "key": "массив данный",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.847406446933746
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный модель",
+        "phrases": [
+            {
+                "key": "данный модель",
+                "is_term_manual": 0,
+                "frequency": 0.041269841269841,
+                "oof_prob_class": 0.731316566467285
+            },
+            {
+                "key": "модель данный",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.188676089048386
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный обзор",
+        "phrases": [
+            {
+                "key": "данный обзор",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.944438338279724
+            },
+            {
+                "key": "обзор данный",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0193040743470192
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный перевод",
+        "phrases": [
+            {
+                "key": "данный перевод",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.834375083446503
+            },
+            {
+                "key": "перевод данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.51806628704071
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный последовательность",
+        "phrases": [
+            {
+                "key": "данный последовательность",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.445559859275818
+            },
+            {
+                "key": "последовательность данный",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.39513435959816
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный пространство",
+        "phrases": [
+            {
+                "key": "данный пространство",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.627569913864136
+            },
+            {
+                "key": "пространство данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.382180958986282
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный разметка",
+        "phrases": [
+            {
+                "key": "данный разметка",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.508042454719543
+            },
+            {
+                "key": "разметка данный",
+                "is_term_manual": 1,
+                "frequency": 0.095238095238095,
+                "oof_prob_class": 0.911202192306519
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный сет",
+        "phrases": [
+            {
+                "key": "данный сет",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.874945521354675
+            },
+            {
+                "key": "сет данный",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.318613499403
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный слой",
+        "phrases": [
+            {
+                "key": "данный слой",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.832894325256348
+            },
+            {
+                "key": "слой данный",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.106597192585468
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный тип",
+        "phrases": [
+            {
+                "key": "данный тип",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.817393779754639
+            },
+            {
+                "key": "тип данный",
+                "is_term_manual": 1,
+                "frequency": 0.041269841269841,
+                "oof_prob_class": 0.986171662807465
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный точка",
+        "phrases": [
+            {
+                "key": "данный точка",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0427895523607731
+            },
+            {
+                "key": "точка данный",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.903675496578217
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный формат",
+        "phrases": [
+            {
+                "key": "данный формат",
+                "is_term_manual": 0,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.691419720649719
+            },
+            {
+                "key": "формат данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.392518609762192
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный хранение",
+        "phrases": [
+            {
+                "key": "данный хранение",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.2868532538414
+            },
+            {
+                "key": "хранение данный",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.701660513877869
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "датасет модель",
+        "phrases": [
+            {
+                "key": "датасет модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.651705205440521
+            },
+            {
+                "key": "модель датасет",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.947673380374908
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "датасет размер",
+        "phrases": [
+            {
+                "key": "датасет размер",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.229016125202179
+            },
+            {
+                "key": "размер датасет",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.287708103656769
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "длина контекст",
+        "phrases": [
+            {
+                "key": "длина контекст",
+                "is_term_manual": 1,
+                "frequency": 0.022222222222222,
+                "oof_prob_class": 0.990500628948212
+            },
+            {
+                "key": "контекст длина",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.919401466846466
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "длина последовательность токен",
+        "phrases": [
+            {
+                "key": "длина последовательность токен",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.89666748046875
+            },
+            {
+                "key": "последовательность токен длина",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.102893620729446
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "длина предложение",
+        "phrases": [
+            {
+                "key": "длина предложение",
+                "is_term_manual": 1,
+                "frequency": 0.06031746031746,
+                "oof_prob_class": 0.970911741256714
+            },
+            {
+                "key": "предложение длина",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.137082934379578
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "длина токен",
+        "phrases": [
+            {
+                "key": "длина токен",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.887833952903748
+            },
+            {
+                "key": "токен длина",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.189499616622925
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "документ коллекция",
+        "phrases": [
+            {
+                "key": "документ коллекция",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.199788048863411
+            },
+            {
+                "key": "коллекция документ",
+                "is_term_manual": 1,
+                "frequency": 0.025396825396825,
+                "oof_prob_class": 0.11238718777895
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "документ модель",
+        "phrases": [
+            {
+                "key": "документ модель",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.842866122722626
+            },
+            {
+                "key": "модель документ",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.964905321598053
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "для задача модель",
+        "phrases": [
+            {
+                "key": "задача для модель",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.131405413150787
+            },
+            {
+                "key": "модель для задача",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.607301890850067
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "для задача разметка",
+        "phrases": [
+            {
+                "key": "задача для разметка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0365058332681656
+            },
+            {
+                "key": "разметка для задача",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.179110988974571
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "задача определение",
+        "phrases": [
+            {
+                "key": "задача определение",
+                "is_term_manual": 1,
+                "frequency": 0.031746031746032,
+                "oof_prob_class": 0.818270266056061
+            },
+            {
+                "key": "определение задача",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.130781307816505
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "запрос слово",
+        "phrases": [
+            {
+                "key": "запрос слово",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.374657362699509
+            },
+            {
+                "key": "слово запрос",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.619576394557953
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "знание модель",
+        "phrases": [
+            {
+                "key": "знание модель",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.986396849155426
+            },
+            {
+                "key": "модель знание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.818274915218353
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "знание пользователь",
+        "phrases": [
+            {
+                "key": "знание пользователь",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.526909351348877
+            },
+            {
+                "key": "пользователь знание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0444920435547829
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "значение матрица",
+        "phrases": [
+            {
+                "key": "значение матрица",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.433057129383087
+            },
+            {
+                "key": "матрица значение",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.876894176006317
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "значение пороговый",
+        "phrases": [
+            {
+                "key": "значение пороговый",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.813196063041687
+            },
+            {
+                "key": "пороговый значение",
+                "is_term_manual": 1,
+                "frequency": 0.034920634920635,
+                "oof_prob_class": 0.0348050333559513
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "значение произведение скалярный",
+        "phrases": [
+            {
+                "key": "значение скалярный произведение",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.0451617427170277
+            },
+            {
+                "key": "скалярный произведение значение",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0177709124982357
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "значение сходство",
+        "phrases": [
+            {
+                "key": "значение сходство",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.419211000204086
+            },
+            {
+                "key": "сходство значение",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.30438506603241
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "идея тестирование",
+        "phrases": [
+            {
+                "key": "идея тестирование",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.418313801288605
+            },
+            {
+                "key": "тестирование идея",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0732968673110008
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "извлекающий метод реферирование",
+        "phrases": [
+            {
+                "key": "извлекающий метод реферирование",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.763391852378845
+            },
+            {
+                "key": "метод извлекающий реферирование",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.920767664909363
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "исходный последовательность слово",
+        "phrases": [
+            {
+                "key": "исходный последовательность слово",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.897877395153046
+            },
+            {
+                "key": "слово исходный последовательность",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.923174679279327
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "итеративный обучение процесс",
+        "phrases": [
+            {
+                "key": "итеративный процесс обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.921647548675537
+            },
+            {
+                "key": "процесс итеративный обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.941359400749207
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "итерация метод степенный",
+        "phrases": [
+            {
+                "key": "итерация степенный метод",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.694041192531586
+            },
+            {
+                "key": "метод степенный итерация",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.186897769570351
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "итоговый качество модель",
+        "phrases": [
+            {
+                "key": "итоговый качество модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.953101694583893
+            },
+            {
+                "key": "качество итоговый модель",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.931680858135223
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество критерий",
+        "phrases": [
+            {
+                "key": "качество критерий",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.601740479469299
+            },
+            {
+                "key": "критерий качество",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.809124946594238
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество мера",
+        "phrases": [
+            {
+                "key": "качество мера",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.899188816547394
+            },
+            {
+                "key": "мера качество",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.507701218128204
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество метрика",
+        "phrases": [
+            {
+                "key": "качество метрика",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.960225105285645
+            },
+            {
+                "key": "метрика качество",
+                "is_term_manual": 1,
+                "frequency": 0.06031746031746,
+                "oof_prob_class": 0.979261100292206
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество метрика оценка",
+        "phrases": [
+            {
+                "key": "качество метрика оценка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.886172711849213
+            },
+            {
+                "key": "метрика оценка качество",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.983211398124695
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество оценка",
+        "phrases": [
+            {
+                "key": "качество оценка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.207961887121201
+            },
+            {
+                "key": "оценка качество",
+                "is_term_manual": 1,
+                "frequency": 0.17777777777778,
+                "oof_prob_class": 0.98372894525528
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество параметр",
+        "phrases": [
+            {
+                "key": "качество параметр",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.561597466468811
+            },
+            {
+                "key": "параметр качество",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.423468947410583
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество разметка",
+        "phrases": [
+            {
+                "key": "качество разметка",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.591192066669464
+            },
+            {
+                "key": "разметка качество",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.488766252994537
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "качество улучшение",
+        "phrases": [
+            {
+                "key": "качество улучшение",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.856471538543701
+            },
+            {
+                "key": "улучшение качество",
+                "is_term_manual": 1,
+                "frequency": 0.050793650793651,
+                "oof_prob_class": 0.959522902965546
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "класс меткий",
+        "phrases": [
+            {
+                "key": "класс меткий",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.951106667518616
+            },
+            {
+                "key": "меткий класс",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.948081433773041
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "класс модель",
+        "phrases": [
+            {
+                "key": "класс модель",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.685918807983398
+            },
+            {
+                "key": "модель класс",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.256510704755783
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "класс объект",
+        "phrases": [
+            {
+                "key": "класс объект",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.888271629810333
+            },
+            {
+                "key": "объект класс",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.935737013816833
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "классификатор нейронный сеть",
+        "phrases": [
+            {
+                "key": "классификатор нейронный сеть",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.925691246986389
+            },
+            {
+                "key": "нейронный сеть классификатор",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.931219696998596
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "для классификация модель",
+        "phrases": [
+            {
+                "key": "классификация для модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.919406831264496
+            },
+            {
+                "key": "модель для классификация",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.980455219745636
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "классификация метод",
+        "phrases": [
+            {
+                "key": "классификация метод",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.982010245323181
+            },
+            {
+                "key": "метод классификация",
+                "is_term_manual": 1,
+                "frequency": 0.028571428571429,
+                "oof_prob_class": 0.983954012393951
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "классификация область",
+        "phrases": [
+            {
+                "key": "классификация область",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.986031472682953
+            },
+            {
+                "key": "область классификация",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.960243999958038
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "контекст модель",
+        "phrases": [
+            {
+                "key": "контекст модель",
+                "is_term_manual": 1,
+                "frequency": 0.028571428571429,
+                "oof_prob_class": 0.990710258483887
+            },
+            {
+                "key": "модель контекст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.987271904945374
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "контекст поиск",
+        "phrases": [
+            {
+                "key": "контекст поиск",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.925669252872467
+            },
+            {
+                "key": "поиск контекст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.822815597057343
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "контекст слово",
+        "phrases": [
+            {
+                "key": "контекст слово",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.991326153278351
+            },
+            {
+                "key": "слово контекст",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.984300076961517
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "контекст на основа слово",
+        "phrases": [
+            {
+                "key": "контекст слово на основа",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.405852526426315
+            },
+            {
+                "key": "слово на основа контекст",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.741596639156342
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "корпус неразмеченный текст",
+        "phrases": [
+            {
+                "key": "корпус неразмеченный текст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.947816252708435
+            },
+            {
+                "key": "неразмеченный корпус текст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.96397852897644
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "корпус слово",
+        "phrases": [
+            {
+                "key": "корпус слово",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.974426984786987
+            },
+            {
+                "key": "слово корпус",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.974351823329926
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "корпус текст",
+        "phrases": [
+            {
+                "key": "корпус текст",
+                "is_term_manual": 1,
+                "frequency": 0.12698412698413,
+                "oof_prob_class": 0.990256607532501
+            },
+            {
+                "key": "текст корпус",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.975641548633575
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "лосс обучение",
+        "phrases": [
+            {
+                "key": "лосс обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.856502950191498
+            },
+            {
+                "key": "обучение лосс",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.982785761356354
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "малый модель размер",
+        "phrases": [
+            {
+                "key": "малый размер модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.874352276325226
+            },
+            {
+                "key": "модель малый размер",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.942205846309662
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "материал текст",
+        "phrases": [
+            {
+                "key": "материал текст",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.874308586120605
+            },
+            {
+                "key": "текст материал",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.29117277264595
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "запрос матрица слово",
+        "phrases": [
+            {
+                "key": "матрица запрос слово",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.58594936132431
+            },
+            {
+                "key": "матрица слово запрос",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.624950885772705
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "векторный матрица полный представление",
+        "phrases": [
+            {
+                "key": "матрица полный векторный представление",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.897891342639923
+            },
+            {
+                "key": "полный матрица векторный представление",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.967406749725342
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "матрица размер",
+        "phrases": [
+            {
+                "key": "матрица размер",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.80033814907074
+            },
+            {
+                "key": "размер матрица",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.0385039784014225
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "матрица умножение",
+        "phrases": [
+            {
+                "key": "матрица умножение",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.693677425384521
+            },
+            {
+                "key": "умножение матрица",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.914382755756378
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный медицинский русскоязычный",
+        "phrases": [
+            {
+                "key": "медицинский русскоязычный данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.691725969314575
+            },
+            {
+                "key": "русскоязычный медицинский данный",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.823162078857422
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "метод оценка",
+        "phrases": [
+            {
+                "key": "метод оценка",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.956388235092163
+            },
+            {
+                "key": "оценка метод",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.883870720863342
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "метрика сравнение",
+        "phrases": [
+            {
+                "key": "метрика сравнение",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0446979328989983
+            },
+            {
+                "key": "сравнение метрика",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.0843140780925751
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "механизм работа",
+        "phrases": [
+            {
+                "key": "механизм работа",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.0191831272095442
+            },
+            {
+                "key": "работа механизм",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.626655757427216
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "внимание механизм разреженный",
+        "phrases": [
+            {
+                "key": "механизм разреженный внимание",
+                "is_term_manual": 1,
+                "frequency": 0.025396825396825,
+                "oof_prob_class": 0.990882873535156
+            },
+            {
+                "key": "разреженный механизм внимание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.980475962162018
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "многоаспектный оценка ситуация этический",
+        "phrases": [
+            {
+                "key": "многоаспектный оценка этический ситуация",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.406144291162491
+            },
+            {
+                "key": "многоаспектный этический оценка ситуация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.946971297264099
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "для модель обучение",
+        "phrases": [
+            {
+                "key": "модель для обучение",
+                "is_term_manual": 0,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.956646084785461
+            },
+            {
+                "key": "обучение для модель",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.591717183589935
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель обучение",
+        "phrases": [
+            {
+                "key": "модель обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.877567648887634
+            },
+            {
+                "key": "обучение модель",
+                "is_term_manual": 1,
+                "frequency": 0.41904761904762,
+                "oof_prob_class": 0.988979160785675
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель определение",
+        "phrases": [
+            {
+                "key": "модель определение",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.984249293804169
+            },
+            {
+                "key": "определение модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.930349171161652
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель ответ",
+        "phrases": [
+            {
+                "key": "модель ответ",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.974808275699615
+            },
+            {
+                "key": "ответ модель",
+                "is_term_manual": 1,
+                "frequency": 0.063492063492063,
+                "oof_prob_class": 0.981653451919556
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель пара",
+        "phrases": [
+            {
+                "key": "модель пара",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.709672808647156
+            },
+            {
+                "key": "пара модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.80529260635376
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель перплексие",
+        "phrases": [
+            {
+                "key": "модель перплексие",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.986242115497589
+            },
+            {
+                "key": "перплексие модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.975705206394196
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель поведение",
+        "phrases": [
+            {
+                "key": "модель поведение",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.958129048347473
+            },
+            {
+                "key": "поведение модель",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.990227282047272
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель поиск",
+        "phrases": [
+            {
+                "key": "модель поиск",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.673170030117035
+            },
+            {
+                "key": "поиск модель",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.948765754699707
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель понимание",
+        "phrases": [
+            {
+                "key": "модель понимание",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.987002730369568
+            },
+            {
+                "key": "понимание модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.975446045398712
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель построение",
+        "phrases": [
+            {
+                "key": "модель построение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.971192896366119
+            },
+            {
+                "key": "построение модель",
+                "is_term_manual": 1,
+                "frequency": 0.034920634920635,
+                "oof_prob_class": 0.985932648181915
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель представление",
+        "phrases": [
+            {
+                "key": "модель представление",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.760752081871033
+            },
+            {
+                "key": "представление модель",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.937578082084656
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель размер",
+        "phrases": [
+            {
+                "key": "модель размер",
+                "is_term_manual": 0,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.0268041118979454
+            },
+            {
+                "key": "размер модель",
+                "is_term_manual": 1,
+                "frequency": 0.079365079365079,
+                "oof_prob_class": 0.696841299533844
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель семейство",
+        "phrases": [
+            {
+                "key": "модель семейство",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.84275871515274
+            },
+            {
+                "key": "семейство модель",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.96795529127121
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель создание",
+        "phrases": [
+            {
+                "key": "модель создание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.953882098197937
+            },
+            {
+                "key": "создание модель",
+                "is_term_manual": 1,
+                "frequency": 0.025396825396825,
+                "oof_prob_class": 0.975886285305023
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель способность",
+        "phrases": [
+            {
+                "key": "модель способность",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.97919887304306
+            },
+            {
+                "key": "способность модель",
+                "is_term_manual": 1,
+                "frequency": 0.063492063492063,
+                "oof_prob_class": 0.979342341423035
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель сравнение",
+        "phrases": [
+            {
+                "key": "модель сравнение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.176389440894127
+            },
+            {
+                "key": "сравнение модель",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.98376202583313
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель текст",
+        "phrases": [
+            {
+                "key": "модель текст",
+                "is_term_manual": 1,
+                "frequency": 0.022222222222222,
+                "oof_prob_class": 0.984377801418304
+            },
+            {
+                "key": "текст модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.96601927280426
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель тест",
+        "phrases": [
+            {
+                "key": "модель тест",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.363608837127685
+            },
+            {
+                "key": "тест модель",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.920218825340271
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модель уровень",
+        "phrases": [
+            {
+                "key": "модель уровень",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.871713995933533
+            },
+            {
+                "key": "уровень модель",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.988430678844452
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель формат",
+        "phrases": [
+            {
+                "key": "модель формат",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.983095407485962
+            },
+            {
+                "key": "формат модель",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.982847273349762
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель чат-бот",
+        "phrases": [
+            {
+                "key": "модель чат-бот",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.841978311538696
+            },
+            {
+                "key": "чат-бот модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.729322612285614
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель язык",
+        "phrases": [
+            {
+                "key": "модель язык",
+                "is_term_manual": 1,
+                "frequency": 0.028571428571429,
+                "oof_prob_class": 0.984753131866455
+            },
+            {
+                "key": "язык модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.843912541866302
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель представление языковый",
+        "phrases": [
+            {
+                "key": "модель языковый представление",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.989916086196899
+            },
+            {
+                "key": "представление языковый модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.94419401884079
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "модуль система",
+        "phrases": [
+            {
+                "key": "модуль система",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.715444564819336
+            },
+            {
+                "key": "система модуль",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.816054999828339
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный набор размер",
+        "phrases": [
+            {
+                "key": "набор данный размер",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.807705640792847
+            },
+            {
+                "key": "размер набор данный",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.608700692653656
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "данный набор обучающий",
+        "phrases": [
+            {
+                "key": "набор обучающий данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.936338901519775
+            },
+            {
+                "key": "обучающий набор данный",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.984292566776276
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "данный набор общедоступный",
+        "phrases": [
+            {
+                "key": "набор общедоступный данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.937741756439209
+            },
+            {
+                "key": "общедоступный набор данный",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.967429876327515
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "данный набор открытый",
+        "phrases": [
+            {
+                "key": "набор открытый данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.93998783826828
+            },
+            {
+                "key": "открытый набор данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.974451005458832
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "данный набор текстовый",
+        "phrases": [
+            {
+                "key": "набор текстовый данный",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.968875586986542
+            },
+            {
+                "key": "текстовый набор данный",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.988222002983093
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "нормализация слой",
+        "phrases": [
+            {
+                "key": "нормализация слой",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.982071042060852
+            },
+            {
+                "key": "слой нормализация",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.968479216098785
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "обработка результат",
+        "phrases": [
+            {
+                "key": "обработка результат",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.109052211046219
+            },
+            {
+                "key": "результат обработка",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.76678067445755
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "для обучение текст",
+        "phrases": [
+            {
+                "key": "обучение для текст",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.97028636932373
+            },
+            {
+                "key": "текст для обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.830800116062164
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "обучение параметр",
+        "phrases": [
+            {
+                "key": "обучение параметр",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.959911286830902
+            },
+            {
+                "key": "параметр обучение",
+                "is_term_manual": 1,
+                "frequency": 0.022222222222222,
+                "oof_prob_class": 0.951425850391388
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "обучение система",
+        "phrases": [
+            {
+                "key": "обучение система",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.96015202999115
+            },
+            {
+                "key": "система обучение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.842314422130585
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "описание язык",
+        "phrases": [
+            {
+                "key": "описание язык",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.126086562871933
+            },
+            {
+                "key": "язык описание",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.896422564983368
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "определение ошибка",
+        "phrases": [
+            {
+                "key": "определение ошибка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.719882488250732
+            },
+            {
+                "key": "ошибка определение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.495073914527893
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "определение язык",
+        "phrases": [
+            {
+                "key": "определение язык",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.973203420639038
+            },
+            {
+                "key": "язык определение",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.965986013412476
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оптимизация параметр",
+        "phrases": [
+            {
+                "key": "оптимизация параметр",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0785166174173355
+            },
+            {
+                "key": "параметр оптимизация",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.478731662034988
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оптимизация процесс",
+        "phrases": [
+            {
+                "key": "оптимизация процесс",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.124145373702049
+            },
+            {
+                "key": "процесс оптимизация",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.722043991088867
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "ответ система",
+        "phrases": [
+            {
+                "key": "ответ система",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.577083647251129
+            },
+            {
+                "key": "система ответ",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.664224028587341
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "ответ человек",
+        "phrases": [
+            {
+                "key": "ответ человек",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.482390373945236
+            },
+            {
+                "key": "человек ответ",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.176075831055641
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оценивание система",
+        "phrases": [
+            {
+                "key": "оценивание система",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.944217681884766
+            },
+            {
+                "key": "система оценивание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.800162792205811
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оценка результат",
+        "phrases": [
+            {
+                "key": "оценка результат",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.860223114490509
+            },
+            {
+                "key": "результат оценка",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.939307153224945
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оценка система",
+        "phrases": [
+            {
+                "key": "оценка система",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.751520872116089
+            },
+            {
+                "key": "система оценка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.734514951705933
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оценка функция",
+        "phrases": [
+            {
+                "key": "оценка функция",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.834563255310059
+            },
+            {
+                "key": "функция оценка",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.683992624282837
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "оценка ситуация этический",
+        "phrases": [
+            {
+                "key": "оценка этический ситуация",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.971651017665863
+            },
+            {
+                "key": "этический оценка ситуация",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.225503832101822
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "ошибка разметка",
+        "phrases": [
+            {
+                "key": "ошибка разметка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.757387459278107
+            },
+            {
+                "key": "разметка ошибка",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.843259453773499
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "понимание процесс",
+        "phrases": [
+            {
+                "key": "понимание процесс",
+                "is_term_manual": 0,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.0485778898000717
+            },
+            {
+                "key": "процесс понимание",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.0998964458703995
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "последовательность разметка",
+        "phrases": [
+            {
+                "key": "последовательность разметка",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.534863770008087
+            },
+            {
+                "key": "разметка последовательность",
+                "is_term_manual": 1,
+                "frequency": 0.019047619047619,
+                "oof_prob_class": 0.236011371016502
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "последовательность слово",
+        "phrases": [
+            {
+                "key": "последовательность слово",
+                "is_term_manual": 1,
+                "frequency": 0.076190476190476,
+                "oof_prob_class": 0.988593339920044
+            },
+            {
+                "key": "слово последовательность",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.968776762485504
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "последовательность токен",
+        "phrases": [
+            {
+                "key": "последовательность токен",
+                "is_term_manual": 1,
+                "frequency": 0.066666666666667,
+                "oof_prob_class": 0.983901381492615
+            },
+            {
+                "key": "токен последовательность",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.976640701293945
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "последовательность элемент",
+        "phrases": [
+            {
+                "key": "последовательность элемент",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.98027890920639
+            },
+            {
+                "key": "элемент последовательность",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.936973512172699
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "предложение содержание",
+        "phrases": [
+            {
+                "key": "предложение содержание",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.534572899341583
+            },
+            {
+                "key": "содержание предложение",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.202381029725075
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "предложение текст",
+        "phrases": [
+            {
+                "key": "предложение текст",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.576183378696442
+            },
+            {
+                "key": "текст предложение",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.862530946731567
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "размерность слой",
+        "phrases": [
+            {
+                "key": "размерность слой",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.314281016588211
+            },
+            {
+                "key": "слой размерность",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.981593728065491
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "размерность эмбеддинг",
+        "phrases": [
+            {
+                "key": "размерность эмбеддинг",
+                "is_term_manual": 1,
+                "frequency": 0.012698412698413,
+                "oof_prob_class": 0.966750144958496
+            },
+            {
+                "key": "эмбеддинг размерность",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.628023505210876
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "вероятность распределение условный",
+        "phrases": [
+            {
+                "key": "распределение условный вероятность",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.895864009857178
+            },
+            {
+                "key": "условный распределение вероятность",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.835592806339264
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "рейтинг система",
+        "phrases": [
+            {
+                "key": "рейтинг система",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.382773369550705
+            },
+            {
+                "key": "система рейтинг",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0313108079135418
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "речь слово",
+        "phrases": [
+            {
+                "key": "речь слово",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.5860875248909
+            },
+            {
+                "key": "слово речь",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.0589526370167732
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "самовнимание энкодер",
+        "phrases": [
+            {
+                "key": "самовнимание энкодер",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.935045301914215
+            },
+            {
+                "key": "энкодер самовнимание",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.853535056114197
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "словарь слово",
+        "phrases": [
+            {
+                "key": "словарь слово",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.988443195819855
+            },
+            {
+                "key": "слово словарь",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.954939365386963
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "словарь элемент",
+        "phrases": [
+            {
+                "key": "словарь элемент",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.992865681648254
+            },
+            {
+                "key": "элемент словарь",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.992144167423248
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "слово текст",
+        "phrases": [
+            {
+                "key": "слово текст",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.984448552131653
+            },
+            {
+                "key": "текст слово",
+                "is_term_manual": 1,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.951508283615112
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "смысл схожий",
+        "phrases": [
+            {
+                "key": "смысл схожий",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.75758820772171
+            },
+            {
+                "key": "схожий смысл",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.32657715678215
+            }
+        ],
+        "merge_group": 0
+    },
+    {
+        "group_key": "софтмакс функция",
+        "phrases": [
+            {
+                "key": "софтмакс функция",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.397904843091965
+            },
+            {
+                "key": "функция софтмакс",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.119400091469288
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "модель способность языковый",
+        "phrases": [
+            {
+                "key": "способность языковый модель",
+                "is_term_manual": 1,
+                "frequency": 0.0095238095238095,
+                "oof_prob_class": 0.991021752357483
+            },
+            {
+                "key": "языковый способность модель",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.973983585834503
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "стек энкодер",
+        "phrases": [
+            {
+                "key": "стек энкодер",
+                "is_term_manual": 1,
+                "frequency": 0.015873015873016,
+                "oof_prob_class": 0.969220459461212
+            },
+            {
+                "key": "энкодер стек",
+                "is_term_manual": 1,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.86402302980423
+            }
+        ],
+        "merge_group": 1
+    },
+    {
+        "group_key": "число язык",
+        "phrases": [
+            {
+                "key": "число язык",
+                "is_term_manual": 0,
+                "frequency": 0.0063492063492063,
+                "oof_prob_class": 0.932321190834045
+            },
+            {
+                "key": "язык число",
+                "is_term_manual": 0,
+                "frequency": 0.0031746031746032,
+                "oof_prob_class": 0.129398941993713
+            }
+        ],
+        "merge_group": 0
+    }
+]

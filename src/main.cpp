@@ -4,6 +4,7 @@
 #include <Logger.h>
 #include <OutputRedirector.h>
 #include <PatternPhrasesStorage.h>
+#include <PhrasesStorageLoader.h>
 #include <SemanticRelations.h>
 #include <TextCorpus.h>
 #include <TokenizedSentenceCorpus.h>
@@ -17,6 +18,7 @@ namespace fs = std::filesystem;
 
 int main()
 {
+    ::Embedding e;
     auto start = std::chrono::high_resolution_clock::now();
 
     Logger::enableLogging(true);
@@ -24,8 +26,8 @@ int main()
     fs::path repoPath = fs::current_path();
     std::string logFilePath = (repoPath / "my_logs.txt").string();
     Logger::initializeLogFile(logFilePath);
-
-    fs::path jsonFilePath = repoPath / "my_data" / "total_results_no_sw.json";
+    fs::path jsonFilePath = repoPath / "my_data" / "total_results.json";
+    fs::path jsonFileResPath = repoPath / "my_data" / "terms.json";
 
     // collecting phrases for each text and saving phrases for each text in a separate file
     // also collecting a corpus of texts and saving it
@@ -96,11 +98,17 @@ int main()
 
     // getting ready-made results without waiting for intermediate steps
     {
-        auto& corpus = TextCorpus::GetCorpus();
-        corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+        // auto& corpus = TextCorpus::GetCorpus();
+        // corpus.LoadCorpusFromFile((repoPath / "my_data" / "filtered_corpus").string());
+        PhrasesStorageLoader loader;
+        auto& corpus = TokenizedSentenceCorpus::GetCorpus();
+        corpus.LoadFromFile((repoPath / "my_data" / "nlp_corpus" / "sentences.json").string());
+
         auto& storage = PatternPhrasesStorage::GetStorage();
-        storage.LoadStorageFromFile(jsonFilePath.string());
-        storage.OutputClustersToJsonFile(jsonFilePath);
+        loader.LoadStorageFromFile(storage, jsonFilePath.string());
+        storage.AddContextsToClusters();
+        storage.CollectTerms();
+        storage.OutputClustersToJsonFile(jsonFileResPath.string(), false, true);
     }
 
     auto end = std::chrono::high_resolution_clock::now();
