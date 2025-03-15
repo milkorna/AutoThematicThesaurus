@@ -37,12 +37,13 @@ namespace PhrasesCollectorUtils {
         fs::path repoPath = fs::current_path();
 
         myDataDir = repoPath / "my_data";
-        textsDir = myDataDir / "texts";
-        stopWordsFile = myDataDir / "stop_words.txt";
-        tagsAndHubsFile = myDataDir / "nlp_corpus" / "tags_and_hubs_line_counts.txt";
-        resDir = repoPath / "res";
-        corpusFile = myDataDir / "nlp_corpus" / "corpus";
-        sentencesFile = myDataDir / "nlp_corpus" / "sentences.json";
+        nlpCorpusDir = myDataDir / "nlp_corpus";
+        textsDir = nlpCorpusDir / "texts";
+        stopWordsFile = myDataDir / "stop_words";
+        tagsAndHubsFile = nlpCorpusDir / "tags_and_hubs";
+        resDir = nlpCorpusDir / "results";
+        corpusFile = nlpCorpusDir / "corpus";
+        sentencesFile = nlpCorpusDir / "sentences.json";
 
         int fileCount = 0;
         try {

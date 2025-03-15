@@ -33,6 +33,7 @@ namespace PhrasesCollectorUtils {
         float freqTrecholdCoeff;
 
         fs::path myDataDir;
+        fs::path nlpCorpusDir;
         fs::path textsDir;
         fs::path stopWordsFile;
         fs::path tagsAndHubsFile;
