@@ -39,6 +39,7 @@ namespace PhrasesCollectorUtils {
         myDataDir = repoPath / "my_data";
         corpusDir = myDataDir / "nlp_corpus";
         textsDir = corpusDir / "texts";
+        patternsFile = myDataDir / "patterns";
         stopWordsFile = myDataDir / "stop_words";
         tagsAndHubsFile = corpusDir / "tags_and_hubs";
         resDir = corpusDir / "results";
@@ -153,7 +154,7 @@ namespace PhrasesCollectorUtils {
 
     void BuildPhraseStorage()
     {
-        fs::path repoPath = fs::current_path();
+        Logger::log("", LogLevel::Info, "Building phrase storage...");
         fs::path outputDir = g_options.resDir;
         fs::create_directories(outputDir);
 
@@ -177,7 +178,7 @@ namespace PhrasesCollectorUtils {
 
     void BuildTokenizedSentenceCorpus()
     {
-        fs::path repoPath = fs::current_path();
+        Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
         auto& sentences = TokenizedSentenceCorpus::GetCorpus();
 
         try {
@@ -229,6 +230,7 @@ namespace PhrasesCollectorUtils {
         } catch (...) {
             Logger::log("", LogLevel::Error, "Unknown exception caught");
         }
+        Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
     }
 
     MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet)

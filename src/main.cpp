@@ -44,6 +44,9 @@ void setGlobalOptions(const po::variables_map& vm)
     if (vm.count("texts-dir")) {
         g_options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
     }
+    if (vm.count("patterns-file")) {
+        g_options.textsDir = fs::path(vm["patterns-file"].as<std::string>());
+    }
     if (vm.count("stop-words-file")) {
         g_options.stopWordsFile = fs::path(vm["stop-words-file"].as<std::string>());
     }
@@ -81,6 +84,8 @@ void addOptions(po::options_description& desc)
                        "Path to 'my_data' directory (default is inside 'my_data')");
     desc.add_options()("texts-dir", po::value<std::string>(),
                        "Path to texts directory (default is inside 'corpusDir')");
+    desc.add_options()("patterns-file", po::value<std::string>(),
+                       "Path to grammatical patterns file (default is inside 'my_data')");
     desc.add_options()("stop-words-file", po::value<std::string>(),
                        "Path to stop_words file (default is inside in 'my_data')");
     desc.add_options()("tags-and-hubs-file", po::value<std::string>(),
@@ -154,12 +159,15 @@ int main(int argc, char** argv)
     try {
         if (command == "collect_phrases") {
             // Collect phrases from texts and save the storage
-            fs::path patternsPath = g_options.myDataDir / "patterns.txt";
+            Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
+            fs::path patternsPath = g_options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
-            ::Embedding e;
             BuildPhraseStorage();
+            Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "merge_clusters") {
             // Merge similar phrase clusters and compute text-based metrics
+            Logger::log("Main", LogLevel::Info, "Starting cluster merging process...");
+
             auto& corpus = TextCorpus::GetCorpus();
             corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
 
@@ -172,8 +180,10 @@ int main(int argc, char** argv)
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
             storage.OutputClustersToJsonFile(jsonFilePath.string());
+            Logger::log("Main", LogLevel::Info, "Cluster merging completed successfully.");
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
+            Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
             auto& corpus = TextCorpus::GetCorpus();
             corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
 
@@ -184,11 +194,13 @@ int main(int argc, char** argv)
             loader.LoadStorageFromFile(storage, jsonFilePath.string());
             storage.LoadWikiWNRelations();
             storage.OutputClustersToJsonFile(jsonFilePath);
+
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
             BuildTokenizedSentenceCorpus();
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
+            Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, jsonFilePath.string());
@@ -198,10 +210,7 @@ int main(int argc, char** argv)
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
             sentences.LoadFromFile(g_options.sentencesFile.string());
 
-            std::cout << "Sentences loaded successfully. Total sentences: " << sentences.totalSentences << std::endl;
-
             LSA lsa(sentences);
-            std::cout << "Starting LSA analysis..." << std::endl;
             lsa.PerformAnalysis(false);
 
             MatrixXd U = lsa.GetU();
@@ -209,18 +218,22 @@ int main(int argc, char** argv)
             MatrixXd V = lsa.GetV();
             std::vector<std::string> words = lsa.GetWords();
 
-            std::cout << "LSA analysis completed successfully!" << std::endl;
-            std::cout << "Matrix U size: " << U.rows() << "x" << U.cols() << std::endl;
-            std::cout << "Matrix Sigma size: " << Sigma.rows() << "x" << Sigma.cols() << std::endl;
-            std::cout << "Matrix V size: " << V.rows() << "x" << V.cols() << std::endl;
+            Logger::log("LSA", LogLevel::Info, "LSA analysis completed successfully.");
+            Logger::log("LSA", LogLevel::Info,
+                        "Matrix U size: " + std::to_string(U.rows()) + "x" + std::to_string(U.cols()));
+            Logger::log("LSA", LogLevel::Info,
+                        "Matrix Sigma size: " + std::to_string(Sigma.rows()) + "x" + std::to_string(Sigma.cols()));
+            Logger::log("LSA", LogLevel::Info,
+                        "Matrix V size: " + std::to_string(V.rows()) + "x" + std::to_string(V.cols()));
 
-            std::cout << "\nAnalyzing top topics..." << std::endl;
+            Logger::log("LSA", LogLevel::Info, "Analyzing top topics...");
             lsa.AnalyzeTopics(5, 30);
 
             storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
             storage.OutputClustersToJsonFile(jsonFilePath);
         } else if (command == "get_prepared_results") {
             // Load precomputed results without additional processing
+            Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
             PhrasesStorageLoader loader;
             auto& corpus = TokenizedSentenceCorpus::GetCorpus();
             corpus.LoadFromFile(g_options.sentencesFile.string());

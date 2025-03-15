@@ -123,7 +123,7 @@ SyntaxRole Parser::ParseRoleAndCut(std::string& line) const
             }
         }
     } catch (const std::exception& e) {
-        Logger::log("PatternParser", LogLevel::Error, "Error in ParseRoleAndCut: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse role: " + std::string(e.what()));
     }
     return SyntaxRole::Independent;
 }
@@ -145,7 +145,7 @@ UniMorphTag Parser::ParseUniMorphTag(const std::string& line) const
         return result;
     } catch (const std::exception& e) {
 
-        Logger::log("PatternParser", LogLevel::Error, "Error in ParseUniMorphTag: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse UniMorphTag: " + std::string(e.what()));
 
         return UniMorphTag(); // Return an empty or default tag on failure
     }
@@ -168,7 +168,7 @@ std::pair<UniSPTag, UniMorphTag> Parser::ProcessWord(const X::UniString& line, c
 
         return std::make_pair(spTag, morphTag);
     } catch (const std::exception& e) {
-        Logger::log("PatternParser", LogLevel::Error, "Error in ProcessWord: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse word component: " + std::string(e.what()));
         return std::make_pair(UniSPTag(), UniMorphTag()); // Return default tags on failure
     }
 }
@@ -195,7 +195,7 @@ Additional Parser::ParseTags(const std::string& line)
 
         return Additional{isRec, exlexWord};
     } catch (const std::exception& e) {
-        Logger::log("PatternParser", LogLevel::Error, "Error in ParseTags: " + std::string(e.what()));
+        Logger::log("PatternParser", LogLevel::Error, "Failed to parse tags: " + std::string(e.what()));
 
         return Additional(); // Return an empty Additional structure on failure
     }

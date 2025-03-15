@@ -34,6 +34,7 @@ namespace PhrasesCollectorUtils {
         fs::path myDataDir;
         fs::path corpusDir;
         fs::path textsDir;
+        fs::path patternsFile;
         fs::path stopWordsFile;
         fs::path tagsAndHubsFile;
         fs::path resDir;

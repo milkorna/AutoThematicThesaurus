@@ -30,6 +30,7 @@ void PatternPhrasesStorage::ReserveClusters(size_t count)
 
 void PatternPhrasesStorage::AddContextsToClusters()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Adding contexts to clusters...");
     auto& corpus = TokenizedSentenceCorpus::GetCorpus();
 
     for (auto& clusterPair : clusters) {
@@ -242,6 +243,7 @@ void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>&
 
 void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Collecting terms...");
     std::set<std::string> sortedKeys;
     const auto& clusters = GetClusters();
 
@@ -399,6 +401,8 @@ double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& clus
 void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
                                                  const std::unordered_map<int, std::vector<std::string>>& topics)
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics...");
+
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
 
@@ -410,6 +414,7 @@ void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::v
 
 void PatternPhrasesStorage::ComputeTextMetrics()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
     const auto corpus = TextCorpus::GetCorpus();
     int totalDocuments = corpus.GetTotalDocuments();
     const auto& topicVectors = GetTopicVectors();
@@ -466,6 +471,8 @@ void PatternPhrasesStorage::ComputeTextMetrics()
 
 void PatternPhrasesStorage::MergeSimilarClusters()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Merging similar clusters...");
+
     // Get all keys from the map and sort them
     std::vector<std::string> sortedKeys;
     sortedKeys.reserve(clusters.size());
@@ -611,7 +618,7 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
 
 void PatternPhrasesStorage::LoadWikiWNRelations()
 {
-
+    Logger::log("PhrasesStorage", LogLevel::Info, "Loading WikiWordNet relations...");
     SemanticRelationsDB semanticDB;
 
     for (auto& clusterPair : clusters) {
@@ -659,8 +666,9 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
 void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters,
                                                      bool termsOnly) const
 {
-    json j;
+    Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
 
+    json j;
     std::vector<std::string> keys;
 
     if (termsOnly) {

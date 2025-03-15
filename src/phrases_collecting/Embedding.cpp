@@ -26,7 +26,9 @@ void Embedding::LoadModel(std::string model_path = "")
 
 Embedding::Embedding()
 {
+    Logger::log("Embedding", LogLevel::Info, "Initializing embedding model...");
     LoadModel();
+    Logger::log("Embedding", LogLevel::Info, "Model loaded successfully...");
 }
 
 void Embedding::RunTest()
