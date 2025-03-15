@@ -32,6 +32,47 @@ static void printUsage(const po::options_description& desc)
     std::cout << "\nOptions:\n" << desc << "\n";
 }
 
+void setGlobalOptions(const po::variables_map& vm)
+{
+    // Override default global options if provided by the user
+    if (vm.count("mydata-dir")) {
+        g_options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
+    }
+    if (vm.count("corpus-dir")) {
+        g_options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
+    }
+    if (vm.count("texts-dir")) {
+        g_options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
+    }
+    if (vm.count("stop-words-file")) {
+        g_options.stopWordsFile = fs::path(vm["stop-words-file"].as<std::string>());
+    }
+    if (vm.count("tags-and-hubs-file")) {
+        g_options.tagsAndHubsFile = fs::path(vm["tags-and-hubs"].as<std::string>());
+    }
+    if (vm.count("results-dir")) {
+        g_options.resDir = fs::path(vm["results-dir"].as<std::string>());
+    }
+    if (vm.count("corpus-file")) {
+        g_options.corpusFile = fs::path(vm["corpus-file"].as<std::string>());
+    }
+    if (vm.count("filtered-corpus-file")) {
+        g_options.corpusFile = fs::path(vm["filtered-corpus-file"].as<std::string>());
+    }
+    if (vm.count("sentences-file")) {
+        g_options.sentencesFile = fs::path(vm["sentences-file"].as<std::string>());
+    }
+    if (vm.count("limit")) {
+        g_options.textToProcessCount = vm["limit"].as<int>();
+    }
+    if (vm.count("clean-stop-words")) {
+        g_options.cleanStopWords = vm["clean-stop-words"].as<bool>();
+    }
+    if (vm.count("validate-boundaries")) {
+        g_options.validateBoundaries = vm["validate-boundaries"].as<bool>();
+    }
+}
+
 int main(int argc, char** argv)
 {
     using namespace PhrasesCollectorUtils;
@@ -42,15 +83,29 @@ int main(int argc, char** argv)
     Logger::setGlobalLogLevel(LogLevel::Info);
 
     po::options_description desc("Allowed options");
-    desc.add_options()("help,h", "Show help message")("mydata-dir", po::value<std::string>(),
-                                                      "Path to 'my_data' directory")(
-        "texts-dir", po::value<std::string>(), "Path to texts directory (inside myDataDir by default)")(
-        "stop-words", po::value<std::string>(), "Path to stop_words.txt")("tags-and-hubs", po::value<std::string>(),
-                                                                          "Path to tags_and_hubs_line_counts.txt")(
-        "res-dir", po::value<std::string>(), "Path to 'res' directory")("corpus-file", po::value<std::string>(),
-                                                                        "Path to corpus file")(
-        "sentences-file", po::value<std::string>(), "Path to sentences.json")("limit", po::value<int>(),
-                                                                              "How many text files to process");
+    desc.add_options()("help,h", "Show help message");
+    desc.add_options()("mydata-dir", po::value<std::string>(), "Path to 'my_data' directory");
+    desc.add_options()("corpus-dir", po::value<std::string>(),
+                       "Path to 'my_data' directory (default is inside 'my_data')");
+    desc.add_options()("texts-dir", po::value<std::string>(),
+                       "Path to texts directory (default is inside 'corpusDir')");
+    desc.add_options()("stop-words-file", po::value<std::string>(),
+                       "Path to stop_words file (default is inside in 'my_data')");
+    desc.add_options()("tags-and-hubs-file", po::value<std::string>(),
+                       "Path to tags_and_hubs file (default is inside 'corpusDir')");
+    desc.add_options()("results-dir", po::value<std::string>(),
+                       "Path to 'results' directory (default is inside 'corpusDir')");
+    desc.add_options()("corpus-file", po::value<std::string>(), "Path to corpus file (default is inside 'corpusDir')");
+    desc.add_options()("filtered-corpus-file", po::value<std::string>(),
+                       "Path to filtered corpus file (default is inside 'corpusDir')");
+    desc.add_options()("sentences-file", po::value<std::string>(),
+                       "Path to sentences.json (default is inside 'corpusDir')");
+    desc.add_options()("limit", po::value<int>(),
+                       "How many text files to process (by default, it is calculated as the number of all files in the "
+                       "texts directory.)");
+    desc.add_options()("clean-stop-words", po::value<bool>(), "Option for clearing stop words (by default is true)");
+    desc.add_options()("validate-boundaries", po::value<bool>(),
+                       "Option for sentence boundaries validation (by default is true)");
 
     // Parse at least one argument (the command). If not provided, show help.
     if (argc < 2) {
@@ -78,43 +133,8 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    // Override default global options if provided by the user
-    if (vm.count("limit")) {
-        g_options.textToProcessCount = vm["limit"].as<int>();
-    }
-    if (vm.count("topics-limit")) {
-        g_options.tresholdTopicsCount = vm["topics-limit"].as<int>();
-    }
-    if (vm.count("clean-stop-words")) {
-        g_options.cleanStopWords = vm["clean-stop-words"].as<bool>();
-    }
-    if (vm.count("validate-boundaries")) {
-        g_options.validateBoundaries = vm["validate-boundaries"].as<bool>();
-    }
-    if (vm.count("mydata-dir")) {
-        g_options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
-    }
-    if (vm.count("corpus-dir")) {
-        g_options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
-    }
-    if (vm.count("texts-dir")) {
-        g_options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
-    }
-    if (vm.count("stop-words")) {
-        g_options.stopWordsFile = fs::path(vm["stop-words"].as<std::string>());
-    }
-    if (vm.count("tags-and-hubs")) {
-        g_options.tagsAndHubsFile = fs::path(vm["tags-and-hubs"].as<std::string>());
-    }
-    if (vm.count("res-dir")) {
-        g_options.resDir = fs::path(vm["res-dir"].as<std::string>());
-    }
-    if (vm.count("corpus-file")) {
-        g_options.corpusFile = fs::path(vm["corpus-file"].as<std::string>());
-    }
-    if (vm.count("sentences-file")) {
-        g_options.sentencesFile = fs::path(vm["sentences-file"].as<std::string>());
-    }
+    // Set global options
+    setGlobalOptions(vm);
 
     // Initialize logging system
     fs::path repoPath = fs::current_path();

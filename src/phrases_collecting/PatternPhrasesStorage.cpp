@@ -452,7 +452,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             totalTopics[cluster.key] = topics;
         }
     }
-    int frequencyThreshold = static_cast<int>(clusters.size() * g_options.freqTrecholdCoeff);
+    int frequencyThreshold = static_cast<int>(clusters.size() * g_options.freqTresholdCoeff);
     ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;

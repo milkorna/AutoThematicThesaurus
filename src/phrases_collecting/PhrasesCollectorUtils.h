@@ -29,7 +29,7 @@ namespace PhrasesCollectorUtils {
         bool validateBoundaries;
         float topicsThreshold;
         float topicsHyponymThreshold;
-        float freqTrecholdCoeff;
+        float freqTresholdCoeff;
 
         fs::path myDataDir;
         fs::path corpusDir;

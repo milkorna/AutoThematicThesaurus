@@ -70,7 +70,7 @@ namespace PhrasesCollectorUtils {
         validateBoundaries = true;
         topicsThreshold = 0.6;
         topicsHyponymThreshold = 0.98;
-        freqTrecholdCoeff = 0.12;
+        freqTresholdCoeff = 0.12;
     }
 
     std::vector<fs::path> GetFilesToProcess()
