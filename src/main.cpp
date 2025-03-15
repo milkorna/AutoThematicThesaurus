@@ -73,16 +73,8 @@ void setGlobalOptions(const po::variables_map& vm)
     }
 }
 
-int main(int argc, char** argv)
+void addOptions(po::options_description& desc)
 {
-    using namespace PhrasesCollectorUtils;
-
-    auto start = std::chrono::high_resolution_clock::now();
-
-    Logger::enableLogging(true);
-    Logger::setGlobalLogLevel(LogLevel::Info);
-
-    po::options_description desc("Allowed options");
     desc.add_options()("help,h", "Show help message");
     desc.add_options()("mydata-dir", po::value<std::string>(), "Path to 'my_data' directory");
     desc.add_options()("corpus-dir", po::value<std::string>(),
@@ -106,6 +98,19 @@ int main(int argc, char** argv)
     desc.add_options()("clean-stop-words", po::value<bool>(), "Option for clearing stop words (by default is true)");
     desc.add_options()("validate-boundaries", po::value<bool>(),
                        "Option for sentence boundaries validation (by default is true)");
+}
+
+int main(int argc, char** argv)
+{
+    using namespace PhrasesCollectorUtils;
+
+    auto start = std::chrono::high_resolution_clock::now();
+
+    Logger::enableLogging(true);
+    Logger::setGlobalLogLevel(LogLevel::Info);
+
+    po::options_description desc("Allowed options");
+    addOptions(desc);
 
     // Parse at least one argument (the command). If not provided, show help.
     if (argc < 2) {
