@@ -30,8 +30,6 @@ using json = nlohmann::json;
 using namespace X;
 
 namespace PhrasesCollectorUtils {
-    Options g_options;
-
     Options::Options()
     {
         fs::path repoPath = fs::current_path();
@@ -76,9 +74,10 @@ namespace PhrasesCollectorUtils {
 
     std::vector<fs::path> GetFilesToProcess()
     {
-        fs::path inputDir = g_options.textsDir;
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        fs::path inputDir = options.textsDir;
         std::vector<fs::path> files_to_process;
-        files_to_process.reserve(g_options.textToProcessCount);
+        files_to_process.reserve(options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -92,9 +91,10 @@ namespace PhrasesCollectorUtils {
 
     std::vector<fs::path> GetResFiles()
     {
-        fs::path inputDir = g_options.resDir;
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        fs::path inputDir = options.resDir;
         std::vector<fs::path> files_to_process;
-        files_to_process.reserve(g_options.textToProcessCount);
+        files_to_process.reserve(options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -154,8 +154,9 @@ namespace PhrasesCollectorUtils {
 
     void BuildPhraseStorage()
     {
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
         Logger::log("", LogLevel::Info, "Building phrase storage...");
-        fs::path outputDir = g_options.resDir;
+        fs::path outputDir = options.resDir;
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
@@ -168,7 +169,7 @@ namespace PhrasesCollectorUtils {
                 ProcessFile(files_to_process[i], outputDir);
             }
 
-            TextCorpus::GetCorpus().SaveCorpusToFile(g_options.corpusFile.string());
+            TextCorpus::GetCorpus().SaveCorpusToFile(options.corpusFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -223,8 +224,8 @@ namespace PhrasesCollectorUtils {
                     sentNum++;
                 } while (!ssplitter.eof());
             }
-
-            sentences.SaveToFile(g_options.sentencesFile.string());
+            auto& options = PhrasesCollectorUtils::Options::getOptions();
+            sentences.SaveToFile(options.sentencesFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -284,8 +285,8 @@ namespace PhrasesCollectorUtils {
             return stopWords;
         }
 
-        std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = g_options.stopWordsFile;
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        std::filesystem::path inputPath = options.stopWordsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
@@ -321,8 +322,8 @@ namespace PhrasesCollectorUtils {
             return topics;
         }
 
-        std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = g_options.tagsAndHubsFile;
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        std::filesystem::path inputPath = options.tagsAndHubsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {

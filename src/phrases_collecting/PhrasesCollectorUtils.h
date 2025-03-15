@@ -43,10 +43,18 @@ namespace PhrasesCollectorUtils {
         fs::path sentencesFile;
         fs::path embeddingModelFile;
 
+        static Options& getOptions()
+        {
+            static Options options;
+            return options;
+        }
+
+        Options(const Options&) = delete;
+        Options& operator=(const Options&) = delete;
+
+    private:
         Options();
     };
-
-    extern Options g_options; ///< Global options for phrase collection.
 
     // \struct CurrentPhraseStatus
     // \brief This structure holds the status of the current phrase during processing.

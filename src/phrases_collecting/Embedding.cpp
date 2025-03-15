@@ -10,11 +10,11 @@ std::unique_ptr<fasttext::FastText> Embedding::ft = nullptr;
 
 void Embedding::LoadModel(std::string model_path = "")
 {
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
     if (!ft) {
         ft = std::make_unique<fasttext::FastText>();
-        fs::path repoPath = fs::current_path();
         if (model_path.empty()) {
-            model_path = PhrasesCollectorUtils::g_options.embeddingModelFile.string();
+            model_path = options.embeddingModelFile.string();
         }
         try {
             ft->loadModel(model_path);

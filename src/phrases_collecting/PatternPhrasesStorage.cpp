@@ -419,6 +419,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
     int totalDocuments = corpus.GetTotalDocuments();
     const auto& topicVectors = GetTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
 
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
@@ -451,18 +452,18 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             float combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
                                   manhattanWeight * (1.0f / (1.0f + manhattanDist));
 
-            if (combinedScore > g_options.topicsThreshold) {
+            if (combinedScore > options.topicsThreshold) {
                 topics.push_back(topicWord);
             }
             totalTopics[cluster.key] = topics;
         }
     }
-    int frequencyThreshold = static_cast<int>(clusters.size() * g_options.freqTresholdCoeff);
+    int frequencyThreshold = static_cast<int>(clusters.size() * options.freqTresholdCoeff);
     ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
-            if (iter->second.size() > 0 && iter->second.size() < g_options.tresholdTopicsCount) {
+            if (iter->second.size() > 0 && iter->second.size() < options.tresholdTopicsCount) {
                 cluster.tagMatch = true;
             }
         }
@@ -650,7 +651,7 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
                             const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
 
                             float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
-                            if (cosineSim > g_options.topicsHyponymThreshold) {
+                            if (cosineSim > options.topicsHyponymThreshold) {
                                 validHyponyms.insert(hyp);
                             }
                         }
@@ -695,7 +696,7 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
 
         json clusterJson;
         clusterJson["0_phrase_size"] = cluster.phraseSize;
-        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(g_options.textToProcessCount);
+        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(options.textToProcessCount);
         clusterJson["2_topic_relevance"] = cluster.topicRelevance;
         clusterJson["3_centrality_score"] = cluster.centralityScore;
         clusterJson["4_tag_match"] = cluster.tagMatch;

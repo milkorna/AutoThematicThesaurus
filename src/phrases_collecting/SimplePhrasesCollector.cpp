@@ -33,10 +33,11 @@ static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo
 bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
                                         size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft)
 {
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
 
-    if (g_options.cleanStopWords) {
+    if (options.cleanStopWords) {
         const auto& stopWords = GetStopWords();
 
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
@@ -79,12 +80,13 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 
 void SimplePhrasesCollector::Collect(Process& process)
 {
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
     const auto& simplePatterns = manager.getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
 
-        if (g_options.cleanStopWords) {
+        if (options.cleanStopWords) {
             const auto& stopWords = GetStopWords();
 
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())

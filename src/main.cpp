@@ -16,8 +16,8 @@
 #include <sys/stat.h>
 
 namespace fs = std::filesystem;
-
 namespace po = boost::program_options;
+auto& options = Options::getOptions();
 
 static void printUsage(const po::options_description& desc)
 {
@@ -36,43 +36,43 @@ void setGlobalOptions(const po::variables_map& vm)
 {
     // Override default global options if provided by the user
     if (vm.count("mydata-dir")) {
-        g_options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
+        options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
     }
     if (vm.count("corpus-dir")) {
-        g_options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
+        options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
     }
     if (vm.count("texts-dir")) {
-        g_options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
+        options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
     }
     if (vm.count("patterns-file")) {
-        g_options.textsDir = fs::path(vm["patterns-file"].as<std::string>());
+        options.textsDir = fs::path(vm["patterns-file"].as<std::string>());
     }
     if (vm.count("stop-words-file")) {
-        g_options.stopWordsFile = fs::path(vm["stop-words-file"].as<std::string>());
+        options.stopWordsFile = fs::path(vm["stop-words-file"].as<std::string>());
     }
     if (vm.count("tags-and-hubs-file")) {
-        g_options.tagsAndHubsFile = fs::path(vm["tags-and-hubs"].as<std::string>());
+        options.tagsAndHubsFile = fs::path(vm["tags-and-hubs"].as<std::string>());
     }
     if (vm.count("results-dir")) {
-        g_options.resDir = fs::path(vm["results-dir"].as<std::string>());
+        options.resDir = fs::path(vm["results-dir"].as<std::string>());
     }
     if (vm.count("corpus-file")) {
-        g_options.corpusFile = fs::path(vm["corpus-file"].as<std::string>());
+        options.corpusFile = fs::path(vm["corpus-file"].as<std::string>());
     }
     if (vm.count("filtered-corpus-file")) {
-        g_options.corpusFile = fs::path(vm["filtered-corpus-file"].as<std::string>());
+        options.corpusFile = fs::path(vm["filtered-corpus-file"].as<std::string>());
     }
     if (vm.count("sentences-file")) {
-        g_options.sentencesFile = fs::path(vm["sentences-file"].as<std::string>());
+        options.sentencesFile = fs::path(vm["sentences-file"].as<std::string>());
     }
     if (vm.count("limit")) {
-        g_options.textToProcessCount = vm["limit"].as<int>();
+        options.textToProcessCount = vm["limit"].as<int>();
     }
     if (vm.count("clean-stop-words")) {
-        g_options.cleanStopWords = vm["clean-stop-words"].as<bool>();
+        options.cleanStopWords = vm["clean-stop-words"].as<bool>();
     }
     if (vm.count("validate-boundaries")) {
-        g_options.validateBoundaries = vm["validate-boundaries"].as<bool>();
+        options.validateBoundaries = vm["validate-boundaries"].as<bool>();
     }
 }
 
@@ -108,6 +108,7 @@ void addOptions(po::options_description& desc)
 int main(int argc, char** argv)
 {
     using namespace PhrasesCollectorUtils;
+    auto& options = Options::getOptions();
 
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -152,15 +153,15 @@ int main(int argc, char** argv)
     Logger::initializeLogFile(logFilePath);
 
     // Define paths for output JSON files
-    fs::path jsonFilePath = g_options.myDataDir / "total_results.json";
-    fs::path jsonFileResPath = g_options.myDataDir / "terms.json";
+    fs::path jsonFilePath = options.myDataDir / "total_results.json";
+    fs::path jsonFileResPath = options.myDataDir / "terms.json";
 
     // Execute command
     try {
         if (command == "collect_phrases") {
             // Collect phrases from texts and save the storage
             Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
-            fs::path patternsPath = g_options.patternsFile;
+            fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
             BuildPhraseStorage();
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
@@ -169,7 +170,7 @@ int main(int argc, char** argv)
             Logger::log("Main", LogLevel::Info, "Starting cluster merging process...");
 
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
+            corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
 
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
@@ -185,7 +186,7 @@ int main(int argc, char** argv)
             // Load hypernym and hyponym relations for stored lemmas
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
+            corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
 
             ::Embedding e;
 
@@ -205,10 +206,8 @@ int main(int argc, char** argv)
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, jsonFilePath.string());
 
-            ::Embedding e;
-
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
-            sentences.LoadFromFile(g_options.sentencesFile.string());
+            sentences.LoadFromFile(options.sentencesFile.string());
 
             LSA lsa(sentences);
             lsa.PerformAnalysis(false);
@@ -236,7 +235,7 @@ int main(int argc, char** argv)
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
             PhrasesStorageLoader loader;
             auto& corpus = TokenizedSentenceCorpus::GetCorpus();
-            corpus.LoadFromFile(g_options.sentencesFile.string());
+            corpus.LoadFromFile(options.sentencesFile.string());
 
             ::Embedding e;
 
