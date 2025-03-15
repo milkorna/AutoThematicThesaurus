@@ -32,10 +32,48 @@ using namespace X;
 namespace PhrasesCollectorUtils {
     Options g_options;
 
-    std::vector<fs::path> GetFilesToProcess()
+    Options::Options()
     {
         fs::path repoPath = fs::current_path();
-        fs::path inputDir = repoPath / "my_data/texts";
+
+        myDataDir = repoPath / "my_data";
+        textsDir = myDataDir / "texts";
+        stopWordsFile = myDataDir / "stop_words.txt";
+        tagsAndHubsFile = myDataDir / "nlp_corpus" / "tags_and_hubs_line_counts.txt";
+        resDir = repoPath / "res";
+        corpusFile = myDataDir / "nlp_corpus" / "corpus";
+        sentencesFile = myDataDir / "nlp_corpus" / "sentences.json";
+
+        int fileCount = 0;
+        try {
+            for (const auto& entry : fs::directory_iterator(textsDir)) {
+                if (entry.is_regular_file()) {
+                    ++fileCount;
+                }
+            }
+            textToProcessCount = fileCount;
+        } catch (const std::exception& ex) {
+            Logger::log("Options", LogLevel::Warning,
+                        std::string("Failed to iterate over textsDir: ") + ex.what() + ". Using default 1");
+            textToProcessCount = 1;
+        } catch (...) {
+            Logger::log("Options", LogLevel::Warning,
+                        "Unknown error while counting files in textsDir. Using default 1");
+            textToProcessCount = 1;
+        }
+
+        upperTresholdTopicsNum = 7;
+        coOccurrenceFrequency = textToProcessCount * 5;
+        cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
+        boundariesValidation = true;
+        topicsThreshold = 0.6;
+        topicsHyponymThreshold = 0.98;
+        freqTrecholdCoeff = 0.12;
+    }
+
+    std::vector<fs::path> GetFilesToProcess()
+    {
+        fs::path inputDir = g_options.textsDir;
         std::vector<fs::path> files_to_process;
         files_to_process.reserve(g_options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
@@ -51,8 +89,7 @@ namespace PhrasesCollectorUtils {
 
     std::vector<fs::path> GetResFiles()
     {
-        fs::path repoPath = fs::current_path();
-        fs::path inputDir = repoPath / "res";
+        fs::path inputDir = g_options.resDir;
         std::vector<fs::path> files_to_process;
         files_to_process.reserve(g_options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
@@ -115,7 +152,7 @@ namespace PhrasesCollectorUtils {
     void BuildPhraseStorage()
     {
         fs::path repoPath = fs::current_path();
-        fs::path outputDir = repoPath / "res";
+        fs::path outputDir = g_options.resDir;
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
@@ -128,7 +165,7 @@ namespace PhrasesCollectorUtils {
                 ProcessFile(files_to_process[i], outputDir);
             }
 
-            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
+            TextCorpus::GetCorpus().SaveCorpusToFile(g_options.corpusFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -184,7 +221,7 @@ namespace PhrasesCollectorUtils {
                 } while (!ssplitter.eof());
             }
 
-            sentences.SaveToFile((repoPath / "my_data" / "sentences.json").string());
+            sentences.SaveToFile(g_options.sentencesFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -244,7 +281,7 @@ namespace PhrasesCollectorUtils {
         }
 
         std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = repoPath / "my_data/stop_words.txt";
+        std::filesystem::path inputPath = g_options.stopWordsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
@@ -281,7 +318,7 @@ namespace PhrasesCollectorUtils {
         }
 
         std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = repoPath / "my_data/tags_and_hubs_line_counts.txt";
+        std::filesystem::path inputPath = g_options.tagsAndHubsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
@@ -290,16 +327,6 @@ namespace PhrasesCollectorUtils {
 
         std::string line;
         while (std::getline(file, line)) {
-
-            // Check if the line contains "Блог компании"
-            if (line.find("Блог компании") != std::string::npos) {
-                continue;
-            }
-
-            if (line.find(" 1") != std::string::npos) {
-                continue;
-            }
-
             if (!contains_no_latin(line))
                 continue;
 

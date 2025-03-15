@@ -18,89 +18,10 @@ public:
         }
     }
 
-private:
-    void Deserialize(PatternPhrasesStorage& storage, const json& j)
-    {
-        try {
-            if (!j.is_object()) {
-                throw std::runtime_error("Expected a JSON object.");
-            }
-
-            for (auto it = j.begin(); it != j.end(); ++it) {
-                std::string key = it.key();
-                const json& obj = it.value();
-
-                if (!obj.is_object()) {
-                    throw std::runtime_error("Expected a JSON object for each cluster.");
-                }
-
-                WordComplexCluster cluster;
-                cluster.key = key;
-                cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
-                cluster.frequency = obj.at("1_frequency").get<double>();
-                cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
-                cluster.centralityScore = obj.at("3_centrality_score").get<double>();
-                cluster.tagMatch = obj.at("4_tag_match").get<bool>();
-                cluster.modelName = obj.at("5_model_name").get<std::string>();
-
-                std::unordered_set<std::string> synonyms;
-                if (obj.contains("9_synonyms")) {
-                    cluster.synonyms = obj.at("9_synonyms").get<std::unordered_set<std::string>>();
-                }
-
-                // Deserialize Lemmas
-                const json& lemmas_json = obj.at("6_lemmas");
-                for (const auto& lemma_obj : lemmas_json) {
-                    std::string lemmaStr = "";
-                    auto lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
-                    size_t pos = lemmaStrNumbered.find('_');
-                    if (pos != std::string::npos) {
-                        lemmaStr = lemmaStrNumbered.substr(pos + 1);
-                    }
-                    cluster.lemmas.push_back(lemmaStr);
-                    cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
-                    cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
-                    cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
-                    cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
-                    cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
-
-                    // Add word embedding (assuming you need to create an embedding for each lemma)
-                    cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
-                }
-
-                // Deserialize WordComplexes (Phrases in your JSON)
-                const json& phrases_json = obj.at("8_phrases");
-                for (const auto& phrase_obj : phrases_json) {
-                    WordComplexPtr wc = std::make_shared<WordComplex>();
-                    wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
-                    wc->modelName = cluster.modelName;
-
-                    wc->pos.start = phrase_obj.at("1_position").at("0_start").get<size_t>();
-                    wc->pos.end = phrase_obj.at("1_position").at("1_end").get<size_t>();
-                    wc->pos.docNum = phrase_obj.at("1_position").at("2_doc_num").get<size_t>();
-                    wc->pos.sentNum = phrase_obj.at("1_position").at("3_sent_num").get<size_t>();
-
-                    wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
-
-                    cluster.wordComplexes.push_back(wc);
-                }
-
-                storage.AddCluster(key, cluster);
-                // clusters[key] = cluster;
-            }
-        } catch (json::exception& e) {
-            std::cerr << "Error parsing JSON: " << e.what() << std::endl;
-            throw;
-        } catch (std::exception& e) {
-            std::cerr << "Error: " << e.what() << std::endl;
-            throw;
-        }
-    }
-
     void LoadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage)
     {
         fs::path repoPath = fs::current_path();
-        fs::path outputDir = repoPath / "res";
+        fs::path outputDir = g_options.resDir;
         fs::create_directories(outputDir);
         std::vector<fs::path> res_files = GetResFiles();
 
@@ -196,6 +117,85 @@ private:
                     Logger::log("", LogLevel::Error, "Error parsing JSON object: " + std::string(e.what()));
                 }
             }
+        }
+    }
+
+private:
+    void Deserialize(PatternPhrasesStorage& storage, const json& j)
+    {
+        try {
+            if (!j.is_object()) {
+                throw std::runtime_error("Expected a JSON object.");
+            }
+
+            for (auto it = j.begin(); it != j.end(); ++it) {
+                std::string key = it.key();
+                const json& obj = it.value();
+
+                if (!obj.is_object()) {
+                    throw std::runtime_error("Expected a JSON object for each cluster.");
+                }
+
+                WordComplexCluster cluster;
+                cluster.key = key;
+                cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
+                cluster.frequency = obj.at("1_frequency").get<double>();
+                cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
+                cluster.centralityScore = obj.at("3_centrality_score").get<double>();
+                cluster.tagMatch = obj.at("4_tag_match").get<bool>();
+                cluster.modelName = obj.at("5_model_name").get<std::string>();
+
+                std::unordered_set<std::string> synonyms;
+                if (obj.contains("9_synonyms")) {
+                    cluster.synonyms = obj.at("9_synonyms").get<std::unordered_set<std::string>>();
+                }
+
+                // Deserialize Lemmas
+                const json& lemmas_json = obj.at("6_lemmas");
+                for (const auto& lemma_obj : lemmas_json) {
+                    std::string lemmaStr = "";
+                    auto lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
+                    size_t pos = lemmaStrNumbered.find('_');
+                    if (pos != std::string::npos) {
+                        lemmaStr = lemmaStrNumbered.substr(pos + 1);
+                    }
+                    cluster.lemmas.push_back(lemmaStr);
+                    cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
+                    cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
+                    cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
+                    cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
+                    cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
+
+                    // Add word embedding (assuming you need to create an embedding for each lemma)
+                    cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
+                }
+
+                // Deserialize WordComplexes (Phrases in your JSON)
+                const json& phrases_json = obj.at("8_phrases");
+                for (const auto& phrase_obj : phrases_json) {
+                    WordComplexPtr wc = std::make_shared<WordComplex>();
+                    wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
+                    wc->modelName = cluster.modelName;
+
+                    wc->pos.start = phrase_obj.at("1_position").at("0_start").get<size_t>();
+                    wc->pos.end = phrase_obj.at("1_position").at("1_end").get<size_t>();
+                    wc->pos.docNum = phrase_obj.at("1_position").at("2_doc_num").get<size_t>();
+                    wc->pos.sentNum = phrase_obj.at("1_position").at("3_sent_num").get<size_t>();
+
+                    wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
+
+                    cluster.wordComplexes.push_back(wc);
+                }
+
+                storage.AddCluster(key, cluster);
+                // clusters[key] = cluster;
+            }
+        } catch (json::exception& e) {
+            std::cerr << "Error parsing JSON: " << e.what() << std::endl;
+            throw;
+        } catch (std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            throw;
         }
     }
 };

@@ -23,14 +23,24 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 315;
-        int upperTresholdTopicsNum = 7;
-        int coOccurrenceFrequency = textToProcessCount * 5;
-        bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
-        bool boundariesValidation = true;
-        float topicsThreshold = 0.6;
-        float topicsHyponymThreshold = 0.98;
-        float freqTrecholdCoeff = 0.12;
+        int textToProcessCount;
+        int upperTresholdTopicsNum;
+        int coOccurrenceFrequency;
+        bool cleaningStopWords; ///< Indicates if stop words should be cleaned.
+        bool boundariesValidation;
+        float topicsThreshold;
+        float topicsHyponymThreshold;
+        float freqTrecholdCoeff;
+
+        fs::path myDataDir;
+        fs::path textsDir;
+        fs::path stopWordsFile;
+        fs::path tagsAndHubsFile;
+        fs::path resDir;
+        fs::path corpusFile;
+        fs::path sentencesFile;
+
+        Options();
     };
 
     extern Options g_options; ///< Global options for phrase collection.
