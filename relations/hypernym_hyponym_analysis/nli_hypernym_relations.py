@@ -96,7 +96,6 @@ def filter_key(key_obj: dict):
 def tokenize_simple(phrase: str):
     """
     Simple tokenization (splitting by spaces).
-    (Ideally, should be replaced with lemmatization for more accurate comparison.)
     """
     return phrase.lower().split()
 
