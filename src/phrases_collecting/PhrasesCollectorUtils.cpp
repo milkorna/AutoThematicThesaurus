@@ -62,10 +62,10 @@ namespace PhrasesCollectorUtils {
             textToProcessCount = 1;
         }
 
-        upperTresholdTopicsNum = 7;
+        tresholdTopicsCount = 7;
         coOccurrenceFrequency = textToProcessCount * 5;
-        cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
-        boundariesValidation = true;
+        cleanStopWords = true; ///< Indicates if stop words should be cleaned.
+        validateBoundaries = true;
         topicsThreshold = 0.6;
         topicsHyponymThreshold = 0.98;
         freqTrecholdCoeff = 0.12;

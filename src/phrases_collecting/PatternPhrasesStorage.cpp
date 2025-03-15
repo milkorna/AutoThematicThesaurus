@@ -457,7 +457,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
-            if (iter->second.size() > 0 && iter->second.size() < g_options.upperTresholdTopicsNum) {
+            if (iter->second.size() > 0 && iter->second.size() < g_options.tresholdTopicsCount) {
                 cluster.tagMatch = true;
             }
         }

@@ -83,6 +83,15 @@ int main(int argc, char** argv)
     if (vm.count("limit")) {
         g_options.textToProcessCount = vm["limit"].as<int>();
     }
+    if (vm.count("topics-limit")) {
+        g_options.tresholdTopicsCount = vm["topics-limit"].as<int>();
+    }
+    if (vm.count("clean-stop-words")) {
+        g_options.cleanStopWords = vm["clean-stop-words"].as<bool>();
+    }
+    if (vm.count("validate-boundaries")) {
+        g_options.validateBoundaries = vm["validate-boundaries"].as<bool>();
+    }
     if (vm.count("mydata-dir")) {
         g_options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
     }

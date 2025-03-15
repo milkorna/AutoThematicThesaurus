@@ -97,7 +97,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
         const auto token = m_sentence[formIndex];
         const auto& stopWords = GetStopWords();
 
-        if (g_options.cleaningStopWords) {
+        if (g_options.cleanStopWords) {
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 return false;
 
@@ -308,7 +308,7 @@ void ComplexPhrasesCollector::Collect(Process& process)
         }
     }
 
-    if (g_options.boundariesValidation) {
+    if (g_options.validateBoundaries) {
         ValidateBoundares();
     }
 

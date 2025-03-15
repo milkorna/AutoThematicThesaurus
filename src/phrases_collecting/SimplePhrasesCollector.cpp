@@ -36,7 +36,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
 
-    if (g_options.cleaningStopWords) {
+    if (g_options.cleanStopWords) {
         const auto& stopWords = GetStopWords();
 
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
@@ -84,7 +84,7 @@ void SimplePhrasesCollector::Collect(Process& process)
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
 
-        if (g_options.cleaningStopWords) {
+        if (g_options.cleanStopWords) {
             const auto& stopWords = GetStopWords();
 
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())

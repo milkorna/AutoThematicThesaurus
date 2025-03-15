@@ -24,10 +24,10 @@ namespace PhrasesCollectorUtils {
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
         int textToProcessCount;
-        int upperTresholdTopicsNum;
+        int tresholdTopicsCount;
         int coOccurrenceFrequency;
-        bool cleaningStopWords; ///< Indicates if stop words should be cleaned.
-        bool boundariesValidation;
+        bool cleanStopWords; ///< Indicates if stop words should be cleaned.
+        bool validateBoundaries;
         float topicsThreshold;
         float topicsHyponymThreshold;
         float freqTrecholdCoeff;
