@@ -11,3 +11,4 @@ my_custom_fasttext_model_finetuned.bin
 *.png
 */embedding_analysis/*.xlsx
 */embedding_analysis/outliers/*.xlsx
+*.html
