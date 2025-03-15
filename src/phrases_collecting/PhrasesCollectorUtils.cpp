@@ -45,6 +45,8 @@ namespace PhrasesCollectorUtils {
         filteredCorpusFile = corpusDir / "filtered_corpus";
         sentencesFile = corpusDir / "sentences.json";
         embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
+        totalResultsPath = corpusDir / "total_results.json";
+        termsCandidatesPath = corpusDir / "term_candidates.json";
 
         textToProcessCount = 0;
         tresholdTopicsCount = 7;
@@ -64,6 +66,8 @@ namespace PhrasesCollectorUtils {
             corpusFile = corpusDir / "corpus";
             filteredCorpusFile = corpusDir / "filtered_corpus";
             sentencesFile = corpusDir / "sentences.json";
+            totalResultsPath = corpusDir / "total_results.json";
+            termsCandidatesPath = corpusDir / "term_candidates.json";
         }
     }
 

@@ -42,6 +42,8 @@ namespace PhrasesCollectorUtils {
         fs::path filteredCorpusFile;
         fs::path sentencesFile;
         fs::path embeddingModelFile;
+        fs::path totalResultsPath;
+        fs::path termsCandidatesPath;
 
         static Options& getOptions()
         {

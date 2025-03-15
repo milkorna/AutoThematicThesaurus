@@ -91,6 +91,7 @@ void setGlobalOptions(const po::variables_map& vm)
 
     validatePathOption(vm, "stop-words-file", options.stopWordsFile);
     validatePathOption(vm, "patterns-file", options.patternsFile);
+    validatePathOption(vm, "emb-model-file", options.embeddingModelFile);
 
     validateLimitOption(vm, 1, options.textToProcessCount);
 
@@ -105,12 +106,13 @@ void setGlobalOptions(const po::variables_map& vm)
 void addOptions(po::options_description& desc)
 {
     desc.add_options()("help,h", "Show help message");
-    desc.add_options()("corpus-dir", po::value<std::string>(),
-                       "Path to 'my_data' directory (default is inside 'my_data')");
+    desc.add_options()("corpus-dir", po::value<std::string>(), "Path to data directory (default is inside 'my_data')");
     desc.add_options()("patterns-file", po::value<std::string>(),
                        "Path to grammatical patterns file (default is inside 'my_data')");
     desc.add_options()("stop-words-file", po::value<std::string>(),
-                       "Path to stop_words file (default is inside in 'my_data')");
+                       "Path to list of stop words file (default is inside in 'my_data')");
+    desc.add_options()("emb-model-file", po::value<std::string>(),
+                       "Path to embeddings model file (default is my_custom_fasttext_model_finetuned.bin)");
     desc.add_options()("limit", po::value<int>(),
                        "How many text files to process (by default, it is calculated as the number of all files in the "
                        "texts directory.)");
@@ -177,10 +179,6 @@ int main(int argc, char** argv)
     // Set global options
     setGlobalOptions(vm);
 
-    // Define paths for output JSON files
-    fs::path jsonFilePath = options.dataDir / "total_results.json";
-    fs::path jsonFileResPath = options.dataDir / "terms.json";
-
     // Execute command
     try {
         if (command == "collect_phrases") {
@@ -205,7 +203,7 @@ int main(int argc, char** argv)
 
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
-            storage.OutputClustersToJsonFile(jsonFilePath.string());
+            storage.OutputClustersToJsonFile(options.totalResultsPath.string());
             Logger::log("Main", LogLevel::Info, "Cluster merging completed successfully.");
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
@@ -217,9 +215,9 @@ int main(int argc, char** argv)
 
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, jsonFilePath.string());
+            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
             storage.LoadWikiWNRelations();
-            storage.OutputClustersToJsonFile(jsonFilePath);
+            storage.OutputClustersToJsonFile(options.totalResultsPath);
 
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
@@ -229,7 +227,7 @@ int main(int argc, char** argv)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, jsonFilePath.string());
+            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
 
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
             sentences.LoadFromFile(options.sentencesFile.string());
@@ -254,7 +252,7 @@ int main(int argc, char** argv)
             lsa.AnalyzeTopics(5, 30);
 
             storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
-            storage.OutputClustersToJsonFile(jsonFilePath);
+            storage.OutputClustersToJsonFile(options.totalResultsPath);
         } else if (command == "get_prepared_results") {
             // Load precomputed results without additional processing
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
@@ -265,10 +263,10 @@ int main(int argc, char** argv)
             ::Embedding e;
 
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, jsonFilePath.string());
+            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
             storage.AddContextsToClusters();
             storage.CollectTerms();
-            storage.OutputClustersToJsonFile(jsonFileResPath.string(), false, true);
+            storage.OutputClustersToJsonFile(options.termsCandidatesPath.string(), false, true);
         } else {
             std::cerr << "Unknown command: " << command << "\n";
             printUsage(desc);
