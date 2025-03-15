@@ -36,7 +36,6 @@ int main(int argc, char** argv)
 {
     using namespace PhrasesCollectorUtils;
 
-    ::Embedding e;
     auto start = std::chrono::high_resolution_clock::now();
 
     Logger::enableLogging(true);
@@ -95,6 +94,9 @@ int main(int argc, char** argv)
     if (vm.count("mydata-dir")) {
         g_options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
     }
+    if (vm.count("corpus-dir")) {
+        g_options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
+    }
     if (vm.count("texts-dir")) {
         g_options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
     }
@@ -129,16 +131,18 @@ int main(int argc, char** argv)
             // Collect phrases from texts and save the storage
             fs::path patternsPath = g_options.myDataDir / "patterns.txt";
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
-
+            ::Embedding e;
             BuildPhraseStorage();
         } else if (command == "merge_clusters") {
             // Merge similar phrase clusters and compute text-based metrics
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile((g_options.myDataDir / "filtered_corpus").string());
+            corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
 
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadPhraseStorageFromResultsDir(storage);
+
+            ::Embedding e;
 
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
@@ -146,7 +150,9 @@ int main(int argc, char** argv)
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile((g_options.myDataDir / "filtered_corpus").string());
+            corpus.LoadCorpusFromFile(g_options.filteredCorpusFile.string());
+
+            ::Embedding e;
 
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
@@ -162,8 +168,10 @@ int main(int argc, char** argv)
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, jsonFilePath.string());
 
+            ::Embedding e;
+
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
-            sentences.LoadFromFile(g_options.sentencesFile.string()); // например
+            sentences.LoadFromFile(g_options.sentencesFile.string());
 
             std::cout << "Sentences loaded successfully. Total sentences: " << sentences.totalSentences << std::endl;
 
@@ -191,6 +199,8 @@ int main(int argc, char** argv)
             PhrasesStorageLoader loader;
             auto& corpus = TokenizedSentenceCorpus::GetCorpus();
             corpus.LoadFromFile(g_options.sentencesFile.string());
+
+            ::Embedding e;
 
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, jsonFilePath.string());

@@ -37,13 +37,15 @@ namespace PhrasesCollectorUtils {
         fs::path repoPath = fs::current_path();
 
         myDataDir = repoPath / "my_data";
-        nlpCorpusDir = myDataDir / "nlp_corpus";
-        textsDir = nlpCorpusDir / "texts";
+        corpusDir = myDataDir / "nlp_corpus";
+        textsDir = corpusDir / "texts";
         stopWordsFile = myDataDir / "stop_words";
-        tagsAndHubsFile = nlpCorpusDir / "tags_and_hubs";
-        resDir = nlpCorpusDir / "results";
-        corpusFile = nlpCorpusDir / "corpus";
-        sentencesFile = nlpCorpusDir / "sentences.json";
+        tagsAndHubsFile = corpusDir / "tags_and_hubs";
+        resDir = corpusDir / "results";
+        corpusFile = corpusDir / "corpus";
+        filteredCorpusFile = corpusDir / "filtered_corpus";
+        sentencesFile = corpusDir / "sentences.json";
+        embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
 
         int fileCount = 0;
         try {
@@ -64,7 +66,6 @@ namespace PhrasesCollectorUtils {
         }
 
         tresholdTopicsCount = 7;
-        coOccurrenceFrequency = textToProcessCount * 5;
         cleanStopWords = true; ///< Indicates if stop words should be cleaned.
         validateBoundaries = true;
         topicsThreshold = 0.6;

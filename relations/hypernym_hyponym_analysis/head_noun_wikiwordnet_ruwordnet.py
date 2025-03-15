@@ -22,7 +22,7 @@ import pymorphy2
 if not hasattr(inspect, "getargspec"):
     def getargspec_patched(func):
         spec = inspect.getfullargspec(func)
-        return spec.args, spec.varargs, spec.varkw, spec.defaults  # Совместимый формат
+        return spec.args, spec.varargs, spec.varkw, spec.defaults
     inspect.getargspec = getargspec_patched
 
 # File paths and model locations

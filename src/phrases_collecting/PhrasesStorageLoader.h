@@ -188,7 +188,6 @@ private:
                 }
 
                 storage.AddCluster(key, cluster);
-                // clusters[key] = cluster;
             }
         } catch (json::exception& e) {
             std::cerr << "Error parsing JSON: " << e.what() << std::endl;

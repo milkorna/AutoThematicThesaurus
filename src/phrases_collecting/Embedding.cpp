@@ -1,4 +1,6 @@
 #include <Embedding.h>
+#include <PhrasesCollectorUtils.h>
+
 #include <filesystem>
 #include <iostream>
 
@@ -12,7 +14,7 @@ void Embedding::LoadModel(std::string model_path = "")
         ft = std::make_unique<fasttext::FastText>();
         fs::path repoPath = fs::current_path();
         if (model_path.empty()) {
-            model_path = (repoPath / "my_custom_fasttext_model_finetuned.bin").string();
+            model_path = PhrasesCollectorUtils::g_options.embeddingModelFile.string();
         }
         try {
             ft->loadModel(model_path);
@@ -63,7 +65,6 @@ float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const
     float magB = other.Magnitude();
     if (magA == 0.0f || magB == 0.0f) {
         return 0;
-        // throw std::runtime_error("Zero magnitude vector, cannot calculate cosine similarity.");
     }
     return dot / (magA * magB);
 }

@@ -25,7 +25,6 @@ namespace PhrasesCollectorUtils {
     struct Options {
         int textToProcessCount;
         int tresholdTopicsCount;
-        int coOccurrenceFrequency;
         bool cleanStopWords; ///< Indicates if stop words should be cleaned.
         bool validateBoundaries;
         float topicsThreshold;
@@ -33,13 +32,15 @@ namespace PhrasesCollectorUtils {
         float freqTrecholdCoeff;
 
         fs::path myDataDir;
-        fs::path nlpCorpusDir;
+        fs::path corpusDir;
         fs::path textsDir;
         fs::path stopWordsFile;
         fs::path tagsAndHubsFile;
         fs::path resDir;
         fs::path corpusFile;
+        fs::path filteredCorpusFile;
         fs::path sentencesFile;
+        fs::path embeddingModelFile;
 
         Options();
     };
