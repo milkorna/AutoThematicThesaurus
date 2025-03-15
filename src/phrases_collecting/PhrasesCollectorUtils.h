@@ -31,7 +31,7 @@ namespace PhrasesCollectorUtils {
         float topicsHyponymThreshold;
         float freqTresholdCoeff;
 
-        fs::path myDataDir;
+        fs::path dataDir;
         fs::path corpusDir;
         fs::path textsDir;
         fs::path patternsFile;
@@ -51,6 +51,9 @@ namespace PhrasesCollectorUtils {
 
         Options(const Options&) = delete;
         Options& operator=(const Options&) = delete;
+
+        void recomputeCorpusDependenciesPaths();
+        void updateFileCount();
 
     private:
         Options();

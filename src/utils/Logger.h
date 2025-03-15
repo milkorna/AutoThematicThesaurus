@@ -49,6 +49,8 @@ public:
 
     // Initialize the log file
     static void initializeLogFile(const std::string& filePath);
+
+    static void flushLogs();
 };
 
 #endif // LOGGER_H

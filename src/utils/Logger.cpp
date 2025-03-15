@@ -82,3 +82,11 @@ void Logger::initializeLogFile(const std::string& filePath)
         std::cerr << "Failed to open log file: " << filePath << std::endl;
     }
 }
+
+void Logger::flushLogs()
+{
+    if (logFile.is_open()) {
+        logFile.flush();
+        logFile.close();
+    }
+}

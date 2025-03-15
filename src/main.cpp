@@ -32,71 +32,85 @@ static void printUsage(const po::options_description& desc)
     std::cout << "\nOptions:\n" << desc << "\n";
 }
 
+void validatePathOption(const po::variables_map& vm, const std::string& option_name, fs::path& target)
+{
+    if (vm.count(option_name)) {
+        try {
+            std::string value = vm[option_name].as<std::string>();
+
+            if (value.empty()) {
+                throw std::runtime_error("Value for '" + option_name + "' is empty.");
+            }
+
+            target = target.parent_path() / value;
+
+            if (!fs::exists(target)) {
+                throw std::runtime_error("Path for '" + option_name + "' does not exist: " + value);
+            }
+        } catch (const std::exception& ex) {
+            throw std::runtime_error("Invalid value for '" + option_name + "': " + std::string(ex.what()));
+        }
+    }
+}
+
+void validateBoolOption(const po::variables_map& vm, const std::string& option_name, bool& target)
+{
+    if (vm.count(option_name)) {
+        try {
+            target = vm[option_name].as<bool>();
+        } catch (const std::exception& ex) {
+            throw std::runtime_error("Invalid boolean value for '" + option_name + "': " + std::string(ex.what()));
+        }
+    }
+}
+
+void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal = INT_MAX)
+{
+    if (vm.count("limit")) {
+        try {
+            int value = vm["limit"].as<int>();
+
+            if (value < minVal || value > maxVal) {
+                throw std::runtime_error("Value for 'limit' is out of range (" + std::to_string(minVal) + " - " +
+                                         std::to_string(maxVal) + ")");
+            }
+
+            options.textToProcessCount = value;
+        } catch (const std::exception& ex) {
+            throw std::runtime_error("Invalid integer value for 'limit': " + std::string(ex.what()));
+        }
+    }
+}
+
 void setGlobalOptions(const po::variables_map& vm)
 {
     // Override default global options if provided by the user
-    if (vm.count("mydata-dir")) {
-        options.myDataDir = fs::path(vm["mydata-dir"].as<std::string>());
-    }
-    if (vm.count("corpus-dir")) {
-        options.corpusDir = fs::path(vm["corpus-dir"].as<std::string>());
-    }
-    if (vm.count("texts-dir")) {
-        options.textsDir = fs::path(vm["texts-dir"].as<std::string>());
-    }
-    if (vm.count("patterns-file")) {
-        options.textsDir = fs::path(vm["patterns-file"].as<std::string>());
-    }
-    if (vm.count("stop-words-file")) {
-        options.stopWordsFile = fs::path(vm["stop-words-file"].as<std::string>());
-    }
-    if (vm.count("tags-and-hubs-file")) {
-        options.tagsAndHubsFile = fs::path(vm["tags-and-hubs"].as<std::string>());
-    }
-    if (vm.count("results-dir")) {
-        options.resDir = fs::path(vm["results-dir"].as<std::string>());
-    }
-    if (vm.count("corpus-file")) {
-        options.corpusFile = fs::path(vm["corpus-file"].as<std::string>());
-    }
-    if (vm.count("filtered-corpus-file")) {
-        options.corpusFile = fs::path(vm["filtered-corpus-file"].as<std::string>());
-    }
-    if (vm.count("sentences-file")) {
-        options.sentencesFile = fs::path(vm["sentences-file"].as<std::string>());
-    }
-    if (vm.count("limit")) {
-        options.textToProcessCount = vm["limit"].as<int>();
-    }
-    if (vm.count("clean-stop-words")) {
-        options.cleanStopWords = vm["clean-stop-words"].as<bool>();
-    }
-    if (vm.count("validate-boundaries")) {
-        options.validateBoundaries = vm["validate-boundaries"].as<bool>();
-    }
+    validatePathOption(vm, "corpus-dir", options.corpusDir);
+    options.recomputeCorpusDependenciesPaths();
+    options.updateFileCount();
+
+    validatePathOption(vm, "stop-words-file", options.stopWordsFile);
+    validatePathOption(vm, "patterns-file", options.patternsFile);
+
+    validateLimitOption(vm, 1, options.textToProcessCount);
+
+    validateBoolOption(vm, "clean-stop-words", options.cleanStopWords);
+    validateBoolOption(vm, "validate-boundaries", options.validateBoundaries);
+
+    Logger::log("Main", LogLevel::Info, "corpusDir: " + options.corpusDir.string());
+    Logger::log("Main", LogLevel::Info, "textsDir:  " + options.textsDir.string());
+    Logger::log("Main", LogLevel::Info, "textToProcessCount: " + std::to_string(options.textToProcessCount));
 }
 
 void addOptions(po::options_description& desc)
 {
     desc.add_options()("help,h", "Show help message");
-    desc.add_options()("mydata-dir", po::value<std::string>(), "Path to 'my_data' directory");
     desc.add_options()("corpus-dir", po::value<std::string>(),
                        "Path to 'my_data' directory (default is inside 'my_data')");
-    desc.add_options()("texts-dir", po::value<std::string>(),
-                       "Path to texts directory (default is inside 'corpusDir')");
     desc.add_options()("patterns-file", po::value<std::string>(),
                        "Path to grammatical patterns file (default is inside 'my_data')");
     desc.add_options()("stop-words-file", po::value<std::string>(),
                        "Path to stop_words file (default is inside in 'my_data')");
-    desc.add_options()("tags-and-hubs-file", po::value<std::string>(),
-                       "Path to tags_and_hubs file (default is inside 'corpusDir')");
-    desc.add_options()("results-dir", po::value<std::string>(),
-                       "Path to 'results' directory (default is inside 'corpusDir')");
-    desc.add_options()("corpus-file", po::value<std::string>(), "Path to corpus file (default is inside 'corpusDir')");
-    desc.add_options()("filtered-corpus-file", po::value<std::string>(),
-                       "Path to filtered corpus file (default is inside 'corpusDir')");
-    desc.add_options()("sentences-file", po::value<std::string>(),
-                       "Path to sentences.json (default is inside 'corpusDir')");
     desc.add_options()("limit", po::value<int>(),
                        "How many text files to process (by default, it is calculated as the number of all files in the "
                        "texts directory.)");
@@ -107,6 +121,17 @@ void addOptions(po::options_description& desc)
 
 int main(int argc, char** argv)
 {
+    // Временная эмуляция аргументов
+    const char* fake_argv[] = {
+        "AutoThematicThesaurus", // argv[0] - название программы
+        "collect_phrases",       // argv[1] - команда
+        "--corpus-dir",          // argv[2] - флаг
+        "test_corpus",           // argv[3] - значение параметра
+        nullptr                  // Завершающий nullptr (необязательно)
+    };
+    argc = 4;                             // Количество аргументов
+    argv = const_cast<char**>(fake_argv); // Приведение типа, т.к. argv — это char**
+
     using namespace PhrasesCollectorUtils;
     auto& options = Options::getOptions();
 
@@ -144,17 +169,17 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    // Set global options
-    setGlobalOptions(vm);
-
     // Initialize logging system
     fs::path repoPath = fs::current_path();
     std::string logFilePath = (repoPath / "my_logs.txt").string();
     Logger::initializeLogFile(logFilePath);
 
+    // Set global options
+    setGlobalOptions(vm);
+
     // Define paths for output JSON files
-    fs::path jsonFilePath = options.myDataDir / "total_results.json";
-    fs::path jsonFileResPath = options.myDataDir / "terms.json";
+    fs::path jsonFilePath = options.dataDir / "total_results.json";
+    fs::path jsonFileResPath = options.dataDir / "terms.json";
 
     // Execute command
     try {
