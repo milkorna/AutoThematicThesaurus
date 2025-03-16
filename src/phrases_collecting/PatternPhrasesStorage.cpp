@@ -398,8 +398,8 @@ double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& clus
     return centralityScore;
 }
 
-void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
-                                                 const std::unordered_map<int, std::vector<std::string>>& topics)
+void PatternPhrasesStorage::CalculateLSAMetrics(const MatrixXd& U, const std::vector<std::string>& words,
+                                                const std::unordered_map<int, std::vector<std::string>>& topics)
 {
     Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics...");
 
@@ -409,6 +409,152 @@ void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::v
         cluster.topicRelevance = CalculateTopicRelevance(cluster, topics);
 
         cluster.centralityScore = CalculateCentrality(cluster, U, words);
+    }
+}
+
+/*
+ * Calculation of topicRelevance based on vectors from the U matrix (and optionally Sigma):
+ *
+ * - For each lemma calculate its vector: row(U) (if desired, scale by Sigma).
+ * - Determines which component in this vector is the largest modulo and counts ratio = max^2 / sumOfSquares.
+ * - Summarizes the ratio for all lemmas and take the average.
+ */
+double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+                                                      const Eigen::MatrixXd& Sigma,
+                                                      const std::vector<std::string>& words,
+                                                      const LSA_MetricsConfig& config)
+{
+    // How much of the component is actually used
+    int usedCols = config.maxComponents.has_value() ? std::min<int>(config.maxComponents.value(), U.cols()) : U.cols();
+
+    double sumAll = 0.0;
+    int validLemmaCount = 0;
+
+    for (const auto& lemma : cluster.lemmas) {
+        // Find index for lemma
+        auto it = std::find(words.begin(), words.end(), lemma);
+        if (it == words.end()) {
+            continue;
+        }
+
+        int rowIndex = static_cast<int>(std::distance(words.begin(), it));
+
+        Eigen::VectorXd vec = U.row(rowIndex).head(usedCols);
+
+        // If needs to multiply by Sigma
+        if (config.applySigmaScaling && Sigma.cols() == Sigma.rows()) {
+            for (int d = 0; d < usedCols; ++d) {
+                double s = Sigma(d, d); // diagonal
+                vec[d] *= s;
+            }
+        }
+
+        double sumSq = vec.squaredNorm();
+        if (sumSq < 1e-15) {
+            continue; // vector is almost zero, skipping
+        }
+
+        // Find max^2
+        double maxSq = 0.0;
+        for (int d = 0; d < usedCols; ++d) {
+            double sq = vec[d] * vec[d];
+            if (sq > maxSq) {
+                maxSq = sq;
+            }
+        }
+
+        double lemmaRelevance = maxSq / sumSq;
+        sumAll += lemmaRelevance;
+        validLemmaCount++;
+    }
+
+    if (validLemmaCount == 0) {
+        return 0.0;
+    }
+
+    return sumAll / static_cast<double>(validLemmaCount);
+}
+
+/*
+ * Calculation of using vectors from U (and Sigma).
+ * 1) The vectors of all lemmas of the cluster are collected
+ * 2) The "centroid" (the average of the vectors) is searched for
+ * 3) For each lemma, the similarity (or distance) to the centroid is read.
+ * 4) Cluster average = centrality
+ */
+double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+                                                  const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
+                                                  const LSA_MetricsConfig& config)
+{
+    // Сколько используем компонент
+    int usedCols = config.maxComponents.has_value() ? std::min<int>(config.maxComponents.value(), U.cols()) : U.cols();
+
+    // Собираем вектора всех лемм кластера
+    std::vector<Eigen::VectorXd> lemmaVectors;
+    lemmaVectors.reserve(cluster.lemmas.size());
+
+    for (const auto& lemma : cluster.lemmas) {
+        auto it = std::find(words.begin(), words.end(), lemma);
+        if (it == words.end()) {
+            continue;
+        }
+
+        int rowIndex = static_cast<int>(std::distance(words.begin(), it));
+        Eigen::VectorXd vec = U.row(rowIndex).head(usedCols);
+
+        if (config.applySigmaScaling && Sigma.cols() == Sigma.rows()) {
+            for (int d = 0; d < usedCols; ++d) {
+                double s = Sigma(d, d);
+                vec[d] *= s;
+            }
+        }
+        lemmaVectors.push_back(vec);
+    }
+
+    if (lemmaVectors.empty()) {
+        return 0.0;
+    }
+
+    // Вычисляем центроид
+    Eigen::VectorXd centroid = Eigen::VectorXd::Zero(usedCols);
+    for (const auto& v : lemmaVectors) {
+        centroid += v;
+    }
+    centroid /= static_cast<double>(lemmaVectors.size());
+
+    // Теперь считаем среднее сходство (или обратное расстояние)
+    // между леммой и центроидом
+    double sumScore = 0.0;
+    for (const auto& v : lemmaVectors) {
+        if (config.useCosineForCentrality) {
+            // Косинусное сходство
+            double denom = v.norm() * centroid.norm();
+            if (denom < 1e-15) {
+                sumScore += 0.0;
+            } else {
+                sumScore += (v.dot(centroid) / denom);
+            }
+        } else {
+            // Евклидова метрика -> пусть centrality = 1 / (1 + dist)
+            double dist = (v - centroid).norm();
+            sumScore += 1.0 / (1.0 + dist);
+        }
+    }
+
+    return sumScore / static_cast<double>(lemmaVectors.size());
+}
+
+void PatternPhrasesStorage::CalculateLSAMetrics(const Eigen::MatrixXd& U, const std::vector<std::string>& words,
+                                                const Eigen::MatrixXd& Sigma, const LSA_MetricsConfig& config)
+{
+    Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics with advanced LSA approach...");
+
+    for (auto& clusterPair : clusters) {
+        auto& cluster = clusterPair.second;
+
+        cluster.topicRelevance = CalculateTopicRelevance(cluster, U, Sigma, words, config);
+
+        cluster.centralityScore = CalculateCentrality(cluster, U, Sigma, words, config);
     }
 }
 

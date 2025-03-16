@@ -78,14 +78,13 @@ public:
     // \brief Computes text metrics such as TF, IDF, and TF-IDF for the stored word complexes.
     void ComputeTextMetrics();
 
-    double CalculateTopicRelevance(const WordComplexCluster& cluster,
-                                   const std::unordered_map<int, std::vector<std::string>>& topics);
+    // Сalculates topicRelevance and centralityScore metrics for all clusters after an LSA analysis.
+    void CalculateLSAMetrics(const Eigen::MatrixXd& U, const std::vector<std::string>& words,
+                             const Eigen::MatrixXd& Sigma, const LSA_MetricsConfig& config);
 
-    double CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
-                               const std::vector<std::string>& words);
-
-    void UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
-                              const std::unordered_map<int, std::vector<std::string>>& topics);
+    // Simplified implementation
+    void CalculateLSAMetrics(const MatrixXd& U, const std::vector<std::string>& words,
+                             const std::unordered_map<int, std::vector<std::string>>& topics);
 
     // \brief Outputs the clusters to a JSON file.
     // \param filename  The path to the output JSON file.
@@ -102,6 +101,26 @@ public:
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
+    // Topic relevance calculation for a cluster based on row vectors U (and optionally Sigma) using the "max^2 /
+    // sum^2" method
+    static double CalculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+                                          const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
+                                          const LSA_MetricsConfig& config);
+
+    // Centrality score calculation through the mean cosine or through the Euclidean measure
+    static double CalculateCentrality(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+                                      const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
+                                      const LSA_MetricsConfig& config);
+
+    // Proportion of cluster lemmas that occur among the top words for the identified topics
+    double CalculateTopicRelevance(const WordComplexCluster& cluster,
+                                   const std::unordered_map<int, std::vector<std::string>>& topics);
+
+    // Average pairwise cosine proximity of the vectors (rows) of the matrix U corresponding to the cluster lemmas.
+    double CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
+                               const std::vector<std::string>& words);
+
+private:
     Options& options = Options::getOptions();
     void InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
                                      std::unordered_set<std::string>& clustersToInclude);
@@ -111,8 +130,6 @@ private:
 
     void CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
                                        std::unordered_set<std::string>& clustersToInclude);
-
-    //  CoOccurrenceMap coOccurrenceMap;
 
     std::unordered_map<std::string, std::set<std::string>> hypernymCache;
     std::unordered_map<std::string, std::set<std::string>> hyponymCache;

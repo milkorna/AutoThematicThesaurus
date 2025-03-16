@@ -12,6 +12,30 @@
 
 using namespace Eigen;
 
+// Configuration structure for LSA metric calculations
+struct LSA_MetricsConfig {
+    // Determines whether cosine similarity is used for centrality calculation.
+    // - If true, cosine similarity is applied.
+    // - If false, Euclidean distance is used and converted into a score.
+    bool useCosineForCentrality = true;
+
+    // Defines the method for calculating topic relevance.
+    // - If true, considers the dominant peak in the coordinate vector
+    //   (computed as max^2 / sum^2 ratio).
+    // - If false, alternative methods such as lemma occurrences in top words can be used.
+    bool useVectorRatioForTopicRelevance = true;
+
+    // Specifies the number of latent components to consider.
+    // - If set to std::nullopt, the full matrix width U.cols() is used.
+    // - Otherwise, the matrix is truncated to the specified number of components.
+    std::optional<int> maxComponents = std::nullopt;
+
+    // Determines whether vectors should be scaled by singular values (Sigma).
+    // - If true, scaling is applied to account for the actual "importance" of each topic.
+    // - If false, no scaling is applied.
+    bool applySigmaScaling = false;
+};
+
 class LSA {
 public:
     // Constructor
