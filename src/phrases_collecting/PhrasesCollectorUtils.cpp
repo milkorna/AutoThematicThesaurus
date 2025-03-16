@@ -30,31 +30,118 @@ using json = nlohmann::json;
 using namespace X;
 
 namespace PhrasesCollectorUtils {
-    Options g_options;
+    Options::Options()
+    {
+        fs::path repoPath = fs::current_path();
+
+        dataDir = repoPath / "my_data";
+        corpusDir = dataDir / "nlp_corpus";
+        textsDir = corpusDir / "texts";
+        patternsFile = dataDir / "patterns";
+        stopWordsFile = dataDir / "stop_words";
+        tagsAndHubsFile = corpusDir / "tags_and_hubs";
+        resDir = corpusDir / "results";
+        corpusFile = corpusDir / "corpus";
+        filteredCorpusFile = corpusDir / "filtered_corpus";
+        sentencesFile = corpusDir / "sentences.json";
+        embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
+        totalResultsPath = corpusDir / "total_results.json";
+        termsCandidatesPath = corpusDir / "term_candidates.json";
+
+        textToProcessCount = 0;
+        tresholdTopicsCount = 7;
+        cleanStopWords = true; ///< Indicates if stop words should be cleaned.
+        validateBoundaries = true;
+        topicsThreshold = 0.6;
+        topicsHyponymThreshold = 0.98;
+        freqTresholdCoeff = 0.12;
+    }
+
+    void Options::recomputeCorpusDependenciesPaths()
+    {
+        if (!fs::equivalent(corpusDir, dataDir / "nlp_corpus")) {
+            textsDir = corpusDir / "texts";
+            tagsAndHubsFile = corpusDir / "tags_and_hubs";
+            resDir = corpusDir / "results";
+            corpusFile = corpusDir / "corpus";
+            filteredCorpusFile = corpusDir / "filtered_corpus";
+            sentencesFile = corpusDir / "sentences.json";
+            totalResultsPath = corpusDir / "total_results.json";
+            termsCandidatesPath = corpusDir / "term_candidates.json";
+        }
+    }
+
+    void Options::updateFileCount()
+    {
+        int fileCount = 0;
+        try {
+            for (const auto& entry : fs::directory_iterator(textsDir)) {
+                if (entry.is_regular_file()) {
+                    ++fileCount;
+                }
+            }
+            textToProcessCount = fileCount;
+        } catch (const std::exception& ex) {
+            Logger::log("Options", LogLevel::Error,
+                        std::string("Failed to iterate over textsDir: ") + ex.what() + ". Exiting.");
+            Logger::flushLogs();
+            std::exit(EXIT_FAILURE);
+        } catch (...) {
+            Logger::log("Options", LogLevel::Error, "Unknown error while counting files in textsDir. Exiting.");
+            Logger::flushLogs();
+            std::exit(EXIT_FAILURE);
+        }
+
+        if (textToProcessCount == 0) {
+            Logger::log("Options", LogLevel::Error, "No files to process. Exiting");
+            Logger::flushLogs();
+            std::exit(EXIT_FAILURE);
+        }
+    }
 
     std::vector<fs::path> GetFilesToProcess()
     {
-        fs::path repoPath = fs::current_path();
-        fs::path inputDir = repoPath / "my_data/texts";
         std::vector<fs::path> files_to_process;
-        files_to_process.reserve(g_options.textToProcessCount);
-        for (const auto& entry : fs::directory_iterator(inputDir)) {
-            if (entry.is_regular_file()) {
-                std::string filename = entry.path().filename().string();
-                if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
-                    files_to_process.push_back(entry.path());
+
+        try {
+            auto& options = PhrasesCollectorUtils::Options::getOptions();
+            fs::path inputDir = options.textsDir;
+
+            if (!fs::exists(inputDir) || !fs::is_directory(inputDir)) {
+                throw std::runtime_error("Input directory does not exist or is not a directory: " + inputDir.string());
+            }
+
+            files_to_process.reserve(options.textToProcessCount);
+
+            for (const auto& entry : fs::directory_iterator(inputDir)) {
+                if (entry.is_regular_file()) {
+                    std::string filename = entry.path().filename().string();
+                    if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
+                        files_to_process.push_back(entry.path());
+                    }
                 }
             }
+
+            Logger::log("GetFilesToProcess", LogLevel::Info,
+                        "Successfully collected " + std::to_string(files_to_process.size()) + " files for processing.");
+
+        } catch (const fs::filesystem_error& ex) {
+            Logger::log("GetFilesToProcess", LogLevel::Error, "Filesystem error: " + std::string(ex.what()));
+        } catch (const std::exception& ex) {
+            Logger::log("GetFilesToProcess", LogLevel::Error, "Exception: " + std::string(ex.what()));
+        } catch (...) {
+            Logger::log("GetFilesToProcess", LogLevel::Error, "Unknown error while collecting files.");
         }
+
         return files_to_process;
     }
 
     std::vector<fs::path> GetResFiles()
     {
-        fs::path repoPath = fs::current_path();
-        fs::path inputDir = repoPath / "res";
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        fs::path inputDir = options.resDir;
         std::vector<fs::path> files_to_process;
-        files_to_process.reserve(g_options.textToProcessCount);
+        files_to_process.reserve(options.textToProcessCount);
         for (const auto& entry : fs::directory_iterator(inputDir)) {
             if (entry.is_regular_file()) {
                 std::string filename = entry.path().filename().string();
@@ -75,13 +162,26 @@ namespace PhrasesCollectorUtils {
 
     void ProcessFile(const fs::path& inputFile, const fs::path& outputDir)
     {
-        std::string filename = inputFile.filename().string();
-        std::string outputFile = (outputDir / ("res_" + filename)).string();
+        std::string filename = inputFile.filename().replace_extension(".json").string();
+        fs::path outputFile = outputDir / ("res_" + filename);
+
+        std::ofstream outFile(outputFile);
+        if (!outFile) {
+            Logger::log("ProcessFile", LogLevel::Error, "Failed to create JSON file: " + outputFile.string());
+            return;
+        }
+        outFile << "[]" << std::endl;
+        Logger::log("ProcessFile", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
 
         Tokenizer tok;
         TFMorphemicSplitter morphemic_splitter;
         Process process(inputFile, outputFile);
-        SentenceSplitter ssplitter(process.m_input);
+        std::ifstream input(inputFile);
+        if (!input) {
+            Logger::log("ProcessFile", LogLevel::Error, "Failed to open input file: " + inputFile.string());
+            return;
+        }
+        SentenceSplitter ssplitter(input);
         Processor analyzer;
         SingleWordDisambiguate disamb;
         TFJoinedModel joiner;
@@ -106,16 +206,16 @@ namespace PhrasesCollectorUtils {
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
             PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
-            process.m_output.flush();
-            process.m_sentNum++;
+            process.sentNum++;
         } while (!ssplitter.eof());
         PatternPhrasesStorage::GetStorage().FinalizeDocumentProcessing();
     }
 
     void BuildPhraseStorage()
     {
-        fs::path repoPath = fs::current_path();
-        fs::path outputDir = repoPath / "res";
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        Logger::log("", LogLevel::Info, "Building phrase storage...");
+        fs::path outputDir = options.resDir;
         fs::create_directories(outputDir);
 
         auto& storage = PatternPhrasesStorage::GetStorage();
@@ -128,7 +228,7 @@ namespace PhrasesCollectorUtils {
                 ProcessFile(files_to_process[i], outputDir);
             }
 
-            TextCorpus::GetCorpus().SaveCorpusToFile((repoPath / "my_data" / "corpus").string());
+            TextCorpus::GetCorpus().SaveCorpusToFile(options.corpusFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
@@ -138,7 +238,7 @@ namespace PhrasesCollectorUtils {
 
     void BuildTokenizedSentenceCorpus()
     {
-        fs::path repoPath = fs::current_path();
+        Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
         auto& sentences = TokenizedSentenceCorpus::GetCorpus();
 
         try {
@@ -183,13 +283,14 @@ namespace PhrasesCollectorUtils {
                     sentNum++;
                 } while (!ssplitter.eof());
             }
-
-            sentences.SaveToFile((repoPath / "my_data" / "sentences.json").string());
+            auto& options = PhrasesCollectorUtils::Options::getOptions();
+            sentences.SaveToFile(options.sentencesFile.string());
         } catch (const std::exception& e) {
             Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
         } catch (...) {
             Logger::log("", LogLevel::Error, "Unknown exception caught");
         }
+        Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
     }
 
     MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet)
@@ -243,8 +344,8 @@ namespace PhrasesCollectorUtils {
             return stopWords;
         }
 
-        std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = repoPath / "my_data/stop_words.txt";
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        std::filesystem::path inputPath = options.stopWordsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
@@ -280,8 +381,8 @@ namespace PhrasesCollectorUtils {
             return topics;
         }
 
-        std::filesystem::path repoPath = std::filesystem::current_path();
-        std::filesystem::path inputPath = repoPath / "my_data/tags_and_hubs_line_counts.txt";
+        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        std::filesystem::path inputPath = options.tagsAndHubsFile;
 
         std::ifstream file(inputPath);
         if (!file.is_open()) {
@@ -290,16 +391,6 @@ namespace PhrasesCollectorUtils {
 
         std::string line;
         while (std::getline(file, line)) {
-
-            // Check if the line contains "Блог компании"
-            if (line.find("Блог компании") != std::string::npos) {
-                continue;
-            }
-
-            if (line.find(" 1") != std::string::npos) {
-                continue;
-            }
-
             if (!contains_no_latin(line))
                 continue;
 
@@ -366,6 +457,9 @@ namespace PhrasesCollectorUtils {
 
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
     {
+        if (collection.empty())
+            return;
+
         for (const auto& wc : collection) {
             std::string key;
             for (const auto& w : wc->words) {
@@ -384,14 +478,16 @@ namespace PhrasesCollectorUtils {
             j["0_key"] = key;
             j["1_textForm"] = wc->textForm;
             j["2_modelName"] = wc->modelName;
-            j["3_docNum"] = process.m_docNum;
-            j["4_sentNum"] = process.m_sentNum;
+            j["3_docNum"] = process.docNum;
+            j["4_sentNum"] = process.sentNum;
             j["5_start_ind"] = wc->pos.start;
             j["6_end_ind"] = wc->pos.end;
             j["7_lemmas"] = lemmas_json;
 
-            process.m_output << j.dump(4) << std::endl;
+            //            process.m_output << j.dump(4) << std::endl;
+            process.addJsonObject(j);
         }
+        Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
     }
 
     const std::string GetLemma(const WordFormPtr& form)

@@ -1,3 +1,4 @@
+#include "Logger.h"
 #include <TextCorpus.h>
 
 std::string TextCorpus::ExtractTitleFromFilename(const std::string& filename) const
@@ -221,6 +222,8 @@ void TextCorpus::SaveCorpusToFile(const std::string& filename)
 // Loads the corpus data from a file and deserializes it into the singleton instance.
 void TextCorpus::LoadCorpusFromFile(const std::string& filename)
 {
+    Logger::log("TextCorpus", LogLevel::Info, "Loading corpus from file: " + filename);
+
     std::ifstream file(filename);
     if (file.is_open()) {
         json j;

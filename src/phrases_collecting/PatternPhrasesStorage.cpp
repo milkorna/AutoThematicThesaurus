@@ -30,6 +30,7 @@ void PatternPhrasesStorage::ReserveClusters(size_t count)
 
 void PatternPhrasesStorage::AddContextsToClusters()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Adding contexts to clusters...");
     auto& corpus = TokenizedSentenceCorpus::GetCorpus();
 
     for (auto& clusterPair : clusters) {
@@ -242,6 +243,7 @@ void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>&
 
 void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Collecting terms...");
     std::set<std::string> sortedKeys;
     const auto& clusters = GetClusters();
 
@@ -282,7 +284,7 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
 {
     auto& corpus = TextCorpus::GetCorpus();
 
-    if (lastDocumentId != -1 && lastDocumentId != process.m_docNum) {
+    if (lastDocumentId != -1 && lastDocumentId != process.docNum) {
         for (const auto& lemma : uniqueLemmasInDoc) {
             corpus.UpdateDocumentFrequency(lemma);
         }
@@ -297,7 +299,7 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     }
 
     uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
-    lastDocumentId = process.m_docNum;
+    lastDocumentId = process.docNum;
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.Collect(process);
@@ -399,6 +401,8 @@ double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& clus
 void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::vector<std::string>& words,
                                                  const std::unordered_map<int, std::vector<std::string>>& topics)
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics...");
+
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
 
@@ -410,10 +414,12 @@ void PatternPhrasesStorage::UpdateClusterMetrics(const MatrixXd& U, const std::v
 
 void PatternPhrasesStorage::ComputeTextMetrics()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
     const auto corpus = TextCorpus::GetCorpus();
     int totalDocuments = corpus.GetTotalDocuments();
     const auto& topicVectors = GetTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
 
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
@@ -446,18 +452,18 @@ void PatternPhrasesStorage::ComputeTextMetrics()
             float combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
                                   manhattanWeight * (1.0f / (1.0f + manhattanDist));
 
-            if (combinedScore > g_options.topicsThreshold) {
+            if (combinedScore > options.topicsThreshold) {
                 topics.push_back(topicWord);
             }
             totalTopics[cluster.key] = topics;
         }
     }
-    int frequencyThreshold = static_cast<int>(clusters.size() * g_options.freqTrecholdCoeff);
+    int frequencyThreshold = static_cast<int>(clusters.size() * options.freqTresholdCoeff);
     ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
-            if (iter->second.size() > 0 && iter->second.size() < g_options.upperTresholdTopicsNum) {
+            if (iter->second.size() > 0 && iter->second.size() < options.tresholdTopicsCount) {
                 cluster.tagMatch = true;
             }
         }
@@ -466,6 +472,8 @@ void PatternPhrasesStorage::ComputeTextMetrics()
 
 void PatternPhrasesStorage::MergeSimilarClusters()
 {
+    Logger::log("PhrasesStorage", LogLevel::Info, "Merging similar clusters...");
+
     // Get all keys from the map and sort them
     std::vector<std::string> sortedKeys;
     sortedKeys.reserve(clusters.size());
@@ -611,7 +619,7 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
 
 void PatternPhrasesStorage::LoadWikiWNRelations()
 {
-
+    Logger::log("PhrasesStorage", LogLevel::Info, "Loading WikiWordNet relations...");
     SemanticRelationsDB semanticDB;
 
     for (auto& clusterPair : clusters) {
@@ -643,7 +651,7 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
                             const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
 
                             float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
-                            if (cosineSim > g_options.topicsHyponymThreshold) {
+                            if (cosineSim > options.topicsHyponymThreshold) {
                                 validHyponyms.insert(hyp);
                             }
                         }
@@ -659,8 +667,9 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
 void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters,
                                                      bool termsOnly) const
 {
-    json j;
+    Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
 
+    json j;
     std::vector<std::string> keys;
 
     if (termsOnly) {
@@ -687,7 +696,7 @@ void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename
 
         json clusterJson;
         clusterJson["0_phrase_size"] = cluster.phraseSize;
-        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(g_options.textToProcessCount);
+        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(options.textToProcessCount);
         clusterJson["2_topic_relevance"] = cluster.topicRelevance;
         clusterJson["3_centrality_score"] = cluster.centralityScore;
         clusterJson["4_tag_match"] = cluster.tagMatch;

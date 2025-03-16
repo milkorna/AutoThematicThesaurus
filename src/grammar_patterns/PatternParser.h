@@ -3,7 +3,11 @@
 
 #include <ModelComponent.h>
 
-#include <fstream>
+#include <filesystem>
+#include <nlohmann/json.hpp>
+
+namespace fs = std::filesystem;
+using json = nlohmann::json;
 
 // Namespace containing utilities for parsing operations.
 namespace ParserUtils {
@@ -30,24 +34,50 @@ namespace ParserUtils {
 }
 
 struct Process {
-    std::ifstream m_input;
-    std::ofstream m_output;
-    size_t m_docNum;
-    size_t m_sentNum;
+    fs::path inputFile;
+    fs::path outputFile;
+    json jsonData;
+    size_t docNum;
+    size_t sentNum;
 
-    explicit Process(const std::string& inputFile, const std::string& outputFile, const size_t docNum,
-                     const size_t sentNum)
-        : m_input(inputFile), m_output(outputFile), m_docNum(docNum), m_sentNum(sentNum)
+    explicit Process(const fs::path& inputFile, const fs::path& outputFile, size_t sentNum = 0)
+        : inputFile(inputFile), outputFile(outputFile), docNum(ParserUtils::extractNumberFromPath(inputFile)),
+          sentNum(sentNum)
     {
+
+        // Открываем существующий JSON или создаем новый
+        if (fs::exists(outputFile)) {
+            std::ifstream inFile(outputFile);
+            if (inFile) {
+                try {
+                    inFile >> jsonData; // Читаем JSON, если он есть
+                    Logger::log("Process", LogLevel::Info, "Loaded existing JSON file: " + outputFile.string());
+                } catch (...) {
+                    Logger::log("Process", LogLevel::Error, "Failed to parse JSON file: " + outputFile.string());
+                    jsonData = json::array(); // Если ошибка, создаём новый массив
+                }
+            }
+        } else {
+            jsonData = json::array(); // Если файла нет, создаём пустой JSON
+            Logger::log("Process", LogLevel::Debug, "Created new JSON file: " + outputFile.string());
+        }
     }
 
-    explicit Process(const std::string& inputFile, const std::string& outputFile, const size_t sentNum = 0)
-        : m_input(inputFile), m_output(outputFile), m_docNum(ParserUtils::extractNumberFromPath(inputFile)),
-          m_sentNum(sentNum)
+    void addJsonObject(const json& newObj)
     {
+        jsonData.push_back(newObj);
     }
 
-    ~Process() = default;
+    ~Process()
+    {
+        std::ofstream outFile(outputFile, std::ios::trunc | std::ios::binary);
+        if (!outFile) {
+            Logger::log("Process", LogLevel::Error, "Failed to open JSON file for writing: " + outputFile.string());
+            return;
+        }
+        outFile << jsonData.dump(4) << std::endl;
+        Logger::log("Process", LogLevel::Info, "Successfully saved JSON file: " + outputFile.string());
+    }
 };
 
 // Parser class responsible for parsing linguistic data from a file.

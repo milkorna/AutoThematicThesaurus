@@ -23,17 +23,43 @@ namespace PhrasesCollectorUtils {
     // \struct Options
     // \brief This structure holds configuration options for phrase collection.
     struct Options {
-        int textToProcessCount = 315;
-        int upperTresholdTopicsNum = 7;
-        int coOccurrenceFrequency = textToProcessCount * 5;
-        bool cleaningStopWords = true; ///< Indicates if stop words should be cleaned.
-        bool boundariesValidation = true;
-        float topicsThreshold = 0.6;
-        float topicsHyponymThreshold = 0.98;
-        float freqTrecholdCoeff = 0.12;
-    };
+        int textToProcessCount;
+        int tresholdTopicsCount;
+        bool cleanStopWords; ///< Indicates if stop words should be cleaned.
+        bool validateBoundaries;
+        float topicsThreshold;
+        float topicsHyponymThreshold;
+        float freqTresholdCoeff;
 
-    extern Options g_options; ///< Global options for phrase collection.
+        fs::path dataDir;
+        fs::path corpusDir;
+        fs::path textsDir;
+        fs::path patternsFile;
+        fs::path stopWordsFile;
+        fs::path tagsAndHubsFile;
+        fs::path resDir;
+        fs::path corpusFile;
+        fs::path filteredCorpusFile;
+        fs::path sentencesFile;
+        fs::path embeddingModelFile;
+        fs::path totalResultsPath;
+        fs::path termsCandidatesPath;
+
+        static Options& getOptions()
+        {
+            static Options options;
+            return options;
+        }
+
+        Options(const Options&) = delete;
+        Options& operator=(const Options&) = delete;
+
+        void recomputeCorpusDependenciesPaths();
+        void updateFileCount();
+
+    private:
+        Options();
+    };
 
     // \struct CurrentPhraseStatus
     // \brief This structure holds the status of the current phrase during processing.

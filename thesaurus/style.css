@@ -1,0 +1,127 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+/* Global reset: normalize spacing and ensure box-sizing consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base styling for the document */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content container */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+h1,
+h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Unordered list styling */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Phrase list styles */
+.phrase-list {
+    margin-top: 20px;
+}
+
+/* Phrase links: remove default styling */
+.phrase-item a,
+.sub-phrase-item a {
+    color: inherit;
+    /* Keeps the text color consistent */
+    text-decoration: none;
+    /* Removes underlining */
+}
+
+/* Hover effect for phrase links */
+.phrase-item a:hover,
+.sub-phrase-item a:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+    color: #333;
+    /* Optional hover color */
+}
+
+/* General link styles */
+a {
+    text-decoration: none;
+    color: #007acc;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #005999;
+}
+
+/* Context list styling */
+.context-list {
+    margin-top: 15px;
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Context item spacing */
+.context-item {
+    margin-bottom: 10px;
+}
+
+/* "Back" or "Return to Index" button styling */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.back-link::before {
+    content: "← ";
+    /* Adds a left arrow before the text */
+}
+
+/* Footer styling */
+.footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px;
+    color: #999;
+}
+
+/* Subphrase list styling */
+.sub-phrase-list {
+    list-style-type: circle;
+    margin-left: 20px;
+    margin-top: 5px;
+    padding-left: 0;
+}
+
+/* Subphrase item styling */
+.sub-phrase-item {
+    font-size: 0.9em;
+    /* Slightly smaller font size */
+    color: #666;
+    /* Adjusted text color */
+    margin-bottom: 5px;
+}

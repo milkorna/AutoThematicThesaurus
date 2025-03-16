@@ -155,6 +155,12 @@ void LSA::PerformAnalysis(bool useSentences)
 
 void LSA::AnalyzeTopics(int numTopics, int topWords)
 {
+    if (numTopics > U.cols()) {
+        std::cerr << "Error: numTopics (" << numTopics << ") exceeds available topics in U (" << U.cols() << ")."
+                  << std::endl;
+        numTopics = U.cols();
+    }
+
     // Check that the number of words matches the number of rows in matrix U
     if (U.rows() != words.size()) {
         std::cerr << "Error: The number of rows in U (" << U.rows() << ") does not match the number of words ("
@@ -166,8 +172,19 @@ void LSA::AnalyzeTopics(int numTopics, int topWords)
     for (int topic = 0; topic < numTopics; ++topic) {
         std::vector<std::pair<double, std::string>> topicWords;
 
+        if (topic >= U.cols()) {
+            std::cerr << "Warning: Topic index (" << topic << ") is out of bounds (U.cols() = " << U.cols()
+                      << "). Skipping." << std::endl;
+            continue;
+        }
+
         // Collect words and their values for the current topic
         for (int i = 0; i < U.rows(); ++i) {
+            if (i >= words.size()) {
+                std::cerr << "Warning: Word index (" << i << ") is out of bounds (words.size() = " << words.size()
+                          << "). Skipping." << std::endl;
+                continue;
+            }
             topicWords.push_back({U(i, topic), words[i]});
         }
 

@@ -102,6 +102,7 @@ public:
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
 private:
+    Options& options = Options::getOptions();
     void InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
                                      std::unordered_set<std::string>& clustersToInclude);
 

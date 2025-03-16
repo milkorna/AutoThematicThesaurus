@@ -39,6 +39,7 @@ void GrammarPatternManager::readPatterns(const std::string& filePath)
 {
     try {
         Parser parser(filePath);
+        Logger::log("PatternParser", LogLevel::Info, "Reading patterns from file: " + filePath);
         parser.Parse();
     } catch (const std::exception& e) {
         Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));

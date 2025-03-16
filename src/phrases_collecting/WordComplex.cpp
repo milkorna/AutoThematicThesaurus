@@ -48,7 +48,7 @@ namespace PhrasesCollectorUtils {
         wc->words.push_back(token);
         wc->lemmas.push_back(GetLemma(token));
         wc->textForm = token->getWordForm().getRawString();
-        wc->pos = {tokenInd, tokenInd, process.m_docNum, process.m_sentNum};
+        wc->pos = {tokenInd, tokenInd, process.docNum, process.sentNum};
         wc->modelName = modelName;
 
         return wc;

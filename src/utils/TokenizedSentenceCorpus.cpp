@@ -1,4 +1,5 @@
 
+#include "Logger.h"
 #include <TokenizedSentenceCorpus.h>
 
 // Adds a sentence to the corpus.
@@ -76,6 +77,7 @@ void TokenizedSentenceCorpus::SaveToFile(const std::string& filename)
 // Loads the corpus data from a file, deserializes it, and updates the corpus.
 void TokenizedSentenceCorpus::LoadFromFile(const std::string& filename)
 {
+    Logger::log("TokenizedSentenceCorpus", LogLevel::Info, "Loading tokenized sentences from file: " + filename);
     std::ifstream file(filename);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file " + filename + " for loading.");
@@ -85,4 +87,7 @@ void TokenizedSentenceCorpus::LoadFromFile(const std::string& filename)
     file >> j;
     file.close();
     Deserialize(j);
+
+    Logger::log("TokenizedSentenceCorpus", LogLevel::Info,
+                "Sentences loaded successfully. Total sentences: " + totalSentences);
 }

@@ -90,6 +90,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
                                          const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
                                          const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd)
 {
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
     auto comp = model->getComponents()[compIndex];
 
     // Check if the component is a WordComp
@@ -97,7 +98,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
         const auto token = m_sentence[formIndex];
         const auto& stopWords = GetStopWords();
 
-        if (g_options.cleaningStopWords) {
+        if (options.cleanStopWords) {
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 return false;
 
@@ -308,7 +309,8 @@ void ComplexPhrasesCollector::Collect(Process& process)
         }
     }
 
-    if (g_options.boundariesValidation) {
+    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    if (options.validateBoundaries) {
         ValidateBoundares();
     }
 
