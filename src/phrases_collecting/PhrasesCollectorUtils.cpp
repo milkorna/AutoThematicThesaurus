@@ -162,13 +162,26 @@ namespace PhrasesCollectorUtils {
 
     void ProcessFile(const fs::path& inputFile, const fs::path& outputDir)
     {
-        std::string filename = inputFile.filename().string();
-        std::string outputFile = (outputDir / ("res_" + filename)).string();
+        std::string filename = inputFile.filename().replace_extension(".json").string();
+        fs::path outputFile = outputDir / ("res_" + filename);
+
+        std::ofstream outFile(outputFile);
+        if (!outFile) {
+            Logger::log("ProcessFile", LogLevel::Error, "Failed to create JSON file: " + outputFile.string());
+            return;
+        }
+        outFile << "[]" << std::endl;
+        Logger::log("ProcessFile", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
 
         Tokenizer tok;
         TFMorphemicSplitter morphemic_splitter;
         Process process(inputFile, outputFile);
-        SentenceSplitter ssplitter(process.m_input);
+        std::ifstream input(inputFile);
+        if (!input) {
+            Logger::log("ProcessFile", LogLevel::Error, "Failed to open input file: " + inputFile.string());
+            return;
+        }
+        SentenceSplitter ssplitter(input);
         Processor analyzer;
         SingleWordDisambiguate disamb;
         TFJoinedModel joiner;
@@ -193,8 +206,7 @@ namespace PhrasesCollectorUtils {
             Logger::log("SentenceReading", LogLevel::Info, "Read sentence: " + sentence);
             PatternPhrasesStorage::GetStorage().Collect(forms, process);
 
-            process.m_output.flush();
-            process.m_sentNum++;
+            process.sentNum++;
         } while (!ssplitter.eof());
         PatternPhrasesStorage::GetStorage().FinalizeDocumentProcessing();
     }
@@ -445,6 +457,9 @@ namespace PhrasesCollectorUtils {
 
     void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process)
     {
+        if (collection.empty())
+            return;
+
         for (const auto& wc : collection) {
             std::string key;
             for (const auto& w : wc->words) {
@@ -463,14 +478,16 @@ namespace PhrasesCollectorUtils {
             j["0_key"] = key;
             j["1_textForm"] = wc->textForm;
             j["2_modelName"] = wc->modelName;
-            j["3_docNum"] = process.m_docNum;
-            j["4_sentNum"] = process.m_sentNum;
+            j["3_docNum"] = process.docNum;
+            j["4_sentNum"] = process.sentNum;
             j["5_start_ind"] = wc->pos.start;
             j["6_end_ind"] = wc->pos.end;
             j["7_lemmas"] = lemmas_json;
 
-            process.m_output << j.dump(4) << std::endl;
+            //            process.m_output << j.dump(4) << std::endl;
+            process.addJsonObject(j);
         }
+        Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
     }
 
     const std::string GetLemma(const WordFormPtr& form)

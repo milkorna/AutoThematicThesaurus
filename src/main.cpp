@@ -24,7 +24,9 @@ static void printUsage(const po::options_description& desc)
     std::cout << "Usage: myprogram <command> [options]\n\n";
     std::cout << "Commands:\n";
     std::cout << "  collect_phrases           Collect phrases for each text, save phrase storage.\n";
-    std::cout << "  merge_clusters            Merge similar clusters, compute text metrics.\n";
+    std::cout << "  filter_corpus             Remove invalid words and sentences from the corpus data and save.\n";
+    std::cout << "  compute_text_metrics      Merge identical clusters and compute text metrics: tf, idf, tf-idf, "
+                 "topic relevanse, centrality score.\n";
     std::cout << "  load_hypernyms            Load WikiWordNet relations (hypernyms/hyponyms) into clusters.\n";
     std::cout << "  build_tokenized_corpus    Build & save a tokenized sentence corpus.\n";
     std::cout << "  perform_lsa               Perform LSA analysis on previously saved data.\n";
@@ -182,29 +184,30 @@ int main(int argc, char** argv)
     // Execute command
     try {
         if (command == "collect_phrases") {
-            // Collect phrases from texts and save the storage
             Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
             fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
             BuildPhraseStorage();
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
-        } else if (command == "merge_clusters") {
-            // Merge similar phrase clusters and compute text-based metrics
-            Logger::log("Main", LogLevel::Info, "Starting cluster merging process...");
-
+        } else if (command == "filter_corpus") {
+            Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
+            auto& corpus = TextCorpus::GetCorpus();
+            corpus.LoadCorpusFromFile(options.corpusFile.string());
+            corpus.SaveCorpusToFile(options.filteredCorpusFile);
+            Logger::log("Main", LogLevel::Info, "Filtering corpus completed successfully.");
+        } else if (command == "compute_text_metrics") {
+            Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
             auto& corpus = TextCorpus::GetCorpus();
             corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
-
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadPhraseStorageFromResultsDir(storage);
 
             ::Embedding e;
-
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
             storage.OutputClustersToJsonFile(options.totalResultsPath.string());
-            Logger::log("Main", LogLevel::Info, "Cluster merging completed successfully.");
+            Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");

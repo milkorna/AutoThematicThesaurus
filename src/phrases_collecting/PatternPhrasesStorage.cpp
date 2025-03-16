@@ -284,7 +284,7 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
 {
     auto& corpus = TextCorpus::GetCorpus();
 
-    if (lastDocumentId != -1 && lastDocumentId != process.m_docNum) {
+    if (lastDocumentId != -1 && lastDocumentId != process.docNum) {
         for (const auto& lemma : uniqueLemmasInDoc) {
             corpus.UpdateDocumentFrequency(lemma);
         }
@@ -299,7 +299,7 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     }
 
     uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
-    lastDocumentId = process.m_docNum;
+    lastDocumentId = process.docNum;
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.Collect(process);

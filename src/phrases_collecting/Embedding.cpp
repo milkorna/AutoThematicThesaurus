@@ -28,7 +28,7 @@ Embedding::Embedding()
 {
     Logger::log("Embedding", LogLevel::Info, "Initializing embedding model...");
     LoadModel();
-    Logger::log("Embedding", LogLevel::Info, "Model loaded successfully...");
+    Logger::log("Embedding", LogLevel::Info, "Model loaded successfully.");
 }
 
 void Embedding::RunTest()
