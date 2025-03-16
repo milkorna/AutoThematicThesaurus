@@ -26,11 +26,13 @@ static void printUsage(const po::options_description& desc)
     std::cout << "  collect_phrases           Collect phrases for each text, save phrase storage.\n";
     std::cout << "  filter_corpus             Remove invalid words and sentences from the corpus data and save.\n";
     std::cout << "  compute_text_metrics      Merge identical clusters and compute text metrics: tf, idf, tf-idf, "
-                 "topic relevanse, centrality score.\n";
+                 "tag_match. Inicialize topic_relevance and centrality score.\n";
     std::cout << "  load_hypernyms            Load WikiWordNet relations (hypernyms/hyponyms) into clusters.\n";
-    std::cout << "  build_tokenized_corpus    Build & save a tokenized sentence corpus.\n";
-    std::cout << "  perform_lsa               Perform LSA analysis on previously saved data.\n";
-    std::cout << "  get_prepared_results      Load prepared results without waiting for intermediate steps.\n";
+    std::cout << "  build_tokenized_corpus    Save a all sentence from corpus in lemmatized form.\n";
+    std::cout << "  perform_lsa               Perform LSA analysis on previously saved data, compute topic_relevance "
+                 "and centrality score.\n";
+    std::cout << "  get_terminological_phrases      Filter out more relevant and terminological phrases from all the "
+                 "results.\n";
     std::cout << "\nOptions:\n" << desc << "\n";
 }
 
@@ -125,16 +127,6 @@ void addOptions(po::options_description& desc)
 
 int main(int argc, char** argv)
 {
-    // Временная эмуляция аргументов
-    const char* fake_argv[] = {
-        "AutoThematicThesaurus", // argv[0] - название программы
-        "collect_phrases",       // argv[1] - команда
-        "--corpus-dir",          // argv[2] - флаг
-        "test_corpus",           // argv[3] - значение параметра
-        nullptr                  // Завершающий nullptr (необязательно)
-    };
-    argc = 4;                             // Количество аргументов
-    argv = const_cast<char**>(fake_argv); // Приведение типа, т.к. argv — это char**
 
     using namespace PhrasesCollectorUtils;
     auto& options = Options::getOptions();
@@ -200,10 +192,9 @@ int main(int argc, char** argv)
             auto& corpus = TextCorpus::GetCorpus();
             corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
             PhrasesStorageLoader loader;
+            ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadPhraseStorageFromResultsDir(storage);
-
-            ::Embedding e;
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
             storage.OutputClustersToJsonFile(options.totalResultsPath.string());
@@ -229,6 +220,7 @@ int main(int argc, char** argv)
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
             PhrasesStorageLoader loader;
+            ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
 
@@ -256,7 +248,7 @@ int main(int argc, char** argv)
 
             storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
             storage.OutputClustersToJsonFile(options.totalResultsPath);
-        } else if (command == "get_prepared_results") {
+        } else if (command == "get_terminological_phrases") {
             // Load precomputed results without additional processing
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
             PhrasesStorageLoader loader;
