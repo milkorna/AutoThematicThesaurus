@@ -204,15 +204,12 @@ int main(int argc, char** argv)
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
             auto& corpus = TextCorpus::GetCorpus();
             corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
-
             ::Embedding e;
-
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
             storage.LoadWikiWNRelations();
             storage.OutputClustersToJsonFile(options.totalResultsPath);
-
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
             BuildTokenizedSentenceCorpus();
@@ -246,7 +243,15 @@ int main(int argc, char** argv)
             Logger::log("LSA", LogLevel::Info, "Analyzing top topics...");
             lsa.AnalyzeTopics(5, 30);
 
-            storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
+            // storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
+
+            LSA_MetricsConfig config;
+            config.useCosineForCentrality = true;
+            config.useVectorRatioForTopicRelevance = true;
+            config.applySigmaScaling = true;
+            config.maxComponents = 50;
+            storage.CalculateLSAMetrics(U, words, Sigma, config);
+
             storage.OutputClustersToJsonFile(options.totalResultsPath);
         } else if (command == "get_terminological_phrases") {
             // Load precomputed results without additional processing
