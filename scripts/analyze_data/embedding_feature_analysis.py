@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.decomposition import PCA
+from scripts.core.paths import PATH_DATA, PATH_FASTTEXT, PROJECT_ROOT
 
 from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
 
@@ -36,21 +37,19 @@ def detect_outliers(data, column, threshold=1.5):
 
 def main():
     # Define file paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-    out_dir = "/home/milkorna/Documents/AutoThematicThesaurus/analyze_data/embedding_analysis"
+    out_dir = PROJECT_ROOT / "embedding_analysis"
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
     # Load and preprocess dataset (using only labeled rows)
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     df = df[~df['is_term_manual'].isna()].copy()
     print("[INFO] Labeled data shape:", df.shape)
     df['is_term_manual'] = df['is_term_manual'].astype(int)
 
     # Load FastText model
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Compute key embedding-related features
     key_norm_list = []

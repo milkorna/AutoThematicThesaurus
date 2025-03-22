@@ -1,6 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scripts.core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -12,8 +13,7 @@ This script performs an exploratory data analysis (EDA) on the given dataset to 
 """
 
 # Load the dataset
-dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-df = pd.read_excel(dataset_path)
+df = pd.read_excel(PATH_DATA)
 
 # Create a pivot table summarizing 'label'
 label_pivot = df.pivot_table(

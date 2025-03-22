@@ -1,8 +1,9 @@
 import os
 import re
+from scripts.core.paths import CORPUS_DIR
 
-input_folder = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts'
-output_file = 'combined_corpus.txt'
+input_folder = CORPUS_DIR / 'texts'
+output_file = CORPUS_DIR / 'combined_corpus'
 
 def process_text_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as infile:

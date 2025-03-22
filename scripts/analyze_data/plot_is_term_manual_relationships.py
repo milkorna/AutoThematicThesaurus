@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scripts.core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -18,8 +19,7 @@ This type of analysis helps identify differences in numeric features between cla
 
 def main():
     # Load the dataset
-    dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-    df = pd.read_excel(dataset_path)
+    df = pd.read_excel(PATH_DATA)
 
     # Define the list of numeric features to visualize
     numeric_columns = [
