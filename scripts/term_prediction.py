@@ -19,14 +19,7 @@ from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 import os
 
-def load_fasttext_model(model_path):
-    """
-    Loads a FastText model using gensim.
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return model
+from scripts.core.functions import load_fasttext_model
 
 def get_phrase_embedding(phrase, ft_model):
     """

@@ -1,9 +1,10 @@
-import os
 import pandas as pd
 
+from scripts.core.paths import PROJECT_ROOT
+
 # Path to the input and output files
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_OUT = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof_cleaned.xlsx"
+PATH_FILTERED = PROJECT_ROOT / "data_with_oof.xlsx"
+PATH_OUT = PROJECT_ROOT / "data_with_oof_cleaned.xlsx"
 
 # List of columns to merge using MAXIMUM
 COL_MAX = ["is_term_manual"]

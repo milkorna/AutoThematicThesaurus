@@ -1,10 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
-from gensim.models import fasttext
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
-
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
@@ -12,14 +10,7 @@ from sklearn.neural_network import MLPClassifier
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-def load_fasttext_model(model_path):
-    """
-    Loads a FastText model from the specified path.
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return model
+from scripts.core.functions import load_fasttext_model
 
 def get_phrase_embedding(phrase, ft_model):
     """
