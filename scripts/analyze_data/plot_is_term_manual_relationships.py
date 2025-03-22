@@ -50,9 +50,6 @@ def main():
         # Create a boxplot to visualize the distribution of the feature
         sns.boxplot(data=df, x='is_term_manual', y=col, ax=ax)
 
-        # Optional: Replace with violinplot for additional visualization style
-        # sns.violinplot(data=df, x='is_term_manual', y=col, ax=ax, cut=0, inner='box')
-
         ax.set_title(f"{col} by is_term_manual Groups")
         ax.set_xlabel("is_term_manual")
         ax.set_ylabel(col)
