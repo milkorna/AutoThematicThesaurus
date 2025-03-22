@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from gensim.models import fasttext
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
@@ -17,9 +16,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
-import os
 
 from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from scripts.core.paths import PATH_DATA, PATH_FASTTEXT
 
 def vector_norm(vec):
     """
@@ -118,12 +117,12 @@ def build_stacking_classifier(input_dim):
     early_stopping=True,
     validation_fraction=0.1,
     random_state=42
-)
+    )
 
     base_estimators = [
         ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')),
         ('gb', GradientBoostingClassifier(random_state=42)),
-        ('mlp', mlp_clf)  # <-- «Нейронка» от sklearn
+        ('mlp', mlp_clf)
     ]
 
     meta_learner = LogisticRegression(random_state=42)
@@ -181,27 +180,11 @@ def main():
     """
     Main script execution for data preprocessing, model training, and evaluation.
     """
-    # File paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-
     print("[INFO] Starting the script...")
-
-    # Check dataset file
-    print(f"[INFO] Checking dataset file: {excel_path}")
-    if not os.path.exists(excel_path):
-        print(f"[ERROR] Dataset file not found: {excel_path}")
-        return
-
-    # Check fastText model file
-    print(f"[INFO] Checking fastText model file: {model_path}")
-    if not os.path.exists(model_path):
-        print(f"[ERROR] fastText model file not found: {model_path}")
-        return
 
     # Load dataset
     print("[INFO] Loading dataset...")
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     print(f"[INFO] Dataset loaded. Shape: {df.shape}")
 
     # Split data into labeled and unlabeled
@@ -218,7 +201,7 @@ def main():
 
     # Load fastText model
     print("[INFO] Loading fastText model...")
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Prepare LabelEncoders for categorical columns
     cat_columns = ['model_name', 'label']

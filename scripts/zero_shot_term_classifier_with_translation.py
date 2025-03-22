@@ -3,11 +3,13 @@ from deep_translator import GoogleTranslator
 from transformers import pipeline
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from scripts.core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES
+
 # Load the Zero-Shot classification model
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
 # Open the JSON file with Russian phrases
-with open('/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.json', 'r', encoding='utf-8') as json_file:
+with open(PATH_TOTAL_RESULTS, 'r', encoding='utf-8') as json_file:
     data = json.load(json_file)
 
 print("Initializing translator (ru -> en)...")
@@ -77,7 +79,7 @@ with ThreadPoolExecutor(max_workers=10) as executor:
         classified_phrases.append(result)
 
 # Write the classified phrases to a JSON file
-with open('classified_phrases.json', 'w', encoding='utf-8') as output_file:
+with open(PATH_MNLI_CLASSIFIED_PHRASES, 'w', encoding='utf-8') as output_file:
     json.dump(classified_phrases, output_file, ensure_ascii=False, indent=4)
 
-print("Classified phrases have been saved to classified_phrases.json")
+print("Classified phrases have been saved.")

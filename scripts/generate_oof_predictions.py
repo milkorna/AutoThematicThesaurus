@@ -11,7 +11,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
 from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
-from scripts.core.paths import PROJECT_ROOT
+from scripts.core.paths import PATH_DATA, PATH_DATA_WITH_OFF, PATH_FASTTEXT
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """
@@ -131,24 +131,19 @@ def main():
     """
     Main script to preprocess data, build models, and generate out-of-fold predictions.
     """
-    # Define file paths
-    excel_path = PROJECT_ROOT / "data.xlsx"
-    model_path = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"
-    out_path = PROJECT_ROOT / "data_with_oof.xlsx"
-
     # Check if input files exist
-    print("[INFO] Checking dataset file:", excel_path)
-    if not os.path.exists(excel_path):
-        print(f"[ERROR] Dataset file not found: {excel_path}")
+    print("[INFO] Checking dataset file:", PATH_DATA)
+    if not os.path.exists(PATH_DATA):
+        print(f"[ERROR] Dataset file not found: {PATH_DATA}")
         return
 
-    print("[INFO] Checking fastText model file:", model_path)
-    if not os.path.exists(model_path):
-        print(f"[ERROR] fastText model file not found: {model_path}")
+    print("[INFO] Checking fastText model file:", PATH_FASTTEXT)
+    if not os.path.exists(PATH_FASTTEXT):
+        print(f"[ERROR] fastText model file not found: {PATH_FASTTEXT}")
         return
 
     # Load dataset
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     print("[INFO] Dataset loaded. Shape:", df.shape)
 
     # Filter out rows with missing labels
@@ -159,7 +154,7 @@ def main():
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
 
     # Load FastText model
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Encode categorical columns using LabelEncoder
     cat_columns = ['model_name', 'label']
@@ -206,8 +201,8 @@ def main():
     df['oof_prob_class1'] = oof_probs
 
     # Save the dataframe with predictions to an Excel file
-    df.to_excel(out_path, index=False)
-    print(f"[INFO] Out-of-fold predictions saved to: {out_path}")
+    df.to_excel(PATH_DATA_WITH_OFF, index=False)
+    print(f"[INFO] Out-of-fold predictions saved to: {PATH_DATA_WITH_OFF}")
     print("[INFO] Done.")
 
 if __name__ == "__main__":

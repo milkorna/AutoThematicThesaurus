@@ -2,7 +2,7 @@ import json
 import fasttext
 import tempfile
 
-from scripts.core.paths import PROJECT_ROOT, CORPUS_DIR
+from scripts.core.paths import CORPUS_DIR, PATH_FASTTEXT
 
 def prepare_documents_from_json(json_path):
     """
@@ -54,8 +54,7 @@ def train_fasttext_on_documents(documents, model_path, model_type="skipgram", lr
 
 # Paths
 json_path = CORPUS_DIR / "sentences.json"
-output_model_path = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"
 
 # Execution steps
 documents = prepare_documents_from_json(json_path)
-train_fasttext_on_documents(documents, output_model_path)
+train_fasttext_on_documents(documents, PATH_FASTTEXT)

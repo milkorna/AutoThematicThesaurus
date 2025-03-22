@@ -1,6 +1,7 @@
 import json
-import os
 from collections import defaultdict
+
+from scripts.core.paths import PATH_FINAL_SYNONYMS, PATH_HYPERNUM_TRIGGERS, PATH_HYPERNUM_NLI, PATH_HYPERNUM_VOTING
 
 def load_json(file_path):
     """Load a JSON file and return the corresponding Python data structure."""
@@ -8,12 +9,6 @@ def load_json(file_path):
         return json.load(f)
 
 def main():
-    # Define file paths for input data
-    synonyms_file = "/home/milkorna/Documents/AutoThematicThesaurus/synonyms_analysis/final_synonyms.json"
-    hypernym_file = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/hypernym_voting_results.json"
-    nli_file = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/nli_hypernym_relations.json"
-    triggers_file = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/extract_relations_by_triggers.json"
-
     # Initialize a default dictionary to store thesaurus data with default flags for relations
     thesaurus = defaultdict(lambda: defaultdict(lambda: {
         "is_synonym": False,
@@ -24,7 +19,7 @@ def main():
     }))
 
     # Step 1: Process final_synonyms.json
-    synonyms_data = load_json(synonyms_file)
+    synonyms_data = load_json(PATH_FINAL_SYNONYMS)
     for entry in synonyms_data:
         key = entry["key"]
 
@@ -44,7 +39,7 @@ def main():
             thesaurus[sp_phrase][key]["is_related"] = True
 
     # Step 2: Process hypernym_voting_results.json
-    hypernym_data = load_json(hypernym_file)
+    hypernym_data = load_json(PATH_HYPERNUM_VOTING)
     for result in hypernym_data.get("results", []):
         query = result["query"]
         for h in result.get("hypernyms", []):
@@ -53,7 +48,7 @@ def main():
             thesaurus[hypernym_phrase][query]["is_hyponym"] = True
 
     # Step 3: Process nli_hypernym_relations.json
-    nli_data = load_json(nli_file)
+    nli_data = load_json(PATH_HYPERNUM_NLI)
     for rel in nli_data.get("relations", []):
         hyper = rel["hyper"]["phrase"]
         hypo = rel["hypo"]["phrase"]
@@ -61,7 +56,7 @@ def main():
         thesaurus[hypo][hyper]["is_hypernym"] = True
 
     # Step 4: Process extract_relations_by_triggers.json
-    triggers_data = load_json(triggers_file)
+    triggers_data = load_json(PATH_HYPERNUM_TRIGGERS)
     for sentence in triggers_data.get("sentences", []):
         for isa in sentence.get("is-a", []):
             subject = isa["subject"]["phrase"]

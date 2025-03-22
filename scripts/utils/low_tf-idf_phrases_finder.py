@@ -1,7 +1,5 @@
 import json
-
-# Specify the path to your file
-file_path = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results_no_sw_synonyms.json'
+from scripts.core.paths import PATH_TOTAL_RESULTS
 
 # Function to find phrases with lemmas having TF-IDF below a specified threshold
 def find_phrases_with_low_tfidf(file_path, tfidf_threshold):
@@ -32,7 +30,7 @@ def find_phrases_with_low_tfidf(file_path, tfidf_threshold):
 
 # Input for the TF-IDF threshold
 tfidf_threshold = float(input("Enter TF-IDF threshold value: "))  # Example input: 0.00001
-phrases = find_phrases_with_low_tfidf(file_path, tfidf_threshold)
+phrases = find_phrases_with_low_tfidf(PATH_TOTAL_RESULTS, tfidf_threshold)
 
 # Specify the output file path
 output_file_path = 'low_tfidf_phrases.txt'
