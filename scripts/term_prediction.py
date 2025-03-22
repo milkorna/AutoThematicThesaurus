@@ -19,53 +19,7 @@ from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 import os
 
-from scripts.core.functions import load_fasttext_model
-
-def get_phrase_embedding(phrase, ft_model):
-    """
-    Returns the average embedding of the words in a phrase using the provided FastText model.
-    Skips unknown words. Returns a zero vector if the phrase is empty or no words are known.
-    """
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-    words = phrase.split()
-    vectors = []
-    for w in words:
-        if w in ft_model.wv.key_to_index:
-            vectors.append(ft_model.wv[w])
-    if len(vectors) == 0:
-        # If no known words, return a zero-vector of the same dimension
-        return np.zeros(ft_model.wv.vector_size, dtype=np.float32)
-    else:
-        return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """
-    Returns a weighted average embedding for a context string using FastText.
-    Each part of the context is weighted by the number of words it contains.
-    """
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-    context_parts = context_str.split('|')
-    vectors = []
-    weights = []
-
-    for part in context_parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    else:
-        weights = np.array(weights, dtype=np.float32)
-        weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
-        return weighted_sum / weights.sum()
+from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
 
 def vector_norm(vec):
     """
@@ -126,7 +80,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         # Embedding features: key and context
         phrase_key = str(row['key']) if not pd.isna(row['key']) else ""
-        emb_key = get_phrase_embedding(phrase_key, ft_model)
+        emb_key = get_phrase_average_embedding(phrase_key, ft_model)
 
         context_str = str(row['context']) if not pd.isna(row['context']) else ""
         emb_context_aggregated = get_weighted_context_embedding(context_str, ft_model)

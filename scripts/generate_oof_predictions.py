@@ -10,42 +10,8 @@ from sklearn.neural_network import MLPClassifier
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-from scripts.core.functions import load_fasttext_model
-
-def get_phrase_embedding(phrase, ft_model):
-    """
-    Generates the embedding for a phrase using the FastText model.
-    If the phrase is empty or no words are known, returns a zero vector.
-    """
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    words = phrase.split()
-    vectors = [ft_model.wv[w] for w in words if w in ft_model.wv.key_to_index]
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """
-    Generates a weighted average embedding for a context string using FastText.
-    Each part of the context contributes based on the number of words it contains.
-    """
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    parts = context_str.split('|')
-    vectors, weights = [], []
-    for part in parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    weights = np.array(weights, dtype=np.float32)
-    weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
-    return weighted_sum / weights.sum()
+from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from scripts.core.paths import PROJECT_ROOT
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """
@@ -78,7 +44,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         # Generate embeddings for 'key' and 'context'
         key_str = str(row['key']) if not pd.isna(row['key']) else ""
-        emb_key = get_phrase_embedding(key_str, ft_model)
+        emb_key = get_phrase_average_embedding(key_str, ft_model)
 
         context_str = str(row['context']) if not pd.isna(row['context']) else ""
         emb_context = get_weighted_context_embedding(context_str, ft_model)
@@ -166,9 +132,9 @@ def main():
     Main script to preprocess data, build models, and generate out-of-fold predictions.
     """
     # Define file paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-    out_path = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
+    excel_path = PROJECT_ROOT / "data.xlsx"
+    model_path = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"
+    out_path = PROJECT_ROOT / "data_with_oof.xlsx"
 
     # Check if input files exist
     print("[INFO] Checking dataset file:", excel_path)

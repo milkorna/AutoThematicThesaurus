@@ -6,6 +6,4 @@ DATA_DIR = PROJECT_ROOT / 'my_data'
 CORPUS_DIR = DATA_DIR / 'nlp_corpus'
 RELATIONS_DATA_DIR = PROJECT_ROOT / 'relations'
 
-
-print(PROJECT_ROOT)
-print(RELATIONS_DATA_DIR)
+PATH_FASTTEXT = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"
