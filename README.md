@@ -39,4 +39,6 @@
 
 ## Запуск и использование
 Программа работает в консольном режиме. Основная форма вызова:
-<pre> ```bash ./AutoThematicThesaurus <command> [options] ``` </pre>
+```bash
+./AutoThematicThesaurus <command> [options]
+```
