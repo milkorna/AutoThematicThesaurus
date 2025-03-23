@@ -2,10 +2,7 @@ import os
 import json
 import pandas as pd
 from transformers import pipeline
-
-ENRICHED_SENTENCES_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/enriched_sentences.json"
-DATA_XLSX = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-OUTPUT_JSON_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/nli_hypernym_relations.json"
+from core.paths import PATH_SENTENCES_WITH_PHRASES, PATH_DATA_WITH_OFF, PATH_HYPERNUM_NLI
 
 MIN_OOF_PROB = 0.1   # если (is_term_manual=0) и (oof_prob < MIN_OOF_PROB) — отбрасываем
 REQUIRED_IS_TERM = None  # если =1, тогда берём только is_term_manual=1
@@ -171,12 +168,12 @@ def check_hypernym_nli(hyper: str, hypo: str, context: str = None):
     }
 
 def main():
-    key_mapping = load_key_mapping(DATA_XLSX)
+    key_mapping = load_key_mapping(PATH_DATA_WITH_OFF)
 
-    if not os.path.exists(ENRICHED_SENTENCES_PATH):
-        raise FileNotFoundError(f"File not found: {ENRICHED_SENTENCES_PATH}")
+    if not os.path.exists(PATH_SENTENCES_WITH_PHRASES):
+        raise FileNotFoundError(f"File not found: {PATH_SENTENCES_WITH_PHRASES}")
 
-    with open(ENRICHED_SENTENCES_PATH, "r", encoding="utf-8") as f:
+    with open(PATH_SENTENCES_WITH_PHRASES, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     final_relations = []
@@ -271,11 +268,11 @@ def main():
                     })
 
     output_data = {"relations": final_relations}
-    with open(OUTPUT_JSON_PATH, "w", encoding="utf-8") as f:
+    with open(PATH_HYPERNUM_NLI, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=4)
 
     print(f"[INFO] Всего найдено {len(final_relations)} отношений гипероним/гипоним.")
-    print(f"[INFO] Результаты сохранены в {OUTPUT_JSON_PATH}")
+    print(f"[INFO] Результаты сохранены в {PATH_HYPERNUM_NLI}")
 
 if __name__ == "__main__":
     main()

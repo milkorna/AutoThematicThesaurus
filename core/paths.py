@@ -12,6 +12,7 @@ PATH_FASTTEXT = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"
 
 PATH_DATA_WITH_OFF = PROJECT_ROOT / "data_with_oof.xlsx"
 PATH_DATA = PROJECT_ROOT / "data.xlsx"
+PATH_FILTERED_DATA = PROJECT_ROOT / "filtered_data.xlsx"
 
 PATH_TOTAL_RESULTS = CORPUS_DIR / "total_results.json"
 PATH_MNLI_CLASSIFIED_PHRASES = CORPUS_DIR / "classified_phrases.json"
@@ -29,3 +30,4 @@ PATH_FINAL_SYNONYMS = SYNONYMS_DIR / "final_synonyms.json"
 PATH_HYPERNUM_VOTING = HYPERNUM_HYPONYMS_DIR / "hypernym_voting_results.json"
 PATH_HYPERNUM_NLI = HYPERNUM_HYPONYMS_DIR / "nli_hypernym_relations.json"
 PATH_HYPERNUM_TRIGGERS = HYPERNUM_HYPONYMS_DIR / "extract_relations_by_triggers.json"
+PATH_HEAD_NOUNS = HYPERNUM_HYPONYMS_DIR / "head_nouns.json"

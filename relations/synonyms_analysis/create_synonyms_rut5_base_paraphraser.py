@@ -6,8 +6,8 @@ import inspect
 import pandas as pd
 import pymorphy2
 from collections import Counter
-
 from transformers import T5ForConditionalGeneration, T5Tokenizer
+from core.paths import PATH_FILTERED_DATA, PATH_DATA_WITH_OFF, SYNONYMS_DIR
 
 # Patch pymorphy2 for compatibility with Python 3.12+
 if not hasattr(inspect, "getargspec"):
@@ -17,9 +17,7 @@ if not hasattr(inspect, "getargspec"):
     inspect.getargspec = getargspec_patched
 
 # Search parameters
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-PATH_BIGDATA = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_OUT_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/synonyms_analysis/synonyms_rut5_base_paraphraser.json"
+PATH_OUT_JSON = SYNONYMS_DIR / "synonyms_rut5_base_paraphraser.json"
 MODEL_NAME = "cointegrated/rut5-base-paraphraser"
 NUM_BEAMS = 20                # Number of beams for search
 NUM_RETURN_SEQUENCES = 20     # Maximum number of paraphrases
@@ -129,11 +127,11 @@ def normalize_phrase(phrase: str) -> str:
     return normalized
 
 def main():
-    print("[INFO] Reading filtered data from:", PATH_FILTERED)
-    df_filtered = pd.read_excel(PATH_FILTERED)
+    print("[INFO] Reading filtered data from:", PATH_FILTERED_DATA)
+    df_filtered = pd.read_excel(PATH_FILTERED_DATA)
 
-    print("[INFO] Reading big data from:", PATH_BIGDATA)
-    df_big = pd.read_excel(PATH_BIGDATA)
+    print("[INFO] Reading big data from:", PATH_DATA_WITH_OFF)
+    df_big = pd.read_excel(PATH_DATA_WITH_OFF)
 
     # Check if required columns exist
     required_cols = {'key', 'is_term_manual', 'oof_prob_class'}

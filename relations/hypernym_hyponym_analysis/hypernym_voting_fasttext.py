@@ -6,7 +6,7 @@ import numpy as np
 from gensim.models import fasttext
 from numpy.linalg import norm
 
-from core.functions import load_fasttext_model, get_phrase_average_embedding
+from core.functions import load_fasttext_model, get_phrase_average_embedding, cosine_similarity
 from core.paths import PROJECT_ROOT, PATH_FASTTEXT
 
 FILTERED_DATA_XLSX = PROJECT_ROOT / "filtered_data.xlsx"
@@ -37,7 +37,6 @@ def load_taxonomy(xlsx_path):
         }
     return taxonomy, set(taxonomy.keys())
 
-
 def precompute_taxonomy_embeddings(taxonomy, ft_model):
     """
     Computes embeddings for all phrases in the taxonomy.
@@ -50,14 +49,6 @@ def precompute_taxonomy_embeddings(taxonomy, ft_model):
             embeddings[phrase] = emb
     return embeddings
 
-
-def cosine_similarity(vec1, vec2):
-    """
-    Computes cosine similarity between two vectors.
-    """
-    return float(np.dot(vec1, vec2))
-
-
 def get_nearest_neighbors(query_emb, taxonomy_embeddings, top_n=NEIGHBORS_TOP_N):
     """
     Finds the top-N nearest neighbors based on cosine similarity among precomputed taxonomy embeddings.
@@ -69,7 +60,6 @@ def get_nearest_neighbors(query_emb, taxonomy_embeddings, top_n=NEIGHBORS_TOP_N)
         similarities.append((phrase, sim))
     similarities.sort(key=lambda x: x[1], reverse=True)
     return similarities[:top_n]
-
 
 def generate_candidate_hypernyms(phrase, taxonomy_set):
     """
@@ -101,7 +91,6 @@ def vote_for_hypernyms(neighbor_phrase, neighbor_sim, taxonomy_set):
         for cand2 in second_order:
             votes[cand2] = votes.get(cand2, 0) + neighbor_sim * SECOND_ORDER_WEIGHT
     return votes
-
 
 def hypernym_voting(query_phrase, taxonomy, taxonomy_embeddings, ft_model):
     """

@@ -18,6 +18,7 @@ from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 
 from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.functions import cosine_similarity
 from core.paths import PATH_DATA, PATH_FASTTEXT
 
 def vector_norm(vec):
@@ -25,17 +26,6 @@ def vector_norm(vec):
     Computes the Euclidean norm (length) of a vector.
     """
     return np.linalg.norm(vec)
-
-def cosine_similarity(vec1, vec2):
-    """
-    Computes the cosine similarity between two vectors.
-    Returns 0.0 if one of the vectors is zero to avoid division by zero.
-    """
-    norm1 = np.linalg.norm(vec1)
-    norm2 = np.linalg.norm(vec2)
-    if norm1 == 0.0 or norm2 == 0.0:
-        return 0.0
-    return float(np.dot(vec1, vec2) / (norm1 * norm2))
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """

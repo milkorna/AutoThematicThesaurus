@@ -2,13 +2,12 @@ import os
 import json
 import pandas as pd
 import numpy as np
-
 from sentence_transformers import SentenceTransformer
 from annoy import AnnoyIndex
+from core.paths import PATH_FILTERED_DATA, PATH_DATA_WITH_OFF, SYNONYMS_DIR
+from core.functions import cosine_similarity
 
-PATH_BIGDATA = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-PATH_OUT_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/synonyms_analysis/synonyms_sbert.json"
+PATH_OUT_JSON = SYNONYMS_DIR / "synonyms_sbert.json"
 
 SBERT_MODEL_NAME = "sberbank-ai/sbert_large_nlu_ru"
 DIM_EMB = 1024
@@ -16,8 +15,8 @@ TOP_K = 100     # number of nearest neighbors extracted from Annoy
 SIM_THRESHOLD = 0.8  # cosine similarity threshold
 
 def load_dataframes():
-    print("[INFO] Reading big data from:", PATH_BIGDATA)
-    df_big = pd.read_excel(PATH_BIGDATA)
+    print("[INFO] Reading big data from:", PATH_DATA_WITH_OFF)
+    df_big = pd.read_excel(PATH_DATA_WITH_OFF)
 
     # Ensure required columns are present
     required_cols = {'key', 'is_term_manual', 'oof_prob_class'}
@@ -25,8 +24,8 @@ def load_dataframes():
         missing = required_cols - set(df_big.columns)
         raise ValueError(f"[ERROR] Missing columns in df_big: {missing}")
 
-    print("[INFO] Reading filtered data from:", PATH_FILTERED)
-    df_filtered = pd.read_excel(PATH_FILTERED)
+    print("[INFO] Reading filtered data from:", PATH_FILTERED_DATA)
+    df_filtered = pd.read_excel(PATH_FILTERED_DATA)
     # Assume df_filtered contains at least the 'key' column
     if 'key' not in df_filtered.columns:
         raise ValueError("[ERROR] 'key' column is missing in df_filtered.")
@@ -54,16 +53,6 @@ def build_annoy_index(embeddings, dim=DIM_EMB, n_trees=10):
         t.add_item(i, emb)
     t.build(n_trees)
     return t
-
-def cosine_similarity(vec1, vec2):
-    """
-    Classic cosine similarity calculation
-    """
-    num = np.dot(vec1, vec2)
-    denom = np.linalg.norm(vec1) * np.linalg.norm(vec2)
-    if denom == 0.0:
-        return 0.0
-    return float(num / denom)
 
 def main():
     df_big, df_filtered = load_dataframes()

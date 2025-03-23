@@ -44,3 +44,22 @@ def get_weighted_context_embedding(context_str, ft_model):
     weights = np.array(weights, dtype=np.float32)
     weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
     return weighted_sum / weights.sum()
+
+def get_word_embedding(word, ft_model):
+    """
+    Returns the word vector from the fastText model.
+    If the word is not in the vocabulary, returns a zero vector.
+    """
+    if word in ft_model.wv.key_to_index:
+        return ft_model.wv[word]
+    else:
+        return np.zeros(ft_model.vector_size, dtype=np.float32)
+
+def cosine_similarity(vec1, vec2):
+    """
+    Returns the cosine similarity between two vectors.
+    """
+    denom = (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+    if denom == 0.0:
+        return 0.0
+    return float(np.dot(vec1, vec2) / denom)

@@ -1,14 +1,13 @@
 import json
 import os
 import pandas as pd
-import numpy as np
 import torch
 import inspect
 import pymorphy2
-import gensim
-from gensim.models import fasttext
 
 from transformers import AutoTokenizer, AutoModelForMaskedLM
+from core.functions import load_fasttext_model, get_word_embedding, cosine_similarity
+from core.paths import PATH_FILTERED_DATA, PATH_DATA_WITH_OFF, SYNONYMS_DIR, PATH_FASTTEXT
 
 # Patch pymorphy2 for compatibility with Python 3.12+
 if not hasattr(inspect, "getargspec"):
@@ -18,10 +17,7 @@ if not hasattr(inspect, "getargspec"):
     inspect.getargspec = getargspec_patched
 
 # Search parameters
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-PATH_BIGDATA = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_OUT_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/synonyms_analysis/synonyms_mask_deep_pavlov.json"
-PATH_FASTTEXT = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
+PATH_OUT_JSON = SYNONYMS_DIR / "synonyms_mask_deep_pavlov.json"
 MODEL_NAME = "DeepPavlov/rubert-base-cased"
 TOP_N = 20  # Number of candidates the model generates for [MASK]
 STOP_WORD = "данный"  # Synonyms containing this word will be removed
@@ -33,15 +29,6 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME)
 model.eval()
 print("[INFO] Model loaded successfully.")
-
-def load_fasttext_model(model_path):
-    """
-    Loads a FastText model from the specified path (via Gensim).
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    ft_model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return ft_model
 
 ft_model = load_fasttext_model(PATH_FASTTEXT)
 
@@ -58,26 +45,6 @@ def lemmatize_word(word):
     """
     parsed_word = morph.parse(word)[0]
     return parsed_word.normal_form
-
-def get_word_embedding(word, ft_model):
-    """
-    Returns the word vector from the fastText model.
-    If the word is not in the vocabulary, returns a zero vector.
-    """
-    if word in ft_model.wv.key_to_index:
-        return ft_model.wv[word]
-    else:
-        # If the word is unknown, return a zero vector
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-def cosine_similarity(vec1, vec2):
-    """
-    Returns the cosine similarity between two vectors.
-    """
-    denom = (np.linalg.norm(vec1) * np.linalg.norm(vec2))
-    if denom == 0.0:
-        return 0.0
-    return float(np.dot(vec1, vec2) / denom)
 
 def find_synonyms_in_set(phrase, phrases_set, top_n=TOP_N):
     """
@@ -205,11 +172,11 @@ def ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD):
     return results
 
 def main():
-    print("[INFO] Reading filtered data from:", PATH_FILTERED)
-    df_filtered = pd.read_excel(PATH_FILTERED)
+    print("[INFO] Reading filtered data from:", PATH_FILTERED_DATA)
+    df_filtered = pd.read_excel(PATH_FILTERED_DATA)
 
-    print("[INFO] Reading big data from:", PATH_BIGDATA)
-    df_big = pd.read_excel(PATH_BIGDATA)
+    print("[INFO] Reading big data from:", PATH_DATA_WITH_OFF)
+    df_big = pd.read_excel(PATH_DATA_WITH_OFF)
 
     # Ensure df_big contains the required columns: 'key', 'is_term_manual', 'oof_prob_class'
     required_cols = {'key', 'is_term_manual', 'oof_prob_class'}
@@ -289,7 +256,6 @@ def main():
         json.dump(results, f, ensure_ascii=False, indent=4)
 
     print("[INFO] Done.")
-
 
 if __name__ == "__main__":
     main()
