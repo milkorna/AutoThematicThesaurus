@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-from scripts.core.paths import PATH_DATA
+from core.paths import PATH_DATA
 
 # Load the dataset
 df = pd.read_excel(PATH_DATA)

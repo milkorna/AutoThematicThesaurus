@@ -3,7 +3,7 @@ from deep_translator import GoogleTranslator
 from transformers import pipeline
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from scripts.core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES
+from core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES
 
 # Load the Zero-Shot classification model
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")

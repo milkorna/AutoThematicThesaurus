@@ -1,6 +1,6 @@
 import pandas as pd
 
-from scripts.core.paths import PROJECT_ROOT, PATH_DATA_WITH_OFF
+from core.paths import PROJECT_ROOT, PATH_DATA_WITH_OFF
 
 # Path to the output file
 PATH_OUT = PROJECT_ROOT / "data_with_oof_cleaned.xlsx"

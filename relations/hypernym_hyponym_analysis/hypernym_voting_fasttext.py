@@ -6,8 +6,8 @@ import numpy as np
 from gensim.models import fasttext
 from numpy.linalg import norm
 
-from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding
-from scripts.core.paths import PROJECT_ROOT, PATH_FASTTEXT
+from core.functions import load_fasttext_model, get_phrase_average_embedding
+from core.paths import PROJECT_ROOT, PATH_FASTTEXT
 
 FILTERED_DATA_XLSX = PROJECT_ROOT / "filtered_data.xlsx"
 

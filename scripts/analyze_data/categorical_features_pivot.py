@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scripts.core.paths import PATH_DATA
+from core.paths import PATH_DATA
 
 """
 Script Purpose:

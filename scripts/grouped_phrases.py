@@ -2,7 +2,7 @@ import pandas as pd
 import json
 from collections import defaultdict
 
-from scripts.core.paths import PATH_DATA_WITH_OFF
+from core.paths import PATH_DATA_WITH_OFF
 
 # Load dataset
 df = pd.read_excel(PATH_DATA_WITH_OFF)

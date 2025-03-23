@@ -2,7 +2,7 @@ import json
 import csv
 import os
 
-from scripts.core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES, PATH_TERM_CANDIDATES, PATH_SENTENCES
+from core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES, PATH_TERM_CANDIDATES, PATH_SENTENCES
 
 def create_csv_from_json():
     csv_path="data.csv"

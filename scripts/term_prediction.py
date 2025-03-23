@@ -17,8 +17,8 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 
-from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
-from scripts.core.paths import PATH_DATA, PATH_FASTTEXT
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.paths import PATH_DATA, PATH_FASTTEXT
 
 def vector_norm(vec):
     """

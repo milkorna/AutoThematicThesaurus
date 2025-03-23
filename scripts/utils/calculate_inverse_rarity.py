@@ -1,7 +1,7 @@
 import pandas as pd
 from collections import Counter
 
-from scripts.core.paths import PATH_DATA
+from core.paths import PATH_DATA
 
 # Load dataset
 data = pd.read_excel(PATH_DATA)

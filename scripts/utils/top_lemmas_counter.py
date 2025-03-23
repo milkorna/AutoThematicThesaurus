@@ -1,6 +1,6 @@
 import json
 from collections import Counter
-from scripts.core.paths import PATH_TOTAL_RESULTS
+from core.paths import PATH_TOTAL_RESULTS
 
 # Load data from the JSON file
 with open(PATH_TOTAL_RESULTS, 'r', encoding='utf-8') as f:

@@ -12,8 +12,8 @@ from sklearn.linear_model import LogisticRegression
 from catboost import CatBoostClassifier
 import joblib
 
-from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
-from scripts.core.paths import RELATIONS_DATA_DIR, PROJECT_ROOT, PATH_FASTTEXT
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.paths import RELATIONS_DATA_DIR, PROJECT_ROOT, PATH_FASTTEXT
 
 # Paths to necessary data files
 PATH_FINAL_JSON = RELATIONS_DATA_DIR / "marked_relations.json"

@@ -1,7 +1,7 @@
 import os
 import re
 import chardet
-from scripts.core.paths import CORPUS_DIR
+from core.paths import CORPUS_DIR
 
 input_folder = CORPUS_DIR / 'texts'
 

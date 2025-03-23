@@ -1,6 +1,6 @@
 import os
 import re
-from scripts.core.paths import CORPUS_DIR
+from core.paths import CORPUS_DIR
 
 input_folder = CORPUS_DIR / 'texts'
 output_file = CORPUS_DIR / 'combined_corpus'

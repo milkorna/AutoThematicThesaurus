@@ -10,8 +10,8 @@ from sklearn.neural_network import MLPClassifier
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
-from scripts.core.paths import PATH_DATA, PATH_DATA_WITH_OFF, PATH_FASTTEXT
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.paths import PATH_DATA, PATH_DATA_WITH_OFF, PATH_FASTTEXT
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """

@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-from scripts.core.paths import PATH_DATA, PROJECT_ROOT
+from core.paths import PATH_DATA, PROJECT_ROOT
 
 def merge_is_term_manual():
     """

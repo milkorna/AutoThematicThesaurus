@@ -1,5 +1,5 @@
 import os
-from scripts.core.paths import CORPUS_DIR
+from core.paths import CORPUS_DIR
 
 directory_path = CORPUS_DIR / 'results'
 

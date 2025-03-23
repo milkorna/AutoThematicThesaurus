@@ -4,9 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.decomposition import PCA
-from scripts.core.paths import PATH_DATA, PATH_FASTTEXT, PROJECT_ROOT
+from core.paths import PATH_DATA, PATH_FASTTEXT, PROJECT_ROOT
 
-from scripts.core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
 
 """
 Script Purpose:

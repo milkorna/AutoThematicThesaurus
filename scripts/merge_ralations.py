@@ -1,7 +1,7 @@
 import json
 from collections import defaultdict
 
-from scripts.core.paths import PATH_FINAL_SYNONYMS, PATH_HYPERNUM_TRIGGERS, PATH_HYPERNUM_NLI, PATH_HYPERNUM_VOTING
+from core.paths import PATH_FINAL_SYNONYMS, PATH_HYPERNUM_TRIGGERS, PATH_HYPERNUM_NLI, PATH_HYPERNUM_VOTING
 
 def load_json(file_path):
     """Load a JSON file and return the corresponding Python data structure."""

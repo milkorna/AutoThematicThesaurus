@@ -1,5 +1,5 @@
 import json
-from scripts.core.paths import PATH_TOTAL_RESULTS
+from core.paths import PATH_TOTAL_RESULTS
 
 # Function to find phrases with lemmas having TF-IDF below a specified threshold
 def find_phrases_with_low_tfidf(file_path, tfidf_threshold):

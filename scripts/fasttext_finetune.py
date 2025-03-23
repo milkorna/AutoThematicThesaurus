@@ -2,7 +2,7 @@ import json
 import fasttext
 import tempfile
 
-from scripts.core.paths import CORPUS_DIR, PATH_FASTTEXT
+from core.paths import CORPUS_DIR, PATH_FASTTEXT
 
 def prepare_documents_from_json(json_path):
     """

@@ -1,5 +1,5 @@
 import json
-from scripts.core.paths import PATH_TOTAL_RESULTS
+from core.paths import PATH_TOTAL_RESULTS
 
 # Function to extract phrases with a specific lemma
 def extract_phrases_with_lemma(lemma_to_find, file_path):

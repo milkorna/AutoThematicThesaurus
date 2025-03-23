@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 
-from scripts.core.paths import PATH_DATA, PATH_SENTENCES, PATH_SENTENCES_WITH_PHRASES
+from core.paths import PATH_DATA, PATH_SENTENCES, PATH_SENTENCES_WITH_PHRASES
 
 def build_sentence_key_mapping(excel_path):
     """

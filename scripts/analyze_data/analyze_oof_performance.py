@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from scripts.core.paths import PATH_DATA_WITH_OFF, PROJECT_ROOT
+from core.paths import PATH_DATA_WITH_OFF, PROJECT_ROOT
 
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
