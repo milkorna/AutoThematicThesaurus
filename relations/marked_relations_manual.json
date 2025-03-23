@@ -58,7 +58,7 @@
         "phrases": [
             {
                 "phrase": "one-hot вектор",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "векторный представление",
@@ -117,11 +117,11 @@
             },
             {
                 "phrase": "large версия модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "large модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "sequence модель",
@@ -290,7 +290,7 @@
             },
             {
                 "phrase": "внимание для декодировщик",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "компонент внимание",
@@ -508,7 +508,7 @@
         "phrases": [
             {
                 "phrase": "fast-text вектор слово",
-                "relation": "usage_variant"
+                "relation": "hyponym"
             },
             {
                 "phrase": "векторный представление",
@@ -516,7 +516,7 @@
             },
             {
                 "phrase": "вектор слово",
-                "relation": "usage_variant"
+                "relation": "hyponym"
             },
             {
                 "phrase": "представление слово",
@@ -545,7 +545,7 @@
         "phrases": [
             {
                 "phrase": "fast-text вектор",
-                "relation": "usage_variant"
+                "relation": "hypernym"
             },
             {
                 "phrase": "векторный представление",
@@ -553,7 +553,7 @@
             },
             {
                 "phrase": "вектор слово",
-                "relation": "usage_variant"
+                "relation": "hypernym"
             },
             {
                 "phrase": "представление слово",
@@ -641,7 +641,7 @@
         "phrases": [
             {
                 "phrase": "bert модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "large модель",
@@ -666,7 +666,7 @@
         "phrases": [
             {
                 "phrase": "bert модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "large версия модель",
@@ -1642,11 +1642,11 @@
         "phrases": [
             {
                 "phrase": "nli модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "smith модель",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "авторегрессионный модель",
@@ -2056,7 +2056,7 @@
             },
             {
                 "phrase": "алгоритм распознавание",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "компонента распознавание",
@@ -2597,7 +2597,7 @@
             },
             {
                 "phrase": "автоматический создание",
-                "relation": "related"
+                "relation": "hypernym"
             }
         ]
     },
@@ -2655,7 +2655,7 @@
         "phrases": [
             {
                 "phrase": "автоматизация поиск данный",
-                "relation": "usage_variant"
+                "relation": "hyponym"
             },
             {
                 "phrase": "автоматизация процесс",
@@ -3401,7 +3401,7 @@
         "phrases": [
             {
                 "phrase": "автоматизированный оценка",
-                "relation": "usage_variant"
+                "relation": "hypernym"
             },
             {
                 "phrase": "оценка эффективность",
@@ -3661,11 +3661,11 @@
             },
             {
                 "phrase": "алгоритм автоматический анализ",
-                "relation": "usage_variant"
+                "relation": "hyponym"
             },
             {
                 "phrase": "алгоритм анализа",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "алгоритм для фонетический анализ",
@@ -3673,7 +3673,7 @@
             },
             {
                 "phrase": "алгоритм интеллектуальный анализ",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "анализ исторический документ",
@@ -3988,20 +3988,16 @@
                 "relation": "synonym"
             },
             {
-                "phrase": "автоматический извлечение параллельный корпус",
-                "relation": "hyponym"
-            },
-            {
                 "phrase": "автоматический метод",
                 "relation": "hypernym"
             },
             {
                 "phrase": "автоматический обнаружение",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический определение",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический определение логический связь",
@@ -4013,7 +4009,7 @@
             },
             {
                 "phrase": "алгоритм для определение",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "выделение ключевой лексический единица",
@@ -4179,7 +4175,7 @@
             },
             {
                 "phrase": "автоматический распознавание",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "ключевой лексический единица",
@@ -4204,7 +4200,7 @@
             },
             {
                 "phrase": "автоматический распознавание",
-                "relation": "related"
+                "relation": "hypernym"
             }
         ]
     },
@@ -4241,7 +4237,7 @@
             },
             {
                 "phrase": "автоматический протокол",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический процесс",
@@ -4249,7 +4245,7 @@
             },
             {
                 "phrase": "автоматический реферат",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический реферирование",
@@ -4269,7 +4265,7 @@
             },
             {
                 "phrase": "авторегрессионный генератор",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "генерация анамнез",
@@ -4464,7 +4460,7 @@
         "phrases": [
             {
                 "phrase": "автоматический генерация",
-                "relation": "usage_variant"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический инструмент",
@@ -4614,10 +4610,6 @@
         "key": "автоматический извлечение параллельный корпус",
         "phrases": [
             {
-                "phrase": "автоматический выделение",
-                "relation": "related"
-            },
-            {
                 "phrase": "автоматический извлечение",
                 "relation": "hypernym"
             },
@@ -4676,11 +4668,11 @@
             },
             {
                 "phrase": "автоматический создание заказ",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический создание стенограмма",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический средство",
@@ -4753,7 +4745,7 @@
         "phrases": [
             {
                 "phrase": "автоматический инструмент",
-                "relation": "usage_variant"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический создание",
@@ -4986,7 +4978,7 @@
             },
             {
                 "phrase": "автоматический инструмент",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический исправление",
@@ -5114,7 +5106,7 @@
             },
             {
                 "phrase": "автоматический суждение",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический суммаризация",
@@ -5298,7 +5290,7 @@
             },
             {
                 "phrase": "автоматический метод",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический определение",
@@ -5347,7 +5339,7 @@
             },
             {
                 "phrase": "автоматический метод",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический обработка документ",
@@ -5391,7 +5383,7 @@
             },
             {
                 "phrase": "алгоритм обработка",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "алгоритм обработка текст",
@@ -5928,7 +5920,7 @@
             },
             {
                 "phrase": "автоматический обработка язык",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический реферирование",
@@ -6315,7 +6307,7 @@
             },
             {
                 "phrase": "автоматический исправление",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический метод",
@@ -6339,7 +6331,7 @@
             },
             {
                 "phrase": "автоматический предсказание",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический распределение",
@@ -6363,7 +6355,7 @@
             },
             {
                 "phrase": "автоматический суждение",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический фактчекер",
@@ -6881,7 +6873,7 @@
             },
             {
                 "phrase": "автоматический оценка качество перевод",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический перевод пост",
@@ -7268,7 +7260,7 @@
             },
             {
                 "phrase": "автоматический метод",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический перевод",
@@ -8818,7 +8810,7 @@
             },
             {
                 "phrase": "автоматический создание документ-отчет",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический составление",
@@ -8960,7 +8952,7 @@
             },
             {
                 "phrase": "автоматический генерация",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический замена",
@@ -8968,7 +8960,7 @@
             },
             {
                 "phrase": "автоматический извлечение",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический инструмент",
@@ -9671,7 +9663,7 @@
             },
             {
                 "phrase": "автоматический реферирование",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "бинарный классификация",
@@ -9717,7 +9709,7 @@
         "phrases": [
             {
                 "phrase": "автоматический реферирование",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "естественный язык",
@@ -9795,7 +9787,7 @@
             },
             {
                 "phrase": "автоматический реферирование научный документ",
-                "relation": "hyponym"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический реферирование научный текст",
@@ -10038,7 +10030,7 @@
             },
             {
                 "phrase": "автоматический реферат научный статья",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический реферирование",
@@ -10309,11 +10301,7 @@
             },
             {
                 "phrase": "автоматический создание",
-                "relation": "related"
-            },
-            {
-                "phrase": "создание система",
-                "relation": "related"
+                "relation": "hypernym"
             }
         ]
     },
@@ -10505,7 +10493,7 @@
         "phrases": [
             {
                 "phrase": "автоматический генерация",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический метод",
@@ -10691,7 +10679,7 @@
         "phrases": [
             {
                 "phrase": "автоматический анализ",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический метод",
@@ -11132,7 +11120,7 @@
         "phrases": [
             {
                 "phrase": "авторегрессионный трансформер",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "генерация язык",
@@ -11244,11 +11232,11 @@
         "phrases": [
             {
                 "phrase": "алгоритм для кластеризация",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм кластеризация",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм пространственный кластеризация",
@@ -11264,7 +11252,7 @@
             },
             {
                 "phrase": "иерархический кластеризация",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "иерархический кластеризация с агломеративный алгоритм",
@@ -11766,11 +11754,11 @@
             },
             {
                 "phrase": "база данный",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "доменный данный",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "исходный данный",
@@ -11936,7 +11924,7 @@
         "phrases": [
             {
                 "phrase": "автоматический анализ",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "автоматический реферирование",
@@ -11952,7 +11940,7 @@
             },
             {
                 "phrase": "алгоритм интеллектуальный анализ",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "анализ речь",
@@ -11977,11 +11965,11 @@
             },
             {
                 "phrase": "алгоритм автоматический анализ",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм обработка данный",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "лингвистический обработка",
@@ -12109,7 +12097,7 @@
             },
             {
                 "phrase": "алгоритм для анализ",
-                "relation": "synonym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "алгоритм интеллектуальный анализ",
@@ -12413,11 +12401,11 @@
         "phrases": [
             {
                 "phrase": "алгоритм поиск",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "алгоритм распознавание",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "извлечение информация",
@@ -12594,11 +12582,11 @@
         "phrases": [
             {
                 "phrase": "агломеративный алгоритм",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм кластеризация",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "алгоритм пространственный кластеризация",
@@ -12719,7 +12707,7 @@
         "phrases": [
             {
                 "phrase": "алгоритм для анализ",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм для вычисление",
@@ -12864,7 +12852,7 @@
         "phrases": [
             {
                 "phrase": "автоматический анализ",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "алгоритм автоматический анализ",
@@ -13209,7 +13197,7 @@
             },
             {
                 "phrase": "алгоритм обучение",
-                "relation": "hypernym"
+                "relation": "synonym"
             },
             {
                 "phrase": "алгоритм обучение без учитель",
@@ -13447,7 +13435,7 @@
             },
             {
                 "phrase": "алгоритм анализа данный",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм вычисление",
@@ -13504,7 +13492,7 @@
             },
             {
                 "phrase": "алгоритм распознавание текст",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "задача обработка",
@@ -13820,7 +13808,7 @@
         "phrases": [
             {
                 "phrase": "алгоритм для оценка",
-                "relation": "hypernym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "качество алгоритм",
@@ -13916,15 +13904,15 @@
             },
             {
                 "phrase": "алгоритм выявление",
-                "relation": "hypernym"
+                "relation": "synonym"
             },
             {
                 "phrase": "алгоритм дамерау-левенштейн",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм для поиск",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "алгоритм для поиск закономерность",
@@ -13932,11 +13920,11 @@
             },
             {
                 "phrase": "алгоритм интеллектуальный анализ",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм искусственный интеллект",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм обработка",
@@ -13976,15 +13964,15 @@
             },
             {
                 "phrase": "алгоритм хеширование",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм шингл",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритмический подход",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "базовый алгоритм",
@@ -14318,7 +14306,7 @@
         "phrases": [
             {
                 "phrase": "алгоритм поиск",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "индексация контент",
@@ -14575,15 +14563,15 @@
         "phrases": [
             {
                 "phrase": "алгоритм обучение",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "машинный обучение",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "прекращение обучение",
-                "relation": "synonym"
+                "relation": "related"
             }
         ]
     },
@@ -14741,11 +14729,11 @@
             },
             {
                 "phrase": "алгоритм выделение",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "алгоритм выявление",
-                "relation": "hyponym"
+                "relation": "synonym"
             },
             {
                 "phrase": "алгоритм декодирование",
@@ -15051,7 +15039,7 @@
         "phrases": [
             {
                 "phrase": "алгоритм интеллектуальный анализ",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "метод тематический моделирование",
@@ -15925,7 +15913,7 @@
         "phrases": [
             {
                 "phrase": "анализ качество",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "детальный анализ качество модель",
@@ -16250,7 +16238,7 @@
             },
             {
                 "phrase": "анализ данный",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "аннотация научный статья",
@@ -16910,7 +16898,7 @@
             },
             {
                 "phrase": "анализ стиль",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "анализ текст",
@@ -17238,7 +17226,7 @@
             },
             {
                 "phrase": "анализ табличный данный",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "база данный",
@@ -17570,7 +17558,7 @@
             },
             {
                 "phrase": "анализ результат",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "анализ слово",
@@ -17578,7 +17566,7 @@
             },
             {
                 "phrase": "анализ содержание",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "анализ содержание текст",
@@ -18241,10 +18229,6 @@
                 "relation": "hyponym"
             },
             {
-                "phrase": "анализ тональность текст",
-                "relation": "hyponym"
-            },
-            {
                 "phrase": "задача анализ",
                 "relation": "hypernym"
             },
@@ -18893,7 +18877,7 @@
             },
             {
                 "phrase": "английский язык",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "англоязычный датасет",
@@ -18901,7 +18885,7 @@
             },
             {
                 "phrase": "англоязычный корпус",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "вопросно-ответный датасет",
@@ -18918,7 +18902,7 @@
         "phrases": [
             {
                 "phrase": "английский предложение",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "английский слово",
@@ -18992,7 +18976,7 @@
         "phrases": [
             {
                 "phrase": "английский аннотация",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "английский датасет",
@@ -19000,7 +18984,7 @@
             },
             {
                 "phrase": "английский корпус",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "английский слово",
@@ -19041,7 +19025,7 @@
         "phrases": [
             {
                 "phrase": "англо-русский параллельный корпус",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "словарный пара",
@@ -19062,7 +19046,7 @@
         "phrases": [
             {
                 "phrase": "английский слово",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "английский текст",
@@ -19070,15 +19054,15 @@
             },
             {
                 "phrase": "английский фраза",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "английский язык",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "англоязычный слово",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "грамматический словарь",
@@ -19135,7 +19119,7 @@
             },
             {
                 "phrase": "английский словарь",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "английский текст",
@@ -19143,7 +19127,7 @@
             },
             {
                 "phrase": "английский фраза",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "английский язык",
@@ -19315,7 +19299,7 @@
             },
             {
                 "phrase": "английский словарь",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "английский слово",
@@ -20137,7 +20121,7 @@
         "phrases": [
             {
                 "phrase": "английский предложение",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "англо-русский параллельный корпус",
@@ -22273,7 +22257,7 @@
             },
             {
                 "phrase": "архитектура нейронный сеть",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "глубокий нейронный сеть",
@@ -23722,7 +23706,7 @@
             },
             {
                 "phrase": "аннотированный данный",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "анонимизация персональный данный",
@@ -26594,12 +26578,8 @@
                 "relation": "hyponym"
             },
             {
-                "phrase": "байесовский метод",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "байесовский моделирование",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "векторный метод",
@@ -28929,11 +28909,11 @@
         "phrases": [
             {
                 "phrase": "близкий слово",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "слово для заданный слово",
-                "relation": "related"
+                "relation": "hyponym"
             }
         ]
     },
@@ -32430,7 +32410,7 @@
         "phrases": [
             {
                 "phrase": "ввод текст",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "исходный предложение",
@@ -33456,7 +33436,7 @@
         "phrases": [
             {
                 "phrase": "вектор внимание",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "вектор запрос",
@@ -33713,7 +33693,7 @@
             },
             {
                 "phrase": "векторный представление",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "эмбеддинг предложение",
@@ -33726,15 +33706,11 @@
         "phrases": [
             {
                 "phrase": "вектор для предложение",
-                "relation": "hypernym"
-            },
-            {
-                "phrase": "вектор для представление",
-                "relation": "synonym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "вектор для представление слово",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "вектор контекст",
@@ -33742,11 +33718,11 @@
             },
             {
                 "phrase": "вектор представление",
-                "relation": "hypernym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "векторный представление",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "векторный представление буква",
@@ -33819,7 +33795,7 @@
         "phrases": [
             {
                 "phrase": "вектор для представление",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "вектор для слово",
@@ -33831,7 +33807,7 @@
             },
             {
                 "phrase": "векторный представление",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "создание вектор",
@@ -33856,11 +33832,11 @@
             },
             {
                 "phrase": "вектор для представление слово",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "вектор слово",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "контекстный слово",
@@ -33901,7 +33877,7 @@
             },
             {
                 "phrase": "векторный представление",
-                "relation": "related"
+                "relation": "hypernym"
             }
         ]
     },
@@ -35594,7 +35570,7 @@
         "phrases": [
             {
                 "phrase": "вектор внимание",
-                "relation": "hypernym"
+                "relation": "related"
             },
             {
                 "phrase": "вектор оценка",
@@ -36330,7 +36306,7 @@
         "phrases": [
             {
                 "phrase": "fast-text вектор слово",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "алгебраический операция над вектор слово",
@@ -36984,7 +36960,7 @@
             },
             {
                 "phrase": "вектор частотность",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "вектор частотность слово",
@@ -39154,7 +39130,7 @@
             },
             {
                 "phrase": "векторный представление текстовый данный",
-                "relation": "hyponym"
+                "relation": "synonym"
             },
             {
                 "phrase": "векторный представление текстовый строка",
@@ -39191,7 +39167,7 @@
             },
             {
                 "phrase": "векторный представление текст",
-                "relation": "hyponym"
+                "relation": "synonym"
             },
             {
                 "phrase": "векторный представление текстовый строка",
@@ -39228,11 +39204,11 @@
             },
             {
                 "phrase": "векторный представление текст",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "векторный представление текстовый данный",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "первичный событие",
@@ -39982,7 +39958,7 @@
             },
             {
                 "phrase": "вероятностный метод",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "вероятностный распределение",
@@ -40447,7 +40423,7 @@
             },
             {
                 "phrase": "вероятность встречаемость слово",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "вероятность выбор",
@@ -41019,7 +40995,7 @@
             },
             {
                 "phrase": "вероятность последовательность слово",
-                "relation": "hyponym"
+                "relation": "related"
             },
             {
                 "phrase": "вероятность слово",
@@ -41146,7 +41122,7 @@
             },
             {
                 "phrase": "вероятность встречаемость",
-                "relation": "related"
+                "relation": "hypernym"
             },
             {
                 "phrase": "распределение вероятность",
@@ -41208,7 +41184,7 @@
             },
             {
                 "phrase": "вероятность правильный токен",
-                "relation": "hypernym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "вероятность токен",
@@ -41216,7 +41192,7 @@
             },
             {
                 "phrase": "вероятность токен в последовательность",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "вероятность элемент",
@@ -44300,11 +44276,11 @@
         "phrases": [
             {
                 "phrase": "lstm сеть",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "многослойный нейронный сеть",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "нейронный сеть",
@@ -44312,11 +44288,11 @@
             },
             {
                 "phrase": "рекуррентный нейронный сеть",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "рекуррентный сеть",
-                "relation": "related"
+                "relation": "hyponym"
             },
             {
                 "phrase": "сеть прямой распространение",
@@ -47923,7 +47899,7 @@
             },
             {
                 "phrase": "внимание декодер",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "внутренний внимание",
@@ -48288,7 +48264,7 @@
         "phrases": [
             {
                 "phrase": "внимание контроля",
-                "relation": "hyponym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "внутренний внимание",
