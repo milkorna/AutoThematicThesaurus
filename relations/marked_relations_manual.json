@@ -2299,7 +2299,7 @@
             },
             {
                 "phrase": "абстрактный понятие",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "векторный представление",
@@ -2353,7 +2353,7 @@
             },
             {
                 "phrase": "взаимосвязанный сущность",
-                "relation": "synonym"
+                "relation": "related"
             },
             {
                 "phrase": "именованный сущность",
@@ -3985,7 +3985,7 @@
             },
             {
                 "phrase": "автоматический извлечение",
-                "relation": "synonym"
+                "relation": "related"
             },
             {
                 "phrase": "автоматический метод",
@@ -5286,7 +5286,7 @@
         "phrases": [
             {
                 "phrase": "автоматический выделение",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический метод",
@@ -5294,7 +5294,7 @@
             },
             {
                 "phrase": "автоматический определение",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический распознавание",
@@ -6601,7 +6601,7 @@
             },
             {
                 "phrase": "автоматический метрика",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический оценивание",
@@ -7577,7 +7577,7 @@
             },
             {
                 "phrase": "автоматический реферирование",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "лексический единица",
@@ -8028,7 +8028,7 @@
             },
             {
                 "phrase": "автоматический обнаружение",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "автоматический определение логический связь",
@@ -12711,7 +12711,7 @@
             },
             {
                 "phrase": "алгоритм оценка",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "оценка важность",
@@ -12752,7 +12752,7 @@
             },
             {
                 "phrase": "алгоритм поиск",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "алгоритм поиск близость",
@@ -13046,7 +13046,7 @@
             },
             {
                 "phrase": "алгоритм для кластеризация",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "алгоритм обработка данный",
@@ -21718,7 +21718,7 @@
         "phrases": [
             {
                 "phrase": "архитектура для классификация",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "архитектура классификация текст",
@@ -22078,7 +22078,7 @@
         "phrases": [
             {
                 "phrase": "архитектура нейронный сеть",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "архитектура нейросетя",
@@ -22126,51 +22126,6 @@
             },
             {
                 "phrase": "сеть с глубокий обучение",
-                "relation": "related"
-            }
-        ]
-    },
-    {
-        "key": "архитектура нейросетя",
-        "phrases": [
-            {
-                "phrase": "архитектура для классификация",
-                "relation": "hyponym"
-            },
-            {
-                "phrase": "архитектура нейросеть",
-                "relation": "synonym"
-            },
-            {
-                "phrase": "декодирующий трансформер",
-                "relation": "related"
-            },
-            {
-                "phrase": "классификация интент",
-                "relation": "related"
-            },
-            {
-                "phrase": "кросс-модальный трансформатор",
-                "relation": "related"
-            },
-            {
-                "phrase": "нейронный сеть",
-                "relation": "hypernym"
-            },
-            {
-                "phrase": "обучение архитектура",
-                "relation": "related"
-            },
-            {
-                "phrase": "основа архитектура",
-                "relation": "related"
-            },
-            {
-                "phrase": "основа трансформер",
-                "relation": "related"
-            },
-            {
-                "phrase": "рекуррентный трансформер",
                 "relation": "related"
             }
         ]
@@ -27517,7 +27472,7 @@
         "phrases": [
             {
                 "phrase": "бессмысленный текст",
-                "relation": "related"
+                "relation": "synonym"
             }
         ]
     },
@@ -33723,11 +33678,11 @@
             },
             {
                 "phrase": "вектор для слово",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "вектор слово",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "векторный представление",
@@ -33760,7 +33715,7 @@
             },
             {
                 "phrase": "вектор слово",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "контекстный слово",
@@ -33793,7 +33748,7 @@
             },
             {
                 "phrase": "вектор текст",
-                "relation": "related"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "векторизация текст",
@@ -35745,7 +35700,7 @@
         "phrases": [
             {
                 "phrase": "вектор для представление",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "вектор текст",
@@ -35753,7 +35708,7 @@
             },
             {
                 "phrase": "векторный представление",
-                "relation": "synonym"
+                "relation": "hypernym"
             },
             {
                 "phrase": "генерирующий вектор",
@@ -36222,11 +36177,11 @@
             },
             {
                 "phrase": "вектор для представление слово",
-                "relation": "related"
+                "relation": "synonym"
             },
             {
                 "phrase": "вектор для слово",
-                "relation": "related"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "вектор контекст в декодер",
@@ -36605,7 +36560,7 @@
             },
             {
                 "phrase": "вектор для текст",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "вектор документ",
@@ -37315,7 +37270,7 @@
             },
             {
                 "phrase": "вектор представление",
-                "relation": "synonym"
+                "relation": "hyponym"
             },
             {
                 "phrase": "вектор приближение",
@@ -38642,7 +38597,7 @@
             },
             {
                 "phrase": "векторный представление слово",
-                "relation": "synonym"
+                "relation": "usage_variant"
             },
             {
                 "phrase": "векторный пространство",
@@ -43901,7 +43856,7 @@
         "phrases": [
             {
                 "phrase": "взвешивание токен",
-                "relation": "usage_variant"
+                "relation": "related"
             }
         ]
     },
