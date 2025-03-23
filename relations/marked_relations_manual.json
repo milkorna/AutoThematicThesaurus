@@ -7475,10 +7475,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "автоматический порождение",
-                "relation": "related"
-            },
-            {
                 "phrase": "автоматический порождение реферат",
                 "relation": "hyponym"
             },
@@ -14780,10 +14776,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "алгоритм распознавание",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "алгоритм распознавание текст",
                 "relation": "hyponym"
             },
@@ -16034,10 +16026,6 @@
     {
         "key": "анализ корпус",
         "phrases": [
-            {
-                "phrase": "анализ корпус",
-                "relation": "synonym"
-            },
             {
                 "phrase": "анализ текст",
                 "relation": "hypernym"
@@ -21910,10 +21898,6 @@
         "key": "архитектура модель",
         "phrases": [
             {
-                "phrase": "архитектура модель",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "архитектура трансформерный модель",
                 "relation": "hyponym"
             },
@@ -22014,10 +21998,6 @@
             {
                 "phrase": "архитектура нейронный поле",
                 "relation": "related"
-            },
-            {
-                "phrase": "архитектура нейронный сеть",
-                "relation": "synonym"
             },
             {
                 "phrase": "архитектура нейросеть",
@@ -22442,10 +22422,6 @@
             {
                 "phrase": "архитектура рекуррентный трансформер",
                 "relation": "hyponym"
-            },
-            {
-                "phrase": "архитектура трансформер",
-                "relation": "synonym"
             },
             {
                 "phrase": "архитектура трансформерный модель",
@@ -22976,10 +22952,6 @@
             {
                 "phrase": "аннотация данный",
                 "relation": "related"
-            },
-            {
-                "phrase": "аугментация данный",
-                "relation": "synonym"
             },
             {
                 "phrase": "аугментация контрфактический данный",
@@ -23725,10 +23697,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "база данный",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "база данный для извлечение информация",
                 "relation": "hyponym"
             },
@@ -24279,10 +24247,6 @@
             {
                 "phrase": "база документ",
                 "relation": "related"
-            },
-            {
-                "phrase": "база знание",
-                "relation": "usage_variant"
             },
             {
                 "phrase": "база знание анализатор",
@@ -27565,10 +27529,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "бессмысленный базовый модель",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "декодирующий трансформер",
                 "relation": "related"
             },
@@ -28056,10 +28016,6 @@
             {
                 "phrase": "бинарный классификатор",
                 "relation": "related"
-            },
-            {
-                "phrase": "бинарный классификация",
-                "relation": "synonym"
             },
             {
                 "phrase": "бинарный классификация предварительный обучение",
@@ -29010,10 +28966,6 @@
             {
                 "phrase": "близкий ключ",
                 "relation": "related"
-            },
-            {
-                "phrase": "близкий сосед",
-                "relation": "synonym"
             },
             {
                 "phrase": "близкий сосед из нейронный база",
@@ -30119,10 +30071,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "блок трансформер",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "блок трансформер в модель",
                 "relation": "hyponym"
             },
@@ -30385,10 +30333,6 @@
     {
         "key": "важность новость",
         "phrases": [
-            {
-                "phrase": "важность новость",
-                "relation": "synonym"
-            },
             {
                 "phrase": "важность слово",
                 "relation": "related"
@@ -31398,10 +31342,6 @@
                 "relation": "hyponym"
             },
             {
-                "phrase": "вариант перевод",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вариант перевод слово",
                 "relation": "hyponym"
             },
@@ -31688,10 +31628,6 @@
             {
                 "phrase": "башкирский текст",
                 "relation": "related"
-            },
-            {
-                "phrase": "вариант текст",
-                "relation": "synonym"
             },
             {
                 "phrase": "вероятный отрезок текст",
@@ -32000,10 +31936,6 @@
     {
         "key": "вариативность ответ",
         "phrases": [
-            {
-                "phrase": "вариативность ответ",
-                "relation": "synonym"
-            },
             {
                 "phrase": "вариативность ответ модель",
                 "relation": "hyponym"
@@ -32606,10 +32538,6 @@
                 "relation": "usage_variant"
             },
             {
-                "phrase": "вводимый слово",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вводимый текст",
                 "relation": "related"
             },
@@ -32839,10 +32767,6 @@
             {
                 "phrase": "вектор вложение",
                 "relation": "related"
-            },
-            {
-                "phrase": "вектор внимание",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор внимание длина",
@@ -33885,10 +33809,6 @@
         "key": "вектор документ",
         "phrases": [
             {
-                "phrase": "вектор документ",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вектор идентификатор",
                 "relation": "related"
             },
@@ -33972,10 +33892,6 @@
             {
                 "phrase": "вектор внимание",
                 "relation": "related"
-            },
-            {
-                "phrase": "вектор значение",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор контекст",
@@ -34352,10 +34268,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вектор кластеризация",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вектор ключ",
                 "relation": "related"
             },
@@ -34507,10 +34419,6 @@
             {
                 "phrase": "вектор кластеризация",
                 "relation": "related"
-            },
-            {
-                "phrase": "вектор ключ",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор меткий",
@@ -35414,10 +35322,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вектор меткий",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вектор меткий в пространство",
                 "relation": "hyponym"
             },
@@ -35523,10 +35427,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вектор нижестоящий энкодер",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вектор энкодер",
                 "relation": "hypernym"
             },
@@ -35593,10 +35493,6 @@
     {
         "key": "вектор первичный событие",
         "phrases": [
-            {
-                "phrase": "вектор первичный событие",
-                "relation": "synonym"
-            },
             {
                 "phrase": "векторный представление первичный событие",
                 "relation": "synonym"
@@ -35936,10 +35832,6 @@
             {
                 "phrase": "вектор предложение",
                 "relation": "related"
-            },
-            {
-                "phrase": "вектор признак",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор признак предложение",
@@ -36359,10 +36251,6 @@
             {
                 "phrase": "вектор скрытый слой",
                 "relation": "related"
-            },
-            {
-                "phrase": "вектор слово",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор слово на задача предсказание",
@@ -36914,10 +36802,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вектор частотность",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вектор частотность слово",
                 "relation": "hyponym"
             },
@@ -36961,10 +36845,6 @@
             {
                 "phrase": "вектор частотность",
                 "relation": "hypernym"
-            },
-            {
-                "phrase": "вектор частотность слово",
-                "relation": "synonym"
             },
             {
                 "phrase": "вектор частотность слово в документ",
@@ -37188,10 +37068,6 @@
                 "relation": "hyponym"
             },
             {
-                "phrase": "векторизация текст",
-                "relation": "usage_variant"
-            },
-            {
                 "phrase": "векторизация текст из сеть",
                 "relation": "hyponym"
             },
@@ -37245,10 +37121,6 @@
             {
                 "phrase": "вектор контекст",
                 "relation": "related"
-            },
-            {
-                "phrase": "векторный база",
-                "relation": "usage_variant"
             },
             {
                 "phrase": "векторный база данный",
@@ -37508,10 +37380,6 @@
             {
                 "phrase": "векторный построение",
                 "relation": "related"
-            },
-            {
-                "phrase": "векторный представление",
-                "relation": "usage_variant"
             },
             {
                 "phrase": "векторный представление без потеря качество",
@@ -39370,10 +39238,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "векторный пространство",
-                "relation": "usage_variant"
-            },
-            {
                 "phrase": "векторный пространство размерность",
                 "relation": "related"
             },
@@ -39657,10 +39521,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "векторный форма",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "входной данный",
                 "relation": "related"
             },
@@ -39894,10 +39754,6 @@
             {
                 "phrase": "априорный вероятность",
                 "relation": "related"
-            },
-            {
-                "phrase": "верность факт",
-                "relation": "synonym"
             },
             {
                 "phrase": "вероятность ошибка",
@@ -40171,10 +40027,6 @@
             {
                 "phrase": "вероятностный метод",
                 "relation": "related"
-            },
-            {
-                "phrase": "вероятностный модель",
-                "relation": "synonym"
             },
             {
                 "phrase": "вероятностный модель наивный байесовский классификатор",
@@ -40488,10 +40340,6 @@
                 "relation": "synonym"
             },
             {
-                "phrase": "вероятность встречаемость",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вероятность встречаемость слово",
                 "relation": "hyponym"
             },
@@ -40580,10 +40428,6 @@
             {
                 "phrase": "вероятность биграмм",
                 "relation": "related"
-            },
-            {
-                "phrase": "вероятность для последовательность",
-                "relation": "synonym"
             },
             {
                 "phrase": "вероятность для последовательность токен",
@@ -40998,10 +40842,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вероятность слово",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вероятность слово в последовательность",
                 "relation": "related"
             },
@@ -41187,10 +41027,6 @@
                 "relation": "hyponym"
             },
             {
-                "phrase": "вероятность токен",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вероятность токен в последовательность",
                 "relation": "hyponym"
             },
@@ -41355,10 +41191,6 @@
     {
         "key": "вероятный вариант",
         "phrases": [
-            {
-                "phrase": "вероятный вариант",
-                "relation": "synonym"
-            },
             {
                 "phrase": "вероятный вариант в данный контекст",
                 "relation": "related"
@@ -41823,10 +41655,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "версия модель",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вес базовый модель",
                 "relation": "related"
             },
@@ -41995,10 +41823,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "верхнеуровневый контекст",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "глобальный контекст",
                 "relation": "synonym"
             },
@@ -42085,10 +41909,6 @@
     {
         "key": "верхний слой",
         "phrases": [
-            {
-                "phrase": "верхний слой",
-                "relation": "synonym"
-            },
             {
                 "phrase": "верхний слой модель",
                 "relation": "related"
@@ -42320,10 +42140,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вес внимание",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "весы внимание",
                 "relation": "related"
             },
@@ -42549,10 +42365,6 @@
             {
                 "phrase": "вес дообученный модель",
                 "relation": "related"
-            },
-            {
-                "phrase": "вес модель",
-                "relation": "synonym"
             },
             {
                 "phrase": "вес модель на этап обучение",
@@ -42971,10 +42783,6 @@
                 "relation": "usage_variant"
             },
             {
-                "phrase": "вес предложение",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "длина предложение",
                 "relation": "related"
             },
@@ -43120,10 +42928,6 @@
     {
         "key": "вес токен",
         "phrases": [
-            {
-                "phrase": "вес токен",
-                "relation": "synonym"
-            },
             {
                 "phrase": "оценка вес",
                 "relation": "related"
@@ -43491,10 +43295,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "взаимосвязанный сеть",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "взаимосвязанный сеть понятие",
                 "relation": "related"
             },
@@ -43676,10 +43476,6 @@
             {
                 "phrase": "вес важность",
                 "relation": "related"
-            },
-            {
-                "phrase": "взаимосвязанный сущность",
-                "relation": "synonym"
             },
             {
                 "phrase": "вложенный сущность",
@@ -44938,10 +44734,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "визуальный данный",
-                "relation": "related"
-            },
-            {
                 "phrase": "визуальный информация",
                 "relation": "related"
             },
@@ -45435,10 +45227,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "визуальный данный",
-                "relation": "related"
-            },
-            {
                 "phrase": "визуальный информация",
                 "relation": "related"
             },
@@ -45812,10 +45600,6 @@
             {
                 "phrase": "взаимный расположение слово",
                 "relation": "related"
-            },
-            {
-                "phrase": "вложение слово",
-                "relation": "synonym"
             },
             {
                 "phrase": "внимание для слово",
@@ -46904,10 +46688,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "внешний документ",
-                "relation": "usage_variant"
-            },
-            {
                 "phrase": "внутренний документ",
                 "relation": "related"
             },
@@ -47349,10 +47129,6 @@
                 "relation": "usage_variant"
             },
             {
-                "phrase": "внимание etc модель",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "внимание модель",
                 "relation": "related"
             },
@@ -47473,10 +47249,6 @@
             {
                 "phrase": "внимание в выходной вектор",
                 "relation": "related"
-            },
-            {
-                "phrase": "внимание вектор",
-                "relation": "usage_variant"
             },
             {
                 "phrase": "внимание декодер",
@@ -47695,10 +47467,6 @@
             {
                 "phrase": "внимание вектор внимание",
                 "relation": "related"
-            },
-            {
-                "phrase": "внимание декодер",
-                "relation": "synonym"
             },
             {
                 "phrase": "внимание декодер к исходный последовательность",
@@ -48075,10 +47843,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "внимание запрос",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "внутренний внимание",
                 "relation": "related"
             },
@@ -48286,10 +48050,6 @@
             {
                 "phrase": "внимание etc модель",
                 "relation": "related"
-            },
-            {
-                "phrase": "внимание модель",
-                "relation": "synonym"
             },
             {
                 "phrase": "механизм внимание",
@@ -48686,10 +48446,6 @@
             {
                 "phrase": "внимание слово",
                 "relation": "related"
-            },
-            {
-                "phrase": "внутренний внимание",
-                "relation": "synonym"
             },
             {
                 "phrase": "внутренний внимание в декодер",
@@ -49691,10 +49447,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "внутренний оценка",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "внутренний оценка качество",
                 "relation": "hyponym"
             },
@@ -50407,10 +50159,6 @@
                 "relation": "related"
             },
             {
-                "phrase": "вопросно-ответный датасет",
-                "relation": "synonym"
-            },
-            {
                 "phrase": "вопросно-ответный датасето",
                 "relation": "usage_variant"
             },
@@ -50644,10 +50392,6 @@
             {
                 "phrase": "вопросно-ответный задача",
                 "relation": "related"
-            },
-            {
-                "phrase": "вопросно-ответный система",
-                "relation": "synonym"
             },
             {
                 "phrase": "вопросно-ответный система на основа граф",
