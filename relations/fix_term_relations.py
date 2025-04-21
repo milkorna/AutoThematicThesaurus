@@ -105,6 +105,27 @@ HYPONYM_ADJECTIVES = [
     "нелинейный"
 ]
 
+SYNONYM_EQUIVALENTS = [
+    ("данный", "датасет"),         # входной данный ≈ входной датасет
+    ("классификация", "категоризация"),  # классификация текста ≈ категоризация текста
+    ("задача", "проблема"),        # задача сегментация ≈ проблема сегментация
+    ("цель", "задача"),            # цель обучение ≈ задача обучение
+    ("ошибка", "погрешность"),     # ошибка предсказание ≈ погрешность предсказание
+    ("предсказание", "прогнозирование"),  # предсказание значение ≈ прогнозирование значение
+    ("анализ", "обработка"),       # анализ текст ≈ обработка текст
+    ("предложение", "фраза"),      # сегментация предложение ≈ сегментация фраза
+    ("аннотация", "разметка"),     # аннотация корпус ≈ разметка корпус
+    ("семантика", "значение"),     # семантика слово ≈ значение слово
+    ("текст", "документ"),         # анализ текст ≈ анализ документ
+    ("ответ", "реакция"),          # ответ система ≈ реакция система
+    ("обучение", "тренировка"),    # обучение модель ≈ тренировка модель
+    ("оценка", "метрика"),         # оценка модель ≈ метрика модель
+    ("вектор", "представление"),   # вектор слово ≈ представление слово
+    ("взвешивание", "оценка"),     # взвешивание признак ≈ оценка признак
+    ("файл", "документ"),          # обработка файл ≈ обработка документ
+]
+
+
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
 def normalize(phrase):
@@ -125,6 +146,17 @@ def has_adjectival_prefix(full_phrase, base_phrase):
         if normalize(full_phrase) == f"{adj} {normalize(base_phrase)}":
             return adj
     return None
+
+
+def phrases_equivalent_synonyms(p1, p2):
+    norm1 = normalize(p1)
+    norm2 = normalize(p2)
+    for a, b in SYNONYM_EQUIVALENTS:
+        swapped1 = norm1.replace(a, b)
+        swapped2 = norm1.replace(b, a)
+        if norm2 == swapped1 or norm2 == swapped2:
+            return True
+    return False
 
 def correct_relation(key, phrase, current_relation):
     """
@@ -147,6 +179,9 @@ def correct_relation(key, phrase, current_relation):
     adj = has_adjectival_prefix(key, phrase)
     if adj:
         return "hypernym"
+
+    if phrases_equivalent_synonyms(key, phrase):
+        return "synonym"
 
     # Otherwise, keep the original relation
     return current_relation
