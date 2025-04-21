@@ -125,6 +125,14 @@ SYNONYM_EQUIVALENTS = [
     ("файл", "документ"),          # обработка файл ≈ обработка документ
 ]
 
+NON_DISTINCTIVE_ADJECTIVES = [
+    "релевантный",
+    "точный",
+    "эффективный",
+    "популярный",
+    "полезный",
+    "качественный"
+]
 
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
@@ -158,6 +166,24 @@ def phrases_equivalent_synonyms(p1, p2):
             return True
     return False
 
+def differs_by_single_nonessential_adj(p1, p2):
+    """
+    Check if p1 and p2 differ only by one non-distinctive adjective
+    (regardless of position or total length).
+    """
+    words1 = set(normalize(p1).split())
+    words2 = set(normalize(p2).split())
+
+    diff1 = words1 - words2
+    diff2 = words2 - words1
+
+    # Only one word is different in either direction
+    if len(diff1) + len(diff2) != 1:
+        return False
+
+    only_diff = list(diff1.union(diff2))[0]
+    return only_diff in NON_DISTINCTIVE_ADJECTIVES
+
 def correct_relation(key, phrase, current_relation):
     """
     Determine corrected relation based on modifier patterns
@@ -181,6 +207,9 @@ def correct_relation(key, phrase, current_relation):
         return "hypernym"
 
     if phrases_equivalent_synonyms(key, phrase):
+        return "synonym"
+
+    if differs_by_single_nonessential_adj(key, phrase):
         return "synonym"
 
     # Otherwise, keep the original relation
