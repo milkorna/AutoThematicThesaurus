@@ -61,10 +61,6 @@ RELATED_MARKERS = [
     "проверка",
     "сжатие",
     "рерайтинг",
-    "автоматический выделение",
-    "выделение",
-    "извлечение",
-    "автоматический извлечение",
     "задача",          # задача оптимизации
     "результат",       # результат анализа
     "сценарий",        # сценарий использования
@@ -86,6 +82,29 @@ RELATED_MARKERS = [
     "показатель",      # показатель точности
 ]
 
+# Adjectival modifiers that imply hyponym relation when prepended to a base phrase
+HYPONYM_ADJECTIVES = [
+    "автоматический",
+    "нейросетевой",
+    "глубинный",
+    "статистический",
+    "эмпирический",
+    "обучаемый",
+    "интерактивный",
+    "адаптивный",
+    "параллельный",
+    "гибридный",
+    "семантический",
+    "синтаксический",
+    "лексический",
+    "морфологический",
+    "корпусный",
+    "графовый",
+    "контекстный",
+    "байесовский",
+    "нелинейный"
+]
+
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
 def normalize(phrase):
@@ -99,6 +118,12 @@ def starts_with_modifier(full_phrase, base_phrase):
     for marker in ALL_MARKERS:
         if normalize(full_phrase) == f"{marker} {normalize(base_phrase)}":
             return marker
+    return None
+
+def has_adjectival_prefix(full_phrase, base_phrase):
+    for adj in HYPONYM_ADJECTIVES:
+        if normalize(full_phrase) == f"{adj} {normalize(base_phrase)}":
+            return adj
     return None
 
 def correct_relation(key, phrase, current_relation):
@@ -117,6 +142,11 @@ def correct_relation(key, phrase, current_relation):
     marker = starts_with_modifier(norm_phrase, norm_key)
     if marker:
         return "hyponym" if marker in HYPONYM_MARKERS else "related"
+
+    # Case 3: key = "<adjective> phrase" → phrase is hypernym
+    adj = has_adjectival_prefix(key, phrase)
+    if adj:
+        return "hypernym"
 
     # Otherwise, keep the original relation
     return current_relation
