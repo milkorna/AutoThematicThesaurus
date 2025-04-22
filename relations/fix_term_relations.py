@@ -37,7 +37,6 @@ RELATED_MARKERS = [ # todo: add relation related_action in future
     "аннотация",
     "обработка",
     "анализ",
-    "построение",
     "идентификация",
     "распознавание",
     "предсказание",
@@ -174,6 +173,8 @@ ACTION_NOUNS = [
     "измерение",
     "расчёт",
     "подсчёт",
+    "расчет",
+    "подсчет",
     "наблюдение",
 
     # прогноз, вывод
@@ -250,6 +251,8 @@ ACTION_NOUNS = [
     "структурирование",
     "упорядочивание",
     "группировка",
+    "моделирование",
+    "построение",
 
     # усиление и редактирование
     "аугментация",
@@ -266,6 +269,53 @@ ACTION_NOUNS = [
     "перестановка"
 ]
 
+CONCRETIZATION_NOUNS = [
+    # Основные
+    "версия",
+    "вариант",
+    "реализация",
+    "модификация",
+    "экземпляр",
+    "подтип",
+    "вариация",
+    "конфигурация",
+
+    # Архитектурные
+    "структура",
+    "архитектура",
+    "модель",
+    "алгоритм",
+    "подход",
+    "механизм",
+
+    # Иерархические / подклассы
+    "тип",
+    "вид",
+    "форма",
+    "категория",
+    "модификация",
+    "класс",
+    "уровень",
+
+    # Выпуски / итерации
+    "издание",
+    "ревизия",
+    "выпуск",
+    "редакция",
+    "инстанция",
+
+    # В программной/технической сфере
+    "настройка",
+    "объект",
+    "модуль",
+    "блок",
+    "узел",
+    "компонент",
+    "сборка"
+]
+
+
+
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
 def normalize(phrase):
@@ -281,6 +331,21 @@ def action_applied_to_entity(p1, p2):
         if norm2.startswith(action + " ") and norm2[len(action)+1:] == norm1:
             return True
     return False
+
+def phrase_has_concretization_noun(p1, p2):
+    norm1 = normalize(p1)
+    norm2 = normalize(p2)
+    words1 = norm1.split()
+    words2 = norm2.split()
+
+    for noun in CONCRETIZATION_NOUNS:
+        # p1 = noun + p2
+        if words1[:1] == [noun] and " ".join(words1[1:]) == norm2:
+            return "hypernym"
+        if words2[:1] == [noun] and " ".join(words2[1:]) == norm1:
+            return "hyponym"
+    return None
+
 
 def starts_with_modifier(full_phrase, base_phrase):
     """
@@ -379,6 +444,11 @@ def correct_relation(key, phrase, current_relation):
 
     if action_applied_to_entity(key, phrase):
         return "related"
+
+    relation = phrase_has_concretization_noun(key, phrase)
+    if relation:
+        return relation
+
 
     relation = differs_by_single_positional_adj(key, phrase)
     if relation:
