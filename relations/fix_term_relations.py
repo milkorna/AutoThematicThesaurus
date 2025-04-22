@@ -131,7 +131,8 @@ SYNONYM_EQUIVALENTS = [
     ("оценивание", "оценка"),
     ("ресурс", "источник"),
     ("обучаемый данный", "данный для обучение"),
-    ("рассеянный", "многонаправленный")
+    ("рассеянный", "многонаправленный"),
+    ("моделирование", "построение")
 ]
 
 NON_DISTINCTIVE_ADJECTIVES = [
@@ -338,6 +339,12 @@ def phrase_has_concretization_noun(p1, p2):
     words1 = norm1.split()
     words2 = norm2.split()
 
+    if abs(len(words1) - len(words2)) > 2:
+        return None
+
+    if len(set(words1) & set(words2)) < min(len(words1), len(words2)) // 2:
+        return None
+
     for noun in CONCRETIZATION_NOUNS:
         # p1 = noun + p2
         if words1[:1] == [noun] and " ".join(words1[1:]) == norm2:
@@ -442,17 +449,17 @@ def correct_relation(key, phrase, current_relation):
     # if differs_by_single_nonessential_adj(key, phrase):
     #     return "synonym"
 
-    if action_applied_to_entity(key, phrase):
-        return "related"
+    # if action_applied_to_entity(key, phrase):
+    #     return "related"
 
-    relation = phrase_has_concretization_noun(key, phrase)
-    if relation:
-        return relation
+    # # relation = phrase_has_concretization_noun(key, phrase)
+    # # if relation:
+    # #     return relation
 
 
-    relation = differs_by_single_positional_adj(key, phrase)
-    if relation:
-        return relation
+    # relation = differs_by_single_positional_adj(key, phrase)
+    # if relation:
+    #     return relation
 
     # Otherwise, keep the original relation
     return current_relation
@@ -471,6 +478,40 @@ def correct_relations(data):
                 phrase_entry["relation"] = new_relation
     return data, changes
 
+def enforce_symmetric_relations(data):
+    """
+    Ensure that if A -> B = relation, then B -> A = same or inverse relation.
+    For synonyms: must be symmetric. For hyponym/hypernym: must be consistent.
+    """
+    # Сопоставление key → phrases
+    normalized_data = {}
+    for entry in data:
+        key = normalize(entry["key"])
+        phrases = {normalize(p["phrase"]): p for p in entry["phrases"]}
+        normalized_data[key] = phrases
+
+    changes = []
+    for key, phrases in normalized_data.items():
+        for phrase_text, phrase_entry in phrases.items():
+            relation = phrase_entry["relation"]
+            # Проверяем, есть ли обратная связь
+            if phrase_text in normalized_data:
+                reverse_phrases = normalized_data[phrase_text]
+                if key in reverse_phrases:
+                    reverse_relation = reverse_phrases[key]["relation"]
+                    # Проверка симметрии
+                    if relation == "synonym" and reverse_relation != "synonym":
+                        reverse_phrases[key]["relation"] = "synonym"
+                        changes.append((phrase_text, key, reverse_relation, "synonym"))
+                    elif relation == "hyponym" and reverse_relation != "hypernym":
+                        reverse_phrases[key]["relation"] = "hypernym"
+                        changes.append((phrase_text, key, reverse_relation, "hypernym"))
+                    elif relation == "hypernym" and reverse_relation != "hyponym":
+                        reverse_phrases[key]["relation"] = "hyponym"
+                        changes.append((phrase_text, key, reverse_relation, "hyponym"))
+    return data, changes
+
+
 # === Load and save ===
 input_path = "marked_relations_manual.json"
 output_path = "marked_relations_manual.json"
@@ -478,12 +519,21 @@ output_path = "marked_relations_manual.json"
 with open(input_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
+corrected_data, log1 = correct_relations(data)
+#symmetric_data, log2 = enforce_symmetric_relations(corrected_data) # ПОТОМ ПОСЛЕ ИСПРАВЛЕНИ ГИПОНИМОВ
+
+# with open(output_path, "w", encoding="utf-8") as f:
+#     json.dump(symmetric_data, f, ensure_ascii=False, indent=4)
+
 corrected_data, log = correct_relations(data)
 
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(corrected_data, f, ensure_ascii=False, indent=4)
 
-# Print log of changes
 print("=== Relation corrections ===")
-for key, phrase, old, new in log:
+for key, phrase, old, new in log1:
     print(f"'{phrase}' -> '{key}': {old} → {new}")
+
+# print("\n=== Symmetry fixes ===")
+# for key, phrase, old, new in log2:
+#     print(f"[REVERSE] '{phrase}' -> '{key}': {old} → {new}")
