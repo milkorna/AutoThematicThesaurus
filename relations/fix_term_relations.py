@@ -24,7 +24,7 @@ HYPONYM_MARKERS = [
 ]
 
 # Related markers – phrases that are semantically related but not hierarchical
-RELATED_MARKERS = [
+RELATED_MARKERS = [ # todo: add relation related_action in future
     "автоматический выделение",
     "автоматический извлечение",
     "автоматический аннотация",
@@ -131,7 +131,8 @@ SYNONYM_EQUIVALENTS = [
     ("изучение", "анализ"),
     ("оценивание", "оценка"),
     ("ресурс", "источник"),
-    ("обучаемый данный", "данный для обучение")
+    ("обучаемый данный", "данный для обучение"),
+    ("рассеянный", "многонаправленный")
 ]
 
 NON_DISTINCTIVE_ADJECTIVES = [
@@ -157,12 +158,129 @@ POSITIONAL_CONTEXT_ADJECTIVES = [
     "результирующий"
 ]
 
+ACTION_NOUNS = [
+    # обучение и адаптация
+    "обучение",
+    "дообучение",
+    "переобучение",
+    "самообучение",
+    "адаптация",
+    "обновление",
+
+    # оценка и анализ
+    "оценка",
+    "оценивание",
+    "анализ",
+    "измерение",
+    "расчёт",
+    "подсчёт",
+    "наблюдение",
+
+    # прогноз, вывод
+    "предсказание",
+    "прогнозирование",
+    "вывод",
+    "генерация",
+    "ответ",
+    "завершение",
+
+    # обработка
+    "обработка",
+    "предобработка",
+    "постобработка",
+    "трансформация",
+    "конвертация",
+    "декодирование",
+    "кодирование",
+    "перевод",
+    "токенизация",
+    "нормализация",
+    "лемматизация",
+    "стемминг",
+    "сжатие",
+
+    # извлечение и выделение
+    "выделение",
+    "извлечение",
+    "аннотация",
+    "разметка",
+    "теггинг",
+    "сопоставление",
+    "идентификация",
+
+    # классификация и кластеризация
+    "классификация",
+    "категоризация",
+    "кластеризация",
+    "ранжирование",
+    "поиск",
+    "фильтрация",
+    "регрессия",
+    "отнесение",
+
+    # обнаружение и распознавание
+    "обнаружение",
+    "распознавание",
+    "определение",
+    "локализация",
+    "дискриминация",
+    "проверка",
+
+    # оптимизация и настройка
+    "оптимизация",
+    "регуляризация",
+    "настройка",
+    "калибровка",
+    "параметризация",
+    "селекция",
+
+    # сравнение
+    "сравнение",
+    "сопоставление",
+    "сверка",
+
+    # интерпретация и объяснение
+    "интерпретация",
+    "объяснение",
+    "инференция",
+    "интерполяция",
+
+    # агрегация и структурирование
+    "агрегация",
+    "структурирование",
+    "упорядочивание",
+    "группировка",
+
+    # усиление и редактирование
+    "аугментация",
+    "расширение",
+    "редактирование",
+    "переформулирование",
+    "перефразирование",
+    "переименование",
+    "удаление",
+
+    # искажение и модификация
+    "искажение",
+    "модификация",
+    "перестановка"
+]
 
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
 def normalize(phrase):
     """Normalize phrase: lowercase and collapse whitespace"""
     return re.sub(r"\s+", " ", phrase.strip().lower())
+
+def action_applied_to_entity(p1, p2):
+    norm1 = normalize(p1)
+    norm2 = normalize(p2)
+    for action in ACTION_NOUNS:
+        if norm1.startswith(action + " ") and norm1[len(action)+1:] == norm2:
+            return True
+        if norm2.startswith(action + " ") and norm2[len(action)+1:] == norm1:
+            return True
+    return False
 
 def starts_with_modifier(full_phrase, base_phrase):
     """
@@ -238,26 +356,29 @@ def correct_relation(key, phrase, current_relation):
     norm_key = normalize(key)
     norm_phrase = normalize(phrase)
 
-    # Case 1: key = "<modifier> phrase" → phrase is a hypernym
-    marker = starts_with_modifier(norm_key, norm_phrase)
-    if marker:
-        return "hypernym" if marker in HYPONYM_MARKERS else "related"
+    # # Case 1: key = "<modifier> phrase" → phrase is a hypernym
+    # marker = starts_with_modifier(norm_key, norm_phrase)
+    # if marker:
+    #     return "hypernym" if marker in HYPONYM_MARKERS else "related"
 
-    # Case 2: phrase = "<modifier> key" → phrase is a hyponym
-    marker = starts_with_modifier(norm_phrase, norm_key)
-    if marker:
-        return "hyponym" if marker in HYPONYM_MARKERS else "related"
+    # # Case 2: phrase = "<modifier> key" → phrase is a hyponym
+    # marker = starts_with_modifier(norm_phrase, norm_key)
+    # if marker:
+    #     return "hyponym" if marker in HYPONYM_MARKERS else "related"
 
-    # Case 3: key = "<adjective> phrase" → phrase is hypernym
-    adj = has_adjectival_prefix(key, phrase)
-    if adj:
-        return "hypernym"
+    # # Case 3: key = "<adjective> phrase" → phrase is hypernym
+    # adj = has_adjectival_prefix(key, phrase)
+    # if adj:
+    #     return "hypernym"
 
-    if phrases_equivalent_synonyms(key, phrase):
-        return "synonym"
+    # if phrases_equivalent_synonyms(key, phrase):
+    #     return "synonym"
 
-    if differs_by_single_nonessential_adj(key, phrase):
-        return "synonym"
+    # if differs_by_single_nonessential_adj(key, phrase):
+    #     return "synonym"
+
+    if action_applied_to_entity(key, phrase):
+        return "related"
 
     relation = differs_by_single_positional_adj(key, phrase)
     if relation:
