@@ -21,7 +21,6 @@ HYPONYM_MARKERS = [
     "реализация",     # реализация подхода
     "инстанция",      # инстанция модели
     "тип",            # тип обучения
-    "задача обработка"
 ]
 
 # Related markers – phrases that are semantically related but not hierarchical
@@ -127,7 +126,12 @@ SYNONYM_EQUIVALENTS = [
     ("схожесть", "сходство"),
     ("сходство", "близость"),
     ("схожесть", "близость"),
-    ("текстовый данный", "текст")
+    ("текстовый данный", "текст"),
+    ("эпоха", "период"),
+    ("изучение", "анализ"),
+    ("оценивание", "оценка"),
+    ("ресурс", "источник"),
+    ("обучаемый данный", "данный для обучение")
 ]
 
 NON_DISTINCTIVE_ADJECTIVES = [
@@ -138,6 +142,21 @@ NON_DISTINCTIVE_ADJECTIVES = [
     "полезный",
     "качественный"
 ]
+
+POSITIONAL_CONTEXT_ADJECTIVES = [
+    "исходный",
+    "входной",
+    "выходной",
+    "обучающий",
+    "тестовый",
+    "валидационный",
+    "начальный",
+    "конечный",
+    "промежуточный",
+    "первичный",
+    "результирующий"
+]
+
 
 ALL_MARKERS = HYPONYM_MARKERS + RELATED_MARKERS
 
@@ -189,6 +208,29 @@ def differs_by_single_nonessential_adj(p1, p2):
     only_diff = list(diff1.union(diff2))[0]
     return only_diff in NON_DISTINCTIVE_ADJECTIVES
 
+def differs_by_single_positional_adj(p1, p2):
+    """
+    Returns 'hyponym' or 'hypernym' if the phrases differ by exactly one word,
+    and that word is in POSITIONAL_CONTEXT_ADJECTIVES.
+    """
+    words1 = set(normalize(p1).split())
+    words2 = set(normalize(p2).split())
+
+    diff1 = words1 - words2
+    diff2 = words2 - words1
+
+    # Check for one-word difference in either direction
+    if len(diff1) == 1 and len(diff2) == 0:
+        word = list(diff1)[0]
+        if word in POSITIONAL_CONTEXT_ADJECTIVES:
+            return "hypernym"
+    elif len(diff2) == 1 and len(diff1) == 0:
+        word = list(diff2)[0]
+        if word in POSITIONAL_CONTEXT_ADJECTIVES:
+            return "hyponym"
+    return None
+
+
 def correct_relation(key, phrase, current_relation):
     """
     Determine corrected relation based on modifier patterns
@@ -216,6 +258,10 @@ def correct_relation(key, phrase, current_relation):
 
     if differs_by_single_nonessential_adj(key, phrase):
         return "synonym"
+
+    relation = differs_by_single_positional_adj(key, phrase)
+    if relation:
+        return relation
 
     # Otherwise, keep the original relation
     return current_relation
