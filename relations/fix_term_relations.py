@@ -4,23 +4,40 @@ import re
 # Hyponym markers – phrases that typically introduce a subtype (hyponym)
 HYPONYM_MARKERS = [
     "алгоритм",       # алгоритм классификации
+    "алгоритм для",
     "метод",          # метод оптимизации
+    "метод для",
     "модель",         # модель обучения
+    "модель для",
     "архитектура",    # архитектура трансформера
+    "архитектура для"
     "подход",         # подход на основе графов
+    "подход для",
     "техника",        # техника повышения точности
+    "техника для",
     "процедура",      # процедура инициализации
+    "процедура для",
     "операция",       # операция свёртки
+    "операция для",
     "механизм",       # механизм внимания
+    "механизм для",
     "модификация",    # модификация алгоритма
+    "модификация для",
     "вариант",        # вариант модели
+    "вариант для",
     "стратегия",      # стратегия выбора
+    "стратегия для",
     "структура",      # структура данных
+    "структура для",
     "парадигма",      # парадигма программирования
+    "парадигма для",
     "алтернатива",    # альтернатива методу
+    "алтернатива для",
     "реализация",     # реализация подхода
+    "реализация для",
     "инстанция",      # инстанция модели
     "тип",            # тип обучения
+    "тип для"
 ]
 
 # Related markers – phrases that are semantically related but not hierarchical
@@ -428,38 +445,38 @@ def correct_relation(key, phrase, current_relation):
     norm_key = normalize(key)
     norm_phrase = normalize(phrase)
 
-    # # Case 1: key = "<modifier> phrase" → phrase is a hypernym
-    # marker = starts_with_modifier(norm_key, norm_phrase)
-    # if marker:
-    #     return "hypernym" if marker in HYPONYM_MARKERS else "related"
+    # Case 1: key = "<modifier> phrase" → phrase is a hypernym
+    marker = starts_with_modifier(norm_key, norm_phrase)
+    if marker:
+        return "hypernym" if marker in HYPONYM_MARKERS else "related"
 
-    # # Case 2: phrase = "<modifier> key" → phrase is a hyponym
-    # marker = starts_with_modifier(norm_phrase, norm_key)
-    # if marker:
-    #     return "hyponym" if marker in HYPONYM_MARKERS else "related"
+    # Case 2: phrase = "<modifier> key" → phrase is a hyponym
+    marker = starts_with_modifier(norm_phrase, norm_key)
+    if marker:
+        return "hyponym" if marker in HYPONYM_MARKERS else "related"
 
-    # # Case 3: key = "<adjective> phrase" → phrase is hypernym
-    # adj = has_adjectival_prefix(key, phrase)
-    # if adj:
-    #     return "hypernym"
+    # Case 3: key = "<adjective> phrase" → phrase is hypernym
+    adj = has_adjectival_prefix(key, phrase)
+    if adj:
+        return "hypernym"
 
-    # if phrases_equivalent_synonyms(key, phrase):
-    #     return "synonym"
+    if phrases_equivalent_synonyms(key, phrase):
+        return "synonym"
 
-    # if differs_by_single_nonessential_adj(key, phrase):
-    #     return "synonym"
+    if differs_by_single_nonessential_adj(key, phrase):
+        return "synonym"
 
-    # if action_applied_to_entity(key, phrase):
-    #     return "related"
+    if action_applied_to_entity(key, phrase):
+        return "related"
 
-    # # relation = phrase_has_concretization_noun(key, phrase)
-    # # if relation:
-    # #     return relation
+    relation = phrase_has_concretization_noun(key, phrase)
+    if relation:
+        return relation
 
 
-    # relation = differs_by_single_positional_adj(key, phrase)
-    # if relation:
-    #     return relation
+    relation = differs_by_single_positional_adj(key, phrase)
+    if relation:
+        return relation
 
     # Otherwise, keep the original relation
     return current_relation
@@ -525,7 +542,7 @@ corrected_data, log1 = correct_relations(data)
 # with open(output_path, "w", encoding="utf-8") as f:
 #     json.dump(symmetric_data, f, ensure_ascii=False, indent=4)
 
-corrected_data, log = correct_relations(data)
+#corrected_data, log = correct_relations(data)
 
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(corrected_data, f, ensure_ascii=False, indent=4)

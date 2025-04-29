@@ -20,7 +20,7 @@ def find_synonym_mismatches(file_path):
                 if key_B in relation_dict and key_A in relation_dict[key_B]:
                     rel_B_A = relation_dict[key_B][key_A]
                     if rel_B_A != "synonym":
-                        print(f"\nНесоответствие: {key_A} -> {key_B} (synonym), но {key_B} -> {key_A} = {rel_B_A}")
+                        print(f"\n{key_A} -> {key_B}")
 
 if __name__ == "__main__":
     file_path = "marked_relations_manual.json"
