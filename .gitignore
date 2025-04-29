@@ -13,3 +13,11 @@ my_custom_fasttext_model_finetuned.bin
 */embedding_analysis/outliers/*.xlsx
 *.html
 test_corpus
+
+## temporary
+final_relations*
+gpt.json
+need_to_mark.json
+reconstructed_relations.json
+remark.py
+remove_phrases_by_relation.py
