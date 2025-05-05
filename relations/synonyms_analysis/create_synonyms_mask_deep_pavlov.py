@@ -17,10 +17,10 @@ if not hasattr(inspect, "getargspec"):
     inspect.getargspec = getargspec_patched
 
 # Search parameters
-PATH_OUT_JSON = SYNONYMS_DIR / "synonyms_mask_deep_pavlov.json"
+PATH_OUT_JSON = SYNONYMS_DIR / "mask_deep_pavlov.json"
 MODEL_NAME = "DeepPavlov/rubert-base-cased"
 TOP_N = 20  # Number of candidates the model generates for [MASK]
-STOP_WORD = "данный"  # Synonyms containing this word will be removed
+STOP_WORD = "данный"  # Phrases containing this word will be removed
 
 # Initialize tokenizer and model
 print("[INFO] Loading morphological analyzer and model...")
@@ -46,13 +46,13 @@ def lemmatize_word(word):
     parsed_word = morph.parse(word)[0]
     return parsed_word.normal_form
 
-def find_synonyms_in_set(phrase, phrases_set, top_n=TOP_N):
+def find_phrases_in_set(phrase, phrases_set, top_n=TOP_N):
     """
     - For each word in the phrase, replace it with [MASK], the model generates top_n candidates
     - Filter by part of speech
     - Create new phrase variations
     - Keep only those variations that exist in phrases_set (exact match)
-    Returns a list (strings) of potential "synonyms" from the set.
+    Returns a list (strings) of potential "phrases" from the set.
     """
     words = phrase.split()
 
@@ -119,34 +119,34 @@ def find_synonyms_in_set(phrase, phrases_set, top_n=TOP_N):
 
     return results
 
-def ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD):
+def ensure_mutual_phrases_and_cleanup(results, stop_word=STOP_WORD):
     """
-    - Remove elements from synonyms where "key" contains stop_word (e.g., "данный").
+    - Remove elements where "key" contains stop_word (e.g., "данный").
     - For each pair (A -> B), if B -> A does not exist, add it.
-    - If A has an empty synonyms list, remove A from results (or leave it).
+    - If A has an empty list, remove A from results (or leave it).
     """
     # Convert keys to a list (to iterate over a copy)
     all_phrases = list(results.keys())
 
     for phrase in all_phrases:
         item = results[phrase]
-        synonyms_list = item.get("synonyms", [])
+        phrases_list = item.get("phrases", [])
         filtered_list = []
-        for syn_obj in synonyms_list:
+        for syn_obj in phrases_list:
             if stop_word not in syn_obj["new_phrase"]:
                 filtered_list.append(syn_obj)
-        item["synonyms"] = filtered_list
+        item["phrases"] = filtered_list
 
     # 2) Mutual completion: If A contains B, then B should also contain A
     for phrase in all_phrases:
         if phrase not in results:
             continue
-        synonyms_list = results[phrase].get("synonyms", [])
-        for syn_obj in synonyms_list:
+        phrases_list = results[phrase].get("phrases", [])
+        for syn_obj in phrases_list:
             candidate_str = syn_obj["new_phrase"]
             if candidate_str in results:
                 # Check if phrase exists in candidate_str
-                cand_syns = results[candidate_str].get("synonyms", [])
+                cand_syns = results[candidate_str].get("phrases", [])
                 # Verify if phrase -> candidate_str already exists
                 already = any(c["new_phrase"] == phrase for c in cand_syns)
                 if not already:
@@ -157,12 +157,12 @@ def ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD):
                         "candidate_word": syn_obj["masked_word"],  # swapped
                         "similarity_for_masked_word": syn_obj["similarity_for_masked_word"]
                     })
-                    results[candidate_str]["synonyms"] = cand_syns
+                    results[candidate_str]["phrases"] = cand_syns
 
-    # Remove entries from the dictionary where synonyms list is empty
+    # Remove entries from the dictionary where list is empty
     to_remove = []
     for phrase in results:
-        if not results[phrase]["synonyms"]:
+        if not results[phrase]["phrases"]:
             to_remove.append(phrase)
 
     for phrase in to_remove:
@@ -187,28 +187,27 @@ def main():
     results = {}
 
     # For each row in df_filtered (containing key, is_term_manual, etc.)
-    # Find synonyms
     for idx, row in df_filtered.iterrows():
         phrase_key = str(row['key']).strip()
         if phrase_key not in big_dict:
             continue
         is_term, prob = big_dict[phrase_key]
 
-        synonyms_found = find_synonyms_in_set(phrase_key, phrases_set, top_n=TOP_N)
+        phrases_found = find_phrases_in_set(phrase_key, phrases_set, top_n=TOP_N)
 
-        if not synonyms_found:
+        if not phrases_found:
             # If no candidates are found, we still include the item in results
-            # but it may be removed after ensure_mutual_synonyms_and_cleanup
+            # but it may be removed after ensure_mutual_phrases_and_cleanup
             results[phrase_key] = {
                 "key": phrase_key,
                 "is_term_manual": is_term,
                 "oof_prob_class": prob,
-                "synonyms": []
+                "phrases": []
             }
         else:
             # For each new_phrase, find is_term, prob
             syn_list = []
-            for syn_item in synonyms_found:
+            for syn_item in phrases_found:
                 new_ph = syn_item["new_phrase"]
                 masked_w = syn_item["masked_word"]
                 cand_w = syn_item["candidate_word"]
@@ -229,19 +228,19 @@ def main():
                 "key": phrase_key,
                 "is_term_manual": is_term,
                 "oof_prob_class": prob,
-                "synonyms": syn_list
+                "phrases": syn_list
             }
 
     # Post-processing: remove stop_word, ensure mutual completion, remove empty entries
-    results = ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD)
+    results = ensure_mutual_phrases_and_cleanup(results, stop_word=STOP_WORD)
 
     # Save final JSON
     if not results:
-        print("[INFO] No items with synonyms found. The result is empty.")
+        print("[INFO] No items found. The result is empty.")
     else:
-        print(f"[INFO] Found {len(results)} phrases with synonyms after cleanup.")
+        print(f"[INFO] Found {len(results)} phrases after cleanup.")
 
-    print(f"[INFO] Saving synonyms to {PATH_OUT_JSON}")
+    print(f"[INFO] Saving to {PATH_OUT_JSON}")
     with open(PATH_OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
 
