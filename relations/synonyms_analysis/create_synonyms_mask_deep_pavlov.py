@@ -7,7 +7,7 @@ import pymorphy2
 
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from core.functions import load_fasttext_model, get_word_embedding, cosine_similarity
-from core.paths import PATH_FILTERED_DATA, PATH_DATA_WITH_OFF, SYNONYMS_DIR, PATH_FASTTEXT
+from core.paths import PATH_FILTERED_DATA, SYNONYMS_DIR, PATH_FASTTEXT
 
 # Patch pymorphy2 for compatibility with Python 3.12+
 if not hasattr(inspect, "getargspec"):
@@ -148,17 +148,16 @@ def ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD):
                 # Check if phrase exists in candidate_str
                 cand_syns = results[candidate_str].get("synonyms", [])
                 # Verify if phrase -> candidate_str already exists
-                already = any( c["new_phrase"] == phrase for c in cand_syns )
+                already = any(c["new_phrase"] == phrase for c in cand_syns)
                 if not already:
                     # Add entry
                     cand_syns.append({
                         "new_phrase": phrase,
-                        "masked_word": syn_obj["candidate_word"],  # условно
+                        "masked_word": syn_obj["candidate_word"],
                         "candidate_word": syn_obj["masked_word"],  # swapped
                         "similarity_for_masked_word": syn_obj["similarity_for_masked_word"]
                     })
                     results[candidate_str]["synonyms"] = cand_syns
-
 
     # Remove entries from the dictionary where synonyms list is empty
     to_remove = []
@@ -175,24 +174,16 @@ def main():
     print("[INFO] Reading filtered data from:", PATH_FILTERED_DATA)
     df_filtered = pd.read_excel(PATH_FILTERED_DATA)
 
-    print("[INFO] Reading big data from:", PATH_DATA_WITH_OFF)
-    df_big = pd.read_excel(PATH_DATA_WITH_OFF)
-
-    # Ensure df_big contains the required columns: 'key', 'is_term_manual', 'oof_prob_class'
-    required_cols = {'key', 'is_term_manual', 'oof_prob_class'}
-    if not required_cols.issubset(df_big.columns):
-        print(f"[ERROR] df_big missing required columns: {required_cols - set(df_big.columns)}")
-        return
-
-    # Convert df_big into a dictionary { phrase -> (is_term_manual, oof_prob_class) }
+    # Convert df_filtered into a dictionary { phrase -> (is_term_manual, oof_prob_class) }
     # and also into a set for fast lookup
     big_dict = {}
-    for idx, row in df_big.iterrows():
+    for idx, row in df_filtered.iterrows():
         phrase_key = str(row['key']).strip()
-        is_term = int(row['is_term_manual'])  # assuming 0/1
-        prob = float(row['oof_prob_class'])
+        is_term = int(row.get('is_term_manual', 0))
+        prob = float(row.get('oof_prob_class', 0.0))
         big_dict[phrase_key] = (is_term, prob)
     phrases_set = set(big_dict.keys())
+
     results = {}
 
     # For each row in df_filtered (containing key, is_term_manual, etc.)
@@ -240,7 +231,6 @@ def main():
                 "oof_prob_class": prob,
                 "synonyms": syn_list
             }
-
 
     # Post-processing: remove stop_word, ensure mutual completion, remove empty entries
     results = ensure_mutual_synonyms_and_cleanup(results, stop_word=STOP_WORD)
