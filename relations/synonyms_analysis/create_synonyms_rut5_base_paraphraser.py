@@ -7,7 +7,7 @@ import pandas as pd
 import pymorphy2
 from collections import Counter
 from transformers import T5ForConditionalGeneration, T5Tokenizer
-from core.paths import PATH_FILTERED_DATA, PATH_DATA_WITH_OFF, SYNONYMS_DIR
+from core.paths import PATH_FILTERED_DATA, SYNONYMS_DIR
 
 # Patch pymorphy2 for compatibility with Python 3.12+
 if not hasattr(inspect, "getargspec"):
@@ -130,22 +130,13 @@ def main():
     print("[INFO] Reading filtered data from:", PATH_FILTERED_DATA)
     df_filtered = pd.read_excel(PATH_FILTERED_DATA)
 
-    print("[INFO] Reading big data from:", PATH_DATA_WITH_OFF)
-    df_big = pd.read_excel(PATH_DATA_WITH_OFF)
-
-    # Check if required columns exist
-    required_cols = {'key', 'is_term_manual', 'oof_prob_class'}
-    if not required_cols.issubset(df_big.columns):
-        print(f"[ERROR] df_big missing columns: {required_cols - set(df_big.columns)}")
-        return
-
     # Dictionary for quick access: phrase -> (is_term_manual, oof_prob_class)
-    big_dict = {}
-    for idx, row in df_big.iterrows():
-        ph = str(row['key']).strip()
-        is_term = int(row['is_term_manual'])
-        prob = float(row['oof_prob_class'])
-        big_dict[ph] = (is_term, prob)
+    dict = {}
+    for idx, row in df_filtered.iterrows():
+        ph = str(row.get('key', '')).strip()
+        is_term = int(row.get('is_term_manual', 0))
+        prob = float(row.get('oof_prob_class', 0.0))
+        dict[ph] = (is_term, prob)
 
     results = {}
 
@@ -154,10 +145,10 @@ def main():
         original_phrase = str(row.get('key', '')).strip()
         if not original_phrase:
             continue
-        if original_phrase not in big_dict:
+        if original_phrase not in dict:
             continue
 
-        is_term, prob = big_dict[original_phrase]
+        is_term, prob = dict[original_phrase]
 
         all_paraphrases = generate_paraphrases(original_phrase, model, tokenizer)
 
@@ -179,8 +170,8 @@ def main():
 
         found_in_data = []
         for par in cleaned_phrases:
-            if par in big_dict:
-                st, sp = big_dict[par]
+            if par in dict:
+                st, sp = dict[par]
                 found_in_data.append({
                     "key": par,
                     "is_term_manual": st,
@@ -199,9 +190,9 @@ def main():
         }
 
     if not results:
-        print("[INFO] No paraphrases found in data_with_oof.")
+        print("[INFO] No paraphrases found in filtered data.")
     else:
-        print(f"[INFO] {len(results)} phrases had paraphrases found in data_with_oof.")
+        print(f"[INFO] {len(results)} phrases had paraphrases found in filtered data.")
 
     print(f"[INFO] Saving final JSON to {PATH_OUT_JSON}")
     with open(PATH_OUT_JSON, 'w', encoding='utf-8') as f:
