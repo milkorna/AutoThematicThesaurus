@@ -17,7 +17,7 @@ if not hasattr(inspect, "getargspec"):
     inspect.getargspec = getargspec_patched
 
 # Search parameters
-PATH_OUT_JSON = SYNONYMS_DIR / "synonyms_rut5_base_paraphraser.json"
+PATH_OUT_JSON = SYNONYMS_DIR / "rut5_base_paraphraser.json"
 MODEL_NAME = "cointegrated/rut5-base-paraphraser"
 NUM_BEAMS = 20                # Number of beams for search
 NUM_RETURN_SEQUENCES = 20     # Maximum number of paraphrases
