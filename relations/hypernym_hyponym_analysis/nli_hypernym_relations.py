@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 from transformers import pipeline
-from core.paths import PATH_SENTENCES_WITH_PHRASES, PATH_DATA_WITH_OFF, PATH_HYPERNUM_NLI
+from core.paths import PATH_SENTENCES_WITH_PHRASES, PATH_FILTERED_DATA, PATH_HYPERNUM_NLI
 
 MIN_OOF_PROB = 0.1   # если (is_term_manual=0) и (oof_prob < MIN_OOF_PROB) — отбрасываем
 REQUIRED_IS_TERM = None  # если =1, тогда берём только is_term_manual=1
@@ -168,7 +168,7 @@ def check_hypernym_nli(hyper: str, hypo: str, context: str = None):
     }
 
 def main():
-    key_mapping = load_key_mapping(PATH_DATA_WITH_OFF)
+    key_mapping = load_key_mapping(PATH_FILTERED_DATA)
 
     if not os.path.exists(PATH_SENTENCES_WITH_PHRASES):
         raise FileNotFoundError(f"File not found: {PATH_SENTENCES_WITH_PHRASES}")
@@ -181,6 +181,8 @@ def main():
 
     for sentence_item in data.get("sentences", []):
         keys_in_sent = sentence_item.get("keys", [])
+        raw_keys = sentence_item.get("keys", [])
+        keys_in_sent = [k for k in raw_keys if k.lower() in key_mapping]
         if len(keys_in_sent) < 2:
             continue
 
