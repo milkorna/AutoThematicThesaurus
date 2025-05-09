@@ -185,5 +185,5 @@ def generate_context_pages(excel_path: str, output_folder: str, relations_json: 
 if __name__ == "__main__":
     excel_path = "data.xlsx"
     output_folder = "pages"
-    relations_json = "/home/milkorna/Documents/AutoThematicThesaurus/relations/marked_relations_manual.json"
+    relations_json = "relations.json"
     generate_context_pages(excel_path, output_folder, relations_json)
