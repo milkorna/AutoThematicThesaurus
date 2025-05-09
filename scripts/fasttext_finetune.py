@@ -2,6 +2,8 @@ import json
 import fasttext
 import tempfile
 
+from core.paths import CORPUS_DIR, PATH_FASTTEXT
+
 def prepare_documents_from_json(json_path):
     """
     Groups sentences by 'docNum' from a JSON file and combines them into documents.
@@ -51,9 +53,8 @@ def train_fasttext_on_documents(documents, model_path, model_type="skipgram", lr
     print(f"Model saved at: {model_path}")
 
 # Paths
-json_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/nlp_corpus/sentences.json"
-output_model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
+json_path = CORPUS_DIR / "sentences.json"
 
 # Execution steps
 documents = prepare_documents_from_json(json_path)
-train_fasttext_on_documents(documents, output_model_path)
+train_fasttext_on_documents(documents, PATH_FASTTEXT)

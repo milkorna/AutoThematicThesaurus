@@ -7,6 +7,8 @@ import numpy as np
 import inspect
 from gensim.models import fasttext
 from ruwordnet import RuWordNet
+from core.functions import load_fasttext_model, cosine_similarity, get_word_embedding
+from core.paths import PATH_FASTTEXT, CORPUS_DIR, PATH_FILTERED_DATA, PATH_HEAD_NOUNS, PROJECT_ROOT
 
 # Natasha and dependencies
 from natasha import (
@@ -26,11 +28,8 @@ if not hasattr(inspect, "getargspec"):
     inspect.getargspec = getargspec_patched
 
 # File paths and model locations
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-PATH_WIKIWORDNET = "/home/milkorna/Documents/AutoThematicThesaurus/wikiwordnet.db"
-PATH_FASTTEXT = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-PATH_HEADS_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/head_nouns.json"
-CORPUS_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/nlp_corpus/filtered_corpus.json"
+PATH_WIKIWORDNET = PROJECT_ROOT / "wikiwordnet.db"
+CORPUS_PATH = CORPUS_DIR / "filtered_corpus.json"
 
 # Column name for the original phrase
 COLUMN_PHRASE = "key"
@@ -389,12 +388,6 @@ def combine_relations(*relation_dicts):
         "synonyms": sorted(list(combined["synonyms"]))
     }
 
-def load_fasttext_model(model_path):
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    ft_model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return ft_model
-
 def get_pos_tag(word):
     parsed_word = morph.parse(word)[0]
     return parsed_word.tag.POS
@@ -404,18 +397,6 @@ def is_noun(word):
         if p.tag.POS == 'NOUN':
             return True
     return False
-
-def get_word_embedding(word, ft_model):
-    if word in ft_model.wv.key_to_index:
-        return ft_model.wv[word]
-    else:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-def cosine_similarity(vec1, vec2):
-    denom = (np.linalg.norm(vec1) * np.linalg.norm(vec2))
-    if denom == 0.0:
-        return 0.0
-    return float(np.dot(vec1, vec2) / denom)
 
 def compute_similarity_for_relations(head_noun, related_words, ft_model, min_sim=0.5, noun_only=True):
     head_vec = get_word_embedding(head_noun, ft_model)
@@ -476,10 +457,10 @@ def compute_similarity_for_relations(head_noun, related_words, ft_model, min_sim
     return out
 
 def main():
-    if not os.path.exists(PATH_FILTERED):
+    if not os.path.exists(PATH_FILTERED_DATA):
         print("[ERROR] No filtered_data.xlsx found.")
         raise
-    df = pd.read_excel(PATH_FILTERED)
+    df = pd.read_excel(PATH_FILTERED_DATA)
     if COLUMN_PHRASE not in df.columns:
         print(f"[ERROR] Column '{COLUMN_PHRASE}' not found in DataFrame.")
         raise
@@ -624,10 +605,10 @@ def main():
             head_data[head][rel] = sorted(candidates, key=lambda x: x["similarity"], reverse=True)
         head_data[head]["related_terms"] = sorted(list(head_data[head]["related_terms"]))
 
-    with open(PATH_HEADS_JSON, "w", encoding="utf-8") as f:
+    with open(PATH_HEAD_NOUNS, "w", encoding="utf-8") as f:
         json.dump(head_data, f, ensure_ascii=False, indent=4)
 
-    print("[INFO] Head nouns data saved to:", PATH_HEADS_JSON)
+    print("[INFO] Head nouns data saved to:", PATH_HEAD_NOUNS)
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from gensim.models import fasttext
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
@@ -17,79 +16,16 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
-import os
 
-def load_fasttext_model(model_path):
-    """
-    Loads a FastText model using gensim.
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return model
-
-def get_phrase_embedding(phrase, ft_model):
-    """
-    Returns the average embedding of the words in a phrase using the provided FastText model.
-    Skips unknown words. Returns a zero vector if the phrase is empty or no words are known.
-    """
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-    words = phrase.split()
-    vectors = []
-    for w in words:
-        if w in ft_model.wv.key_to_index:
-            vectors.append(ft_model.wv[w])
-    if len(vectors) == 0:
-        # If no known words, return a zero-vector of the same dimension
-        return np.zeros(ft_model.wv.vector_size, dtype=np.float32)
-    else:
-        return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """
-    Returns a weighted average embedding for a context string using FastText.
-    Each part of the context is weighted by the number of words it contains.
-    """
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-    context_parts = context_str.split('|')
-    vectors = []
-    weights = []
-
-    for part in context_parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    else:
-        weights = np.array(weights, dtype=np.float32)
-        weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
-        return weighted_sum / weights.sum()
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.functions import cosine_similarity
+from core.paths import PATH_DATA, PATH_FASTTEXT
 
 def vector_norm(vec):
     """
     Computes the Euclidean norm (length) of a vector.
     """
     return np.linalg.norm(vec)
-
-def cosine_similarity(vec1, vec2):
-    """
-    Computes the cosine similarity between two vectors.
-    Returns 0.0 if one of the vectors is zero to avoid division by zero.
-    """
-    norm1 = np.linalg.norm(vec1)
-    norm2 = np.linalg.norm(vec2)
-    if norm1 == 0.0 or norm2 == 0.0:
-        return 0.0
-    return float(np.dot(vec1, vec2) / (norm1 * norm2))
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """
@@ -133,7 +69,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         # Embedding features: key and context
         phrase_key = str(row['key']) if not pd.isna(row['key']) else ""
-        emb_key = get_phrase_embedding(phrase_key, ft_model)
+        emb_key = get_phrase_average_embedding(phrase_key, ft_model)
 
         context_str = str(row['context']) if not pd.isna(row['context']) else ""
         emb_context_aggregated = get_weighted_context_embedding(context_str, ft_model)
@@ -171,12 +107,12 @@ def build_stacking_classifier(input_dim):
     early_stopping=True,
     validation_fraction=0.1,
     random_state=42
-)
+    )
 
     base_estimators = [
         ('rf', RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced')),
         ('gb', GradientBoostingClassifier(random_state=42)),
-        ('mlp', mlp_clf)  # <-- «Нейронка» от sklearn
+        ('mlp', mlp_clf)
     ]
 
     meta_learner = LogisticRegression(random_state=42)
@@ -234,27 +170,11 @@ def main():
     """
     Main script execution for data preprocessing, model training, and evaluation.
     """
-    # File paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-
     print("[INFO] Starting the script...")
-
-    # Check dataset file
-    print(f"[INFO] Checking dataset file: {excel_path}")
-    if not os.path.exists(excel_path):
-        print(f"[ERROR] Dataset file not found: {excel_path}")
-        return
-
-    # Check fastText model file
-    print(f"[INFO] Checking fastText model file: {model_path}")
-    if not os.path.exists(model_path):
-        print(f"[ERROR] fastText model file not found: {model_path}")
-        return
 
     # Load dataset
     print("[INFO] Loading dataset...")
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     print(f"[INFO] Dataset loaded. Shape: {df.shape}")
 
     # Split data into labeled and unlabeled
@@ -271,7 +191,7 @@ def main():
 
     # Load fastText model
     print("[INFO] Loading fastText model...")
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Prepare LabelEncoders for categorical columns
     cat_columns = ['model_name', 'label']

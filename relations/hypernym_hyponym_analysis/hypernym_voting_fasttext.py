@@ -6,8 +6,10 @@ import numpy as np
 from gensim.models import fasttext
 from numpy.linalg import norm
 
-FILTERED_DATA_XLSX = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-PATH_FASTTEXT = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
+from core.functions import load_fasttext_model, get_phrase_average_embedding, cosine_similarity
+from core.paths import PROJECT_ROOT, PATH_FASTTEXT
+
+FILTERED_DATA_XLSX = PROJECT_ROOT / "filtered_data.xlsx"
 
 # Output JSON file name (will be saved in the current directory)
 OUTPUT_JSON_FILENAME = "hypernym_voting_results.json"
@@ -35,51 +37,6 @@ def load_taxonomy(xlsx_path):
         }
     return taxonomy, set(taxonomy.keys())
 
-
-def load_fasttext_model(model_path):
-    """
-    Loads the fastText model from the specified path.
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    ft_model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return ft_model
-
-
-def get_word_embedding(word, ft_model):
-    """
-    Retrieves the word embedding from the fastText model.
-    If the word is not found, returns a zero vector.
-    """
-    if word in ft_model.wv.key_to_index:
-        return ft_model.wv[word]
-    else:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-
-
-def get_phrase_embedding(phrase, ft_model):
-    """
-    Computes an embedding for a phrase as the mean vector of its word embeddings.
-    Ignores words that are not found in the model. If no words are found, returns None.
-    The resulting vector (if not None) is L2-normalized.
-    """
-    words = phrase.split()
-    vectors = []
-    for w in words:
-        vec = get_word_embedding(w, ft_model)
-        if np.any(vec):
-            vectors.append(vec)
-
-    if not vectors:
-        return None
-
-    vec_avg = np.mean(vectors, axis=0)
-    norm_vec = norm(vec_avg)
-    if norm_vec == 0:
-        return None
-    return vec_avg / norm_vec
-
-
 def precompute_taxonomy_embeddings(taxonomy, ft_model):
     """
     Computes embeddings for all phrases in the taxonomy.
@@ -87,18 +44,10 @@ def precompute_taxonomy_embeddings(taxonomy, ft_model):
     """
     embeddings = {}
     for phrase in taxonomy:
-        emb = get_phrase_embedding(phrase, ft_model)
+        emb = get_phrase_average_embedding(phrase, ft_model)
         if emb is not None:
             embeddings[phrase] = emb
     return embeddings
-
-
-def cosine_similarity(vec1, vec2):
-    """
-    Computes cosine similarity between two vectors.
-    """
-    return float(np.dot(vec1, vec2))
-
 
 def get_nearest_neighbors(query_emb, taxonomy_embeddings, top_n=NEIGHBORS_TOP_N):
     """
@@ -111,7 +60,6 @@ def get_nearest_neighbors(query_emb, taxonomy_embeddings, top_n=NEIGHBORS_TOP_N)
         similarities.append((phrase, sim))
     similarities.sort(key=lambda x: x[1], reverse=True)
     return similarities[:top_n]
-
 
 def generate_candidate_hypernyms(phrase, taxonomy_set):
     """
@@ -144,7 +92,6 @@ def vote_for_hypernyms(neighbor_phrase, neighbor_sim, taxonomy_set):
             votes[cand2] = votes.get(cand2, 0) + neighbor_sim * SECOND_ORDER_WEIGHT
     return votes
 
-
 def hypernym_voting(query_phrase, taxonomy, taxonomy_embeddings, ft_model):
     """
     Implements the hypernym voting algorithm:
@@ -155,7 +102,7 @@ def hypernym_voting(query_phrase, taxonomy, taxonomy_embeddings, ft_model):
       - Candidates are filtered based on is_term_manual and oof_prob_class threshold.
       - Returns a ranked list of top-10 hypernyms.
     """
-    query_emb = get_phrase_embedding(query_phrase, ft_model)
+    query_emb = get_phrase_average_embedding(query_phrase, ft_model)
     if query_emb is None:
         return []
 

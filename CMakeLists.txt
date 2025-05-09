@@ -19,6 +19,9 @@ set(COMMON_OPTIMIZATION_FLAGS "-ffast-math -march=native -fno-omit-frame-pointer
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 ${COMMON_OPTIMIZATION_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_OPTIMIZATION_FLAGS}")
 
+# Add Google Test
+find_package(GTest REQUIRED)
+
 # Ensure compatibility with modern CMake policies
 if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
@@ -97,11 +100,11 @@ endif()
 add_executable(AutoThematicThesaurus src/main.cpp ${SOURCE_FILES})
 target_compile_options(AutoThematicThesaurus PRIVATE -Wno-unused -Werror)
 
+add_subdirectory(src/tests)
+
 # Link Boost libraries
 target_link_libraries(AutoThematicThesaurus PUBLIC Boost::filesystem Boost::program_options)
 
-
-#!!!
 target_include_directories(AutoThematicThesaurus PRIVATE ${PROJECT_SOURCE_DIR}/src)
 add_compile_options(-w)
 

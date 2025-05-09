@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from core.paths import PATH_DATA_WITH_OFF, PROJECT_ROOT
 
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
@@ -10,17 +11,16 @@ from sklearn.metrics import (
 
 def main():
     # Define input and output file paths
-    in_path = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-    out_roc_path = "/home/milkorna/Documents/AutoThematicThesaurus/roc_curve_oof.png"
-    out_pr_path = "/home/milkorna/Documents/AutoThematicThesaurus/pr_curve_oof.png"
+    out_roc_path = PROJECT_ROOT / "roc_curve_oof.png"
+    out_pr_path = PROJECT_ROOT / "pr_curve_oof.png"
 
     # Check if the input file exists
-    if not os.path.exists(in_path):
-        print(f"[ERROR] No file found: {in_path}")
+    if not os.path.exists(PATH_DATA_WITH_OFF):
+        print(f"[ERROR] No file found: {PATH_DATA_WITH_OFF}")
         return
 
     # Load the data from the Excel file
-    df = pd.read_excel(in_path)
+    df = pd.read_excel(PATH_DATA_WITH_OFF)
     print("[INFO] Loaded data_with_oof. Shape:", df.shape)
 
     # Ensure required columns are present

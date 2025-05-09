@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -16,8 +17,7 @@ Key tasks include:
 
 def main():
     # Load data from an Excel file
-    dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-    df = pd.read_excel(dataset_path)
+    df = pd.read_excel(PATH_DATA)
 
     # Define the list of numeric features to analyze
     # Adjust the list to include or exclude specific columns as needed.

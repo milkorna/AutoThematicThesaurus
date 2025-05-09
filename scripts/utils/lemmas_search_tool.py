@@ -1,7 +1,5 @@
 import json
-
-# Specify the path to your file
-file_path = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results_no_sw.json'
+from core.paths import PATH_TOTAL_RESULTS
 
 # Function to extract phrases with a specific lemma
 def extract_phrases_with_lemma(lemma_to_find, file_path):
@@ -24,8 +22,8 @@ def extract_phrases_with_lemma(lemma_to_find, file_path):
     return matching_phrases
 
 # Input for the lemma to search
-lemma_to_find = input("Enter lemma to search for: ")  # Enter lemma for search, e.g., "model"
-phrases = extract_phrases_with_lemma(lemma_to_find, file_path)
+lemma_to_find = input("Enter lemma to search for: ")
+phrases = extract_phrases_with_lemma(lemma_to_find, PATH_TOTAL_RESULTS)
 
 # Print all found phrases
 print(f"Phrases with lemma '{lemma_to_find}':")

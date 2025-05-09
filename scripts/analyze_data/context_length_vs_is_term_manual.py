@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -15,8 +16,7 @@ This analysis provides insights into whether the length of the context has any i
 """
 
 # Load the dataset
-dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-df = pd.read_excel(dataset_path)
+df = pd.read_excel(PATH_DATA)
 
 # Add new columns for context length analysis
 # Context length in characters

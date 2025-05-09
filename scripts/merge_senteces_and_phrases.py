@@ -2,10 +2,7 @@ import os
 import json
 import pandas as pd
 
-# File paths
-EXCEL_PATH = r"/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-SENTENCES_JSON_PATH = r"/home/milkorna/Documents/AutoThematicThesaurus/my_data/nlp_corpus/sentences.json"
-OUTPUT_JSON_PATH = r"/home/milkorna/Documents/AutoThematicThesaurus/my_data/enriched_sentences.json"
+from core.paths import PATH_DATA, PATH_SENTENCES, PATH_SENTENCES_WITH_PHRASES
 
 def build_sentence_key_mapping(excel_path):
     """
@@ -48,23 +45,23 @@ def enrich_sentences(sentences_json_path, sentence_to_keys):
 
 def main():
     # Check for file existence
-    if not os.path.exists(EXCEL_PATH):
-        print(f"[ERROR] Excel file {EXCEL_PATH} not found.")
+    if not os.path.exists(PATH_DATA):
+        print(f"[ERROR] Excel file {PATH_DATA} not found.")
         return
-    if not os.path.exists(SENTENCES_JSON_PATH):
-        print(f"[ERROR] JSON file {SENTENCES_JSON_PATH} not found.")
+    if not os.path.exists(PATH_SENTENCES):
+        print(f"[ERROR] JSON file {PATH_SENTENCES} not found.")
         return
 
     # Build a mapping: sentence -> list of key phrases
-    sentence_to_keys = build_sentence_key_mapping(EXCEL_PATH)
+    sentence_to_keys = build_sentence_key_mapping(PATH_DATA)
     # Enrich sentences with key phrases
-    enriched_data = enrich_sentences(SENTENCES_JSON_PATH, sentence_to_keys)
+    enriched_data = enrich_sentences(PATH_SENTENCES, sentence_to_keys)
 
     # Save the result
-    with open(OUTPUT_JSON_PATH, "w", encoding="utf-8") as f:
+    with open(PATH_SENTENCES_WITH_PHRASES, "w", encoding="utf-8") as f:
         json.dump(enriched_data, f, ensure_ascii=False, indent=4)
 
-    print(f"Enriched sentences saved to {OUTPUT_JSON_PATH}")
+    print(f"Enriched sentences saved to {PATH_SENTENCES_WITH_PHRASES}")
 
 if __name__ == "__main__":
     main()

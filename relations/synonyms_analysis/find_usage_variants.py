@@ -1,10 +1,10 @@
 import pandas as pd
 import json
 from concurrent.futures import ProcessPoolExecutor
+from core.paths import PATH_FILTERED_DATA
 
 # Path to the source Excel file
-excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-df = pd.read_excel(excel_path)
+df = pd.read_excel(PATH_FILTERED_DATA)
 
 # Select base phrases (phrase_size == 2)
 df_two_words = df[df['phrase_size'] == 2]

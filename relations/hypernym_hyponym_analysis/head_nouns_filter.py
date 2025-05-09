@@ -1,10 +1,9 @@
 import json
 import pandas as pd
 import os
+from core.paths import PATH_HEAD_NOUNS, PATH_FILTERED_DATA, HYPERNUM_HYPONYMS_DIR
 
-HEAD_NOUNS_JSON_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/head_nouns.json"
-FILTERED_DATA_XLSX = "/home/milkorna/Documents/AutoThematicThesaurus/filtered_data.xlsx"
-OUTPUT_JSON_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/head_nouns_filtered.json"
+OUTPUT_JSON_PATH = HYPERNUM_HYPONYMS_DIR / "head_nouns_filtered.json"
 
 def load_phrases(file_path):
     df = pd.read_excel(file_path)
@@ -36,16 +35,16 @@ def filter_head_nouns(head_nouns, valid_words):
     return head_nouns
 
 def main():
-    if not os.path.exists(HEAD_NOUNS_JSON_PATH):
-        print(f"[ERROR] File {HEAD_NOUNS_JSON_PATH} not found.")
+    if not os.path.exists(PATH_HEAD_NOUNS):
+        print(f"[ERROR] File {PATH_HEAD_NOUNS} not found.")
         return
-    with open(HEAD_NOUNS_JSON_PATH, "r", encoding="utf-8") as f:
+    with open(PATH_HEAD_NOUNS, "r", encoding="utf-8") as f:
         head_nouns = json.load(f)
 
-    if not os.path.exists(FILTERED_DATA_XLSX):
-        print(f"[ERROR] File {FILTERED_DATA_XLSX} not found.")
+    if not os.path.exists(PATH_FILTERED_DATA):
+        print(f"[ERROR] File {PATH_FILTERED_DATA} not found.")
         return
-    phrases = load_phrases(FILTERED_DATA_XLSX)
+    phrases = load_phrases(PATH_FILTERED_DATA)
     valid_words = get_token_set(phrases)
     print(f"[INFO] Collected {len(valid_words)} unique words from filtered_data.xlsx.")
 

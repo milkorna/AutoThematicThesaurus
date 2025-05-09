@@ -1,11 +1,10 @@
 import os
 import json
 import pandas as pd
+from core.paths import PATH_DATA_WITH_OFF, PATH_SENTENCES_WITH_PHRASES, HYPERNUM_HYPONYMS_DIR
 
-# File paths
-FILTERED_DATA_XLSX = r"/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-ENRICHED_SENTENCES_PATH = r"/home/milkorna/Documents/AutoThematicThesaurus/my_data/enriched_sentences.json"
-OUTPUT_JSON_PATH = r"/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/extract_relations_by_triggers.json"
+# File path
+OUTPUT_JSON_PATH = HYPERNUM_HYPONYMS_DIR / "extract_relations_by_triggers.json"
 
 # List of triggers (lowercase)
 TRIGGERS = ["это метод", "это алгоритм", "это процесс", "это техника", "это концепция", "относится к классу"]
@@ -198,18 +197,18 @@ def main():
       5. Save results to an output JSON file.
     """
      # Check for file existence
-    if not os.path.exists(FILTERED_DATA_XLSX):
-        print(f"[ERROR] File {FILTERED_DATA_XLSX} not found.")
+    if not os.path.exists(PATH_DATA_WITH_OFF):
+        print(f"[ERROR] File {PATH_DATA_WITH_OFF} not found.")
         return
-    if not os.path.exists(ENRICHED_SENTENCES_PATH):
-        print(f"[ERROR] File {ENRICHED_SENTENCES_PATH} not found.")
+    if not os.path.exists(PATH_SENTENCES_WITH_PHRASES):
+        print(f"[ERROR] File {PATH_SENTENCES_WITH_PHRASES} not found.")
         return
 
     # Load key mappings from Excel file
-    key_mapping = load_key_mapping(FILTERED_DATA_XLSX)
+    key_mapping = load_key_mapping(PATH_DATA_WITH_OFF)
 
     # Load enriched sentences from JSON file
-    with open(ENRICHED_SENTENCES_PATH, "r", encoding="utf-8") as f:
+    with open(PATH_SENTENCES_WITH_PHRASES, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     sentences = data.get("sentences", [])

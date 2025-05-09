@@ -1,10 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from core.paths import PATH_DATA
 
 # Load the dataset
-dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-df = pd.read_excel(dataset_path)
+df = pd.read_excel(PATH_DATA)
 
 # Ensure the required column exists in the dataset
 if 'is_term_manual' not in df.columns:

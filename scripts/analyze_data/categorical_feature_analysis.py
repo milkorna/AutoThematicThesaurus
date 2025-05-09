@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -10,8 +11,7 @@ The visualizations created here can guide data preprocessing and feature enginee
 """
 
 # Load the dataset
-dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-df = pd.read_excel(dataset_path)
+df = pd.read_excel(PATH_DATA)
 
 # Define the directory for saving plots
 output_dir = os.getcwd()

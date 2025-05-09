@@ -1,11 +1,9 @@
 import json
 from collections import Counter
-
-# Specify the path to your file
-file_path = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results_no_sw.json'
+from core.paths import PATH_TOTAL_RESULTS
 
 # Load data from the JSON file
-with open(file_path, 'r', encoding='utf-8') as f:
+with open(PATH_TOTAL_RESULTS, 'r', encoding='utf-8') as f:
     phrases_data = json.load(f)
 
 # Counter for storing lemma usage frequencies

@@ -1,23 +1,22 @@
 import pandas as pd
 import os
 
-def merge_is_term_manual(
-    data_path="/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx",
-    candidates_path="/home/milkorna/Documents/AutoThematicThesaurus/active_learning_candidates.xlsx",
-    output_path="/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx",
-    key_column="key"
-):
+from core.paths import PATH_DATA, PROJECT_ROOT
+
+def merge_is_term_manual():
     """
     Reads 'data.xlsx' and 'active_learning_candidates.xlsx',
     merges 'is_term_manual' back into the main dataset using 'key' as a unique identifier.
     Saves result to 'data_merged.xlsx'.
     """
+    candidates_path = PROJECT_ROOT / "active_learning_candidates.xlsx",
+    key_column="key"
 
     print("[INFO] Loading main dataset...")
-    if not os.path.exists(data_path):
-        print(f"[ERROR] data file not found: {data_path}")
+    if not os.path.exists(PATH_DATA):
+        print(f"[ERROR] data file not found: {PATH_DATA}")
         return
-    df_data = pd.read_excel(data_path)
+    df_data = pd.read_excel(PATH_DATA)
     print(f"[INFO] Loaded data. Shape: {df_data.shape}")
 
     print("[INFO] Loading active learning candidates dataset...")
@@ -56,8 +55,8 @@ def merge_is_term_manual(
     df_merged.loc[mask, "is_term_manual"] = df_merged.loc[mask, "updated_is_term_manual"]
     df_merged.drop(columns=["updated_is_term_manual"], inplace=True)
 
-    print(f"[INFO] Saving merged results to: {output_path}")
-    df_merged.to_excel(output_path, index=False)
+    print(f"[INFO] Saving merged results to: {PATH_DATA}")
+    df_merged.to_excel(PATH_DATA, index=False)
     print("[INFO] Done.")
 
 if __name__ == "__main__":

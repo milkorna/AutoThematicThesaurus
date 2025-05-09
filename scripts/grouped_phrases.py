@@ -2,9 +2,10 @@ import pandas as pd
 import json
 from collections import defaultdict
 
+from core.paths import PATH_DATA_WITH_OFF
+
 # Load dataset
-file_path = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-df = pd.read_excel(file_path)
+df = pd.read_excel(PATH_DATA_WITH_OFF)
 
 # Create a dictionary to group phrases
 phrase_groups = defaultdict(list)

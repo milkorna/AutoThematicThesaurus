@@ -1,10 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
-from gensim.models import fasttext
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
-
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
@@ -12,49 +10,8 @@ from sklearn.neural_network import MLPClassifier
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
-def load_fasttext_model(model_path):
-    """
-    Loads a FastText model from the specified path.
-    """
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return model
-
-def get_phrase_embedding(phrase, ft_model):
-    """
-    Generates the embedding for a phrase using the FastText model.
-    If the phrase is empty or no words are known, returns a zero vector.
-    """
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    words = phrase.split()
-    vectors = [ft_model.wv[w] for w in words if w in ft_model.wv.key_to_index]
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """
-    Generates a weighted average embedding for a context string using FastText.
-    Each part of the context contributes based on the number of words it contains.
-    """
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    parts = context_str.split('|')
-    vectors, weights = [], []
-    for part in parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    weights = np.array(weights, dtype=np.float32)
-    weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
-    return weighted_sum / weights.sum()
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.paths import PATH_DATA, PATH_DATA_WITH_OFF, PATH_FASTTEXT
 
 def create_feature_matrix(df, ft_model, label_encoders):
     """
@@ -87,7 +44,7 @@ def create_feature_matrix(df, ft_model, label_encoders):
 
         # Generate embeddings for 'key' and 'context'
         key_str = str(row['key']) if not pd.isna(row['key']) else ""
-        emb_key = get_phrase_embedding(key_str, ft_model)
+        emb_key = get_phrase_average_embedding(key_str, ft_model)
 
         context_str = str(row['context']) if not pd.isna(row['context']) else ""
         emb_context = get_weighted_context_embedding(context_str, ft_model)
@@ -174,24 +131,19 @@ def main():
     """
     Main script to preprocess data, build models, and generate out-of-fold predictions.
     """
-    # Define file paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-    out_path = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-
     # Check if input files exist
-    print("[INFO] Checking dataset file:", excel_path)
-    if not os.path.exists(excel_path):
-        print(f"[ERROR] Dataset file not found: {excel_path}")
+    print("[INFO] Checking dataset file:", PATH_DATA)
+    if not os.path.exists(PATH_DATA):
+        print(f"[ERROR] Dataset file not found: {PATH_DATA}")
         return
 
-    print("[INFO] Checking fastText model file:", model_path)
-    if not os.path.exists(model_path):
-        print(f"[ERROR] fastText model file not found: {model_path}")
+    print("[INFO] Checking fastText model file:", PATH_FASTTEXT)
+    if not os.path.exists(PATH_FASTTEXT):
+        print(f"[ERROR] fastText model file not found: {PATH_FASTTEXT}")
         return
 
     # Load dataset
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     print("[INFO] Dataset loaded. Shape:", df.shape)
 
     # Filter out rows with missing labels
@@ -202,7 +154,7 @@ def main():
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
 
     # Load FastText model
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Encode categorical columns using LabelEncoder
     cat_columns = ['model_name', 'label']
@@ -249,8 +201,8 @@ def main():
     df['oof_prob_class1'] = oof_probs
 
     # Save the dataframe with predictions to an Excel file
-    df.to_excel(out_path, index=False)
-    print(f"[INFO] Out-of-fold predictions saved to: {out_path}")
+    df.to_excel(PATH_DATA_WITH_OFF, index=False)
+    print(f"[INFO] Out-of-fold predictions saved to: {PATH_DATA_WITH_OFF}")
     print("[INFO] Done.")
 
 if __name__ == "__main__":

@@ -3,8 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from gensim.models import fasttext
 from sklearn.decomposition import PCA
+from core.paths import PATH_DATA, PATH_FASTTEXT, PROJECT_ROOT
+
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
 
 """
 Script Purpose:
@@ -24,42 +26,6 @@ Key tasks include:
 - Logging detected outliers into separate Excel files for further review.
 """
 
-def load_fasttext_model(model_path):
-    """Loads a FastText model from the specified path."""
-    print(f"[INFO] Loading fastText model from: {model_path}")
-    model = fasttext.load_facebook_model(model_path)
-    print("[INFO] fastText model loaded successfully.")
-    return model
-
-def get_phrase_embedding(phrase, ft_model):
-    """Generates an averaged word embedding for a given phrase."""
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    words = phrase.split()
-    vectors = [ft_model.wv[w] for w in words if w in ft_model.wv.key_to_index]
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """Computes a weighted average embedding for a given context string."""
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    parts = context_str.split('|')
-    vectors, weights = [], []
-    for part in parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-    if len(vectors) == 0:
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    weights = np.array(weights, dtype=np.float32)
-    weighted_sum = np.sum([v * w for v, w in zip(vectors, weights)], axis=0)
-    return weighted_sum / weights.sum()
-
 def detect_outliers(data, column, threshold=1.5):
     """Detects outliers based on the interquartile range (IQR) method."""
     Q1 = data[column].quantile(0.25)
@@ -71,21 +37,19 @@ def detect_outliers(data, column, threshold=1.5):
 
 def main():
     # Define file paths
-    excel_path = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-    model_path = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-    out_dir = "/home/milkorna/Documents/AutoThematicThesaurus/analyze_data/embedding_analysis"
+    out_dir = PROJECT_ROOT / "embedding_analysis"
 
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
     # Load and preprocess dataset (using only labeled rows)
-    df = pd.read_excel(excel_path)
+    df = pd.read_excel(PATH_DATA)
     df = df[~df['is_term_manual'].isna()].copy()
     print("[INFO] Labeled data shape:", df.shape)
     df['is_term_manual'] = df['is_term_manual'].astype(int)
 
     # Load FastText model
-    ft_model = load_fasttext_model(model_path)
+    ft_model = load_fasttext_model(PATH_FASTTEXT)
 
     # Compute key embedding-related features
     key_norm_list = []
@@ -96,7 +60,7 @@ def main():
 
     for idx, row in df.iterrows():
         key_str = str(row['key']) if pd.notna(row['key']) else ""
-        emb_key = get_phrase_embedding(key_str, ft_model)
+        emb_key = get_phrase_average_embedding(key_str, ft_model)
 
         context_str = str(row['context']) if pd.notna(row['context']) else ""
         emb_context = get_weighted_context_embedding(context_str, ft_model)

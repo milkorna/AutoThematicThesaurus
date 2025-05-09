@@ -1,9 +1,10 @@
 import pandas as pd
 from collections import Counter
 
+from core.paths import PATH_DATA
+
 # Load dataset
-data_file = "/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx"
-data = pd.read_excel(data_file)
+data = pd.read_excel(PATH_DATA)
 
 # Split phrases into words
 data['words'] = data['key'].apply(lambda x: set(x.split()))

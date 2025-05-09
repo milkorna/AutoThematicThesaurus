@@ -1,6 +1,9 @@
 import os
 import re
 import chardet
+from core.paths import CORPUS_DIR
+
+input_folder = CORPUS_DIR / 'texts'
 
 def process_links(line):
     # Define a pattern to match URLs
@@ -57,11 +60,11 @@ def read_file(filepath):
         # Detect the file encoding
         result = chardet.detect(raw_data)
         encoding = result['encoding']
-    
+
     # Use 'utf-8' if encoding cannot be determined
     if not encoding:
         encoding = 'utf-8'
-    
+
     # Convert the file to 'utf-8' if it's not already
     if encoding.lower() != 'utf-8':
         raw_data = raw_data.decode(encoding).encode('utf-8')
@@ -85,5 +88,4 @@ def process_files_in_directory(directory):
             with open(filepath, 'w', encoding='utf-8') as file:
                 file.write(processed_text)
 
-directory = '/home/milkorna/Documents/AutoThematicThesaurus/my_data/texts'
-process_files_in_directory(directory)
+process_files_in_directory(input_folder)

@@ -1,11 +1,13 @@
 import os
+from core.paths import CORPUS_DIR
+
+directory_path = CORPUS_DIR / 'results'
 
 def process_json_files(directory):
     for filename in os.listdir(directory):
         if filename.endswith(".txt"):  # Process only files with the .txt extension
             filepath = os.path.join(directory, filename)
 
-            # Ïðîâåðêà, ïóñò ëè ôàéë
             if os.path.getsize(filepath) == 0:
                 os.remove(filepath)
                 print(f"Deleted empty file: {filename}")
@@ -37,6 +39,4 @@ def process_json_files(directory):
 
             print(f"Converted {filename} to {os.path.basename(new_filepath)} and deleted the original .txt file.")
 
-# Specify the path to the directory containing the .txt files
-directory_path = '/home/milkorna/Documents/AutoThematicThesaurus/res'
 process_json_files(directory_path)

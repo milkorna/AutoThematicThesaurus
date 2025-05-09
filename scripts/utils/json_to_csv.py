@@ -2,26 +2,22 @@ import json
 import csv
 import os
 
-def create_csv_from_json(
-    total_results_path="total_results.json",
-    classified_phrases_path="classified_phrases.json",
-    terms_path="terms.json",
-    sentences_path="sentences.json",
-    csv_path="data.csv"
-):
-    print("Starting create_csv_from_json function...")
+from core.paths import PATH_TOTAL_RESULTS, PATH_MNLI_CLASSIFIED_PHRASES, PATH_TERM_CANDIDATES, PATH_SENTENCES
 
-    print(f"Reading data from '{total_results_path}'...")
-    with open(total_results_path, "r", encoding="utf-8") as f:
+def create_csv_from_json():
+    csv_path="data.csv"
+
+    print(f"Reading data from '{PATH_TOTAL_RESULTS}'...")
+    with open(PATH_TOTAL_RESULTS, "r", encoding="utf-8") as f:
         data_total = json.load(f)
-    print(f"Successfully loaded data from '{total_results_path}'. Total items: {len(data_total)}")
+    print(f"Successfully loaded data from '{PATH_TOTAL_RESULTS}'. Total items: {len(data_total)}")
 
     labels_dict = {}
-    if os.path.exists(classified_phrases_path):
-        print(f"'{classified_phrases_path}' exists. Reading classified phrases...")
-        with open(classified_phrases_path, "r", encoding="utf-8") as f:
+    if os.path.exists(PATH_MNLI_CLASSIFIED_PHRASES):
+        print(f"'{PATH_MNLI_CLASSIFIED_PHRASES}' exists. Reading classified phrases...")
+        with open(PATH_MNLI_CLASSIFIED_PHRASES, "r", encoding="utf-8") as f:
             data_classified = json.load(f)
-        print(f"Successfully loaded data from '{classified_phrases_path}'. Items: {len(data_classified)}")
+        print(f"Successfully loaded data from '{PATH_MNLI_CLASSIFIED_PHRASES}'. Items: {len(data_classified)}")
 
         for item in data_classified:
             phrase = item.get("phrase")
@@ -30,24 +26,24 @@ def create_csv_from_json(
                 labels_dict[phrase] = label
         print("Classified phrases dictionary has been created.")
     else:
-        print(f"File '{classified_phrases_path}' does not exist. Skipping classified phrases step.")
+        print(f"File '{PATH_MNLI_CLASSIFIED_PHRASES}' does not exist. Skipping classified phrases step.")
 
     terms_set = set()
-    if os.path.exists(terms_path):
-        print(f"'{terms_path}' exists. Reading terms...")
-        with open(terms_path, "r", encoding="utf-8") as f:
+    if os.path.exists(PATH_TERM_CANDIDATES):
+        print(f"'{PATH_TERM_CANDIDATES}' exists. Reading terms...")
+        with open(PATH_TERM_CANDIDATES, "r", encoding="utf-8") as f:
             data_terms = json.load(f)
-        print(f"Successfully loaded data from '{terms_path}'. Items: {len(data_terms)}")
+        print(f"Successfully loaded data from '{PATH_TERM_CANDIDATES}'. Items: {len(data_terms)}")
 
         terms_set = set(data_terms.keys())
         print("Terms set has been created.")
     else:
-        print(f"File '{terms_path}' does not exist. Skipping terms step.")
+        print(f"File '{PATH_TERM_CANDIDATES}' does not exist. Skipping terms step.")
 
     context_dict = {}
-    if os.path.exists(sentences_path):
-        print(f"'{sentences_path}' exists. Reading sentences for context...")
-        with open(sentences_path, "r", encoding="utf-8") as f:
+    if os.path.exists(PATH_SENTENCES):
+        print(f"'{PATH_SENTENCES}' exists. Reading sentences for context...")
+        with open(PATH_SENTENCES, "r", encoding="utf-8") as f:
             data_sentences = json.load(f)
         if "sentences" in data_sentences:
             for s in data_sentences["sentences"]:
@@ -58,7 +54,7 @@ def create_csv_from_json(
                     context_dict[(doc_num, sent_num)] = norm_str
         print("Context dictionary has been created.")
     else:
-        print(f"File '{sentences_path}' does not exist. Skipping context step.")
+        print(f"File '{PATH_SENTENCES}' does not exist. Skipping context step.")
 
     print(f"Writing CSV output to '{csv_path}'...")
     with open(csv_path, "w", encoding="utf-8", newline="") as csvfile:
@@ -106,7 +102,7 @@ def create_csv_from_json(
                     context_list.append(context_dict[(doc_num, sent_num)])
                 else:
                     pass
-            
+
             context_str = " | ".join(context_list) if context_list else ""
 
             writer.writerow([
@@ -126,10 +122,4 @@ def create_csv_from_json(
     print(f"CSV file '{csv_path}' has been created successfully.")
 
 if __name__ == "__main__":
-    create_csv_from_json(
-        total_results_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/total_results.json",
-        classified_phrases_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/classified_phrases.json",
-        terms_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/terms.json",
-        sentences_path="/home/milkorna/Documents/AutoThematicThesaurus/my_data/nlp_corpus/sentences.json",
-        csv_path="data_auto.csv"
-    )
+    create_csv_from_json(csv_path="data_auto.csv")

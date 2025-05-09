@@ -1,9 +1,9 @@
-import os
 import pandas as pd
 
-# Path to the input and output files
-PATH_FILTERED = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_OUT = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof_cleaned.xlsx"
+from core.paths import PROJECT_ROOT, PATH_DATA_WITH_OFF
+
+# Path to the output file
+PATH_OUT = PROJECT_ROOT / "data_with_oof_cleaned.xlsx"
 
 # List of columns to merge using MAXIMUM
 COL_MAX = ["is_term_manual"]
@@ -151,8 +151,8 @@ def is_same_except_one_word(phraseA, phraseB, patterns):
 
 def main():
     # Load DataFrame
-    df = pd.read_excel(PATH_FILTERED)
-    print(f"[INFO] Loaded {df.shape[0]} rows from filtered_data.")
+    df = pd.read_excel(PATH_DATA_WITH_OFF)
+    print(f"[INFO] Loaded {df.shape[0]} rows.")
 
     # Convert DataFrame to dictionary: phrase -> row (dictionary of all columns)
     phrase2row = {}

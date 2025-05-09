@@ -12,13 +12,14 @@ from sklearn.linear_model import LogisticRegression
 from catboost import CatBoostClassifier
 import joblib
 
-# Paths to necessary data files
-PATH_FINAL_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/relations/marked_relations.json"
-PATH_NEED_TO_MARK_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/relations/need_to_mark.json"
-PATH_DATA_XLSX = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-PATH_FASTTEXT = "/home/milkorna/Documents/AutoThematicThesaurus/my_custom_fasttext_model_finetuned.bin"
-PATH_MODEL = "/home/milkorna/Documents/AutoThematicThesaurus/relations/relation_classifier.pkl"
+from core.functions import load_fasttext_model, get_phrase_average_embedding, get_weighted_context_embedding
+from core.paths import RELATIONS_DATA_DIR, PROJECT_ROOT, PATH_FASTTEXT
 
+# Paths to necessary data files
+PATH_FINAL_JSON = RELATIONS_DATA_DIR / "marked_relations.json"
+PATH_NEED_TO_MARK_JSON = RELATIONS_DATA_DIR / "need_to_mark.json"
+PATH_DATA_XLSX = PROJECT_ROOT / "data_with_oof.xlsx"
+PATH_MODEL = RELATIONS_DATA_DIR / "relation_classifier.pkl"
 PATH_NEED_TO_MARK_MARKED_JSON = "/home/milkorna/Documents/AutoThematicThesaurus/relations/need_to_mark_marked.json"
 
 # Feature columns
@@ -29,48 +30,6 @@ CAT_COLS = ["tag_match", "model_name", "label"]
 # Label columns representing different types of relations
 LABEL_COLS = ["is_synonym", "is_usage_variant", "is_related", "is_hypernym", "is_hyponym"]
 
-# Functions for fastText Loading and Embeddings
-def load_fasttext_model(path):
-    """Loads a pre-trained fastText model from the specified path."""
-    print(f"[INFO] Loading fastText model from: {path}")
-    ft = fasttext.load_facebook_model(path)
-    print("[INFO] fastText loaded.")
-    return ft
-
-def get_phrase_embedding(phrase, ft_model):
-    """Computes the average word embedding for a given phrase."""
-    if not phrase or not isinstance(phrase, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    words = phrase.split()
-    vectors = []
-    for w in words:
-        if w in ft_model.wv.key_to_index:
-            vectors.append(ft_model.wv[w])
-    if len(vectors) == 0:
-        return np.zeros(ft_model.wv.vector_size, dtype=np.float32)
-    else:
-        return np.mean(vectors, axis=0)
-
-def get_weighted_context_embedding(context_str, ft_model):
-    """Computes a weighted embedding for a context string where weights are based on token count."""
-    if not context_str or not isinstance(context_str, str):
-        return np.zeros(ft_model.vector_size, dtype=np.float32)
-    parts = context_str.split('|')
-    vectors = []
-    weights = []
-    for part in parts:
-        part = part.strip()
-        if part:
-            emb = get_phrase_embedding(part, ft_model)
-            if np.any(emb):
-                vectors.append(emb)
-                weights.append(len(part.split()))
-    if len(vectors) == 0:
-        return np.zeros(ft_model.wv.vector_size, dtype=np.float32)
-    else:
-        weights = np.array(weights, dtype=np.float32)
-        return np.sum([v * w for v, w in zip(vectors, weights)], axis=0) / weights.sum()
-
 def build_feature_vector(row, ft_model):
     """
     Constructs a feature vector by combining phrase embeddings, context embeddings,
@@ -78,14 +37,14 @@ def build_feature_vector(row, ft_model):
     """
     # Generate embeddings for the phrase and its main counterpart
     phrase_key = str(row['key'])
-    emb_phrase = get_phrase_embedding(phrase_key, ft_model)
+    emb_phrase = get_phrase_average_embedding(phrase_key, ft_model)
 
     # Generate embeddings for context
     phrase_context = row.get("context", "")
     emb_context = get_weighted_context_embedding(phrase_context, ft_model)
 
     main_key_str = str(row.get("key_main_main", ""))
-    emb_phrase_main = get_phrase_embedding(main_key_str, ft_model)
+    emb_phrase_main = get_phrase_average_embedding(main_key_str, ft_model)
     main_context = row.get("context_main", "")
     emb_context_main = get_weighted_context_embedding(main_context, ft_model)
 

@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -18,8 +19,7 @@ This type of analysis helps identify differences in numeric features between cla
 
 def main():
     # Load the dataset
-    dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-    df = pd.read_excel(dataset_path)
+    df = pd.read_excel(PATH_DATA)
 
     # Define the list of numeric features to visualize
     numeric_columns = [
@@ -49,9 +49,6 @@ def main():
         ax = axes[i]
         # Create a boxplot to visualize the distribution of the feature
         sns.boxplot(data=df, x='is_term_manual', y=col, ax=ax)
-
-        # Optional: Replace with violinplot for additional visualization style
-        # sns.violinplot(data=df, x='is_term_manual', y=col, ax=ax, cut=0, inner='box')
 
         ax.set_title(f"{col} by is_term_manual Groups")
         ax.set_xlabel("is_term_manual")

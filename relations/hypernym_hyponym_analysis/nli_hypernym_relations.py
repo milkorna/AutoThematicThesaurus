@@ -2,19 +2,16 @@ import os
 import json
 import pandas as pd
 from transformers import pipeline
+from core.paths import PATH_SENTENCES_WITH_PHRASES, PATH_FILTERED_DATA, PATH_HYPERNUM_NLI
 
-ENRICHED_SENTENCES_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/my_data/enriched_sentences.json"
-DATA_XLSX = "/home/milkorna/Documents/AutoThematicThesaurus/data_with_oof.xlsx"
-OUTPUT_JSON_PATH = "/home/milkorna/Documents/AutoThematicThesaurus/hyponym_hyponym_analysis/nli_hypernym_relations.json"
-
-MIN_OOF_PROB = 0.1   # если (is_term_manual=0) и (oof_prob < MIN_OOF_PROB) — отбрасываем
-REQUIRED_IS_TERM = None  # если =1, тогда берём только is_term_manual=1
+MIN_OOF_PROB = 0.01   # если (is_term_manual=0) и (oof_prob < MIN_OOF_PROB) — отбрасываем
+REQUIRED_IS_TERM = False  # если =1, тогда берём только is_term_manual=1
 
 # Threshold for "entailment"
-HYPER_THRESHOLD = 0.85
+HYPER_THRESHOLD = 0.8
 
 # Minimum difference between entailment and contradiction
-MIN_DIFF_ENT_CONTR = 0.1
+MIN_DIFF_ENT_CONTR = 0.01
 
 # If True, ensures that neutral < entailment
 CHECK_NEUTRAL = True
@@ -113,7 +110,7 @@ def check_hypernym_nli(hyper: str, hypo: str, context: str = None):
     Checks whether 'hyper' is a hypernym of 'hypo' using multiple hypothesis templates.
     Uses a pre-trained NLI model with text classification pipeline.
     """
-    premise = hypo
+    premise = context
     details = []
 
     for templ in HYPOTHESIS_TEMPLATES:
@@ -171,12 +168,12 @@ def check_hypernym_nli(hyper: str, hypo: str, context: str = None):
     }
 
 def main():
-    key_mapping = load_key_mapping(DATA_XLSX)
+    key_mapping = load_key_mapping(PATH_FILTERED_DATA)
 
-    if not os.path.exists(ENRICHED_SENTENCES_PATH):
-        raise FileNotFoundError(f"File not found: {ENRICHED_SENTENCES_PATH}")
+    if not os.path.exists(PATH_SENTENCES_WITH_PHRASES):
+        raise FileNotFoundError(f"File not found: {PATH_SENTENCES_WITH_PHRASES}")
 
-    with open(ENRICHED_SENTENCES_PATH, "r", encoding="utf-8") as f:
+    with open(PATH_SENTENCES_WITH_PHRASES, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     final_relations = []
@@ -184,10 +181,12 @@ def main():
 
     for sentence_item in data.get("sentences", []):
         keys_in_sent = sentence_item.get("keys", [])
+        raw_keys = sentence_item.get("keys", [])
+        keys_in_sent = [k for k in raw_keys if k.lower() in key_mapping]
         if len(keys_in_sent) < 2:
             continue
 
-        context_text = sentence_item.get("normalizedStr", "")
+        context_text = sentence_item.get("originalStr", "")
         doc_num = sentence_item.get("docNum")
         sent_num = sentence_item.get("sentNum")
 
@@ -201,38 +200,6 @@ def main():
                 phr2 = k2_info["phrase"]
 
                 if not phr1 or not phr2 or (phr1 == phr2):
-                    continue
-
-                if not filter_key(k1_info):
-                    continue
-                if not filter_key(k2_info):
-                    continue
-
-                both_not_term = (k1_info["is_term_manual"] == 0 and k2_info["is_term_manual"] == 0)
-
-                both_oof_low = (
-                    k1_info["oof_prob_class"] is not None and
-                    k2_info["oof_prob_class"] is not None and
-                    k1_info["oof_prob_class"] < 0.4 and
-                    k2_info["oof_prob_class"] < 0.4
-                )
-
-                if both_not_term or both_oof_low:
-                    continue
-
-                one_not_term_low = (
-                    (k1_info["is_term_manual"] == 0 and
-                    k1_info["oof_prob_class"] is not None and
-                    k1_info["oof_prob_class"] < 0.3)
-                    or
-                    (k2_info["is_term_manual"] == 0 and
-                    k2_info["oof_prob_class"] is not None and
-                    k2_info["oof_prob_class"] < 0.3)
-                )
-                if one_not_term_low:
-                    continue
-
-                if tokens_have_two_or_more_common_words(phr1, phr2):
                     continue
 
                 len1 = len(tokenize_simple(phr1))
@@ -271,11 +238,11 @@ def main():
                     })
 
     output_data = {"relations": final_relations}
-    with open(OUTPUT_JSON_PATH, "w", encoding="utf-8") as f:
+    with open(PATH_HYPERNUM_NLI, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=4)
 
     print(f"[INFO] Всего найдено {len(final_relations)} отношений гипероним/гипоним.")
-    print(f"[INFO] Результаты сохранены в {OUTPUT_JSON_PATH}")
+    print(f"[INFO] Результаты сохранены в {PATH_HYPERNUM_NLI}")
 
 if __name__ == "__main__":
     main()

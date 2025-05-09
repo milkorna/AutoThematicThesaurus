@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from core.paths import PATH_DATA
 
 """
 Script Purpose:
@@ -18,8 +19,7 @@ This analysis helps assess the statistical properties of key features, detect ou
 """
 
 # Load the dataset
-dataset_path = '/home/milkorna/Documents/AutoThematicThesaurus/data.xlsx'
-df = pd.read_excel(dataset_path)
+df = pd.read_excel(PATH_DATA)
 
 # Define quantitative features for analysis
 quantitative_features = ["topic_relevance", "centrality_score"]
