@@ -13,6 +13,7 @@ my_custom_fasttext_model_finetuned.bin
 */embedding_analysis/outliers/*.xlsx
 *.html
 test_corpus
+*.pyc
 
 ## temporary
 final_relations*
