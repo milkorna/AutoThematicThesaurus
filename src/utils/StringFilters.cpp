@@ -6,6 +6,32 @@ namespace StringFilters
     namespace
     {
         constexpr std::string_view PUNCTUATION = R"(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)";
+        constexpr std::string_view FORBIDDEN = "%*_$#";
+
+        // ------------------------------------------------------------
+        // Helpers for ShouldBeFiltered()
+        // ------------------------------------------------------------
+        bool ContainsForbiddenSymbols(const std::string &str)
+        {
+            return str.find_first_of(FORBIDDEN) != std::string::npos;
+        }
+
+        bool IsOnlyPunctuationOrNonAlpha(const std::string &str)
+        {
+            // True if consists entirely of punctuation or non-alphabetic symbols
+            static const std::regex re(R"(^[^\wа-яА-ЯёЁa-zA-Z¨]+$)");
+            return std::regex_match(str, re);
+        }
+
+        bool IsLongLatinGarbage(const std::string &str)
+        {
+            // Strings longer than 25 made only of English letters, digits and punctuation
+            if (str.size() <= 25)
+                return false;
+
+            static const std::regex re(R"(^[a-zA-Z0-9[:punct:]]+$)");
+            return std::regex_match(str, re);
+        }
     }
 
     // ------------------------------------------------------------
@@ -84,25 +110,10 @@ namespace StringFilters
         if (str.empty())
             return true;
 
-        // Forbidden ASCII symbols
-        static const std::string forbidden = "%*_$#";
-        if (str.find_first_of(forbidden) != std::string::npos)
-            return true;
-
-        // Only punctuation / non-alphabetic (excluding Russian letters)
-        if (std::regex_match(str, std::regex(R"(^[^\wа-яА-ЯёЁa-zA-Z¨]+$)")))
-            return true;
-
-        // Long Latin/digit/punct-only sequences
-        if (str.size() > 25 &&
-            std::regex_match(str, std::regex(R"(^[a-zA-Z0-9[:punct:]]+$)")))
-            return true;
-
-        // Unicode-level unwanted characters
-        if (HasNonCyrillicOrSpecialUnicode(str))
-            return true;
-
-        return false;
+        return ContainsForbiddenSymbols(str) ||
+               IsOnlyPunctuationOrNonAlpha(str) ||
+               IsLongLatinGarbage(str) ||
+               HasNonCyrillicOrSpecialUnicode(str);
     }
 
 } // namespace StringFilters
