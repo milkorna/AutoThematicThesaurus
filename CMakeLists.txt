@@ -19,9 +19,6 @@ set(COMMON_OPTIMIZATION_FLAGS "-ffast-math -march=native -fno-omit-frame-pointer
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 ${COMMON_OPTIMIZATION_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_OPTIMIZATION_FLAGS}")
 
-# Add Google Test
-find_package(GTest REQUIRED)
-
 # Ensure compatibility with modern CMake policies
 if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
@@ -39,49 +36,9 @@ include_directories(
 )
 
 # List of source files in the project
-set(SOURCE_FILES
-  src/grammar_component/Component.h
-  src/grammar_component/GrammarCondition.cpp
-  src/grammar_component/GrammarCondition.h
-  src/grammar_component/WordComponent.cpp
-  src/grammar_component/WordComponent.h
-  src/grammar_component/ModelComponent.cpp
-  src/grammar_component/ModelComponent.h
-  src/grammar_patterns/PatternParser.cpp
-  src/grammar_patterns/PatternParser.h
-  src/grammar_patterns/GrammarPatternManager.cpp
-  src/grammar_patterns/GrammarPatternManager.h
-
-  src/phrases_collecting/PhrasesStorageLoader.h
-  src/phrases_collecting/Embedding.cpp
-  src/phrases_collecting/Embedding.h
-  src/phrases_collecting/PatternPhrasesStorage.cpp
-  src/phrases_collecting/PatternPhrasesStorage.h
-  src/phrases_collecting/PhrasesCollectorUtils.cpp
-  src/phrases_collecting/PhrasesCollectorUtils.h
-  src/phrases_collecting/SimplePhrasesCollector.cpp
-  src/phrases_collecting/SimplePhrasesCollector.h
-  src/phrases_collecting/ComplexPhrasesCollector.cpp
-  src/phrases_collecting/ComplexPhrasesCollector.h
-  src/phrases_collecting/WordComplex.cpp
-  src/phrases_collecting/WordComplex.h
-
-  src/utils/OutputRedirector.h
-  src/utils/SemanticRelations.cpp
-  src/utils/SemanticRelations.h
-  src/utils/ThreadController.h
-  src/utils/TextCorpus.cpp
-  src/utils/TextCorpus.h
-  src/utils/Logger.cpp
-  src/utils/Logger.h
-  src/utils/TokenizedSentenceCorpus.cpp
-  src/utils/TokenizedSentenceCorpus.h
-  src/utils/StringFilters.cpp
-  src/utils/StringFilters.h
-  src/utils/LSA.h
-  src/utils/LSA.cpp
-  src/utils/TermLSA.h
-  src/utils/TermLSA.cpp
+file(GLOB_RECURSE SOURCE_FILES
+    ${PROJECT_SOURCE_DIR}/src/*/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/*/*.h
 )
 
 include_directories(src)
@@ -99,8 +56,6 @@ endif()
 # Create the main executable
 add_executable(AutoThematicThesaurus src/main.cpp ${SOURCE_FILES})
 target_compile_options(AutoThematicThesaurus PRIVATE -Wno-unused -Werror)
-
-add_subdirectory(src/tests)
 
 # Link Boost libraries
 target_link_libraries(AutoThematicThesaurus PUBLIC Boost::filesystem Boost::program_options)
@@ -214,4 +169,15 @@ target_link_libraries(AutoThematicThesaurus PUBLIC ${ICU_LIBRARIES} PRIVATE fast
 # Ensure XMorphy library exists
 if(NOT EXISTS ${XMORPHY_LIBRARY})
   message(FATAL_ERROR "XMorphy library not found: ${XMORPHY_LIBRARY}")
+endif()
+
+# Find and configure GoogleTest
+find_package(GTest REQUIRED)
+
+if(GTest_FOUND)
+    message(STATUS "GTest found: ${GTest_INCLUDE_DIRS}")
+    enable_testing()
+    add_subdirectory(tests)
+else()
+    message(WARNING "GTest not found! Unit tests will be skipped.")
 endif()
