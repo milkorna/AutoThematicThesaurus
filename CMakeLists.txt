@@ -18,9 +18,7 @@ set(ABSL_PROPAGATE_CXX_STD ON CACHE BOOL "Enable C++ standard propagation to Abs
 set(COMMON_OPTIMIZATION_FLAGS "-ffast-math -march=native -fno-omit-frame-pointer")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 ${COMMON_OPTIMIZATION_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${COMMON_OPTIMIZATION_FLAGS}")
-
-# Add Google Test
-find_package(GTest REQUIRED)
+set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
 
 # Ensure compatibility with modern CMake policies
 if(POLICY CMP0077)
@@ -28,6 +26,9 @@ if(POLICY CMP0077)
 endif()
 if(POLICY CMP0127)
     cmake_policy(SET CMP0127 NEW)
+endif()
+if(POLICY CMP0074)
+    cmake_policy(SET CMP0074 NEW)
 endif()
 
 # Include directories for project source files
@@ -39,49 +40,9 @@ include_directories(
 )
 
 # List of source files in the project
-set(SOURCE_FILES
-  src/grammar_component/Component.h
-  src/grammar_component/GrammarCondition.cpp
-  src/grammar_component/GrammarCondition.h
-  src/grammar_component/WordComponent.cpp
-  src/grammar_component/WordComponent.h
-  src/grammar_component/ModelComponent.cpp
-  src/grammar_component/ModelComponent.h
-  src/grammar_patterns/PatternParser.cpp
-  src/grammar_patterns/PatternParser.h
-  src/grammar_patterns/GrammarPatternManager.cpp
-  src/grammar_patterns/GrammarPatternManager.h
-
-  src/phrases_collecting/PhrasesStorageLoader.h
-  src/phrases_collecting/Embedding.cpp
-  src/phrases_collecting/Embedding.h
-  src/phrases_collecting/PatternPhrasesStorage.cpp
-  src/phrases_collecting/PatternPhrasesStorage.h
-  src/phrases_collecting/PhrasesCollectorUtils.cpp
-  src/phrases_collecting/PhrasesCollectorUtils.h
-  src/phrases_collecting/SimplePhrasesCollector.cpp
-  src/phrases_collecting/SimplePhrasesCollector.h
-  src/phrases_collecting/ComplexPhrasesCollector.cpp
-  src/phrases_collecting/ComplexPhrasesCollector.h
-  src/phrases_collecting/WordComplex.cpp
-  src/phrases_collecting/WordComplex.h
-
-  src/utils/OutputRedirector.h
-  src/utils/SemanticRelations.cpp
-  src/utils/SemanticRelations.h
-  src/utils/ThreadController.h
-  src/utils/TextCorpus.cpp
-  src/utils/TextCorpus.h
-  src/utils/Logger.cpp
-  src/utils/Logger.h
-  src/utils/TokenizedSentenceCorpus.cpp
-  src/utils/TokenizedSentenceCorpus.h
-  src/utils/StringFilters.cpp
-  src/utils/StringFilters.h
-  src/utils/LSA.h
-  src/utils/LSA.cpp
-  src/utils/TermLSA.h
-  src/utils/TermLSA.cpp
+file(GLOB_RECURSE SOURCE_FILES
+    ${PROJECT_SOURCE_DIR}/src/*/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/*/*.h
 )
 
 include_directories(src)
@@ -96,15 +57,16 @@ else()
     message(FATAL_ERROR "Boost not found!")
 endif()
 
-# Create the main executable
-add_executable(AutoThematicThesaurus src/main.cpp ${SOURCE_FILES})
-target_compile_options(AutoThematicThesaurus PRIVATE -Wno-unused -Werror)
+# === Создаём статическую библиотеку из исходников проекта ===
+set(MAIN_CPP "${PROJECT_SOURCE_DIR}/src/main.cpp")
+list(REMOVE_ITEM SOURCE_FILES "${MAIN_CPP}")
+add_library(AutoThematicLib STATIC ${SOURCE_FILES})
+target_include_directories(AutoThematicLib PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_compile_options(AutoThematicLib PRIVATE -Wno-unused -Werror)
 
-add_subdirectory(src/tests)
-
-# Link Boost libraries
-target_link_libraries(AutoThematicThesaurus PUBLIC Boost::filesystem Boost::program_options)
-
+# === Основное приложение ===
+add_executable(AutoThematicThesaurus ${MAIN_CPP})
+target_link_libraries(AutoThematicThesaurus PRIVATE AutoThematicLib Boost::filesystem Boost::program_options)
 target_include_directories(AutoThematicThesaurus PRIVATE ${PROJECT_SOURCE_DIR}/src)
 add_compile_options(-w)
 
@@ -140,12 +102,11 @@ SET(TFLITE_INCLUDE_DIRS "${TFLITE_INCLUDE_DIRS}" "${TENSORFLOW_SOURCE_DIR}" "${C
 
 # Configure ICU support
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-set(ICU_ROOT_DIR "${XMORPHY_PROJECT_PATH}/contrib/icu")
-set(ICU_ROOT "${XMORPHY_PROJECT_PATH}/contrib/icu")
+set(ICU_ROOT_DIR "${XMORPHY_PROJECT_PATH}/contrib/icu")  # исправлено
 include(${PROJECT_SOURCE_DIR}/cmake/icu.cmake)
 find_package(ICU 61.0 COMPONENTS uc i18n REQUIRED)
 if(ICU_FOUND)
-  target_link_libraries(AutoThematicThesaurus PUBLIC ICU::ICU)
+  target_link_libraries(AutoThematicLib PUBLIC ICU::ICU)
 endif(ICU_FOUND)
 
 # Copy necessary data files to the build directory
@@ -207,11 +168,22 @@ set(XMORPHY_LIBRARY "${XMORPHY_PROJECT_PATH}/build/temp.linux-x86_64-3.10/libXmo
 include_directories(${XMORPHY_PROJECT_PATH}/src)
 
 # Link necessary libraries
-target_link_libraries(AutoThematicThesaurus PRIVATE ${XMORPHY_LIBRARY} ${SQLite3_LIBRARIES})
+target_link_libraries(AutoThematicLib PRIVATE ${XMORPHY_LIBRARY} ${SQLite3_LIBRARIES})
 target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG -w)
-target_link_libraries(AutoThematicThesaurus PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
+target_link_libraries(AutoThematicLib PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
 
 # Ensure XMorphy library exists
 if(NOT EXISTS ${XMORPHY_LIBRARY})
   message(FATAL_ERROR "XMorphy library not found: ${XMORPHY_LIBRARY}")
+endif()
+
+# === GoogleTest integration ===
+find_package(GTest REQUIRED)
+
+if(GTest_FOUND)
+    message(STATUS "GTest found: ${GTest_INCLUDE_DIRS}")
+    enable_testing()
+    add_subdirectory(tests)
+else()
+    message(WARNING "GTest not found! Unit tests will be skipped.")
 endif()

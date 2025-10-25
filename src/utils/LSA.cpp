@@ -9,24 +9,31 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
     std::unordered_map<std::string, int> wordIndex;     // Word indices for the matrix
     std::vector<std::string> words;                     // List of unique words
     int index = 0;
-    const auto& stopWords = GetStopWords();
+    const auto &stopWords = GetStopWords();
 
     // Container for texts: can contain either documents or sentences depending on the useSentences flag
     std::unordered_map<size_t, std::string> texts;
 
-    if (useSentences) {
+    if (useSentences)
+    {
         // Use sentences as documents
-        for (const auto& [docNum, sentencesMap] : corpus.sentenceMap) {
-            for (const auto& [sentNum, sentence] : sentencesMap) {
+        for (const auto &[docNum, sentencesMap] : corpus.sentenceMap)
+        {
+            for (const auto &[sentNum, sentence] : sentencesMap)
+            {
                 size_t uniqueSentId = docNum * 100000 + sentNum; // Unique identifier for each sentence
                 texts[uniqueSentId] = sentence.normalizedStr;    // Add each sentence as a separate "document"
             }
         }
-    } else {
+    }
+    else
+    {
         // Use entire documents
-        for (const auto& [docNum, sentencesMap] : corpus.sentenceMap) {
+        for (const auto &[docNum, sentencesMap] : corpus.sentenceMap)
+        {
             std::string combinedText;
-            for (const auto& [sentNum, sentence] : sentencesMap) {
+            for (const auto &[sentNum, sentence] : sentencesMap)
+            {
                 combinedText += sentence.normalizedStr + " "; // Combine sentences into one text
             }
             texts[docNum] = combinedText; // Save the combined text for each document
@@ -34,24 +41,29 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
     }
 
     // Count word frequency in each text
-    for (const auto& [textNum, text] : texts) {
+    for (const auto &[textNum, text] : texts)
+    {
         std::vector<std::string> tokens;
         boost::algorithm::split(tokens, text, boost::is_any_of(" "));
-        for (const auto& word : tokens) {
+        for (const auto &word : tokens)
+        {
             // Filter the word based on stop words and other conditions
             if (!word.empty() && word.size() > 5 && LSAStopWords.find(word) == LSAStopWords.end() &&
-                stopWords.find(word) == stopWords.end() && !StringFilters::ContainsUnwantedCharacters(word) &&
-                !StringFilters::ShouldFilterOut(word)) {
+                stopWords.find(word) == stopWords.end() && !StringFilters::HasNonCyrillicOrSpecialUnicode(word) &&
+                !StringFilters::ShouldBeFiltered(word))
+            {
                 wordFrequency[word]++;
             }
         }
     }
 
     // Create an index of unique words, excluding rare words
-    for (const auto& [word, freq] : wordFrequency) {
+    for (const auto &[word, freq] : wordFrequency)
+    {
         // Ignore words that appear only once
-        if (freq > 1 && word.size() > 5 && !StringFilters::ContainsUnwantedCharacters(word) &&
-            !StringFilters::ShouldFilterOut(word)) {
+        if (freq > 1 && word.size() > 5 && !StringFilters::HasNonCyrillicOrSpecialUnicode(word) &&
+            !StringFilters::ShouldBeFiltered(word))
+        {
             wordIndex[word] = index++;
             words.push_back(word); // Add the word to the list of words
         }
@@ -63,14 +75,17 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
 
     // Fill the matrix with word frequencies at the text level
     int textIndex = 0;
-    for (const auto& [textNum, text] : texts) {
+    for (const auto &[textNum, text] : texts)
+    {
         std::vector<std::string> tokens;
         boost::algorithm::split(tokens, text, boost::is_any_of(" "));
-        for (const auto& word : tokens) {
+        for (const auto &word : tokens)
+        {
             // Check if the word is in the index and is not a stop word or contains unwanted characters
             if (!word.empty() && word.size() > 5 && LSAStopWords.find(word) == LSAStopWords.end() &&
                 stopWords.find(word) == stopWords.end() && wordIndex.find(word) != wordIndex.end() &&
-                !StringFilters::ContainsUnwantedCharacters(word) && !StringFilters::ShouldFilterOut(word)) {
+                !StringFilters::HasNonCyrillicOrSpecialUnicode(word) && !StringFilters::ShouldBeFiltered(word))
+            {
                 int wordIdx = wordIndex[word];
                 termDocumentMatrix(wordIdx, textIndex) += 1; // Increase the frequency of the word in the text
             }
@@ -82,11 +97,12 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
 }
 
 // Method to perform SVD
-void LSA::ComputeSVD(const MatrixXd& termDocumentMatrix)
+void LSA::ComputeSVD(const MatrixXd &termDocumentMatrix)
 {
     // Measure computation time
     auto start = std::chrono::high_resolution_clock::now();
-    try {
+    try
+    {
         std::cout << "Starting SVD computation..." << std::endl;
 
         // Perform SVD with tracking
@@ -103,13 +119,15 @@ void LSA::ComputeSVD(const MatrixXd& termDocumentMatrix)
 
         // Determine the number of components, not exceeding available sizes
         int k = std::min(100, (int)Sigma.diagonal().size());
-        if (k > U.cols()) {
+        if (k > U.cols())
+        {
             std::cerr
                 << "Warning: Requested number of components exceeds available columns in U. Adjusting k to U.cols()."
                 << std::endl;
             k = U.cols();
         }
-        if (k > V.cols()) {
+        if (k > V.cols())
+        {
             std::cerr
                 << "Warning: Requested number of components exceeds available columns in V. Adjusting k to V.cols()."
                 << std::endl;
@@ -129,10 +147,13 @@ void LSA::ComputeSVD(const MatrixXd& termDocumentMatrix)
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = end - start;
         std::cout << "SVD computation completed in " << elapsed.count() << " seconds." << std::endl;
-
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception &e)
+    {
         std::cerr << "Error during SVD computation: " << e.what() << std::endl;
-    } catch (...) {
+    }
+    catch (...)
+    {
         std::cerr << "Unknown error during SVD computation." << std::endl;
     }
 }
@@ -155,32 +176,38 @@ void LSA::PerformAnalysis(bool useSentences)
 
 void LSA::AnalyzeTopics(int numTopics, int topWords)
 {
-    if (numTopics > U.cols()) {
+    if (numTopics > U.cols())
+    {
         std::cerr << "Error: numTopics (" << numTopics << ") exceeds available topics in U (" << U.cols() << ")."
                   << std::endl;
         numTopics = U.cols();
     }
 
     // Check that the number of words matches the number of rows in matrix U
-    if (U.rows() != words.size()) {
+    if (U.rows() != words.size())
+    {
         std::cerr << "Error: The number of rows in U (" << U.rows() << ") does not match the number of words ("
                   << words.size() << ")." << std::endl;
         return;
     }
 
     // Analyze topics
-    for (int topic = 0; topic < numTopics; ++topic) {
+    for (int topic = 0; topic < numTopics; ++topic)
+    {
         std::vector<std::pair<double, std::string>> topicWords;
 
-        if (topic >= U.cols()) {
+        if (topic >= U.cols())
+        {
             std::cerr << "Warning: Topic index (" << topic << ") is out of bounds (U.cols() = " << U.cols()
                       << "). Skipping." << std::endl;
             continue;
         }
 
         // Collect words and their values for the current topic
-        for (int i = 0; i < U.rows(); ++i) {
-            if (i >= words.size()) {
+        for (int i = 0; i < U.rows(); ++i)
+        {
+            if (i >= words.size())
+            {
                 std::cerr << "Warning: Word index (" << i << ") is out of bounds (words.size() = " << words.size()
                           << "). Skipping." << std::endl;
                 continue;
@@ -194,7 +221,8 @@ void LSA::AnalyzeTopics(int numTopics, int topWords)
         // Output the most significant words for the current topic
         std::cout << "Topic " << topic + 1 << ": ";
         std::vector<std::string> topWordsForTopic; // Vector to store top words for this topic
-        for (int i = 0; i < topWords && i < topicWords.size(); ++i) {
+        for (int i = 0; i < topWords && i < topicWords.size(); ++i)
+        {
             std::cout << topicWords[i].second << " (" << topicWords[i].first << "), ";
             topWordsForTopic.push_back(topicWords[i].second); // Save the top word
         }
@@ -205,30 +233,33 @@ void LSA::AnalyzeTopics(int numTopics, int topWords)
     }
 }
 
-const std::unordered_map<int, std::vector<std::string>>& LSA::GetTopics() const
+const std::unordered_map<int, std::vector<std::string>> &LSA::GetTopics() const
 {
     return topics; // To access saved topics
 }
 
-double LSA::CosineSimilarity(const VectorXd& vec1, const VectorXd& vec2)
+double LSA::CosineSimilarity(const VectorXd &vec1, const VectorXd &vec2)
 {
     return vec1.dot(vec2) / (vec1.norm() * vec2.norm());
 }
 
-void LSA::CompareDocuments(const MatrixXd& V)
+void LSA::CompareDocuments(const MatrixXd &V)
 {
     // Open file to write results
     std::ofstream outFile("document_similarity.txt");
 
     // Check if file was opened successfully
-    if (!outFile.is_open()) {
+    if (!outFile.is_open())
+    {
         std::cerr << "Error: Could not open file 'document_similarity.txt' for writing." << std::endl;
         return;
     }
 
     // Calculate similarity between each pair of documents
-    for (int i = 0; i < V.cols(); ++i) {
-        for (int j = i + 1; j < V.cols(); ++j) {
+    for (int i = 0; i < V.cols(); ++i)
+    {
+        for (int j = i + 1; j < V.cols(); ++j)
+        {
             double similarity = CosineSimilarity(V.col(i), V.col(j));
             // Write results to file
             outFile << "Similarity between document " << i + 1 << " and document " << j + 1 << ": " << similarity
@@ -242,23 +273,27 @@ void LSA::CompareDocuments(const MatrixXd& V)
     std::cout << "Document similarities have been written to 'document_similarity.txt'." << std::endl;
 }
 
-void LSA::FindSimilarWords(const std::string& targetWord)
+void LSA::FindSimilarWords(const std::string &targetWord)
 {
     int targetIndex = -1;
-    for (size_t i = 0; i < words.size(); ++i) {
-        if (words[i] == targetWord) {
+    for (size_t i = 0; i < words.size(); ++i)
+    {
+        if (words[i] == targetWord)
+        {
             targetIndex = i;
             break;
         }
     }
-    if (targetIndex == -1) {
+    if (targetIndex == -1)
+    {
         std::cout << "Word not found in the list." << std::endl;
         return;
     }
 
     VectorXd targetVector = U.row(targetIndex);
     std::vector<std::pair<double, std::string>> similarities;
-    for (int i = 0; i < U.rows(); ++i) {
+    for (int i = 0; i < U.rows(); ++i)
+    {
         if (i == targetIndex)
             continue;
         double similarity = CosineSimilarity(targetVector, U.row(i));
@@ -267,7 +302,8 @@ void LSA::FindSimilarWords(const std::string& targetWord)
 
     std::sort(similarities.begin(), similarities.end(), std::greater<>());
     std::cout << "Words similar to " << targetWord << ":" << std::endl;
-    for (size_t i = 0; i < 10 && i < similarities.size(); ++i) {
+    for (size_t i = 0; i < 10 && i < similarities.size(); ++i)
+    {
         std::cout << similarities[i].second << " (" << similarities[i].first << ")" << std::endl;
     }
 }

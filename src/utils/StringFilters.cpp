@@ -1,102 +1,108 @@
-#include <StringFilters.h>
+#include "StringFilters.h"
 
-namespace StringFilters {
+namespace StringFilters
+{
 
-    bool CheckForMisclassifications(const X::WordFormPtr& form)
+    namespace
     {
-        std::unordered_set<char> punctuation = {'!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
-                                                ',', '-',  '.', '/', ':', ';', '<',  '=', '>', '?', '@',
-                                                '[', '\\', ']', '^', '_', '`', '{',  '|', '}', '~'};
+        constexpr std::string_view PUNCTUATION = R"(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)";
+        constexpr std::string_view FORBIDDEN = "%*_$#";
 
-        try {
-            const auto str = form->getWordForm().getRawString();
+        // ------------------------------------------------------------
+        // Helpers for ShouldBeFiltered()
+        // ------------------------------------------------------------
+        bool ContainsForbiddenSymbols(const std::string &str)
+        {
+            return str.find_first_of(FORBIDDEN) != std::string::npos;
+        }
 
-            for (char c : str) {
-                if (!std::isdigit(c) && punctuation.find(c) == punctuation.end())
-                    return false;
+        bool IsOnlyPunctuationOrNonAlpha(const std::string &str)
+        {
+            // True if consists entirely of punctuation or non-alphabetic symbols
+            static const std::regex re(R"(^[^\wа-яА-ЯёЁa-zA-Z¨]+$)");
+            return std::regex_match(str, re);
+        }
+
+        bool IsLongLatinGarbage(const std::string &str)
+        {
+            // Strings longer than 25 made only of English letters, digits and punctuation
+            if (str.size() <= 25)
+                return false;
+
+            static const std::regex re(R"(^[a-zA-Z0-9[:punct:]]+$)");
+            return std::regex_match(str, re);
+        }
+    }
+
+    // ------------------------------------------------------------
+    // 1. Basic character composition checks
+    // ------------------------------------------------------------
+    bool IsOnlyPunctuationOrDigits(const std::string &text)
+    {
+        if (text.empty())
+            return false;
+
+        for (unsigned char c : text)
+        {
+            if (!std::isdigit(c) && PUNCTUATION.find(c) == std::string_view::npos)
+            {
+                return false;
             }
-            return true;
-        } catch (const std::exception& e) {
-            return false;
-        } catch (...) {
-            return false;
         }
 
         return true;
     }
 
-    // This function checks whether a given text contains any unwanted characters.
-    // The function uses ICU to handle Unicode strings and to check properties of each character.
-    bool ContainsUnwantedCharacters(const std::string& str)
+    // ------------------------------------------------------------
+    // 2. Unicode character property checks (ICU)
+    // ------------------------------------------------------------
+    bool HasNonCyrillicOrSpecialUnicode(const std::string &str)
     {
-        // Convert the input UTF-8 string to an ICU UnicodeString for processing
-        icu::UnicodeString unicodeText = icu::UnicodeString::fromUTF8(str);
+        icu::UnicodeString utext = icu::UnicodeString::fromUTF8(str);
 
-        // Iterate through each character in the UnicodeString
-        for (int32_t i = 0; i < unicodeText.length(); ++i) {
-            UChar32 codepoint = unicodeText.char32At(i);
+        for (int32_t i = 0; i < utext.length(); ++i)
+        {
+            UChar32 codepoint = utext.char32At(i);
 
-            // Check if the character is a digit
-            if (u_isdigit(codepoint)) {
+            if (u_isdigit(codepoint))
                 return true;
+
+            if (u_hasBinaryProperty(codepoint, UCHAR_EXTENDED_PICTOGRAPHIC))
+                return true;
+
+            auto script = static_cast<UScriptCode>(
+                u_getIntPropertyValue(codepoint, UCHAR_SCRIPT));
+
+            switch (script)
+            {
+            case USCRIPT_HAN:
+            case USCRIPT_DEVANAGARI:
+            case USCRIPT_ARABIC:
+                return true;
+            default:
+                break;
             }
 
-            // Check if the character is an emoji using the extended pictographic property
-            if (u_hasBinaryProperty(codepoint, UCHAR_EXTENDED_PICTOGRAPHIC)) {
+            auto ctype = u_charType(codepoint);
+            if (ctype == U_MATH_SYMBOL || ctype == U_OTHER_SYMBOL)
                 return true;
-            }
-
-            // Check if the character is a Chinese ideograph (Han script)
-            if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_HAN) {
-                return true;
-            }
-
-            // Check if the character is part of the Devanagari script
-            if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_DEVANAGARI) {
-                return true;
-            }
-
-            // Check if the character is part of the Arabic script
-            if (u_getIntPropertyValue(codepoint, UCHAR_SCRIPT) == USCRIPT_ARABIC) {
-                return true;
-            }
-
-            // Check if the character is a mathematical or technical symbol
-            if (u_charType(codepoint) == U_MATH_SYMBOL || u_charType(codepoint) == U_OTHER_SYMBOL) {
-                return true;
-            }
         }
 
         return false;
     }
 
-    // This function checks whether a given str should be filtered out based on various conditions
-    bool ShouldFilterOut(const std::string& str)
+    // ------------------------------------------------------------
+    // 3. High-level filtering rules
+    // ------------------------------------------------------------
+    bool ShouldBeFiltered(const std::string &str)
     {
-        // Elements that contain %, *, _, #, or $
-        if (str.find('%') != std::string::npos || str.find('*') != std::string::npos ||
-            str.find('_') != std::string::npos || str.find('#') != std::string::npos ||
-            str.find('$') != std::string::npos) {
+        if (str.empty())
             return true;
-        }
 
-        // Elements that consist entirely of punctuation or non-alphabetic symbols, excluding Russian letters
-        if (std::regex_match(str, std::regex("^[^\\wа-яА-ЯёЁa-zA-Z¨]+$"))) {
-
-            return true;
-        }
-
-        // Elements consisting of only English letters, punctuation, and digits and are longer than 25 characters
-        if (str.size() > 25 && std::regex_match(str, std::regex("^[a-zA-Z0-9[:punct:]]+$"))) {
-            return true;
-        }
-
-        // Use the ContainsUnwantedCharacters function to check for other unwanted characters
-        if (ContainsUnwantedCharacters(str)) {
-            return true;
-        }
-
-        // If none of the conditions match, the str is not filtered out
-        return false;
+        return ContainsForbiddenSymbols(str) ||
+               IsOnlyPunctuationOrNonAlpha(str) ||
+               IsLongLatinGarbage(str) ||
+               HasNonCyrillicOrSpecialUnicode(str);
     }
-}
+
+} // namespace StringFilters
