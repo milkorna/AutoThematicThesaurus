@@ -45,7 +45,6 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
     if (options.cleanStopWords)
     {
         const auto &stopWords = GetStopWords();
-
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
             return false;
 
@@ -54,19 +53,18 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex> &wc, 
             return false;
     }
 
-    if (StringFilters::IsOnlyPunctuationOrDigits(token) || MorphAnanlysisError(token) ||
+    const std::string formFromText = token->getWordForm().getRawString();
+    if (StringFilters::IsOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
         !HaveSp(token->getMorphInfo()))
         return false;
-
-    std::string formFromText = token->getWordForm().getRawString();
 
     if (!comp->getCondition().check(comp->getSPTag(), token))
         return false;
     UpdateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;
-    size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
-    size_t nextTokenInd = isLeft ? tokenInd - 1 : tokenInd + 1;
+    const size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
+    const size_t nextTokenInd = isLeft ? tokenInd - 1 : tokenInd + 1;
 
     if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1))
     {
@@ -112,8 +110,7 @@ void SimplePhrasesCollector::Collect(Process &process)
                 continue;
         }
 
-        if (StringFilters::IsOnlyPunctuationOrDigits(token) || MorphAnanlysisError(token) ||
-            !HaveSp(token->getMorphInfo()))
+        if (StringFilters::IsOnlyPunctuationOrDigits(token->getWordForm().getRawString()) || MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))
@@ -121,11 +118,10 @@ void SimplePhrasesCollector::Collect(Process &process)
 
         for (const auto &[name, model] : simplePatterns)
         {
-
             if (!HeadCheck(model, token))
                 continue;
 
-            size_t headPos = *model->getHeadPos();
+            const size_t headPos = *model->getHeadPos();
             size_t correct = 0;
 
             WordComplexPtr wc = InicializeWordComplex(tokenInd, token, model->getForm(), process);

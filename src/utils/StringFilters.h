@@ -10,13 +10,12 @@
 
 namespace StringFilters
 {
-
     /**
-     * @brief Checks if the given word form consists only of digits or punctuation symbols
-     * @param form Morphological word form pointer
+     * @brief Checks if a string consists only of digits or punctuation
+     * @param text Input string
      * @return true if the string contains only digits or punctuation, false otherwise
      */
-    bool IsOnlyPunctuationOrDigits(const X::WordFormPtr &form);
+    bool IsOnlyPunctuationOrDigits(const std::string &text);
 
     /**
      * @brief Checks if the given string contains characters not suitable for Russian text

@@ -37,31 +37,20 @@ namespace StringFilters
     // ------------------------------------------------------------
     // 1. Basic character composition checks
     // ------------------------------------------------------------
-    bool IsOnlyPunctuationOrDigits(const X::WordFormPtr &form)
+    bool IsOnlyPunctuationOrDigits(const std::string &text)
     {
-        if (!form)
+        if (text.empty())
             return false;
 
-        try
+        for (unsigned char c : text)
         {
-            const auto &raw = form->getWordForm().getRawString();
-            if (raw.empty())
-                return false;
-
-            for (char c : raw)
+            if (!std::isdigit(c) && PUNCTUATION.find(c) == std::string_view::npos)
             {
-                if (!std::isdigit(static_cast<unsigned char>(c)) &&
-                    PUNCTUATION.find(c) == std::string_view::npos)
-                {
-                    return false;
-                }
+                return false;
             }
-            return true;
         }
-        catch (...)
-        {
-            return false;
-        }
+
+        return true;
     }
 
     // ------------------------------------------------------------
