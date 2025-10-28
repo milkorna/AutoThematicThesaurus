@@ -1,0 +1,930 @@
+[
+  {
+    "name": "Прил + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "ADJ",
+        "recursive": true
+      },
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "Прич + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "VERB",
+        "features": {
+          "VerbForm": "Part"
+        },
+        "recursive": true
+      },
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "С + Срд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN",
+        "features": {
+          "Case": "Gen"
+        },
+        "recursive": true
+      }
+    ]
+  },
+  {
+    "name": "С + Предл(Для) + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP",
+        "exact_lexeme": "для"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + Срд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN",
+        "features": {
+          "Case": "Gen"
+        },
+        "recursive": true
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + Срд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN",
+        "features": {
+          "Case": "Gen"
+        },
+        "recursive": true
+      }
+    ]
+  },
+  {
+    "name": "C + (Прил + С)рд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "C + (Прич + С)рд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + (Прил + С)рд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + (Прил + С)рд",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + (Прич + С)рд",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + (Прич + С)рд",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С",
+        "features": {
+          "Case": "Gen"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Прил + и + (Прил + С)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "ADJ"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "Прич + и + (Прил + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "VERB",
+        "features": {
+          "VerbForm": "Part"
+        }
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "Прил + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "ADJ"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "Прич + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "VERB",
+        "features": {
+          "VerbForm": "Part"
+        }
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + и + (Прил + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + и + (Прил + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + Предл + (Прил + С)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + Предл + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + Предл + (Прил + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + Предл + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + Предл + (С + Срд)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + Предл + (С + Срд)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + Предл + (С + Срд)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + и + (С + Срд)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + Предл + (Прил + С)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + Предл + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + и + (Прил + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + и + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + и + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "(Прил + С) + Предл + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прил + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "(Прич + С) + Предл + С",
+    "enabled": false,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "Прич + С"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + и + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "С + и + (Прил + С)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "С + и + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "С + и + (С + Срд)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "CONJ",
+        "exact_lexeme": "и"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  },
+  {
+    "name": "(С + Срд) + Предл + С",
+    "enabled": true,
+    "body": [
+      {
+        "type": "pattern",
+        "role": "head",
+        "pattern": "С + Срд"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "NOUN"
+      }
+    ]
+  },
+  {
+    "name": "С + Предл + (Прил + С)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прил + С"
+      }
+    ]
+  },
+  {
+    "name": "С + Предл + (Прич + С)",
+    "enabled": false,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "Прич + С"
+      }
+    ]
+  },
+  {
+    "name": "С + Предл + (С + Срд)",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "NOUN"
+      },
+      {
+        "type": "word",
+        "role": "independent",
+        "pos": "ADP"
+      },
+      {
+        "type": "pattern",
+        "role": "independent",
+        "pattern": "С + Срд"
+      }
+    ]
+  }
+]
