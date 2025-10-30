@@ -1,21 +1,19 @@
-#include <PatternPhrasesStorage.h>
-#include <PhrasesCollectorUtils.h>
+#include "PatternPhrasesStorage.h"
+#include "ComplexPhrasesCollector.h"
+#include "PhrasesCollectorUtils.h"
+#include "SemanticRelations.h"
+#include "SimplePhrasesCollector.h"
+#include "TextCorpus.h"
 
-#include <unicode/uchar.h>
-#include <unicode/unistr.h>
-#include <unicode/uscript.h>
-#include <unicode/ustream.h>
-#include <unicode/utypes.h>
+#include <regex>
 
 using json = nlohmann::json;
 
-void PatternPhrasesStorage::AddCluster(const std::string& key, const WordComplexCluster& cluster)
-{
+void PatternPhrasesStorage::AddCluster(const std::string& key, const WordComplexCluster& cluster) {
     clusters[key] = cluster;
 }
 
-WordComplexCluster* PatternPhrasesStorage::FindCluster(const std::string& key)
-{
+WordComplexCluster* PatternPhrasesStorage::FindCluster(const std::string& key) {
     auto it = clusters.find(key);
     if (it != clusters.end()) {
         return &(it->second);
@@ -23,13 +21,11 @@ WordComplexCluster* PatternPhrasesStorage::FindCluster(const std::string& key)
     return nullptr;
 }
 
-void PatternPhrasesStorage::ReserveClusters(size_t count)
-{
+void PatternPhrasesStorage::ReserveClusters(size_t count) {
     clusters.reserve(count);
 }
 
-void PatternPhrasesStorage::AddContextsToClusters()
-{
+void PatternPhrasesStorage::AddContextsToClusters() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Adding contexts to clusters...");
     auto& corpus = TokenizedSentenceCorpus::GetCorpus();
 
@@ -49,15 +45,13 @@ void PatternPhrasesStorage::AddContextsToClusters()
 }
 
 // Checks if the key of phrase1 is a prefix of phrase2's key
-bool IsPrefix(const std::string& phrase1Key, const std::string& phrase2Key)
-{
+bool IsPrefix(const std::string& phrase1Key, const std::string& phrase2Key) {
     return phrase2Key.find(phrase1Key) == 0; // Checks if phrase1Key is at the beginning of phrase2Key
 }
 
 // Checks exclusion conditions based on TF-IDF and frequency
 bool ShouldExcludeBasedOnTfidfAndFrequency(const WordComplexCluster& phrase1, const WordComplexCluster& phrase2,
-                                           const WordComplexCluster& phrase3)
-{
+                                           const WordComplexCluster& phrase3) {
     // Check TF-IDF conditions for phrase1 and phrase2
     bool tfidfCondition =
         !phrase1.tfidf.empty() && !phrase3.tfidf.empty() && phrase1.tfidf[0] < 0.0005 && phrase3.tfidf.back() > 0.0005;
@@ -70,8 +64,7 @@ bool ShouldExcludeBasedOnTfidfAndFrequency(const WordComplexCluster& phrase1, co
     return tfidfCondition && frequencyCondition;
 }
 
-void WriteClustersToFile(const std::unordered_set<std::string>& clustersToInclude, const std::string& filename)
-{
+void WriteClustersToFile(const std::unordered_set<std::string>& clustersToInclude, const std::string& filename) {
     // Convert the unordered set to a vector for sorting
     std::vector<std::string> sortedClusters(clustersToInclude.begin(), clustersToInclude.end());
 
@@ -94,8 +87,7 @@ void WriteClustersToFile(const std::unordered_set<std::string>& clustersToInclud
     outFile.close();
 }
 
-std::vector<std::string> Split(const std::string& str)
-{
+std::vector<std::string> Split(const std::string& str) {
     std::istringstream iss(str);
     std::vector<std::string> tokens;
     std::string token;
@@ -105,8 +97,7 @@ std::vector<std::string> Split(const std::string& str)
     return tokens;
 }
 
-static nlohmann::json LoadClassifiedPhrases(const std::string& filePath)
-{
+static nlohmann::json LoadClassifiedPhrases(const std::string& filePath) {
     nlohmann::json phraseLabels;
     std::ifstream jsonFile(filePath);
     if (jsonFile.is_open()) {
@@ -117,8 +108,7 @@ static nlohmann::json LoadClassifiedPhrases(const std::string& filePath)
 }
 
 void PatternPhrasesStorage::InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
-                                                        std::unordered_set<std::string>& clustersToInclude)
-{
+                                                        std::unordered_set<std::string>& clustersToInclude) {
     const auto& clusters = GetClusters();
     std::regex romanNumeralsRegex(R"(^[ivxlcd]+$)", std::regex_constants::icase);
 
@@ -160,8 +150,7 @@ void PatternPhrasesStorage::InitializeAndFilterClusters(double tfidfThreshold, s
 
 void PatternPhrasesStorage::ApplyClassifiedPhrases(const nlohmann::json& phraseLabels,
                                                    std::set<std::string>& sortedKeys,
-                                                   std::unordered_set<std::string>& clustersToInclude)
-{
+                                                   std::unordered_set<std::string>& clustersToInclude) {
     const auto& clusters = GetClusters();
 
     for (const auto& phraseData : phraseLabels) {
@@ -198,8 +187,7 @@ void PatternPhrasesStorage::ApplyClassifiedPhrases(const nlohmann::json& phraseL
 }
 
 void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>& sortedKeys,
-                                                          std::unordered_set<std::string>& clustersToInclude)
-{
+                                                          std::unordered_set<std::string>& clustersToInclude) {
     const auto& clusters = GetClusters();
 
     auto it = sortedKeys.begin();
@@ -241,8 +229,7 @@ void PatternPhrasesStorage::CheckModelPrefixRelationships(std::set<std::string>&
     }
 }
 
-void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
-{
+void PatternPhrasesStorage::CollectTerms(double tfidfThreshold) {
     Logger::log("PhrasesStorage", LogLevel::Info, "Collecting terms...");
     std::set<std::string> sortedKeys;
     const auto& clusters = GetClusters();
@@ -259,8 +246,7 @@ void PatternPhrasesStorage::CollectTerms(double tfidfThreshold)
     WriteClustersToFile(clustersToInclude, "terms.txt");
 }
 
-void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
-{
+void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa) {
     const auto& topics = lsa.GetTopics();
     for (auto& [key, cluster] : clusters) {
         int relevantCount = 0;
@@ -275,13 +261,11 @@ void PatternPhrasesStorage::EvaluateTermRelevance(const LSA& lsa)
     }
 }
 
-const std::unordered_map<std::string, WordComplexCluster> PatternPhrasesStorage::GetClusters() const
-{
+const std::unordered_map<std::string, WordComplexCluster> PatternPhrasesStorage::GetClusters() const {
     return clusters;
 }
 
-void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process)
-{
+void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Process& process) {
     auto& corpus = TextCorpus::GetCorpus();
 
     if (lastDocumentId != -1 && lastDocumentId != process.docNum) {
@@ -307,8 +291,7 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
     complexPhrasesCollector.Collect(process);
 }
 
-void PatternPhrasesStorage::FinalizeDocumentProcessing()
-{
+void PatternPhrasesStorage::FinalizeDocumentProcessing() {
     auto& corpus = TextCorpus::GetCorpus();
     for (const auto& lemma : uniqueLemmasInDoc) {
         corpus.UpdateDocumentFrequency(lemma);
@@ -317,8 +300,7 @@ void PatternPhrasesStorage::FinalizeDocumentProcessing()
 }
 
 std::map<std::string, int>
-CalculateTopicFrequency(const std::unordered_map<std::string, std::vector<std::string>>& similar_words)
-{
+CalculateTopicFrequency(const std::unordered_map<std::string, std::vector<std::string>>& similar_words) {
     std::map<std::string, int> topicFrequency;
     for (const auto& pair : similar_words) {
         for (const auto& topic : pair.second) {
@@ -329,8 +311,7 @@ CalculateTopicFrequency(const std::unordered_map<std::string, std::vector<std::s
 }
 
 void ApplyTopicFrequencyPenalty(std::unordered_map<std::string, std::vector<std::string>>& similar_words,
-                                int frequencyThreshold)
-{
+                                int frequencyThreshold) {
     auto topicFrequency = CalculateTopicFrequency(similar_words);
     for (auto& pair : similar_words) {
         pair.second.erase(
@@ -341,8 +322,7 @@ void ApplyTopicFrequencyPenalty(std::unordered_map<std::string, std::vector<std:
 }
 
 double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& cluster,
-                                                      const std::unordered_map<int, std::vector<std::string>>& topics)
-{
+                                                      const std::unordered_map<int, std::vector<std::string>>& topics) {
     double relevanceScore = 0.0;
 
     int matches = 0;
@@ -363,8 +343,7 @@ double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& 
 }
 
 double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
-                                                  const std::vector<std::string>& words)
-{
+                                                  const std::vector<std::string>& words) {
     double centralityScore = 0.0;
 
     std::vector<int> termIndices;
@@ -399,8 +378,7 @@ double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& clus
 }
 
 void PatternPhrasesStorage::CalculateLSAMetrics(const MatrixXd& U, const std::vector<std::string>& words,
-                                                const std::unordered_map<int, std::vector<std::string>>& topics)
-{
+                                                const std::unordered_map<int, std::vector<std::string>>& topics) {
     Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics...");
 
     for (auto& clusterPair : clusters) {
@@ -422,8 +400,7 @@ void PatternPhrasesStorage::CalculateLSAMetrics(const MatrixXd& U, const std::ve
 double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
                                                       const Eigen::MatrixXd& Sigma,
                                                       const std::vector<std::string>& words,
-                                                      const LSA_MetricsConfig& config)
-{
+                                                      const LSA_MetricsConfig& config) {
     // How much of the component is actually used
     int usedCols = config.maxComponents.has_value() ? std::min<int>(config.maxComponents.value(), U.cols()) : U.cols();
 
@@ -484,8 +461,7 @@ double PatternPhrasesStorage::CalculateTopicRelevance(const WordComplexCluster& 
  */
 double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
                                                   const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
-                                                  const LSA_MetricsConfig& config)
-{
+                                                  const LSA_MetricsConfig& config) {
     // Сколько используем компонент
     int usedCols = config.maxComponents.has_value() ? std::min<int>(config.maxComponents.value(), U.cols()) : U.cols();
 
@@ -545,8 +521,7 @@ double PatternPhrasesStorage::CalculateCentrality(const WordComplexCluster& clus
 }
 
 void PatternPhrasesStorage::CalculateLSAMetrics(const Eigen::MatrixXd& U, const std::vector<std::string>& words,
-                                                const Eigen::MatrixXd& Sigma, const LSA_MetricsConfig& config)
-{
+                                                const Eigen::MatrixXd& Sigma, const LSA_MetricsConfig& config) {
     Logger::log("PhrasesStorage", LogLevel::Info, "Updating cluster metrics with advanced LSA approach...");
 
     for (auto& clusterPair : clusters) {
@@ -558,8 +533,7 @@ void PatternPhrasesStorage::CalculateLSAMetrics(const Eigen::MatrixXd& U, const 
     }
 }
 
-void PatternPhrasesStorage::ComputeTextMetrics()
-{
+void PatternPhrasesStorage::ComputeTextMetrics() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
     const auto corpus = TextCorpus::GetCorpus();
     int totalDocuments = corpus.GetTotalDocuments();
@@ -616,8 +590,7 @@ void PatternPhrasesStorage::ComputeTextMetrics()
     }
 }
 
-void PatternPhrasesStorage::MergeSimilarClusters()
-{
+void PatternPhrasesStorage::MergeSimilarClusters() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Merging similar clusters...");
 
     // Get all keys from the map and sort them
@@ -663,8 +636,7 @@ void PatternPhrasesStorage::MergeSimilarClusters()
 }
 
 bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff,
-                                           size_t endLength, bool CheckFirstOnly)
-{
+                                           size_t endLength, bool CheckFirstOnly) {
     // Split keys into words
     std::istringstream stream1(key1);
     std::istringstream stream2(key2);
@@ -763,8 +735,7 @@ bool PatternPhrasesStorage::AreKeysSimilar(const std::string& key1, const std::s
     return diffCount <= maxDiff;
 }
 
-void PatternPhrasesStorage::LoadWikiWNRelations()
-{
+void PatternPhrasesStorage::LoadWikiWNRelations() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Loading WikiWordNet relations...");
     SemanticRelationsDB semanticDB;
 
@@ -811,8 +782,7 @@ void PatternPhrasesStorage::LoadWikiWNRelations()
 }
 
 void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters,
-                                                     bool termsOnly) const
-{
+                                                     bool termsOnly) const {
     Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
 
     json j;

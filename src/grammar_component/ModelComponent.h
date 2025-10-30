@@ -1,7 +1,9 @@
-#ifndef MODEL_COMPONENT_H
-#define MODEL_COMPONENT_H
+#pragma once
 
-#include <WordComponent.h>
+#include "Component.h"
+#include "WordComponent.h"
+
+#include <optional>
 
 class ModelComp;
 
@@ -10,7 +12,7 @@ class Model : public Component {
     std::string m_form;
     Components m_comps;
 
-public:
+  public:
     explicit Model(const std::string& form = "", const Components& comps = {});
     ~Model() = default;
 
@@ -30,7 +32,7 @@ public:
 
     const bool isModel() const override;
 
-    const std::optional<bool> isHead() const;
+    const std::optional<bool> isHead() const override;
 
     void addComponent(const std::shared_ptr<Component>& component);
 
@@ -49,12 +51,10 @@ public:
 class ModelComp : public Model {
     Condition m_cond;
 
-public:
+  public:
     ModelComp(const std::string& form = "", const Components& comps = {}, const Condition& cond = {});
 
     const Condition getCondition() const;
 
     const std::optional<bool> isHead() const;
 };
-
-#endif // MODEL_COMPONENT_H

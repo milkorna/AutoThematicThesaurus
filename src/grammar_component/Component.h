@@ -1,7 +1,11 @@
-#ifndef GRAMMAR_COMPONENT_H
-#define GRAMMAR_COMPONENT_H
+#pragma once
 
-#include <GrammarCondition.h>
+#include <xmorphy/morph/WordForm.h>
+#include <xmorphy/tag/UniMorphTag.h>
+#include <xmorphy/tag/UniSPTag.h>
+
+#include <vector>
+#include <memory>
 
 using namespace X;
 
@@ -12,7 +16,7 @@ using Components = std::vector<std::shared_ptr<Component>>;
 
 // Abstract class for grammatical components.
 class Component {
-public:
+  public:
     virtual ~Component() = default;
     virtual const UniSPTag getSPTag() const = 0;
     virtual const std::string getForm() const = 0;
@@ -22,5 +26,3 @@ public:
     virtual const bool isModel() const = 0;
     virtual const std::optional<bool> isHead() const = 0;
 };
-
-#endif // GRAMMAR_COMPONENT_H

@@ -1,27 +1,20 @@
 #include <boost/program_options.hpp>
-#include <xmorphy/graphem/SentenceSplitter.h>
-#include <xmorphy/graphem/Tokenizer.h>
-#include <xmorphy/ml/Disambiguator.h>
-#include <xmorphy/ml/MorphemicSplitter.h>
-#include <xmorphy/ml/SingleWordDisambiguate.h>
-#include <xmorphy/ml/TFDisambiguator.h>
-#include <xmorphy/ml/TFJoinedModel.h>
-#include <xmorphy/ml/TFMorphemicSplitter.h>
-#include <xmorphy/morph/JSONEachSentenceFormater.h>
-#include <xmorphy/morph/PrettyFormater.h>
-#include <xmorphy/morph/Processor.h>
-#include <xmorphy/morph/TSVFormater.h>
-#include <xmorphy/morph/WordFormPrinter.h>
-#include <xmorphy/utils/UniString.h>
 
-#include <GrammarPatternManager.h>
-#include <PatternPhrasesStorage.h>
-#include <PhrasesCollectorUtils.h>
-#include <StringFilters.h>
-#include <TokenizedSentenceCorpus.h>
+#include "xmorphy/graphem/SentenceSplitter.h"
+#include "xmorphy/graphem/Tokenizer.h"
+#include "xmorphy/ml/SingleWordDisambiguate.h"
+#include "xmorphy/ml/TFJoinedModel.h"
+#include "xmorphy/ml/TFMorphemicSplitter.h"
+#include "xmorphy/morph/Processor.h"
+#include "xmorphy/utils/UniString.h"
+
+#include "GrammarPatternManager.h"
+#include "PatternPhrasesStorage.h"
+#include "PhrasesCollectorUtils.h"
+#include "TextCorpus.h"
+#include "TokenizedSentenceCorpus.h"
 
 #include <cctype>
-#include <nlohmann/json.hpp>
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
@@ -29,8 +22,8 @@
 #include "utils/PathUtils.h"
 using util::path::extractNumberFromPath;
 
+#include <nlohmann/json.hpp>
 using json = nlohmann::json;
-using namespace X;
 
 namespace PhrasesCollectorUtils {
 Options::Options() {
@@ -151,10 +144,11 @@ std::vector<fs::path> GetResFiles() {
     return files_to_process;
 }
 
-void RemoveSeparatorTokens(std::vector<WordFormPtr>& forms) {
-    forms.erase(std::remove_if(forms.begin(), forms.end(),
-                               [](const WordFormPtr& form) { return form->getTokenType() == TokenTypeTag::SEPR; }),
-                forms.end());
+void RemoveSeparatorTokens(std::vector<X::WordFormPtr>& forms) {
+    forms.erase(
+        std::remove_if(forms.begin(), forms.end(),
+                       [](const X::WordFormPtr& form) { return form->getTokenType() == X::TokenTypeTag::SEPR; }),
+        forms.end());
 }
 
 void ProcessFile(const fs::path& inputFile, const fs::path& outputDir) {
@@ -169,18 +163,18 @@ void ProcessFile(const fs::path& inputFile, const fs::path& outputDir) {
     outFile << "[]" << std::endl;
     Logger::log("ProcessFile", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
 
-    Tokenizer tok;
-    TFMorphemicSplitter morphemic_splitter;
+    X::Tokenizer tok;
+    X::TFMorphemicSplitter morphemic_splitter;
     Process process(inputFile, outputFile);
     std::ifstream input(inputFile);
     if (!input) {
         Logger::log("ProcessFile", LogLevel::Error, "Failed to open input file: " + inputFile.string());
         return;
     }
-    SentenceSplitter ssplitter(input);
-    Processor analyzer;
-    SingleWordDisambiguate disamb;
-    TFJoinedModel joiner;
+    X::SentenceSplitter ssplitter(input);
+    X::Processor analyzer;
+    X::SingleWordDisambiguate disamb;
+    X::TFJoinedModel joiner;
 
     do {
         std::string sentence;
@@ -188,8 +182,8 @@ void ProcessFile(const fs::path& inputFile, const fs::path& outputDir) {
         if (sentence.empty())
             continue;
 
-        std::vector<TokenPtr> tokens = tok.analyze(UniString(sentence));
-        std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
+        std::vector<X::TokenPtr> tokens = tok.analyze(X::UniString(sentence));
+        std::vector<X::WordFormPtr> forms = analyzer.analyze(tokens);
 
         RemoveSeparatorTokens(forms);
         disamb.disambiguate(forms);
@@ -241,13 +235,13 @@ void BuildTokenizedSentenceCorpus() {
         for (unsigned int i = 0; i < files_to_process.size(); ++i) {
             size_t docNum = extractNumberFromPath(files_to_process[i].string());
             size_t sentNum = 0;
-            Tokenizer tok;
-            TFMorphemicSplitter morphemic_splitter;
+            X::Tokenizer tok;
+            X::TFMorphemicSplitter morphemic_splitter;
             std::ifstream input = files_to_process[i];
-            SentenceSplitter ssplitter(input);
-            Processor analyzer;
-            SingleWordDisambiguate disamb;
-            TFJoinedModel joiner;
+            X::SentenceSplitter ssplitter(input);
+            X::Processor analyzer;
+            X::SingleWordDisambiguate disamb;
+            X::TFJoinedModel joiner;
 
             do {
                 std::string data;
@@ -255,8 +249,8 @@ void BuildTokenizedSentenceCorpus() {
                 if (data.empty())
                     continue;
 
-                std::vector<TokenPtr> tokens = tok.analyze(UniString(data));
-                std::vector<WordFormPtr> forms = analyzer.analyze(tokens);
+                std::vector<X::TokenPtr> tokens = tok.analyze(X::UniString(data));
+                std::vector<X::WordFormPtr> forms = analyzer.analyze(tokens);
 
                 RemoveSeparatorTokens(forms);
                 disamb.disambiguate(forms);
@@ -266,7 +260,7 @@ void BuildTokenizedSentenceCorpus() {
 
                 for (auto& form : forms) {
                     morphemic_splitter.split(form);
-                    if (form->getTokenType() != TokenTypeTag::WORD)
+                    if (form->getTokenType() != X::TokenTypeTag::WORD)
                         continue;
                     normalizedData.append(GetLemma(form) + " ");
                 }
@@ -287,7 +281,7 @@ void BuildTokenizedSentenceCorpus() {
     Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
 }
 
-MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet) {
+X::MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet) {
     auto maxElement = *morphSet.begin();
     for (const auto& elem : morphSet) {
         if (elem.probability > maxElement.probability) {
@@ -297,8 +291,8 @@ MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morph
     return maxElement;
 }
 
-bool MorphAnanlysisError(const WordFormPtr& token) {
-    auto isDesiredPOS = [](const UniSPTag& tag) -> bool {
+bool MorphAnanlysisError(const X::WordFormPtr& token) {
+    auto isDesiredPOS = [](const X::UniSPTag& tag) -> bool {
         static const std::unordered_set<std::string> desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};
         return desiredPOS.find(tag.toString()) != desiredPOS.end();
     };
@@ -469,7 +463,7 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
     Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
 }
 
-const std::string GetLemma(const WordFormPtr& form) {
+const std::string GetLemma(const X::WordFormPtr& form) {
     return GetMostProbableMorphInfo(form->getMorphInfo()).normalForm.toLowerCase().getRawString();
 }
 } // namespace PhrasesCollectorUtils

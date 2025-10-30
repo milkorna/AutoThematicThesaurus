@@ -1,7 +1,9 @@
 #include "JsonPatternParser.h"
 
+#include "utils/PathUtils.h"
+using util::path::extractNumberFromPath;
+
 #include <fstream>
-#include <sstream>
 #include <stdexcept>
 
 namespace {

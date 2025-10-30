@@ -1,4 +1,4 @@
-#include <WordComponent.h>
+#include "WordComponent.h"
 
 using namespace X;
 

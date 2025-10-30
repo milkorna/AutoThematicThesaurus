@@ -1,15 +1,10 @@
-#ifndef TOKENIZED_SENTENCE_CORPUS_H
-#define TOKENIZED_SENTENCE_CORPUS_H
+#pragma once
 
-#include <boost/algorithm/string.hpp>
-#include <fstream>
-#include <iostream>
+#include "boost/algorithm/string.hpp"
+#include "nlohmann/json.hpp"
+
 #include <string>
 #include <unordered_map>
-#include <vector>
-
-#include <boost/algorithm/string.hpp>
-#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
@@ -21,13 +16,12 @@ struct TokenizedSentence {
 };
 
 class TokenizedSentenceCorpus {
-public:
+  public:
     // Default constructor for the TokenizedSentenceCorpus class.
     TokenizedSentenceCorpus() = default;
 
     // Singleton instance getter for the TokenizedSentenceCorpus class.
-    static TokenizedSentenceCorpus& GetCorpus()
-    {
+    static TokenizedSentenceCorpus& GetCorpus() {
         static TokenizedSentenceCorpus corpus;
         return corpus;
     }
@@ -55,5 +49,3 @@ public:
         sentenceMap; // Map for fast sentence retrieval
     int totalSentences = 0;
 };
-
-#endif // TEXT_CORPUS_H

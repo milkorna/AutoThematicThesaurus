@@ -1,7 +1,6 @@
-#include <TermLSA.h>
+#include "TermLSA.h"
 
-std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix()
-{
+std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix() {
     // Map to store term frequencies across documents: key is term, value is a map of document IDs to frequencies.
     std::unordered_map<std::string, std::unordered_map<size_t, int>> termFrequency;
 
@@ -80,8 +79,7 @@ std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix(
 }
 
 // Method to perform SVD
-void TermLSA::ComputeSVD(const MatrixXd& termDocumentMatrix)
-{
+void TermLSA::ComputeSVD(const MatrixXd& termDocumentMatrix) {
     // Measure computation time
     auto start = std::chrono::high_resolution_clock::now();
     try {
@@ -151,8 +149,7 @@ void TermLSA::ComputeSVD(const MatrixXd& termDocumentMatrix)
     }
 }
 
-std::unordered_map<std::string, double> TermLSA::CalculateTermRelevanceToTopics()
-{
+std::unordered_map<std::string, double> TermLSA::CalculateTermRelevanceToTopics() {
     std::unordered_map<std::string, double>
         termRelevance; // Container to store the relevance scores of terms to topics.
 
@@ -207,16 +204,14 @@ std::unordered_map<std::string, double> TermLSA::CalculateTermRelevanceToTopics(
 // Function to calculate the cosine similarity between two vectors (terms)
 // Cosine similarity measures the cosine of the angle between two vectors,
 // providing a value between -1 and 1 that indicates how similar the vectors are.
-double TermLSA::CosineSimilarity(const VectorXd& vec1, const VectorXd& vec2)
-{
+double TermLSA::CosineSimilarity(const VectorXd& vec1, const VectorXd& vec2) {
     // Compute the dot product of the two vectors and divide by the product of their norms (magnitudes).
     // This results in a similarity measure, where 1 indicates identical direction and 0 indicates orthogonality.
     return vec1.dot(vec2) / (vec1.norm() * vec2.norm());
 }
 
 // Function to find terms similar to the specified target term based on cosine similarity
-void TermLSA::FindSimilarTerms(const std::string& targetTerm)
-{
+void TermLSA::FindSimilarTerms(const std::string& targetTerm) {
     int targetIndex = -1; // Index of the target term in the list of terms.
 
     // Search for the index of the target term within the list of terms.
@@ -259,8 +254,7 @@ void TermLSA::FindSimilarTerms(const std::string& targetTerm)
     }
 }
 
-void TermLSA::AnalyzeTopics(int numTopics, int topWords)
-{
+void TermLSA::AnalyzeTopics(int numTopics, int topWords) {
     // Check if the number of rows in matrix U matches the number of terms.
     // This ensures that each row of U corresponds to a term.
     if (U.rows() != terms.size()) {
@@ -295,8 +289,7 @@ void TermLSA::AnalyzeTopics(int numTopics, int topWords)
     }
 }
 
-void TermLSA::PerformAnalysis(int numComponents)
-{
+void TermLSA::PerformAnalysis(int numComponents) {
     // Create the term-document matrix, where rows represent terms and columns represent documents.
     auto [termDocumentMatrix, terms] = CreateTermDocumentMatrix();
 

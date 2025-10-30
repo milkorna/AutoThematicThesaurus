@@ -1,9 +1,6 @@
-#ifndef LOGGER_H
-#define LOGGER_H
+#pragma once
 
-#include <filesystem>
 #include <fstream>
-#include <iostream>
 #include <map>
 #include <set>
 #include <string>
@@ -18,14 +15,14 @@ enum class LogLevel {
 
 // Logger is a utility class that provides a global logging facility.
 class Logger {
-private:
+  private:
     static bool enabled;                                    // Controls if logging is globally enabled or disabled.
     static LogLevel globalLogLevel;                         // The global log level threshold.
     static std::map<std::string, LogLevel> moduleLogLevels; // Log levels specific to modules.
     static std::set<std::string> disabledModules;           // Set of modules with logging disabled.
     static std::ofstream logFile;                           // File stream for logging.
 
-public:
+  public:
     // Enables or disables logging globally.
     static void enableLogging(bool enable);
 
@@ -52,5 +49,3 @@ public:
 
     static void flushLogs();
 };
-
-#endif // LOGGER_H

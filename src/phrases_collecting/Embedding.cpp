@@ -1,15 +1,11 @@
-#include <Embedding.h>
-#include <PhrasesCollectorUtils.h>
+#include "Embedding.h"
+#include "PhrasesCollectorUtils.h"
 
-#include <filesystem>
 #include <iostream>
-
-namespace fs = std::filesystem;
 
 std::unique_ptr<fasttext::FastText> Embedding::ft = nullptr;
 
-void Embedding::LoadModel(std::string model_path = "")
-{
+void Embedding::LoadModel(std::string model_path = "") {
     auto& options = PhrasesCollectorUtils::Options::getOptions();
     if (!ft) {
         ft = std::make_unique<fasttext::FastText>();
@@ -24,15 +20,13 @@ void Embedding::LoadModel(std::string model_path = "")
     }
 }
 
-Embedding::Embedding()
-{
+Embedding::Embedding() {
     Logger::log("Embedding", LogLevel::Info, "Initializing embedding model...");
     LoadModel();
     Logger::log("Embedding", LogLevel::Info, "Model loaded successfully.");
 }
 
-void Embedding::RunTest()
-{
+void Embedding::RunTest() {
     if (!ft) {
         std::cerr << "Model is not loaded. Please load the model before running the test." << std::endl;
         return;
@@ -48,20 +42,17 @@ void Embedding::RunTest()
     }
 }
 
-std::vector<float> Embedding::GetWordVector(const std::string& word)
-{
+std::vector<float> Embedding::GetWordVector(const std::string& word) {
     fasttext::Vector vec(ft->getDimension());
     ft->getWordVector(vec, word);
     return std::vector<float>(vec.data(), vec.data() + vec.size());
 }
 
-WordEmbedding::WordEmbedding(const std::string& word)
-{
+WordEmbedding::WordEmbedding(const std::string& word) {
     vector = Embedding::GetWordVector(word);
 }
 
-float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const
-{
+float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const {
     float dot = DotProduct(other);
     float magA = Magnitude();
     float magB = other.Magnitude();
@@ -71,8 +62,7 @@ float WordEmbedding::CosineSimilarity(const WordEmbedding& other) const
     return dot / (magA * magB);
 }
 
-float NormalizedLevenshteinDistance(const std::string& s1, const std::string& s2)
-{
+float NormalizedLevenshteinDistance(const std::string& s1, const std::string& s2) {
     int len1 = s1.size();
     int len2 = s2.size();
     std::vector<std::vector<int>> dp(len1 + 1, std::vector<int>(len2 + 1));
@@ -96,8 +86,7 @@ float NormalizedLevenshteinDistance(const std::string& s1, const std::string& s2
     return static_cast<float>(levenshteinDistance) / maxLength;
 }
 
-float WordEmbedding::EuclideanDistance(const WordEmbedding& other) const
-{
+float WordEmbedding::EuclideanDistance(const WordEmbedding& other) const {
     float sum = 0.0f;
     for (size_t i = 0; i < vector.size(); ++i) {
         float diff = vector[i] - other.vector[i];
@@ -106,8 +95,7 @@ float WordEmbedding::EuclideanDistance(const WordEmbedding& other) const
     return std::sqrt(sum);
 }
 
-float WordEmbedding::ManhattanDistance(const WordEmbedding& other) const
-{
+float WordEmbedding::ManhattanDistance(const WordEmbedding& other) const {
     float sum = 0.0f;
     for (size_t i = 0; i < vector.size(); ++i) {
         sum += std::abs(vector[i] - other.vector[i]);
@@ -115,8 +103,7 @@ float WordEmbedding::ManhattanDistance(const WordEmbedding& other) const
     return sum;
 }
 
-float WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const
-{
+float WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const {
     float intersection = 0.0f;
     float union_set = 0.0f;
 
@@ -132,8 +119,7 @@ float WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const
     return intersection / union_set;
 }
 
-float WordEmbedding::Magnitude() const
-{
+float WordEmbedding::Magnitude() const {
     float sum = 0.0f;
     for (float val : vector) {
         sum += val * val;
@@ -141,8 +127,7 @@ float WordEmbedding::Magnitude() const
     return std::sqrt(sum);
 }
 
-float WordEmbedding::DotProduct(const WordEmbedding& other) const
-{
+float WordEmbedding::DotProduct(const WordEmbedding& other) const {
     float dot = 0.0f;
     for (size_t i = 0; i < vector.size(); ++i) {
         dot += vector[i] * other.vector[i];
@@ -150,8 +135,7 @@ float WordEmbedding::DotProduct(const WordEmbedding& other) const
     return dot;
 }
 
-std::ostream& operator<<(std::ostream& os, const WordEmbedding& we)
-{
+std::ostream& operator<<(std::ostream& os, const WordEmbedding& we) {
     os << "[";
     for (size_t i = 0; i < we.vector.size(); ++i) {
         os << we.vector[i];

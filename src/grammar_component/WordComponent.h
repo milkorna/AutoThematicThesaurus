@@ -1,13 +1,17 @@
-#ifndef WORD_COMPONENT_H
-#define WORD_COMPONENT_H
+#pragma once
 
-#include <Component.h>
+#include <xmorphy/morph/WordForm.h>
+#include <xmorphy/tag/UniMorphTag.h>
+#include <xmorphy/tag/UniSPTag.h>
+
+#include "Component.h"
+#include "GrammarCondition.h"
 
 // Derived class representing a Word in the grammar system.
 class Word : public Component {
     UniSPTag m_sp;
 
-public:
+  public:
     explicit Word(UniSPTag sp = UniSPTag::X);
 
     const X::UniSPTag getSPTag() const override;
@@ -24,7 +28,7 @@ public:
 class WordComp : public Word {
     Condition m_cond;
 
-public:
+  public:
     explicit WordComp(const UniSPTag& sp = UniSPTag::X, const Condition& cond = Condition());
     ~WordComp() override = default;
 
@@ -32,9 +36,7 @@ public:
 
     const bool isRec() const;
 
-    const std::optional<bool> isHead() const;
+    const std::optional<bool> isHead() const override;
 
     void print() const;
 };
-
-#endif // WORD_COMPONENT_H

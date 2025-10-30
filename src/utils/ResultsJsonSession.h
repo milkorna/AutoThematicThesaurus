@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Logger.h"
 #include "utils/PathUtils.h"
-#include <Logger.h>
 
 #include <filesystem>
 #include <nlohmann/json.hpp>

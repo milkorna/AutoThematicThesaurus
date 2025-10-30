@@ -1,23 +1,18 @@
-#ifndef TERM_LSA_H
-#define TERM_LSA_H
+#pragma once
 
-#include <Eigen/Dense>
-#include <PatternPhrasesStorage.h> // Include the structure WordComplexCluster
-#include <algorithm>
-#include <iostream>
-#include <numeric>
+#include "Eigen/Dense"
+#include "PatternPhrasesStorage.h"
+
 #include <string>
 #include <unordered_map>
-#include <unordered_set>
 #include <vector>
 
 using namespace Eigen;
 
 class TermLSA {
-public:
+  public:
     // Constructor: Initializes TermLSA with a reference to the PatternPhrasesStorage object.
-    TermLSA(const PatternPhrasesStorage& storage) : storage(storage)
-    {
+    TermLSA(const PatternPhrasesStorage& storage) : storage(storage) {
     }
 
     // Main method to perform the LSA analysis.
@@ -25,28 +20,23 @@ public:
     void PerformAnalysis(int numComponents = 100);
 
     // Methods to retrieve the matrices after SVD decomposition.
-    MatrixXd GetU() const
-    {
+    MatrixXd GetU() const {
         return U;
     } // Returns the left singular matrix U.
-    MatrixXd GetSigma() const
-    {
+    MatrixXd GetSigma() const {
         return Sigma;
     } // Returns the diagonal matrix of singular values Sigma.
-    MatrixXd GetV() const
-    {
+    MatrixXd GetV() const {
         return V;
     } // Returns the right singular matrix V.
 
     // Method to get the list of terms.
-    std::vector<std::string> GetTerms() const
-    {
+    std::vector<std::string> GetTerms() const {
         return terms;
     }
 
     // Method to get the topics extracted from the analysis.
-    std::unordered_map<int, std::vector<std::string>> GetTopics() const
-    {
+    std::unordered_map<int, std::vector<std::string>> GetTopics() const {
         return topics;
     }
 
@@ -63,7 +53,7 @@ public:
     // Method to calculate the relevance of terms to the identified topics.
     std::unordered_map<std::string, double> CalculateTermRelevanceToTopics();
 
-private:
+  private:
     const PatternPhrasesStorage& storage; // Reference to the term clusters stored in PatternPhrasesStorage.
     MatrixXd U;                           // Left singular matrix from SVD.
     MatrixXd Sigma;                       // Diagonal matrix of singular values from SVD.
@@ -80,5 +70,3 @@ private:
     // This decomposes the matrix into U, Sigma, and V matrices used for further analysis.
     void ComputeSVD(const MatrixXd& termDocumentMatrix);
 };
-
-#endif // TERM_LSA_H

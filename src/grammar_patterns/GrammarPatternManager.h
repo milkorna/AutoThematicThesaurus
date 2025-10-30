@@ -1,6 +1,4 @@
-#ifndef GPAMMAR_PATTERN_MANAGER_H
-#define GPAMMAR_PATTERN_MANAGER_H
-#include "JsonPatternParser.h"
+#pragma once
 
 #include <filesystem>
 #include <memory>
@@ -61,5 +59,3 @@ class GrammarPatternManager {
 
     void divide();
 };
-
-#endif // GPAMMAR_PATTERN_MANAGER_H

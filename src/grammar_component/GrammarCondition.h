@@ -1,14 +1,10 @@
-#ifndef GRAMMAR_CONDITION_H
-#define GRAMMAR_CONDITION_H
+#pragma once
 
 #include <xmorphy/morph/WordForm.h>
 #include <xmorphy/tag/UniMorphTag.h>
 #include <xmorphy/tag/UniSPTag.h>
 
 #include <Logger.h>
-
-#include <memory>
-#include <optional>
 
 using namespace X;
 
@@ -35,12 +31,12 @@ struct Additional {
 
 // Class to define conditions for matching grammatical components.
 class Condition {
-private:
+  private:
     SyntaxRole m_role;
     UniMorphTag m_tag;
     Additional m_addcond;
 
-public:
+  public:
     Condition(SyntaxRole role = SyntaxRole::Independent, UniMorphTag morphTag = UniMorphTag::UNKN,
               Additional cond = Additional());
     ~Condition() = default;
@@ -56,5 +52,3 @@ public:
 
     bool check(const X::UniSPTag spTag, const X::WordFormPtr& form) const;
 };
-
-#endif // GRAMMAR_CONDITION_H

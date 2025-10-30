@@ -1,19 +1,19 @@
 
+#include "TokenizedSentenceCorpus.h"
 #include "Logger.h"
-#include <TokenizedSentenceCorpus.h>
+
+#include <string>
 
 // Adds a sentence to the corpus.
 void TokenizedSentenceCorpus::AddSentence(const size_t docNum, const size_t sentNum, const std::string& data,
-                                          const std::string& normalizedData)
-{
+                                          const std::string& normalizedData) {
     TokenizedSentence sentence = {docNum, sentNum, data, normalizedData};
     sentenceMap[docNum][sentNum] = sentence; // Insert the sentence into the map
     totalSentences++;
 }
 
 // Retrieves a sentence by document and sentence number.
-const TokenizedSentence* TokenizedSentenceCorpus::GetSentence(size_t docNum, size_t sentNum) const
-{
+const TokenizedSentence* TokenizedSentenceCorpus::GetSentence(size_t docNum, size_t sentNum) const {
     auto docIt = sentenceMap.find(docNum);
     if (docIt != sentenceMap.end()) {
         auto sentIt = docIt->second.find(sentNum);
@@ -25,8 +25,7 @@ const TokenizedSentence* TokenizedSentenceCorpus::GetSentence(size_t docNum, siz
 }
 
 // Serializes the corpus data to JSON format.
-json TokenizedSentenceCorpus::Serialize() const
-{
+json TokenizedSentenceCorpus::Serialize() const {
     json j;
     j["totalSentences"] = totalSentences;
     j["sentences"] = json::array();
@@ -44,8 +43,7 @@ json TokenizedSentenceCorpus::Serialize() const
 }
 
 // Deserializes the corpus data from JSON format.
-void TokenizedSentenceCorpus::Deserialize(const json& j)
-{
+void TokenizedSentenceCorpus::Deserialize(const json& j) {
     totalSentences = j.at("totalSentences").get<int>();
     sentenceMap.clear(); // Clear existing data before loading new ones
 
@@ -62,8 +60,7 @@ void TokenizedSentenceCorpus::Deserialize(const json& j)
 }
 
 // Saves the serialized corpus data to a file.
-void TokenizedSentenceCorpus::SaveToFile(const std::string& filename)
-{
+void TokenizedSentenceCorpus::SaveToFile(const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file " + filename + " for saving.");
@@ -75,8 +72,7 @@ void TokenizedSentenceCorpus::SaveToFile(const std::string& filename)
 }
 
 // Loads the corpus data from a file, deserializes it, and updates the corpus.
-void TokenizedSentenceCorpus::LoadFromFile(const std::string& filename)
-{
+void TokenizedSentenceCorpus::LoadFromFile(const std::string& filename) {
     Logger::log("TokenizedSentenceCorpus", LogLevel::Info, "Loading tokenized sentences from file: " + filename);
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -89,5 +85,5 @@ void TokenizedSentenceCorpus::LoadFromFile(const std::string& filename)
     Deserialize(j);
 
     Logger::log("TokenizedSentenceCorpus", LogLevel::Info,
-                "Sentences loaded successfully. Total sentences: " + totalSentences);
+                "Sentences loaded successfully. Total sentences: " + std::to_string(totalSentences));
 }

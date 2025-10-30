@@ -1,11 +1,8 @@
-#ifndef COMPLEX_PHRASES_COLLECTOR_H
-#define COMPLEX_PHRASES_COLLECTOR_H
+#pragma once
 
-#include "JsonPatternParser.h"
-#include <PhrasesCollectorUtils.h>
-#include <SimplePhrasesCollector.h>
-
-#include <regex>
+#include "GrammarPatternManager.h"
+#include "ModelComponent.h"
+#include "PhrasesCollectorUtils.h"
 
 // \class ComplexPhrasesCollector
 // \brief This class collects complex phrases from a given set of simple phrases and word forms.
@@ -16,7 +13,7 @@ class ComplexPhrasesCollector {
     // \param simplePhrases     A vector of WordComplexPtr representing the simple phrases to analyze.
     // \param forms             A vector of WordFormPtr representing the sentence to analyze.
     explicit ComplexPhrasesCollector(const std::vector<PHUtils::WordComplexPtr>& simplePhrases,
-                                     const std::vector<WordFormPtr>& forms)
+                                     const std::vector<X::WordFormPtr>& forms)
         : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{},
           manager(*GrammarPatternManager::GetManager()) {
     }
@@ -58,5 +55,3 @@ class ComplexPhrasesCollector {
                                const size_t curSimplePhrInd, PHUtils::CurrentPhraseStatus& curPhrStatus,
                                PHUtils::WordComplexPtr& wc);
 };
-
-#endif // COMPLEX_PHRASES_COLLECTOR_H

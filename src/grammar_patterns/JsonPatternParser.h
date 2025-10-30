@@ -2,19 +2,17 @@
 
 #include "GrammarPatternManager.h"
 #include "ModelComponent.h"
-#include "utils/PathUtils.h"
 
-#include <filesystem>
 #include <memory>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 
-namespace fs = std::filesystem;
+#include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-using util::path::extractNumberFromPath;
+#include <filesystem>
+namespace fs = std::filesystem;
 
 class JsonPatternParser {
   public:

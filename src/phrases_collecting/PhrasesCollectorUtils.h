@@ -1,22 +1,18 @@
-#ifndef PHRASES_COLLECTOR_UTILS_H
-#define PHRASES_COLLECTOR_UTILS_H
+#pragma once
 
-#include <xmorphy/morph/WordForm.h>
+#include "xmorphy/morph/WordForm.h"
 
-#include "JsonPatternParser.h"
-#include <Embedding.h>
-#include <ModelComponent.h>
-#include <PhrasesCollectorUtils.h>
-#include <TextCorpus.h>
-#include <WordComplex.h>
+#include "Embedding.h"
+#include "WordComplex.h"
 
 #include <filesystem>
 #include <mutex>
-#include <set>
 #include <unordered_map>
 #include <unordered_set>
 
 namespace fs = std::filesystem;
+
+namespace PHUtils = PhrasesCollectorUtils;
 
 namespace PhrasesCollectorUtils {
 
@@ -90,12 +86,12 @@ void BuildTokenizedSentenceCorpus();
 // \brief Retrieves the most probable morphological information from a set.
 // \param morphSet      A set of morphological information.
 // \return              The most probable MorphInfo object.
-MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet);
+X::MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet);
 
 // \brief Checks if there is an error in morphological analysis.
 // \param token         The WordFormPtr token to check.
 // \return              True if there is an error, false otherwise.
-bool MorphAnanlysisError(const WordFormPtr& token);
+bool MorphAnanlysisError(const X::WordFormPtr& token);
 
 // \brief Checks if the current form has a specific morphological property.
 // \param currFormMorphInfo A set of morphological information of the current form.
@@ -133,7 +129,6 @@ const std::unordered_set<std::string> GetStopWords();
 // \param process       The process associated with the phrase collection.
 void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process);
 
-const std::string GetLemma(const WordFormPtr& form);
-} // namespace PhrasesCollectorUtils
+const std::string GetLemma(const X::WordFormPtr& form);
 
-#endif // PHRASES_COLLECTOR_UTILS_H
+} // namespace PhrasesCollectorUtils

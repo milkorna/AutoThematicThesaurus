@@ -1,12 +1,11 @@
-#include <SemanticRelations.h>
+#include "SemanticRelations.h"
 
 #include <filesystem>
 #include <iostream>
 
 namespace fs = std::filesystem;
 
-SemanticRelationsDB::SemanticRelationsDB()
-{
+SemanticRelationsDB::SemanticRelationsDB() {
     fs::path repoPath = fs::current_path();
     std::string semantic_data = (repoPath / "wikiwordnet.db").string();
 
@@ -15,18 +14,16 @@ SemanticRelationsDB::SemanticRelationsDB()
     }
 }
 
-sqlite3* SemanticRelationsDB::getDB() const
-{
+sqlite3* SemanticRelationsDB::getDB() const {
     return db;
 }
 
-SemanticRelationsDB::~SemanticRelationsDB()
-{
+SemanticRelationsDB::~SemanticRelationsDB() {
     sqlite3_close(db);
 }
 
-std::set<std::string> SemanticRelationsDB::GetRelations(const std::string& word, const std::string& relation_type) const
-{
+std::set<std::string> SemanticRelationsDB::GetRelations(const std::string& word,
+                                                        const std::string& relation_type) const {
     std::set<std::string> relations;
     std::string sql;
 
@@ -66,8 +63,7 @@ std::set<std::string> SemanticRelationsDB::GetRelations(const std::string& word,
     return relations;
 }
 
-void SemanticRelationsDB::PrintAllTables()
-{
+void SemanticRelationsDB::PrintAllTables() {
     std::string sql = "SELECT name FROM sqlite_master WHERE type='table';";
     sqlite3_stmt* stmt;
 
@@ -83,8 +79,7 @@ void SemanticRelationsDB::PrintAllTables()
     sqlite3_finalize(stmt);
 }
 
-void SemanticRelationsDB::PrintFirstFiveRows(const std::string& table_name)
-{
+void SemanticRelationsDB::PrintFirstFiveRows(const std::string& table_name) {
     std::string sql = "SELECT * FROM " + table_name + " LIMIT 5;";
     sqlite3_stmt* stmt;
 
@@ -104,8 +99,7 @@ void SemanticRelationsDB::PrintFirstFiveRows(const std::string& table_name)
     sqlite3_finalize(stmt);
 }
 
-void SemanticRelationsDB::PrintTableSchema(const std::string& table_name)
-{
+void SemanticRelationsDB::PrintTableSchema(const std::string& table_name) {
     std::string sql = "PRAGMA table_info(" + table_name + ");";
     sqlite3_stmt* stmt;
 
@@ -124,8 +118,7 @@ void SemanticRelationsDB::PrintTableSchema(const std::string& table_name)
     sqlite3_finalize(stmt);
 }
 
-void DB::RunTest()
-{
+void DB::RunTest() {
     try {
         SemanticRelationsDB db;
 

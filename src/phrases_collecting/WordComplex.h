@@ -1,12 +1,8 @@
-#ifndef WORD_COMPLEX_H
-#define WORD_COMPLEX_H
+#pragma once
 
-#include <xmorphy/morph/WordForm.h>
+#include "xmorphy/morph/WordForm.h"
 
-#include "JsonPatternParser.h"
-#include "ModelComponent.h"
-#include "PhrasesCollectorUtils.h"
-#include "WordComplex.h"
+#include "ResultsJsonSession.h"
 
 #include <deque>
 #include <memory>
@@ -57,7 +53,7 @@ WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const s
 // \param modelName     The name of the model.
 // \param process       The process associated with the initialization.
 // \return              A shared pointer to the initialized WordComplex object.
-WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr token, const std::string modelName,
+WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr token, const std::string modelName,
                                      const Process& process);
 
 // \brief Updates a WordComplex object with the given form and text form.
@@ -65,7 +61,8 @@ WordComplexPtr InicializeWordComplex(const size_t tokenInd, const WordFormPtr to
 // \param form          The WordFormPtr form to add.
 // \param formFromText  The form from the text to add.
 // \param isLeft        A boolean indicating if the form is added to the left.
-void UpdateWordComplex(const WordComplexPtr& wc, const WordFormPtr& form, const std::string& formFromText, bool isLeft);
+void UpdateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, const std::string& formFromText,
+                       bool isLeft);
 
 // \brief Adds words to the front of a WordComplex object.
 // \param wc            A shared pointer to the WordComplex object to update.
@@ -76,8 +73,5 @@ void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase
 // \param wc            A shared pointer to the WordComplex object to update.
 // \param asidePhrase   A shared pointer to the aside phrase to add.
 void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);
+
 } // namespace PhrasesCollectorUtils
-
-namespace PHUtils = PhrasesCollectorUtils;
-
-#endif // WORD_COMPLEX_H

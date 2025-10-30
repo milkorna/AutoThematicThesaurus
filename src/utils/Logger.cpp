@@ -1,4 +1,6 @@
-#include <Logger.h>
+#include "Logger.h"
+
+#include <iostream>
 
 // Initialize static members
 bool Logger::enabled = true;                             // Logging is enabled by default.
@@ -8,38 +10,32 @@ std::set<std::string> Logger::disabledModules;           // No modules are disab
 std::ofstream Logger::logFile;                           // Log file stream.
 
 // Enables or disables logging globally.
-void Logger::enableLogging(bool enable)
-{
+void Logger::enableLogging(bool enable) {
     Logger::enabled = enable;
 }
 
 // Sets the global log level.
-void Logger::setGlobalLogLevel(LogLevel level)
-{
+void Logger::setGlobalLogLevel(LogLevel level) {
     Logger::globalLogLevel = level;
 }
 
 // Sets the log level for a specific module.
-void Logger::setModuleLogLevel(const std::string& module, LogLevel level)
-{
+void Logger::setModuleLogLevel(const std::string& module, LogLevel level) {
     moduleLogLevels[module] = level;
 }
 
 // Disables logging for a specific module.
-void Logger::disableModuleLogging(const std::string& module)
-{
+void Logger::disableModuleLogging(const std::string& module) {
     disabledModules.insert(module);
 }
 
 // Enables logging for a previously disabled module.
-void Logger::enableModuleLogging(const std::string& module)
-{
+void Logger::enableModuleLogging(const std::string& module) {
     disabledModules.erase(module);
 }
 
 // Logs a message if the specified log level is at or above the configured log level.
-void Logger::log(const std::string& module, LogLevel level, const std::string& message)
-{
+void Logger::log(const std::string& module, LogLevel level, const std::string& message) {
     if (enabled && disabledModules.find(module) == disabledModules.end()) {
         LogLevel effectiveLevel = globalLogLevel;
         if (moduleLogLevels.find(module) != moduleLogLevels.end()) {
@@ -58,33 +54,30 @@ void Logger::log(const std::string& module, LogLevel level, const std::string& m
 }
 
 // Converts LogLevel to a readable string.
-std::string Logger::toString(LogLevel level)
-{
+std::string Logger::toString(LogLevel level) {
     switch (level) {
-        case LogLevel::Debug:
-            return "Debug";
-        case LogLevel::Info:
-            return "Info";
-        case LogLevel::Warning:
-            return "Warning";
-        case LogLevel::Error:
-            return "Error";
-        default:
-            return "Unknown";
+    case LogLevel::Debug:
+        return "Debug";
+    case LogLevel::Info:
+        return "Info";
+    case LogLevel::Warning:
+        return "Warning";
+    case LogLevel::Error:
+        return "Error";
+    default:
+        return "Unknown";
     }
 }
 
 // Initialize the log file
-void Logger::initializeLogFile(const std::string& filePath)
-{
+void Logger::initializeLogFile(const std::string& filePath) {
     logFile.open(filePath, std::ios::out | std::ios::app);
     if (!logFile) {
         std::cerr << "Failed to open log file: " << filePath << std::endl;
     }
 }
 
-void Logger::flushLogs()
-{
+void Logger::flushLogs() {
     if (logFile.is_open()) {
         logFile.flush();
         logFile.close();
