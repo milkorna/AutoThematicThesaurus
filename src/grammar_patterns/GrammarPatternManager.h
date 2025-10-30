@@ -10,7 +10,7 @@
 class Model;
 
 class GrammarPatternManager {
-private:
+  private:
     static GrammarPatternManager* instance;
 
     std::unordered_map<std::string, std::shared_ptr<Model>> simplePatterns;
@@ -24,7 +24,7 @@ private:
     // Private constructors for Singleton pattern
     GrammarPatternManager() {};
 
-public:
+  public:
     // Singleton access method
     static GrammarPatternManager* GetManager();
 
@@ -42,7 +42,7 @@ public:
     const std::unordered_map<std::string, std::shared_ptr<Model>> getComplexPatterns() const;
 
     // Method to parse document strings and create/fill models
-    void readPatterns(const std::string& filename);
+    void readPatterns(const fs::path& filename);
 
     void printPatterns() const;
 

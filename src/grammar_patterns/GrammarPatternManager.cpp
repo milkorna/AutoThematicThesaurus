@@ -1,23 +1,21 @@
+#include "JsonPatternParser.h"
 #include <Component.h>
 #include <GrammarPatternManager.h>
 
 GrammarPatternManager* GrammarPatternManager::instance = nullptr;
 
-GrammarPatternManager* GrammarPatternManager::GetManager()
-{
+GrammarPatternManager* GrammarPatternManager::GetManager() {
     if (!instance) {
         instance = new GrammarPatternManager();
     }
     return instance;
 }
 
-void GrammarPatternManager::addPattern(const std::string& key, const std::shared_ptr<Model>& model)
-{
+void GrammarPatternManager::addPattern(const std::string& key, const std::shared_ptr<Model>& model) {
     patterns[key] = model;
 }
 
-std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string& key) const
-{
+std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string& key) const {
     auto it = patterns.find(key);
     if (it != patterns.end()) {
         return it->second;
@@ -25,22 +23,29 @@ std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string& key)
     return nullptr;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getSimplePatterns() const
-{
+const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getSimplePatterns() const {
     return simplePatterns;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getComplexPatterns() const
-{
+const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getComplexPatterns() const {
     return complexPatterns;
 }
 
-void GrammarPatternManager::readPatterns(const std::string& filePath)
-{
+#include <JsonPatternParser.h> // добавить include
+
+void GrammarPatternManager::readPatterns(const fs::path& filePath) {
     try {
-        Parser parser(filePath);
-        Logger::log("PatternParser", LogLevel::Info, "Reading patterns from file: " + filePath);
-        parser.Parse();
+        Logger::log("PatternParser", LogLevel::Info, "Reading patterns from file: " + filePath.string());
+
+        const auto ext = std::filesystem::path(filePath).extension().string();
+        if (ext == ".json" || ext == ".JSON") {
+            JsonPatternParser jp(filePath);
+            jp.parseAll();
+        } else {
+            // legacy (если где-то нужно поддерживать старый формат)
+            Parser parser(filePath);
+            parser.Parse();
+        }
     } catch (const std::exception& e) {
         Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
     } catch (...) {
@@ -48,46 +53,40 @@ void GrammarPatternManager::readPatterns(const std::string& filePath)
     }
 }
 
-void GrammarPatternManager::printPatterns() const
-{
-    Logger::log("GrammarPatternManager", LogLevel::Info, "printPatterns: " + patterns.size());
+void GrammarPatternManager::printPatterns() const {
+    Logger::log("GrammarPatternManager", LogLevel::Info, "printPatterns: " + std::to_string(patterns.size()));
 
     for (const auto& [key, model] : patterns) {
+        if (!model)
+            continue;
         Logger::log("model form", LogLevel::Info, model->getForm());
         model->printWords();
     }
 }
 
-void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead)
-{
+void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead) {
     if (const auto& res = isHead ? usedHeadSpVars.insert(sp) : usedSpVars.insert(sp); res.second)
         Logger::log("GrammarPatternManager", LogLevel::Debug, "Addded new part of speach: " + sp);
 }
 
-std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const
-{
+std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const {
     return usedHeadSpVars;
 }
-std::unordered_set<std::string> GrammarPatternManager::getUsedSp() const
-{
+std::unordered_set<std::string> GrammarPatternManager::getUsedSp() const {
     return usedSpVars;
 }
 
-size_t GrammarPatternManager::patternsAmount() const
-{
+size_t GrammarPatternManager::patternsAmount() const {
     return patterns.size();
 }
-size_t GrammarPatternManager::simplePatternsAmount() const
-{
+size_t GrammarPatternManager::simplePatternsAmount() const {
     return simplePatterns.size();
 }
-size_t GrammarPatternManager::complexPatternsAmount() const
-{
+size_t GrammarPatternManager::complexPatternsAmount() const {
     return complexPatterns.size();
 }
 
-void GrammarPatternManager::divide()
-{
+void GrammarPatternManager::divide() {
     for (auto& pattern : patterns) {
         bool isComplex = false;
         for (const auto& comp : pattern.second->getComponents()) {
