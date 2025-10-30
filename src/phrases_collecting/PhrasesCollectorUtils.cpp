@@ -26,6 +26,9 @@
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
+#include "utils/PathUtils.h"
+using util::path::extractNumberFromPath;
+
 using json = nlohmann::json;
 using namespace X;
 
@@ -236,7 +239,7 @@ void BuildTokenizedSentenceCorpus() {
         std::vector<fs::path> files_to_process = GetFilesToProcess();
 
         for (unsigned int i = 0; i < files_to_process.size(); ++i) {
-            size_t docNum = ParserUtils::extractNumberFromPath(files_to_process[i].string());
+            size_t docNum = extractNumberFromPath(files_to_process[i].string());
             size_t sentNum = 0;
             Tokenizer tok;
             TFMorphemicSplitter morphemic_splitter;
