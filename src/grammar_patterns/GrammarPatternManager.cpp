@@ -2,6 +2,10 @@
 #include <Component.h>
 #include <GrammarPatternManager.h>
 
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
 GrammarPatternManager* GrammarPatternManager::instance = nullptr;
 
 GrammarPatternManager* GrammarPatternManager::GetManager() {
@@ -31,25 +35,27 @@ const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternMana
     return complexPatterns;
 }
 
-#include <JsonPatternParser.h> // добавить include
-
 void GrammarPatternManager::readPatterns(const fs::path& filePath) {
     try {
-        Logger::log("PatternParser", LogLevel::Info, "Reading patterns from file: " + filePath.string());
+        Logger::log("GrammarPatternManager", LogLevel::Info, "Reading patterns from file: " + filePath.string());
 
-        const auto ext = std::filesystem::path(filePath).extension().string();
-        if (ext == ".json" || ext == ".JSON") {
-            JsonPatternParser jp(filePath);
-            jp.parseAll();
-        } else {
-            // legacy (если где-то нужно поддерживать старый формат)
-            Parser parser(filePath);
-            parser.Parse();
+        if (!fs::exists(filePath)) {
+            throw std::runtime_error("patterns file not found: " + filePath.string());
         }
+
+        patterns.clear();
+        simplePatterns.clear();
+        complexPatterns.clear();
+        usedHeadSpVars.clear();
+        usedSpVars.clear();
+
+        JsonPatternParser jp(filePath);
+        jp.parseAll();
+
     } catch (const std::exception& e) {
-        Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+        Logger::log("GrammarPatternManager", LogLevel::Error, std::string("readPatterns failed: ") + e.what());
     } catch (...) {
-        Logger::log("", LogLevel::Error, "Unknown exception caught");
+        Logger::log("GrammarPatternManager", LogLevel::Error, "readPatterns failed: unknown exception");
     }
 }
 
@@ -102,7 +108,4 @@ void GrammarPatternManager::divide() {
             simplePatterns[pattern.first] = pattern.second;
         }
     }
-
-    // Optionally clear patterns if they should not be retained after division
-    // patterns.clear();
 }

@@ -1,10 +1,14 @@
 #ifndef GPAMMAR_PATTERN_MANAGER_H
 #define GPAMMAR_PATTERN_MANAGER_H
+#include "JsonPatternParser.h"
 
-#include <PatternParser.h>
-
+#include <filesystem>
+#include <memory>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
+
+namespace fs = std::filesystem;
 
 // Forward declaration
 class Model;
