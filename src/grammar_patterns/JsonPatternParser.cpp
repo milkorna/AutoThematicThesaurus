@@ -4,7 +4,9 @@
 #include <sstream>
 #include <stdexcept>
 
-// ===== Вспомогательная мапа для фич: "Key=Val" -> UniMorphTag =====
+namespace {
+using json = nlohmann::json;
+
 static const std::map<std::string, X::UniMorphTag>& tagMap() {
     using X::UniMorphTag;
     static const std::map<std::string, UniMorphTag> m = {
@@ -29,6 +31,55 @@ static const std::map<std::string, X::UniMorphTag>& tagMap() {
         {"Aspect=Imp", UniMorphTag::Imp}};
     return m;
 }
+
+SyntaxRole roleFromString(const std::string& s) {
+    if (s == "head")
+        return SyntaxRole::Head;
+    if (s == "dependent")
+        return SyntaxRole::Dependent;
+    if (s == "independent")
+        return SyntaxRole::Independent;
+
+    Logger::log("JsonPatternParser", LogLevel::Warning, "unknown role: " + s + " (fallback to Independent)");
+    return SyntaxRole::Independent;
+}
+
+bool isEnabled(const json& pat) {
+    // по умолчанию включено
+    if (!pat.contains("enabled"))
+        return true;
+    if (!pat.at("enabled").is_boolean())
+        return true;
+    return pat.at("enabled").get<bool>();
+}
+
+X::UniMorphTag featuresFromJson(const json& features) {
+    X::UniMorphTag acc = X::UniMorphTag::UNKN;
+    bool hasAny = false;
+    const auto& M = tagMap();
+
+    for (auto it = features.begin(); it != features.end(); ++it) {
+        if (!it.value().is_string())
+            continue;
+        const auto& k = it.key();
+        const auto& v = it.value().get_ref<const std::string&>();
+
+        std::string token;
+        token.reserve(k.size() + 1 + v.size());
+        token.append(k).push_back('=');
+        token.append(v);
+
+        if (auto mapIt = M.find(token); mapIt != M.end()) {
+            acc = hasAny ? (acc | mapIt->second) : mapIt->second;
+            hasAny = true;
+        } else {
+            Logger::log("JsonPatternParser", LogLevel::Warning, "unknown feature token: " + token);
+        }
+    }
+    return hasAny ? acc : X::UniMorphTag::UNKN;
+}
+
+} // namespace
 
 // ====== Конструкторы ======
 JsonPatternParser::JsonPatternParser(const fs::path& filePath) {
@@ -77,21 +128,18 @@ void JsonPatternParser::parseAll() {
     size_t added = 0;
 
     for (const auto& [name, pat] : rawPatterns_) {
-        if (!isEnabled(pat)) {
-            Logger::log("JsonPatternParser", LogLevel::Info, "pattern disabled (skip): " + name);
+        if (!isEnabled(pat))
             continue;
-        }
+
         try {
-            auto model = buildModel(name);
-            if (model) {
-                manager->addPattern(name, model);
+            if (auto model = buildModel(name)) {
+                manager->addPattern(name, std::move(model));
                 ++added;
             }
         } catch (const std::exception& e) {
             Logger::log("JsonPatternParser", LogLevel::Error, "failed build for '" + name + "': " + e.what());
         }
     }
-
     manager->divide();
     Logger::log("JsonPatternParser", LogLevel::Info, "parseAll: added " + std::to_string(added) + " patterns");
 }
@@ -219,45 +267,4 @@ std::shared_ptr<ModelComp> JsonPatternParser::buildPatternComp(const json& item)
     }
     Condition cond(role, tag, add);
     return std::make_shared<ModelComp>(refName, refModel->getComponents(), cond);
-}
-
-SyntaxRole JsonPatternParser::roleFromString(const std::string& s) {
-    if (s == "head")
-        return SyntaxRole::Head;
-    if (s == "dependent")
-        return SyntaxRole::Dependent;
-    if (s == "independent")
-        return SyntaxRole::Independent;
-
-    Logger::log("JsonPatternParser", LogLevel::Warning, "unknown role: " + s + " (fallback to Independent)");
-    return SyntaxRole::Independent;
-}
-
-bool JsonPatternParser::isEnabled(const json& pat) {
-    // по умолчанию включено
-    if (!pat.contains("enabled"))
-        return true;
-    if (!pat.at("enabled").is_boolean())
-        return true;
-    return pat.at("enabled").get<bool>();
-}
-
-X::UniMorphTag JsonPatternParser::featuresFromJson(const json& features) {
-    X::UniMorphTag acc = X::UniMorphTag::UNKN;
-    bool hasAny = false;
-    const auto& M = tagMap(); // ← ленивый статик, безопасен по порядку
-
-    for (auto it = features.begin(); it != features.end(); ++it) {
-        if (!it.value().is_string())
-            continue;
-        const std::string token = it.key() + "=" + it.value().get<std::string>();
-        auto mapIt = M.find(token);
-        if (mapIt != M.end()) {
-            acc = hasAny ? (acc | mapIt->second) : mapIt->second;
-            hasAny = true;
-        } else {
-            Logger::log("JsonPatternParser", LogLevel::Warning, "unknown feature token: " + token);
-        }
-    }
-    return hasAny ? acc : X::UniMorphTag::UNKN;
 }
