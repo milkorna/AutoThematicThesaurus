@@ -206,32 +206,22 @@ TEST_F(JsonParserFixture, WordWithoutPos_MakesPatternInvalid_AndNotAdded) {
     using nlohmann::json;
 
     json arr = json::array({{{"name", "Падать без POS"},
-                             {"body", json::array({
-                                          json{
-                                              {"type", "word"},
-                                              {"role", "head"},
-                                          }, // нет pos -> должна быть ошибка
-                                          json{
-                                              {"type", "word"},
-                                              {"role", "dependent"},
-                                              {"pos", "NOUN"},
-                                          },
-                                      })}},
-                            {{"name", "Контрольный валидный"},
-                             {"body", json::array({
-                                          json{
-                                              {"type", "word"},
-                                              {"role", "head"},
-                                              {"pos", "NOUN"},
-                                          },
-                                      })}}});
+                             {"body", json::array({json{
+                                                       {"type", "word"},
+                                                       {"role", "head"},
+                                                   }, // нет pos -> ошибка
+                                                   json{
+                                                       {"type", "word"},
+                                                       {"role", "dependent"},
+                                                       {"pos", "NOUN"},
+                                                   }})}}});
 
     JsonPatternParser parser(arr);
-    parser.parseAll(); // ошибки ловятся внутри parseAll(), битый паттерн «Падать без POS» не добавится
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
     auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_FALSE(mgr->has("Падать без POS"));      // целиком не добавили
-    EXPECT_TRUE(mgr->has("Контрольный валидный")); // остальные добавляются как обычно
+    EXPECT_EQ(mgr->patternsSize(), 0u);
+    EXPECT_FALSE(mgr->has("Падать без POS"));
 }
 
 // D. неизвестная роль -> Independent
@@ -243,18 +233,148 @@ TEST_F(JsonParserFixture, UnknownRole_MakesPatternInvalid_AndNotAdded) {
                                           {"type", "word"},
                                           {"role", "???"},
                                           {"pos", "NOUN"},
-                                      }})}},
-                            {{"name", "Контрольный"},
-                             {"body", json::array({json{
-                                          {"type", "word"},
-                                          {"role", "head"},
-                                          {"pos", "NOUN"},
                                       }})}}});
 
     JsonPatternParser parser(arr);
-    parser.parseAll(); // parseAll() ловит исключение и просто не добавляет битый паттерн
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
     auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_FALSE(mgr->has("ПлохаяРоль")); // из-за неизвестной роли весь паттерн отвергнут
-    EXPECT_TRUE(mgr->has("Контрольный")); // валидный паттерн добавлен
+    EXPECT_EQ(mgr->patternsSize(), 0u);
+    EXPECT_FALSE(mgr->has("ПлохаяРоль"));
+}
+
+// E. features OR
+TEST_F(JsonParserFixture, FeaturesAreORedIntoUniMorphTag) {
+    using nlohmann::json;
+
+    json patterns = json::array({{{"name", "Case+Number"},
+                                  {"body", json::array({json{{"type", "word"},
+                                                             {"role", "head"},
+                                                             {"pos", "NOUN"},
+                                                             {"features",
+                                                              {
+                                                                  {"Case", "Gen"},
+                                                                  {"Number", "Plur"},
+                                                              }}}})}}});
+
+    JsonPatternParser parser(patterns);
+    parser.parseAll();
+
+    auto* manager = GrammarPatternManager::GetManager();
+    ASSERT_TRUE(manager->has("Case+Number"));
+
+    auto model = manager->get("Case+Number");
+    const auto& components = model->getComponents();
+    ASSERT_EQ(components.size(), 1u);
+
+    auto headNoun = std::dynamic_pointer_cast<WordComp>(components[0]);
+    ASSERT_TRUE(headNoun);
+
+    const auto morph = headNoun->condition().getMorphTag();
+
+    // Вариант 1: если UniMorphTag — битовая маска и поддерживает &.
+    // Тогда проверяем, что оба бита выставлены:
+    EXPECT_NE(static_cast<int>(morph & X::UniMorphTag::Gen), 0);
+    EXPECT_NE(static_cast<int>(morph & X::UniMorphTag::Plur), 0);
+
+    const auto s = morph.toString();
+    EXPECT_NE(s.find("Gen"), std::string::npos);
+    EXPECT_NE(s.find("Plur"), std::string::npos);
+
+    // Вариант 2 (если нет перегруженных битовых операторов, но есть toString()):
+    // const auto s = morph.toString();
+    // EXPECT_NE(s.find("Gen"), std::string::npos);
+    // EXPECT_NE(s.find("Plur"), std::string::npos);
+}
+
+TEST_F(JsonParserFixture, UnknownFeatureToken_MakesPatternInvalid_AndNotAdded) {
+    using nlohmann::json;
+
+    json patterns = json::array({{{"name", "HasUnknownFeature"},
+                                  {"body", json::array({
+                                               json{{"type", "word"},
+                                                    {"role", "head"},
+                                                    {"pos", "NOUN"},
+                                                    {"features",
+                                                     {
+                                                         {"Case", "Gen"},
+                                                         {"Foo", "Bar"},
+                                                     }}} // Foo=Bar неизвестно -> ошибка
+                                           })}},
+                                 {{"name", "ControlValid"},
+                                  {"body", json::array({json{{"type", "word"},
+                                                             {"role", "head"},
+                                                             {"pos", "NOUN"},
+                                                             {
+                                                                 "features",
+                                                                 {{"Case", "Gen"}},
+                                                             }}})}}});
+
+    JsonPatternParser parser(patterns);
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_EQ(mgr->patternsSize(), 0u); // атомарность: ничего не осталось
+    EXPECT_FALSE(mgr->has("HasUnknownFeature"));
+    EXPECT_FALSE(mgr->has("ControlValid"));
+}
+
+// G1. missing referenced pattern -> throw
+TEST_F(JsonParserFixture, MissingReferencedPattern_MakesPatternInvalid_AndNotAdded) {
+    using nlohmann::json;
+
+    json arr = json::array({{{"name", "A"},
+                             {"body", json::array({json{
+                                          {"type", "pattern"},
+                                          {"role", "dependent"},
+                                          {"pattern", "NOPE"},
+                                      }})}}});
+
+    JsonPatternParser parser(arr);
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_EQ(mgr->patternsSize(), 0u);
+    EXPECT_FALSE(mgr->has("A"));
+}
+
+TEST_F(JsonParserFixture, SelfCycle_ThrowsAndAddsNothing) {
+    using nlohmann::json;
+    json arr = json::array(
+        {{{"name", "A"}, {"body", json::array({json{{"type", "pattern"}, {"role", "head"}, {"pattern", "A"}}})}}});
+
+    JsonPatternParser parser(arr);
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_EQ(mgr->patternsSize(), 0u);
+}
+
+TEST_F(JsonParserFixture, TwoNodeCycle_ThrowsAndAddsNothing) {
+    using nlohmann::json;
+    json arr = json::array(
+        {{{"name", "A"}, {"body", json::array({json{{"type", "pattern"}, {"role", "independent"}, {"pattern", "B"}}})}},
+         {{"name", "B"},
+          {"body", json::array({json{{"type", "pattern"}, {"role", "independent"}, {"pattern", "A"}}})}}});
+
+    JsonPatternParser parser(arr);
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_EQ(mgr->patternsSize(), 0u);
+}
+
+TEST_F(JsonParserFixture, ThreeNodeCycle_ThrowsAndAddsNothing) {
+    using nlohmann::json;
+    json arr = json::array(
+        {{{"name", "A"}, {"body", json::array({json{{"type", "pattern"}, {"role", "independent"}, {"pattern", "B"}}})}},
+         {{"name", "B"}, {"body", json::array({json{{"type", "pattern"}, {"role", "independent"}, {"pattern", "C"}}})}},
+         {{"name", "C"},
+          {"body", json::array({json{{"type", "pattern"}, {"role", "independent"}, {"pattern", "A"}}})}}});
+
+    JsonPatternParser parser(arr);
+    EXPECT_THROW(parser.parseAll(), std::runtime_error);
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_EQ(mgr->patternsSize(), 0u);
 }

@@ -62,7 +62,8 @@ X::UniMorphTag featuresFromJson(const json& features) {
 
     for (auto it = features.begin(); it != features.end(); ++it) {
         if (!it.value().is_string())
-            continue;
+            throw std::runtime_error("features: value for key '" + it.key() + "' must be a string");
+
         const auto& k = it.key();
         const auto& v = it.value().get_ref<const std::string&>();
 
@@ -75,7 +76,7 @@ X::UniMorphTag featuresFromJson(const json& features) {
             acc = hasAny ? (acc | mapIt->second) : mapIt->second;
             hasAny = true;
         } else {
-            Logger::log("JsonPatternParser", LogLevel::Warning, "unknown feature token: " + token);
+            throw std::runtime_error("unknown feature token: " + token);
         }
     }
     return hasAny ? acc : X::UniMorphTag::UNKN;
@@ -129,21 +130,36 @@ void JsonPatternParser::parseAll() {
     auto* manager = GrammarPatternManager::GetManager();
     size_t added = 0;
 
-    for (const auto& [name, pat] : rawPatterns_) {
-        if (!isEnabled(pat))
-            continue;
+    try {
+        for (const auto& [name, pat] : rawPatterns_) {
+            if (!isEnabled(pat))
+                continue;
 
-        try {
-            if (auto model = buildModel(name)) {
+            try {
+                // buildModel может бросить (неизвестная роль/feature, цикл, битый body и т.д.)
+                auto model = buildModel(name);
                 manager->add(name, std::move(model));
                 ++added;
+            } catch (const std::exception& cause) {
+                // точный контекст по имени паттерна
+                const std::string msg = "failed build for '" + name + "': " + std::string(cause.what());
+                Logger::log("JsonPatternParser", LogLevel::Error, msg);
+
+                // откат уже добавленного, чтобы загрузка была атомарной
+                manager->clear();
+
+                // перебрасываем с сохранением первоначальной причины
+                std::throw_with_nested(std::runtime_error(msg));
             }
-        } catch (const std::exception& e) {
-            Logger::log("JsonPatternParser", LogLevel::Error, "failed build for '" + name + "': " + e.what());
         }
+
+        manager->divide();
+        Logger::log("JsonPatternParser", LogLevel::Info, "parseAll: added " + std::to_string(added) + " patterns");
+    } catch (...) {
+        // на случай исключений из divide()/log и пр.: откат и повторный throw
+        manager->clear();
+        throw;
     }
-    manager->divide();
-    Logger::log("JsonPatternParser", LogLevel::Info, "parseAll: added " + std::to_string(added) + " patterns");
 }
 
 // ====== Приватные ======
@@ -166,15 +182,22 @@ std::shared_ptr<Model> JsonPatternParser::buildModel(const std::string& name) {
     }
     visiting_.insert(name);
 
+    struct VisitingGuard {
+        std::unordered_set<std::string>& s;
+        const std::string& k;
+
+        ~VisitingGuard() {
+            s.erase(k);
+        }
+    } guard{visiting_, name};
+
+    // дальше можно смело бросать — guard очистит visiting_
     if (!pat.contains("body") || !pat.at("body").is_array()) {
-        visiting_.erase(name);
         throw std::runtime_error("pattern '" + name + "' has no array 'body'");
     }
 
     Components comps = buildComponents(pat.at("body"), name);
     auto model = std::make_shared<Model>(name, comps);
-
-    visiting_.erase(name);
     built_[name] = model;
     return model;
 }
@@ -243,26 +266,25 @@ std::shared_ptr<WordComp> JsonPatternParser::buildWordComp(const json& item) {
 }
 
 std::shared_ptr<ModelComp> JsonPatternParser::buildPatternComp(const json& item) {
+    // role уже провалидирован в buildComponents(...), но получить его всё равно нужно
     const auto role = roleFromString(item.at("role").get<std::string>());
+
+    // Строгая проверка поля "pattern"
     if (!item.contains("pattern") || !item.at("pattern").is_string()) {
-        Logger::log("JsonPatternParser", LogLevel::Error, "pattern item has no 'pattern' name");
-        return nullptr;
+        throw std::runtime_error("pattern item must have string 'pattern'");
     }
     const std::string refName = item.at("pattern").get<std::string>();
-    // Рекурсивно построим/получим ссылочный паттерн
-    auto refModel = buildModel(refName);
-    if (!refModel) {
-        Logger::log("JsonPatternParser", LogLevel::Error, "unable to build referenced pattern: " + refName);
-        return nullptr;
-    }
 
-    // features (к паттерну) — например Case=Gen для всей группы
+    // Рекурсивная сборка референтного паттерна: бросит при unknown/cycle
+    auto refModel = buildModel(refName);
+
+    // features к группе (может бросить при неизвестном токене)
     X::UniMorphTag tag = X::UniMorphTag::UNKN;
     if (item.contains("features") && item.at("features").is_object()) {
         tag = featuresFromJson(item.at("features"));
     }
 
-    // additional (обычно пусто для вложенных, но поддерживаем)
+    // additional
     Additional add;
     if (item.contains("recursive") && item.at("recursive").is_boolean()) {
         add.m_rec = item.at("recursive").get<bool>();
@@ -270,6 +292,7 @@ std::shared_ptr<ModelComp> JsonPatternParser::buildPatternComp(const json& item)
     if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string()) {
         add.m_exLex = item.at("exact_lexeme").get<std::string>();
     }
+
     Condition cond(role, tag, add);
     return std::make_shared<ModelComp>(refName, refModel->getComponents(), cond);
 }
