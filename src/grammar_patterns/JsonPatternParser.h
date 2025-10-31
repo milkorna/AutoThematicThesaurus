@@ -39,7 +39,7 @@ class JsonPatternParser {
     std::shared_ptr<Model> buildModel(const std::string& name);
 
     // Строительство компонентов модели из body-массива
-    Components buildComponents(const json& body);
+    Components buildComponents(const json& body, const std::string& ownerName);
 
     // Построить WordComp по json-элементу
     std::shared_ptr<WordComp> buildWordComp(const json& item);

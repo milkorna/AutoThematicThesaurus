@@ -16,22 +16,20 @@ struct JsonParserFixture : ::testing::Test {
 
 // A. базовый разбор
 TEST_F(JsonParserFixture, ParsesSimpleAdjPlusNoun) {
-    json arr = json::array({{
-        {"name", "Прил + С"},
-        {"body", json::array({
-                     {
-                         {"type", "word"},
-                         {"role", "dependent"},
-                         {"pos", "ADJ"},
-                         {"recursive", true},
-                     },
-                     {
-                         {"type", "word"},
-                         {"role", "head"},
-                         {"pos", "NOUN"},
-                     },
-                 })},
-    }});
+    json arr = json::array({{{"name", "Прил + С"},
+                             {"body", json::array({
+                                          {
+                                              {"type", "word"},
+                                              {"role", "dependent"},
+                                              {"pos", "ADJ"},
+                                              {"recursive", true},
+                                          },
+                                          {
+                                              {"type", "word"},
+                                              {"role", "head"},
+                                              {"pos", "NOUN"},
+                                          },
+                                      })}}});
 
     JsonPatternParser parser(arr);
     parser.parseAll();
@@ -56,23 +54,21 @@ TEST_F(JsonParserFixture, ParsesSimpleAdjPlusNoun) {
 }
 
 TEST_F(JsonParserFixture, ParsesNounPlusGenitiveNoun_IndependentRecursive) {
-    json arr = json::array({{
-        {"name", "С + Срд"},
-        {"body", json::array({
-                     json{
-                         {"type", "word"},
-                         {"role", "head"},
-                         {"pos", "NOUN"},
-                     },
-                     json{
-                         {"type", "word"},
-                         {"role", "independent"},
-                         {"pos", "NOUN"},
-                         {"features", {{"Case", "Gen"}}},
-                         {"recursive", true},
-                     },
-                 })},
-    }});
+    json arr = json::array({{{"name", "С + Срд"},
+                             {"body", json::array({
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "head"},
+                                              {"pos", "NOUN"},
+                                          },
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "independent"},
+                                              {"pos", "NOUN"},
+                                              {"features", {{"Case", "Gen"}}},
+                                              {"recursive", true},
+                                          },
+                                      })}}});
 
     JsonPatternParser parser(arr);
     parser.parseAll();
@@ -98,27 +94,25 @@ TEST_F(JsonParserFixture, ParsesNounPlusGenitiveNoun_IndependentRecursive) {
 }
 
 TEST_F(JsonParserFixture, ParsesNounPrepositionForNoun_WithExactLexeme) {
-    json arr = json::array({{
-        {"name", "С + Предл(Для) + С"},
-        {"body", json::array({
-                     json{
-                         {"type", "word"},
-                         {"role", "head"},
-                         {"pos", "NOUN"},
-                     },
-                     json{
-                         {"type", "word"},
-                         {"role", "independent"},
-                         {"pos", "ADP"},
-                         {"exact_lexeme", "для"},
-                     },
-                     json{
-                         {"type", "word"},
-                         {"role", "independent"},
-                         {"pos", "NOUN"},
-                     },
-                 })},
-    }});
+    json arr = json::array({{{"name", "С + Предл(Для) + С"},
+                             {"body", json::array({
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "head"},
+                                              {"pos", "NOUN"},
+                                          },
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "independent"},
+                                              {"pos", "ADP"},
+                                              {"exact_lexeme", "для"},
+                                          },
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "independent"},
+                                              {"pos", "NOUN"},
+                                          },
+                                      })}}});
 
     JsonPatternParser parser(arr);
     parser.parseAll();
@@ -152,23 +146,21 @@ TEST_F(JsonParserFixture, ParsesComposite_AdjNounHead_PlusGenNoun_AndDividesAsCo
                                               {"pos", "NOUN"},
                                           },
                                       })}},
-                            {
-                                {"name", "(Прил + С) + Срд"},
-                                {"body", json::array({
-                                             json{
-                                                 {"type", "pattern"},
-                                                 {"role", "head"},
-                                                 {"pattern", "Прил + С"},
-                                             },
-                                             json{
-                                                 {"type", "word"},
-                                                 {"role", "independent"},
-                                                 {"pos", "NOUN"},
-                                                 {"features", {{"Case", "Gen"}}},
-                                                 {"recursive", true},
-                                             },
-                                         })},
-                            }});
+                            {{"name", "(Прил + С) + Срд"},
+                             {"body", json::array({
+                                          json{
+                                              {"type", "pattern"},
+                                              {"role", "head"},
+                                              {"pattern", "Прил + С"},
+                                          },
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "independent"},
+                                              {"pos", "NOUN"},
+                                              {"features", {{"Case", "Gen"}}},
+                                              {"recursive", true},
+                                          },
+                                      })}}});
 
     JsonPatternParser parser(arr);
     parser.parseAll();
@@ -208,4 +200,36 @@ TEST_F(JsonParserFixture, SkipsDisabledPatterns) {
 TEST(JsonParserErrors, ThrowsIfTopLevelNotArray) {
     json notArray = {{"oops", 1}};
     EXPECT_THROW(JsonPatternParser parser(notArray), std::runtime_error);
+}
+
+TEST_F(JsonParserFixture, WordWithoutPos_MakesPatternInvalid_AndNotAdded) {
+    using nlohmann::json;
+
+    json arr = json::array({{{"name", "Падать без POS"},
+                             {"body", json::array({
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "head"},
+                                          }, // нет pos -> должна быть ошибка
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "dependent"},
+                                              {"pos", "NOUN"},
+                                          },
+                                      })}},
+                            {{"name", "Контрольный валидный"},
+                             {"body", json::array({
+                                          json{
+                                              {"type", "word"},
+                                              {"role", "head"},
+                                              {"pos", "NOUN"},
+                                          },
+                                      })}}});
+
+    JsonPatternParser parser(arr);
+    parser.parseAll(); // ошибки ловятся внутри parseAll(), битый паттерн «Падать без POS» не добавится
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_FALSE(mgr->has("Падать без POS"));      // целиком не добавили
+    EXPECT_TRUE(mgr->has("Контрольный валидный")); // остальные добавляются как обычно
 }

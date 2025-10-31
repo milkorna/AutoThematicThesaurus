@@ -171,7 +171,7 @@ std::shared_ptr<Model> JsonPatternParser::buildModel(const std::string& name) {
         throw std::runtime_error("pattern '" + name + "' has no array 'body'");
     }
 
-    Components comps = buildComponents(pat.at("body"));
+    Components comps = buildComponents(pat.at("body"), name);
     auto model = std::make_shared<Model>(name, comps);
 
     visiting_.erase(name);
@@ -179,62 +179,66 @@ std::shared_ptr<Model> JsonPatternParser::buildModel(const std::string& name) {
     return model;
 }
 
-Components JsonPatternParser::buildComponents(const json& body) {
+Components JsonPatternParser::buildComponents(const json& body, const std::string& ownerName) {
     Components out;
     out.reserve(body.size());
 
+    size_t idx = 0;
     for (const auto& item : body) {
-        if (!item.is_object() || !item.contains("type") || !item.contains("role")) {
-            Logger::log("JsonPatternParser", LogLevel::Warning, "body item missing required fields (type/role)");
-            continue;
+        const std::string where = "pattern '" + ownerName + "', body[" + std::to_string(idx) + "]";
+
+        if (!item.is_object()) {
+            throw std::runtime_error(where + ": body item must be an object");
         }
+        if (!item.contains("type") || !item.contains("role")) {
+            throw std::runtime_error(where + ": missing required fields 'type'/'role'");
+        }
+
         const auto type = item.at("type").get<std::string>();
+
         if (type == "word") {
+            if (!item.contains("pos") || !item.at("pos").is_string()) {
+                throw std::runtime_error(where + ": word item must have string 'pos'");
+            }
+            // валиден: собираем
             auto w = buildWordComp(item);
-            if (w)
-                out.push_back(w);
+            out.push_back(w);
         } else if (type == "pattern") {
+            if (!item.contains("pattern") || !item.at("pattern").is_string()) {
+                throw std::runtime_error(where + ": pattern item must have string 'pattern'");
+            }
             auto m = buildPatternComp(item);
-            if (m)
-                out.push_back(m);
+            out.push_back(m);
         } else {
-            Logger::log("JsonPatternParser", LogLevel::Warning, "unknown body item type: " + type);
+            throw std::runtime_error(where + ": unknown body item type: " + type);
         }
+
+        ++idx;
     }
 
     return out;
 }
 
 std::shared_ptr<WordComp> JsonPatternParser::buildWordComp(const json& item) {
-    // role
     const auto role = roleFromString(item.at("role").get<std::string>());
 
-    // pos
-    if (!item.contains("pos")) {
-        Logger::log("JsonPatternParser", LogLevel::Error, "word item has no 'pos' ");
-        return nullptr;
-    }
+    // здесь pos уже гарантирован и строка
     const std::string posStr = item.at("pos").get<std::string>();
     X::UniSPTag sp(posStr);
 
-    // учтём статистику частей речи
     GrammarPatternManager::GetManager()->addUsedSp(sp.toString(), role == SyntaxRole::Head);
 
-    // features
-    X::UniMorphTag tag = X::UniMorphTag::UNKN; // по умолчанию UNKN (см. конструктор по умолчанию)
-
+    X::UniMorphTag tag = X::UniMorphTag::UNKN;
     if (item.contains("features") && item.at("features").is_object()) {
         tag = featuresFromJson(item.at("features"));
     }
 
-    // additional
     Additional add;
-    if (item.contains("recursive") && item.at("recursive").is_boolean()) {
+    if (item.contains("recursive") && item.at("recursive").is_boolean())
         add.m_rec = item.at("recursive").get<bool>();
-    }
-    if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string()) {
+    if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string())
         add.m_exLex = item.at("exact_lexeme").get<std::string>();
-    }
+
     Condition cond(role, tag, add);
     return std::make_shared<WordComp>(sp, cond);
 }
