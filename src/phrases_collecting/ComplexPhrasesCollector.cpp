@@ -29,7 +29,7 @@ bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimpl
     for (const auto& wordComp : curModelComp->getComponents()) {
         if (const auto& wc = std::dynamic_pointer_cast<WordComp>(wordComp)) {
             const auto& morphForms = m_sentence[curSimplePhr->pos.start + wcInd++]->getMorphInfo();
-            if (CheckMorphologicalTags(morphForms, curModelComp->getHead()->getCondition(), curPhrStatus)) {
+            if (CheckMorphologicalTags(morphForms, curModelComp->getHead()->condition(), curPhrStatus)) {
                 if (wc->isHead()) {
                     curPhrStatus.headIsChecked = true;
                     curPhrStatus.headIsMatched = true;
@@ -44,7 +44,7 @@ bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimpl
 bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
                                                        const std::shared_ptr<ModelComp>& curModelComp,
                                                        CurrentPhraseStatus& curPhrStatus) {
-    const auto& addCond = curModelComp->getCondition().getAdditional();
+    const auto& addCond = curModelComp->condition().getAdditional();
     bool simplePhrAddCond = addCond.empty();
     bool simplePhrMorph = CheckWordComponents(curSimplePhr, curModelComp, curPhrStatus);
 
@@ -109,7 +109,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
         std::string formFromText = token->getWordForm().getRawString();
 
-        if (!wordComp->getCondition().check(wordComp->getSPTag(), token)) {
+        if (!wordComp->condition().check(wordComp->getSPTag(), token)) {
             return false;
         } else {
             if (!curPhrStatus.headIsChecked) {
@@ -158,8 +158,8 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
             if (!curPhrStatus.headIsChecked) {
                 if (modelComp->isHead()) {
-                    if (modelComp->getHead()->getCondition().check(modelComp->getHead()->getSPTag(),
-                                                                   m_sentence[formIndex + *modelComp->getHeadPos()])) {
+                    if (modelComp->getHead()->condition().check(modelComp->getHead()->getSPTag(),
+                                                                m_sentence[formIndex + *modelComp->getHeadPos()])) {
                         curPhrStatus.headIsChecked = true;
                         curPhrStatus.headIsMatched = true;
                     } else {
@@ -173,7 +173,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             if (!curPhrStatus.foundLex) {
                 for (size_t offset = 0; offset < curSimplePhr->words.size(); offset++) {
                     for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
-                        if (!modelComp->getCondition().getAdditional().check(morphForm)) {
+                        if (!modelComp->condition().getAdditional().check(morphForm)) {
                             return false;
                         } else {
                             curPhrStatus.foundLex = true;

@@ -69,7 +69,7 @@ std::shared_ptr<WordComp> Model::getHead() const {
         // Check if the component is a WordComp
         if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
             // Check the SyntaxRole of the WordComp
-            if (wordComp->getCondition().getSyntaxRole() == SyntaxRole::Head) {
+            if (wordComp->condition().getSyntaxRole() == SyntaxRole::Head) {
                 return wordComp;
             }
         }
@@ -90,13 +90,13 @@ std::optional<size_t> Model::getHeadPos() const // TODO: Make shorter
     for (size_t compInd = 0; compInd < m_comps.size(); compInd++) {
         if (auto wordComp = std::dynamic_pointer_cast<WordComp>(m_comps[compInd])) {
             // Check the SyntaxRole of the WordComp
-            if (wordComp->getCondition().getSyntaxRole() == SyntaxRole::Head) {
+            if (wordComp->condition().getSyntaxRole() == SyntaxRole::Head) {
                 return compInd;
             }
         }
         // If the component is a ModelComp, search its components recursively
         else if (auto modelComp = std::dynamic_pointer_cast<ModelComp>(m_comps[compInd])) {
-            if (modelComp->getCondition().getSyntaxRole() == SyntaxRole::Head) {
+            if (modelComp->condition().getSyntaxRole() == SyntaxRole::Head) {
                 return compInd;
             }
         }
@@ -129,7 +129,7 @@ ModelComp::ModelComp(const std::string& form, const Components& comps, const Con
     : Model(form, comps), m_cond(cond) {
 }
 
-const Condition ModelComp::getCondition() const {
+const Condition ModelComp::condition() const {
     return m_cond;
 }
 

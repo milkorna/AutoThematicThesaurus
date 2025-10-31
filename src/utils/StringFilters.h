@@ -1,10 +1,6 @@
 #pragma once
 
 #include <string>
-#include <unicode/uchar.h>
-#include <unicode/unistr.h>
-#include <unicode/uscript.h>
-#include <xmorphy/morph/WordForm.h>
 
 namespace StringFilters {
 /**

@@ -32,7 +32,7 @@ void WordComp::print() const {
         Logger::log("\t\tsp", LogLevel::Warning, "failed to stringify SP tag");
     }
 
-    if (const auto& cond = this->getCondition(); !cond.empty()) {
+    if (const auto& cond = this->condition(); !cond.empty()) {
         try {
             Logger::log("\t\t\t\tmt", LogLevel::Info, cond.getMorphTag().toString());
         } catch (...) {
@@ -48,7 +48,7 @@ void WordComp::print() const {
 WordComp::WordComp(const UniSPTag& sp, const Condition& cond) : Word(sp), m_cond(cond) {
 }
 
-const Condition WordComp::getCondition() const {
+const Condition& WordComp::condition() const noexcept {
     return m_cond;
 }
 

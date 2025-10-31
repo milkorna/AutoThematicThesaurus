@@ -54,7 +54,7 @@ class ModelComp : public Model {
   public:
     ModelComp(const std::string& form = "", const Components& comps = {}, const Condition& cond = {});
 
-    const Condition getCondition() const;
+    const Condition condition() const;
 
     const std::optional<bool> isHead() const;
 };

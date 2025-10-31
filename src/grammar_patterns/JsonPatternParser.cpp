@@ -135,7 +135,7 @@ void JsonPatternParser::parseAll() {
 
         try {
             if (auto model = buildModel(name)) {
-                manager->addPattern(name, std::move(model));
+                manager->add(name, std::move(model));
                 ++added;
             }
         } catch (const std::exception& e) {

@@ -15,11 +15,15 @@ GrammarPatternManager* GrammarPatternManager::GetManager() {
     return instance;
 }
 
-void GrammarPatternManager::addPattern(const std::string& key, const std::shared_ptr<Model>& model) {
+bool GrammarPatternManager::has(const std::string& key) const noexcept {
+    return patterns.find(key) != patterns.end();
+}
+
+void GrammarPatternManager::add(const std::string& key, const std::shared_ptr<Model>& model) noexcept {
     patterns[key] = model;
 }
 
-std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string& key) const {
+std::shared_ptr<Model> GrammarPatternManager::get(const std::string& key) const noexcept {
     auto it = patterns.find(key);
     if (it != patterns.end()) {
         return it->second;
@@ -27,11 +31,11 @@ std::shared_ptr<Model> GrammarPatternManager::getPattern(const std::string& key)
     return nullptr;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getSimplePatterns() const {
+const PatternMap& GrammarPatternManager::getSimplePatterns() const noexcept {
     return simplePatterns;
 }
 
-const std::unordered_map<std::string, std::shared_ptr<Model>> GrammarPatternManager::getComplexPatterns() const {
+const PatternMap& GrammarPatternManager::getComplexPatterns() const noexcept {
     return complexPatterns;
 }
 
@@ -43,11 +47,7 @@ void GrammarPatternManager::readPatterns(const fs::path& filePath) {
             throw std::runtime_error("patterns file not found: " + filePath.string());
         }
 
-        patterns.clear();
-        simplePatterns.clear();
-        complexPatterns.clear();
-        usedHeadSpVars.clear();
-        usedSpVars.clear();
+        clear();
 
         JsonPatternParser jp(filePath);
         jp.parseAll();
@@ -75,20 +75,23 @@ void GrammarPatternManager::addUsedSp(const std::string sp, const bool isHead) {
         Logger::log("GrammarPatternManager", LogLevel::Debug, "Addded new part of speach: " + sp);
 }
 
-std::unordered_set<std::string> GrammarPatternManager::getUsedHeadSp() const {
+const StringSet& GrammarPatternManager::getUsedHeadSp() const noexcept {
     return usedHeadSpVars;
 }
-std::unordered_set<std::string> GrammarPatternManager::getUsedSp() const {
+
+const StringSet& GrammarPatternManager::getUsedSp() const noexcept {
     return usedSpVars;
 }
 
-size_t GrammarPatternManager::patternsAmount() const {
+size_t GrammarPatternManager::patternsSize() const noexcept {
     return patterns.size();
 }
-size_t GrammarPatternManager::simplePatternsAmount() const {
+
+size_t GrammarPatternManager::simplePatternsSize() const noexcept {
     return simplePatterns.size();
 }
-size_t GrammarPatternManager::complexPatternsAmount() const {
+
+size_t GrammarPatternManager::complexPatternsSize() const noexcept {
     return complexPatterns.size();
 }
 
@@ -108,4 +111,12 @@ void GrammarPatternManager::divide() {
             simplePatterns[pattern.first] = pattern.second;
         }
     }
+}
+
+void GrammarPatternManager::clear() {
+    patterns.clear();
+    simplePatterns.clear();
+    complexPatterns.clear();
+    usedHeadSpVars.clear();
+    usedSpVars.clear();
 }

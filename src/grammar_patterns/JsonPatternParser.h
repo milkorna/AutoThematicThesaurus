@@ -14,6 +14,8 @@ using json = nlohmann::json;
 #include <filesystem>
 namespace fs = std::filesystem;
 
+using PatternMap = std::unordered_map<std::string, std::shared_ptr<Model>>;
+
 class JsonPatternParser {
   public:
     // Ожидается файл с JSON-массивом шаблонов
@@ -29,7 +31,7 @@ class JsonPatternParser {
     // Сырые json-описания по имени
     std::unordered_map<std::string, json> rawPatterns_;
     // Построенные модели (мемоизация)
-    std::unordered_map<std::string, std::shared_ptr<Model>> built_;
+    PatternMap built_;
     // Для обнаружения циклов
     std::unordered_set<std::string> visiting_;
 

@@ -32,11 +32,11 @@ class WordComp : public Word {
     explicit WordComp(const UniSPTag& sp = UniSPTag::X, const Condition& cond = Condition());
     ~WordComp() override = default;
 
-    const Condition getCondition() const;
+    [[nodiscard]] const Condition& condition() const noexcept;
 
-    const bool isRec() const;
+    [[nodiscard]] const bool isRec() const;
 
-    const std::optional<bool> isHead() const override;
+    [[nodiscard]] const std::optional<bool> isHead() const override;
 
     void print() const;
 };

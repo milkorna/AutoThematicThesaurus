@@ -4,7 +4,7 @@
 using namespace PhrasesCollectorUtils;
 
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
-    if (!simpleModel->getHead()->getCondition().check(simpleModel->getHead()->getSPTag(), form)) {
+    if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
         return false;
     }
     return true;
@@ -46,7 +46,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
         !HaveSp(token->getMorphInfo()))
         return false;
 
-    if (!comp->getCondition().check(comp->getSPTag(), token))
+    if (!comp->condition().check(comp->getSPTag(), token))
         return false;
     UpdateWordComplex(wc, token, formFromText, isLeft);
 

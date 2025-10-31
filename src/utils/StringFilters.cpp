@@ -1,3 +1,7 @@
+#include "unicode/uchar.h"
+#include "unicode/unistr.h"
+#include "unicode/uscript.h"
+
 #include "StringFilters.h"
 
 #include <regex>
