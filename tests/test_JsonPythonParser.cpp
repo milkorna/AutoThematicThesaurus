@@ -233,3 +233,28 @@ TEST_F(JsonParserFixture, WordWithoutPos_MakesPatternInvalid_AndNotAdded) {
     EXPECT_FALSE(mgr->has("Падать без POS"));      // целиком не добавили
     EXPECT_TRUE(mgr->has("Контрольный валидный")); // остальные добавляются как обычно
 }
+
+// D. неизвестная роль -> Independent
+TEST_F(JsonParserFixture, UnknownRole_MakesPatternInvalid_AndNotAdded) {
+    using nlohmann::json;
+
+    json arr = json::array({{{"name", "ПлохаяРоль"},
+                             {"body", json::array({json{
+                                          {"type", "word"},
+                                          {"role", "???"},
+                                          {"pos", "NOUN"},
+                                      }})}},
+                            {{"name", "Контрольный"},
+                             {"body", json::array({json{
+                                          {"type", "word"},
+                                          {"role", "head"},
+                                          {"pos", "NOUN"},
+                                      }})}}});
+
+    JsonPatternParser parser(arr);
+    parser.parseAll(); // parseAll() ловит исключение и просто не добавляет битый паттерн
+
+    auto* mgr = GrammarPatternManager::GetManager();
+    EXPECT_FALSE(mgr->has("ПлохаяРоль")); // из-за неизвестной роли весь паттерн отвергнут
+    EXPECT_TRUE(mgr->has("Контрольный")); // валидный паттерн добавлен
+}

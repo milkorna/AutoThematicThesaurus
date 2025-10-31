@@ -187,35 +187,34 @@ Components JsonPatternParser::buildComponents(const json& body, const std::strin
     for (const auto& item : body) {
         const std::string where = "pattern '" + ownerName + "', body[" + std::to_string(idx) + "]";
 
-        if (!item.is_object()) {
+        if (!item.is_object())
             throw std::runtime_error(where + ": body item must be an object");
-        }
-        if (!item.contains("type") || !item.contains("role")) {
+
+        if (!item.contains("type") || !item.contains("role"))
             throw std::runtime_error(where + ": missing required fields 'type'/'role'");
-        }
 
         const auto type = item.at("type").get<std::string>();
 
+        // === НОВОЕ: строгая валидация role ===
+        if (!item.at("role").is_string())
+            throw std::runtime_error(where + ": 'role' must be a string");
+        const std::string roleStr = item.at("role").get<std::string>();
+        if (roleStr != "head" && roleStr != "dependent" && roleStr != "independent")
+            throw std::runtime_error(where + ": unknown role '" + roleStr + "' (allowed: head|dependent|independent)");
+
         if (type == "word") {
-            if (!item.contains("pos") || !item.at("pos").is_string()) {
+            if (!item.contains("pos") || !item.at("pos").is_string())
                 throw std::runtime_error(where + ": word item must have string 'pos'");
-            }
-            // валиден: собираем
-            auto w = buildWordComp(item);
-            out.push_back(w);
+            out.push_back(buildWordComp(item));
         } else if (type == "pattern") {
-            if (!item.contains("pattern") || !item.at("pattern").is_string()) {
+            if (!item.contains("pattern") || !item.at("pattern").is_string())
                 throw std::runtime_error(where + ": pattern item must have string 'pattern'");
-            }
-            auto m = buildPatternComp(item);
-            out.push_back(m);
+            out.push_back(buildPatternComp(item));
         } else {
             throw std::runtime_error(where + ": unknown body item type: " + type);
         }
-
         ++idx;
     }
-
     return out;
 }
 
