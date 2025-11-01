@@ -219,9 +219,9 @@ TEST_F(JsonParserFixture, WordWithoutPos_MakesPatternInvalid_AndNotAdded) {
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
-    EXPECT_FALSE(mgr->has("Падать без POS"));
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
+    EXPECT_FALSE(manager->has("Падать без POS"));
 }
 
 // D. неизвестная роль -> Independent
@@ -238,9 +238,9 @@ TEST_F(JsonParserFixture, UnknownRole_MakesPatternInvalid_AndNotAdded) {
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
-    EXPECT_FALSE(mgr->has("ПлохаяРоль"));
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
+    EXPECT_FALSE(manager->has("ПлохаяРоль"));
 }
 
 // E. features OR
@@ -313,10 +313,10 @@ TEST_F(JsonParserFixture, UnknownFeatureToken_MakesPatternInvalid_AndNotAdded) {
     JsonPatternParser parser(patterns);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u); // атомарность: ничего не осталось
-    EXPECT_FALSE(mgr->has("HasUnknownFeature"));
-    EXPECT_FALSE(mgr->has("ControlValid"));
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u); // атомарность: ничего не осталось
+    EXPECT_FALSE(manager->has("HasUnknownFeature"));
+    EXPECT_FALSE(manager->has("ControlValid"));
 }
 
 // G1. missing referenced pattern -> throw
@@ -333,9 +333,9 @@ TEST_F(JsonParserFixture, MissingReferencedPattern_MakesPatternInvalid_AndNotAdd
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
-    EXPECT_FALSE(mgr->has("A"));
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
+    EXPECT_FALSE(manager->has("A"));
 }
 
 TEST_F(JsonParserFixture, SelfCycle_ThrowsAndAddsNothing) {
@@ -346,8 +346,8 @@ TEST_F(JsonParserFixture, SelfCycle_ThrowsAndAddsNothing) {
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
 }
 
 TEST_F(JsonParserFixture, TwoNodeCycle_ThrowsAndAddsNothing) {
@@ -360,8 +360,8 @@ TEST_F(JsonParserFixture, TwoNodeCycle_ThrowsAndAddsNothing) {
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
 }
 
 TEST_F(JsonParserFixture, ThreeNodeCycle_ThrowsAndAddsNothing) {
@@ -375,6 +375,6 @@ TEST_F(JsonParserFixture, ThreeNodeCycle_ThrowsAndAddsNothing) {
     JsonPatternParser parser(arr);
     EXPECT_THROW(parser.parseAll(), std::runtime_error);
 
-    auto* mgr = GrammarPatternManager::GetManager();
-    EXPECT_EQ(mgr->patternsSize(), 0u);
+    auto* manager = GrammarPatternManager::GetManager();
+    EXPECT_EQ(manager->patternsSize(), 0u);
 }
