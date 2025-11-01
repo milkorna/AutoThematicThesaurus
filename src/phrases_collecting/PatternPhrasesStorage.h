@@ -1,19 +1,11 @@
-#ifndef PATTERN_PHRASES_STORAGE_H
-#define PATTERN_PHRASES_STORAGE_H
+#pragma once
 
-#include <ComplexPhrasesCollector.h>
-#include <Embedding.h>
-#include <LSA.h>
-#include <SemanticRelations.h>
-#include <TextCorpus.h>
-#include <ThreadController.h>
-#include <regex>
+#include "Embedding.h"
+#include "LSA.h"
+#include "PhrasesCollectorUtils.h"
+#include "ThreadController.h"
 
 #include <nlohmann/json.hpp>
-
-#include <algorithm>
-#include <condition_variable>
-#include <mutex>
 
 using namespace PhrasesCollectorUtils;
 // using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
@@ -46,11 +38,10 @@ struct WordComplexCluster {
 // \brief This class manages the storage and processing of pattern phrases. It includes methods for collecting phrases,
 //        adding word complexes, computing text metrics, and outputting data to text and JSON files.
 class PatternPhrasesStorage {
-public:
+  public:
     // \brief Gets the singleton instance of PatternPhrasesStorage.
     // \return          Reference to the singleton instance of PatternPhrasesStorage.
-    static PatternPhrasesStorage& GetStorage()
-    {
+    static PatternPhrasesStorage& GetStorage() {
         static PatternPhrasesStorage storage;
         return storage;
     }
@@ -71,7 +62,7 @@ public:
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
     // \param process   The process used for phrase collection.
-    void Collect(const std::vector<WordFormPtr>& forms, Process& process);
+    void Collect(const std::vector<X::WordFormPtr>& forms, Process& process);
 
     void FinalizeDocumentProcessing();
 
@@ -100,7 +91,7 @@ public:
 
     ThreadController threadController; ///< Controller for managing thread synchronization.
 
-private:
+  private:
     // Topic relevance calculation for a cluster based on row vectors U (and optionally Sigma) using the "max^2 /
     // sum^2" method
     static double CalculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
@@ -120,7 +111,7 @@ private:
     double CalculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
                                const std::vector<std::string>& words);
 
-private:
+  private:
     Options& options = Options::getOptions();
     void InitializeAndFilterClusters(double tfidfThreshold, std::set<std::string>& sortedKeys,
                                      std::unordered_set<std::string>& clustersToInclude);
@@ -137,13 +128,11 @@ private:
     std::unordered_set<std::string> clustersToInclude;
 
     // \brief Default constructor.
-    PatternPhrasesStorage()
-    {
+    PatternPhrasesStorage() {
     }
 
     // \brief Default destructor.
-    ~PatternPhrasesStorage()
-    {
+    ~PatternPhrasesStorage() {
     }
 
     int lastDocumentId = -1;
@@ -156,5 +145,3 @@ private:
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
     std::unordered_map<std::string, WordComplexCluster> clusters; ///< Map of word complex clusters.
 };
-
-#endif // PATTERN_PHRASES_STORAGE_H

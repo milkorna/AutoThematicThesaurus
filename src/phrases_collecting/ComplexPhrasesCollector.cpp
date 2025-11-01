@@ -1,11 +1,12 @@
-#include <ComplexPhrasesCollector.h>
-#include <PatternPhrasesStorage.h>
+#include "ComplexPhrasesCollector.h"
+#include "ModelComponent.h"
+#include "PhrasesCollectorUtils.h"
+#include <regex>
 
 using namespace PhrasesCollectorUtils;
 
-bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<MorphInfo>& morphForms,
-                                                     const Condition& cond, CurrentPhraseStatus& curPhrStatus)
-{
+bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<X::MorphInfo>& morphForms,
+                                                     const Condition& cond, CurrentPhraseStatus& curPhrStatus) {
     for (const auto& morphForm : morphForms) {
         if (!cond.morphTagCheck(morphForm)) {
             continue;
@@ -23,13 +24,12 @@ bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<Mo
 
 bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimplePhr,
                                                   const std::shared_ptr<ModelComp>& curModelComp,
-                                                  CurrentPhraseStatus& curPhrStatus)
-{
+                                                  CurrentPhraseStatus& curPhrStatus) {
     size_t wcInd = 0;
     for (const auto& wordComp : curModelComp->getComponents()) {
         if (const auto& wc = std::dynamic_pointer_cast<WordComp>(wordComp)) {
             const auto& morphForms = m_sentence[curSimplePhr->pos.start + wcInd++]->getMorphInfo();
-            if (CheckMorphologicalTags(morphForms, curModelComp->getHead()->getCondition(), curPhrStatus)) {
+            if (CheckMorphologicalTags(morphForms, curModelComp->getHead()->condition(), curPhrStatus)) {
                 if (wc->isHead()) {
                     curPhrStatus.headIsChecked = true;
                     curPhrStatus.headIsMatched = true;
@@ -43,9 +43,8 @@ bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimpl
 
 bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
                                                        const std::shared_ptr<ModelComp>& curModelComp,
-                                                       CurrentPhraseStatus& curPhrStatus)
-{
-    const auto& addCond = curModelComp->getCondition().getAdditional();
+                                                       CurrentPhraseStatus& curPhrStatus) {
+    const auto& addCond = curModelComp->condition().getAdditional();
     bool simplePhrAddCond = addCond.empty();
     bool simplePhrMorph = CheckWordComponents(curSimplePhr, curModelComp, curPhrStatus);
 
@@ -61,8 +60,7 @@ bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& cur
 }
 
 bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft,
-                                         const WordComplexPtr& wc, std::shared_ptr<ModelComp> modelComp)
-{
+                                         const WordComplexPtr& wc, std::shared_ptr<ModelComp> modelComp) {
     if (smpPhrOffset >= m_simplePhrases.size() || smpPhrOffset < 0) {
         return true;
     }
@@ -88,8 +86,7 @@ bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePh
 
 bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
                                          const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
-                                         const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd)
-{
+                                         const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd) {
     auto& options = PhrasesCollectorUtils::Options::getOptions();
     auto comp = model->getComponents()[compIndex];
 
@@ -112,7 +109,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
         std::string formFromText = token->getWordForm().getRawString();
 
-        if (!wordComp->getCondition().check(wordComp->getSPTag(), token)) {
+        if (!wordComp->condition().check(wordComp->getSPTag(), token)) {
             return false;
         } else {
             if (!curPhrStatus.headIsChecked) {
@@ -161,8 +158,8 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
             if (!curPhrStatus.headIsChecked) {
                 if (modelComp->isHead()) {
-                    if (modelComp->getHead()->getCondition().check(modelComp->getHead()->getSPTag(),
-                                                                   m_sentence[formIndex + *modelComp->getHeadPos()])) {
+                    if (modelComp->getHead()->condition().check(modelComp->getHead()->getSPTag(),
+                                                                m_sentence[formIndex + *modelComp->getHeadPos()])) {
                         curPhrStatus.headIsChecked = true;
                         curPhrStatus.headIsMatched = true;
                     } else {
@@ -176,7 +173,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             if (!curPhrStatus.foundLex) {
                 for (size_t offset = 0; offset < curSimplePhr->words.size(); offset++) {
                     for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
-                        if (!modelComp->getCondition().getAdditional().check(morphForm)) {
+                        if (!modelComp->condition().getAdditional().check(morphForm)) {
                             return false;
                         } else {
                             curPhrStatus.foundLex = true;
@@ -217,15 +214,13 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
     return false;
 }
 
-bool isMatchingPattern(const std::string& str)
-{
+bool isMatchingPattern(const std::string& str) {
     // Define a regular expression pattern that matches strings of the form (*+*) + * + (*+*)
     std::regex pattern(R"(\(.*\)\s*\+\s*.*\s*\+\s*\(.*\))");
     return std::regex_match(str, pattern);
 }
 
-void ComplexPhrasesCollector::ValidateBoundares()
-{
+void ComplexPhrasesCollector::ValidateBoundares() {
     if (m_collection.empty()) {
         return;
     }
@@ -271,8 +266,7 @@ void ComplexPhrasesCollector::ValidateBoundares()
 
 bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>& model,
                                                     const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
-                                                    CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc)
-{
+                                                    CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc) {
     auto curSPhPosCmp = model->getModelCompIndByForm(curSimplePhr->modelName);
     if (!curSPhPosCmp)
         return false;
@@ -296,8 +290,7 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
     return false;
 }
 
-void ComplexPhrasesCollector::Collect(Process& process)
-{
+void ComplexPhrasesCollector::Collect(Process& process) {
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 

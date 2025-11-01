@@ -1,13 +1,14 @@
-#ifndef PHRASES_STORAGE_LOADER_H
-#define PHRASES_STORAGE_LOADER_H
+#pragma once
 
-#include <PatternPhrasesStorage.h>
+#include "PatternPhrasesStorage.h"
+#include "TextCorpus.h"
+#include <unicode/uchar.h>
+
 using json = nlohmann::json;
 
 class PhrasesStorageLoader {
-public:
-    void LoadStorageFromFile(PatternPhrasesStorage& storage, const std::string& filename)
-    {
+  public:
+    void LoadStorageFromFile(PatternPhrasesStorage& storage, const std::string& filename) {
         std::ifstream file(filename);
         if (file.is_open()) {
             json j;
@@ -18,8 +19,7 @@ public:
         }
     }
 
-    void LoadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage)
-    {
+    void LoadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage) {
         Logger::log("PhrasesStorage", LogLevel::Info, "Loading phrase storage from results directory...");
         auto& options = PhrasesCollectorUtils::Options::getOptions();
         fs::path outputDir = options.resDir;
@@ -121,9 +121,8 @@ public:
         }
     }
 
-private:
-    void Deserialize(PatternPhrasesStorage& storage, const json& j)
-    {
+  private:
+    void Deserialize(PatternPhrasesStorage& storage, const json& j) {
         try {
             if (!j.is_object()) {
                 throw std::runtime_error("Expected a JSON object.");
@@ -199,5 +198,3 @@ private:
         }
     }
 };
-
-#endif

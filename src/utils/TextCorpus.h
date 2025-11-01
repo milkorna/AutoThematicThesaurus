@@ -1,18 +1,13 @@
-#ifndef TEXT_CORPUS_H
-#define TEXT_CORPUS_H
+#pragma once
 
-#include <StringFilters.h>
-#include <boost/algorithm/string.hpp>
-#include <cmath>
+#include "boost/algorithm/string.hpp"
+#include "nlohmann/json.hpp"
+#include <Eigen/Dense>
 #include <fasttext.h>
-#include <fstream>
-#include <iostream>
+
+#include <cmath>
 #include <string>
 #include <unordered_map>
-
-#include <Eigen/Dense>
-#include <boost/algorithm/string.hpp>
-#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 using namespace Eigen;
@@ -22,13 +17,12 @@ using VectorPtr = std::shared_ptr<fasttext::Vector>;
 // \brief This class handles the processing and storage of a text corpus,
 // where each document is represented by a filename, and the texts are paragraphs extracted from these documents.
 class TextCorpus {
-public:
+  public:
     // \brief Default constructor for the TextCorpus class.
     TextCorpus() = default;
 
     // \brief Singleton instance getter for the TextCorpus class.
-    static TextCorpus& GetCorpus()
-    {
+    static TextCorpus& GetCorpus() {
         static TextCorpus corpus;
         return corpus;
     }
@@ -102,7 +96,7 @@ public:
     // Loads the corpus data from a file, deserializes it, and returns the restored TextCorpus object.
     void LoadCorpusFromFile(const std::string& filename);
 
-private:
+  private:
     std::unordered_map<std::string, std::vector<std::string>> texts; ///< Map to store paragraphs associated with
                                                                      ///< each document (filename).
     std::unordered_map<std::string, int> wordFrequency;     ///< Map to store the frequency of words in the corpus.
@@ -111,5 +105,3 @@ private:
     int totalTexts = 0;
     int totalDocuments = 0; ///< Total number of documents (filenames) in the corpus.
 };
-
-#endif // TEXT_CORPUS_H

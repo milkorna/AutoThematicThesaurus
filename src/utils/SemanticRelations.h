@@ -1,5 +1,4 @@
-#ifndef SEMANTIC_RELATIONS_H
-#define SEMANTIC_RELATIONS_H
+#pragma once
 
 #include <set>
 #include <sqlite3.h>
@@ -12,7 +11,7 @@ struct SemanticRelation {
 };
 
 class SemanticRelationsDB {
-public:
+  public:
     SemanticRelationsDB();
     ~SemanticRelationsDB();
 
@@ -23,12 +22,10 @@ public:
     void PrintFirstFiveRows(const std::string& table_name);
     void PrintTableSchema(const std::string& table_name);
 
-private:
+  private:
     sqlite3* db;
 };
 
 namespace DB {
-    void RunTest();
+void RunTest();
 }
-
-#endif // SEMANTIC_RELATIONS_H

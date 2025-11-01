@@ -1,19 +1,17 @@
-#ifndef EMBEDDING_H
-#define EMBEDDING_H
+#pragma once
 
 #include <cmath>
 #include <fasttext.h>
 #include <memory>
-#include <stdexcept>
 #include <string>
 #include <vector>
 
 class Embedding {
-private:
+  private:
     static std::unique_ptr<fasttext::FastText> ft;
     static void LoadModel(std::string model_path);
 
-public:
+  public:
     Embedding();
 
     static std::vector<float> GetWordVector(const std::string& word);
@@ -22,14 +20,13 @@ public:
 };
 
 class WordEmbedding {
-private:
+  private:
     std::vector<float> vector;
 
-public:
+  public:
     WordEmbedding(const std::string& word);
 
-    const std::vector<float>& GetVector() const
-    {
+    const std::vector<float>& GetVector() const {
         return vector;
     }
 
@@ -49,5 +46,3 @@ public:
 };
 
 using WordEmbeddingPtr = std::shared_ptr<WordEmbedding>;
-
-#endif // EMBEDDING_H

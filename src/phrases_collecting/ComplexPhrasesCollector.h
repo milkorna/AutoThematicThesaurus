@@ -1,24 +1,21 @@
-#ifndef COMPLEX_PHRASES_COLLECTOR_H
-#define COMPLEX_PHRASES_COLLECTOR_H
+#pragma once
 
-#include <PhrasesCollectorUtils.h>
-#include <SimplePhrasesCollector.h>
-
-#include <regex>
+#include "GrammarPatternManager.h"
+#include "ModelComponent.h"
+#include "PhrasesCollectorUtils.h"
 
 // \class ComplexPhrasesCollector
 // \brief This class collects complex phrases from a given set of simple phrases and word forms.
 //        It utilizes the GrammarPatternManager to identify and collect complex phrases based on grammar patterns.
 class ComplexPhrasesCollector {
-public:
+  public:
     // \brief Constructor that initializes the ComplexPhrasesCollector with simple phrases and word forms.
     // \param simplePhrases     A vector of WordComplexPtr representing the simple phrases to analyze.
     // \param forms             A vector of WordFormPtr representing the sentence to analyze.
     explicit ComplexPhrasesCollector(const std::vector<PHUtils::WordComplexPtr>& simplePhrases,
-                                     const std::vector<WordFormPtr>& forms)
+                                     const std::vector<X::WordFormPtr>& forms)
         : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{},
-          manager(*GrammarPatternManager::GetManager())
-    {
+          manager(*GrammarPatternManager::GetManager()) {
     }
 
     // \brief Collects complex phrases from the sentence using the provided process.
@@ -30,7 +27,7 @@ public:
     // \brief Default destructor for the ComplexPhrasesCollector class.
     ~ComplexPhrasesCollector() = default;
 
-private:
+  private:
     const std::vector<PHUtils::WordComplexPtr> m_simplePhrases; ///< Vector of simple phrases.
     std::vector<PHUtils::WordComplexPtr> m_collection;          ///< Collection of word complexes.
     std::vector<WordFormPtr> m_sentence;                        ///< Vector of word forms representing the sentence.
@@ -58,5 +55,3 @@ private:
                                const size_t curSimplePhrInd, PHUtils::CurrentPhraseStatus& curPhrStatus,
                                PHUtils::WordComplexPtr& wc);
 };
-
-#endif // COMPLEX_PHRASES_COLLECTOR_H

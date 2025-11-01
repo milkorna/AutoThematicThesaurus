@@ -1,18 +1,15 @@
 #include <GrammarCondition.h>
 
-bool Additional::empty() const
-{
+bool Additional::empty() const {
     return m_exLex.empty();
 }
 
 // Checks if a specific word form matches the example lexicon.
-bool Additional::exLexCheck(const X::MorphInfo& morphForm) const
-{
+bool Additional::exLexCheck(const X::MorphInfo& morphForm) const {
     return m_exLex.empty() || (m_exLex == morphForm.normalForm.toLowerCase().getRawString());
 }
 
-bool Additional::check(const X::MorphInfo& morphForm) const
-{
+bool Additional::check(const X::MorphInfo& morphForm) const {
     if (!empty()) {
         if (!exLexCheck(morphForm)) {
             return false;
@@ -24,26 +21,22 @@ bool Additional::check(const X::MorphInfo& morphForm) const
 Condition::Condition(SyntaxRole role, UniMorphTag morphTag, Additional cond)
     : m_role(role), m_tag(morphTag), m_addcond(cond) {};
 
-const UniMorphTag Condition::getMorphTag() const
-{
+const UniMorphTag Condition::getMorphTag() const {
     return m_tag;
 };
 
-const Additional Condition::getAdditional() const
-{
+const Additional Condition::getAdditional() const {
     return m_addcond;
 };
 
-const SyntaxRole Condition::getSyntaxRole() const
-{
+const SyntaxRole Condition::getSyntaxRole() const {
     return m_role;
 };
 
 template <typename AttrType>
 static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
                            AttrType (X::UniMorphTag::*getAttribute)() const, const X::UniMorphTag& tag,
-                           const X::UniMorphTag& formTag)
-{
+                           const X::UniMorphTag& formTag) {
     if ((tag.*hasAttribute)()) {
         bool result = (formTag.*hasAttribute)() && (tag.*getAttribute)() == (formTag.*getAttribute)();
         return result;
@@ -51,8 +44,7 @@ static bool checkAttribute(bool (X::UniMorphTag::*hasAttribute)() const,
     return true;
 }
 
-bool Condition::morphTagCheck(const MorphInfo& morphForm) const
-{
+bool Condition::morphTagCheck(const MorphInfo& morphForm) const {
     const auto& compMorphTag = this->getMorphTag();
     return checkAttribute(&X::UniMorphTag::hasCase, &X::UniMorphTag::getCase, compMorphTag, morphForm.tag) &&
            checkAttribute(&X::UniMorphTag::hasAnimacy, &X::UniMorphTag::getAnimacy, compMorphTag, morphForm.tag) &&
@@ -68,13 +60,11 @@ bool Condition::morphTagCheck(const MorphInfo& morphForm) const
 }
 
 // Checks if the Condition instance contains default or empty values.
-bool Condition::empty() const
-{
+bool Condition::empty() const {
     return m_tag == UniMorphTag::UNKN && m_addcond.empty();
 }
 
-bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const
-{
+bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const {
     for (const auto& morphForm : form->getMorphInfo()) {
         if (morphForm.sp == spTag) {
             if (!morphTagCheck(morphForm)) {

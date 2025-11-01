@@ -1,26 +1,23 @@
-#include <Component.h>
-#include <Embedding.h>
-#include <LSA.h>
-#include <Logger.h>
-#include <OutputRedirector.h>
-#include <PatternPhrasesStorage.h>
-#include <PhrasesStorageLoader.h>
-#include <SemanticRelations.h>
-#include <TextCorpus.h>
-#include <TokenizedSentenceCorpus.h>
-#include <boost/program_options.hpp>
+#include "Embedding.h"
+#include "GrammarPatternManager.h"
+#include "LSA.h"
+#include "Logger.h"
+#include "PatternPhrasesStorage.h"
+#include "PhrasesStorageLoader.h"
+#include "TextCorpus.h"
+#include "TokenizedSentenceCorpus.h"
 
 #include <chrono>
-#include <filesystem>
-
 #include <sys/stat.h>
 
+#include <filesystem>
 namespace fs = std::filesystem;
+
+#include "boost/program_options.hpp"
 namespace po = boost::program_options;
 auto& options = Options::getOptions();
 
-static void printUsage(const po::options_description& desc)
-{
+static void printUsage(const po::options_description& desc) {
     std::cout << "Usage: myprogram <command> [options]\n\n";
     std::cout << "Commands:\n";
     std::cout << "  collect_phrases           Collect phrases for each text, save phrase storage.\n";
@@ -36,8 +33,7 @@ static void printUsage(const po::options_description& desc)
     std::cout << "\nOptions:\n" << desc << "\n";
 }
 
-void validatePathOption(const po::variables_map& vm, const std::string& option_name, fs::path& target)
-{
+void validatePathOption(const po::variables_map& vm, const std::string& option_name, fs::path& target) {
     if (vm.count(option_name)) {
         try {
             std::string value = vm[option_name].as<std::string>();
@@ -57,8 +53,7 @@ void validatePathOption(const po::variables_map& vm, const std::string& option_n
     }
 }
 
-void validateBoolOption(const po::variables_map& vm, const std::string& option_name, bool& target)
-{
+void validateBoolOption(const po::variables_map& vm, const std::string& option_name, bool& target) {
     if (vm.count(option_name)) {
         try {
             target = vm[option_name].as<bool>();
@@ -68,8 +63,7 @@ void validateBoolOption(const po::variables_map& vm, const std::string& option_n
     }
 }
 
-void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal = INT_MAX)
-{
+void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal = INT_MAX) {
     if (vm.count("limit")) {
         try {
             int value = vm["limit"].as<int>();
@@ -86,8 +80,7 @@ void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal
     }
 }
 
-void setGlobalOptions(const po::variables_map& vm)
-{
+void setGlobalOptions(const po::variables_map& vm) {
     // Override default global options if provided by the user
     validatePathOption(vm, "corpus-dir", options.corpusDir);
     options.recomputeCorpusDependenciesPaths();
@@ -107,8 +100,7 @@ void setGlobalOptions(const po::variables_map& vm)
     Logger::log("Main", LogLevel::Info, "textToProcessCount: " + std::to_string(options.textToProcessCount));
 }
 
-void addOptions(po::options_description& desc)
-{
+void addOptions(po::options_description& desc) {
     desc.add_options()("help,h", "Show help message");
     desc.add_options()("corpus-dir", po::value<std::string>(), "Path to data directory (default is inside 'my_data')");
     desc.add_options()("patterns-file", po::value<std::string>(),
@@ -125,8 +117,9 @@ void addOptions(po::options_description& desc)
                        "Option for sentence boundaries validation (by default is true)");
 }
 
-int main(int argc, char** argv)
-{
+#define HARDCODED_ARGS 1
+
+int main(int argc, char** argv) {
 
     using namespace PhrasesCollectorUtils;
     auto& options = Options::getOptions();
@@ -139,16 +132,16 @@ int main(int argc, char** argv)
     po::options_description desc("Allowed options");
     addOptions(desc);
 
-    // Parse at least one argument (the command). If not provided, show help.
+#ifndef HARDCODED_ARGS
+    // Обычный путь: читаем реальные argv/argc
     if (argc < 2) {
         std::cerr << "No command provided.\n";
         printUsage(desc);
         return 1;
     }
-
     std::string command = argv[1];
 
-    // Parse additional options
+    // Дополнительные опции после команды
     po::variables_map vm;
     try {
         std::vector<std::string> opts(argv + 2, argv + argc);
@@ -158,6 +151,31 @@ int main(int argc, char** argv)
         std::cerr << "Error parsing command line: " << ex.what() << "\n";
         return 1;
     }
+#else
+    // Хардкод для отладки: выполняем collect_phrases с заданными опциями
+    std::string command = "collect_phrases";
+    std::vector<std::string> opts = {
+        // "--patterns-file",
+        // "/abs/path/to/patterns.json",
+        // "--corpus-dir",
+        // "/abs/path/to/my_data",
+        // при необходимости добавь:
+        //"--stop-words-file", "/abs/path/to/stopwords.txt",
+        //"--emb-model-file",  "/abs/path/to/model.bin",
+        //"--limit",           "50",
+        //"--clean-stop-words","true",
+        //"--validate-boundaries","true",
+    };
+
+    po::variables_map vm;
+    try {
+        po::store(po::command_line_parser(opts).options(desc).run(), vm);
+        po::notify(vm);
+    } catch (std::exception& ex) {
+        std::cerr << "Error parsing hardcoded args: " << ex.what() << "\n";
+        return 1;
+    }
+#endif
 
     // Show help message if requested
     if (vm.count("help")) {
@@ -179,6 +197,7 @@ int main(int argc, char** argv)
             Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
             fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
+            GrammarPatternManager::GetManager()->printPatterns();
             BuildPhraseStorage();
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {

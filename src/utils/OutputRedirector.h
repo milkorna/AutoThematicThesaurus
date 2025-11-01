@@ -1,5 +1,4 @@
-#ifndef OUTPUT_REDIRECTOR_H
-#define OUTPUT_REDIRECTOR_H
+#pragma once
 
 #include <fcntl.h>
 #include <string>
@@ -10,11 +9,10 @@
 //        It saves the original file descriptors for stdout and stderr and restores them upon destruction or when
 //        explicitly requested.
 class OutputRedirector {
-public:
+  public:
     // \brief Constructor that initializes the OutputRedirector with a log file.
     // \param log_file      The path to the log file where stdout and stderr will be redirected.
-    OutputRedirector(const std::string& log_file)
-    {
+    OutputRedirector(const std::string& log_file) {
         // Open the log file with write-only access, create if it doesn't exist, and truncate if it does.
         log_fd = open(log_file.c_str(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 
@@ -28,14 +26,12 @@ public:
     }
 
     // \brief Destructor that restores the original stdout and stderr file descriptors.
-    ~OutputRedirector()
-    {
+    ~OutputRedirector() {
         restore();
     }
 
     // \brief Restores the original stdout and stderr file descriptors.
-    void restore()
-    {
+    void restore() {
         if (log_fd != -1) {
             // Restore the original stdout and stderr.
             dup2(saved_stdout, STDOUT_FILENO);
@@ -51,10 +47,8 @@ public:
         }
     }
 
-private:
+  private:
     int saved_stdout; ///< File descriptor to save the original stdout.
     int saved_stderr; ///< File descriptor to save the original stderr.
     int log_fd = -1;  ///< File descriptor for the log file.
 };
-
-#endif // OUTPUT_REDIRECTOR_H
