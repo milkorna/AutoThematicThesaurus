@@ -1,0 +1,3 @@
+[submodule "external/XMorphy"]
+	path = external/XMorphy
+	url = https://github.com/alesapin/XMorphy

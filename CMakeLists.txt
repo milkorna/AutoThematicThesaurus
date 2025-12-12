@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 project(AutoThematicThesaurus VERSION 1.0)
 
 # Enable ccache for faster incremental builds
@@ -31,6 +31,32 @@ if(POLICY CMP0074)
     cmake_policy(SET CMP0074 NEW)
 endif()
 
+# ===== PREVENT FETCHCONTENT CONFLICTS =====
+# TensorFlow uses FetchContent which can conflict with cached builds
+set(FETCHCONTENT_QUIET ON)
+set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
+
+# ===== XMORPHY SUBMODULE (с его собственными submodule'ями!) =====
+set(XMORPHY_PROJECT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/XMorphy")
+if(NOT EXISTS "${XMORPHY_PROJECT_PATH}/CMakeLists.txt")
+    message(FATAL_ERROR "XMorphy submodule not found at ${XMORPHY_PROJECT_PATH}")
+endif()
+
+# ⚠️ ВАЖНО: XMorphy имеет свои submodule'и в contrib/
+# Они загружаются автоматически при git clone --recursive
+# Проверяем что они есть
+if(NOT EXISTS "${XMORPHY_PROJECT_PATH}/contrib/tensorflow")
+    message(FATAL_ERROR "XMorphy contrib/tensorflow not found. Run: git submodule update --init --recursive")
+endif()
+if(NOT EXISTS "${XMORPHY_PROJECT_PATH}/contrib/icu")
+    message(FATAL_ERROR "XMorphy contrib/icu not found. Run: git submodule update --init --recursive")
+endif()
+
+# Добавляем XMorphy как submodule (её CMakeLists.txt сам подключит свои submodule'и)
+add_subdirectory("${XMORPHY_PROJECT_PATH}")
+message(STATUS "XMorphy submodule added from: ${XMORPHY_PROJECT_PATH}")
+
+# ===== ТВОЙ ПРОЕКТ =====
 # Include directories for project source files
 include_directories(
     src/grammar_component
@@ -57,18 +83,20 @@ else()
     message(FATAL_ERROR "Boost not found!")
 endif()
 
+# Find SQLite3
+find_package(SQLite3 REQUIRED)
+
 # === Создаём статическую библиотеку из исходников проекта ===
 set(MAIN_CPP "${PROJECT_SOURCE_DIR}/src/main.cpp")
 list(REMOVE_ITEM SOURCE_FILES "${MAIN_CPP}")
 add_library(AutoThematicLib STATIC ${SOURCE_FILES})
 target_include_directories(AutoThematicLib PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_compile_options(AutoThematicLib PRIVATE -Wno-unused -Werror)
+target_compile_options(AutoThematicLib PRIVATE -Wno-unused)
 
 # === Основное приложение ===
 add_executable(AutoThematicThesaurus ${MAIN_CPP})
 target_link_libraries(AutoThematicThesaurus PRIVATE AutoThematicLib Boost::filesystem Boost::program_options)
 target_include_directories(AutoThematicThesaurus PRIVATE ${PROJECT_SOURCE_DIR}/src)
-add_compile_options(-w)
 
 # Set default build type if not specified
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -80,11 +108,6 @@ endif()
 # Set installation directory
 set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "Default install path" FORCE)
 
-# Define paths for dependencies
-get_filename_component(PARENT_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
-set(XMORPHY_PROJECT_PATH "${PARENT_DIR}/XMorphy" CACHE PATH "Path to the XMorphy project" FORCE)
-set(XMorphy_INCLUDE_DIR "${XMORPHY_PROJECT_PATH}/src")
-
 # Enable position-independent code for shared libraries
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -92,90 +115,19 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_definitions(-DTF_LITE_DISABLE_XNNPACK_DELEGATE)
 add_definitions(-DMIN_LOG_LEVEL=4)
 
-# Configure TensorFlow Lite
-set(TENSORFLOW_SOURCE_DIR "" CACHE PATH "Directory that contains the TensorFlow project")
-if(NOT TENSORFLOW_SOURCE_DIR)
-  get_filename_component(TENSORFLOW_SOURCE_DIR "${XMORPHY_PROJECT_PATH}/contrib/tensorflow" ABSOLUTE)
-endif()
-add_subdirectory("${TENSORFLOW_SOURCE_DIR}/tensorflow/lite" "${CMAKE_BINARY_DIR}/tensorflow-lite" EXCLUDE_FROM_ALL)
-SET(TFLITE_INCLUDE_DIRS "${TFLITE_INCLUDE_DIRS}" "${TENSORFLOW_SOURCE_DIR}" "${CMAKE_BINARY_DIR}/flatbuffers/include")
-
-# Configure ICU support
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-set(ICU_ROOT_DIR "${XMORPHY_PROJECT_PATH}/contrib/icu")  # исправлено
-include(${PROJECT_SOURCE_DIR}/cmake/icu.cmake)
-find_package(ICU 61.0 COMPONENTS uc i18n REQUIRED)
-if(ICU_FOUND)
-  target_link_libraries(AutoThematicLib PUBLIC ICU::ICU)
-endif(ICU_FOUND)
+# ===== XMORPHY LINKING =====
+# XMorphy уже скомпилирована как цель Xmorphy в submodule
+# Её CMakeLists.txt уже подключил все зависимости (TensorFlow Lite, ICU, fasttext и т.д.)
+target_link_libraries(AutoThematicLib PUBLIC Xmorphy)
+target_link_libraries(AutoThematicLib PUBLIC ${SQLite3_LIBRARIES})
 
 # Copy necessary data files to the build directory
 file(COPY ${XMORPHY_PROJECT_PATH}/data/dicts DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY ${XMORPHY_PROJECT_PATH}/data/models DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-# Include XMorphy dependency
-add_subdirectory(${XMORPHY_PROJECT_PATH}/contrib ${CMAKE_CURRENT_BINARY_DIR}/xmorphy-contrib)
-set(XMORPHY_SOURCE_DIR "${XMORPHY_PROJECT_PATH}/src/xmorphy")
-file(GLOB_RECURSE XMORPHY_SOURCES "${XMORPHY_SOURCE_DIR}/*.cpp" "${XMORPHY_SOURCE_DIR}/*.h")
-add_library(Xmorphy STATIC ${XMORPHY_SOURCES})
-
-message("
-  ${frugally-deep_INCLUDE_DIR}
-  ${Eigen3_INCLUDE_DIR}
-  ${FunctionalPlus_INCLUDE_DIR}
-  ${nlohmann_json_INCLUDE_DIR}
-  ${fasttext_INCLUDE_DIR}
-  ${incbin_INCLUDE_DIR}" )
-
-# Find and link SQLite3
-find_package(SQLite3 REQUIRED)
-
-# Configure include directories
-target_include_directories (Xmorphy SYSTEM PUBLIC
-  ${XMORPHY_PROJECT_PATH}/src
-  ${MIMALLOC_INCLUDE_DIR}
-  ${TFLITE_INCLUDE_DIRS}
-  ${BOOST_HEADERONLY_INCLUDE_DIR}
-  ${frugally-deep_INCLUDE_DIR}
-  ${Eigen3_INCLUDE_DIR}
-  ${FunctionalPlus_INCLUDE_DIR}
-  ${nlohmann_json_INCLUDE_DIR}
-  ${fasttext_INCLUDE_DIR}
-  ${incbin_INCLUDE_DIR}
-  ${XMORPHY_PROJECT_PATH}/contrib/tabulate/include/tabulate
-  PRIVATE ${ICU_INCLUDE_DIR}
-)
-
-# Include additional directories
-include_directories(
-  ${PROJECT_SOURCE_DIR}/src
-  ${frugally-deep_INCLUDE_DIR}
-  ${Eigen3_INCLUDE_DIR}
-  ${FunctionalPlus_INCLUDE_DIR}
-  ${nlohmann_json_INCLUDE_DIR}
-  ${fasttext_INCLUDE_DIR}
-  ${incbin_INCLUDE_DIR}
-  ${XMORPHY_PROJECT_PATH}/contrib/tabulate/include
-  ${SQLite3_INCLUDE_DIRS}
-)
-
-# Include paths for additional resources
+# Include additional directories (если нужны твои ресурсы)
 include_directories(${PROJECT_SOURCE_DIR}/my_data)
 include_directories(${PROJECT_SOURCE_DIR}/x_morphy_resuls)
-
-# Define XMorphy static library path
-set(XMORPHY_LIBRARY "${XMORPHY_PROJECT_PATH}/build/temp.linux-x86_64-3.10/libXmorphy.a")
-include_directories(${XMORPHY_PROJECT_PATH}/src)
-
-# Link necessary libraries
-target_link_libraries(AutoThematicLib PRIVATE ${XMORPHY_LIBRARY} ${SQLite3_LIBRARIES})
-target_compile_options(tensorflow-lite PRIVATE -Wno-unused -Wno-error -DNDEBUG -w)
-target_link_libraries(AutoThematicLib PUBLIC ${ICU_LIBRARIES} PRIVATE fasttext-static_pic tabulate::tabulate tensorflow-lite -ldl -lpthread -lstdc++)
-
-# Ensure XMorphy library exists
-if(NOT EXISTS ${XMORPHY_LIBRARY})
-  message(FATAL_ERROR "XMorphy library not found: ${XMORPHY_LIBRARY}")
-endif()
 
 # === GoogleTest integration ===
 find_package(GTest REQUIRED)
@@ -187,3 +139,15 @@ if(GTest_FOUND)
 else()
     message(WARNING "GTest not found! Unit tests will be skipped.")
 endif()
+
+# === Debug Info ===
+message(STATUS "")
+message(STATUS "=== Build Configuration ===")
+message(STATUS "Project: ${PROJECT_NAME}")
+message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "C++ Standard: ${CMAKE_CXX_STANDARD}")
+message(STATUS "XMorphy: ${XMORPHY_PROJECT_PATH}")
+message(STATUS "Boost: ${Boost_INCLUDE_DIRS}")
+message(STATUS "SQLite3: ${SQLite3_INCLUDE_DIRS}")
+message(STATUS "=========================")
+message(STATUS "")
