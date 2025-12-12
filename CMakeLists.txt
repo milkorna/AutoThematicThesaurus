@@ -139,15 +139,13 @@ include_directories(${PROJECT_SOURCE_DIR}/my_data)
 include_directories(${PROJECT_SOURCE_DIR}/x_morphy_resuls)
 
 # === GoogleTest integration ===
+# === GoogleTest integration ===
 find_package(GTest REQUIRED)
 
-if(GTest_FOUND)
-    message(STATUS "GTest found: ${GTest_INCLUDE_DIRS}")
-    enable_testing()
-    add_subdirectory(tests)
-else()
-    message(WARNING "GTest not found! Unit tests will be skipped.")
-endif()
+message(STATUS "GTest found: ${GTest_INCLUDE_DIRS}")
+enable_testing()
+add_subdirectory(tests)
+
 
 # === Debug Info ===
 message(STATUS "")
