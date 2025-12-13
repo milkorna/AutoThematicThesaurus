@@ -14,33 +14,33 @@ class Embedding {
   public:
     Embedding();
 
-    static std::vector<float> GetWordVector(const std::string& word);
+    static std::vector<double> GetWordVector(const std::string& word);
 
     static void RunTest();
 };
 
 class WordEmbedding {
   private:
-    std::vector<float> vector;
+    std::vector<double> vector;
 
   public:
     WordEmbedding(const std::string& word);
 
-    const std::vector<float>& GetVector() const {
+    const std::vector<double>& GetVector() const {
         return vector;
     }
 
-    float CosineSimilarity(const WordEmbedding& other) const;
+    double CosineSimilarity(const WordEmbedding& other) const;
 
-    float EuclideanDistance(const WordEmbedding& other) const;
+    double EuclideanDistance(const WordEmbedding& other) const;
 
-    float ManhattanDistance(const WordEmbedding& other) const;
+    double ManhattanDistance(const WordEmbedding& other) const;
 
-    float JaccardSimilarity(const WordEmbedding& other) const;
+    double JaccardSimilarity(const WordEmbedding& other) const;
 
-    float Magnitude() const;
+    double Magnitude() const;
 
-    float DotProduct(const WordEmbedding& other) const;
+    double DotProduct(const WordEmbedding& other) const;
 
     friend std::ostream& operator<<(std::ostream& os, const WordEmbedding& we);
 };

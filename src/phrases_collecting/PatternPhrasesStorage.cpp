@@ -561,20 +561,20 @@ void PatternPhrasesStorage::ComputeTextMetrics() {
 
         const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(cluster.key);
         std::vector<std::string> topics;
-        float cosineWeight = 0.6;
-        float euclideanWeight = 0.2;
-        float manhattanWeight = 0.2;
+        double cosineWeight = 0.6;
+        double euclideanWeight = 0.2;
+        double manhattanWeight = 0.2;
 
         for (const auto& topicVecPair : topicVectors) {
             const std::string& topicWord = topicVecPair.first;
             const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
 
-            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
-            float euclideanDist = myEmbedding->EuclideanDistance(*topicEmbedding);
-            float manhattanDist = myEmbedding->ManhattanDistance(*topicEmbedding);
+            double cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+            double euclideanDist = myEmbedding->EuclideanDistance(*topicEmbedding);
+            double manhattanDist = myEmbedding->ManhattanDistance(*topicEmbedding);
 
-            float combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
-                                  manhattanWeight * (1.0f / (1.0f + manhattanDist));
+            double combinedScore = cosineWeight * cosineSim + euclideanWeight * (1.0f / (1.0f + euclideanDist)) +
+                                   manhattanWeight * (1.0f / (1.0f + manhattanDist));
 
             if (combinedScore > options.topicsThreshold) {
                 topics.push_back(topicWord);
@@ -770,7 +770,7 @@ void PatternPhrasesStorage::LoadWikiWNRelations() {
                             const std::string& topicWord = topicVecPair.first;
                             const WordEmbeddingPtr& topicEmbedding = topicVecPair.second;
 
-                            float cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
+                            double cosineSim = myEmbedding->CosineSimilarity(*topicEmbedding);
                             if (cosineSim > options.topicsHyponymThreshold) {
                                 validHyponyms.insert(hyp);
                             }

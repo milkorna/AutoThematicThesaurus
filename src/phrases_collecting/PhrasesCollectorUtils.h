@@ -18,9 +18,9 @@ struct Options {
     int tresholdTopicsCount;
     bool cleanStopWords; ///< Indicates if stop words should be cleaned.
     bool validateBoundaries;
-    float topicsThreshold;
-    float topicsHyponymThreshold;
-    float freqTresholdCoeff;
+    double topicsThreshold;
+    double topicsHyponymThreshold;
+    double freqTresholdCoeff;
 
     fs::path dataDir;
     fs::path corpusDir;
@@ -87,14 +87,6 @@ bool MorphAnanlysisError(const X::WordFormPtr& token);
 // \param currFormMorphInfo A set of morphological information of the current form.
 // \return                  True if the property is found, false otherwise.
 bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
-
-// // \brief Logs the current simple phrase being processed.
-// // \param curSimplePhr  A shared pointer to the current simple phrase.
-// void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr);
-
-// // \brief Logs the current complex model being processed.
-// // \param name          The name of the complex model.
-// void LogCurrentComplexModel(const std::string& name);
 
 // \brief Updates the status of the current phrase based on the adjacent phrase.
 // \param wc            A shared pointer to the current word complex.
