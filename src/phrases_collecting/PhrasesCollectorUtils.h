@@ -83,11 +83,6 @@ void BuildPhraseStorage();
 
 void BuildTokenizedSentenceCorpus();
 
-// \brief Retrieves the most probable morphological information from a set.
-// \param morphSet      A set of morphological information.
-// \return              The most probable MorphInfo object.
-X::MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet);
-
 // \brief Checks if there is an error in morphological analysis.
 // \param token         The WordFormPtr token to check.
 // \return              True if there is an error, false otherwise.
@@ -128,7 +123,5 @@ const std::unordered_set<std::string> GetStopWords();
 // \param collection    A vector of collected word complexes.
 // \param process       The process associated with the phrase collection.
 void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process);
-
-const std::string GetLemma(const X::WordFormPtr& form);
 
 } // namespace PhrasesCollectorUtils

@@ -1,5 +1,6 @@
 #include "PatternPhrasesStorage.h"
 #include "ComplexPhrasesCollector.h"
+#include "MorphAnalyzer.h"
 #include "PhrasesCollectorUtils.h"
 #include "SemanticRelations.h"
 #include "SimplePhrasesCollector.h"
@@ -275,9 +276,11 @@ void PatternPhrasesStorage::Collect(const std::vector<WordFormPtr>& forms, Proce
         uniqueLemmasInDoc.clear();
     }
 
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
+
     std::unordered_set<std::string> uniqueLemmasInSentence;
     for (const auto& form : forms) {
-        std::string lemma = GetLemma(form);
+        std::string lemma = morphAnalyzer.getLemma(form);
         corpus.UpdateWordFrequency(lemma);
         uniqueLemmasInSentence.insert(lemma);
     }

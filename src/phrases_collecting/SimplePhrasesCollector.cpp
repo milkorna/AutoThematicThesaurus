@@ -1,6 +1,8 @@
 #include "SimplePhrasesCollector.h"
 #include "StringFilters.h"
 
+#include "MorphAnalyzer.h"
+
 using namespace PhrasesCollectorUtils;
 
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
@@ -30,13 +32,14 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     auto& options = Options::getOptions();
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     if (options.cleanStopWords) {
         const auto& stopWords = GetStopWords();
         if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
             return false;
 
-        const auto normalForm = GetLemma(token);
+        const auto normalForm = morphAnalyzer.getLemma(token);
         if (stopWords.find(normalForm) != stopWords.end())
             return false;
     }
@@ -73,6 +76,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 void SimplePhrasesCollector::Collect(Process& process) {
     auto& options = PhrasesCollectorUtils::Options::getOptions();
     const auto& simplePatterns = manager.getSimplePatterns();
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
@@ -83,7 +87,7 @@ void SimplePhrasesCollector::Collect(Process& process) {
             if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
                 continue;
 
-            const auto normalForm = GetLemma(token);
+            const auto normalForm = morphAnalyzer.getLemma(token);
             if (stopWords.find(normalForm) != stopWords.end())
                 continue;
         }

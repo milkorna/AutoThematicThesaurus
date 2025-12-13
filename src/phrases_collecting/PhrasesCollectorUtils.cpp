@@ -9,6 +9,7 @@
 #include "xmorphy/utils/UniString.h"
 
 #include "GrammarPatternManager.h"
+#include "MorphAnalyzer.h"
 #include "PatternPhrasesStorage.h"
 #include "PhrasesCollectorUtils.h"
 #include "TextCorpus.h"
@@ -231,6 +232,7 @@ void BuildTokenizedSentenceCorpus() {
 
     try {
         std::vector<fs::path> files_to_process = GetFilesToProcess();
+        auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
         for (unsigned int i = 0; i < files_to_process.size(); ++i) {
             size_t docNum = extractNumberFromPath(files_to_process[i].string());
@@ -262,7 +264,7 @@ void BuildTokenizedSentenceCorpus() {
                     morphemic_splitter.split(form);
                     if (form->getTokenType() != X::TokenTypeTag::WORD)
                         continue;
-                    normalizedData.append(GetLemma(form) + " ");
+                    normalizedData.append(morphAnalyzer.getLemma(form) + " ");
                 }
                 if (!normalizedData.empty()) {
                     normalizedData.pop_back();
@@ -279,16 +281,6 @@ void BuildTokenizedSentenceCorpus() {
         Logger::log("", LogLevel::Error, "Unknown exception caught");
     }
     Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
-}
-
-X::MorphInfo GetMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet) {
-    auto maxElement = *morphSet.begin();
-    for (const auto& elem : morphSet) {
-        if (elem.probability > maxElement.probability) {
-            maxElement = elem;
-        }
-    }
-    return maxElement;
 }
 
 bool MorphAnanlysisError(const X::WordFormPtr& token) {
@@ -433,10 +425,12 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
     if (collection.empty())
         return;
 
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
+
     for (const auto& wc : collection) {
         std::string key;
         for (const auto& w : wc->words) {
-            key.append(GetLemma(w) + " ");
+            key.append(morphAnalyzer.getLemma(w) + " ");
         }
         if (!key.empty()) {
             key.pop_back();
@@ -463,7 +457,4 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
     Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
 }
 
-const std::string GetLemma(const X::WordFormPtr& form) {
-    return GetMostProbableMorphInfo(form->getMorphInfo()).normalForm.toLowerCase().getRawString();
-}
 } // namespace PhrasesCollectorUtils
