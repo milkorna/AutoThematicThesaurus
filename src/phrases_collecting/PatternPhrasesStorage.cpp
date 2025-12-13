@@ -1,4 +1,5 @@
 #include "PatternPhrasesStorage.h"
+#include "ClusterSerializer.h"
 #include "ComplexPhrasesCollector.h"
 #include "MorphAnalyzer.h"
 #include "PhrasesCollectorUtils.h"
@@ -784,102 +785,44 @@ void PatternPhrasesStorage::LoadWikiWNRelations() {
     }
 }
 
-void PatternPhrasesStorage::OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters,
-                                                     bool termsOnly) const {
+void PatternPhrasesStorage::saveClusters(const std::string& filename, bool mergeNestedClusters, bool termsOnly) const {
     Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
 
-    json j;
-    std::vector<std::string> keys;
+    // Определяем какие кластеры сохранять
+    std::unordered_map<std::string, WordComplexCluster> clustersToSave;
 
     if (termsOnly) {
-        keys.reserve(clustersToInclude.size());
+        // Сохраняем только термины
         for (const auto& key : clustersToInclude) {
-            keys.push_back(key);
-        }
-
-    } else {
-        keys.reserve(clusters.size());
-        for (const auto& pair : clusters) {
-            keys.push_back(pair.first);
-        }
-    }
-
-    std::sort(keys.begin(), keys.end());
-
-    json* previousClusterJson = nullptr;
-    std::string previousKey;
-
-    for (const auto& key : keys) {
-        const auto& cluster = clusters.at(key);
-        double phrasesCount = static_cast<double>(cluster.wordComplexes.size());
-
-        json clusterJson;
-        clusterJson["0_phrase_size"] = cluster.phraseSize;
-        clusterJson["1_frequency"] = phrasesCount / static_cast<double>(options.textToProcessCount);
-        clusterJson["2_topic_relevance"] = cluster.topicRelevance;
-        clusterJson["3_centrality_score"] = cluster.centralityScore;
-        clusterJson["4_tag_match"] = cluster.tagMatch;
-        clusterJson["5_model_name"] = cluster.modelName;
-
-        std::vector<std::string> synonymsJson(cluster.synonyms.begin(), cluster.synonyms.end());
-        clusterJson["9_synonyms"] = synonymsJson;
-
-        std::vector<json> lemmasJson;
-        for (size_t i = 0; i < cluster.lemmas.size(); ++i) {
-            json lemmaJson;
-            std::string lemmaStrNumbered = std::to_string(i) + "_" + cluster.lemmas[i];
-            lemmaJson["0_lemma"] = lemmaStrNumbered;
-            lemmaJson["1_tf"] = cluster.tf[i];
-            lemmaJson["2_idf"] = cluster.idf[i];
-            lemmaJson["3_tf-idf"] = cluster.tfidf[i];
-            lemmaJson["4_hypernyms"] = cluster.hypernyms.at(cluster.lemmas[i]);
-            lemmaJson["5_hyponyms"] = cluster.hyponyms.at(cluster.lemmas[i]);
-            lemmasJson.push_back(lemmaJson);
-        }
-        clusterJson["6_lemmas"] = lemmasJson;
-
-        clusterJson["7_phrases_count"] = phrasesCount;
-        std::vector<json> phrases;
-        for (const auto& wordComplex : cluster.wordComplexes) {
-            json phraseJson;
-            phraseJson["0_text_form"] = wordComplex->textForm;
-            phraseJson["1_position"] = {{"0_start", wordComplex->pos.start},
-                                        {"1_end", wordComplex->pos.end},
-                                        {"2_doc_num", wordComplex->pos.docNum},
-                                        {"3_sent_num", wordComplex->pos.sentNum}};
-
-            for (const auto& contextSentence : cluster.contexts) {
-                const TokenizedSentence& context = contextSentence;
-
-                if (context.docNum == wordComplex->pos.docNum && context.sentNum == wordComplex->pos.sentNum) {
-                    phraseJson["2_context"] = context.originalStr;
-                    break;
-                }
+            if (clusters.contains(key)) {
+                clustersToSave[key] = clusters.at(key);
             }
-
-            phrases.push_back(phraseJson);
         }
-        clusterJson["8_phrases"] = phrases;
-
-        // If mergeNestedClusters is true, check for substring relation with the previous key
-        if (mergeNestedClusters && previousClusterJson && key.find(previousKey) == 0) {
-            // If the key starts with the previous key, treat it as a nested cluster
-            json nestedClusterJson = clusterJson;
-            nestedClusterJson["00_key"] = key; // Add the key to the nested cluster
-            (*previousClusterJson)["nested_clusters"].push_back(nestedClusterJson);
-        } else {
-            // Save current clusterJson for potential nesting in the next iteration
-            j[key] = clusterJson;
-            previousClusterJson = &j[key];
-            previousKey = key;
-        }
+    } else {
+        // Сохраняем все кластеры
+        clustersToSave = clusters;
     }
 
+    // Вычисляем частоты
+    std::unordered_map<std::string, double> frequencies;
+    const auto divisor = static_cast<double>(options.textToProcessCount);
+    for (const auto& [key, cluster] : clustersToSave) {
+        frequencies[key] = static_cast<double>(cluster.wordComplexes.size()) / divisor;
+    }
+
+    // Сериализуем с помощью ClusterSerializer
+    ClusterSerializer serializer;
+    json j = serializer.serializeClusterMap(clustersToSave, frequencies, mergeNestedClusters);
+
+    // Сохраняем в файл
     std::ofstream outFile(filename);
     if (!outFile.is_open()) {
-        throw std::runtime_error("Could not open file for writing");
+        throw std::runtime_error("Could not open file for writing: " + filename);
     }
 
     outFile << j.dump(4);
     outFile.close();
+
+    Logger::log("PhrasesStorage", LogLevel::Info,
+                "Successfully saved " + std::to_string(clustersToSave.size()) + " clusters to " + filename);
 }

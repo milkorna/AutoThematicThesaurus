@@ -215,7 +215,7 @@ int main(int argc, char** argv) {
             loader.LoadPhraseStorageFromResultsDir(storage);
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
-            storage.OutputClustersToJsonFile(options.totalResultsPath.string());
+            storage.saveClusters(options.totalResultsPath.string());
             Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
@@ -227,7 +227,7 @@ int main(int argc, char** argv) {
             auto& storage = PatternPhrasesStorage::GetStorage();
             loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
             storage.LoadWikiWNRelations();
-            storage.OutputClustersToJsonFile(options.totalResultsPath);
+            storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
             BuildTokenizedSentenceCorpus();
@@ -270,7 +270,7 @@ int main(int argc, char** argv) {
             config.maxComponents = 50;
             storage.CalculateLSAMetrics(U, words, Sigma, config);
 
-            storage.OutputClustersToJsonFile(options.totalResultsPath);
+            storage.saveClusters(options.totalResultsPath);
         } else if (command == "get_terminological_phrases") {
             // Load precomputed results without additional processing
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
@@ -284,7 +284,7 @@ int main(int argc, char** argv) {
             loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
             storage.AddContextsToClusters();
             storage.CollectTerms();
-            storage.OutputClustersToJsonFile(options.termsCandidatesPath.string(), false, true);
+            storage.saveClusters(options.termsCandidatesPath.string(), false, true);
         } else {
             std::cerr << "Unknown command: " << command << "\n";
             printUsage(desc);

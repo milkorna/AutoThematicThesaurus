@@ -76,10 +76,17 @@ class PatternPhrasesStorage {
     void CalculateLSAMetrics(const MatrixXd& U, const std::vector<std::string>& words,
                              const std::unordered_map<int, std::vector<std::string>>& topics);
 
-    // \brief Outputs the clusters to a JSON file.
-    // \param filename  The path to the output JSON file.
-    void OutputClustersToJsonFile(const std::string& filename, bool mergeNestedClusters = false,
-                                  bool termsOnly = false) const;
+    /**
+     * @brief Saves clusters to a JSON file with optional filtering
+     *
+     * @param filename Path to output JSON file
+     * @param mergeNestedClusters If true, nests clusters whose keys are prefixes of other keys
+     * @param termsOnly If true, saves only terminology candidates;
+     *                  if false, saves all clusters
+     *
+     * @throws std::runtime_error If file cannot be written
+     */
+    void saveClusters(const std::string& filename, bool mergeNestedClusters = false, bool termsOnly = false) const;
 
     void LoadWikiWNRelations();
 
