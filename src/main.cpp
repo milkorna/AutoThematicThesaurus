@@ -5,6 +5,9 @@
 #include "PatternPhrasesStorage.h"
 #include "PhrasesStorageLoader.h"
 #include "TextCorpus.h"
+#include "TextCorpusDeserializer.h"
+#include "TextCorpusFilter.h"
+#include "TextCorpusSerializer.h"
 #include "TokenizedSentenceCorpus.h"
 
 #include <chrono>
@@ -202,13 +205,15 @@ int main(int argc, char** argv) {
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile(options.corpusFile.string());
-            corpus.SaveCorpusToFile(options.filteredCorpusFile);
+            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
+            TextCorpusFilter::filterTextsByLength(corpus);
+            TextCorpusFilter::filterStopWords(corpus);
+            TextCorpusSerializer::serialize(corpus, options.filteredCorpusFile);
             Logger::log("Main", LogLevel::Info, "Filtering corpus completed successfully.");
         } else if (command == "compute_text_metrics") {
             Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
+            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
             PhrasesStorageLoader loader;
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
@@ -221,7 +226,7 @@ int main(int argc, char** argv) {
             // Load hypernym and hyponym relations for stored lemmas
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
             auto& corpus = TextCorpus::GetCorpus();
-            corpus.LoadCorpusFromFile(options.filteredCorpusFile.string());
+            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
             ::Embedding e;
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
