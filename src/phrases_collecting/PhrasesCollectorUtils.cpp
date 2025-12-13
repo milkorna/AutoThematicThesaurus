@@ -13,6 +13,7 @@
 #include "PatternPhrasesStorage.h"
 #include "PhrasesCollectorUtils.h"
 #include "TextCorpus.h"
+#include "TextCorpusSerializer.h"
 #include "TokenizedSentenceCorpus.h"
 
 #include <cctype>
@@ -217,7 +218,7 @@ void BuildPhraseStorage() {
             ProcessFile(files_to_process[i], outputDir);
         }
 
-        TextCorpus::GetCorpus().SaveCorpusToFile(options.corpusFile.string());
+        TextCorpusSerializer::serialize(corpus, options.corpusFile.string());
     } catch (const std::exception& e) {
         Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
     } catch (...) {

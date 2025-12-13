@@ -96,13 +96,17 @@ int TextCorpus::GetDocumentFrequency(const std::string& lemma) const {
 }
 
 // Returns the list of all texts (paragraphs) in the corpus.
-const std::unordered_map<std::string, std::vector<std::string>>& TextCorpus::GetTexts() const {
+const std::unordered_map<std::string, std::vector<std::string>>& TextCorpus::getTexts() const {
     return texts;
 }
 
 // Returns the frequency map of all words (lemmas) in the corpus.
-const std::unordered_map<std::string, int>& TextCorpus::GetWordFrequencies() const {
+const std::unordered_map<std::string, int>& TextCorpus::getWordFrequencies() const {
     return wordFrequency;
+}
+
+const std::unordered_map<std::string, int>& TextCorpus::getDocumentFrequencies() const {
+    return documentFrequency;
 }
 
 // Calculates the Term Frequency (TF) for a specific word (lemma) in the corpus.
@@ -126,92 +130,37 @@ double TextCorpus::CalculateTFIDF(const std::string& lemma) const {
     return CalculateTF(lemma) * CalculateIDF(lemma);
 }
 
-// Serializes the corpus data to JSON format for storage or transmission.
-json TextCorpus::Serialize() const {
-    json j;
-
-    // Serialize overall corpus information
-    j["0_totalDocuments"] = totalDocuments;
-    j["1_totalTexts"] = totalTexts;
-    j["2_totalWords"] = totalWords;
-    j["3_documentFrequency"] = documentFrequency;
-    j["4_wordFrequency"] = wordFrequency;
-
-    // Serialize the documents and their corresponding texts
-    json documentsJson = json::array();
-    for (const auto& doc : texts) {
-        json docJson;
-        docJson["filename"] = doc.first; // Document name (filename)
-        docJson["texts"] = doc.second;   // Vector of texts (paragraphs) in this document
-        documentsJson.push_back(docJson);
-    }
-
-    j["5_documents"] = documentsJson;
-
-    return j;
+std::unordered_map<std::string, std::vector<std::string>>& TextCorpus::getTextsForModification() {
+    return texts;
 }
 
-void TextCorpus::Deserialize(const json& j) {
-    try {
-        // Filter and deserialize documentFrequencys
-        for (const auto& item : j.at("3_documentFrequency").items()) {
-            if (!StringFilters::ShouldBeFiltered(item.key())) {
-                documentFrequency[item.key()] = item.value();
-            }
-        }
-
-        // Filter and deserialize wordFrequency
-        for (const auto& item : j.at("4_wordFrequency").items()) {
-            if (!StringFilters::ShouldBeFiltered(item.key())) {
-                wordFrequency[item.key()] = item.value();
-            }
-        }
-
-        totalWords = j.at("2_totalWords").get<int>();
-        totalDocuments = j.at("0_totalDocuments").get<int>();
-        totalTexts = j.at("1_totalTexts").get<int>();
-
-        // Deserialize the documents and their corresponding texts with additional filtering
-        texts.clear(); // Clear the existing data
-        for (const auto& docJson : j.at("5_documents")) {
-            std::string filename = docJson.at("filename").get<std::string>();
-            std::vector<std::string> docTexts;
-            for (const auto& text : docJson.at("texts").get<std::vector<std::string>>()) {
-                // Filter out texts that do not contain spaces or are shorter than 30 characters
-                if (text.find(' ') != std::string::npos && text.length() >= 40) {
-                    docTexts.push_back(text);
-                }
-            }
-            if (!docTexts.empty()) {
-                texts[filename] = docTexts; // Store the filtered texts under the document name (filename)
-            }
-        }
-    } catch (json::exception& e) {
-        // Handle parsing errors
-        std::cerr << "Error parsing JSON: " << e.what() << std::endl;
-        throw;
-    }
+std::unordered_map<std::string, int>& TextCorpus::getWordFrequenciesForModification() {
+    return wordFrequency;
 }
 
-// Saves the serialized corpus data to a file.
-void TextCorpus::SaveCorpusToFile(const std::string& filename) {
-    std::ofstream file(filename);
-    if (file.is_open()) {
-        file << Serialize().dump(4);
-        file.close();
-    }
+std::unordered_map<std::string, int>& TextCorpus::getDocumentFrequenciesForModification() {
+    return documentFrequency;
 }
 
-// Loads the corpus data from a file and deserializes it into the singleton instance.
-void TextCorpus::LoadCorpusFromFile(const std::string& filename) {
-    Logger::log("TextCorpus", LogLevel::Info, "Loading corpus from file: " + filename);
+void TextCorpus::clearAllData() {
+    texts.clear();
+    wordFrequency.clear();
+    documentFrequency.clear();
+    totalWords = 0;
+    totalTexts = 0;
+    totalDocuments = 0;
+}
 
-    std::ifstream file(filename);
-    if (file.is_open()) {
-        json j;
-        file >> j;
-        Deserialize(j);
-    } else {
-        std::cerr << "Failed to open file: " << filename << std::endl;
+void TextCorpus::recalculateStatistics() {
+    totalWords = 0;
+    totalTexts = 0;
+    totalDocuments = texts.size();
+
+    for (const auto& [_, freq] : wordFrequency) {
+        totalWords += freq;
+    }
+
+    for (const auto& [_, textList] : texts) {
+        totalTexts += textList.size();
     }
 }

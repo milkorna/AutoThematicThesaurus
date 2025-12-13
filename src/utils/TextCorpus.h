@@ -56,7 +56,7 @@ class TextCorpus {
     int GetTotalTexts() const;
 
     // Returns the list of all texts (paragraphs) in the corpus.
-    const std::unordered_map<std::string, std::vector<std::string>>& GetTexts() const;
+    const std::unordered_map<std::string, std::vector<std::string>>& getTexts() const;
 
     // Returns the frequency of a specific word (lemma) in the corpus.
     // If the word is not found, it returns 0.
@@ -65,6 +65,9 @@ class TextCorpus {
     // Returns the document frequency of a specific word (lemma).
     // Document frequency refers to the number of documents (filenames) in which the word appears.
     int GetDocumentFrequency(const std::string& word) const;
+
+    const std::unordered_map<std::string, int>& getWordFrequencies() const;
+    const std::unordered_map<std::string, int>& getDocumentFrequencies() const;
 
     // Calculates the Term Frequency (TF) for a specific word (lemma) in the corpus.
     // TF is calculated as the frequency of the word divided by the total number of words in the corpus.
@@ -78,25 +81,14 @@ class TextCorpus {
     // TF-IDF is the product of Term Frequency (TF) and Inverse Document Frequency (IDF).
     double CalculateTFIDF(const std::string& lemma) const;
 
-    // Serializes the corpus data to JSON format for storage or transmission.
-    json Serialize() const;
-
-    // Returns the total number of words (lemmas) in the corpus.
-    void Deserialize(const json& j);
-
     // Returns the total number of words (lemmas) in the corpus.
     int GetTotalWords() const;
 
-    // Returns the frequency map of all words (lemmas) in the corpus.
-    const std::unordered_map<std::string, int>& GetWordFrequencies() const;
-
-    // Saves the serialized corpus data to a file.
-    void SaveCorpusToFile(const std::string& filename);
-
-    // Loads the corpus data from a file, deserializes it, and returns the restored TextCorpus object.
-    void LoadCorpusFromFile(const std::string& filename);
-
   private:
+    friend class TextCorpusSerializer;
+    friend class TextCorpusDeserializer;
+    friend class TextCorpusFilter;
+
     std::unordered_map<std::string, std::vector<std::string>> texts; ///< Map to store paragraphs associated with
                                                                      ///< each document (filename).
     std::unordered_map<std::string, int> wordFrequency;     ///< Map to store the frequency of words in the corpus.
@@ -104,4 +96,13 @@ class TextCorpus {
     int totalWords = 0;                                     ///< Total number of words (lemmas) in the corpus.
     int totalTexts = 0;
     int totalDocuments = 0; ///< Total number of documents (filenames) in the corpus.
+
+    // Non-const getters for friend classes
+    std::unordered_map<std::string, std::vector<std::string>>& getTextsForModification();
+    std::unordered_map<std::string, int>& getWordFrequenciesForModification();
+    std::unordered_map<std::string, int>& getDocumentFrequenciesForModification();
+
+    // Helper methods
+    void clearAllData();
+    void recalculateStatistics();
 };
