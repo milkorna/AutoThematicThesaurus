@@ -212,7 +212,7 @@ int main(int argc, char** argv) {
             PhrasesStorageLoader loader;
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadPhraseStorageFromResultsDir(storage);
+            loader.loadPhraseStorageFromResultsDir(storage);
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
             storage.saveClusters(options.totalResultsPath.string());
@@ -225,7 +225,7 @@ int main(int argc, char** argv) {
             ::Embedding e;
             PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
+            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
             storage.LoadWikiWNRelations();
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
@@ -237,7 +237,7 @@ int main(int argc, char** argv) {
             PhrasesStorageLoader loader;
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
+            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
 
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
             sentences.LoadFromFile(options.sentencesFile.string());
@@ -281,7 +281,7 @@ int main(int argc, char** argv) {
             ::Embedding e;
 
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.LoadStorageFromFile(storage, options.totalResultsPath.string());
+            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
             storage.AddContextsToClusters();
             storage.CollectTerms();
             storage.saveClusters(options.termsCandidatesPath.string(), false, true);
