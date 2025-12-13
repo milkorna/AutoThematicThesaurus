@@ -40,7 +40,6 @@ set(FETCHCONTENT_TRY_FIND_PACKAGE_MODE NEVER)
 # TensorFlow Lite использует логирование из Abseil, которое создает проблемы с линком
 # Отключаем логирование чтобы избежать зависимости от Abseil logging
 add_definitions(-DTENSORFLOW_LITE_DISABLE_LOG=1)
-add_definitions(-DMIN_LOG_LEVEL=3)
 add_definitions(-DTF_LITE_DISABLE_XNNPACK_DELEGATE)
 # Отключаем использование Abseil logging
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DABSL_MIN_LOG_LEVEL=3")
@@ -119,10 +118,6 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "Default insta
 
 # Enable position-independent code for shared libraries
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-# Define necessary preprocessor macros
-add_definitions(-DTF_LITE_DISABLE_XNNPACK_DELEGATE)
-add_definitions(-DMIN_LOG_LEVEL=4)
 
 # ===== XMORPHY LINKING =====
 # XMorphy уже скомпилирована как цель Xmorphy в submodule

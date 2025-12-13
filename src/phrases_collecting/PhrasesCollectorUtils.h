@@ -7,7 +7,6 @@
 
 #include <filesystem>
 #include <mutex>
-#include <unordered_map>
 #include <unordered_set>
 
 namespace fs = std::filesystem;
@@ -109,11 +108,7 @@ void LogCurrentComplexModel(const std::string& name);
 void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase, CurrentPhraseStatus& curPhrStatus,
                         bool isLeft);
 
-// \brief Retrieves the set of topics for phrase collection.
-// \return              A set of topic strings.
-const std::unordered_set<std::string> GetTopics();
-
-const std::unordered_map<std::string, WordEmbeddingPtr>& GetTopicVectors();
+const std::string GetLowerCase(const std::string& line);
 
 // \brief Retrieves the set of stop words for cleaning.
 // \return              A set of stop word strings.

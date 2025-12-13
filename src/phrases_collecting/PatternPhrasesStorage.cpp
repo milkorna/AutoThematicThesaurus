@@ -6,6 +6,7 @@
 #include "SimplePhrasesCollector.h"
 #include "TextCorpus.h"
 
+#include "TopicManager.h"
 #include <regex>
 
 using json = nlohmann::json;
@@ -540,7 +541,7 @@ void PatternPhrasesStorage::ComputeTextMetrics() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
     const auto corpus = TextCorpus::GetCorpus();
     int totalDocuments = corpus.GetTotalDocuments();
-    const auto& topicVectors = GetTopicVectors();
+    const auto& topicVectors = TopicManager::getTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
     auto& options = PhrasesCollectorUtils::Options::getOptions();
 
@@ -616,14 +617,13 @@ void PatternPhrasesStorage::MergeSimilarClusters() {
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
 
-            previousCluster.tfidf.size();
-            for (i = 0; i < previousCluster.tfidf.size(); i++) {
-                if (currentCluster.tf[i] > previousCluster.tf[i])
-                    previousCluster.tf[i] = currentCluster.tf[i];
-                if (currentCluster.idf[i] > previousCluster.idf[i])
-                    previousCluster.idf[i] = currentCluster.idf[i];
-                if (currentCluster.tfidf[i] > previousCluster.tfidf[i])
-                    previousCluster.tfidf[i] = currentCluster.tfidf[i];
+            for (int j = 0; j < previousCluster.tfidf.size(); j++) {
+                if (currentCluster.tf[j] > previousCluster.tf[j])
+                    previousCluster.tf[j] = currentCluster.tf[j];
+                if (currentCluster.idf[j] > previousCluster.idf[j])
+                    previousCluster.idf[j] = currentCluster.idf[j];
+                if (currentCluster.tfidf[j] > previousCluster.tfidf[j])
+                    previousCluster.tfidf[j] = currentCluster.tfidf[j];
             }
 
             previousCluster.tagMatch = currentCluster.tagMatch || previousCluster.tagMatch;
@@ -764,7 +764,7 @@ void PatternPhrasesStorage::LoadWikiWNRelations() {
                 if (hyponyms.size() < 150) {
                     for (const auto& hyp : hyponyms) {
                         const WordEmbeddingPtr& myEmbedding = std::make_shared<WordEmbedding>(hyp);
-                        const auto& topicVectors = GetTopicVectors();
+                        const auto& topicVectors = TopicManager::getTopicVectors();
 
                         for (const auto& topicVecPair : topicVectors) {
                             const std::string& topicWord = topicVecPair.first;
