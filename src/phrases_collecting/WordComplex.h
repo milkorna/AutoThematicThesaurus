@@ -2,7 +2,7 @@
 
 #include "xmorphy/morph/WordForm.h"
 
-#include "ResultsJsonSession.h"
+#include "Process.h"
 
 #include <deque>
 #include <memory>

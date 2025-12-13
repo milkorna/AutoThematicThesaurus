@@ -15,7 +15,7 @@ using json = nlohmann::json;
  *          2. Raw phrase results from sentence processing
  */
 class ClusterDeserializer {
-public:
+  public:
     /**
      * @brief Deserialize a single cluster from JSON object.
      * @details Reconstructs WordComplexCluster with all fields:
@@ -42,7 +42,7 @@ public:
      */
     WordComplexPtr deserializePhraseResult(const json& obj);
 
-private:
+  private:
     /**
      * @brief Deserialize lemmas array from JSON.
      * @param lemmas_json JSON array with lemma objects

@@ -352,7 +352,6 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
         j["6_end_ind"] = wc->pos.end;
         j["7_lemmas"] = lemmas_json;
 
-        //            process.m_output << j.dump(4) << std::endl;
         process.addJsonObject(j);
     }
     Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
