@@ -110,10 +110,6 @@ void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhr
 
 const std::string GetLowerCase(const std::string& line);
 
-// \brief Retrieves the set of stop words for cleaning.
-// \return              A set of stop word strings.
-const std::unordered_set<std::string> GetStopWords();
-
 // \brief Outputs the results of the phrase collection process.
 // \param collection    A vector of collected word complexes.
 // \param process       The process associated with the phrase collection.

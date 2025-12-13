@@ -311,32 +311,6 @@ const std::string GetLowerCase(const std::string& line) {
     return lowerLine;
 }
 
-const std::unordered_set<std::string> GetStopWords() {
-    static std::unordered_set<std::string> stopWords;
-    static bool initialized = false;
-
-    if (initialized) {
-        return stopWords;
-    }
-
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
-    std::filesystem::path inputPath = options.stopWordsFile;
-
-    std::ifstream file(inputPath);
-    if (!file.is_open()) {
-        throw std::runtime_error("Could not open file " + inputPath.string());
-    }
-
-    std::string line;
-    while (std::getline(file, line)) {
-        const auto lowerLine = GetLowerCase(line);
-        stopWords.insert(lowerLine);
-    }
-
-    initialized = true;
-    return stopWords;
-}
-
 void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr) {
     Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Debug, curSimplePhr->textForm + " || " + curSimplePhr->modelName);
 }

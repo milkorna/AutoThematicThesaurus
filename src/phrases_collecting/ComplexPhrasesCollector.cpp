@@ -1,8 +1,8 @@
 #include "ComplexPhrasesCollector.h"
 #include "ModelComponent.h"
-#include "PhrasesCollectorUtils.h"
-
 #include "MorphAnalyzer.h"
+#include "PhrasesCollectorUtils.h"
+#include "StopWordsManager.h"
 
 #include <regex>
 
@@ -98,14 +98,13 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
     // Check if the component is a WordComp
     if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
         const auto token = m_sentence[formIndex];
-        const auto& stopWords = GetStopWords();
 
         if (options.cleanStopWords) {
-            if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
+            if (StopWordsManager::isStopWord(token->getWordForm().toLowerCase().getRawString()))
                 return false;
 
             const auto normalForm = morphAnalyzer.getLemma(token);
-            if (stopWords.find(normalForm) != stopWords.end())
+            if (StopWordsManager::isStopWord(normalForm))
                 return false;
         }
 

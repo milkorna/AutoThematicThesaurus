@@ -1,7 +1,7 @@
 #include "SimplePhrasesCollector.h"
-#include "StringFilters.h"
-
 #include "MorphAnalyzer.h"
+#include "StopWordsManager.h"
+#include "StringFilters.h"
 
 using namespace PhrasesCollectorUtils;
 
@@ -35,12 +35,11 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     if (options.cleanStopWords) {
-        const auto& stopWords = GetStopWords();
-        if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
+        if (StopWordsManager::isStopWord(token->getWordForm().toLowerCase().getRawString()))
             return false;
 
         const auto normalForm = morphAnalyzer.getLemma(token);
-        if (stopWords.find(normalForm) != stopWords.end())
+        if (StopWordsManager::isStopWord(normalForm))
             return false;
     }
 
@@ -82,14 +81,14 @@ void SimplePhrasesCollector::Collect(Process& process) {
         const auto token = m_sentence[tokenInd];
 
         if (options.cleanStopWords) {
-            const auto& stopWords = GetStopWords();
-
-            if (stopWords.find(token->getWordForm().toLowerCase().getRawString()) != stopWords.end())
+            if (StopWordsManager::isStopWord(token->getWordForm().toLowerCase().getRawString())) {
                 continue;
+            }
 
             const auto normalForm = morphAnalyzer.getLemma(token);
-            if (stopWords.find(normalForm) != stopWords.end())
+            if (StopWordsManager::isStopWord(normalForm)) {
                 continue;
+            }
         }
 
         if (StringFilters::IsOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
