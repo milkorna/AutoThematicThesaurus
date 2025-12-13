@@ -7,7 +7,6 @@
 
 #include <nlohmann/json.hpp>
 
-using namespace PhrasesCollectorUtils;
 // using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
 
 // \struct WordComplexCluster

@@ -68,7 +68,7 @@ bool TopicManager::isValidTopic(const std::string& line) {
 }
 
 void TopicManager::loadTopics() {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     std::filesystem::path inputPath = options.tagsAndHubsFile;
 
     std::ifstream file(inputPath);
@@ -84,7 +84,7 @@ void TopicManager::loadTopics() {
 
         line = trimTrailingDigitsAndSpaces(line);
 
-        const auto lowerLine = PhrasesCollectorUtils::GetLowerCase(line);
+        const auto lowerLine = GetLowerCase(line);
         if (isValidTopic(lowerLine)) {
             topics.insert(lowerLine);
         }

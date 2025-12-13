@@ -121,7 +121,6 @@ void addOptions(po::options_description& desc) {
 
 int main(int argc, char** argv) {
 
-    using namespace PhrasesCollectorUtils;
     auto& options = Options::getOptions();
 
     auto start = std::chrono::high_resolution_clock::now();

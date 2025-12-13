@@ -26,7 +26,6 @@ using util::path::extractNumberFromPath;
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-namespace PhrasesCollectorUtils {
 Options::Options() {
     fs::path repoPath = fs::current_path();
 
@@ -97,7 +96,7 @@ std::vector<fs::path> GetFilesToProcess() {
     std::vector<fs::path> files_to_process;
 
     try {
-        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        auto& options = Options::getOptions();
         fs::path inputDir = options.textsDir;
 
         if (!fs::exists(inputDir) || !fs::is_directory(inputDir)) {
@@ -130,7 +129,7 @@ std::vector<fs::path> GetFilesToProcess() {
 }
 
 std::vector<fs::path> GetResFiles() {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     fs::path inputDir = options.resDir;
     std::vector<fs::path> files_to_process;
     files_to_process.reserve(options.textToProcessCount);
@@ -203,7 +202,7 @@ void ProcessFile(const fs::path& inputFile, const fs::path& outputDir) {
 }
 
 void BuildPhraseStorage() {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     Logger::log("", LogLevel::Info, "Building phrase storage...");
     fs::path outputDir = options.resDir;
     fs::create_directories(outputDir);
@@ -273,7 +272,7 @@ void BuildTokenizedSentenceCorpus() {
                 sentNum++;
             } while (!ssplitter.eof());
         }
-        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        auto& options = Options::getOptions();
         sentences.SaveToFile(options.sentencesFile.string());
     } catch (const std::exception& e) {
         Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
@@ -309,14 +308,6 @@ const std::string GetLowerCase(const std::string& line) {
     std::string lowerLine;
     ustr.toUTF8String(lowerLine);
     return lowerLine;
-}
-
-void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr) {
-    Logger::log("CURRENT SIMPLE PHRASE", LogLevel::Debug, curSimplePhr->textForm + " || " + curSimplePhr->modelName);
-}
-
-void LogCurrentComplexModel(const std::string& name) {
-    Logger::log("CURRENT COMPLEX MODEL", LogLevel::Debug, name);
 }
 
 void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase, CurrentPhraseStatus& curPhrStatus,
@@ -366,5 +357,3 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
     }
     Logger::log("OutputResults", LogLevel::Info, "Appended results to JSON.");
 }
-
-} // namespace PhrasesCollectorUtils

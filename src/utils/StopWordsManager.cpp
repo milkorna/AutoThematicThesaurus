@@ -19,13 +19,13 @@ const std::unordered_set<std::string>& StopWordsManager::getStopWords() {
 // Проверить, является ли слово stop word
 bool StopWordsManager::isStopWord(const std::string& word) {
     const auto& stopWords = getStopWords();
-    const auto lowerWord = PhrasesCollectorUtils::GetLowerCase(word);
+    const auto lowerWord = GetLowerCase(word);
     return stopWords.contains(lowerWord);
 }
 
 // Загрузка stop words из файла
 void StopWordsManager::loadStopWords() {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     std::filesystem::path inputPath = options.stopWordsFile;
 
     std::ifstream file(inputPath);
@@ -35,7 +35,7 @@ void StopWordsManager::loadStopWords() {
 
     std::string line;
     while (std::getline(file, line)) {
-        const auto lowerLine = PhrasesCollectorUtils::GetLowerCase(line);
+        const auto lowerLine = GetLowerCase(line);
         stopWords.insert(lowerLine);
     }
 }

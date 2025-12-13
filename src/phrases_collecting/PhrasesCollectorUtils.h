@@ -11,10 +11,6 @@
 
 namespace fs = std::filesystem;
 
-namespace PHUtils = PhrasesCollectorUtils;
-
-namespace PhrasesCollectorUtils {
-
 // \struct Options
 // \brief This structure holds configuration options for phrase collection.
 struct Options {
@@ -92,13 +88,13 @@ bool MorphAnanlysisError(const X::WordFormPtr& token);
 // \return                  True if the property is found, false otherwise.
 bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
 
-// \brief Logs the current simple phrase being processed.
-// \param curSimplePhr  A shared pointer to the current simple phrase.
-void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr);
+// // \brief Logs the current simple phrase being processed.
+// // \param curSimplePhr  A shared pointer to the current simple phrase.
+// void LogCurrentSimplePhrase(const WordComplexPtr& curSimplePhr);
 
-// \brief Logs the current complex model being processed.
-// \param name          The name of the complex model.
-void LogCurrentComplexModel(const std::string& name);
+// // \brief Logs the current complex model being processed.
+// // \param name          The name of the complex model.
+// void LogCurrentComplexModel(const std::string& name);
 
 // \brief Updates the status of the current phrase based on the adjacent phrase.
 // \param wc            A shared pointer to the current word complex.
@@ -114,5 +110,3 @@ const std::string GetLowerCase(const std::string& line);
 // \param collection    A vector of collected word complexes.
 // \param process       The process associated with the phrase collection.
 void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process);
-
-} // namespace PhrasesCollectorUtils

@@ -543,7 +543,7 @@ void PatternPhrasesStorage::ComputeTextMetrics() {
     int totalDocuments = corpus.GetTotalDocuments();
     const auto& topicVectors = TopicManager::getTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
 
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;

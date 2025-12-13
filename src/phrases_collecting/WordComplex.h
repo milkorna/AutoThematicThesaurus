@@ -8,8 +8,6 @@
 #include <memory>
 #include <string>
 
-namespace PhrasesCollectorUtils {
-
 // \struct Position
 // \brief This structure represents the position of a word or phrase within a document.
 struct Position {
@@ -73,5 +71,3 @@ void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase
 // \param wc            A shared pointer to the WordComplex object to update.
 // \param asidePhrase   A shared pointer to the aside phrase to add.
 void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);
-
-} // namespace PhrasesCollectorUtils

@@ -21,7 +21,7 @@ class PhrasesStorageLoader {
 
     void LoadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage) {
         Logger::log("PhrasesStorage", LogLevel::Info, "Loading phrase storage from results directory...");
-        auto& options = PhrasesCollectorUtils::Options::getOptions();
+        auto& options = Options::getOptions();
         fs::path outputDir = options.resDir;
         fs::create_directories(outputDir);
         std::vector<fs::path> res_files = GetResFiles();

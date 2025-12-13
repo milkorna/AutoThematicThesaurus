@@ -6,8 +6,6 @@
 
 #include <regex>
 
-using namespace PhrasesCollectorUtils;
-
 bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<X::MorphInfo>& morphForms,
                                                      const Condition& cond, CurrentPhraseStatus& curPhrStatus) {
     for (const auto& morphForm : morphForms) {
@@ -90,7 +88,7 @@ bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePh
 bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
                                          const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
                                          const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd) {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     auto comp = model->getComponents()[compIndex];
 
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
@@ -230,7 +228,7 @@ void ComplexPhrasesCollector::ValidateBoundares() {
     }
 
     // A new container to store only the valid elements after validation
-    std::vector<PHUtils::WordComplexPtr> validatedCollection;
+    std::vector<WordComplexPtr> validatedCollection;
 
     for (const auto& it : m_collection) {
         if (it == nullptr) {
@@ -306,7 +304,7 @@ void ComplexPhrasesCollector::Collect(Process& process) {
         }
     }
 
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     if (options.validateBoundaries) {
         ValidateBoundares();
     }

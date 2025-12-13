@@ -6,7 +6,7 @@
 std::unique_ptr<fasttext::FastText> Embedding::ft = nullptr;
 
 void Embedding::LoadModel(std::string model_path = "") {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     if (!ft) {
         ft = std::make_unique<fasttext::FastText>();
         if (model_path.empty()) {

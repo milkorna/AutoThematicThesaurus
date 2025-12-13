@@ -2,8 +2,6 @@
 #include "MorphAnalyzer.h"
 #include "PhrasesCollectorUtils.h"
 
-namespace PhrasesCollectorUtils {
-
 bool WordComplex::operator==(const WordComplex& other) const {
     if (modelName != other.modelName || words.size() != other.words.size())
         return false;
@@ -85,4 +83,3 @@ void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase)
         wc->lemmas.push_back(morphAnalyzer.getLemma(word));
     }
 }
-} // namespace PhrasesCollectorUtils

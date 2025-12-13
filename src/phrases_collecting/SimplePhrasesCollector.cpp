@@ -3,8 +3,6 @@
 #include "StopWordsManager.h"
 #include "StringFilters.h"
 
-using namespace PhrasesCollectorUtils;
-
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
     if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
         return false;
@@ -73,7 +71,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 }
 
 void SimplePhrasesCollector::Collect(Process& process) {
-    auto& options = PhrasesCollectorUtils::Options::getOptions();
+    auto& options = Options::getOptions();
     const auto& simplePatterns = manager.getSimplePatterns();
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 

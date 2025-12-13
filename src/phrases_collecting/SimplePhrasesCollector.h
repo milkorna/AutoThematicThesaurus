@@ -19,7 +19,7 @@ class SimplePhrasesCollector {
 
     // \brief Gets the collection of word complexes.
     // \return          A reference to the vector containing the collected word complexes.
-    std::vector<PhrasesCollectorUtils::WordComplexPtr>& GetCollection() {
+    std::vector<WordComplexPtr>& GetCollection() {
         return m_collection;
     }
 
@@ -31,10 +31,10 @@ class SimplePhrasesCollector {
     ~SimplePhrasesCollector() = default;
 
   private:
-    std::vector<PhrasesCollectorUtils::WordComplexPtr> m_collection; ///< Collection of word complexes.
-    std::vector<WordFormPtr> m_sentence;  ///< Vector of word forms representing the sentence.
-    const GrammarPatternManager& manager; ///< Reference to the GrammarPatternManager instance.
+    std::vector<WordComplexPtr> m_collection; ///< Collection of word complexes.
+    std::vector<WordFormPtr> m_sentence;      ///< Vector of word forms representing the sentence.
+    const GrammarPatternManager& manager;     ///< Reference to the GrammarPatternManager instance.
 
-    bool CheckAside(const PhrasesCollectorUtils::WordComplexPtr& wc, const std::shared_ptr<Model>& model,
-                    size_t compIndex, size_t formIndex, size_t& correct, const bool isLeft);
+    bool CheckAside(const WordComplexPtr& wc, const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
+                    size_t& correct, const bool isLeft);
 };
