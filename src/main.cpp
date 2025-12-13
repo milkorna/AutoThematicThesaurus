@@ -214,10 +214,9 @@ int main(int argc, char** argv) {
             Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
             auto& corpus = TextCorpus::GetCorpus();
             TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
-            PhrasesStorageLoader loader;
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.loadPhraseStorageFromResultsDir(storage);
+            PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
             storage.MergeSimilarClusters();
             storage.ComputeTextMetrics();
             storage.saveClusters(options.totalResultsPath.string());
@@ -228,9 +227,8 @@ int main(int argc, char** argv) {
             auto& corpus = TextCorpus::GetCorpus();
             TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
             ::Embedding e;
-            PhrasesStorageLoader loader;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
+            PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
             storage.LoadWikiWNRelations();
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
@@ -239,10 +237,9 @@ int main(int argc, char** argv) {
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
-            PhrasesStorageLoader loader;
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
-            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
+            PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
 
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
             sentences.LoadFromFile(options.sentencesFile.string());

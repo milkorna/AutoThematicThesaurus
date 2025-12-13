@@ -1,4 +1,5 @@
 #include "TextCorpusSerializer.h"
+#include "Logger.h"
 
 void TextCorpusSerializer::serialize(const TextCorpus& corpus, const std::string& filename) {
     Logger::log("TextCorpusSerializer", LogLevel::Info, "Serializing corpus to file: " + filename);
@@ -24,9 +25,9 @@ json TextCorpusSerializer::corpusToJson(const TextCorpus& corpus) {
     json j;
 
     // Serialize metadata
-    j["0_totalDocuments"] = corpus.GetTotalDocuments();
-    j["1_totalTexts"] = corpus.GetTotalTexts();
-    j["2_totalWords"] = corpus.GetTotalWords();
+    j["0_totalDocuments"] = corpus.getDocumentCount();
+    j["1_totalTexts"] = corpus.getTextCount();
+    j["2_totalWords"] = corpus.getWordCount();
     j["3_documentFrequency"] = corpus.getDocumentFrequencies();
     j["4_wordFrequency"] = corpus.getWordFrequencies();
 

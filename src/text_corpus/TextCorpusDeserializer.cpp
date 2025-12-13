@@ -26,9 +26,9 @@ void TextCorpusDeserializer::loadFromJson(TextCorpus& corpus, const json& j) {
         corpus.clearAllData();
 
         // Load metadata
-        corpus.totalWords = j.at("2_totalWords").get<int>();
-        corpus.totalDocuments = j.at("0_totalDocuments").get<int>();
-        corpus.totalTexts = j.at("1_totalTexts").get<int>();
+        corpus.wordCount = j.at("2_totalWords").get<int>();
+        corpus.documentCount = j.at("0_totalDocuments").get<int>();
+        corpus.textCount = j.at("1_totalTexts").get<int>();
 
         // Load frequencies filtering (pure deserialization)
         loadDocumentFrequencies(corpus, j);

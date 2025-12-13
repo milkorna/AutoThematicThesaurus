@@ -1,20 +1,16 @@
 #include "TextCorpusFilter.h"
 #include <algorithm>
 
-void TextCorpusFilter::filterTextsByLength(TextCorpus& corpus,
-                                           size_t minLength,
-                                           bool requireSpaces) {
+void TextCorpusFilter::filterTextsByLength(TextCorpus& corpus, size_t minLength, bool requireSpaces) {
     Logger::log("TextCorpusFilter", LogLevel::Info,
                 "Filtering texts by length (min: " + std::to_string(minLength) + ")...");
 
-    size_t originalCount = corpus.GetTotalTexts();
+    size_t originalCount = corpus.getTextCount();
     auto& texts = corpus.getTextsForModification();
 
     for (auto& [filename, textList] : texts) {
-        auto newEnd = std::remove_if(
-            textList.begin(),
-            textList.end(),
-            [minLength, requireSpaces](const std::string& text) {
+        auto newEnd =
+            std::remove_if(textList.begin(), textList.end(), [minLength, requireSpaces](const std::string& text) {
                 bool tooShort = text.length() < minLength;
                 bool missingSpaces = requireSpaces && text.find(' ') == std::string::npos;
                 return tooShort || missingSpaces;
@@ -25,8 +21,7 @@ void TextCorpusFilter::filterTextsByLength(TextCorpus& corpus,
     recalculateStatistics(corpus);
 
     Logger::log("TextCorpusFilter", LogLevel::Info,
-                "Texts filtered: " + std::to_string(originalCount) +
-                " → " + std::to_string(corpus.GetTotalTexts()));
+                "Texts filtered: " + std::to_string(originalCount) + " → " + std::to_string(corpus.getTextCount()));
 }
 
 void TextCorpusFilter::filterStopWords(TextCorpus& corpus) {
@@ -50,8 +45,7 @@ void TextCorpusFilter::filterStopWords(TextCorpus& corpus) {
     recalculateStatistics(corpus);
 
     Logger::log("TextCorpusFilter", LogLevel::Info,
-                "Stop words filtered: " + std::to_string(originalCount) +
-                " → " + std::to_string(wordFreq.size()));
+                "Stop words filtered: " + std::to_string(originalCount) + " → " + std::to_string(wordFreq.size()));
 }
 
 void TextCorpusFilter::recalculateStatistics(TextCorpus& corpus) {

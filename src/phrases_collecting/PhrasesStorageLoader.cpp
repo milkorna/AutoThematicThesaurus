@@ -2,13 +2,14 @@
 #include "Logger.h"
 #include "PhrasesCollectorUtils.h"
 #include "TextCorpus.h"
-#include <fstream>
 #include <algorithm>
+#include <fstream>
 
-void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage,
-                                              const std::string& filename) {
-    Logger::log("PhrasesStorageLoader", LogLevel::Info,
-               "Loading storage from file: " + filename);
+// Define static member
+ClusterDeserializer PhrasesStorageLoader::deserializer;
+
+void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage, const std::string& filename) {
+    Logger::log("PhrasesStorageLoader", LogLevel::Info, "Loading storage from file: " + filename);
 
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -29,12 +30,12 @@ void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage,
             const std::string& key = it.key();
             const json& obj = it.value();
 
-            WordComplexCluster cluster = m_deserializer.deserialize(obj, key);
+            WordComplexCluster cluster = deserializer.deserialize(obj, key);
             storage.AddCluster(key, cluster);
         }
 
         Logger::log("PhrasesStorageLoader", LogLevel::Info,
-                   "Successfully loaded " + std::to_string(j.size()) + " clusters");
+                    "Successfully loaded " + std::to_string(j.size()) + " clusters");
 
     } catch (const json::exception& e) {
         throw std::runtime_error("JSON parsing error: " + std::string(e.what()));
@@ -42,8 +43,7 @@ void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage,
 }
 
 void PhrasesStorageLoader::loadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage) {
-    Logger::log("PhrasesStorageLoader", LogLevel::Info,
-               "Loading phrase storage from results directory...");
+    Logger::log("PhrasesStorageLoader", LogLevel::Info, "Loading phrase storage from results directory...");
 
     auto& options = Options::getOptions();
     fs::path resultsDir = options.resDir;
@@ -57,53 +57,48 @@ void PhrasesStorageLoader::loadPhraseStorageFromResultsDir(PatternPhrasesStorage
 
     // Reserve space for clusters
     auto& corpus = TextCorpus::GetCorpus();
-    storage.ReserveClusters(corpus.GetTotalTexts());
+    storage.ReserveClusters(corpus.getTextCount());
 
     // Load all result files
     auto resultFiles = getResultFilesFromDirectory(resultsDir);
-    
+
     Logger::log("PhrasesStorageLoader", LogLevel::Info,
-               "Found " + std::to_string(resultFiles.size()) + " result files");
+                "Found " + std::to_string(resultFiles.size()) + " result files");
 
     for (const auto& filePath : resultFiles) {
         try {
             loadResultFile(filePath, storage);
         } catch (const std::exception& e) {
             Logger::log("PhrasesStorageLoader", LogLevel::Warning,
-                       "Error loading file " + filePath.string() + ": " + std::string(e.what()));
+                        "Error loading file " + filePath.string() + ": " + std::string(e.what()));
             // Continue loading other files instead of failing completely
         }
     }
 
-    Logger::log("PhrasesStorageLoader", LogLevel::Info,
-               "Phrase storage loading completed");
+    Logger::log("PhrasesStorageLoader", LogLevel::Info, "Phrase storage loading completed");
 }
 
-std::vector<fs::path> PhrasesStorageLoader::getResultFilesFromDirectory(
-    const fs::path& resultsDir) const {
-    
+std::vector<fs::path> PhrasesStorageLoader::getResultFilesFromDirectory(const fs::path& resultsDir) {
+
     std::vector<fs::path> resultFiles;
 
     if (!fs::exists(resultsDir) || !fs::is_directory(resultsDir)) {
-        throw std::runtime_error("Results directory does not exist or is not a directory: " + 
-                               resultsDir.string());
+        throw std::runtime_error("Results directory does not exist or is not a directory: " + resultsDir.string());
     }
 
     try {
         for (const auto& entry : fs::directory_iterator(resultsDir)) {
             if (entry.is_regular_file()) {
                 const std::string& filename = entry.path().filename().string();
-                
+
                 // Match pattern: res_*_text.json
-                if (filename.find("res_") == 0 && 
-                    filename.find("_text.json") != std::string::npos) {
+                if (filename.find("res_") == 0 && filename.find("_text.json") != std::string::npos) {
                     resultFiles.push_back(entry.path());
                 }
             }
         }
     } catch (const fs::filesystem_error& e) {
-        throw std::runtime_error("Failed to iterate results directory: " + 
-                               std::string(e.what()));
+        throw std::runtime_error("Failed to iterate results directory: " + std::string(e.what()));
     }
 
     // Sort for deterministic order
@@ -112,12 +107,10 @@ std::vector<fs::path> PhrasesStorageLoader::getResultFilesFromDirectory(
     return resultFiles;
 }
 
-void PhrasesStorageLoader::loadResultFile(const fs::path& filePath,
-                                         PatternPhrasesStorage& storage) {
+void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhrasesStorage& storage) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        Logger::log("PhrasesStorageLoader", LogLevel::Warning,
-                   "Cannot open result file: " + filePath.string());
+        Logger::log("PhrasesStorageLoader", LogLevel::Warning, "Cannot open result file: " + filePath.string());
         return;
     }
 
@@ -125,28 +118,26 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath,
     try {
         file >> j;
     } catch (const json::exception& e) {
-        throw std::runtime_error("Invalid JSON in file " + filePath.string() + 
-                               ": " + std::string(e.what()));
+        throw std::runtime_error("Invalid JSON in file " + filePath.string() + ": " + std::string(e.what()));
     }
     file.close();
 
     // Expect array of phrase objects
     if (!j.is_array()) {
         Logger::log("PhrasesStorageLoader", LogLevel::Warning,
-                   "Expected JSON array in result file: " + filePath.string());
+                    "Expected JSON array in result file: " + filePath.string());
         return;
     }
 
     Logger::log("PhrasesStorageLoader", LogLevel::Debug,
-               "Processing " + std::to_string(j.size()) + " phrases from " + 
-               filePath.filename().string());
+                "Processing " + std::to_string(j.size()) + " phrases from " + filePath.filename().string());
 
     // Process each phrase result
     for (const auto& obj : j) {
         try {
             // Deserialize phrase result
-            WordComplexPtr wordComplex = m_deserializer.deserializePhraseResult(obj);
-            
+            WordComplexPtr wordComplex = deserializer.deserializePhraseResult(obj);
+
             if (!wordComplex) {
                 // Skip invalid phrase (deserializePhraseResult already logged)
                 continue;
@@ -155,17 +146,17 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath,
             // Get or create cluster
             std::string key;
             for (const auto& lemma : wordComplex->lemmas) {
-                if (!key.empty()) key += " ";
+                if (!key.empty())
+                    key += " ";
                 key += lemma;
             }
 
             auto existingCluster = storage.FindCluster(key);
-            
+
             if (existingCluster != nullptr) {
                 // Add to existing cluster if not duplicate
-                auto found = std::find(existingCluster->wordComplexes.begin(),
-                                      existingCluster->wordComplexes.end(),
-                                      wordComplex);
+                auto found = std::find(existingCluster->wordComplexes.begin(), existingCluster->wordComplexes.end(),
+                                       wordComplex);
                 if (found == existingCluster->wordComplexes.end()) {
                     existingCluster->wordComplexes.push_back(wordComplex);
                 }
@@ -177,18 +168,17 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath,
 
         } catch (const std::exception& e) {
             Logger::log("PhrasesStorageLoader", LogLevel::Debug,
-                       "Skipped phrase result due to error: " + std::string(e.what()));
+                        "Skipped phrase result due to error: " + std::string(e.what()));
             // Continue processing other phrases
         }
     }
 }
 
-WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(
-    const std::string& key,
-    const WordComplexPtr& wordComplex) const {
-    
+WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(const std::string& key,
+                                                                 const WordComplexPtr& wordComplex) {
+
     WordComplexCluster newCluster;
-    
+
     // Basic properties
     newCluster.key = key;
     newCluster.modelName = wordComplex->modelName;
@@ -197,7 +187,7 @@ WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(
     newCluster.topicRelevance = 0.0;
     newCluster.centralityScore = 0.0;
     newCluster.tagMatch = false;
-    
+
     // Initialize lemma-related structures
     for (const auto& lemma : wordComplex->lemmas) {
         newCluster.lemmas.push_back(lemma);
@@ -208,9 +198,9 @@ WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(
         newCluster.hypernyms[lemma] = {};
         newCluster.hyponyms[lemma] = {};
     }
-    
+
     // Add the phrase
     newCluster.wordComplexes.push_back(wordComplex);
-    
+
     return newCluster;
 }

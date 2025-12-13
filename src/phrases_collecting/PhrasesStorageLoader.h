@@ -1,11 +1,11 @@
 #pragma once
 
-#include "PatternPhrasesStorage.h"
 #include "ClusterDeserializer.h"
+#include "PatternPhrasesStorage.h"
+#include <filesystem>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
-#include <filesystem>
 
 namespace fs = std::filesystem;
 using json = nlohmann::json;
@@ -19,7 +19,7 @@ using json = nlohmann::json;
  * Uses ClusterDeserializer for JSON parsing and validation.
  */
 class PhrasesStorageLoader {
-public:
+  public:
     /**
      * @brief Load complete cluster storage from JSON file.
      * @details Reads JSON file containing clusters with all computed metrics
@@ -29,11 +29,8 @@ public:
      * @param filename Path to JSON file with cluster data
      *
      * @throws std::runtime_error If file cannot be opened or JSON is invalid
-     *
-     * @see saveClusters() for output format specification
      */
-    void loadStorageFromFile(PatternPhrasesStorage& storage, 
-                            const std::string& filename);
+    static void loadStorageFromFile(PatternPhrasesStorage& storage, const std::string& filename);
 
     /**
      * @brief Load phrase collection results from results directory.
@@ -47,16 +44,14 @@ public:
      * @note Automatically filters invalid phrase keys (with underscores or digits)
      *
      * @throws std::runtime_error If directory cannot be accessed
-     *
-     * @see GetResFiles() for file discovery
      */
-    void loadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage);
+    static void loadPhraseStorageFromResultsDir(PatternPhrasesStorage& storage);
 
-private:
+  private:
     /**
      * @brief Deserializer instance for parsing JSON objects.
      */
-    ClusterDeserializer m_deserializer;
+    static ClusterDeserializer deserializer;
 
     /**
      * @brief List all result files in results directory.
@@ -67,7 +62,7 @@ private:
      *
      * @throws std::runtime_error If directory access fails
      */
-    std::vector<fs::path> getResultFilesFromDirectory(const fs::path& resultsDir) const;
+    static std::vector<fs::path> getResultFilesFromDirectory(const fs::path& resultsDir);
 
     /**
      * @brief Load single result JSON file and aggregate phrases.
@@ -80,7 +75,7 @@ private:
      * @note Silently skips invalid phrase entries
      * @note Handles both new cluster creation and existing cluster updates
      */
-    void loadResultFile(const fs::path& filePath, PatternPhrasesStorage& storage);
+    static void loadResultFile(const fs::path& filePath, PatternPhrasesStorage& storage);
 
     /**
      * @brief Create new cluster from single word complex.
@@ -91,6 +86,5 @@ private:
      * @param wordComplex The phrase to initialize cluster with
      * @return New WordComplexCluster ready for storage
      */
-    WordComplexCluster createClusterFromPhrase(const std::string& key,
-                                              const WordComplexPtr& wordComplex) const;
+    static WordComplexCluster createClusterFromPhrase(const std::string& key, const WordComplexPtr& wordComplex);
 };

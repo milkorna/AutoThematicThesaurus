@@ -1,6 +1,5 @@
 #include "TextCorpus.h"
 #include "Logger.h"
-#include "StringFilters.h"
 
 std::string TextCorpus::ExtractTitleFromFilename(const std::string& filename) const {
     std::string titleFilename = filename;
@@ -26,22 +25,22 @@ std::string TextCorpus::ExtractTitleFromFilename(const std::string& filename) co
 // Adds a text (paragraph) to the corpus under the associated document (filename).
 // Updates the total document count if this is the first text from the document.
 // Also updates the total text count.
-void TextCorpus::AddText(const std::string& filename, const std::string& text) {
+void TextCorpus::addText(const std::string& filename, const std::string& text) {
     std::string title = ExtractTitleFromFilename(filename);
 
     if (texts.find(title) == texts.end()) {
-        totalDocuments++;
+        documentCount++;
     }
 
     texts[title].push_back(text);
-    totalTexts++;
+    textCount++;
 }
 
 // Updates the frequency count of a specific word (lemma) in the corpus.
 // Increments the count of the word in the `wordFrequency` map and the total word count.
 void TextCorpus::UpdateWordFrequency(const std::string& lemma) {
     wordFrequency[lemma]++;
-    totalWords++; // Increment the total number of words in the corpus.
+    wordCount++; // Increment the total number of words in the corpus.
 }
 
 // Updates the document frequency of a specific word (lemma).
@@ -55,29 +54,29 @@ void TextCorpus::LoadTextsFromFile(const std::string& filename) {
     std::ifstream file(filename);
     std::string line;
     while (std::getline(file, line)) {
-        AddText(filename, line); // Add each paragraph as a text under the given filename.
+        addText(filename, line); // Add each paragraph as a text under the given filename.
     }
     file.close();
 }
 
 // Returns the total number of documents in the corpus (unique filenames).
-int TextCorpus::GetTotalDocuments() const {
-    return totalDocuments;
+int TextCorpus::getDocumentCount() const {
+    return documentCount;
 }
 
 // Returns the total number of texts (paragraphs) in the corpus.
-int TextCorpus::GetTotalTexts() const {
-    return totalTexts;
+int TextCorpus::getTextCount() const {
+    return textCount;
 }
 
 // Returns the total number of words (lemmas) in the corpus.
-int TextCorpus::GetTotalWords() const {
-    return totalWords;
+int TextCorpus::getWordCount() const {
+    return wordCount;
 }
 
 // Returns the frequency of a specific word (lemma) in the corpus.
 // If the word is not found, it returns 0.
-int TextCorpus::GetWordFrequency(const std::string& lemma) const {
+int TextCorpus::getWordFrequency(const std::string& lemma) const {
     auto it = wordFrequency.find(lemma);
     if (it != wordFrequency.end()) {
         return it->second;
@@ -87,7 +86,7 @@ int TextCorpus::GetWordFrequency(const std::string& lemma) const {
 
 // Returns the document frequency of a specific word (lemma).
 // Document frequency refers to the number of documents (filenames) in which the word appears.
-int TextCorpus::GetDocumentFrequency(const std::string& lemma) const {
+int TextCorpus::getDocumentFrequency(const std::string& lemma) const {
     auto it = documentFrequency.find(lemma);
     if (it != documentFrequency.end()) {
         return it->second;
@@ -112,7 +111,7 @@ const std::unordered_map<std::string, int>& TextCorpus::getDocumentFrequencies()
 // Calculates the Term Frequency (TF) for a specific word (lemma) in the corpus.
 double TextCorpus::CalculateTF(const std::string& lemma) const {
     if (wordFrequency.find(lemma) != wordFrequency.end()) {
-        return static_cast<double>(wordFrequency.at(lemma)) / totalWords;
+        return static_cast<double>(wordFrequency.at(lemma)) / wordCount;
     }
     return 0.0;
 }
@@ -120,7 +119,7 @@ double TextCorpus::CalculateTF(const std::string& lemma) const {
 // Calculates the Inverse Document Frequency (IDF) for a specific word (lemma) in the corpus.
 double TextCorpus::CalculateIDF(const std::string& lemma) const {
     if (documentFrequency.find(lemma) != documentFrequency.end()) {
-        return log(static_cast<double>(totalDocuments) / (1.0 + documentFrequency.at(lemma)));
+        return log(static_cast<double>(documentCount) / (1.0 + documentFrequency.at(lemma)));
     }
     return 0.0;
 }
@@ -146,21 +145,21 @@ void TextCorpus::clearAllData() {
     texts.clear();
     wordFrequency.clear();
     documentFrequency.clear();
-    totalWords = 0;
-    totalTexts = 0;
-    totalDocuments = 0;
+    wordCount = 0;
+    textCount = 0;
+    documentCount = 0;
 }
 
 void TextCorpus::recalculateStatistics() {
-    totalWords = 0;
-    totalTexts = 0;
-    totalDocuments = texts.size();
+    wordCount = 0;
+    textCount = 0;
+    documentCount = texts.size();
 
     for (const auto& [_, freq] : wordFrequency) {
-        totalWords += freq;
+        wordCount += freq;
     }
 
     for (const auto& [_, textList] : texts) {
-        totalTexts += textList.size();
+        textCount += textList.size();
     }
 }

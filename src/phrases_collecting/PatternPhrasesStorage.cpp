@@ -541,7 +541,7 @@ void PatternPhrasesStorage::CalculateLSAMetrics(const Eigen::MatrixXd& U, const 
 void PatternPhrasesStorage::ComputeTextMetrics() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
     const auto corpus = TextCorpus::GetCorpus();
-    int totalDocuments = corpus.GetTotalDocuments();
+    int totalDocuments = corpus.getDocumentCount();
     const auto& topicVectors = TopicManager::getTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
     auto& options = Options::getOptions();

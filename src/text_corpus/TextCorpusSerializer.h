@@ -1,9 +1,7 @@
 #pragma once
 
 #include "TextCorpus.h"
-#include "Logger.h"
 #include <nlohmann/json.hpp>
-#include <fstream>
 
 using json = nlohmann::json;
 
