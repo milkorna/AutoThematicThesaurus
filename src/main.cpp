@@ -5,9 +5,8 @@
 #include "PatternPhrasesStorage.h"
 #include "PhrasesStorageLoader.h"
 #include "TextCorpus.h"
-#include "TextCorpusDeserializer.h"
 #include "TextCorpusFilter.h"
-#include "TextCorpusSerializer.h"
+#include "TextCorpusLoader.h"
 #include "TokenizedSentenceCorpus.h"
 
 #include <chrono>
@@ -205,15 +204,15 @@ int main(int argc, char** argv) {
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
             auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
+            TextCorpusLoader::load(corpus, options.corpusFile.string());
             TextCorpusFilter::filterTextsByLength(corpus);
             TextCorpusFilter::filterStopWords(corpus);
-            TextCorpusSerializer::serialize(corpus, options.filteredCorpusFile);
+            TextCorpusLoader::save(corpus, options.filteredCorpusFile);
             Logger::log("Main", LogLevel::Info, "Filtering corpus completed successfully.");
         } else if (command == "compute_text_metrics") {
             Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
             auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
+            TextCorpusLoader::load(corpus, options.corpusFile.string());
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
             PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
@@ -225,7 +224,7 @@ int main(int argc, char** argv) {
             // Load hypernym and hyponym relations for stored lemmas
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
             auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusDeserializer::deserialize(corpus, options.corpusFile.string());
+            TextCorpusLoader::load(corpus, options.corpusFile.string());
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
@@ -233,7 +232,10 @@ int main(int argc, char** argv) {
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
-            BuildTokenizedSentenceCorpus();
+            std::vector<fs::path> files = GetFilesToProcess();
+            auto& sentenceCorpus = TokenizedSentenceCorpus::GetCorpus();
+            sentenceCorpus.build(files);
+            sentenceCorpus.save(options.sentencesFile.string());
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
@@ -242,7 +244,7 @@ int main(int argc, char** argv) {
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
 
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
-            sentences.LoadFromFile(options.sentencesFile.string());
+            sentences.load(options.sentencesFile.string());
 
             LSA lsa(sentences);
             lsa.PerformAnalysis(false);
@@ -278,7 +280,7 @@ int main(int argc, char** argv) {
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
             PhrasesStorageLoader loader;
             auto& corpus = TokenizedSentenceCorpus::GetCorpus();
-            corpus.LoadFromFile(options.sentencesFile.string());
+            corpus.load(options.sentencesFile.string());
 
             ::Embedding e;
 

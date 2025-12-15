@@ -112,8 +112,6 @@ void TokenizedSentenceCorpus::deserialize(const json& j) {
     sentencesCount = j.at("totalSentences").get<int>();
 
     for (const auto& item : j.at("sentences")) {
-        if (item.at("normalizedStr").get<std::string>().size() < 50)
-            continue;
         TokenizedSentence sentence;
         sentence.docNum = item.at("docNum").get<size_t>();
         sentence.sentNum = item.at("sentNum").get<size_t>();
@@ -146,7 +144,6 @@ void TokenizedSentenceCorpus::load(const std::string& filename) {
     json j;
     file >> j;
     file.close();
-
     deserialize(j);
 
     Logger::log("TokenizedSentenceCorpus", LogLevel::Info,

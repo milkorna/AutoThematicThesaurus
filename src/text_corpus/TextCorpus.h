@@ -13,8 +13,7 @@ using namespace Eigen;
 using VectorPtr = std::shared_ptr<fasttext::Vector>;
 
 // Forward declarations
-class TextCorpusSerializer;
-class TextCorpusDeserializer;
+class TextCorpusLoader;
 class TextCorpusFilter;
 
 /**
@@ -226,8 +225,7 @@ class TextCorpus {
      */
     std::unordered_map<std::string, int> documentFrequency;
 
-    friend class TextCorpusSerializer;
-    friend class TextCorpusDeserializer;
+    friend class TextCorpusLoader;
     friend class TextCorpusFilter;
 
     /**
