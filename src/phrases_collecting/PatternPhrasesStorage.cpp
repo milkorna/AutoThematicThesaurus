@@ -812,7 +812,7 @@ void PatternPhrasesStorage::saveClusters(const std::string& filename, bool merge
 
     // Сериализуем с помощью ClusterSerializer
     ClusterSerializer serializer;
-    json j = serializer.serializeClusterMap(clustersToSave, frequencies, mergeNestedClusters);
+    json j = serializer.serialize(clustersToSave, frequencies, mergeNestedClusters);
 
     // Сохраняем в файл
     std::ofstream outFile(filename);

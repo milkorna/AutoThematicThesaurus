@@ -27,7 +27,7 @@ class ClusterDeserializer {
      *
      * @throws std::runtime_error If JSON structure is invalid or required fields missing
      */
-    WordComplexCluster deserialize(const json& obj, const std::string& key);
+    WordComplexCluster deserializeCluster(const json& obj, const std::string& key);
 
     /**
      * @brief Deserialize phrase result object into WordComplex.

@@ -19,7 +19,7 @@ class ClusterSerializer {
      * @param frequency Calculated frequency for the cluster
      * @return JSON object with cluster data
      */
-    json serialize(const WordComplexCluster& cluster, double frequency) const;
+    json serializeCluster(const WordComplexCluster& cluster, double frequency) const;
 
     /**
      * @brief Serialize collection of clusters
@@ -28,9 +28,8 @@ class ClusterSerializer {
      * @param mergeNested If true, nest clusters with substring keys
      * @return JSON object with all clusters
      */
-    json serializeClusterMap(const std::unordered_map<std::string, WordComplexCluster>& clusters,
-                             const std::unordered_map<std::string, double>& frequencies,
-                             bool mergeNested = false) const;
+    json serialize(const std::unordered_map<std::string, WordComplexCluster>& clusters,
+                   const std::unordered_map<std::string, double>& frequencies, bool mergeNested = false) const;
 
     /**
      * @brief Serialize only lemmas from a cluster

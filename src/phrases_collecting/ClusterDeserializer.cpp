@@ -1,11 +1,11 @@
 #include "ClusterDeserializer.h"
 #include "Logger.h"
-#include <unicode/uchar.h>
 #include <algorithm>
+#include <unicode/uchar.h>
 
 using json = nlohmann::json;
 
-WordComplexCluster ClusterDeserializer::deserialize(const json& obj, const std::string& key) {
+WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, const std::string& key) {
     try {
         if (!obj.is_object()) {
             throw std::runtime_error("Expected JSON object for cluster");
@@ -31,18 +31,17 @@ WordComplexCluster ClusterDeserializer::deserialize(const json& obj, const std::
         // Deserialize word complexes (phrases)
         deserializeWordComplexes(obj.at("8_phrases"), cluster);
 
-        Logger::log("ClusterDeserializer", LogLevel::Debug, 
-                   "Successfully deserialized cluster: " + key);
+        Logger::log("ClusterDeserializer", LogLevel::Debug, "Successfully deserialized cluster: " + key);
 
         return cluster;
 
     } catch (const json::exception& e) {
         Logger::log("ClusterDeserializer", LogLevel::Error,
-                   "JSON error while deserializing cluster '" + key + "': " + std::string(e.what()));
+                    "JSON error while deserializing cluster '" + key + "': " + std::string(e.what()));
         throw std::runtime_error("Failed to deserialize cluster: " + std::string(e.what()));
     } catch (const std::exception& e) {
         Logger::log("ClusterDeserializer", LogLevel::Error,
-                   "Error deserializing cluster '" + key + "': " + std::string(e.what()));
+                    "Error deserializing cluster '" + key + "': " + std::string(e.what()));
         throw;
     }
 }
@@ -51,9 +50,9 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
     try {
         // Validate key format
         std::string key = obj.at("0_key").get<std::string>();
-        
+
         if (!isValidPhraseKey(key)) {
-            return nullptr;  // Skip invalid keys
+            return nullptr; // Skip invalid keys
         }
 
         std::string textForm = obj.at("1_textForm").get<std::string>();
@@ -69,7 +68,7 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
         std::deque<std::string> lemmas;
         if (obj.contains("7_lemmas")) {
             lemmas = obj.at("7_lemmas").get<std::deque<std::string>>();
-            
+
             // Clean up numbered lemmas (e.g., "0_lemma_name" -> "lemma_name")
             for (auto& lemma : lemmas) {
                 lemma = extractLemmaString(lemma);
@@ -87,7 +86,7 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
 
     } catch (const std::exception& e) {
         Logger::log("ClusterDeserializer", LogLevel::Error,
-                   "Error parsing phrase result JSON: " + std::string(e.what()));
+                    "Error parsing phrase result JSON: " + std::string(e.what()));
         return nullptr;
     }
 }
@@ -121,8 +120,7 @@ void ClusterDeserializer::deserializeLemmas(const json& lemmas_json, WordComplex
     }
 }
 
-void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, 
-                                                    WordComplexCluster& cluster) {
+void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, WordComplexCluster& cluster) {
     if (!phrases_json.is_array()) {
         throw std::runtime_error("Phrases field must be an array");
     }

@@ -30,7 +30,7 @@ void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage, c
             const std::string& key = it.key();
             const json& obj = it.value();
 
-            WordComplexCluster cluster = deserializer.deserialize(obj, key);
+            WordComplexCluster cluster = deserializer.deserializeCluster(obj, key);
             storage.AddCluster(key, cluster);
         }
 

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <sstream>
 
-json ClusterSerializer::serialize(const WordComplexCluster& cluster, double frequency) const {
+json ClusterSerializer::serializeCluster(const WordComplexCluster& cluster, double frequency) const {
     json clusterJson;
 
     // Основные поля кластера
@@ -30,9 +30,8 @@ json ClusterSerializer::serialize(const WordComplexCluster& cluster, double freq
     return clusterJson;
 }
 
-json ClusterSerializer::serializeClusterMap(const std::unordered_map<std::string, WordComplexCluster>& clusters,
-                                            const std::unordered_map<std::string, double>& frequencies,
-                                            bool mergeNested) const {
+json ClusterSerializer::serialize(const std::unordered_map<std::string, WordComplexCluster>& clusters,
+                                  const std::unordered_map<std::string, double>& frequencies, bool mergeNested) const {
 
     json resultJson;
 
@@ -60,7 +59,7 @@ json ClusterSerializer::serializeClusterMap(const std::unordered_map<std::string
         }
 
         // Сериализуем кластер
-        json clusterJson = serialize(cluster, frequency);
+        json clusterJson = serializeCluster(cluster, frequency);
 
         // Логирование
         Logger::log("ClusterSerializer", LogLevel::Debug, "Serialized cluster: " + key);
