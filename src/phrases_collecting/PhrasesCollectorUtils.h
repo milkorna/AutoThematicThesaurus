@@ -76,12 +76,12 @@ void ProcessFile(const fs::path& inputFile, const fs::path& outputDir, int& coun
 // \brief Builds the phrase storage for processing.
 void BuildPhraseStorage();
 
-void BuildTokenizedSentenceCorpus();
-
 // \brief Checks if there is an error in morphological analysis.
 // \param token         The WordFormPtr token to check.
 // \return              True if there is an error, false otherwise.
 bool MorphAnanlysisError(const X::WordFormPtr& token);
+
+void RemoveSeparatorTokens(std::vector<X::WordFormPtr>& forms);
 
 // \brief Checks if the current form has a specific morphological property.
 // \param currFormMorphInfo A set of morphological information of the current form.

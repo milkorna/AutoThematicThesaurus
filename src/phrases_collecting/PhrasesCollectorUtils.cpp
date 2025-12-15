@@ -226,63 +226,6 @@ void BuildPhraseStorage() {
     }
 }
 
-void BuildTokenizedSentenceCorpus() {
-    Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
-    auto& sentences = TokenizedSentenceCorpus::GetCorpus();
-
-    try {
-        std::vector<fs::path> files_to_process = GetFilesToProcess();
-        auto& morphAnalyzer = MorphAnalyzer::getInstance();
-
-        for (unsigned int i = 0; i < files_to_process.size(); ++i) {
-            size_t docNum = extractNumberFromPath(files_to_process[i].string());
-            size_t sentNum = 0;
-            X::Tokenizer tok;
-            X::TFMorphemicSplitter morphemic_splitter;
-            std::ifstream input = files_to_process[i];
-            X::SentenceSplitter ssplitter(input);
-            X::Processor analyzer;
-            X::SingleWordDisambiguate disamb;
-            X::TFJoinedModel joiner;
-
-            do {
-                std::string data;
-                ssplitter.readSentence(data);
-                if (data.empty())
-                    continue;
-
-                std::vector<X::TokenPtr> tokens = tok.analyze(X::UniString(data));
-                std::vector<X::WordFormPtr> forms = analyzer.analyze(tokens);
-
-                RemoveSeparatorTokens(forms);
-                disamb.disambiguate(forms);
-                joiner.disambiguateAndMorphemicSplit(forms);
-
-                std::string normalizedData;
-
-                for (auto& form : forms) {
-                    morphemic_splitter.split(form);
-                    if (form->getTokenType() != X::TokenTypeTag::WORD)
-                        continue;
-                    normalizedData.append(morphAnalyzer.getLemma(form) + " ");
-                }
-                if (!normalizedData.empty()) {
-                    normalizedData.pop_back();
-                    sentences.AddSentence(docNum, sentNum, data, normalizedData);
-                }
-                sentNum++;
-            } while (!ssplitter.eof());
-        }
-        auto& options = Options::getOptions();
-        sentences.SaveToFile(options.sentencesFile.string());
-    } catch (const std::exception& e) {
-        Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
-    } catch (...) {
-        Logger::log("", LogLevel::Error, "Unknown exception caught");
-    }
-    Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
-}
-
 bool MorphAnanlysisError(const X::WordFormPtr& token) {
     auto isDesiredPOS = [](const X::UniSPTag& tag) -> bool {
         static const std::unordered_set<std::string> desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};

@@ -8,6 +8,10 @@
 #include <chrono>
 #include <fstream>
 
+// TODO: фильтрация sentence была при дисериализации - тут видимо надо учесть
+// if (item.at("normalizedStr").get<std::string>().size() < 50)
+//     continue;
+
 // Method to create a term-document frequency matrix, excluding rare words
 std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool useSentences) {
     std::unordered_map<std::string, int> wordFrequency; // Word frequency count
@@ -20,7 +24,7 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
 
     if (useSentences) {
         // Use sentences as documents
-        for (const auto& [docNum, sentencesMap] : corpus.sentenceMap) {
+        for (const auto& [docNum, sentencesMap] : corpus.getSentenceMap()) {
             for (const auto& [sentNum, sentence] : sentencesMap) {
                 size_t uniqueSentId = docNum * 100000 + sentNum; // Unique identifier for each sentence
                 texts[uniqueSentId] = sentence.normalizedStr;    // Add each sentence as a separate "document"
@@ -28,7 +32,7 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
         }
     } else {
         // Use entire documents
-        for (const auto& [docNum, sentencesMap] : corpus.sentenceMap) {
+        for (const auto& [docNum, sentencesMap] : corpus.getSentenceMap()) {
             std::string combinedText;
             for (const auto& [sentNum, sentence] : sentencesMap) {
                 combinedText += sentence.normalizedStr + " "; // Combine sentences into one text

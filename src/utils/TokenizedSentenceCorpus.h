@@ -3,49 +3,156 @@
 #include "boost/algorithm/string.hpp"
 #include "nlohmann/json.hpp"
 
+#include <cctype>
+#include <cstddef>
+#include <filesystem>
 #include <string>
 #include <unordered_map>
 
 using json = nlohmann::json;
+namespace fs = std::filesystem;
 
+/**
+ * @struct TokenizedSentence
+ * @brief Represents a single sentence with original and normalized forms.
+ * @details Stores document/sentence identifiers and both raw and processed text versions.
+ */
 struct TokenizedSentence {
+    /// @brief Document identifier for sentence location.
     size_t docNum;
+
+    /// @brief Sentence index within document.
     size_t sentNum;
+
+    /// @brief Original sentence text as extracted from source.
     std::string originalStr;
+
+    /// @brief Normalized sentence with lemmatized words.
     std::string normalizedStr;
 };
 
+using SentenceMap = std::unordered_map<size_t, std::unordered_map<size_t, TokenizedSentence>>;
+
+/**
+ * @class TokenizedSentenceCorpus
+ * @brief Manages storage and serialization of tokenized sentence data.
+ * @details Maintains corpus of sentences with both original and normalized forms.
+ */
 class TokenizedSentenceCorpus {
   public:
-    // Default constructor for the TokenizedSentenceCorpus class.
+    /**
+     * @brief Default constructor.
+     */
     TokenizedSentenceCorpus() = default;
 
-    // Singleton instance getter for the TokenizedSentenceCorpus class.
+    /**
+     * @brief Provides singleton access to global sentence corpus instance.
+     */
     static TokenizedSentenceCorpus& GetCorpus() {
         static TokenizedSentenceCorpus corpus;
         return corpus;
     }
 
-    // Adds a sentence to the corpus.
-    void AddSentence(const size_t docNum, const size_t sentNum, const std::string& data,
+    /**
+     * @brief Builds tokenized sentence corpus from text files.
+     * @details Reads source text files, performs linguistic analysis (tokenization,
+     *          morphological analysis, disambiguation), and stores both original
+     *          and normalized (lemmatized) sentence versions.
+     *
+     *          Uses xmorphy library for linguistic processing.
+     *          Results stored in this corpus instance.
+     *
+     * @param files File paths to process.
+     *
+     * @see SaveToFile
+     */
+    void build(const std::vector<fs::path>& files);
+
+    /**
+     * @brief Saves corpus to persistent storage.
+     * @details Serializes all sentences and metadata to JSON file with formatted indentation.
+     *
+     * @param filename Path to output JSON file
+     */
+    void save(const std::string& filename);
+
+    /**
+     * @brief Loads corpus from persistent storage.
+     * @details Reads JSON file and deserializes into corpus with automatic filtering
+     *          of short sentences (normalized string length < 50 characters).
+     *
+     * @param filename Path to input JSON file
+     */
+    void load(const std::string& filename);
+
+    /**
+     * @brief Retrieves sentence by document and sentence indices.
+     *
+     * @param docNum Document identifier
+     * @param sentNum Sentence index within document
+     * @return Pointer to TokenizedSentence if found; nullptr otherwise
+     *
+     * @note Returns pointer to internal data; do not modify or store long-term
+     */
+    const TokenizedSentence* getSentence(const size_t docNum, const size_t sentNum) const;
+
+    /**
+     * @brief Returns total sentence count in corpus.
+     *
+     * @return Number of sentences currently stored
+     */
+    size_t getSentencesCount() const;
+
+    /**
+     * @brief Returns read-only map of sentences.
+     *
+     * @return Map of sentences
+     */
+    const SentenceMap& getSentenceMap() const {
+        return sentenceMap;
+    }
+
+  private:
+    /**
+     * @brief Nested map structure for fast sentence retrieval.
+     * @details Maps (docNum -> (sentNum -> TokenizedSentence)).
+     */
+    SentenceMap sentenceMap;
+
+    /**
+     * @brief Total sentence count in corpus.
+     */
+    size_t sentencesCount = 0;
+
+    /**
+     * @brief Adds sentence to corpus under specified document.
+     * @details Stores both original and normalized versions with document/sentence indices.
+     *
+     * @param docNum Document identifier
+     * @param sentNum Sentence index within document
+     * @param originalStr Original sentence text
+     * @param normalizedStr Lemmatized sentence text
+     *
+     * @note Increments total sentence counter
+     * @note Package-private for use by build() method
+     */
+    void addSentence(const size_t docNum, const size_t sentNum, const std::string& data,
                      const std::string& normalizedData);
 
-    // Serializes the corpus data to JSON format for storage or transmission.
-    json Serialize() const;
+    /**
+     * @brief Serializes corpus to JSON format.
+     * @details Converts all sentences and metadata to JSON representation.
+     *
+     * @return JSON object containing corpus data
+     */
+    json serialize() const;
 
-    // Returns the total number of words (lemmas) in the corpus.
-    void Deserialize(const json& j);
-
-    // Saves the serialized corpus data to a file.
-    void SaveToFile(const std::string& filename);
-
-    // Loads the corpus data from a file, deserializes it, and returns the restored TextCorpus object.
-    void LoadFromFile(const std::string& filename);
-
-    // Retrieves a sentence by document and sentence number.
-    const TokenizedSentence* GetSentence(size_t docNum, size_t sentNum) const;
-
-    std::unordered_map<size_t, std::unordered_map<size_t, TokenizedSentence>>
-        sentenceMap; // Map for fast sentence retrieval
-    int totalSentences = 0;
+    /**
+     * @brief Deserializes corpus from JSON format.
+     * @details Loads sentences from JSON with automatic filtering of short entries
+     *          (normalized string length < 50 characters).
+     *
+     * @param j JSON object with corpus data structure
+     */
+    void deserialize(const json& j);
 };
