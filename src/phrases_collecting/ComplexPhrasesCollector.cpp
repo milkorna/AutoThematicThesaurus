@@ -292,6 +292,18 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
     return false;
 }
 
+void ComplexPhrasesCollector::UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
+                                                 CurrentPhraseStatus& curPhrStatus, bool isLeft) {
+    curPhrStatus.correct++;
+    if (isLeft) {
+        wc->pos.start = asidePhrase->pos.start;
+        wc->textForm.insert(0, asidePhrase->textForm + " ");
+    } else {
+        wc->pos.end = asidePhrase->pos.end;
+        wc->textForm.append(" " + asidePhrase->textForm);
+    }
+}
+
 void ComplexPhrasesCollector::Collect(Process& process) {
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];

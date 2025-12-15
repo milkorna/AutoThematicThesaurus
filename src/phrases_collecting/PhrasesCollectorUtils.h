@@ -78,14 +78,6 @@ void RemoveSeparatorTokens(std::vector<X::WordFormPtr>& forms);
 // \return                  True if the property is found, false otherwise.
 bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
 
-// \brief Updates the status of the current phrase based on the adjacent phrase.
-// \param wc            A shared pointer to the current word complex.
-// \param asidePhrase   A shared pointer to the adjacent phrase.
-// \param curPhrStatus  A reference to the current phrase status.
-// \param isLeft        Boolean indicating if the update is for the left side.
-void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase, CurrentPhraseStatus& curPhrStatus,
-                        bool isLeft);
-
 const std::string GetLowerCase(const std::string& line);
 
 // \brief Outputs the results of the phrase collection process.

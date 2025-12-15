@@ -173,18 +173,6 @@ const std::string GetLowerCase(const std::string& line) {
     return lowerLine;
 }
 
-void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase, CurrentPhraseStatus& curPhrStatus,
-                        bool isLeft) {
-    curPhrStatus.correct++;
-    if (isLeft) {
-        wc->pos.start = asidePhrase->pos.start;
-        wc->textForm.insert(0, asidePhrase->textForm + " ");
-    } else {
-        wc->pos.end = asidePhrase->pos.end;
-        wc->textForm.append(" " + asidePhrase->textForm);
-    }
-}
-
 void OutputResults(const std::vector<WordComplexPtr>& collection, Process& process) {
     if (collection.empty())
         return;

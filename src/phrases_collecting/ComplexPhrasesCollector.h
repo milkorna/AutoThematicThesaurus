@@ -51,4 +51,12 @@ class ComplexPhrasesCollector {
 
     bool ProcessModelComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& curSimplePhr,
                                const size_t curSimplePhrInd, CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc);
+
+    // \brief Updates the status of the current phrase based on the adjacent phrase.
+    // \param wc            A shared pointer to the current word complex.
+    // \param asidePhrase   A shared pointer to the adjacent phrase.
+    // \param curPhrStatus  A reference to the current phrase status.
+    // \param isLeft        Boolean indicating if the update is for the left side.
+    void UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
+                            CurrentPhraseStatus& curPhrStatus, bool isLeft);
 };

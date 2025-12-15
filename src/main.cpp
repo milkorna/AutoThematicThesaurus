@@ -4,6 +4,7 @@
 #include "Logger.h"
 #include "PatternPhrasesStorage.h"
 #include "PhrasesStorageLoader.h"
+#include "RawTextProcessor.h"
 #include "TextCorpus.h"
 #include "TextCorpusFilter.h"
 #include "TextCorpusLoader.h"
@@ -199,8 +200,8 @@ int main(int argc, char** argv) {
             fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
             GrammarPatternManager::GetManager()->printPatterns();
-            auto& storage = PatternPhrasesStorage::GetStorage();
-            storage.build();
+            auto& processor = RawTextProcessor::GetProcessor();
+            processor.processRawData();
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
