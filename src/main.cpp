@@ -199,7 +199,8 @@ int main(int argc, char** argv) {
             fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
             GrammarPatternManager::GetManager()->printPatterns();
-            BuildPhraseStorage();
+            auto& storage = PatternPhrasesStorage::GetStorage();
+            storage.build();
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");

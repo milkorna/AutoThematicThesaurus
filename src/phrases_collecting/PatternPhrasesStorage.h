@@ -45,6 +45,10 @@ class PatternPhrasesStorage {
         return storage;
     }
 
+    void ProcessFile(const fs::path& inputFile, const fs::path& outputDir);
+
+    void build();
+
     void AddCluster(const std::string& key, const WordComplexCluster& cluster);
 
     void ReserveClusters(size_t count);

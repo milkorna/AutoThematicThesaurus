@@ -66,16 +66,6 @@ std::vector<fs::path> GetFilesToProcess();
 
 std::vector<fs::path> GetResFiles();
 
-// \brief Processes a single file and outputs the results to the specified directory.
-// \param inputFile     The path to the input file.
-// \param outputDir     The directory where the output will be saved.
-// \param counter       A reference to a counter for processed files.
-// \param counterMutex  A mutex for synchronizing access to the counter.
-void ProcessFile(const fs::path& inputFile, const fs::path& outputDir, int& counter, std::mutex& counterMutex);
-
-// \brief Builds the phrase storage for processing.
-void BuildPhraseStorage();
-
 // \brief Checks if there is an error in morphological analysis.
 // \param token         The WordFormPtr token to check.
 // \return              True if there is an error, false otherwise.
