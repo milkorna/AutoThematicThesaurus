@@ -12,38 +12,79 @@
 using json = nlohmann::json;
 
 #include <filesystem>
-namespace fs = std::filesystem;
 
-using PatternMap = std::unordered_map<std::string, std::shared_ptr<Model>>;
-
+/**
+ * @class JsonPatternParser
+ * @brief Parses grammar patterns from JSON format and builds model objects.
+ * @details Supports JSON file and direct JSON array input. Handles pattern
+ *          references, cycle detection, and comprehensive validation.
+ */
 class JsonPatternParser {
   public:
-    // Ожидается файл с JSON-массивом шаблонов
+    /**
+     * @brief Constructs parser from JSON file.
+     *
+     * @param filePath Path to JSON file containing pattern array.
+     * @throws std::runtime_error If file cannot be opened or is invalid.
+     */
     explicit JsonPatternParser(const fs::path& filePath);
 
-    // Или напрямую готовый json-массив
+    /**
+     * @brief Constructs parser from JSON array.
+     *
+     * @param arr JSON array of pattern objects.
+     * @throws std::runtime_error If input is not an array.
+     */
     explicit JsonPatternParser(const json& arr);
 
-    // Разобрать и добавить все включённые (enabled != false) шаблоны в менеджер
+    /**
+     * @brief Parses and registers all enabled patterns in manager.
+     * @details Builds models with cycle detection and memoization.
+     *          On failure, clears manager and rethrows exception.
+     *
+     * @throws std::runtime_error If parsing fails for any pattern.
+     */
     void parseAll();
 
   private:
-    // Сырые json-описания по имени
-    std::unordered_map<std::string, json> rawPatterns_;
-    // Построенные модели (мемоизация)
-    PatternMap built_;
-    // Для обнаружения циклов
-    std::unordered_set<std::string> visiting_;
+    std::unordered_map<std::string, json> rawPatterns_; ///< Raw JSON patterns by name.
+    PatternMap built_;                                  ///< Built models cache (memoization).
+    StringSet visiting_;                                ///< Currently visiting patterns (cycle detection).
 
-    // Строительство по имени (с мемоизацией и защитой от циклов)
+    /**
+     * @brief Builds a model by name with memoization and cycle detection.
+     *
+     * @param name The pattern name to build.
+     * @return Shared pointer to the built model.
+     * @throws std::runtime_error On unknown pattern, cyclic dependency, or invalid structure.
+     */
     std::shared_ptr<Model> buildModel(const std::string& name);
 
-    // Строительство компонентов модели из body-массива
+    /**
+     * @brief Builds components from JSON body array.
+     *
+     * @param body JSON array of component objects.
+     * @param ownerName Pattern name for error context.
+     * @return Vector of built components.
+     * @throws std::runtime_error On invalid structure or unknown type.
+     */
     Components buildComponents(const json& body, const std::string& ownerName);
 
-    // Построить WordComp по json-элементу
+    /**
+     * @brief Builds a word component from JSON.
+     *
+     * @param item JSON object with type="word".
+     * @return Shared pointer to the word component.
+     * @throws std::runtime_error On missing or invalid fields.
+     */
     std::shared_ptr<WordComp> buildWordComp(const json& item);
 
-    // Построить ModelComp (вложенный pattern) по json-элементу
+    /**
+     * @brief Builds a pattern (model) component from JSON.
+     *
+     * @param item JSON object with type="pattern".
+     * @return Shared pointer to the pattern component.
+     * @throws std::runtime_error On missing or invalid fields.
+     */
     std::shared_ptr<ModelComp> buildPatternComp(const json& item);
 };

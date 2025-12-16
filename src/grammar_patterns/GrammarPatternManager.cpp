@@ -74,15 +74,15 @@ const StringSet& GrammarPatternManager::getUsedSp() const noexcept {
     return usedSpVars;
 }
 
-size_t GrammarPatternManager::patternsSize() const noexcept {
+const size_t GrammarPatternManager::patternsSize() const noexcept {
     return patterns.size();
 }
 
-size_t GrammarPatternManager::simplePatternsSize() const noexcept {
+const size_t GrammarPatternManager::simplePatternsSize() const noexcept {
     return simplePatterns.size();
 }
 
-size_t GrammarPatternManager::complexPatternsSize() const noexcept {
+const size_t GrammarPatternManager::complexPatternsSize() const noexcept {
     return complexPatterns.size();
 }
 

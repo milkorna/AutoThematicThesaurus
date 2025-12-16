@@ -44,7 +44,6 @@ SyntaxRole roleFromString(const std::string& s) {
 }
 
 bool isEnabled(const json& pat) {
-    // по умолчанию включено
     if (!pat.contains("enabled"))
         return true;
     if (!pat.at("enabled").is_boolean())
@@ -81,7 +80,6 @@ X::UniMorphTag featuresFromJson(const json& features) {
 
 } // namespace
 
-// ====== Конструкторы ======
 JsonPatternParser::JsonPatternParser(const fs::path& filePath) {
     std::ifstream in(filePath);
     if (!in) {
@@ -122,7 +120,6 @@ JsonPatternParser::JsonPatternParser(const json& arr) {
     }
 }
 
-// ====== Публичный метод ======
 void JsonPatternParser::parseAll() {
     auto& manager = GrammarPatternManager::GetManager();
     size_t added = 0;
@@ -159,7 +156,6 @@ void JsonPatternParser::parseAll() {
     }
 }
 
-// ====== Приватные ======
 std::shared_ptr<Model> JsonPatternParser::buildModel(const std::string& name) {
     // memo
     if (auto it = built_.find(name); it != built_.end()) {
@@ -215,9 +211,9 @@ Components JsonPatternParser::buildComponents(const json& body, const std::strin
 
         const auto type = item.at("type").get<std::string>();
 
-        // === НОВОЕ: строгая валидация role ===
         if (!item.at("role").is_string())
             throw std::runtime_error(where + ": 'role' must be a string");
+
         const std::string roleStr = item.at("role").get<std::string>();
         if (roleStr != "head" && roleStr != "dependent" && roleStr != "independent")
             throw std::runtime_error(where + ": unknown role '" + roleStr + "' (allowed: head|dependent|independent)");

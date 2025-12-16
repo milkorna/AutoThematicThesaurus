@@ -70,8 +70,9 @@ bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const
             if (!morphTagCheck(morphForm)) {
                 return false;
             }
-            if (!m_addcond.check(morphForm))
+            if (!m_addcond.check(morphForm)) {
                 return false;
+            }
         } else {
             return false;
         }

@@ -177,7 +177,7 @@ TEST_F(JsonParserFixture, ParsesComposite_AdjNounHead_PlusGenNoun_AndDividesAsCo
     ASSERT_TRUE(headPattern);
     ASSERT_TRUE(genNoun);
 
-    EXPECT_EQ(headPattern->condition().getSyntaxRole(), SyntaxRole::Head);
+    EXPECT_EQ(headPattern->getCondition().getSyntaxRole(), SyntaxRole::Head);
     EXPECT_NE(genNoun->condition().getMorphTag().toString().find("Gen"), std::string::npos);
 
     // проверим разделение simple/complex

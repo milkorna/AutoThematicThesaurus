@@ -41,7 +41,7 @@ class Condition {
               Additional cond = Additional());
     ~Condition() = default;
 
-    bool morphTagCheck(const MorphInfo& morphForm) const;
+    [[nodiscard]] bool morphTagCheck(const MorphInfo& morphForm) const;
 
     [[nodiscard]] const UniMorphTag getMorphTag() const;
     [[nodiscard]] const Additional getAdditional() const;
