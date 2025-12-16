@@ -6,33 +6,74 @@
 
 using WordEmbeddingPtr = std::shared_ptr<class WordEmbedding>;
 
+/**
+ * @class TopicManager
+ * @brief Manages topics and their corresponding word embeddings.
+ * @details Implements Singleton pattern to ensure single instance throughout application.
+ *          Loads topics from file and provides access to topic vectors for analysis.
+ */
 class TopicManager {
 
   public:
-    // Удаляем копирование
+    /**
+     * @brief Deleted copy constructor.
+     */
     TopicManager(const TopicManager&) = delete;
+
+    /**
+     * @brief Deleted copy assignment operator.
+     */
     TopicManager& operator=(const TopicManager&) = delete;
 
-    // Статический метод для получения единственного экземпляра
+    /**
+     * @brief Gets the singleton instance of TopicManager.
+     *
+     * @return Reference to the static TopicManager instance.
+     */
     static TopicManager& getInstance() {
         static TopicManager instance;
         return instance;
     }
 
-    // Инициализация при первом вызове
+    /**
+     * @brief Gets the set of available topics.
+     *
+     * @return Constant reference to the unordered set of topic strings.
+     */
     static const std::unordered_set<std::string>& getTopics();
 
+    /**
+     * @brief Gets the map of topic vectors (embeddings).
+     *
+     * @return Constant reference to the unordered map of topic names to word embeddings.
+     */
     static const std::unordered_map<std::string, WordEmbeddingPtr>& getTopicVectors();
 
   private:
-    // Приватный конструктор для Singleton паттерна
+    /**
+     * @brief Private constructor for Singleton pattern.
+     */
     TopicManager() = default;
 
-    // Вспомогательные статические методы
+    /**
+     * @brief Trims trailing digits and spaces from a line.
+     *
+     * @param line The input line to trim.
+     * @return The trimmed line string.
+     */
     static std::string trimTrailingDigitsAndSpaces(std::string line);
 
+    /**
+     * @brief Validates if a line represents a valid topic.
+     *
+     * @param line The line to validate.
+     * @return True if the line is a valid topic, false otherwise.
+     */
     static bool isValidTopic(const std::string& line);
 
+    /**
+     * @brief Loads topics from file.
+     */
     void loadTopics();
 
   private:
