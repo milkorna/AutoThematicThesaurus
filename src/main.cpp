@@ -1,3 +1,4 @@
+#include "ClusterMerger.h"
 #include "Embedding.h"
 #include "GrammarPatternManager.h"
 #include "LSA.h"
@@ -221,7 +222,7 @@ int main(int argc, char** argv) {
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::GetStorage();
             PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
-            storage.MergeSimilarClusters();
+            ClusterMerger::mergeClusters(storage, 3, 2);
             storage.ComputeTextMetrics();
             storage.saveClusters(options.totalResultsPath.string());
             Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");

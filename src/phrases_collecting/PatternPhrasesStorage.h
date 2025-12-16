@@ -8,12 +8,15 @@
 
 #include <nlohmann/json.hpp>
 
-// using CoOccurrenceMap = std::unordered_map<std::string, std::unordered_map<std::string, int>>;
+// Forward declarations
+class ClusterMerger;
 
 // \class PatternPhrasesStorage
 // \brief This class manages the storage and processing of pattern phrases. It includes methods for collecting phrases,
 //        adding word complexes, computing text metrics, and outputting data to text and JSON files.
 class PatternPhrasesStorage {
+    friend class ClusterMerger;
+
   public:
     // \brief Gets the singleton instance of PatternPhrasesStorage.
     // \return          Reference to the singleton instance of PatternPhrasesStorage.
@@ -33,11 +36,6 @@ class PatternPhrasesStorage {
     WordComplexCluster* FindCluster(const std::string& key);
 
     void AddContextsToClusters();
-
-    void MergeSimilarClusters();
-
-    bool AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff = 3, size_t endLength = 2,
-                        bool CheckFirstOnly = false);
 
     // \brief Collects phrases from the provided word forms and process.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
