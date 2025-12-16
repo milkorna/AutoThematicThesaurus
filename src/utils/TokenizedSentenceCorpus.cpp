@@ -23,49 +23,51 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
         for (unsigned int i = 0; i < files.size(); ++i) {
             size_t docNum = extractNumberFromPath(files[i].string());
             size_t sentNum = 0;
-            X::Tokenizer tok;
-            X::TFMorphemicSplitter morphemic_splitter;
+            X::Tokenizer tokenizer;
+            X::TFMorphemicSplitter morphemicSplitter;
             std::ifstream input = files[i];
-            X::SentenceSplitter ssplitter(input);
+            X::SentenceSplitter sentenceSplitter(input);
             X::Processor analyzer;
+
             X::SingleWordDisambiguate disamb;
             X::TFJoinedModel joiner;
 
-            do {
-                std::string data;
-                ssplitter.readSentence(data);
-                if (data.empty())
+            std::string rawSentence;
+            while (!sentenceSplitter.eof()) {
+
+                sentenceSplitter.readSentence(rawSentence);
+                if (rawSentence.empty())
                     continue;
 
-                std::vector<X::TokenPtr> tokens = tok.analyze(X::UniString(data));
-                std::vector<X::WordFormPtr> forms = analyzer.analyze(tokens);
+                std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
+                X::Sentence sentence = analyzer.analyze(tokens);
 
-                RemoveSeparatorTokens(forms);
-                disamb.disambiguate(forms);
-                joiner.disambiguateAndMorphemicSplit(forms);
+                RemoveSeparatorTokens(sentence);
+                disamb.disambiguate(sentence);
+                joiner.disambiguateAndMorphemicSplit(sentence);
 
-                std::string normalizedData;
+                std::string normalizedSentence;
 
-                for (auto& form : forms) {
-                    morphemic_splitter.split(form);
-                    if (form->getTokenType() != X::TokenTypeTag::WORD)
+                for (auto& wordForm : sentence) {
+                    morphemicSplitter.split(wordForm);
+                    if (wordForm->getTokenType() != X::TokenTypeTag::WORD) // TODO: check if this is needed
                         continue;
-                    normalizedData.append(morphAnalyzer.getLemma(form) + " ");
+                    normalizedSentence.append(morphAnalyzer.getLemma(wordForm) + " ");
                 }
-                if (!normalizedData.empty()) {
-                    normalizedData.pop_back();
-                    addSentence(docNum, sentNum, data, normalizedData);
+                if (!normalizedSentence.empty()) {
+                    normalizedSentence.pop_back();
+                    addSentence(docNum, sentNum, rawSentence, normalizedSentence);
                 }
                 sentNum++;
-            } while (!ssplitter.eof());
+            };
         }
 
     } catch (const std::exception& e) {
-        Logger::log("", LogLevel::Error, "Exception caught: " + std::string(e.what()));
+        Logger::log("TokenizedSentenceCorpus", LogLevel::Error, "Exception caught: " + std::string(e.what()));
     } catch (...) {
-        Logger::log("", LogLevel::Error, "Unknown exception caught");
+        Logger::log("TokenizedSentenceCorpus", LogLevel::Error, "Unknown exception caught");
     }
-    Logger::log("Main", LogLevel::Info, "Tokenized corpus build completed successfully.");
+    Logger::log("TokenizedSentenceCorpus", LogLevel::Info, "Tokenized corpus build completed successfully.");
 }
 
 // Adds a sentence to the corpus.
