@@ -96,7 +96,7 @@ std::optional<size_t> Model::getHeadPos() const // TODO: Make shorter
         }
         // If the component is a ModelComp, search its components recursively
         else if (auto modelComp = std::dynamic_pointer_cast<ModelComp>(m_comps[compInd])) {
-            if (modelComp->condition().getSyntaxRole() == SyntaxRole::Head) {
+            if (modelComp->getCondition().getSyntaxRole() == SyntaxRole::Head) {
                 return compInd;
             }
         }
@@ -129,7 +129,7 @@ ModelComp::ModelComp(const std::string& form, const Components& comps, const Con
     : Model(form, comps), m_cond(cond) {
 }
 
-const Condition ModelComp::condition() const {
+const Condition ModelComp::getCondition() const {
     return m_cond;
 }
 

@@ -16,33 +16,33 @@ class Model : public Component {
     explicit Model(const std::string& form = "", const Components& comps = {});
     ~Model() = default;
 
-    const X::UniSPTag getSPTag() const override;
+    [[nodiscard]] const X::UniSPTag getSPTag() const override;
 
-    const std::string getForm() const override;
+    [[nodiscard]] const std::string getForm() const override;
 
-    const Components getComponents() const override;
+    [[nodiscard]] const Components getComponents() const override;
 
-    const std::shared_ptr<Component> getComponent(const size_t ind) const;
+    [[nodiscard]] const std::shared_ptr<Component> getComponent(const size_t ind) const;
 
-    const std::shared_ptr<WordComp> getWordComponent(const size_t ind) const;
+    [[nodiscard]] const std::shared_ptr<WordComp> getWordComponent(const size_t ind) const;
 
-    const std::shared_ptr<ModelComp> getModelComponent(const size_t ind) const;
+    [[nodiscard]] const std::shared_ptr<ModelComp> getModelComponent(const size_t ind) const;
 
-    const bool isWord() const override;
+    [[nodiscard]] const bool isWord() const override;
 
-    const bool isModel() const override;
+    [[nodiscard]] const bool isModel() const override;
 
-    const std::optional<bool> isHead() const override;
+    [[nodiscard]] const std::optional<bool> isHead() const override;
 
     void addComponent(const std::shared_ptr<Component>& component);
 
-    std::optional<size_t> getModelCompIndByForm(const std::string& form) const;
+    [[nodiscard]] std::optional<size_t> getModelCompIndByForm(const std::string& form) const;
 
-    std::shared_ptr<WordComp> getHead() const;
+    [[nodiscard]] std::shared_ptr<WordComp> getHead() const;
 
-    std::optional<size_t> getHeadPos() const;
+    [[nodiscard]] std::optional<size_t> getHeadPos() const;
 
-    size_t size() const;
+    [[nodiscard]] size_t size() const;
 
     void printWords() const;
 };
@@ -54,7 +54,7 @@ class ModelComp : public Model {
   public:
     ModelComp(const std::string& form = "", const Components& comps = {}, const Condition& cond = {});
 
-    const Condition condition() const;
+    [[nodiscard]] const Condition getCondition() const;
 
-    const std::optional<bool> isHead() const;
+    [[nodiscard]] const std::optional<bool> isHead() const;
 };

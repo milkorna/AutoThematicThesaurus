@@ -45,7 +45,7 @@ bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimpl
 bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
                                                        const std::shared_ptr<ModelComp>& curModelComp,
                                                        CurrentPhraseStatus& curPhrStatus) {
-    const auto& addCond = curModelComp->condition().getAdditional();
+    const auto& addCond = curModelComp->getCondition().getAdditional();
     bool simplePhrAddCond = addCond.empty();
     bool simplePhrMorph = CheckWordComponents(curSimplePhr, curModelComp, curPhrStatus);
 
@@ -175,7 +175,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             if (!curPhrStatus.foundLex) {
                 for (size_t offset = 0; offset < curSimplePhr->words.size(); offset++) {
                     for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
-                        if (!modelComp->condition().getAdditional().check(morphForm)) {
+                        if (!modelComp->getCondition().getAdditional().check(morphForm)) {
                             return false;
                         } else {
                             curPhrStatus.foundLex = true;

@@ -21,12 +21,12 @@ struct Additional {
     std::string m_exLex = ""; // Example lexicon (specific words to match).
 
     // Checks if the Additional instance has no data.
-    bool empty() const;
+    [[nodiscard]] bool empty() const;
 
     // Checks if a specific word form matches the example lexicon.
-    bool exLexCheck(const X::MorphInfo& morphForm) const;
+    [[nodiscard]] bool exLexCheck(const X::MorphInfo& morphForm) const;
 
-    bool check(const X::MorphInfo& morphForm) const;
+    [[nodiscard]] bool check(const X::MorphInfo& morphForm) const;
 };
 
 // Class to define conditions for matching grammatical components.
@@ -43,12 +43,12 @@ class Condition {
 
     bool morphTagCheck(const MorphInfo& morphForm) const;
 
-    const UniMorphTag getMorphTag() const;
-    const Additional getAdditional() const;
-    const SyntaxRole getSyntaxRole() const;
+    [[nodiscard]] const UniMorphTag getMorphTag() const;
+    [[nodiscard]] const Additional getAdditional() const;
+    [[nodiscard]] const SyntaxRole getSyntaxRole() const;
 
     // Checks if the Condition instance contains default or empty values.
-    bool empty() const;
+    [[nodiscard]] bool empty() const;
 
-    bool check(const X::UniSPTag spTag, const X::WordFormPtr& form) const;
+    [[nodiscard]] bool check(const X::UniSPTag spTag, const X::WordFormPtr& form) const;
 };

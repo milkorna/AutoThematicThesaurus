@@ -14,12 +14,12 @@ class Word : public Component {
   public:
     explicit Word(UniSPTag sp = UniSPTag::X);
 
-    const X::UniSPTag getSPTag() const override;
-    const std::string getForm() const override;
-    const Components getComponents() const override;
+    [[nodiscard]] const X::UniSPTag getSPTag() const override;
+    [[nodiscard]] const std::string getForm() const override;
+    [[nodiscard]] const Components getComponents() const override;
 
-    const bool isWord() const override;
-    const bool isModel() const override;
+    [[nodiscard]] const bool isWord() const override;
+    [[nodiscard]] const bool isModel() const override;
 
     virtual ~Word() = default;
 };
