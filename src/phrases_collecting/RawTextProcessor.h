@@ -28,7 +28,7 @@ class RawTextProcessor {
      *          3. Processes each file to extract phrases
      *          4. Saves the final corpus to disk
      */
-    void processRawData();
+    void processRawData(const std::vector<fs::path>& files);
 
     /// Destructor
     ~RawTextProcessor() = default;
@@ -40,15 +40,6 @@ class RawTextProcessor {
   private:
     /// Private constructor - enforces singleton pattern
     RawTextProcessor() = default;
-
-    /**
-     * @brief Processes a single text file and extracts all phrases.
-     *
-     * @param inputFile Path to input text file (.txt)
-     * @param outputDir Path to directory where results will be saved
-     *                  (result file will be named "res_<filename>.json")
-     */
-    void processFile(const fs::path& inputFile, const fs::path& outputDir);
 
     /**
      * @brief Analyzes a single sentence and extracts all phrases.

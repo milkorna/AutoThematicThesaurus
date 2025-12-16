@@ -19,7 +19,7 @@
 
 using json = nlohmann::json;
 
-void RawTextProcessor::processRawData() {
+void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
     Logger::log("", LogLevel::Info, "Processing raw text data...");
 
     fs::path outputDir = options.resDir;
@@ -27,22 +27,67 @@ void RawTextProcessor::processRawData() {
 
     auto& corpus = TextCorpus::GetCorpus();
 
-    try {
-        std::vector<fs::path> filesToProcess = GetFilesToProcess();
-        Logger::log("RawTextProcessor", LogLevel::Info,
-                    "Found " + std::to_string(filesToProcess.size()) + " files to process");
+    X::Tokenizer tokenizer;
+    X::TFMorphemicSplitter morphemicSplitter;
+    X::Processor analyzer;
+    X::SingleWordDisambiguate disambiguater;
+    X::TFJoinedModel joiner;
 
-        // Process each file
-        for (unsigned int i = 0; i < filesToProcess.size(); ++i) {
-            Logger::log("RawTextProcessor", LogLevel::Info,
-                        "Processing file " + std::to_string(i + 1) + "/" + std::to_string(filesToProcess.size()) +
-                            ": " + filesToProcess[i].filename().string());
+    try {
+        for (const auto& file : files) {
+            Logger::log("RawTextProcessor", LogLevel::Info, "Processing file " + file.filename().string());
 
             // Load raw text into corpus
-            corpus.LoadTextsFromFile(filesToProcess[i]);
+            corpus.LoadTextsFromFile(file);
 
             // Process file to extract phrases
-            processFile(filesToProcess[i], outputDir);
+            std::string filename = file.filename().replace_extension(".json").string();
+            fs::path outputFile = outputDir / ("res_" + filename);
+
+            std::ofstream outFile(outputFile);
+            if (!outFile) {
+                Logger::log("RawTextProcessor", LogLevel::Error, "Failed to create JSON file: " + outputFile.string());
+                return;
+            }
+            outFile << "[]" << std::endl;
+            Logger::log("RawTextProcessor", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
+
+            Process processContext(file, outputFile);
+
+            std::ifstream input{file};
+            if (!input) {
+                Logger::log("RawTextProcessor", LogLevel::Error, "Failed to open input file: " + file.string());
+                return;
+            }
+            X::SentenceSplitter sentenceSplitter(input);
+
+            while (!sentenceSplitter.eof()) {
+                std::string rawSentence;
+                sentenceSplitter.readSentence(rawSentence);
+
+                if (rawSentence.empty())
+                    continue;
+
+                // Tokenization
+                std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
+
+                // Morphological analysis
+                X::Sentence sentence = analyzer.analyze(tokens);
+
+                RemoveSeparatorTokens(sentence);
+                disambiguater.disambiguate(sentence);
+                joiner.disambiguateAndMorphemicSplit(sentence);
+
+                for (auto& form : sentence) {
+                    morphemicSplitter.split(form);
+                }
+
+                Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + rawSentence);
+                collect(sentence, processContext);
+
+                processContext.sentNum++;
+            };
+            finalizeDocumentProcessing();
         }
 
         // Save final corpus state to disk
@@ -53,62 +98,6 @@ void RawTextProcessor::processRawData() {
     } catch (...) {
         Logger::log("RawTextProcessor", LogLevel::Error, "Unknown exception caught");
     }
-}
-
-void RawTextProcessor::processFile(const fs::path& inputFile, const fs::path& outputDir) {
-    std::string filename = inputFile.filename().replace_extension(".json").string();
-    fs::path outputFile = outputDir / ("res_" + filename);
-
-    std::ofstream outFile(outputFile);
-    if (!outFile) {
-        Logger::log("RawTextProcessor", LogLevel::Error, "Failed to create JSON file: " + outputFile.string());
-        return;
-    }
-    outFile << "[]" << std::endl;
-    Logger::log("RawTextProcessor", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
-
-    X::Tokenizer tokenizer;
-    X::TFMorphemicSplitter morphemicSplitter;
-    Process processContext(inputFile, outputFile);
-
-    std::ifstream input(inputFile);
-    if (!input) {
-        Logger::log("RawTextProcessor", LogLevel::Error, "Failed to open input file: " + inputFile.string());
-        return;
-    }
-
-    X::SentenceSplitter sentenceSplitter(input);
-    X::Processor analyzer;
-    X::SingleWordDisambiguate disamb;
-    X::TFJoinedModel joiner;
-
-    std::string sentence;
-    while (!sentenceSplitter.eof()) {
-        sentenceSplitter.readSentence(sentence);
-
-        if (sentence.empty())
-            continue;
-
-        // Tokenization
-        std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(sentence));
-
-        // Morphological analysis
-        X::Sentence forms = analyzer.analyze(tokens);
-
-        RemoveSeparatorTokens(forms);
-        disamb.disambiguate(forms);
-        joiner.disambiguateAndMorphemicSplit(forms);
-
-        for (auto& form : forms) {
-            morphemicSplitter.split(form);
-        }
-
-        Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + sentence);
-        collect(forms, processContext);
-
-        processContext.sentNum++;
-    };
-    finalizeDocumentProcessing();
 }
 
 void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& process) {

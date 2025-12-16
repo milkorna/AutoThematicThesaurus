@@ -200,8 +200,10 @@ int main(int argc, char** argv) {
             fs::path patternsPath = options.patternsFile;
             GrammarPatternManager::GetManager()->readPatterns(patternsPath);
             GrammarPatternManager::GetManager()->printPatterns();
+
+            std::vector<fs::path> filesToProcess = GetFilesToProcess();
             auto& processor = RawTextProcessor::GetProcessor();
-            processor.processRawData();
+            processor.processRawData(filesToProcess);
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");

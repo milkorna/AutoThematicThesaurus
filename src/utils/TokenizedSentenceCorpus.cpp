@@ -17,33 +17,41 @@
 void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
     Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
 
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
+
+    X::Tokenizer tokenizer;
+    X::TFMorphemicSplitter morphemicSplitter;
+    X::Processor analyzer;
+    X::SingleWordDisambiguate disambiguater;
+    X::TFJoinedModel joiner;
+
     try {
-        auto& morphAnalyzer = MorphAnalyzer::getInstance();
-
-        for (unsigned int i = 0; i < files.size(); ++i) {
-            size_t docNum = extractNumberFromPath(files[i].string());
+        for (const auto& file : files) {
+            size_t docNum = extractNumberFromPath(file.string());
             size_t sentNum = 0;
-            X::Tokenizer tokenizer;
-            X::TFMorphemicSplitter morphemicSplitter;
-            std::ifstream input = files[i];
+
+            std::ifstream input{file};
+            if (!input) {
+                Logger::log("RawTextProcessor", LogLevel::Error, "Failed to open input file: " + file.string());
+                return;
+            }
             X::SentenceSplitter sentenceSplitter(input);
-            X::Processor analyzer;
 
-            X::SingleWordDisambiguate disamb;
-            X::TFJoinedModel joiner;
-
-            std::string rawSentence;
             while (!sentenceSplitter.eof()) {
-
+                std::string rawSentence;
                 sentenceSplitter.readSentence(rawSentence);
+
                 if (rawSentence.empty())
                     continue;
 
+                // Tokenization
                 std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
+
+                // Morphological analysis
                 X::Sentence sentence = analyzer.analyze(tokens);
 
                 RemoveSeparatorTokens(sentence);
-                disamb.disambiguate(sentence);
+                disambiguater.disambiguate(sentence);
                 joiner.disambiguateAndMorphemicSplit(sentence);
 
                 std::string normalizedSentence;
