@@ -165,19 +165,6 @@
         ]
     },
     {
-        "0_key": "на github",
-        "1_textForm": "на GitHub",
-        "2_modelName": "Прил + С",
-        "3_docNum": 657443,
-        "4_sentNum": 9,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_на",
-            "1_github"
-        ]
-    },
-    {
         "0_key": "популярный модель",
         "1_textForm": "популярная модель",
         "2_modelName": "Прил + С",
