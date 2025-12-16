@@ -43,7 +43,7 @@ class SentenceProcessingTest : public ::testing::Test {
     X::Tokenizer tokenizer;
     X::Processor analyzer;
     X::TFMorphemicSplitter morphemicSplitter;
-    X::SingleWordDisambiguate disamb;
+    X::SingleWordDisambiguate disambiguater;
     X::TFJoinedModel joiner;
     MorphAnalyzer& morphAnalyzer = MorphAnalyzer::getInstance();
 
@@ -79,19 +79,16 @@ class SentenceProcessingTest : public ::testing::Test {
                         "=== Processing Sentence #" + std::to_string(sentenceNum) + " ===");
             Logger::log("SentenceProcessing", LogLevel::Info, "Raw: " + rawSentence);
 
-            // Шаг 1: Токенизация
+            // Токенизация
             std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
 
-            // Шаг 2: Анализ предложения
+            // Анализ предложения
             X::Sentence sentence = analyzer.analyze(tokens);
 
-            // Шаг 3: Удаление разделителей
-            RemoveSeparatorTokens(sentence);
+            // Дизамбигуация
+            disambiguater.disambiguate(sentence);
 
-            // Шаг 4: Дизамбигуация
-            disamb.disambiguate(sentence);
-
-            // Шаг 5: Морфемное разбиение и дизамбигуация
+            // Mорфемное разбиение и дизамбигуация
             joiner.disambiguateAndMorphemicSplit(sentence);
 
             // Шаг 6: Нормализация (лемматизация)

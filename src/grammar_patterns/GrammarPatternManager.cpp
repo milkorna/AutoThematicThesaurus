@@ -6,15 +6,6 @@
 
 namespace fs = std::filesystem;
 
-GrammarPatternManager* GrammarPatternManager::instance = nullptr;
-
-GrammarPatternManager* GrammarPatternManager::GetManager() {
-    if (!instance) {
-        instance = new GrammarPatternManager();
-    }
-    return instance;
-}
-
 bool GrammarPatternManager::has(const std::string& key) const noexcept {
     return patterns.find(key) != patterns.end();
 }

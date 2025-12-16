@@ -14,8 +14,7 @@ class ComplexPhrasesCollector {
     // \param forms             A vector of WordFormPtr representing the sentence to analyze.
     explicit ComplexPhrasesCollector(const std::vector<WordComplexPtr>& simplePhrases,
                                      const std::vector<X::WordFormPtr>& forms)
-        : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{},
-          manager(*GrammarPatternManager::GetManager()) {
+        : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{} {
     }
 
     // \brief Collects complex phrases from the sentence using the provided process.
@@ -31,7 +30,6 @@ class ComplexPhrasesCollector {
     const std::vector<WordComplexPtr> m_simplePhrases; ///< Vector of simple phrases.
     std::vector<WordComplexPtr> m_collection;          ///< Collection of word complexes.
     std::vector<WordFormPtr> m_sentence;               ///< Vector of word forms representing the sentence.
-    const GrammarPatternManager& manager;              ///< Reference to the GrammarPatternManager instance.
 
     bool CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr, const std::shared_ptr<ModelComp>& curModelComp,
                                   CurrentPhraseStatus& curPhrStatus);

@@ -39,10 +39,10 @@ void PatternPhrasesStorage::AddContextsToClusters() {
 
         for (const auto& wordComplex : cluster.wordComplexes) {
             const Position& pos = wordComplex->pos;
-            const TokenizedSentence* sentence = corpus.getSentence(pos.docNum, pos.sentNum);
+            const auto sentence = corpus.getSentence(pos.docNum, pos.sentNum);
 
-            if (sentence) {
-                cluster.contexts.push_back(*sentence);
+            if (sentence.has_value()) {
+                cluster.contexts.push_back(sentence.value());
             }
         }
     }

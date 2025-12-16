@@ -2,6 +2,7 @@
 #include "GrammarPatternManager.h"
 #include "LSA.h"
 #include "Logger.h"
+#include "PathUtils.h"
 #include "PatternPhrasesStorage.h"
 #include "PhrasesStorageLoader.h"
 #include "RawTextProcessor.h"
@@ -198,10 +199,10 @@ int main(int argc, char** argv) {
         if (command == "collect_phrases") {
             Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
             fs::path patternsPath = options.patternsFile;
-            GrammarPatternManager::GetManager()->readPatterns(patternsPath);
-            GrammarPatternManager::GetManager()->printPatterns();
-
-            std::vector<fs::path> filesToProcess = GetFilesToProcess();
+            auto& patternManager = GrammarPatternManager::GetManager();
+            patternManager.readPatterns(patternsPath);
+            patternManager.printPatterns();
+            std::vector<fs::path> filesToProcess = util::path::getFilesToProcess();
             auto& processor = RawTextProcessor::GetProcessor();
             processor.processRawData(filesToProcess);
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
@@ -236,7 +237,7 @@ int main(int argc, char** argv) {
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
             // Generate a tokenized sentence corpus and save it
-            std::vector<fs::path> files = GetFilesToProcess();
+            std::vector<fs::path> files = util::path::getFilesToProcess();
             auto& sentenceCorpus = TokenizedSentenceCorpus::GetCorpus();
             sentenceCorpus.build(files);
             sentenceCorpus.save(options.sentencesFile.string());

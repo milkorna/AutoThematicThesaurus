@@ -16,23 +16,11 @@ using PatternMap = std::unordered_map<std::string, std::shared_ptr<Model>>;
 using StringSet = std::unordered_set<std::string>;
 
 class GrammarPatternManager {
-  private:
-    static GrammarPatternManager* instance;
-
-    PatternMap simplePatterns;
-    PatternMap complexPatterns;
-
-    PatternMap patterns;
-
-    StringSet usedHeadSpVars;
-    StringSet usedSpVars;
-
-    // Private constructors for Singleton pattern
-    GrammarPatternManager() {};
-
   public:
-    // Singleton access method
-    static GrammarPatternManager* GetManager();
+    static GrammarPatternManager& GetManager() {
+        static GrammarPatternManager manager;
+        return manager;
+    }
 
     // Deleting copy constructor and assignment operator
     GrammarPatternManager(const GrammarPatternManager&) = delete;
@@ -69,4 +57,16 @@ class GrammarPatternManager {
     void divide();
 
     void clear();
+
+  private:
+    PatternMap simplePatterns;
+    PatternMap complexPatterns;
+
+    PatternMap patterns;
+
+    StringSet usedHeadSpVars;
+    StringSet usedSpVars;
+
+    // Private constructors for Singleton pattern
+    GrammarPatternManager() {};
 };

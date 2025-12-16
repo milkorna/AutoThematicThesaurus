@@ -1,4 +1,5 @@
 #include "SimplePhrasesCollector.h"
+#include "GrammarPatternManager.h"
 #include "MorphAnalyzer.h"
 #include "StopWordsManager.h"
 #include "StringFilters.h"
@@ -11,10 +12,12 @@ static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFo
 }
 
 static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo) {
+    const auto& manager = GrammarPatternManager::GetManager();
+
     for (const auto& morphForm : currFormMorphInfo) {
         Logger::log("HaveSpHead", LogLevel::Debug, "MorphForm: " + morphForm.normalForm.getRawString());
-        const auto& spSet = GrammarPatternManager::GetManager()->getUsedHeadSp();
-        if (spSet.find(morphForm.sp.toString()) == spSet.end()) {
+        const auto& spSet = manager.getUsedHeadSp();
+        if (!spSet.contains(morphForm.sp.toString())) {
             Logger::log("HaveSpHead", LogLevel::Debug, "No head with " + morphForm.sp.toString() + " speach of word");
         } else {
             Logger::log("HaveSpHead", LogLevel::Debug,
@@ -71,9 +74,10 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
 }
 
 void SimplePhrasesCollector::Collect(Process& process) {
-    auto& options = Options::getOptions();
-    const auto& simplePatterns = manager.getSimplePatterns();
-    auto& morphAnalyzer = MorphAnalyzer::getInstance();
+    const auto& options = Options::getOptions();
+    const auto& patterns = GrammarPatternManager::GetManager();
+    const auto& simplePatterns = patterns.getSimplePatterns();
+    const auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];

@@ -40,14 +40,14 @@ class TopicManager {
      *
      * @return Constant reference to the unordered set of topic strings.
      */
-    static const std::unordered_set<std::string>& getTopics();
+    [[nodiscard]] static const std::unordered_set<std::string>& getTopics();
 
     /**
      * @brief Gets the map of topic vectors (embeddings).
      *
      * @return Constant reference to the unordered map of topic names to word embeddings.
      */
-    static const std::unordered_map<std::string, WordEmbeddingPtr>& getTopicVectors();
+    [[nodiscard]] static const std::unordered_map<std::string, WordEmbeddingPtr>& getTopicVectors();
 
   private:
     /**
@@ -61,7 +61,7 @@ class TopicManager {
      * @param line The input line to trim.
      * @return The trimmed line string.
      */
-    static std::string trimTrailingDigitsAndSpaces(std::string line);
+    [[nodiscard]] static std::string trimTrailingDigitsAndSpaces(std::string line);
 
     /**
      * @brief Validates if a line represents a valid topic.
@@ -69,7 +69,7 @@ class TopicManager {
      * @param line The line to validate.
      * @return True if the line is a valid topic, false otherwise.
      */
-    static bool isValidTopic(const std::string& line);
+    [[nodiscard]] static bool isValidTopic(const std::string& line);
 
     /**
      * @brief Loads topics from file.

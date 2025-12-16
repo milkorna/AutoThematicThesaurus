@@ -19,6 +19,13 @@
 
 using json = nlohmann::json;
 
+void removeSeparators(std::vector<X::WordFormPtr>& sentence) {
+    sentence.erase(
+        std::remove_if(sentence.begin(), sentence.end(),
+                       [](const X::WordFormPtr& form) { return form->getTokenType() == X::TokenTypeTag::SEPR; }),
+        sentence.end());
+}
+
 void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
     Logger::log("", LogLevel::Info, "Processing raw text data...");
 
@@ -74,7 +81,7 @@ void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
                 // Morphological analysis
                 X::Sentence sentence = analyzer.analyze(tokens);
 
-                RemoveSeparatorTokens(sentence);
+                removeSeparators(sentence);
                 disambiguater.disambiguate(sentence);
                 joiner.disambiguateAndMorphemicSplit(sentence);
 

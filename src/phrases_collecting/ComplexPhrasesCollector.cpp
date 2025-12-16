@@ -305,10 +305,12 @@ void ComplexPhrasesCollector::UpdatePhraseStatus(const WordComplexPtr& wc, const
 }
 
 void ComplexPhrasesCollector::Collect(Process& process) {
+    const auto& patterns = GrammarPatternManager::GetManager();
+
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
 
-        for (const auto& [name, model] : manager.getComplexPatterns()) {
+        for (const auto& [name, model] : patterns.getComplexPatterns()) {
             CurrentPhraseStatus curPhrStatus;
             WordComplexPtr wc;
             if (ProcessModelComponent(model, curSimplePhr, curSimplePhrInd, curPhrStatus, wc))

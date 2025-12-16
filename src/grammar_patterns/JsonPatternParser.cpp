@@ -124,7 +124,7 @@ JsonPatternParser::JsonPatternParser(const json& arr) {
 
 // ====== Публичный метод ======
 void JsonPatternParser::parseAll() {
-    auto* manager = GrammarPatternManager::GetManager();
+    auto& manager = GrammarPatternManager::GetManager();
     size_t added = 0;
 
     try {
@@ -135,7 +135,7 @@ void JsonPatternParser::parseAll() {
             try {
                 // buildModel может бросить (неизвестная роль/feature, цикл, битый body и т.д.)
                 auto model = buildModel(name);
-                manager->add(name, std::move(model));
+                manager.add(name, std::move(model));
                 ++added;
             } catch (const std::exception& cause) {
                 // точный контекст по имени паттерна
@@ -143,18 +143,18 @@ void JsonPatternParser::parseAll() {
                 Logger::log("JsonPatternParser", LogLevel::Error, msg);
 
                 // откат уже добавленного, чтобы загрузка была атомарной
-                manager->clear();
+                manager.clear();
 
                 // перебрасываем с сохранением первоначальной причины
                 std::throw_with_nested(std::runtime_error(msg));
             }
         }
 
-        manager->divide();
+        manager.divide();
         Logger::log("JsonPatternParser", LogLevel::Info, "parseAll: added " + std::to_string(added) + " patterns");
     } catch (...) {
         // на случай исключений из divide()/log и пр.: откат и повторный throw
-        manager->clear();
+        manager.clear();
         throw;
     }
 }
@@ -245,7 +245,7 @@ std::shared_ptr<WordComp> JsonPatternParser::buildWordComp(const json& item) {
     const std::string posStr = item.at("pos").get<std::string>();
     X::UniSPTag sp(posStr);
 
-    GrammarPatternManager::GetManager()->addUsedSp(sp.toString(), role == SyntaxRole::Head);
+    GrammarPatternManager::GetManager().addUsedSp(sp.toString(), role == SyntaxRole::Head);
 
     X::UniMorphTag tag = X::UniMorphTag::UNKN;
     if (item.contains("features") && item.at("features").is_object()) {

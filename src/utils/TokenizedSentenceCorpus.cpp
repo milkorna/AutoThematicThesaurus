@@ -27,7 +27,7 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
 
     try {
         for (const auto& file : files) {
-            size_t docNum = extractNumberFromPath(file.string());
+            size_t docNum = util::path::extractNumberFromPath(file);
             size_t sentNum = 0;
 
             std::ifstream input{file};
@@ -50,17 +50,20 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
                 // Morphological analysis
                 X::Sentence sentence = analyzer.analyze(tokens);
 
-                RemoveSeparatorTokens(sentence);
+                // Дизамбигуация
                 disambiguater.disambiguate(sentence);
+
+                // Mорфемное разбиение и дизамбигуация
                 joiner.disambiguateAndMorphemicSplit(sentence);
 
                 std::string normalizedSentence;
 
-                for (auto& wordForm : sentence) {
-                    morphemicSplitter.split(wordForm);
-                    if (wordForm->getTokenType() != X::TokenTypeTag::WORD) // TODO: check if this is needed
-                        continue;
-                    normalizedSentence.append(morphAnalyzer.getLemma(wordForm) + " ");
+                for (auto& token : sentence) {
+                    morphemicSplitter.split(token);
+                    if (token->getTokenType() == X::TokenTypeTag::WORD ||
+                        token->getTokenType() == X::TokenTypeTag::WRNM) {
+                        normalizedSentence.append(morphAnalyzer.getLemma(token) + " ");
+                    }
                 }
                 if (!normalizedSentence.empty()) {
                     normalizedSentence.pop_back();
@@ -87,15 +90,15 @@ void TokenizedSentenceCorpus::addSentence(const size_t docNum, const size_t sent
 }
 
 // Retrieves a sentence by document and sentence number.
-const TokenizedSentence* TokenizedSentenceCorpus::getSentence(size_t docNum, size_t sentNum) const {
+const std::optional<TokenizedSentence> TokenizedSentenceCorpus::getSentence(size_t docNum, size_t sentNum) const {
     auto docIt = sentenceMap.find(docNum);
     if (docIt != sentenceMap.end()) {
         auto sentIt = docIt->second.find(sentNum);
         if (sentIt != docIt->second.end()) {
-            return &sentIt->second; // Return a pointer to the found sentence
+            return sentIt->second; // Return a pointer to the found sentence
         }
     }
-    return nullptr; // Return nullptr if the sentence is not found
+    return std::nullopt; // Return nullptr if the sentence is not found
 }
 
 // Serializes the corpus data to JSON format.

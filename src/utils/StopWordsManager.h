@@ -37,7 +37,7 @@ class StopWordsManager {
      *
      * @return Constant reference to the unordered set of stop words.
      */
-    static const std::unordered_set<std::string>& getStopWords();
+    [[nodiscard]] static const std::unordered_set<std::string>& getStopWords();
 
     /**
      * @brief Checks if a word is a stop word.
@@ -45,7 +45,7 @@ class StopWordsManager {
      * @param word The word to check.
      * @return True if the word is a stop word, false otherwise.
      */
-    static bool isStopWord(const std::string& word);
+    [[nodiscard]] static bool isStopWord(const std::string& word);
 
   private:
     /**

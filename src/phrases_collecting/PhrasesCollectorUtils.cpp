@@ -14,136 +14,8 @@
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
-#include "utils/PathUtils.h"
-using util::path::extractNumberFromPath;
-
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
-
-Options::Options() {
-    fs::path repoPath = fs::current_path();
-
-    dataDir = repoPath / "my_data";
-    corpusDir = dataDir / "nlp_corpus";
-    textsDir = corpusDir / "texts";
-    patternsFile = dataDir / "patterns.json";
-    stopWordsFile = dataDir / "stop_words";
-    tagsAndHubsFile = corpusDir / "tags_and_hubs";
-    resDir = corpusDir / "results";
-    corpusFile = corpusDir / "corpus";
-    filteredCorpusFile = corpusDir / "filtered_corpus";
-    sentencesFile = corpusDir / "sentences.json";
-    embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
-    totalResultsPath = corpusDir / "total_results.json";
-    termsCandidatesPath = corpusDir / "term_candidates.json";
-
-    textToProcessCount = 0;
-    tresholdTopicsCount = 7;
-    cleanStopWords = true; ///< Indicates if stop words should be cleaned.
-    validateBoundaries = true;
-    topicsThreshold = 0.6;
-    topicsHyponymThreshold = 0.98;
-    freqTresholdCoeff = 0.12;
-}
-
-void Options::recomputeCorpusDependenciesPaths() {
-    if (!fs::equivalent(corpusDir, dataDir / "nlp_corpus")) {
-        textsDir = corpusDir / "texts";
-        tagsAndHubsFile = corpusDir / "tags_and_hubs";
-        resDir = corpusDir / "results";
-        corpusFile = corpusDir / "corpus";
-        filteredCorpusFile = corpusDir / "filtered_corpus";
-        sentencesFile = corpusDir / "sentences.json";
-        totalResultsPath = corpusDir / "total_results.json";
-        termsCandidatesPath = corpusDir / "term_candidates.json";
-    }
-}
-
-void Options::updateFileCount() {
-    int fileCount = 0;
-    try {
-        for (const auto& entry : fs::directory_iterator(textsDir)) {
-            if (entry.is_regular_file()) {
-                ++fileCount;
-            }
-        }
-        textToProcessCount = fileCount;
-    } catch (const std::exception& ex) {
-        Logger::log("Options", LogLevel::Error,
-                    std::string("Failed to iterate over textsDir: ") + ex.what() + ". Exiting.");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    } catch (...) {
-        Logger::log("Options", LogLevel::Error, "Unknown error while counting files in textsDir. Exiting.");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    }
-
-    if (textToProcessCount == 0) {
-        Logger::log("Options", LogLevel::Error, "No files to process. Exiting");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    }
-}
-
-std::vector<fs::path> GetFilesToProcess() {
-    std::vector<fs::path> files_to_process;
-
-    try {
-        auto& options = Options::getOptions();
-        fs::path inputDir = options.textsDir;
-
-        if (!fs::exists(inputDir) || !fs::is_directory(inputDir)) {
-            throw std::runtime_error("Input directory does not exist or is not a directory: " + inputDir.string());
-        }
-
-        files_to_process.reserve(options.textToProcessCount);
-
-        for (const auto& entry : fs::directory_iterator(inputDir)) {
-            if (entry.is_regular_file()) {
-                std::string filename = entry.path().filename().string();
-                if (filename.find("art") == 0 && filename.find("_text.txt") != std::string::npos) {
-                    files_to_process.push_back(entry.path());
-                }
-            }
-        }
-
-        Logger::log("GetFilesToProcess", LogLevel::Info,
-                    "Successfully collected " + std::to_string(files_to_process.size()) + " files for processing.");
-
-    } catch (const fs::filesystem_error& ex) {
-        Logger::log("GetFilesToProcess", LogLevel::Error, "Filesystem error: " + std::string(ex.what()));
-    } catch (const std::exception& ex) {
-        Logger::log("GetFilesToProcess", LogLevel::Error, "Exception: " + std::string(ex.what()));
-    } catch (...) {
-        Logger::log("GetFilesToProcess", LogLevel::Error, "Unknown error while collecting files.");
-    }
-
-    return files_to_process;
-}
-
-std::vector<fs::path> GetResFiles() {
-    auto& options = Options::getOptions();
-    fs::path inputDir = options.resDir;
-    std::vector<fs::path> files_to_process;
-    files_to_process.reserve(options.textToProcessCount);
-    for (const auto& entry : fs::directory_iterator(inputDir)) {
-        if (entry.is_regular_file()) {
-            std::string filename = entry.path().filename().string();
-            if (filename.find("res") == 0 && filename.find("_text.json") != std::string::npos) {
-                files_to_process.push_back(entry.path());
-            }
-        }
-    }
-    return files_to_process;
-}
-
-void RemoveSeparatorTokens(std::vector<X::WordFormPtr>& forms) {
-    forms.erase(
-        std::remove_if(forms.begin(), forms.end(),
-                       [](const X::WordFormPtr& form) { return form->getTokenType() == X::TokenTypeTag::SEPR; }),
-        forms.end());
-}
 
 bool MorphAnanlysisError(const X::WordFormPtr& token) {
     auto isDesiredPOS = [](const X::UniSPTag& tag) -> bool {
@@ -156,8 +28,10 @@ bool MorphAnanlysisError(const X::WordFormPtr& token) {
 }
 
 bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo) {
+    const auto& manager = GrammarPatternManager::GetManager();
+
     for (const auto& morphForm : currFormMorphInfo) {
-        const auto& spSet = GrammarPatternManager::GetManager()->getUsedSp();
+        const auto& spSet = manager.getUsedSp();
         if (spSet.find(morphForm.sp.toString()) != spSet.end())
             return true;
     }

@@ -13,8 +13,7 @@ class SimplePhrasesCollector {
   public:
     // \brief Constructor that initializes the SimplePhrasesCollector with a vector of word forms.
     // \param forms     A vector of WordFormPtr representing the sentence to analyze.
-    explicit SimplePhrasesCollector(const std::vector<WordFormPtr>& forms)
-        : m_sentence(forms), m_collection{}, manager(*GrammarPatternManager::GetManager()) {
+    explicit SimplePhrasesCollector(const std::vector<WordFormPtr>& forms) : m_sentence(forms), m_collection{} {
     }
 
     // \brief Gets the collection of word complexes.
@@ -33,7 +32,6 @@ class SimplePhrasesCollector {
   private:
     std::vector<WordComplexPtr> m_collection; ///< Collection of word complexes.
     std::vector<WordFormPtr> m_sentence;      ///< Vector of word forms representing the sentence.
-    const GrammarPatternManager& manager;     ///< Reference to the GrammarPatternManager instance.
 
     bool CheckAside(const WordComplexPtr& wc, const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
                     size_t& correct, const bool isLeft);

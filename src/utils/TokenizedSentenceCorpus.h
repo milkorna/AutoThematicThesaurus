@@ -6,6 +6,7 @@
 #include <cctype>
 #include <cstddef>
 #include <filesystem>
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -94,21 +95,21 @@ class TokenizedSentenceCorpus {
      *
      * @note Returns pointer to internal data; do not modify or store long-term
      */
-    const TokenizedSentence* getSentence(const size_t docNum, const size_t sentNum) const;
+    [[nodiscard]] const std::optional<TokenizedSentence> getSentence(const size_t docNum, const size_t sentNum) const;
 
     /**
      * @brief Returns total sentence count in corpus.
      *
      * @return Number of sentences currently stored
      */
-    size_t getSentencesCount() const;
+    [[nodiscard]] size_t getSentencesCount() const;
 
     /**
      * @brief Returns read-only map of sentences.
      *
      * @return Map of sentences
      */
-    const SentenceMap& getSentenceMap() const {
+    [[nodiscard]] const SentenceMap& getSentenceMap() const {
         return sentenceMap;
     }
 

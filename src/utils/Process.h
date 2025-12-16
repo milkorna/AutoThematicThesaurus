@@ -7,10 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-namespace fs = std::filesystem;
 using json = nlohmann::json;
-
-using util::path::extractNumberFromPath;
 
 struct Process {
     fs::path inputFile;
@@ -20,7 +17,8 @@ struct Process {
     size_t sentNum;
 
     explicit Process(const fs::path& inputFile, const fs::path& outputFile, size_t sentNum = 0)
-        : inputFile(inputFile), outputFile(outputFile), docNum(extractNumberFromPath(inputFile)), sentNum(sentNum) {
+        : inputFile(inputFile), outputFile(outputFile), docNum(util::path::extractNumberFromPath(inputFile)),
+          sentNum(sentNum) {
 
         // Открываем существующий JSON или создаем новый
         if (fs::exists(outputFile)) {
