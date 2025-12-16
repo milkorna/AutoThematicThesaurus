@@ -4,29 +4,58 @@
 #include <string>
 #include <unordered_set>
 
+/**
+ * @class StopWordsManager
+ * @brief Manages a collection of stop words used for text filtering.
+ * @details Implements Singleton pattern to ensure single instance throughout application.
+ *          Stop words are loaded from file and used to filter out common words.
+ */
 class StopWordsManager {
   public:
-    // Удаляем копирование
+    /**
+     * @brief Deleted copy constructor.
+     */
     StopWordsManager(const StopWordsManager&) = delete;
+
+    /**
+     * @brief Deleted copy assignment operator.
+     */
     StopWordsManager& operator=(const StopWordsManager&) = delete;
 
-    // Статический метод для получения единственного экземпляра
+    /**
+     * @brief Gets the singleton instance of StopWordsManager.
+     *
+     * @return Reference to the static StopWordsManager instance.
+     */
     static StopWordsManager& getInstance() {
         static StopWordsManager instance;
         return instance;
     }
 
-    // Получить набор stop words
+    /**
+     * @brief Gets the set of stop words.
+     *
+     * @return Constant reference to the unordered set of stop words.
+     */
     static const std::unordered_set<std::string>& getStopWords();
 
-    // Проверить, является ли слово stop word
+    /**
+     * @brief Checks if a word is a stop word.
+     *
+     * @param word The word to check.
+     * @return True if the word is a stop word, false otherwise.
+     */
     static bool isStopWord(const std::string& word);
 
   private:
-    // Приватный конструктор для Singleton паттерна
+    /**
+     * @brief Private constructor for Singleton pattern.
+     */
     StopWordsManager() = default;
 
-    // Загрузка stop words из файла
+    /**
+     * @brief Loads stop words from file.
+     */
     void loadStopWords();
 
   private:
