@@ -74,6 +74,7 @@ include_directories(
     src/grammar_component
     src/grammar_patterns
     src/phrases_collecting
+    src/phrase_cluster
     src/text_corpus
     src/utils
 )

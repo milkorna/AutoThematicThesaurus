@@ -3,10 +3,12 @@
 #include "MorphAnalyzer.h"
 #include "PhrasesCollectorUtils.h"
 #include "StopWordsManager.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include <regex>
 
-bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<X::MorphInfo>& morphForms,
+bool ComplexPhrasesCollector::checkMorphologicalTags(const std::unordered_set<X::MorphInfo>& morphForms,
                                                      const Condition& cond, CurrentPhraseStatus& curPhrStatus) {
     for (const auto& morphForm : morphForms) {
         if (!cond.morphTagCheck(morphForm)) {
@@ -23,14 +25,14 @@ bool ComplexPhrasesCollector::CheckMorphologicalTags(const std::unordered_set<X:
     return false;
 }
 
-bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimplePhr,
+bool ComplexPhrasesCollector::checkWordComponents(const WordComplexPtr& curSimplePhr,
                                                   const std::shared_ptr<ModelComp>& curModelComp,
                                                   CurrentPhraseStatus& curPhrStatus) {
     size_t wcInd = 0;
     for (const auto& wordComp : curModelComp->getComponents()) {
         if (const auto& wc = std::dynamic_pointer_cast<WordComp>(wordComp)) {
             const auto& morphForms = m_sentence[curSimplePhr->pos.start + wcInd++]->getMorphInfo();
-            if (CheckMorphologicalTags(morphForms, curModelComp->getHead()->condition(), curPhrStatus)) {
+            if (checkMorphologicalTags(morphForms, curModelComp->getHead()->condition(), curPhrStatus)) {
                 if (wc->isHead()) {
                     curPhrStatus.headIsChecked = true;
                     curPhrStatus.headIsMatched = true;
@@ -42,12 +44,12 @@ bool ComplexPhrasesCollector::CheckWordComponents(const WordComplexPtr& curSimpl
     return false;
 }
 
-bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
+bool ComplexPhrasesCollector::checkCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
                                                        const std::shared_ptr<ModelComp>& curModelComp,
                                                        CurrentPhraseStatus& curPhrStatus) {
     const auto& addCond = curModelComp->getCondition().getAdditional();
     bool simplePhrAddCond = addCond.empty();
-    bool simplePhrMorph = CheckWordComponents(curSimplePhr, curModelComp, curPhrStatus);
+    bool simplePhrMorph = checkWordComponents(curSimplePhr, curModelComp, curPhrStatus);
 
     if (curPhrStatus.headIsChecked && !curPhrStatus.headIsMatched) {
         return false;
@@ -60,7 +62,7 @@ bool ComplexPhrasesCollector::CheckCurrentSimplePhrase(const WordComplexPtr& cur
     return simplePhrMorph;
 }
 
-bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft,
+bool ComplexPhrasesCollector::shouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft,
                                          const WordComplexPtr& wc, std::shared_ptr<ModelComp> modelComp) {
     if (smpPhrOffset >= m_simplePhrases.size() || smpPhrOffset < 0) {
         return true;
@@ -85,7 +87,7 @@ bool ComplexPhrasesCollector::ShouldSkip(size_t smpPhrOffset, size_t curSimplePh
     return false;
 }
 
-bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
+bool ComplexPhrasesCollector::checkAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
                                          const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
                                          const bool isLeft, CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd) {
     auto& options = Options::getOptions();
@@ -130,14 +132,17 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
             return false;
 
         if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1)) {
-            CheckAside(curSPhPosCmp, wc, model, nextCompIndex, nextFormIndex, isLeft, curPhrStatus, curSimplePhrInd);
+            if (!checkAside(curSPhPosCmp, wc, model, nextCompIndex, nextFormIndex, isLeft, curPhrStatus,
+                            curSimplePhrInd)) {
+                return false;
+            }
         } else {
             if (m_collection.empty() || wc->textForm != m_collection.back()->textForm) {
                 m_collection.push_back(std::make_shared<WordComplex>(*wc));
             }
 
             if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < m_sentence.size() - 1))) {
-                if (CheckAside(curSPhPosCmp, wc, model, compIndex, nextFormIndex, isLeft, curPhrStatus,
+                if (checkAside(curSPhPosCmp, wc, model, compIndex, nextFormIndex, isLeft, curPhrStatus,
                                curSimplePhrInd)) {
                     return true;
                 } else {
@@ -154,7 +159,7 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
         for (size_t smpPhrOffset = 0; smpPhrOffset < m_simplePhrases.size(); smpPhrOffset++) {
 
             const auto asidePhrase = m_simplePhrases[smpPhrOffset];
-            if (ShouldSkip(smpPhrOffset, curSimplePhrInd, isLeft, wc, modelComp)) {
+            if (shouldSkip(smpPhrOffset, curSimplePhrInd, isLeft, wc, modelComp)) {
                 continue;
             }
 
@@ -188,19 +193,19 @@ bool ComplexPhrasesCollector::CheckAside(size_t curSPhPosCmp, const WordComplexP
 
             if (isLeft && asidePhrase->pos.end == formIndex) {
                 AddWordsToFront(wc, asidePhrase);
-                UpdatePhraseStatus(wc, asidePhrase, curPhrStatus, true);
+                updatePhraseStatus(wc, asidePhrase, curPhrStatus, true);
             } else if (asidePhrase->pos.start == formIndex) {
                 AddWordsToBack(wc, asidePhrase);
-                UpdatePhraseStatus(wc, asidePhrase, curPhrStatus, false);
+                updatePhraseStatus(wc, asidePhrase, curPhrStatus, false);
             }
 
             if (curSPhPosCmp != 0 && wc->pos.start != 0 && curSimplePhr->pos.start - 1 == nextFormIndex) {
-                if (CheckAside(curSPhPosCmp, wc, model, curSPhPosCmp - 1, curSimplePhr->pos.start - 1, isLeft,
+                if (checkAside(curSPhPosCmp, wc, model, curSPhPosCmp - 1, curSimplePhr->pos.start - 1, isLeft,
                                curPhrStatus, smpPhrOffset))
                     break;
             }
             if (curSPhPosCmp != model->size() - 1 && curSimplePhr->pos.end + 1 == nextFormIndex) {
-                if (CheckAside(curSPhPosCmp, wc, model, curSPhPosCmp + 1, curSimplePhr->pos.end + 1, isLeft,
+                if (checkAside(curSPhPosCmp, wc, model, curSPhPosCmp + 1, curSimplePhr->pos.end + 1, isLeft,
                                curPhrStatus, smpPhrOffset))
                     break;
             }
@@ -222,7 +227,7 @@ bool isMatchingPattern(const std::string& str) {
     return std::regex_match(str, pattern);
 }
 
-void ComplexPhrasesCollector::ValidateBoundares() {
+void ComplexPhrasesCollector::validateBoundaries() {
     if (m_collection.empty()) {
         return;
     }
@@ -266,33 +271,33 @@ void ComplexPhrasesCollector::ValidateBoundares() {
     m_collection = std::move(validatedCollection);
 }
 
-bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>& model,
+bool ComplexPhrasesCollector::processModelComponent(const std::shared_ptr<Model>& model,
                                                     const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
                                                     CurrentPhraseStatus& curPhrStatus, WordComplexPtr& wc) {
     auto curSPhPosCmp = model->getModelCompIndByForm(curSimplePhr->modelName);
     if (!curSPhPosCmp)
         return false;
 
-    if (!CheckCurrentSimplePhrase(curSimplePhr, model->getModelComponent(*curSPhPosCmp), curPhrStatus))
+    if (!checkCurrentSimplePhrase(curSimplePhr, model->getModelComponent(*curSPhPosCmp), curPhrStatus))
         return false;
 
     wc = InicializeWordComplex(curSimplePhr, model->getForm());
     curPhrStatus.correct++;
 
     if (*curSPhPosCmp != 0 && wc->pos.start != 0) {
-        if (CheckAside(*curSPhPosCmp, wc, model, *curSPhPosCmp - 1, curSimplePhr->pos.start - 1, true, curPhrStatus,
+        if (checkAside(*curSPhPosCmp, wc, model, *curSPhPosCmp - 1, curSimplePhr->pos.start - 1, true, curPhrStatus,
                        curSimplePhrInd))
             return true;
     }
     if (*curSPhPosCmp != model->size() - 1 && curSimplePhr->pos.end + 1 < m_sentence.size()) {
-        if (CheckAside(*curSPhPosCmp, wc, model, *curSPhPosCmp + 1, curSimplePhr->pos.end + 1, false, curPhrStatus,
+        if (checkAside(*curSPhPosCmp, wc, model, *curSPhPosCmp + 1, curSimplePhr->pos.end + 1, false, curPhrStatus,
                        curSimplePhrInd))
             return true;
     }
     return false;
 }
 
-void ComplexPhrasesCollector::UpdatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
+void ComplexPhrasesCollector::updatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
                                                  CurrentPhraseStatus& curPhrStatus, bool isLeft) {
     curPhrStatus.correct++;
     if (isLeft) {
@@ -304,7 +309,7 @@ void ComplexPhrasesCollector::UpdatePhraseStatus(const WordComplexPtr& wc, const
     }
 }
 
-void ComplexPhrasesCollector::Collect(Process& process) {
+void ComplexPhrasesCollector::collect(Process& process) {
     const auto& patterns = GrammarPatternManager::GetManager();
 
     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
@@ -313,14 +318,14 @@ void ComplexPhrasesCollector::Collect(Process& process) {
         for (const auto& [name, model] : patterns.getComplexPatterns()) {
             CurrentPhraseStatus curPhrStatus;
             WordComplexPtr wc;
-            if (ProcessModelComponent(model, curSimplePhr, curSimplePhrInd, curPhrStatus, wc))
+            if (processModelComponent(model, curSimplePhr, curSimplePhrInd, curPhrStatus, wc))
                 break;
         }
     }
 
     auto& options = Options::getOptions();
     if (options.validateBoundaries) {
-        ValidateBoundares();
+        validateBoundaries();
     }
 
     OutputResults(m_collection, process);

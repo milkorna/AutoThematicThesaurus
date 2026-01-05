@@ -139,9 +139,9 @@ void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& p
     lastDocumentId = process.docId;
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
-    simplePhrasesCollector.Collect(process);
-    ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.GetCollection(), forms);
-    complexPhrasesCollector.Collect(process);
+    simplePhrasesCollector.collect(process);
+    ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.getCollection(), forms);
+    complexPhrasesCollector.collect(process);
 }
 
 void RawTextProcessor::finalizeDocumentProcessing() {

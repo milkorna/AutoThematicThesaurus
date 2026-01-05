@@ -16,7 +16,7 @@ namespace test_utils {
 
 inline std::string load(const std::string& filename) {
     // Используем макрос, определенный в CMake
-    std::filesystem::path fixture_dir(TEST_INPUT_DIR);
+    std::filesystem::path fixture_dir(TEST_DATA_DIR);
     std::filesystem::path filepath = fixture_dir / filename;
 
     std::ifstream file(filepath);
@@ -31,7 +31,7 @@ inline std::string load(const std::string& filename) {
 }
 
 inline bool dataExists(const std::string& filename) {
-    std::filesystem::path fixture_dir(TEST_INPUT_DIR);
+    std::filesystem::path fixture_dir(TEST_DATA_DIR);
     std::filesystem::path filepath = fixture_dir / filename;
     return std::filesystem::exists(filepath);
 }

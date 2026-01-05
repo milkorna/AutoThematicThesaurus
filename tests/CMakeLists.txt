@@ -1,4 +1,4 @@
-file(COPY input DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 file(GLOB_RECURSE TEST_SOURCES "*.cpp")
 
@@ -10,7 +10,7 @@ target_link_libraries(AutoThematicThesaurus_tests PRIVATE AutoThematicLib GTest:
 target_include_directories(AutoThematicThesaurus_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
 target_compile_definitions(AutoThematicThesaurus_tests PRIVATE
-    TEST_INPUT_DIR="${CMAKE_CURRENT_BINARY_DIR}/input"
+    TEST_DATA_DIR="${CMAKE_CURRENT_BINARY_DIR}/data"
 )
 
 include(GoogleTest)

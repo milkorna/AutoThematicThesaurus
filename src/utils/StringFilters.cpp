@@ -15,17 +15,17 @@ constexpr std::string_view FORBIDDEN = "%*_$#";
 // ------------------------------------------------------------
 // Helpers for ShouldBeFiltered()
 // ------------------------------------------------------------
-bool ContainsForbiddenSymbols(const std::string& str) {
+bool containsForbiddenSymbols(const std::string& str) {
     return str.find_first_of(FORBIDDEN) != std::string::npos;
 }
 
-bool IsOnlyPunctuationOrNonAlpha(const std::string& str) {
+bool isOnlyPunctuationOrNonAlpha(const std::string& str) {
     // True if consists entirely of punctuation or non-alphabetic symbols
     static const std::regex re(R"(^[^\wа-яА-ЯёЁa-zA-Z¨]+$)");
     return std::regex_match(str, re);
 }
 
-bool IsLongLatinGarbage(const std::string& str) {
+bool isLongLatinGarbage(const std::string& str) {
     // Strings longer than 25 made only of English letters, digits and punctuation
     if (str.size() <= 25)
         return false;
@@ -38,7 +38,7 @@ bool IsLongLatinGarbage(const std::string& str) {
 // ------------------------------------------------------------
 // 1. Basic character composition checks
 // ------------------------------------------------------------
-bool IsOnlyPunctuationOrDigits(const std::string& text) {
+bool isOnlyPunctuationOrDigits(const std::string& text) {
     if (text.empty())
         return false;
 
@@ -54,7 +54,7 @@ bool IsOnlyPunctuationOrDigits(const std::string& text) {
 // ------------------------------------------------------------
 // 2. Unicode character property checks (ICU)
 // ------------------------------------------------------------
-bool HasNonCyrillicOrSpecialUnicode(const std::string& str) {
+bool hasNonCyrillicOrSpecialUnicode(const std::string& str) {
     icu::UnicodeString utext = icu::UnicodeString::fromUTF8(str);
 
     for (int32_t i = 0; i < utext.length(); ++i) {
@@ -88,12 +88,12 @@ bool HasNonCyrillicOrSpecialUnicode(const std::string& str) {
 // ------------------------------------------------------------
 // 3. High-level filtering rules
 // ------------------------------------------------------------
-bool ShouldBeFiltered(const std::string& str) {
+bool shouldBeFiltered(const std::string& str) {
     if (str.empty())
         return true;
 
-    return ContainsForbiddenSymbols(str) || IsOnlyPunctuationOrNonAlpha(str) || IsLongLatinGarbage(str) ||
-           HasNonCyrillicOrSpecialUnicode(str);
+    return containsForbiddenSymbols(str) || isOnlyPunctuationOrNonAlpha(str) || isLongLatinGarbage(str) ||
+           hasNonCyrillicOrSpecialUnicode(str);
 }
 
 } // namespace StringFilters

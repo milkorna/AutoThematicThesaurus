@@ -1,8 +1,10 @@
 #include "SimplePhrasesCollector.h"
 #include "GrammarPatternManager.h"
 #include "MorphAnalyzer.h"
+#include "Options.h"
 #include "StopWordsManager.h"
 #include "StringFilters.h"
+#include "Logger.h"
 
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
     if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
@@ -28,7 +30,7 @@ static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo
     return false;
 }
 
-bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
+bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
                                         size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft) {
     auto& options = Options::getOptions();
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
@@ -45,7 +47,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (StringFilters::IsOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
+    if (StringFilters::isOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
         !HaveSp(token->getMorphInfo()))
         return false;
 
@@ -58,11 +60,14 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     const size_t nextTokenInd = isLeft ? tokenInd - 1 : tokenInd + 1;
 
     if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1)) {
-        CheckAside(wc, model, nextCompIndex, nextTokenInd, correct, isLeft);
+        if (!checkAside(wc, model, nextCompIndex, nextTokenInd, correct, isLeft)) {
+            return false;
+        }
+
     } else {
         m_collection.push_back(std::make_shared<WordComplex>(*wc));
         if (comp->isRec() && ((isLeft && tokenInd > 0) || (!isLeft && tokenInd < m_sentence.size() - 1))) {
-            if (CheckAside(wc, model, compIndex, nextTokenInd, correct, isLeft)) {
+            if (checkAside(wc, model, compIndex, nextTokenInd, correct, isLeft)) {
                 return true;
             } else {
                 return false;
@@ -73,7 +78,7 @@ bool SimplePhrasesCollector::CheckAside(const std::shared_ptr<WordComplex>& wc, 
     return false;
 }
 
-void SimplePhrasesCollector::Collect(Process& process) {
+void SimplePhrasesCollector::collect(Process& process) {
     const auto& options = Options::getOptions();
     const auto& patterns = GrammarPatternManager::GetManager();
     const auto& simplePatterns = patterns.getSimplePatterns();
@@ -93,7 +98,7 @@ void SimplePhrasesCollector::Collect(Process& process) {
             }
         }
 
-        if (StringFilters::IsOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
+        if (StringFilters::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
             MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
             continue;
 
@@ -110,12 +115,12 @@ void SimplePhrasesCollector::Collect(Process& process) {
             WordComplexPtr wc = InicializeWordComplex(tokenInd, token, model->getForm(), process);
             ++correct;
 
-            if (headPos != 0 && tokenInd != 0 && CheckAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {
+            if (headPos != 0 && tokenInd != 0 && checkAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {
                 break;
             }
 
             if (headPos != model->size() - 1 && tokenInd + 1 < m_sentence.size() &&
-                CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
+                checkAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
                 break;
             }
         }

@@ -1,4 +1,6 @@
 #include "Process.h"
+#include "Logger.h"
+#include "utils/PathUtils.h"
 
 #include <fstream>
 #include <nlohmann/json.hpp>

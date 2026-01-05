@@ -2,12 +2,10 @@
 
 #include "DocumentRecord.h"
 
-#include "boost/algorithm/string.hpp"
 #include <nlohmann/json.hpp>
 
 #include <cctype>
 #include <cstddef>
-#include <filesystem>
 #include <optional>
 #include <string>
 #include <unordered_map>

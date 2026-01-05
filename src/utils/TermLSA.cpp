@@ -12,7 +12,7 @@ std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix(
     std::cout << "Starting to build the term-document matrix..." << std::endl;
 
     // Collect term frequencies across documents.
-    for (const auto& cluster : PatternPhrasesStorage::GetStorage().GetClusters()) {
+    for (const auto& cluster : PatternPhrasesStorage::getStorage().getClusters()) {
         const std::string& term = cluster.first; // The term associated with the current cluster.
 
         // If the term is not already indexed, assign it a new index and add it to the terms list.

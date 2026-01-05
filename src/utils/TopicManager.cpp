@@ -1,6 +1,8 @@
 #include "TopicManager.h"
 #include "Embedding.h"
 #include "PhrasesCollectorUtils.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include <cctype>
 #include <fstream>

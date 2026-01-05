@@ -231,10 +231,10 @@ int main(int argc, char** argv) {
             auto& corpus = TextCorpus::GetCorpus();
             TextCorpusLoader::load(corpus, options.corpusFile.string());
             ::Embedding e;
-            auto& storage = PatternPhrasesStorage::GetStorage();
+            auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
             ClusterMerger::mergeClusters(storage, 3, 2);
-            storage.ComputeTextMetrics();
+            storage.computeTextMetrics();
             storage.saveClusters(options.totalResultsPath.string());
             Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");
         } else if (command == "load_hypernyms") {
@@ -243,9 +243,9 @@ int main(int argc, char** argv) {
             auto& corpus = TextCorpus::GetCorpus();
             TextCorpusLoader::load(corpus, options.corpusFile.string());
             ::Embedding e;
-            auto& storage = PatternPhrasesStorage::GetStorage();
+            auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
-            storage.LoadWikiWNRelations();
+            storage.loadWikiWNRelations();
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
             fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
@@ -263,7 +263,7 @@ int main(int argc, char** argv) {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
             ::Embedding e;
-            auto& storage = PatternPhrasesStorage::GetStorage();
+            auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
 
             auto& sentences = TokenizedSentenceCorpus::GetCorpus();
@@ -295,7 +295,7 @@ int main(int argc, char** argv) {
             config.useVectorRatioForTopicRelevance = true;
             config.applySigmaScaling = true;
             config.maxComponents = 50;
-            storage.CalculateLSAMetrics(U, words, Sigma, config);
+            storage.calculateLSAMetrics(U, words, Sigma, config);
 
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "get_terminological_phrases") {
@@ -307,10 +307,10 @@ int main(int argc, char** argv) {
 
             ::Embedding e;
 
-            auto& storage = PatternPhrasesStorage::GetStorage();
+            auto& storage = PatternPhrasesStorage::getStorage();
             loader.loadStorageFromFile(storage, options.totalResultsPath.string());
-            storage.AddContextsToClusters();
-            storage.CollectTerms();
+            storage.addContextsToClusters();
+            storage.collectTerms();
             storage.saveClusters(options.termsCandidatesPath.string(), false, true);
         } else {
             std::cerr << "Unknown command: " << command << "\n";

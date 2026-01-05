@@ -23,24 +23,6 @@ class RawDataLoader {
      * @brief Loads documents from a JSON file
      * @param jsonFile Path to the JSON file to load
      * @return Vector of DocumentRecord objects successfully loaded and validated
-     *
-     * @details Expected JSON format:
-     * {
-     *   "metadata": { ... },
-     *   "documents": [
-     *     {
-     *       "doc_id": "string",
-     *       "title": "string",
-     *       "text": "string",
-     *       ...
-     *     },
-     *     ...
-     *   ]
-     * }
-     *
-     * @note Documents are validated for:
-     *   - Non-empty doc_id
-     *   - At least one of title or text must be non-empty
      */
     static std::vector<DocumentRecord> LoadFromJson(const fs::path& jsonFile);
 

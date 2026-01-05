@@ -1,3 +1,7 @@
+#include "TokenizedSentenceCorpus.h"
+#include "Logger.h"
+#include "MorphAnalyzer.h"
+#include "Options.h"
 
 #include "xmorphy/graphem/SentenceSplitter.h"
 #include "xmorphy/graphem/Tokenizer.h"
@@ -6,11 +10,6 @@
 #include "xmorphy/ml/TFMorphemicSplitter.h"
 #include "xmorphy/morph/Processor.h"
 #include "xmorphy/utils/UniString.h"
-
-#include "Logger.h"
-#include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
-#include "TokenizedSentenceCorpus.h"
 
 #include <string>
 

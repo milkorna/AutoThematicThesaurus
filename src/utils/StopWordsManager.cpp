@@ -1,5 +1,7 @@
 #include "StopWordsManager.h"
 #include "PhrasesCollectorUtils.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include <cctype>
 #include <fstream>

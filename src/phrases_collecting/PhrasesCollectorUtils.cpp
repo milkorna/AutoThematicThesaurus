@@ -1,6 +1,8 @@
 #include "PhrasesCollectorUtils.h"
 #include "GrammarPatternManager.h"
 #include "MorphAnalyzer.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include "xmorphy/utils/UniString.h"
 #include <boost/program_options.hpp>

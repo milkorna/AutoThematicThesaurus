@@ -1,4 +1,6 @@
 #include "ClusterMerger.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include <algorithm>
 
@@ -29,7 +31,7 @@ void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff
         std::string& currentKey = sortedKeys[i];
         std::string& previousKey = sortedKeys[i - 1];
 
-        if (AreKeysSimilar(previousKey, currentKey) || AreKeysSimilar(previousKey, currentKey, 2, 4, true)) {
+        if (areKeysSimilar(previousKey, currentKey) || areKeysSimilar(previousKey, currentKey, 2, 4, true)) {
             // Move all wordComplexes from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
@@ -61,7 +63,7 @@ void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff
     Logger::log("ClusterMerger", LogLevel::Info, "Cluster merging completed successfully.");
 }
 
-bool ClusterMerger::AreKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff, size_t endLength,
+bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff, size_t endLength,
                                    bool checkFirstOnly) {
     // Split keys into words
     std::istringstream stream1(key1);

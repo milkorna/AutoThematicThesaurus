@@ -8,7 +8,7 @@ namespace StringFilters {
  * @param text Input string
  * @return true if the string contains only digits or punctuation, false otherwise
  */
-[[nodiscard]] bool IsOnlyPunctuationOrDigits(const std::string& text);
+[[nodiscard]] bool isOnlyPunctuationOrDigits(const std::string& text);
 
 /**
  * @brief Checks if the given string contains characters not suitable for Russian text
@@ -22,7 +22,7 @@ namespace StringFilters {
  * @param str Input UTF-8 string
  * @return true if unwanted characters are present
  */
-[[nodiscard]] bool HasNonCyrillicOrSpecialUnicode(const std::string& str);
+[[nodiscard]] bool hasNonCyrillicOrSpecialUnicode(const std::string& str);
 
 /**
  * @brief Determines if a string should be filtered out as invalid
@@ -36,6 +36,6 @@ namespace StringFilters {
  * @param str Input string
  * @return true if the string should be filtered out
  */
-[[nodiscard]] bool ShouldBeFiltered(const std::string& str);
+[[nodiscard]] bool shouldBeFiltered(const std::string& str);
 
 } // namespace StringFilters

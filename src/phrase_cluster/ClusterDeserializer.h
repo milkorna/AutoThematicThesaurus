@@ -25,7 +25,7 @@ class ClusterDeserializer {
      *
      * @throws std::runtime_error If JSON structure is invalid or required fields missing
      */
-    WordComplexCluster deserializeCluster(const nlohmann::json& obj, const std::string& key);
+    [[nodiscard]] WordComplexCluster deserializeCluster(const nlohmann::json& obj, const std::string& key);
 
     /**
      * @brief Deserialize phrase result object into WordComplex.
@@ -38,7 +38,7 @@ class ClusterDeserializer {
      * @note Returns nullptr for entries with underscores in key or digits in key
      * @see LoadPhraseStorageFromResultsDir
      */
-    WordComplexPtr deserializePhraseResult(const nlohmann::json& obj);
+    [[nodiscard]] WordComplexPtr deserializePhraseResult(const nlohmann::json& obj);
 
   private:
     /**
@@ -66,7 +66,7 @@ class ClusterDeserializer {
      * @param numberedLemma Lemma string with number prefix
      * @return Pure lemma string without prefix
      */
-    std::string extractLemmaString(const std::string& numberedLemma) const;
+    [[nodiscard]] std::string extractLemmaString(const std::string& numberedLemma) const;
 
     /**
      * @brief Validate that phrase key should be included.

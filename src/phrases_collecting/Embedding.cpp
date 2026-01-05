@@ -1,11 +1,13 @@
 #include "Embedding.h"
 #include "PhrasesCollectorUtils.h"
+#include "Options.h"
+#include "Logger.h"
 
 #include <iostream>
 
 std::unique_ptr<fasttext::FastText> Embedding::ft = nullptr;
 
-void Embedding::LoadModel(std::string model_path = "") {
+void Embedding::loadModel(std::string model_path = "") {
     auto& options = Options::getOptions();
     if (!ft) {
         ft = std::make_unique<fasttext::FastText>();
@@ -22,11 +24,11 @@ void Embedding::LoadModel(std::string model_path = "") {
 
 Embedding::Embedding() {
     Logger::log("Embedding", LogLevel::Info, "Initializing embedding model...");
-    LoadModel();
+    loadModel();
     Logger::log("Embedding", LogLevel::Info, "Model loaded successfully.");
 }
 
-void Embedding::RunTest() {
+void Embedding::runTest() {
     if (!ft) {
         std::cerr << "Model is not loaded. Please load the model before running the test." << std::endl;
         return;
@@ -42,20 +44,20 @@ void Embedding::RunTest() {
     }
 }
 
-std::vector<double> Embedding::GetWordVector(const std::string& word) {
+std::vector<double> Embedding::getWordVector(const std::string& word) {
     fasttext::Vector vec(ft->getDimension());
     ft->getWordVector(vec, word);
     return std::vector<double>(vec.data(), vec.data() + vec.size());
 }
 
 WordEmbedding::WordEmbedding(const std::string& word) {
-    vector = Embedding::GetWordVector(word);
+    vector = Embedding::getWordVector(word);
 }
 
-double WordEmbedding::CosineSimilarity(const WordEmbedding& other) const {
-    double dot = DotProduct(other);
-    double magA = Magnitude();
-    double magB = other.Magnitude();
+double WordEmbedding::cosineSimilarity(const WordEmbedding& other) const {
+    double dot = dotProduct(other);
+    double magA = magnitude();
+    double magB = other.magnitude();
     if (magA == 0.0 || magB == 0.0) {
         return 0;
     }
@@ -86,7 +88,7 @@ double NormalizedLevenshteinDistance(const std::string& s1, const std::string& s
     return static_cast<double>(levenshteinDistance) / maxLength;
 }
 
-double WordEmbedding::EuclideanDistance(const WordEmbedding& other) const {
+double WordEmbedding::euclideanDistance(const WordEmbedding& other) const {
     double sum = 0.0;
     for (size_t i = 0; i < vector.size(); ++i) {
         double diff = vector[i] - other.vector[i];
@@ -95,7 +97,7 @@ double WordEmbedding::EuclideanDistance(const WordEmbedding& other) const {
     return std::sqrt(sum);
 }
 
-double WordEmbedding::ManhattanDistance(const WordEmbedding& other) const {
+double WordEmbedding::manhattanDistance(const WordEmbedding& other) const {
     double sum = 0.0;
     for (size_t i = 0; i < vector.size(); ++i) {
         sum += std::abs(vector[i] - other.vector[i]);
@@ -103,7 +105,7 @@ double WordEmbedding::ManhattanDistance(const WordEmbedding& other) const {
     return sum;
 }
 
-double WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const {
+double WordEmbedding::jaccardSimilarity(const WordEmbedding& other) const {
     double intersection = 0.0;
     double union_set = 0.0;
 
@@ -119,7 +121,7 @@ double WordEmbedding::JaccardSimilarity(const WordEmbedding& other) const {
     return intersection / union_set;
 }
 
-double WordEmbedding::Magnitude() const {
+double WordEmbedding::magnitude() const {
     double sum = 0.0;
     for (double val : vector) {
         sum += val * val;
@@ -127,7 +129,7 @@ double WordEmbedding::Magnitude() const {
     return std::sqrt(sum);
 }
 
-double WordEmbedding::DotProduct(const WordEmbedding& other) const {
+double WordEmbedding::dotProduct(const WordEmbedding& other) const {
     double dot = 0.0;
     for (size_t i = 0; i < vector.size(); ++i) {
         dot += vector[i] * other.vector[i];

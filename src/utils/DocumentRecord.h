@@ -3,19 +3,32 @@
 #include <string>
 
 /**
- * @brief Структура для представления документа из JSON
+ * @brief Represents a document record parsed from JSON source
+ * @details Contains document metadata (ID, title) and text content.
+ * Provides utility method to combine fields for processing.
  */
 struct DocumentRecord {
+    /// @brief Unique document identifier
     std::string doc_id;
+
+    /// @brief Document title
     std::string title;
+
+    /// @brief Document body text
     std::string text;
 
     /**
-     * @brief Объединяет title и text в один текст для обработки
-     * @param mergeWithTitle если true, объединяет title и text с переводом строки
-     * @return объединенный текст
+     * @brief Combines title and text fields for processing
+     * @details Returns merged text with configurable inclusion of title.
+     * If both title and text are present, they are joined with newline separator.
+     * If only one field is present, returns that field.
+     * If both are empty, returns empty string.
+     *
+     * @param mergeWithTitle If true, includes title in output;
+     *                       if false, returns text only (default: true)
+     * @return Combined text ready for processing
      */
-    std::string getProcessingText(bool mergeWithTitle = true) const {
+    [[nodiscard]] std::string getProcessingText(bool mergeWithTitle = true) const {
         if (mergeWithTitle) {
             if (title.empty()) {
                 return text;

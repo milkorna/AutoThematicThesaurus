@@ -7,65 +7,65 @@ using namespace StringFilters;
 // 1. Tests for IsOnlyPunctuationOrDigits
 // -------------------------------------------------------------
 TEST(StringFilters, OnlyDigitsOrPunct_Positive) {
-    EXPECT_TRUE(IsOnlyPunctuationOrDigits("123"));
-    EXPECT_TRUE(IsOnlyPunctuationOrDigits("!!!"));
-    EXPECT_TRUE(IsOnlyPunctuationOrDigits("123?!.,"));
+    EXPECT_TRUE(isOnlyPunctuationOrDigits("123"));
+    EXPECT_TRUE(isOnlyPunctuationOrDigits("!!!"));
+    EXPECT_TRUE(isOnlyPunctuationOrDigits("123?!.,"));
 }
 
 TEST(StringFilters, OnlyDigitsOrPunct_Negative) {
-    EXPECT_FALSE(IsOnlyPunctuationOrDigits("abc"));
-    EXPECT_FALSE(IsOnlyPunctuationOrDigits("!@abc"));
-    EXPECT_FALSE(IsOnlyPunctuationOrDigits("12а"));
-    EXPECT_FALSE(IsOnlyPunctuationOrDigits("тест"));
-    EXPECT_FALSE(IsOnlyPunctuationOrDigits("Hello!"));
+    EXPECT_FALSE(isOnlyPunctuationOrDigits("abc"));
+    EXPECT_FALSE(isOnlyPunctuationOrDigits("!@abc"));
+    EXPECT_FALSE(isOnlyPunctuationOrDigits("12а"));
+    EXPECT_FALSE(isOnlyPunctuationOrDigits("тест"));
+    EXPECT_FALSE(isOnlyPunctuationOrDigits("Hello!"));
 }
 
 // -------------------------------------------------------------
 // 2. Tests for HasNonCyrillicOrSpecialUnicode
 // -------------------------------------------------------------
 TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Positive) {
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("123"));
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("🙂"));
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("你好"));
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("مرحبا"));
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("देवनागरी"));
-    EXPECT_TRUE(HasNonCyrillicOrSpecialUnicode("x+y=z"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("123"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("🙂"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("你好"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("مرحبا"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("देवनागरी"));
+    EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("x+y=z"));
 }
 
 TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Negative) {
-    EXPECT_FALSE(HasNonCyrillicOrSpecialUnicode("Привет мир"));
-    EXPECT_FALSE(HasNonCyrillicOrSpecialUnicode("анализ данных"));
+    EXPECT_FALSE(hasNonCyrillicOrSpecialUnicode("Привет мир"));
+    EXPECT_FALSE(hasNonCyrillicOrSpecialUnicode("анализ данных"));
 }
 
 // -------------------------------------------------------------
 // 3. Tests for ShouldBeFiltered
 // -------------------------------------------------------------
 TEST(StringFilters, ShouldBeFiltered_SymbolBased) {
-    EXPECT_TRUE(ShouldBeFiltered("%%%"));
-    EXPECT_TRUE(ShouldBeFiltered("текст_with_underscores"));
-    EXPECT_TRUE(ShouldBeFiltered("тест#$"));
+    EXPECT_TRUE(shouldBeFiltered("%%%"));
+    EXPECT_TRUE(shouldBeFiltered("текст_with_underscores"));
+    EXPECT_TRUE(shouldBeFiltered("тест#$"));
 }
 
 TEST(StringFilters, ShouldBeFiltered_LongLatin) {
     std::string longLatin(30, 'a'); // 30 symbols of 'a'
-    EXPECT_TRUE(ShouldBeFiltered(longLatin));
+    EXPECT_TRUE(shouldBeFiltered(longLatin));
 }
 
 TEST(StringFilters, ShouldBeFiltered_EmojiOrDigits) {
-    EXPECT_TRUE(ShouldBeFiltered("анализ 🙂"));
-    EXPECT_TRUE(ShouldBeFiltered("анализ123"));
+    EXPECT_TRUE(shouldBeFiltered("анализ 🙂"));
+    EXPECT_TRUE(shouldBeFiltered("анализ123"));
 }
 
 TEST(StringFilters, ShouldBeFiltered_OnlyPunct) {
-    EXPECT_TRUE(ShouldBeFiltered("!!!"));
-    EXPECT_TRUE(ShouldBeFiltered("...,,,"));
+    EXPECT_TRUE(shouldBeFiltered("!!!"));
+    EXPECT_TRUE(shouldBeFiltered("...,,,"));
 }
 
 TEST(StringFilters, ShouldBeFiltered_CyrillicClean) {
-    EXPECT_FALSE(ShouldBeFiltered("анализ текста"));
-    EXPECT_FALSE(ShouldBeFiltered("пример данных"));
+    EXPECT_FALSE(shouldBeFiltered("анализ текста"));
+    EXPECT_FALSE(shouldBeFiltered("пример данных"));
 }
 
 TEST(StringFilters, ShouldBeFiltered_Empty) {
-    EXPECT_TRUE(ShouldBeFiltered(""));
+    EXPECT_TRUE(shouldBeFiltered(""));
 }

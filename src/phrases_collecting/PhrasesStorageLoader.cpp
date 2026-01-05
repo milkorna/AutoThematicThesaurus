@@ -1,6 +1,8 @@
 #include "PhrasesStorageLoader.h"
 #include "Logger.h"
 #include "TextCorpus.h"
+#include "Options.h"
+
 #include <algorithm>
 #include <fstream>
 
@@ -32,7 +34,7 @@ void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage, c
             const json& obj = it.value();
 
             WordComplexCluster cluster = deserializer.deserializeCluster(obj, key);
-            storage.AddCluster(key, cluster);
+            storage.addCluster(key, cluster);
         }
 
         Logger::log("PhrasesStorageLoader", LogLevel::Info,
@@ -58,7 +60,7 @@ void PhrasesStorageLoader::loadPhraseStorageFromResultsDir(PatternPhrasesStorage
 
     // Reserve space for clusters
     auto& corpus = TextCorpus::GetCorpus();
-    storage.ReserveClusters(corpus.getTextCount());
+    storage.reserveClusters(corpus.getTextCount());
 
     // Load all result files
     auto resultFiles = getResultFilesFromDirectory(resultsDir);
@@ -152,7 +154,7 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhras
                 key += lemma;
             }
 
-            auto existingCluster = storage.FindCluster(key);
+            auto existingCluster = storage.findCluster(key);
 
             if (existingCluster != nullptr) {
                 // Add to existing cluster if not duplicate
@@ -164,7 +166,7 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhras
             } else {
                 // Create new cluster
                 WordComplexCluster newCluster = createClusterFromPhrase(key, wordComplex);
-                storage.AddCluster(key, newCluster);
+                storage.addCluster(key, newCluster);
             }
 
         } catch (const std::exception& e) {
