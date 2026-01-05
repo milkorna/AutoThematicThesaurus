@@ -16,11 +16,3 @@ my_custom_fasttext_model_finetuned.bin
 *.html
 test_corpus
 *.pyc
-
-## temporary
-final_relations*
-gpt.json
-need_to_mark.json
-reconstructed_relations.json
-remark.py
-remove_phrases_by_relation.py
