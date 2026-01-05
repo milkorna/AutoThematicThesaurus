@@ -35,7 +35,7 @@ void TextCorpusFilter::filterStopWords(TextCorpus& corpus) {
 
     auto it = wordFreq.begin();
     while (it != wordFreq.end()) {
-        if (StringFilters::shouldBeFiltered(it->first)) {
+        if (StringUtils::shouldBeFiltered(it->first)) {
             docFreq.erase(it->first);
             it = wordFreq.erase(it);
         } else {

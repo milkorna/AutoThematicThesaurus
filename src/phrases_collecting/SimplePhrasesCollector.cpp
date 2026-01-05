@@ -4,7 +4,7 @@
 #include "MorphAnalyzer.h"
 #include "Options.h"
 #include "StopWordsManager.h"
-#include "StringFilters.h"
+#include "StringUtils.h"
 
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
     if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
@@ -47,7 +47,7 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (StringFilters::isOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
+    if (StringUtils::isOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
         !HaveSp(token->getMorphInfo()))
         return false;
 
@@ -98,8 +98,8 @@ void SimplePhrasesCollector::collect(Process& process) {
             }
         }
 
-        if (StringFilters::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
-            MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+        if (StringUtils::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) || MorphAnanlysisError(token) ||
+            !HaveSp(token->getMorphInfo()))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))

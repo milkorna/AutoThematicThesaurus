@@ -1,7 +1,7 @@
 #include "LSA.h"
 #include "PhrasesCollectorUtils.h"
 #include "StopWordsManager.h"
-#include "StringFilters.h"
+#include "StringUtils.h"
 
 #include <algorithm>
 #include <chrono>
@@ -48,8 +48,8 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
         for (const auto& word : tokens) {
             // Filter the word based on stop words and other conditions
             if (!word.empty() && word.size() > 5 && LSAStopWords.find(word) == LSAStopWords.end() &&
-                !StopWordsManager::isStopWord(word) && !StringFilters::hasNonCyrillicOrSpecialUnicode(word) &&
-                !StringFilters::shouldBeFiltered(word)) {
+                !StopWordsManager::isStopWord(word) && !StringUtils::hasNonCyrillicOrSpecialUnicode(word) &&
+                !StringUtils::shouldBeFiltered(word)) {
                 wordFrequency[word]++;
             }
         }
@@ -58,8 +58,8 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
     // Create an index of unique words, excluding rare words
     for (const auto& [word, freq] : wordFrequency) {
         // Ignore words that appear only once
-        if (freq > 1 && word.size() > 5 && !StringFilters::hasNonCyrillicOrSpecialUnicode(word) &&
-            !StringFilters::shouldBeFiltered(word)) {
+        if (freq > 1 && word.size() > 5 && !StringUtils::hasNonCyrillicOrSpecialUnicode(word) &&
+            !StringUtils::shouldBeFiltered(word)) {
             wordIndex[word] = index++;
             words.push_back(word); // Add the word to the list of words
         }
@@ -78,7 +78,7 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
             // Check if the word is in the index and is not a stop word or contains unwanted characters
             if (!word.empty() && word.size() > 5 && LSAStopWords.find(word) == LSAStopWords.end() &&
                 !StopWordsManager::isStopWord(word) && wordIndex.find(word) != wordIndex.end() &&
-                !StringFilters::hasNonCyrillicOrSpecialUnicode(word) && !StringFilters::shouldBeFiltered(word)) {
+                !StringUtils::hasNonCyrillicOrSpecialUnicode(word) && !StringUtils::shouldBeFiltered(word)) {
                 int wordIdx = wordIndex[word];
                 termDocumentMatrix(wordIdx, textIndex) += 1; // Increase the frequency of the word in the text
             }

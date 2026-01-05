@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace StringFilters {
+namespace StringUtils {
 /**
  * @brief Checks if a string consists only of digits or punctuation
  * @param text Input string
@@ -38,4 +38,4 @@ namespace StringFilters {
  */
 [[nodiscard]] bool shouldBeFiltered(const std::string& str);
 
-} // namespace StringFilters
+} // namespace StringUtils

@@ -2,11 +2,11 @@
 #include "unicode/unistr.h"
 #include "unicode/uscript.h"
 
-#include "StringFilters.h"
+#include "StringUtils.h"
 
 #include <regex>
 
-namespace StringFilters {
+namespace StringUtils {
 
 namespace {
 constexpr std::string_view PUNCTUATION = R"(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)";
@@ -96,4 +96,4 @@ bool shouldBeFiltered(const std::string& str) {
            hasNonCyrillicOrSpecialUnicode(str);
 }
 
-} // namespace StringFilters
+} // namespace StringUtils

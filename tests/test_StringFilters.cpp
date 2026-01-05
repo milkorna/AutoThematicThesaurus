@@ -1,18 +1,18 @@
-#include "StringFilters.h"
+#include "StringUtils.h"
 #include <gtest/gtest.h>
 
-using namespace StringFilters;
+using namespace StringUtils;
 
 // -------------------------------------------------------------
 // 1. Tests for IsOnlyPunctuationOrDigits
 // -------------------------------------------------------------
-TEST(StringFilters, OnlyDigitsOrPunct_Positive) {
+TEST(StringUtils, OnlyDigitsOrPunct_Positive) {
     EXPECT_TRUE(isOnlyPunctuationOrDigits("123"));
     EXPECT_TRUE(isOnlyPunctuationOrDigits("!!!"));
     EXPECT_TRUE(isOnlyPunctuationOrDigits("123?!.,"));
 }
 
-TEST(StringFilters, OnlyDigitsOrPunct_Negative) {
+TEST(StringUtils, OnlyDigitsOrPunct_Negative) {
     EXPECT_FALSE(isOnlyPunctuationOrDigits("abc"));
     EXPECT_FALSE(isOnlyPunctuationOrDigits("!@abc"));
     EXPECT_FALSE(isOnlyPunctuationOrDigits("12а"));
@@ -23,7 +23,7 @@ TEST(StringFilters, OnlyDigitsOrPunct_Negative) {
 // -------------------------------------------------------------
 // 2. Tests for HasNonCyrillicOrSpecialUnicode
 // -------------------------------------------------------------
-TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Positive) {
+TEST(StringUtils, HasNonCyrillicOrSpecialUnicode_Positive) {
     EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("123"));
     EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("🙂"));
     EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("你好"));
@@ -32,7 +32,7 @@ TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Positive) {
     EXPECT_TRUE(hasNonCyrillicOrSpecialUnicode("x+y=z"));
 }
 
-TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Negative) {
+TEST(StringUtils, HasNonCyrillicOrSpecialUnicode_Negative) {
     EXPECT_FALSE(hasNonCyrillicOrSpecialUnicode("Привет мир"));
     EXPECT_FALSE(hasNonCyrillicOrSpecialUnicode("анализ данных"));
 }
@@ -40,32 +40,32 @@ TEST(StringFilters, HasNonCyrillicOrSpecialUnicode_Negative) {
 // -------------------------------------------------------------
 // 3. Tests for ShouldBeFiltered
 // -------------------------------------------------------------
-TEST(StringFilters, ShouldBeFiltered_SymbolBased) {
+TEST(StringUtils, ShouldBeFiltered_SymbolBased) {
     EXPECT_TRUE(shouldBeFiltered("%%%"));
     EXPECT_TRUE(shouldBeFiltered("текст_with_underscores"));
     EXPECT_TRUE(shouldBeFiltered("тест#$"));
 }
 
-TEST(StringFilters, ShouldBeFiltered_LongLatin) {
+TEST(StringUtils, ShouldBeFiltered_LongLatin) {
     std::string longLatin(30, 'a'); // 30 symbols of 'a'
     EXPECT_TRUE(shouldBeFiltered(longLatin));
 }
 
-TEST(StringFilters, ShouldBeFiltered_EmojiOrDigits) {
+TEST(StringUtils, ShouldBeFiltered_EmojiOrDigits) {
     EXPECT_TRUE(shouldBeFiltered("анализ 🙂"));
     EXPECT_TRUE(shouldBeFiltered("анализ123"));
 }
 
-TEST(StringFilters, ShouldBeFiltered_OnlyPunct) {
+TEST(StringUtils, ShouldBeFiltered_OnlyPunct) {
     EXPECT_TRUE(shouldBeFiltered("!!!"));
     EXPECT_TRUE(shouldBeFiltered("...,,,"));
 }
 
-TEST(StringFilters, ShouldBeFiltered_CyrillicClean) {
+TEST(StringUtils, ShouldBeFiltered_CyrillicClean) {
     EXPECT_FALSE(shouldBeFiltered("анализ текста"));
     EXPECT_FALSE(shouldBeFiltered("пример данных"));
 }
 
-TEST(StringFilters, ShouldBeFiltered_Empty) {
+TEST(StringUtils, ShouldBeFiltered_Empty) {
     EXPECT_TRUE(shouldBeFiltered(""));
 }

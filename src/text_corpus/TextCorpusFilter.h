@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Logger.h"
-#include "StringFilters.h"
+#include "StringUtils.h"
 #include "TextCorpus.h"
 
 /**
@@ -25,7 +25,7 @@ class TextCorpusFilter {
     /**
      * @brief Filters stop words from corpus vocabulary
      * @details Removes stop words from word and document frequency maps.
-     * Uses StringFilters for stop word detection. Recalculates statistics after removal.
+     * Uses StringUtils for stop word detection. Recalculates statistics after removal.
      *
      * @param corpus Reference to the text corpus for in-place filtering
      */

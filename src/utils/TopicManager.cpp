@@ -1,8 +1,8 @@
 #include "TopicManager.h"
 #include "Embedding.h"
-#include "PhrasesCollectorUtils.h"
-#include "Options.h"
 #include "Logger.h"
+#include "Options.h"
+#include "PhrasesCollectorUtils.h"
 
 #include <cctype>
 #include <fstream>
@@ -45,7 +45,6 @@ const std::unordered_map<std::string, WordEmbeddingPtr>& TopicManager::getTopicV
     if (manager.topicVectors.empty()) {
         auto& topics = getTopics(); // Сначала загружаем темы
 
-        // C++20 ranges для создания embeddings
         for (const auto& topic : topics) {
             manager.topicVectors[topic] = std::make_shared<WordEmbedding>(topic);
         }
