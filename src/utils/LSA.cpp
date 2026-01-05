@@ -1,7 +1,9 @@
 #include "LSA.h"
-#include "PhrasesCollectorUtils.h"
 #include "StopWordsManager.h"
 #include "StringUtils.h"
+
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
 
 #include <algorithm>
 #include <chrono>

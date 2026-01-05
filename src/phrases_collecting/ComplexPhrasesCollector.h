@@ -2,7 +2,27 @@
 
 #include "GrammarPatternManager.h"
 #include "ModelComponent.h"
-#include "PhrasesCollectorUtils.h"
+
+#include "Process.h"
+
+/**
+ * @brief Status tracking for phrase components during grammar pattern matching
+ * @details Maintains state information for the current phrase being processed,
+ * including matched component count and various validation flags.
+ */
+struct CurrentPhraseStatus {
+    /// @brief Number of successfully matched phrase components
+    size_t correct = 0;
+
+    /// @brief Flag indicating phrase head has been matched against pattern
+    bool headIsMatched = false;
+
+    /// @brief Flag indicating phrase head validation has been performed
+    bool headIsChecked = false;
+
+    /// @brief Flag indicating a lexical item was located during processing
+    bool foundLex = false;
+};
 
 /**
  * @brief Collects complex phrases by extending simple phrases with adjacent words

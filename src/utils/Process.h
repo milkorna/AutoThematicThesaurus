@@ -1,6 +1,7 @@
 #pragma once
 
 #include "WordComplex.h"
+
 #include <filesystem>
 #include <nlohmann/json.hpp>
 #include <string>

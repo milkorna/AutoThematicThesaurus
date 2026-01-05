@@ -7,13 +7,6 @@
 #include "StopWordsManager.h"
 #include "StringUtils.h"
 
-static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
-    if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
-        return false;
-    }
-    return true;
-}
-
 static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo) {
     const auto& manager = GrammarPatternManager::GetManager();
 
@@ -48,8 +41,7 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (StringUtils::isOnlyPunctuationOrDigits(formFromText) || MorphAnanlysisError(token) ||
-        !HaveSp(token->getMorphInfo()))
+    if (StringUtils::isOnlyPunctuationOrDigits(formFromText) || morphAnalyzer.isMorphAnalysisError(token))
         return false;
 
     if (!comp->condition().check(comp->getSPTag(), token))
@@ -99,16 +91,17 @@ void SimplePhrasesCollector::collect(Process& process) {
             }
         }
 
-        if (StringUtils::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) || MorphAnanlysisError(token) ||
-            !HaveSp(token->getMorphInfo()))
+        if (StringUtils::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
+            morphAnalyzer.isMorphAnalysisError(token))
             continue;
 
         if (!HaveSpHead(token->getMorphInfo()))
             continue;
 
         for (const auto& [name, model] : simplePatterns) {
-            if (!HeadCheck(model, token))
+            if (!model->getHead()->condition().check(model->getHead()->getSPTag(), token)) {
                 continue;
+            }
 
             const size_t headPos = *model->getHeadPos();
             size_t correct = 0;

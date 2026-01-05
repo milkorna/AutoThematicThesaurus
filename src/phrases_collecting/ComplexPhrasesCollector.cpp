@@ -2,7 +2,6 @@
 #include "ModelComponent.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
-#include "PhrasesCollectorUtils.h"
 #include "Process.h"
 #include "StopWordsManager.h"
 
@@ -108,7 +107,7 @@ bool ComplexPhrasesCollector::checkAside(size_t curSPhPosCmp, const WordComplexP
                 return false;
         }
 
-        if (MorphAnanlysisError(token) || !HaveSp(token->getMorphInfo()))
+        if (morphAnalyzer.isMorphAnalysisError(token))
             return false;
 
         std::string formFromText = token->getWordForm().getRawString();

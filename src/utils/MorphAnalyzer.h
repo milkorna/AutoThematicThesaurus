@@ -1,7 +1,5 @@
 #pragma once
 
-#include "GrammarPatternManager.h"
-#include "PhrasesCollectorUtils.h"
 #include "xmorphy/morph/WordForm.h"
 
 class MorphAnalyzer {
@@ -22,7 +20,7 @@ class MorphAnalyzer {
      * @param token The word form to check.
      * @return True if morphological analysis error detected, false otherwise.
      */
-    // bool isMorphAnalysisError(const X::WordFormPtr& token) const;
+    bool isMorphAnalysisError(const X::WordFormPtr& token) const;
 
     /**
      * @brief Checks if token has desired part of speech.

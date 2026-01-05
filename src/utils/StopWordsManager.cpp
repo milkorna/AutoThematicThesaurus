@@ -1,6 +1,5 @@
 #include "StopWordsManager.h"
 #include "Options.h"
-#include "PhrasesCollectorUtils.h"
 #include "StringUtils.h"
 
 #include <cctype>

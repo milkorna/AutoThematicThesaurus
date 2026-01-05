@@ -1,13 +1,11 @@
 #pragma once
 
-#include "Embedding.h"
 #include "LSA.h"
-#include "PhrasesCollectorUtils.h"
 #include "ThreadController.h"
 #include "WordComplexCluster.h"
 
-#include <nlohmann/json.hpp>
 #include <filesystem>
+#include <nlohmann/json.hpp>
 
 // Forward declarations
 class ClusterMerger;

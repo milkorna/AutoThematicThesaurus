@@ -1,5 +1,4 @@
 #include "Logger.h"
-#include "PhrasesCollectorUtils.h"
 #include "WordComplex.h"
 
 #include <iostream>

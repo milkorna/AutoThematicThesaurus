@@ -1,6 +1,5 @@
 
 #include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
 #include "xmorphy/morph/WordForm.h"
 
 X::MorphInfo MorphAnalyzer::getMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet) const {
@@ -11,6 +10,16 @@ X::MorphInfo MorphAnalyzer::getMostProbableMorphInfo(const std::unordered_set<X:
         }
     }
     return maxElement;
+}
+
+bool MorphAnalyzer::isMorphAnalysisError(const X::WordFormPtr& token) const {
+    auto isDesiredPOS = [](const X::UniSPTag& tag) -> bool {
+        static const std::unordered_set<std::string> desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};
+        return desiredPOS.find(tag.toString()) != desiredPOS.end();
+    };
+
+    return token->getWordForm().length() == 1 && token->getMorphInfo().size() == 1 &&
+           isDesiredPOS(token->getMorphInfo().begin()->sp);
 }
 
 const std::string MorphAnalyzer::getLemma(const X::WordFormPtr& form) const {

@@ -8,11 +8,11 @@
 
 using json = nlohmann::json;
 
-Process::Process(const std::string& docId, const fs::path& outputFile, size_t sentNum)
+Process::Process(const std::string& docId, const std::filesystem::path& outputFile, size_t sentNum)
     : docId(docId), outputFile(outputFile), sentNum(sentNum) {
 
     // Открываем существующий JSON или создаем новый
-    if (fs::exists(outputFile)) {
+    if (std::filesystem::exists(outputFile)) {
         std::ifstream inFile(outputFile);
         if (inFile) {
             try {

@@ -1,5 +1,6 @@
 #include "Logger.h"
 #include "MorphAnalyzer.h"
+
 #include "xmorphy/graphem/SentenceSplitter.h"
 #include "xmorphy/graphem/Tokenizer.h"
 #include "xmorphy/ml/SingleWordDisambiguate.h"
@@ -8,6 +9,8 @@
 #include "xmorphy/morph/Processor.h"
 #include "xmorphy/utils/UniString.h"
 #include <gtest/gtest.h>
+
+#include <filesystem>
 #include <sstream>
 #include <string>
 #include <vector>
