@@ -25,8 +25,6 @@ bool MorphAnanlysisError(const X::WordFormPtr& token);
 // \return                  True if the property is found, false otherwise.
 bool HaveSp(const std::unordered_set<X::MorphInfo>& currFormMorphInfo);
 
-const std::string GetLowerCase(const std::string& line);
-
 // \brief Outputs the results of the phrase collection process.
 // \param collection    A vector of collected word complexes.
 // \param process       The process associated with the phrase collection.

@@ -1,5 +1,6 @@
 #include "WordComplex.h"
 #include "MorphAnalyzer.h"
+#include "Process.h"
 
 bool WordComplex::operator==(const WordComplex& other) const {
     if (modelName != other.modelName || words.size() != other.words.size())

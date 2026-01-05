@@ -56,14 +56,6 @@ class TopicManager {
     TopicManager() = default;
 
     /**
-     * @brief Trims trailing digits and spaces from a line.
-     *
-     * @param line The input line to trim.
-     * @return The trimmed line string.
-     */
-    [[nodiscard]] static std::string trimTrailingDigitsAndSpaces(std::string line);
-
-    /**
      * @brief Validates if a line represents a valid topic.
      *
      * @param line The line to validate.

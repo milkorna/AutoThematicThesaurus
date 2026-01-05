@@ -4,7 +4,12 @@
 
 #include "StringUtils.h"
 
+#include <algorithm>
+#include <cctype>
+#include <ranges>
 #include <regex>
+#include <string>
+#include <unicode/locid.h>
 
 namespace StringUtils {
 
@@ -94,6 +99,31 @@ bool shouldBeFiltered(const std::string& str) {
 
     return containsForbiddenSymbols(str) || isOnlyPunctuationOrNonAlpha(str) || isLongLatinGarbage(str) ||
            hasNonCyrillicOrSpecialUnicode(str);
+}
+
+std::string toLowerCase(const std::string& line) {
+    icu::UnicodeString ustr = icu::UnicodeString::fromUTF8(line);
+    ustr.toLower(icu::Locale("ru_RU"));
+    std::string result;
+    ustr.toUTF8String(result);
+    return result; // RVO оптимизирует копию
+}
+
+bool containsNoLatin(const std::string& str) {
+    for (char ch : str) {
+        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+            return false;
+        }
+    }
+    return true;
+}
+
+std::string trimTrailingDigitsAndSpaces(const std::string& line) {
+    auto notDigitOrSpace = [](unsigned char ch) { return !std::isdigit(ch) && !std::isspace(ch); };
+
+    auto it = std::ranges::find_if_not(line | std::views::reverse, notDigitOrSpace).base();
+
+    return std::string(line.begin(), it);
 }
 
 } // namespace StringUtils

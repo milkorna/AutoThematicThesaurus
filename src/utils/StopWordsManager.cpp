@@ -1,7 +1,7 @@
 #include "StopWordsManager.h"
-#include "PhrasesCollectorUtils.h"
 #include "Options.h"
-#include "Logger.h"
+#include "PhrasesCollectorUtils.h"
+#include "StringUtils.h"
 
 #include <cctype>
 #include <fstream>
@@ -21,7 +21,7 @@ const std::unordered_set<std::string>& StopWordsManager::getStopWords() {
 // Проверить, является ли слово stop word
 bool StopWordsManager::isStopWord(const std::string& word) {
     const auto& stopWords = getStopWords();
-    const auto lowerWord = GetLowerCase(word);
+    const auto lowerWord = StringUtils::toLowerCase(word);
     return stopWords.contains(lowerWord);
 }
 
@@ -37,7 +37,7 @@ void StopWordsManager::loadStopWords() {
 
     std::string line;
     while (std::getline(file, line)) {
-        const auto lowerLine = GetLowerCase(line);
+        const auto lowerLine = StringUtils::toLowerCase(line);
         stopWords.insert(lowerLine);
     }
 }

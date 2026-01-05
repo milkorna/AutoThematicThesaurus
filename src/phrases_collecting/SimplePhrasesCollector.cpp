@@ -3,6 +3,7 @@
 #include "Logger.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
+#include "Process.h"
 #include "StopWordsManager.h"
 #include "StringUtils.h"
 
@@ -125,5 +126,5 @@ void SimplePhrasesCollector::collect(Process& process) {
             }
         }
     }
-    OutputResults(m_collection, process);
+    process.outputResults(m_collection);
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Process.h"
-
 #include "xmorphy/morph/WordForm.h"
 
 #include <deque>
@@ -17,6 +15,8 @@ struct Position {
     std::string docId; ///< Document number.
     size_t sentNum;    ///< Sentence number.
 };
+
+class Process;
 
 /**
  * @brief This class represents a complex word or phrase, including its text form, position, and model name.

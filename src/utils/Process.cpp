@@ -1,6 +1,7 @@
 #include "Process.h"
 #include "Logger.h"
-#include "utils/PathUtils.h"
+#include "MorphAnalyzer.h"
+#include "WordComplex.h"
 
 #include <fstream>
 #include <nlohmann/json.hpp>
@@ -36,6 +37,46 @@ Process::~Process() {
     }
     outFile << jsonData.dump(4) << std::endl;
     Logger::log("Process", LogLevel::Info, "Successfully saved JSON file: " + outputFile.string());
+}
+
+void Process::outputResults(const std::vector<WordComplexPtr>& phrases) {
+    if (phrases.empty()) {
+        return;
+    }
+
+    auto& morphAnalyzer = MorphAnalyzer::getInstance();
+
+    for (const auto& wc : phrases) {
+        // Build lemma key from words
+        std::string key;
+        for (const auto& w : wc->words) {
+            key.append(morphAnalyzer.getLemma(w) + " ");
+        }
+        if (!key.empty()) {
+            key.pop_back(); // Remove trailing space
+        }
+
+        // Build lemmas JSON array with indexed format
+        json lemmas_json = json::array();
+        for (size_t i = 0; i < wc->lemmas.size(); ++i) {
+            lemmas_json.push_back(std::to_string(i) + "_" + wc->lemmas[i]);
+        }
+
+        // Create result JSON object with ordered keys
+        json j = json::object();
+        j["0_key"] = key;
+        j["1_textForm"] = wc->textForm;
+        j["2_modelName"] = wc->modelName;
+        j["3_docId"] = docId;
+        j["4_sentNum"] = sentNum;
+        j["5_start_ind"] = wc->pos.start;
+        j["6_end_ind"] = wc->pos.end;
+        j["7_lemmas"] = lemmas_json;
+
+        addJsonObject(j);
+    }
+
+    Logger::log("Process", LogLevel::Info, "Appended " + std::to_string(phrases.size()) + " results to JSON.");
 }
 
 void Process::addJsonObject(const json& newObj) {

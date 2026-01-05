@@ -1,8 +1,11 @@
 #include "TopicManager.h"
 #include "Embedding.h"
-#include "Logger.h"
 #include "Options.h"
-#include "PhrasesCollectorUtils.h"
+#include "StringUtils.h"
+
+#include <unicode/locid.h>
+#include <unicode/unistr.h>
+#include <unicode/ustream.h>
 
 #include <cctype>
 #include <fstream>
@@ -13,18 +16,6 @@
 #include <unordered_set>
 
 using WordEmbeddingPtr = std::shared_ptr<class WordEmbedding>;
-
-namespace {
-bool containsNoLatin(const std::string& str) {
-    for (char ch : str) {
-        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-            return false;
-        }
-    }
-    return true;
-}
-
-} // namespace
 
 // Инициализация при первом вызове
 const std::unordered_set<std::string>& TopicManager::getTopics() {
@@ -53,17 +44,6 @@ const std::unordered_map<std::string, WordEmbeddingPtr>& TopicManager::getTopicV
     return manager.topicVectors;
 }
 
-// Вспомогательные статические методы
-std::string TopicManager::trimTrailingDigitsAndSpaces(std::string line) {
-    auto notDigit = [](unsigned char ch) { return !std::isdigit(ch); };
-    line.erase(std::find_if(line.rbegin(), line.rend(), notDigit).base(), line.end());
-
-    auto notSpace = [](unsigned char ch) { return !std::isspace(ch); };
-    line.erase(std::find_if(line.rbegin(), line.rend(), notSpace).base(), line.end());
-
-    return line;
-}
-
 bool TopicManager::isValidTopic(const std::string& line) {
     return line.size() > 3;
 }
@@ -80,13 +60,12 @@ void TopicManager::loadTopics() {
 
     std::string line;
     while (std::getline(file, line)) {
-        if (!containsNoLatin(line)) {
+        if (!StringUtils::containsNoLatin(line)) {
             continue;
         }
 
-        line = trimTrailingDigitsAndSpaces(line);
-
-        const auto lowerLine = GetLowerCase(line);
+        auto trimmedLine = StringUtils::trimTrailingDigitsAndSpaces(line);
+        auto lowerLine = StringUtils::toLowerCase(trimmedLine);
         if (isValidTopic(lowerLine)) {
             topics.insert(lowerLine);
         }

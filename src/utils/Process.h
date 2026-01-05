@@ -1,5 +1,6 @@
 #pragma once
 
+#include "WordComplex.h"
 #include <filesystem>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -43,6 +44,21 @@ struct Process {
      */
     ~Process();
 
+    /**
+     * @brief Outputs phrase extraction results to JSON
+     * @details Processes word complexes and converts them to JSON objects.
+     * For each phrase, creates entry with:
+     * - Lemma key (space-separated lemmas)
+     * - Text form and model name
+     * - Document ID and sentence number
+     * - Position indices (start, end)
+     * - Indexed lemma list
+     *
+     * @param phrases Vector of extracted word complexes to serialize
+     */
+    void outputResults(const std::vector<WordComplexPtr>& phrases);
+
+  private:
     /**
      * @brief Appends JSON object to results array
      * @details Adds object to jsonData array for later persistence

@@ -1,9 +1,9 @@
 #include "ComplexPhrasesCollector.h"
-#include "Logger.h"
 #include "ModelComponent.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
 #include "PhrasesCollectorUtils.h"
+#include "Process.h"
 #include "StopWordsManager.h"
 
 #include <regex>
@@ -328,5 +328,5 @@ void ComplexPhrasesCollector::collect(Process& process) {
         validateBoundaries();
     }
 
-    OutputResults(m_collection, process);
+    process.outputResults(m_collection);
 }

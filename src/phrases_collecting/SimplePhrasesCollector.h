@@ -1,10 +1,10 @@
 #pragma once
 
-#include "xmorphy/morph/WordForm.h"
-
 #include "GrammarPatternManager.h"
 #include "ModelComponent.h"
-#include "PhrasesCollectorUtils.h"
+#include "Process.h"
+
+#include "xmorphy/morph/WordForm.h"
 
 /**
  * @brief Collects simple phrases by matching grammar patterns against word sequences
