@@ -1,8 +1,8 @@
 #pragma once
 
-#include "xmorphy/morph/WordForm.h"
-
 #include "Process.h"
+
+#include "xmorphy/morph/WordForm.h"
 
 #include <deque>
 #include <memory>
@@ -42,7 +42,7 @@ class WordComplex {
      *
      * @return A string key representing the WordComplex object.
      */
-    const std::string GetKey() const;
+    const std::string getKey() const;
 };
 
 using WordComplexPtr = std::shared_ptr<WordComplex>;
@@ -54,7 +54,7 @@ using WordComplexPtr = std::shared_ptr<WordComplex>;
  * @param modelName The name of the model.
  * @return A shared pointer to the initialized WordComplex object.
  */
-WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName);
+WordComplexPtr initializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName);
 
 /**
  * @brief Initializes a WordComplex object with the given parameters.
@@ -65,7 +65,7 @@ WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const s
  * @param process The process associated with the initialization.
  * @return A shared pointer to the initialized WordComplex object.
  */
-WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr token, const std::string modelName,
+WordComplexPtr initializeWordComplex(const size_t tokenInd, const X::WordFormPtr token, const std::string modelName,
                                      const Process& process);
 
 /**
@@ -76,7 +76,7 @@ WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr
  * @param formFromText The form from the text to add.
  * @param isLeft A boolean indicating if the form is added to the left.
  */
-void UpdateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, const std::string& formFromText,
+void updateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, const std::string& formFromText,
                        bool isLeft);
 
 /**
@@ -85,7 +85,7 @@ void UpdateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, con
  * @param wc A shared pointer to the WordComplex object to update.
  * @param asidePhrase A shared pointer to the aside phrase to add.
  */
-void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);
+void addWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);
 
 /**
  * @brief Adds words to the back of a WordComplex object.
@@ -93,4 +93,4 @@ void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase
  * @param wc A shared pointer to the WordComplex object to update.
  * @param asidePhrase A shared pointer to the aside phrase to add.
  */
-void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);
+void addWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase);

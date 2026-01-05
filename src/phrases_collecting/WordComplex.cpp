@@ -1,6 +1,5 @@
 #include "WordComplex.h"
 #include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
 
 bool WordComplex::operator==(const WordComplex& other) const {
     if (modelName != other.modelName || words.size() != other.words.size())
@@ -19,7 +18,7 @@ bool WordComplex::operator==(const WordComplex& other) const {
     return true;
 }
 
-const std::string WordComplex::GetKey() const {
+const std::string WordComplex::getKey() const {
     std::string key;
     for (const auto& l : lemmas) {
         key.append(l + " ");
@@ -28,7 +27,7 @@ const std::string WordComplex::GetKey() const {
     return key;
 }
 
-WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName) {
+WordComplexPtr initializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName) {
     WordComplexPtr wc = std::make_shared<WordComplex>();
     wc->words = curSimplePhr->words;
     wc->lemmas = curSimplePhr->lemmas;
@@ -38,7 +37,7 @@ WordComplexPtr InicializeWordComplex(const WordComplexPtr& curSimplePhr, const s
     return wc;
 }
 
-WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr token, const std::string modelName,
+WordComplexPtr initializeWordComplex(const size_t tokenInd, const X::WordFormPtr token, const std::string modelName,
                                      const Process& process) {
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
     WordComplexPtr wc = std::make_shared<WordComplex>();
@@ -51,7 +50,7 @@ WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr
     return wc;
 }
 
-void UpdateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, const std::string& formFromText,
+void updateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, const std::string& formFromText,
                        bool isLeft) {
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
@@ -68,7 +67,7 @@ void UpdateWordComplex(const WordComplexPtr& wc, const X::WordFormPtr& form, con
     }
 }
 
-void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase) {
+void addWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase) {
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
     for (auto rit = asidePhrase->words.rbegin(); rit != asidePhrase->words.rend(); ++rit) {
         wc->words.push_front(*rit);
@@ -76,7 +75,7 @@ void AddWordsToFront(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase
     }
 }
 
-void AddWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase) {
+void addWordsToBack(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase) {
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
     for (const auto& word : asidePhrase->words) {
         wc->words.push_back(word);

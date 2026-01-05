@@ -1,10 +1,10 @@
 #include "SimplePhrasesCollector.h"
 #include "GrammarPatternManager.h"
+#include "Logger.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
 #include "StopWordsManager.h"
 #include "StringFilters.h"
-#include "Logger.h"
 
 static bool HeadCheck(const std::shared_ptr<Model>& simpleModel, const X::WordFormPtr& form) {
     if (!simpleModel->getHead()->condition().check(simpleModel->getHead()->getSPTag(), form)) {
@@ -23,7 +23,7 @@ static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo
             Logger::log("HaveSpHead", LogLevel::Debug, "No head with " + morphForm.sp.toString() + " speach of word");
         } else {
             Logger::log("HaveSpHead", LogLevel::Debug,
-                        "Found head with " + morphForm.sp.toString() + " speach of word");
+                        "Found head with " + morphForm.sp.toString() + " speech of word");
             return true;
         }
     }
@@ -53,7 +53,7 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
 
     if (!comp->condition().check(comp->getSPTag(), token))
         return false;
-    UpdateWordComplex(wc, token, formFromText, isLeft);
+    updateWordComplex(wc, token, formFromText, isLeft);
 
     ++correct;
     const size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
@@ -112,7 +112,7 @@ void SimplePhrasesCollector::collect(Process& process) {
             const size_t headPos = *model->getHeadPos();
             size_t correct = 0;
 
-            WordComplexPtr wc = InicializeWordComplex(tokenInd, token, model->getForm(), process);
+            WordComplexPtr wc = initializeWordComplex(tokenInd, token, model->getForm(), process);
             ++correct;
 
             if (headPos != 0 && tokenInd != 0 && checkAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {

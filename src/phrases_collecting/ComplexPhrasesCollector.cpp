@@ -1,10 +1,10 @@
 #include "ComplexPhrasesCollector.h"
+#include "Logger.h"
 #include "ModelComponent.h"
 #include "MorphAnalyzer.h"
+#include "Options.h"
 #include "PhrasesCollectorUtils.h"
 #include "StopWordsManager.h"
-#include "Options.h"
-#include "Logger.h"
 
 #include <regex>
 
@@ -122,7 +122,7 @@ bool ComplexPhrasesCollector::checkAside(size_t curSPhPosCmp, const WordComplexP
             }
         }
 
-        UpdateWordComplex(wc, token, formFromText, isLeft);
+        updateWordComplex(wc, token, formFromText, isLeft);
 
         curPhrStatus.correct++;
         size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
@@ -192,10 +192,10 @@ bool ComplexPhrasesCollector::checkAside(size_t curSPhPosCmp, const WordComplexP
             size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
 
             if (isLeft && asidePhrase->pos.end == formIndex) {
-                AddWordsToFront(wc, asidePhrase);
+                addWordsToFront(wc, asidePhrase);
                 updatePhraseStatus(wc, asidePhrase, curPhrStatus, true);
             } else if (asidePhrase->pos.start == formIndex) {
-                AddWordsToBack(wc, asidePhrase);
+                addWordsToBack(wc, asidePhrase);
                 updatePhraseStatus(wc, asidePhrase, curPhrStatus, false);
             }
 
@@ -281,7 +281,7 @@ bool ComplexPhrasesCollector::processModelComponent(const std::shared_ptr<Model>
     if (!checkCurrentSimplePhrase(curSimplePhr, model->getModelComponent(*curSPhPosCmp), curPhrStatus))
         return false;
 
-    wc = InicializeWordComplex(curSimplePhr, model->getForm());
+    wc = initializeWordComplex(curSimplePhr, model->getForm());
     curPhrStatus.correct++;
 
     if (*curSPhPosCmp != 0 && wc->pos.start != 0) {
