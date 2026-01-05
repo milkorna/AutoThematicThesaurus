@@ -284,7 +284,7 @@ bool ComplexPhrasesCollector::ProcessModelComponent(const std::shared_ptr<Model>
                        curSimplePhrInd))
             return true;
     }
-    if (*curSPhPosCmp != model->size() - 1) {
+    if (*curSPhPosCmp != model->size() - 1 && curSimplePhr->pos.end + 1 < m_sentence.size()) {
         if (CheckAside(*curSPhPosCmp, wc, model, *curSPhPosCmp + 1, curSimplePhr->pos.end + 1, false, curPhrStatus,
                        curSimplePhrInd))
             return true;

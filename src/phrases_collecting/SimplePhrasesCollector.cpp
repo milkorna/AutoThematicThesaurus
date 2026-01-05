@@ -114,7 +114,8 @@ void SimplePhrasesCollector::Collect(Process& process) {
                 break;
             }
 
-            if (headPos != model->size() - 1 && CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
+            if (headPos != model->size() - 1 && tokenInd + 1 < m_sentence.size() &&
+                CheckAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
                 break;
             }
         }

@@ -1,3 +1,4 @@
+#include "GrammarPatternManager.h"
 #include "Logger.h"
 #include "RawDataLoader.h"
 #include "RawTextProcessor.h"
@@ -39,6 +40,10 @@ class RawTextProcessorTest : public ::testing::Test {
         options.corpusFile = testOutputDir / "corpus";
 
         options.updateDocumentCount();
+
+        fs::path patternsPath = options.patternsFile;
+        auto& patternManager = GrammarPatternManager::GetManager();
+        patternManager.readPatterns(patternsPath);
     }
 
     /**
@@ -48,9 +53,9 @@ class RawTextProcessorTest : public ::testing::Test {
         Logger::flushLogs();
 
         // Clean up test output directory
-        if (fs::exists(testOutputDir)) {
-            fs::remove_all(testOutputDir);
-        }
+        // if (fs::exists(testOutputDir)) {
+        //     fs::remove_all(testOutputDir);
+        // }
     }
 
     /**
