@@ -1,6 +1,6 @@
 #include "ClusterDeserializer.h"
 #include "Logger.h"
-#include <algorithm>
+
 #include <unicode/uchar.h>
 
 using json = nlohmann::json;
@@ -59,7 +59,7 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
         std::string modelName = obj.at("2_modelName").get<std::string>();
 
         Position pos;
-        pos.docNum = obj.at("3_docNum").get<size_t>();
+        pos.docId = obj.at("3_docId").get<std::string>();
         pos.sentNum = obj.at("4_sentNum").get<size_t>();
         pos.start = obj.at("5_start_ind").get<size_t>();
         pos.end = obj.at("6_end_ind").get<size_t>();
@@ -138,7 +138,7 @@ void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, Wor
         const auto& posObj = phrase_obj.at("1_position");
         wc->pos.start = posObj.at("0_start").get<size_t>();
         wc->pos.end = posObj.at("1_end").get<size_t>();
-        wc->pos.docNum = posObj.at("2_doc_num").get<size_t>();
+        wc->pos.docId = posObj.at("2_doc_num").get<size_t>();
         wc->pos.sentNum = posObj.at("3_sent_num").get<size_t>();
 
         // Copy lemmas from cluster

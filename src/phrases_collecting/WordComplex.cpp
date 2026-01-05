@@ -45,7 +45,7 @@ WordComplexPtr InicializeWordComplex(const size_t tokenInd, const X::WordFormPtr
     wc->words.push_back(token);
     wc->lemmas.push_back(morphAnalyzer.getLemma(token));
     wc->textForm = token->getWordForm().getRawString();
-    wc->pos = {tokenInd, tokenInd, process.docNum, process.sentNum};
+    wc->pos = {tokenInd, tokenInd, process.docId, process.sentNum};
     wc->modelName = modelName;
 
     return wc;

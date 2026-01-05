@@ -1,5 +1,9 @@
 #include "TextCorpusLoader.h"
 
+#include "Logger.h"
+
+using json = nlohmann::json;
+
 void TextCorpusLoader::save(const TextCorpus& corpus, const std::string& filename) {
     Logger::log("TextCorpusLoader", LogLevel::Info, "Serializing corpus to file: " + filename);
 

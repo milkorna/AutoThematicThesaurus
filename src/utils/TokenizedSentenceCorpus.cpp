@@ -14,10 +14,18 @@
 
 #include <string>
 
-void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
+using json = nlohmann::json;
+
+void TokenizedSentenceCorpus::build(const std::vector<DocumentRecord>& documents) {
     Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
 
+    if (documents.empty()) {
+        Logger::log("TokenizedSentenceCorpus", LogLevel::Warning, "No documents to process");
+        return;
+    }
+
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
+    auto& options = Options::getOptions();
 
     X::Tokenizer tokenizer;
     X::TFMorphemicSplitter morphemicSplitter;
@@ -26,16 +34,20 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
     X::TFJoinedModel joiner;
 
     try {
-        for (const auto& file : files) {
-            size_t docNum = util::path::extractNumberFromPath(file);
+        for (const auto& doc : documents) {
+            const auto docId = doc.doc_id;
             size_t sentNum = 0;
 
-            std::ifstream input{file};
-            if (!input) {
-                Logger::log("RawTextProcessor", LogLevel::Error, "Failed to open input file: " + file.string());
-                return;
+            // Получаем текст для обработки
+            std::string textToProcess = doc.getProcessingText(options.mergeDocumentTitleAndText);
+            if (textToProcess.empty()) {
+                Logger::log("RawTextProcessor", LogLevel::Warning,
+                            "Document " + doc.doc_id + " has empty processing text, skipping");
+                continue;
             }
-            X::SentenceSplitter sentenceSplitter(input);
+
+            std::istringstream textStream(textToProcess);
+            X::SentenceSplitter sentenceSplitter(textStream);
 
             while (!sentenceSplitter.eof()) {
                 std::string rawSentence;
@@ -67,7 +79,7 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
                 }
                 if (!normalizedSentence.empty()) {
                     normalizedSentence.pop_back();
-                    addSentence(docNum, sentNum, rawSentence, normalizedSentence);
+                    addSentence(docId, sentNum, rawSentence, normalizedSentence);
                 }
                 sentNum++;
             };
@@ -82,16 +94,17 @@ void TokenizedSentenceCorpus::build(const std::vector<fs::path>& files) {
 }
 
 // Adds a sentence to the corpus.
-void TokenizedSentenceCorpus::addSentence(const size_t docNum, const size_t sentNum, const std::string& data,
+void TokenizedSentenceCorpus::addSentence(const std::string& docId, const size_t sentNum, const std::string& data,
                                           const std::string& normalizedData) {
-    TokenizedSentence sentence = {docNum, sentNum, data, normalizedData};
-    sentenceMap[docNum][sentNum] = sentence; // Insert the sentence into the map
+    TokenizedSentence sentence = {docId, sentNum, data, normalizedData};
+    sentenceMap[docId][sentNum] = sentence; // Insert the sentence into the map
     sentencesCount++;
 }
 
 // Retrieves a sentence by document and sentence number.
-const std::optional<TokenizedSentence> TokenizedSentenceCorpus::getSentence(size_t docNum, size_t sentNum) const {
-    auto docIt = sentenceMap.find(docNum);
+const std::optional<TokenizedSentence> TokenizedSentenceCorpus::getSentence(const std::string& docId,
+                                                                            const size_t sentNum) const {
+    auto docIt = sentenceMap.find(docId);
     if (docIt != sentenceMap.end()) {
         auto sentIt = docIt->second.find(sentNum);
         if (sentIt != docIt->second.end()) {
@@ -107,9 +120,9 @@ json TokenizedSentenceCorpus::serialize() const {
     j["totalSentences"] = sentencesCount;
     j["sentences"] = json::array();
 
-    for (const auto& [docNum, sentencesMap] : sentenceMap) {
+    for (const auto& [docId, sentencesMap] : sentenceMap) {
         for (const auto& [sentNum, sentence] : sentencesMap) {
-            j["sentences"].push_back({{"docNum", sentence.docNum},
+            j["sentences"].push_back({{"docId", sentence.docId},
                                       {"sentNum", sentence.sentNum},
                                       {"originalStr", sentence.originalStr},
                                       {"normalizedStr", sentence.normalizedStr}});
@@ -126,11 +139,11 @@ void TokenizedSentenceCorpus::deserialize(const json& j) {
 
     for (const auto& item : j.at("sentences")) {
         TokenizedSentence sentence;
-        sentence.docNum = item.at("docNum").get<size_t>();
+        sentence.docId = item.at("docId").get<std::string>();
         sentence.sentNum = item.at("sentNum").get<size_t>();
         sentence.originalStr = item.at("originalStr").get<std::string>();
         sentence.normalizedStr = item.at("normalizedStr").get<std::string>();
-        sentenceMap[sentence.docNum][sentence.sentNum] = sentence;
+        sentenceMap[sentence.docId][sentence.sentNum] = sentence;
     }
 }
 

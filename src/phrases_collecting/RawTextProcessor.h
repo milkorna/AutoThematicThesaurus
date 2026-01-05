@@ -1,11 +1,14 @@
 #pragma once
 
-#include "Embedding.h"
-#include "LSA.h"
-#include "PhrasesCollectorUtils.h"
-#include "ThreadController.h"
+#include "DocumentRecord.h"
+#include "Options.h"
+#include "Process.h"
+
+#include "xmorphy/morph/WordForm.h"
 
 #include <nlohmann/json.hpp>
+#include <string>
+#include <unordered_set>
 
 /**
  * @brief Processes raw text files extracts grammatical phrases from them
@@ -21,14 +24,9 @@ class RawTextProcessor {
     }
 
     /**
-     * @brief Processes all raw text files in the configured input directory.
-     * @details This is the main entry point. It:
-     *          1. Reads all input files from Options::textsDir
-     *          2. Loads text content into corpus
-     *          3. Processes each file to extract phrases
-     *          4. Saves the final corpus to disk
+     * @brief Processes all raw texts in the configured input directory.
      */
-    void processRawData(const std::vector<fs::path>& files);
+    void processRawData(const std::vector<DocumentRecord>& documents);
 
     /// Destructor
     ~RawTextProcessor() = default;
@@ -55,7 +53,7 @@ class RawTextProcessor {
      *
      * @param forms Morphological word forms from xmorphy analyzer.
      *              Result of Processor::analyze() after disambiguation
-     * @param process Current processing context (docNum, sentNum, file info)
+     * @param process Current processing context (docId, sentNum, file info)
      */
     void collect(const std::vector<X::WordFormPtr>& forms, Process& process);
 
@@ -72,11 +70,11 @@ class RawTextProcessor {
     /// Tracks the last processed document ID to detect document boundaries.
     /// Initialized to -1 to trigger document boundary on first sentence.
     /// Updated in Collect() after processing a sentence.
-    int lastDocumentId = -1;
+    std::string lastDocumentId = "";
 
     /// Accumulates unique lemmas within the current document.
     /// Used to track which lemmas appeared in a document for IDF calculations.
-    /// Cleared after each document boundary (when docNum changes).
+    /// Cleared after each document boundary (when docId changes).
     std::unordered_set<std::string> uniqueLemmasInDoc;
 
     /// Reference to global options/configuration singleton

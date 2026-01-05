@@ -6,6 +6,7 @@
 #include "PathUtils.h"
 #include "PatternPhrasesStorage.h"
 #include "PhrasesStorageLoader.h"
+#include "RawDataLoader.h"
 #include "RawTextProcessor.h"
 #include "TextCorpus.h"
 #include "TextCorpusFilter.h"
@@ -78,7 +79,7 @@ void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal
                                          std::to_string(maxVal) + ")");
             }
 
-            options.textToProcessCount = value;
+            options.totalDocuments = value;
         } catch (const std::exception& ex) {
             throw std::runtime_error("Invalid integer value for 'limit': " + std::string(ex.what()));
         }
@@ -88,26 +89,27 @@ void validateLimitOption(const po::variables_map& vm, int minVal = 1, int maxVal
 void setGlobalOptions(const po::variables_map& vm) {
     // Override default global options if provided by the user
     validatePathOption(vm, "corpus-dir", options.corpusDir);
-    options.recomputeCorpusDependenciesPaths();
-    options.updateFileCount();
+    options.updateDocumentCount();
 
     validatePathOption(vm, "stop-words-file", options.stopWordsFile);
     validatePathOption(vm, "patterns-file", options.patternsFile);
     validatePathOption(vm, "emb-model-file", options.embeddingModelFile);
 
-    validateLimitOption(vm, 1, options.textToProcessCount);
+    validateLimitOption(vm, 1, options.totalDocuments);
 
     validateBoolOption(vm, "clean-stop-words", options.cleanStopWords);
     validateBoolOption(vm, "validate-boundaries", options.validateBoundaries);
+    validateBoolOption(vm, "merge-title-and-text", options.mergeDocumentTitleAndText);
 
     Logger::log("Main", LogLevel::Info, "corpusDir: " + options.corpusDir.string());
-    Logger::log("Main", LogLevel::Info, "textsDir:  " + options.textsDir.string());
-    Logger::log("Main", LogLevel::Info, "textToProcessCount: " + std::to_string(options.textToProcessCount));
+    Logger::log("Main", LogLevel::Info, "totalDocuments: " + std::to_string(options.totalDocuments));
+    Logger::log("Main", LogLevel::Info,
+                "mergeDocumentTitleAndText: " + std::string(options.mergeDocumentTitleAndText ? "true" : "false"));
 }
 
 void addOptions(po::options_description& desc) {
     desc.add_options()("help,h", "Show help message");
-    desc.add_options()("corpus-dir", po::value<std::string>(), "Path to data directory (default is inside 'my_data')");
+    desc.add_options()("corpus-dir", po::value<std::string>(), "Path to data directory (default is inside 'data')");
     desc.add_options()("patterns-file", po::value<std::string>(),
                        "Path to grammatical patterns file (default is inside 'my_data')");
     desc.add_options()("stop-words-file", po::value<std::string>(),
@@ -120,6 +122,8 @@ void addOptions(po::options_description& desc) {
     desc.add_options()("clean-stop-words", po::value<bool>(), "Option for clearing stop words (by default is true)");
     desc.add_options()("validate-boundaries", po::value<bool>(),
                        "Option for sentence boundaries validation (by default is true)");
+    desc.add_options()("merge-title-and-text", po::value<bool>()->default_value(true),
+                       "Merge document title and text for processing (by default is true)");
 }
 
 #define HARDCODED_ARGS 1
@@ -203,9 +207,16 @@ int main(int argc, char** argv) {
             auto& patternManager = GrammarPatternManager::GetManager();
             patternManager.readPatterns(patternsPath);
             patternManager.printPatterns();
-            std::vector<fs::path> filesToProcess = util::path::getFilesToProcess();
+
+            fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
+            std::vector<DocumentRecord> documents = RawDataLoader::LoadFromJson(jsonInputPath);
+            if (documents.empty()) {
+                Logger::log("Main", LogLevel::Error, "No documents loaded from JSON file");
+                return 1;
+            }
+
             auto& processor = RawTextProcessor::GetProcessor();
-            processor.processRawData(filesToProcess);
+            processor.processRawData(documents);
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
@@ -237,10 +248,16 @@ int main(int argc, char** argv) {
             storage.LoadWikiWNRelations();
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
-            // Generate a tokenized sentence corpus and save it
-            std::vector<fs::path> files = util::path::getFilesToProcess();
+            fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
+            std::vector<DocumentRecord> documents = RawDataLoader::LoadFromJson(jsonInputPath);
+
+            if (documents.empty()) {
+                Logger::log("Main", LogLevel::Error, "No documents loaded from JSON file");
+                return 1;
+            }
+
             auto& sentenceCorpus = TokenizedSentenceCorpus::GetCorpus();
-            sentenceCorpus.build(files);
+            sentenceCorpus.build(documents);
             sentenceCorpus.save(options.sentencesFile.string());
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)

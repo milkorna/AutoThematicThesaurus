@@ -1,12 +1,12 @@
 #include "LSA.h"
 #include "PhrasesCollectorUtils.h"
 #include "StringFilters.h"
-
 #include "StopWordsManager.h"
 
-#include "algorithm"
+#include <algorithm>
 #include <chrono>
 #include <fstream>
+#include <string>
 
 // TODO: фильтрация sentence была при дисериализации - тут видимо надо учесть
 // if (item.at("normalizedStr").get<std::string>().size() < 50)
@@ -20,24 +20,24 @@ std::pair<MatrixXd, std::vector<std::string>> LSA::CreateTermDocumentMatrix(bool
     int index = 0;
 
     // Container for texts: can contain either documents or sentences depending on the useSentences flag
-    std::unordered_map<size_t, std::string> texts;
+    std::unordered_map<std::string, std::string> texts;
 
     if (useSentences) {
         // Use sentences as documents
-        for (const auto& [docNum, sentencesMap] : corpus.getSentenceMap()) {
+        for (const auto& [docId, sentencesMap] : corpus.getSentenceMap()) {
             for (const auto& [sentNum, sentence] : sentencesMap) {
-                size_t uniqueSentId = docNum * 100000 + sentNum; // Unique identifier for each sentence
-                texts[uniqueSentId] = sentence.normalizedStr;    // Add each sentence as a separate "document"
+                std::string uniqueSentId = docId + "_" + std::to_string(sentNum); // Unique identifier for each sentence
+                texts[uniqueSentId] = sentence.normalizedStr; // Add each sentence as a separate "document"
             }
         }
     } else {
         // Use entire documents
-        for (const auto& [docNum, sentencesMap] : corpus.getSentenceMap()) {
+        for (const auto& [docId, sentencesMap] : corpus.getSentenceMap()) {
             std::string combinedText;
             for (const auto& [sentNum, sentence] : sentencesMap) {
                 combinedText += sentence.normalizedStr + " "; // Combine sentences into one text
             }
-            texts[docNum] = combinedText; // Save the combined text for each document
+            texts[docId] = combinedText; // Save the combined text for each document
         }
     }
 

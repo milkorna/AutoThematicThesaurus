@@ -67,9 +67,10 @@ bool TopicManager::isValidTopic(const std::string& line) {
     return line.size() > 3;
 }
 
+// todo add keyWords
 void TopicManager::loadTopics() {
     auto& options = Options::getOptions();
-    std::filesystem::path inputPath = options.tagsAndHubsFile;
+    std::filesystem::path inputPath{};
 
     std::ifstream file(inputPath);
     if (!file.is_open()) {

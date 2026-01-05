@@ -1,11 +1,8 @@
 #pragma once
 
-#include "Logger.h"
 #include "TextCorpus.h"
-#include <fstream>
-#include <nlohmann/json.hpp>
 
-using json = nlohmann::json;
+#include <nlohmann/json.hpp>
 
 class TextCorpusLoader {
   public:
@@ -27,14 +24,14 @@ class TextCorpusLoader {
     /**
      * @brief Преобразует корпус в JSON объект
      */
-    static json serialize(const TextCorpus& corpus);
+    static nlohmann::json serialize(const TextCorpus& corpus);
 
     /**
      * @brief Загружает корпус из JSON объекта БЕЗ фильтрации
      */
-    static void deserialize(TextCorpus& corpus, const json& j);
+    static void deserialize(TextCorpus& corpus, const nlohmann::json& j);
 
-    static void readWordFrequencies(TextCorpus& corpus, const json& j);
-    static void readDocumentFrequencies(TextCorpus& corpus, const json& j);
-    static void readTexts(TextCorpus& corpus, const json& j);
+    static void readWordFrequencies(TextCorpus& corpus, const nlohmann::json& j);
+    static void readDocumentFrequencies(TextCorpus& corpus, const nlohmann::json& j);
+    static void readTexts(TextCorpus& corpus, const nlohmann::json& j);
 };

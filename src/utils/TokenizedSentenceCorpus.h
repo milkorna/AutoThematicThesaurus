@@ -1,7 +1,9 @@
 #pragma once
 
+#include "DocumentRecord.h"
+
 #include "boost/algorithm/string.hpp"
-#include "nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 #include <cctype>
 #include <cstddef>
@@ -10,9 +12,6 @@
 #include <string>
 #include <unordered_map>
 
-using json = nlohmann::json;
-namespace fs = std::filesystem;
-
 /**
  * @struct TokenizedSentence
  * @brief Represents a single sentence with original and normalized forms.
@@ -20,7 +19,7 @@ namespace fs = std::filesystem;
  */
 struct TokenizedSentence {
     /// @brief Document identifier for sentence location.
-    size_t docNum;
+    std::string docId;
 
     /// @brief Sentence index within document.
     size_t sentNum;
@@ -32,7 +31,7 @@ struct TokenizedSentence {
     std::string normalizedStr;
 };
 
-using SentenceMap = std::unordered_map<size_t, std::unordered_map<size_t, TokenizedSentence>>;
+using SentenceMap = std::unordered_map<std::string, std::unordered_map<size_t, TokenizedSentence>>;
 
 /**
  * @class TokenizedSentenceCorpus
@@ -67,7 +66,7 @@ class TokenizedSentenceCorpus {
      *
      * @see SaveToFile
      */
-    void build(const std::vector<fs::path>& files);
+    void build(const std::vector<DocumentRecord>& documents);
 
     /**
      * @brief Saves corpus to persistent storage.
@@ -89,13 +88,14 @@ class TokenizedSentenceCorpus {
     /**
      * @brief Retrieves sentence by document and sentence indices.
      *
-     * @param docNum Document identifier
+     * @param docId Document identifier
      * @param sentNum Sentence index within document
      * @return Pointer to TokenizedSentence if found; nullptr otherwise
      *
      * @note Returns pointer to internal data; do not modify or store long-term
      */
-    [[nodiscard]] const std::optional<TokenizedSentence> getSentence(const size_t docNum, const size_t sentNum) const;
+    [[nodiscard]] const std::optional<TokenizedSentence> getSentence(const std::string& docId,
+                                                                     const size_t sentNum) const;
 
     /**
      * @brief Returns total sentence count in corpus.
@@ -116,7 +116,7 @@ class TokenizedSentenceCorpus {
   private:
     /**
      * @brief Nested map structure for fast sentence retrieval.
-     * @details Maps (docNum -> (sentNum -> TokenizedSentence)).
+     * @details Maps (docId -> (sentNum -> TokenizedSentence)).
      */
     SentenceMap sentenceMap;
 
@@ -129,7 +129,7 @@ class TokenizedSentenceCorpus {
      * @brief Adds sentence to corpus under specified document.
      * @details Stores both original and normalized versions with document/sentence indices.
      *
-     * @param docNum Document identifier
+     * @param docId Document identifier
      * @param sentNum Sentence index within document
      * @param originalStr Original sentence text
      * @param normalizedStr Lemmatized sentence text
@@ -137,7 +137,7 @@ class TokenizedSentenceCorpus {
      * @note Increments total sentence counter
      * @note Package-private for use by build() method
      */
-    void addSentence(const size_t docNum, const size_t sentNum, const std::string& data,
+    void addSentence(const std::string& docId, const size_t sentNum, const std::string& data,
                      const std::string& normalizedData);
 
     /**
@@ -146,7 +146,7 @@ class TokenizedSentenceCorpus {
      *
      * @return JSON object containing corpus data
      */
-    json serialize() const;
+    nlohmann::json serialize() const;
 
     /**
      * @brief Deserializes corpus from JSON format.
@@ -155,5 +155,5 @@ class TokenizedSentenceCorpus {
      *
      * @param j JSON object with corpus data structure
      */
-    void deserialize(const json& j);
+    void deserialize(const nlohmann::json& j);
 };

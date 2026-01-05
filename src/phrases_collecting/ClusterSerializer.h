@@ -1,11 +1,10 @@
 #pragma once
 
 #include "PatternPhrasesStorage.h"
+
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
-
-using json = nlohmann::json;
 
 /**
  * @brief Serializes WordComplexCluster objects to JSON format
@@ -19,7 +18,7 @@ class ClusterSerializer {
      * @param frequency Calculated frequency for the cluster
      * @return JSON object with cluster data
      */
-    json serializeCluster(const WordComplexCluster& cluster, double frequency) const;
+    nlohmann::json serializeCluster(const WordComplexCluster& cluster, double frequency) const;
 
     /**
      * @brief Serialize collection of clusters
@@ -28,22 +27,23 @@ class ClusterSerializer {
      * @param mergeNested If true, nest clusters with substring keys
      * @return JSON object with all clusters
      */
-    json serialize(const std::unordered_map<std::string, WordComplexCluster>& clusters,
-                   const std::unordered_map<std::string, double>& frequencies, bool mergeNested = false) const;
+    nlohmann::json serialize(const std::unordered_map<std::string, WordComplexCluster>& clusters,
+                             const std::unordered_map<std::string, double>& frequencies,
+                             bool mergeNested = false) const;
 
     /**
      * @brief Serialize only lemmas from a cluster
      * @param cluster The cluster with lemmas
      * @return JSON array of lemma objects
      */
-    json serializeLemmas(const WordComplexCluster& cluster) const;
+    nlohmann::json serializeLemmas(const WordComplexCluster& cluster) const;
 
     /**
      * @brief Serialize word complexes (phrases) in a cluster
      * @param cluster The cluster with phrases
      * @return JSON array of phrase objects
      */
-    json serializeWordComplexes(const WordComplexCluster& cluster) const;
+    nlohmann::json serializeWordComplexes(const WordComplexCluster& cluster) const;
 
     /**
      * @brief Serialize semantic relations for a lemma
@@ -51,7 +51,7 @@ class ClusterSerializer {
      * @param cluster The cluster with relation data
      * @return JSON object with hypernyms and hyponyms
      */
-    json serializeSemanticRelations(const std::string& lemma, const WordComplexCluster& cluster) const;
+    nlohmann::json serializeSemanticRelations(const std::string& lemma, const WordComplexCluster& cluster) const;
 
   private:
     /**
@@ -61,7 +61,7 @@ class ClusterSerializer {
      * @param cluster Reference to cluster for metrics
      * @return JSON object with lemma data
      */
-    json createLemmaObject(const std::string& lemma, size_t index, const WordComplexCluster& cluster) const;
+    nlohmann::json createLemmaObject(const std::string& lemma, size_t index, const WordComplexCluster& cluster) const;
 
     /**
      * @brief Create JSON object for a single phrase (word complex)
@@ -69,7 +69,8 @@ class ClusterSerializer {
      * @param contexts Vector of contexts to search for matching one
      * @return JSON object with phrase data
      */
-    json createPhraseObject(const WordComplexPtr& wordComplex, const std::vector<TokenizedSentence>& contexts) const;
+    nlohmann::json createPhraseObject(const WordComplexPtr& wordComplex,
+                                      const std::vector<TokenizedSentence>& contexts) const;
 
     /**
      * @brief Sort cluster keys and merge nested ones if needed

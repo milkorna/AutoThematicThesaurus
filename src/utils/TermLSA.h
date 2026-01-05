@@ -23,9 +23,11 @@ class TermLSA {
     MatrixXd GetU() const {
         return U;
     } // Returns the left singular matrix U.
+
     MatrixXd GetSigma() const {
         return Sigma;
     } // Returns the diagonal matrix of singular values Sigma.
+
     MatrixXd GetV() const {
         return V;
     } // Returns the right singular matrix V.
@@ -60,7 +62,7 @@ class TermLSA {
     MatrixXd V;                           // Right singular matrix from SVD.
     std::vector<std::string> terms;       // List of terms used in the analysis.
     std::unordered_map<int, std::vector<std::string>> topics; // Map of topics identified from analysis.
-    std::unordered_map<size_t, int> docIndexMap;              // Mapping of document numbers to matrix column indices.
+    std::unordered_map<std::string, int> docIndexMap;         // Mapping of document numbers to matrix column indices.
 
     // Method to create the term-document frequency matrix.
     // Returns a pair consisting of the frequency matrix and the list of terms.

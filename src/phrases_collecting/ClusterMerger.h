@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Logger.h"
 #include "PatternPhrasesStorage.h"
+
 #include <string>
-#include <unordered_map>
 
 /**
  * @brief Класс для слияния похожих кластеров фраз

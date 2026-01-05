@@ -1,14 +1,9 @@
 #include "PatternPhrasesStorage.h"
 #include "ClusterSerializer.h"
-#include "ComplexPhrasesCollector.h"
-#include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
 #include "SemanticRelations.h"
-#include "SimplePhrasesCollector.h"
 #include "TextCorpus.h"
-#include "TextCorpusLoader.h"
-
 #include "TopicManager.h"
+
 #include <regex>
 
 using json = nlohmann::json;
@@ -39,7 +34,7 @@ void PatternPhrasesStorage::AddContextsToClusters() {
 
         for (const auto& wordComplex : cluster.wordComplexes) {
             const Position& pos = wordComplex->pos;
-            const auto sentence = corpus.getSentence(pos.docNum, pos.sentNum);
+            const auto sentence = corpus.getSentence(pos.docId, pos.sentNum);
 
             if (sentence.has_value()) {
                 cluster.contexts.push_back(sentence.value());
@@ -548,12 +543,12 @@ void PatternPhrasesStorage::ComputeTextMetrics() {
             totalTopics[cluster.key] = topics;
         }
     }
-    int frequencyThreshold = static_cast<int>(clusters.size() * options.freqTresholdCoeff);
+    int frequencyThreshold = static_cast<int>(clusters.size() * options.freqThresholdCoeff);
     ApplyTopicFrequencyPenalty(totalTopics, frequencyThreshold);
     for (auto& clusterPair : clusters) {
         auto& cluster = clusterPair.second;
         if (const auto& iter = totalTopics.find(clusterPair.first); iter != totalTopics.end()) {
-            if (iter->second.size() > 0 && iter->second.size() < options.tresholdTopicsCount) {
+            if (iter->second.size() > 0 && iter->second.size() < options.thresholdTopicsCount) {
                 cluster.tagMatch = true;
             }
         }
@@ -626,7 +621,7 @@ void PatternPhrasesStorage::saveClusters(const std::string& filename, bool merge
 
     // Вычисляем частоты
     std::unordered_map<std::string, double> frequencies;
-    const auto divisor = static_cast<double>(options.textToProcessCount);
+    const auto divisor = static_cast<double>(options.totalDocuments);
     for (const auto& [key, cluster] : clustersToSave) {
         frequencies[key] = static_cast<double>(cluster.wordComplexes.size()) / divisor;
     }

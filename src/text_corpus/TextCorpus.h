@@ -1,14 +1,13 @@
 #pragma once
 
-#include "boost/algorithm/string.hpp"
-#include "nlohmann/json.hpp"
+#include <boost/algorithm/string.hpp>
+#include <nlohmann/json.hpp>
 #include <Eigen/Dense>
 #include <cmath>
 #include <fasttext.h>
 #include <string>
 #include <unordered_map>
 
-using json = nlohmann::json;
 using namespace Eigen;
 using VectorPtr = std::shared_ptr<fasttext::Vector>;
 

@@ -8,10 +8,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include <nlohmann/json.hpp>
-using json = nlohmann::json;
-
 #include <filesystem>
+#include <nlohmann/json.hpp>
 
 /**
  * @class JsonPatternParser
@@ -35,7 +33,7 @@ class JsonPatternParser {
      * @param arr JSON array of pattern objects.
      * @throws std::runtime_error If input is not an array.
      */
-    explicit JsonPatternParser(const json& arr);
+    explicit JsonPatternParser(const nlohmann::json& arr);
 
     /**
      * @brief Parses and registers all enabled patterns in manager.
@@ -47,9 +45,9 @@ class JsonPatternParser {
     void parseAll();
 
   private:
-    std::unordered_map<std::string, json> rawPatterns_; ///< Raw JSON patterns by name.
-    PatternMap built_;                                  ///< Built models cache (memoization).
-    StringSet visiting_;                                ///< Currently visiting patterns (cycle detection).
+    std::unordered_map<std::string, nlohmann::json> rawPatterns_; ///< Raw JSON patterns by name.
+    PatternMap built_;                                            ///< Built models cache (memoization).
+    StringSet visiting_;                                          ///< Currently visiting patterns (cycle detection).
 
     /**
      * @brief Builds a model by name with memoization and cycle detection.
@@ -68,7 +66,7 @@ class JsonPatternParser {
      * @return Vector of built components.
      * @throws std::runtime_error On invalid structure or unknown type.
      */
-    Components buildComponents(const json& body, const std::string& ownerName);
+    Components buildComponents(const nlohmann::json& body, const std::string& ownerName);
 
     /**
      * @brief Builds a word component from JSON.
@@ -77,7 +75,7 @@ class JsonPatternParser {
      * @return Shared pointer to the word component.
      * @throws std::runtime_error On missing or invalid fields.
      */
-    std::shared_ptr<WordComp> buildWordComp(const json& item);
+    std::shared_ptr<WordComp> buildWordComp(const nlohmann::json& item);
 
     /**
      * @brief Builds a pattern (model) component from JSON.
@@ -86,5 +84,5 @@ class JsonPatternParser {
      * @return Shared pointer to the pattern component.
      * @throws std::runtime_error On missing or invalid fields.
      */
-    std::shared_ptr<ModelComp> buildPatternComp(const json& item);
+    std::shared_ptr<ModelComp> buildPatternComp(const nlohmann::json& item);
 };

@@ -8,7 +8,6 @@
 #include <vector>
 
 namespace fs = std::filesystem;
-using json = nlohmann::json;
 
 /**
  * @brief Loads cluster and phrase data from files into PatternPhrasesStorage.

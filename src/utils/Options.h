@@ -1,9 +1,5 @@
 #pragma once
 
-#include "xmorphy/morph/WordForm.h"
-
-#include "Logger.h"
-
 #include <filesystem>
 
 namespace fs = std::filesystem;
@@ -15,20 +11,20 @@ namespace fs = std::filesystem;
  *          including file paths, thresholds, and processing parameters.
  */
 struct Options {
-    int textToProcessCount;
-    int tresholdTopicsCount;
+    int totalDocuments;
+    int thresholdTopicsCount;
     bool cleanStopWords; ///< Indicates if stop words should be cleaned.
     bool validateBoundaries;
+    bool mergeDocumentTitleAndText;
     double topicsThreshold;
     double topicsHyponymThreshold;
-    double freqTresholdCoeff;
+    double freqThresholdCoeff;
 
     fs::path dataDir;
     fs::path corpusDir;
-    fs::path textsDir;
+    fs::path rawDataFile;
     fs::path patternsFile;
     fs::path stopWordsFile;
-    fs::path tagsAndHubsFile;
     fs::path resDir;
     fs::path corpusFile;
     fs::path filteredCorpusFile;
@@ -58,17 +54,18 @@ struct Options {
     Options& operator=(const Options&) = delete;
 
     /**
-     * @brief Recomputes corpus-dependent file paths.
-     * @details Updates paths if corpusDir has been changed from default.
+     * @brief Sets corpus directory and recomputes all corpus-dependent paths.
+     * @details Updates corpusDir and all related paths in a single operation.
+     * @param newCorpusDir The new corpus directory path
      */
-    void recomputeCorpusDependenciesPaths();
+    void setCorpusDir(const fs::path& newCorpusDir);
 
     /**
-     * @brief Updates the count of files to process.
-     * @details Iterates through textsDir and counts regular files.
-     *          Exits application if no files found or on error.
+     * @brief Updates the count of documents from corpus metadata.
+     * @details Reads "metadata.total_documents" from corpus JSON file.
+     *          Exits application if file not found or parsing fails.
      */
-    void updateFileCount();
+    void updateDocumentCount();
 
   private:
     /**
@@ -78,69 +75,3 @@ struct Options {
      */
     Options();
 };
-
-inline Options::Options() {
-    fs::path repoPath = fs::current_path();
-
-    dataDir = repoPath / "my_data";
-    corpusDir = dataDir / "nlp_corpus";
-    textsDir = corpusDir / "texts";
-    patternsFile = dataDir / "patterns.json";
-    stopWordsFile = dataDir / "stop_words";
-    tagsAndHubsFile = corpusDir / "tags_and_hubs";
-    resDir = corpusDir / "results";
-    corpusFile = corpusDir / "corpus";
-    filteredCorpusFile = corpusDir / "filtered_corpus";
-    sentencesFile = corpusDir / "sentences.json";
-    embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
-    totalResultsPath = corpusDir / "total_results.json";
-    termsCandidatesPath = corpusDir / "term_candidates.json";
-
-    textToProcessCount = 0;
-    tresholdTopicsCount = 7;
-    cleanStopWords = true;
-    validateBoundaries = true;
-    topicsThreshold = 0.6;
-    topicsHyponymThreshold = 0.98;
-    freqTresholdCoeff = 0.12;
-}
-
-inline void Options::recomputeCorpusDependenciesPaths() {
-    if (!fs::equivalent(corpusDir, dataDir / "nlp_corpus")) {
-        textsDir = corpusDir / "texts";
-        tagsAndHubsFile = corpusDir / "tags_and_hubs";
-        resDir = corpusDir / "results";
-        corpusFile = corpusDir / "corpus";
-        filteredCorpusFile = corpusDir / "filtered_corpus";
-        sentencesFile = corpusDir / "sentences.json";
-        totalResultsPath = corpusDir / "total_results.json";
-        termsCandidatesPath = corpusDir / "term_candidates.json";
-    }
-}
-
-inline void Options::updateFileCount() {
-    int fileCount = 0;
-    try {
-        for (const auto& entry : fs::directory_iterator(textsDir)) {
-            if (entry.is_regular_file()) {
-                ++fileCount;
-            }
-        }
-        textToProcessCount = fileCount;
-    } catch (const std::exception& ex) {
-        Logger::log("Options", LogLevel::Error,
-                    std::string("Failed to iterate over textsDir: ") + ex.what() + ". Exiting.");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    } catch (...) {
-        Logger::log("Options", LogLevel::Error, "Unknown error while counting files in textsDir. Exiting.");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    }
-
-    if (textToProcessCount == 0) {
-        Logger::log("Options", LogLevel::Error, "No files to process. Exiting");
-        Logger::flushLogs();
-        std::exit(EXIT_FAILURE);
-    }
-}

@@ -3,9 +3,9 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # Directories
-DATA_DIR = PROJECT_ROOT / 'my_data'
-CORPUS_DIR = DATA_DIR / 'nlp_corpus'
-RELATIONS_DATA_DIR = PROJECT_ROOT / 'relations'
+DATA_DIR = PROJECT_ROOT / "data"
+CORPUS_DIR = DATA_DIR / "nlp_corpus"
+RELATIONS_DATA_DIR = PROJECT_ROOT / "relations"
 
 # General data
 PATH_FASTTEXT = PROJECT_ROOT / "my_custom_fasttext_model_finetuned.bin"

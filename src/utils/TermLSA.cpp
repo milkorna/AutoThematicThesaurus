@@ -2,7 +2,7 @@
 
 std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix() {
     // Map to store term frequencies across documents: key is term, value is a map of document IDs to frequencies.
-    std::unordered_map<std::string, std::unordered_map<size_t, int>> termFrequency;
+    std::unordered_map<std::string, std::unordered_map<std::string, int>> termFrequency;
 
     // Map to store indices of terms for the matrix: key is term, value is its index in the matrix rows.
     std::unordered_map<std::string, int> termIndex;
@@ -23,13 +23,13 @@ std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix(
 
         // Count the frequency of the term in each document and create document mapping.
         for (const auto& wordComplex : cluster.second.wordComplexes) {
-            size_t docNum = wordComplex->pos.docNum; // Document number where the term appears.
-            termFrequency[term][docNum]++;           // Increment the term's frequency in the current document.
+            const auto docId = wordComplex->pos.docId; // Document number where the term appears.
+            termFrequency[term][docId]++;              // Increment the term's frequency in the current document.
 
             // Add the document index to the map if it is not already present.
-            if (docIndexMap.find(docNum) == docIndexMap.end()) {
+            if (docIndexMap.find(docId) == docIndexMap.end()) {
                 int docIndex = docIndexMap.size(); // Assign the next available index for this document.
-                docIndexMap[docNum] = docIndex;    // Map the document number to its index in the matrix columns.
+                docIndexMap[docId] = docIndex;     // Map the document number to its index in the matrix columns.
             }
         }
     }
@@ -50,17 +50,17 @@ std::pair<MatrixXd, std::vector<std::string>> TermLSA::CreateTermDocumentMatrix(
         int termIdx = termIndex[term]; // Get the row index of the term.
 
         // Iterate over each document-frequency pair for the current term.
-        for (const auto& [docNum, freq] : docFreqMap) {
+        for (const auto& [docId, freq] : docFreqMap) {
             // Check if the document number is correctly mapped in docIndexMap.
-            if (docIndexMap.find(docNum) == docIndexMap.end()) {
-                std::cerr << "Error: Document index " << docNum << " exceeds mapped indices size." << std::endl;
+            if (docIndexMap.find(docId) == docIndexMap.end()) {
+                std::cerr << "Error: Document index " << docId << " exceeds mapped indices size." << std::endl;
                 continue; // Skip this entry if the document index is not found.
             }
-            int colIdx = docIndexMap[docNum]; // Get the column index for the document.
+            int colIdx = docIndexMap[docId]; // Get the column index for the document.
 
             // Check that the column index does not exceed the matrix dimensions.
             if (colIdx >= termDocumentMatrix.cols()) {
-                std::cerr << "Error: Mapped column index " << colIdx << " for document " << docNum
+                std::cerr << "Error: Mapped column index " << colIdx << " for document " << docId
                           << " exceeds matrix column size." << std::endl;
                 continue; // Skip this entry if the column index is out of bounds.
             }

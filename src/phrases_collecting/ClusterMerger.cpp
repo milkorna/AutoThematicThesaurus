@@ -1,6 +1,6 @@
 #include "ClusterMerger.h"
+
 #include <algorithm>
-#include <set>
 
 void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff, size_t endLength) {
     Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");

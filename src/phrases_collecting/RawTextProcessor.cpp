@@ -1,4 +1,12 @@
 #include "RawTextProcessor.h"
+
+#include "ComplexPhrasesCollector.h"
+#include "MorphAnalyzer.h"
+#include "SimplePhrasesCollector.h"
+#include "TextCorpus.h"
+#include "TextCorpusLoader.h"
+#include "TopicManager.h"
+
 #include "xmorphy/graphem/SentenceSplitter.h"
 #include "xmorphy/graphem/Tokenizer.h"
 #include "xmorphy/ml/SingleWordDisambiguate.h"
@@ -7,15 +15,7 @@
 #include "xmorphy/morph/Processor.h"
 #include "xmorphy/utils/UniString.h"
 
-#include "ComplexPhrasesCollector.h"
-#include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
-#include "SimplePhrasesCollector.h"
-#include "TextCorpus.h"
-#include "TextCorpusLoader.h"
-
-#include "TopicManager.h"
-#include <regex>
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
@@ -26,8 +26,13 @@ void removeSeparators(std::vector<X::WordFormPtr>& sentence) {
         sentence.end());
 }
 
-void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
-    Logger::log("", LogLevel::Info, "Processing raw text data...");
+void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documents) {
+    Logger::log("RawTextProcessor", LogLevel::Info, "Processing " + std::to_string(documents.size()) + " documents...");
+
+    if (documents.empty()) {
+        Logger::log("RawTextProcessor", LogLevel::Warning, "No documents to process");
+        return;
+    }
 
     fs::path outputDir = options.resDir;
     fs::create_directories(outputDir);
@@ -41,32 +46,36 @@ void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
     X::TFJoinedModel joiner;
 
     try {
-        for (const auto& file : files) {
-            Logger::log("RawTextProcessor", LogLevel::Info, "Processing file " + file.filename().string());
+        for (const auto& doc : documents) {
+            Logger::log("RawTextProcessor", LogLevel::Info, "Processing document: " + doc.doc_id);
 
-            // Load raw text into corpus
-            corpus.LoadTextsFromFile(file);
+            // Получаем текст для обработки
+            std::string textToProcess = doc.getProcessingText(options.mergeDocumentTitleAndText);
 
-            // Process file to extract phrases
-            std::string filename = file.filename().replace_extension(".json").string();
-            fs::path outputFile = outputDir / ("res_" + filename);
+            if (textToProcess.empty()) {
+                Logger::log("RawTextProcessor", LogLevel::Warning,
+                            "Document " + doc.doc_id + " has empty processing text, skipping");
+                continue;
+            }
+
+            // Создаем выходной файл для этого документа
+            std::string outputFilename = doc.doc_id + "_res.json";
+            fs::path outputFile = outputDir / outputFilename;
 
             std::ofstream outFile(outputFile);
             if (!outFile) {
                 Logger::log("RawTextProcessor", LogLevel::Error, "Failed to create JSON file: " + outputFile.string());
-                return;
+                continue;
             }
+
             outFile << "[]" << std::endl;
             Logger::log("RawTextProcessor", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
 
-            Process processContext(file, outputFile);
+            Process processContext(doc.doc_id, outputFile);
 
-            std::ifstream input{file};
-            if (!input) {
-                Logger::log("RawTextProcessor", LogLevel::Error, "Failed to open input file: " + file.string());
-                return;
-            }
-            X::SentenceSplitter sentenceSplitter(input);
+            // Передаем текст в SentenceSplitter через stringstream
+            std::istringstream textStream(textToProcess);
+            X::SentenceSplitter sentenceSplitter(textStream);
 
             while (!sentenceSplitter.eof()) {
                 std::string rawSentence;
@@ -110,7 +119,7 @@ void RawTextProcessor::processRawData(const std::vector<fs::path>& files) {
 void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& process) {
     auto& corpus = TextCorpus::GetCorpus();
 
-    if (lastDocumentId != -1 && lastDocumentId != process.docNum) {
+    if (lastDocumentId.empty() && lastDocumentId != process.docId) {
         for (const auto& lemma : uniqueLemmasInDoc) {
             corpus.UpdateDocumentFrequency(lemma);
         }
@@ -127,7 +136,7 @@ void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& p
     }
 
     uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
-    lastDocumentId = process.docNum;
+    lastDocumentId = process.docId;
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.Collect(process);

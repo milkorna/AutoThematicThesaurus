@@ -1,20 +1,15 @@
-#include <boost/program_options.hpp>
-
-#include "xmorphy/utils/UniString.h"
-
+#include "PhrasesCollectorUtils.h"
 #include "GrammarPatternManager.h"
 #include "MorphAnalyzer.h"
-#include "PhrasesCollectorUtils.h"
-#include "TextCorpus.h"
-#include "TextCorpusLoader.h"
-#include "TokenizedSentenceCorpus.h"
 
+#include "xmorphy/utils/UniString.h"
+#include <boost/program_options.hpp>
 #include <cctype>
+#include <nlohmann/json.hpp>
 #include <unicode/locid.h>
 #include <unicode/unistr.h>
 #include <unicode/ustream.h>
 
-#include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
 bool MorphAnanlysisError(const X::WordFormPtr& token) {
@@ -71,7 +66,7 @@ void OutputResults(const std::vector<WordComplexPtr>& collection, Process& proce
         j["0_key"] = key;
         j["1_textForm"] = wc->textForm;
         j["2_modelName"] = wc->modelName;
-        j["3_docNum"] = process.docNum;
+        j["3_docId"] = process.docId;
         j["4_sentNum"] = process.sentNum;
         j["5_start_ind"] = wc->pos.start;
         j["6_end_ind"] = wc->pos.end;

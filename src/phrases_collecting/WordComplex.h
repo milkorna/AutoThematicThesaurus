@@ -12,10 +12,10 @@
  * @brief This structure represents the position of a word or phrase within a document.
  */
 struct Position {
-    size_t start;   ///< Start position of the word or phrase.
-    size_t end;     ///< End position of the word or phrase.
-    size_t docNum;  ///< Document number.
-    size_t sentNum; ///< Sentence number.
+    size_t start;      ///< Start position of the word or phrase.
+    size_t end;        ///< End position of the word or phrase.
+    std::string docId; ///< Document number.
+    size_t sentNum;    ///< Sentence number.
 };
 
 /**

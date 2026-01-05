@@ -1,7 +1,10 @@
 #include "ClusterSerializer.h"
+
 #include "Logger.h"
+
 #include <algorithm>
-#include <sstream>
+
+using json = nlohmann::json;
 
 json ClusterSerializer::serializeCluster(const WordComplexCluster& cluster, double frequency) const {
     json clusterJson;
@@ -159,12 +162,12 @@ json ClusterSerializer::createPhraseObject(const WordComplexPtr& wordComplex,
     // Позиция с вложенной структурой
     phraseJson["1_position"] = {{"0_start", wordComplex->pos.start},
                                 {"1_end", wordComplex->pos.end},
-                                {"2_doc_num", wordComplex->pos.docNum},
+                                {"2_doc_id", wordComplex->pos.docId},
                                 {"3_sent_num", wordComplex->pos.sentNum}};
 
     // Ищем контекст (оригинальное предложение)
     for (const auto& context : contexts) {
-        if (context.docNum == wordComplex->pos.docNum && context.sentNum == wordComplex->pos.sentNum) {
+        if (context.docId == wordComplex->pos.docId && context.sentNum == wordComplex->pos.sentNum) {
             phraseJson["2_context"] = context.originalStr;
             break;
         }

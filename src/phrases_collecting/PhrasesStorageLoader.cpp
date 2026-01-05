@@ -1,9 +1,10 @@
 #include "PhrasesStorageLoader.h"
 #include "Logger.h"
-#include "PhrasesCollectorUtils.h"
 #include "TextCorpus.h"
 #include <algorithm>
 #include <fstream>
+
+using json = nlohmann::json;
 
 // Define static member
 ClusterDeserializer PhrasesStorageLoader::deserializer;

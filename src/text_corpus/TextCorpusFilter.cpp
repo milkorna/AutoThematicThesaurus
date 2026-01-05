@@ -1,4 +1,5 @@
 #include "TextCorpusFilter.h"
+
 #include <algorithm>
 
 void TextCorpusFilter::filterTextsByLength(TextCorpus& corpus, size_t minLength, bool requireSpaces) {

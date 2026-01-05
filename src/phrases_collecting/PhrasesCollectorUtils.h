@@ -1,12 +1,9 @@
 #pragma once
 
-#include "xmorphy/morph/WordForm.h"
-
-#include "Embedding.h"
 #include "WordComplex.h"
 
-#include <filesystem>
-#include <mutex>
+#include "xmorphy/morph/WordForm.h"
+
 #include <unordered_set>
 
 // \struct CurrentPhraseStatus

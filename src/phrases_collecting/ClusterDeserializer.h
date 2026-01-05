@@ -1,11 +1,9 @@
 #pragma once
 
 #include "PatternPhrasesStorage.h"
+
 #include <nlohmann/json.hpp>
 #include <string>
-#include <vector>
-
-using json = nlohmann::json;
 
 /**
  * @brief Deserializes JSON objects into WordComplexCluster objects.
@@ -27,7 +25,7 @@ class ClusterDeserializer {
      *
      * @throws std::runtime_error If JSON structure is invalid or required fields missing
      */
-    WordComplexCluster deserializeCluster(const json& obj, const std::string& key);
+    WordComplexCluster deserializeCluster(const nlohmann::json& obj, const std::string& key);
 
     /**
      * @brief Deserialize phrase result object into WordComplex.
@@ -40,7 +38,7 @@ class ClusterDeserializer {
      * @note Returns nullptr for entries with underscores in key or digits in key
      * @see LoadPhraseStorageFromResultsDir
      */
-    WordComplexPtr deserializePhraseResult(const json& obj);
+    WordComplexPtr deserializePhraseResult(const nlohmann::json& obj);
 
   private:
     /**
@@ -50,7 +48,7 @@ class ClusterDeserializer {
      *
      * @throws std::runtime_error If lemma structure is invalid
      */
-    void deserializeLemmas(const json& lemmas_json, WordComplexCluster& cluster);
+    void deserializeLemmas(const nlohmann::json& lemmas_json, WordComplexCluster& cluster);
 
     /**
      * @brief Deserialize word complexes (phrases) array from JSON.
@@ -59,7 +57,7 @@ class ClusterDeserializer {
      *
      * @throws std::runtime_error If phrase structure is invalid
      */
-    void deserializeWordComplexes(const json& phrases_json, WordComplexCluster& cluster);
+    void deserializeWordComplexes(const nlohmann::json& phrases_json, WordComplexCluster& cluster);
 
     /**
      * @brief Extract lemma string from numbered format.
