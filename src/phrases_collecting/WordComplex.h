@@ -10,10 +10,12 @@
  * @brief This structure represents the position of a word or phrase within a document.
  */
 struct Position {
-    size_t start;      ///< Start position of the word or phrase.
-    size_t end;        ///< End position of the word or phrase.
-    std::string docId; ///< Document number.
-    size_t sentNum;    ///< Sentence number.
+    size_t start = 0; ///< Start position of the word or phrase.
+    size_t end = 0;   ///< End position of the word or phrase.
+    size_t charStart = 0;
+    size_t charEnd = 0;
+    size_t sentNum = 0; ///< Sentence number.
+    std::string docId;  ///< Document number.
 };
 
 class Process;
@@ -50,11 +52,11 @@ using WordComplexPtr = std::shared_ptr<WordComplex>;
 /**
  * @brief Initializes a WordComplex object with the given parameters.
  *
- * @param curSimplePhr A pointer to the current simple phrase.
+ * @param basePhrase A pointer to the base phrase.
  * @param modelName The name of the model.
  * @return A shared pointer to the initialized WordComplex object.
  */
-WordComplexPtr initializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName);
+WordComplexPtr initializeWordComplex(const WordComplexPtr& basePhrase, const std::string& modelName);
 
 /**
  * @brief Initializes a WordComplex object with the given parameters.

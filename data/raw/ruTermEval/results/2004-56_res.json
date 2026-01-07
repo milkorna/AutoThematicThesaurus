@@ -1,95 +1,123 @@
 [
     {
-        "0_key": "нынешний поколение",
-        "1_textForm": "нынешнего поколения",
-        "2_modelName": "Прил + С",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_нынешний",
-            "1_поколение"
+        "key": "нынешний поколение",
+        "textForm": "нынешнего поколения",
+        "modelName": "Прил + С",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            103,
+            122
+        ],
+        "lemmas": [
+            "нынешний",
+            "поколение"
         ]
     },
     {
-        "0_key": "биологический принадлежность",
-        "1_textForm": "биологическую принадлежность",
-        "2_modelName": "Прил + С",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 19,
-        "6_end_ind": 20,
-        "7_lemmas": [
-            "0_биологический",
-            "1_принадлежность"
+        "key": "биологический принадлежность",
+        "textForm": "биологическую принадлежность",
+        "modelName": "Прил + С",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 19,
+        "end_token_ind": 20,
+        "span": [
+            201,
+            229
+        ],
+        "lemmas": [
+            "биологический",
+            "принадлежность"
         ]
     },
     {
-        "0_key": "homo sapience",
-        "1_textForm": "Homo Sapience",
-        "2_modelName": "Англ",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 22,
-        "6_end_ind": 23,
-        "7_lemmas": [
-            "0_homo",
-            "1_sapience"
+        "key": "homo sapience",
+        "textForm": "Homo Sapience",
+        "modelName": "Англ",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 22,
+        "end_token_ind": 23,
+        "span": [
+            232,
+            245
+        ],
+        "lemmas": [
+            "homo",
+            "sapience"
         ]
     },
     {
-        "0_key": "счет симбиоз",
-        "1_textForm": "счет симбиоза",
-        "2_modelName": "С + Срд",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 32,
-        "6_end_ind": 33,
-        "7_lemmas": [
-            "0_счет",
-            "1_симбиоз"
+        "key": "счет симбиоз",
+        "textForm": "счет симбиоза",
+        "modelName": "С + Срд",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 32,
+        "end_token_ind": 33,
+        "span": [
+            298,
+            311
+        ],
+        "lemmas": [
+            "счет",
+            "симбиоз"
         ]
     },
     {
-        "0_key": "сверхвысокий технология",
-        "1_textForm": "сверхвысоких технологий",
-        "2_modelName": "Прил + С",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 38,
-        "6_end_ind": 39,
-        "7_lemmas": [
-            "0_сверхвысокий",
-            "1_технология"
+        "key": "сверхвысокий технология",
+        "textForm": "сверхвысоких технологий",
+        "modelName": "Прил + С",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 38,
+        "end_token_ind": 39,
+        "span": [
+            352,
+            375
+        ],
+        "lemmas": [
+            "сверхвысокий",
+            "технология"
         ]
     },
     {
-        "0_key": "счет симбиоз с продукт",
-        "1_textForm": "счет симбиоза с продуктами",
-        "2_modelName": "(С + Срд) + Предл + С",
-        "3_docId": "2004-56",
-        "4_sentNum": 3,
-        "5_start_ind": 32,
-        "6_end_ind": 35,
-        "7_lemmas": [
-            "0_счет",
-            "1_симбиоз",
-            "2_с",
-            "3_продукт"
+        "key": "счет симбиоз с продукт",
+        "textForm": "счет симбиоза с продуктами",
+        "modelName": "(С + Срд) + Предл + С",
+        "docId": "2004-56",
+        "sentNum": 3,
+        "start_token_ind": 32,
+        "end_token_ind": 35,
+        "span": [
+            298,
+            324
+        ],
+        "lemmas": [
+            "счет",
+            "симбиоз",
+            "с",
+            "продукт"
         ]
     },
     {
-        "0_key": "данный доклад",
-        "1_textForm": "данном докладе",
-        "2_modelName": "Прил + С",
-        "3_docId": "2004-56",
-        "4_sentNum": 4,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_данный",
-            "1_доклад"
+        "key": "данный доклад",
+        "textForm": "данном докладе",
+        "modelName": "Прил + С",
+        "docId": "2004-56",
+        "sentNum": 4,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            628,
+            642
+        ],
+        "lemmas": [
+            "данный",
+            "доклад"
         ]
     }
 ]

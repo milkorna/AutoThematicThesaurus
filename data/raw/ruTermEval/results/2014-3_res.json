@@ -1,316 +1,408 @@
 [
     {
-        "0_key": "дискурсивный слово",
-        "1_textForm": "ДИСКУРСИВНЫЕ СЛОВА",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_дискурсивный",
-            "1_слово"
+        "key": "дискурсивный слово",
+        "textForm": "ДИСКУРСИВНЫЕ СЛОВА",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            18
+        ],
+        "lemmas": [
+            "дискурсивный",
+            "слово"
         ]
     },
     {
-        "0_key": "общевопросительный предложение",
-        "1_textForm": "ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 0,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_общевопросительный",
-            "1_предложение"
+        "key": "общевопросительный предложение",
+        "textForm": "ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 0,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            21,
+            52
+        ],
+        "lemmas": [
+            "общевопросительный",
+            "предложение"
         ]
     },
     {
-        "0_key": "немецкий соответствие",
-        "1_textForm": "НЕМЕЦКИЕ СООТВЕТСТВИЯ",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 0,
-        "5_start_ind": 8,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_немецкий",
-            "1_соответствие"
+        "key": "немецкий соответствие",
+        "textForm": "НЕМЕЦКИЕ СООТВЕТСТВИЯ",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 0,
+        "start_token_ind": 8,
+        "end_token_ind": 9,
+        "span": [
+            61,
+            82
+        ],
+        "lemmas": [
+            "немецкий",
+            "соответствие"
         ]
     },
     {
-        "0_key": "дискурсивный слово в общевопросительный предложение",
-        "1_textForm": "ДИСКУРСИВНЫЕ СЛОВА В ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
-        "2_modelName": "(Прил + С) + Предл + (Прил + С)",
-        "3_docId": "2014-3",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_дискурсивный",
-            "1_слово",
-            "2_в",
-            "3_общевопросительный",
-            "4_предложение"
+        "key": "дискурсивный слово в общевопросительный предложение",
+        "textForm": "ДИСКУРСИВНЫЕ СЛОВА В ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
+        "modelName": "(Прил + С) + Предл + (Прил + С)",
+        "docId": "2014-3",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 4,
+        "span": [
+            0,
+            52
+        ],
+        "lemmas": [
+            "дискурсивный",
+            "слово",
+            "в",
+            "общевопросительный",
+            "предложение"
         ]
     },
     {
-        "0_key": "слово в общевопросительный предложение",
-        "1_textForm": "СЛОВА В ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
-        "2_modelName": "С + Предл + (Прил + С)",
-        "3_docId": "2014-3",
-        "4_sentNum": 0,
-        "5_start_ind": 1,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_слово",
-            "1_в",
-            "2_общевопросительный",
-            "3_предложение"
+        "key": "слово в общевопросительный предложение",
+        "textForm": "СЛОВА В ОБЩЕВОПРОСИТЕЛЬНЫХ ПРЕДЛОЖЕНИЯХ",
+        "modelName": "С + Предл + (Прил + С)",
+        "docId": "2014-3",
+        "sentNum": 0,
+        "start_token_ind": 1,
+        "end_token_ind": 4,
+        "span": [
+            13,
+            52
+        ],
+        "lemmas": [
+            "слово",
+            "в",
+            "общевопросительный",
+            "предложение"
         ]
     },
     {
-        "0_key": "русский частица",
-        "1_textForm": "русские частицы",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 1,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_русский",
-            "1_частица"
+        "key": "русский частица",
+        "textForm": "русские частицы",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 1,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            180,
+            195
+        ],
+        "lemmas": [
+            "русский",
+            "частица"
         ]
     },
     {
-        "0_key": "немецкий эквивалент",
-        "1_textForm": "немецкий эквивалент",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_немецкий",
-            "1_эквивалент"
+        "key": "немецкий эквивалент",
+        "textForm": "немецкий эквивалент",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            378,
+            397
+        ],
+        "lemmas": [
+            "немецкий",
+            "эквивалент"
         ]
     },
     {
-        "0_key": "близкий немецкий эквивалент",
-        "1_textForm": "близкий немецкий эквивалент",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_близкий",
-            "1_немецкий",
-            "2_эквивалент"
+        "key": "близкий немецкий эквивалент",
+        "textForm": "близкий немецкий эквивалент",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            370,
+            397
+        ],
+        "lemmas": [
+            "близкий",
+            "немецкий",
+            "эквивалент"
         ]
     },
     {
-        "0_key": "gehst du",
-        "1_textForm": "Gehst du",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_gehst",
-            "1_du"
+        "key": "gehst du",
+        "textForm": "Gehst du",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            404,
+            412
+        ],
+        "lemmas": [
+            "gehst",
+            "du"
         ]
     },
     {
-        "0_key": "du etwa",
-        "1_textForm": "du etwa",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 10,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_du",
-            "1_etwa"
+        "key": "du etwa",
+        "textForm": "du etwa",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 10,
+        "end_token_ind": 11,
+        "span": [
+            410,
+            417
+        ],
+        "lemmas": [
+            "du",
+            "etwa"
         ]
     },
     {
-        "0_key": "gehst du etwa",
-        "1_textForm": "Gehst du etwa",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 9,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_gehst",
-            "1_du",
-            "2_etwa"
+        "key": "gehst du etwa",
+        "textForm": "Gehst du etwa",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 9,
+        "end_token_ind": 11,
+        "span": [
+            404,
+            417
+        ],
+        "lemmas": [
+            "gehst",
+            "du",
+            "etwa"
         ]
     },
     {
-        "0_key": "etwa mit",
-        "1_textForm": "etwa mit",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 11,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_etwa",
-            "1_mit"
+        "key": "etwa mit",
+        "textForm": "etwa mit",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 11,
+        "end_token_ind": 12,
+        "span": [
+            413,
+            421
+        ],
+        "lemmas": [
+            "etwa",
+            "mit"
         ]
     },
     {
-        "0_key": "du etwa mit",
-        "1_textForm": "du etwa mit",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 10,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_du",
-            "1_etwa",
-            "2_mit"
+        "key": "du etwa mit",
+        "textForm": "du etwa mit",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 10,
+        "end_token_ind": 12,
+        "span": [
+            410,
+            421
+        ],
+        "lemmas": [
+            "du",
+            "etwa",
+            "mit"
         ]
     },
     {
-        "0_key": "gehst du etwa mit",
-        "1_textForm": "Gehst du etwa mit",
-        "2_modelName": "Англ",
-        "3_docId": "2014-3",
-        "4_sentNum": 3,
-        "5_start_ind": 9,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_gehst",
-            "1_du",
-            "2_etwa",
-            "3_mit"
+        "key": "gehst du etwa mit",
+        "textForm": "Gehst du etwa mit",
+        "modelName": "Англ",
+        "docId": "2014-3",
+        "sentNum": 3,
+        "start_token_ind": 9,
+        "end_token_ind": 12,
+        "span": [
+            404,
+            421
+        ],
+        "lemmas": [
+            "gehst",
+            "du",
+            "etwa",
+            "mit"
         ]
     },
     {
-        "0_key": "материал частица",
-        "1_textForm": "Материал частиц",
-        "2_modelName": "С + Срд",
-        "3_docId": "2014-3",
-        "4_sentNum": 5,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_материал",
-            "1_частица"
+        "key": "материал частица",
+        "textForm": "Материал частиц",
+        "modelName": "С + Срд",
+        "docId": "2014-3",
+        "sentNum": 5,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            461,
+            476
+        ],
+        "lemmas": [
+            "материал",
+            "частица"
         ]
     },
     {
-        "0_key": "семантический тождество",
-        "1_textForm": "семантическим тождеством",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 5,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_семантический",
-            "1_тождество"
+        "key": "семантический тождество",
+        "textForm": "семантическим тождеством",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 5,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            531,
+            555
+        ],
+        "lemmas": [
+            "семантический",
+            "тождество"
         ]
     },
     {
-        "0_key": "переводимостий и семантический тождество",
-        "1_textForm": "переводимостью и семантическим тождеством",
-        "2_modelName": "Прил + и + (Прил + С)",
-        "3_docId": "2014-3",
-        "4_sentNum": 5,
-        "5_start_ind": 7,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_переводимостий",
-            "1_и",
-            "2_семантический",
-            "3_тождество"
+        "key": "переводимостий и семантический тождество",
+        "textForm": "переводимостью и семантическим тождеством",
+        "modelName": "Прил + и + (Прил + С)",
+        "docId": "2014-3",
+        "sentNum": 5,
+        "start_token_ind": 7,
+        "end_token_ind": 10,
+        "span": [
+            514,
+            555
+        ],
+        "lemmas": [
+            "переводимостий",
+            "и",
+            "семантический",
+            "тождество"
         ]
     },
     {
-        "0_key": "богатый репертуар",
-        "1_textForm": "богатом репертуаре",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 6,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_богатый",
-            "1_репертуар"
+        "key": "богатый репертуар",
+        "textForm": "богатом репертуаре",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 6,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            645,
+            663
+        ],
+        "lemmas": [
+            "богатый",
+            "репертуар"
         ]
     },
     {
-        "0_key": "вопросительный частица",
-        "1_textForm": "вопросительных частиц",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 6,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_вопросительный",
-            "1_частица"
+        "key": "вопросительный частица",
+        "textForm": "вопросительных частиц",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 6,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            664,
+            685
+        ],
+        "lemmas": [
+            "вопросительный",
+            "частица"
         ]
     },
     {
-        "0_key": "немецкий язык",
-        "1_textForm": "немецком языках",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 6,
-        "5_start_ind": 11,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_немецкий",
-            "1_язык"
+        "key": "немецкий язык",
+        "textForm": "немецком языках",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 6,
+        "start_token_ind": 11,
+        "end_token_ind": 12,
+        "span": [
+            703,
+            718
+        ],
+        "lemmas": [
+            "немецкий",
+            "язык"
         ]
     },
     {
-        "0_key": "богатый репертуар вопросительный частица",
-        "1_textForm": "богатом репертуаре вопросительных частиц",
-        "2_modelName": "(Прил + С) + (Прил + С)рд",
-        "3_docId": "2014-3",
-        "4_sentNum": 6,
-        "5_start_ind": 1,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_богатый",
-            "1_репертуар",
-            "2_вопросительный",
-            "3_частица"
+        "key": "богатый репертуар вопросительный частица",
+        "textForm": "богатом репертуаре вопросительных частиц",
+        "modelName": "(Прил + С) + (Прил + С)рд",
+        "docId": "2014-3",
+        "sentNum": 6,
+        "start_token_ind": 1,
+        "end_token_ind": 4,
+        "span": [
+            645,
+            685
+        ],
+        "lemmas": [
+            "богатый",
+            "репертуар",
+            "вопросительный",
+            "частица"
         ]
     },
     {
-        "0_key": "репертуар вопросительный частица",
-        "1_textForm": "репертуаре вопросительных частиц",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2014-3",
-        "4_sentNum": 6,
-        "5_start_ind": 2,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_репертуар",
-            "1_вопросительный",
-            "2_частица"
+        "key": "репертуар вопросительный частица",
+        "textForm": "репертуаре вопросительных частиц",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2014-3",
+        "sentNum": 6,
+        "start_token_ind": 2,
+        "end_token_ind": 4,
+        "span": [
+            653,
+            685
+        ],
+        "lemmas": [
+            "репертуар",
+            "вопросительный",
+            "частица"
         ]
     },
     {
-        "0_key": "смысловой сходство",
-        "1_textForm": "смысловое сходство",
-        "2_modelName": "Прил + С",
-        "3_docId": "2014-3",
-        "4_sentNum": 8,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_смысловой",
-            "1_сходство"
+        "key": "смысловой сходство",
+        "textForm": "смысловое сходство",
+        "modelName": "Прил + С",
+        "docId": "2014-3",
+        "sentNum": 8,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            1087,
+            1105
+        ],
+        "lemmas": [
+            "смысловой",
+            "сходство"
         ]
     }
 ]

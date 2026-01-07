@@ -1,189 +1,245 @@
 [
     {
-        "0_key": "окрестностный грамматик",
-        "1_textForm": "ОКРЕСТНОСТНЫЕ ГРАММАТИКИ",
-        "2_modelName": "Прил + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_окрестностный",
-            "1_грамматик"
+        "key": "окрестностный грамматик",
+        "textForm": "ОКРЕСТНОСТНЫЕ ГРАММАТИКИ",
+        "modelName": "Прил + С",
+        "docId": "2005-14",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            24
+        ],
+        "lemmas": [
+            "окрестностный",
+            "грамматик"
         ]
     },
     {
-        "0_key": "model-theoretic syntax",
-        "1_textForm": "MODEL-THEORETIC SYNTAX",
-        "2_modelName": "Англ",
-        "3_docId": "2005-14",
-        "4_sentNum": 0,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_model-theoretic",
-            "1_syntax"
+        "key": "model-theoretic syntax",
+        "textForm": "MODEL-THEORETIC SYNTAX",
+        "modelName": "Англ",
+        "docId": "2005-14",
+        "sentNum": 0,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            27,
+            49
+        ],
+        "lemmas": [
+            "model-theoretic",
+            "syntax"
         ]
     },
     {
-        "0_key": "формальный грамматика",
-        "1_textForm": "формальные грамматики",
-        "2_modelName": "Прил + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 3,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_формальный",
-            "1_грамматика"
+        "key": "формальный грамматика",
+        "textForm": "формальные грамматики",
+        "modelName": "Прил + С",
+        "docId": "2005-14",
+        "sentNum": 3,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            175,
+            196
+        ],
+        "lemmas": [
+            "формальный",
+            "грамматика"
         ]
     },
     {
-        "0_key": "система аксиома",
-        "1_textForm": "системы аксиом",
-        "2_modelName": "С + Срд",
-        "3_docId": "2005-14",
-        "4_sentNum": 3,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_система",
-            "1_аксиома"
+        "key": "система аксиома",
+        "textForm": "системы аксиом",
+        "modelName": "С + Срд",
+        "docId": "2005-14",
+        "sentNum": 3,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            201,
+            215
+        ],
+        "lemmas": [
+            "система",
+            "аксиома"
         ]
     },
     {
-        "0_key": "синтаксический структура",
-        "1_textForm": "синтаксические структуры",
-        "2_modelName": "Прил + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 3,
-        "5_start_ind": 10,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_структура"
+        "key": "синтаксический структура",
+        "textForm": "синтаксические структуры",
+        "modelName": "Прил + С",
+        "docId": "2005-14",
+        "sentNum": 3,
+        "start_token_ind": 10,
+        "end_token_ind": 11,
+        "span": [
+            229,
+            253
+        ],
+        "lemmas": [
+            "синтаксический",
+            "структура"
         ]
     },
     {
-        "0_key": "структура язык",
-        "1_textForm": "структуры языка",
-        "2_modelName": "С + Срд",
-        "3_docId": "2005-14",
-        "4_sentNum": 3,
-        "5_start_ind": 11,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_структура",
-            "1_язык"
+        "key": "структура язык",
+        "textForm": "структуры языка",
+        "modelName": "С + Срд",
+        "docId": "2005-14",
+        "sentNum": 3,
+        "start_token_ind": 11,
+        "end_token_ind": 12,
+        "span": [
+            244,
+            259
+        ],
+        "lemmas": [
+            "структура",
+            "язык"
         ]
     },
     {
-        "0_key": "синтаксический структура язык",
-        "1_textForm": "синтаксические структуры языка",
-        "2_modelName": "(Прил + С) + Срд",
-        "3_docId": "2005-14",
-        "4_sentNum": 3,
-        "5_start_ind": 10,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_структура",
-            "2_язык"
+        "key": "синтаксический структура язык",
+        "textForm": "синтаксические структуры языка",
+        "modelName": "(Прил + С) + Срд",
+        "docId": "2005-14",
+        "sentNum": 3,
+        "start_token_ind": 10,
+        "end_token_ind": 12,
+        "span": [
+            229,
+            259
+        ],
+        "lemmas": [
+            "синтаксический",
+            "структура",
+            "язык"
         ]
     },
     {
-        "0_key": "model-theoretic syntax",
-        "1_textForm": "Model-theoretic syntax",
-        "2_modelName": "Англ",
-        "3_docId": "2005-14",
-        "4_sentNum": 5,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_model-theoretic",
-            "1_syntax"
+        "key": "model-theoretic syntax",
+        "textForm": "Model-theoretic syntax",
+        "modelName": "Англ",
+        "docId": "2005-14",
+        "sentNum": 5,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            497,
+            519
+        ],
+        "lemmas": [
+            "model-theoretic",
+            "syntax"
         ]
     },
     {
-        "0_key": "цель доклад",
-        "1_textForm": "Цель доклада",
-        "2_modelName": "С + Срд",
-        "3_docId": "2005-14",
-        "4_sentNum": 6,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_цель",
-            "1_доклад"
+        "key": "цель доклад",
+        "textForm": "Цель доклада",
+        "modelName": "С + Срд",
+        "docId": "2005-14",
+        "sentNum": 6,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            633,
+            645
+        ],
+        "lemmas": [
+            "цель",
+            "доклад"
         ]
     },
     {
-        "0_key": "модальный логика",
-        "1_textForm": "модальной логики",
-        "2_modelName": "Прил + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 7,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_модальный",
-            "1_логика"
+        "key": "модальный логика",
+        "textForm": "модальной логики",
+        "modelName": "Прил + С",
+        "docId": "2005-14",
+        "sentNum": 7,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            792,
+            808
+        ],
+        "lemmas": [
+            "модальный",
+            "логика"
         ]
     },
     {
-        "0_key": "логика для описание",
-        "1_textForm": "логики для описания",
-        "2_modelName": "С + Предл(Для) + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 7,
-        "5_start_ind": 5,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_логика",
-            "1_для",
-            "2_описание"
+        "key": "логика для описание",
+        "textForm": "логики для описания",
+        "modelName": "С + Предл(Для) + С",
+        "docId": "2005-14",
+        "sentNum": 7,
+        "start_token_ind": 5,
+        "end_token_ind": 7,
+        "span": [
+            802,
+            821
+        ],
+        "lemmas": [
+            "логика",
+            "для",
+            "описание"
         ]
     },
     {
-        "0_key": "синтаксический структура",
-        "1_textForm": "синтаксических структур",
-        "2_modelName": "Прил + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 7,
-        "5_start_ind": 8,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_структура"
+        "key": "синтаксический структура",
+        "textForm": "синтаксических структур",
+        "modelName": "Прил + С",
+        "docId": "2005-14",
+        "sentNum": 7,
+        "start_token_ind": 8,
+        "end_token_ind": 9,
+        "span": [
+            822,
+            845
+        ],
+        "lemmas": [
+            "синтаксический",
+            "структура"
         ]
     },
     {
-        "0_key": "модальный логика для описание",
-        "1_textForm": "модальной логики для описания",
-        "2_modelName": "(Прил + С) + Предл + С",
-        "3_docId": "2005-14",
-        "4_sentNum": 7,
-        "5_start_ind": 4,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_модальный",
-            "1_логика",
-            "2_для",
-            "3_описание"
+        "key": "модальный логика для описание",
+        "textForm": "модальной логики для описания",
+        "modelName": "(Прил + С) + Предл + С",
+        "docId": "2005-14",
+        "sentNum": 7,
+        "start_token_ind": 4,
+        "end_token_ind": 7,
+        "span": [
+            792,
+            821
+        ],
+        "lemmas": [
+            "модальный",
+            "логика",
+            "для",
+            "описание"
         ]
     },
     {
-        "0_key": "описание синтаксический структура",
-        "1_textForm": "описания синтаксических структур",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2005-14",
-        "4_sentNum": 7,
-        "5_start_ind": 7,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_описание",
-            "1_синтаксический",
-            "2_структура"
+        "key": "описание синтаксический структура",
+        "textForm": "описания синтаксических структур",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2005-14",
+        "sentNum": 7,
+        "start_token_ind": 7,
+        "end_token_ind": 9,
+        "span": [
+            813,
+            845
+        ],
+        "lemmas": [
+            "описание",
+            "синтаксический",
+            "структура"
         ]
     }
 ]

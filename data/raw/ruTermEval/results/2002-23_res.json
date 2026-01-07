@@ -1,434 +1,562 @@
 [
     {
-        "0_key": "синтаксический координация",
-        "1_textForm": "СИНТАКСИЧЕСКАЯ КООРДИНАЦИЯ",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_координация"
+        "key": "синтаксический координация",
+        "textForm": "СИНТАКСИЧЕСКАЯ КООРДИНАЦИЯ",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            26
+        ],
+        "lemmas": [
+            "синтаксический",
+            "координация"
         ]
     },
     {
-        "0_key": "синтаксический координация в диалог",
-        "1_textForm": "СИНТАКСИЧЕСКАЯ КООРДИНАЦИЯ В ДИАЛОГЕ",
-        "2_modelName": "(Прил + С) + Предл + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 3,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_координация",
-            "2_в",
-            "3_диалог"
+        "key": "синтаксический координация в диалог",
+        "textForm": "СИНТАКСИЧЕСКАЯ КООРДИНАЦИЯ В ДИАЛОГЕ",
+        "modelName": "(Прил + С) + Предл + С",
+        "docId": "2002-23",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 3,
+        "span": [
+            0,
+            36
+        ],
+        "lemmas": [
+            "синтаксический",
+            "координация",
+            "в",
+            "диалог"
         ]
     },
     {
-        "0_key": "лексический уровень",
-        "1_textForm": "лексическому уровням",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 8,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_лексический",
-            "1_уровень"
+        "key": "лексический уровень",
+        "textForm": "лексическому уровням",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 8,
+        "end_token_ind": 9,
+        "span": [
+            496,
+            516
+        ],
+        "lemmas": [
+            "лексический",
+            "уровень"
         ]
     },
     {
-        "0_key": "языковый взаимодействие",
-        "1_textForm": "языкового взаимодействия",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 13,
-        "6_end_ind": 14,
-        "7_lemmas": [
-            "0_языковый",
-            "1_взаимодействие"
+        "key": "языковый взаимодействие",
+        "textForm": "языкового взаимодействия",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 13,
+        "end_token_ind": 14,
+        "span": [
+            529,
+            553
+        ],
+        "lemmas": [
+            "языковый",
+            "взаимодействие"
         ]
     },
     {
-        "0_key": "ментальный схема",
-        "1_textForm": "ментальные схемы",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 22,
-        "6_end_ind": 23,
-        "7_lemmas": [
-            "0_ментальный",
-            "1_схема"
+        "key": "ментальный схема",
+        "textForm": "ментальные схемы",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 22,
+        "end_token_ind": 23,
+        "span": [
+            596,
+            612
+        ],
+        "lemmas": [
+            "ментальный",
+            "схема"
         ]
     },
     {
-        "0_key": "языковый средство",
-        "1_textForm": "языковые средства",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 30,
-        "6_end_ind": 31,
-        "7_lemmas": [
-            "0_языковый",
-            "1_средство"
+        "key": "языковый средство",
+        "textForm": "языковые средства",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 30,
+        "end_token_ind": 31,
+        "span": [
+            640,
+            657
+        ],
+        "lemmas": [
+            "языковый",
+            "средство"
         ]
     },
     {
-        "0_key": "средство для выражение",
-        "1_textForm": "средства для выражения",
-        "2_modelName": "С + Предл(Для) + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 31,
-        "6_end_ind": 33,
-        "7_lemmas": [
-            "0_средство",
-            "1_для",
-            "2_выражение"
+        "key": "средство для выражение",
+        "textForm": "средства для выражения",
+        "modelName": "С + Предл(Для) + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 31,
+        "end_token_ind": 33,
+        "span": [
+            649,
+            671
+        ],
+        "lemmas": [
+            "средство",
+            "для",
+            "выражение"
         ]
     },
     {
-        "0_key": "семантический и лексический уровень",
-        "1_textForm": "семантическому и лексическому уровням",
-        "2_modelName": "Прил + и + (Прил + С)",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 6,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_семантический",
-            "1_и",
-            "2_лексический",
-            "3_уровень"
+        "key": "семантический и лексический уровень",
+        "textForm": "семантическому и лексическому уровням",
+        "modelName": "Прил + и + (Прил + С)",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 6,
+        "end_token_ind": 9,
+        "span": [
+            479,
+            516
+        ],
+        "lemmas": [
+            "семантический",
+            "и",
+            "лексический",
+            "уровень"
         ]
     },
     {
-        "0_key": "процесс языковый взаимодействие",
-        "1_textForm": "процессе языкового взаимодействия",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 12,
-        "6_end_ind": 14,
-        "7_lemmas": [
-            "0_процесс",
-            "1_языковый",
-            "2_взаимодействие"
+        "key": "процесс языковый взаимодействие",
+        "textForm": "процессе языкового взаимодействия",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 12,
+        "end_token_ind": 14,
+        "span": [
+            520,
+            553
+        ],
+        "lemmas": [
+            "процесс",
+            "языковый",
+            "взаимодействие"
         ]
     },
     {
-        "0_key": "языковый средство для выражение",
-        "1_textForm": "языковые средства для выражения",
-        "2_modelName": "(Прил + С) + Предл + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 2,
-        "5_start_ind": 30,
-        "6_end_ind": 33,
-        "7_lemmas": [
-            "0_языковый",
-            "1_средство",
-            "2_для",
-            "3_выражение"
+        "key": "языковый средство для выражение",
+        "textForm": "языковые средства для выражения",
+        "modelName": "(Прил + С) + Предл + С",
+        "docId": "2002-23",
+        "sentNum": 2,
+        "start_token_ind": 30,
+        "end_token_ind": 33,
+        "span": [
+            640,
+            671
+        ],
+        "lemmas": [
+            "языковый",
+            "средство",
+            "для",
+            "выражение"
         ]
     },
     {
-        "0_key": "факт существование",
-        "1_textForm": "факт существования",
-        "2_modelName": "С + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_факт",
-            "1_существование"
+        "key": "факт существование",
+        "textForm": "факт существования",
+        "modelName": "С + Срд",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            906,
+            924
+        ],
+        "lemmas": [
+            "факт",
+            "существование"
         ]
     },
     {
-        "0_key": "синтаксический координация",
-        "1_textForm": "синтаксической координации",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_координация"
+        "key": "синтаксический координация",
+        "textForm": "синтаксической координации",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            925,
+            951
+        ],
+        "lemmas": [
+            "синтаксический",
+            "координация"
         ]
     },
     {
-        "0_key": "трудность создание",
-        "1_textForm": "трудностью создания",
-        "2_modelName": "С + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 13,
-        "6_end_ind": 14,
-        "7_lemmas": [
-            "0_трудность",
-            "1_создание"
+        "key": "трудность создание",
+        "textForm": "трудностью создания",
+        "modelName": "С + Срд",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 13,
+        "end_token_ind": 14,
+        "span": [
+            977,
+            996
+        ],
+        "lemmas": [
+            "трудность",
+            "создание"
         ]
     },
     {
-        "0_key": "экспериментальный условие",
-        "1_textForm": "экспериментальных условий",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 16,
-        "6_end_ind": 17,
-        "7_lemmas": [
-            "0_экспериментальный",
-            "1_условие"
+        "key": "экспериментальный условие",
+        "textForm": "экспериментальных условий",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 16,
+        "end_token_ind": 17,
+        "span": [
+            1003,
+            1028
+        ],
+        "lemmas": [
+            "экспериментальный",
+            "условие"
         ]
     },
     {
-        "0_key": "синтаксический координация",
-        "1_textForm": "синтаксическую координацию",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 29,
-        "6_end_ind": 30,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_координация"
+        "key": "синтаксический координация",
+        "textForm": "синтаксическую координацию",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 29,
+        "end_token_ind": 30,
+        "span": [
+            1106,
+            1132
+        ],
+        "lemmas": [
+            "синтаксический",
+            "координация"
         ]
     },
     {
-        "0_key": "существование синтаксический координация",
-        "1_textForm": "существования синтаксической координации",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2002-23",
-        "4_sentNum": 3,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_существование",
-            "1_синтаксический",
-            "2_координация"
+        "key": "существование синтаксический координация",
+        "textForm": "существования синтаксической координации",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2002-23",
+        "sentNum": 3,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            911,
+            951
+        ],
+        "lemmas": [
+            "существование",
+            "синтаксический",
+            "координация"
         ]
     },
     {
-        "0_key": "чистый результат",
-        "1_textForm": "чистых результатов",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_чистый",
-            "1_результат"
+        "key": "чистый результат",
+        "textForm": "чистых результатов",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            1379,
+            1397
+        ],
+        "lemmas": [
+            "чистый",
+            "результат"
         ]
     },
     {
-        "0_key": "результат авторами",
-        "1_textForm": "результатов авторами",
-        "2_modelName": "С + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_результат",
-            "1_авторами"
+        "key": "результат авторами",
+        "textForm": "результатов авторами",
+        "modelName": "С + Срд",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            1386,
+            1406
+        ],
+        "lemmas": [
+            "результат",
+            "авторами"
         ]
     },
     {
-        "0_key": "результат авторами работа",
-        "1_textForm": "результатов авторами работы",
-        "2_modelName": "С + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_результат",
-            "1_авторами",
-            "2_работа"
+        "key": "результат авторами работа",
+        "textForm": "результатов авторами работы",
+        "modelName": "С + Срд",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            1386,
+            1413
+        ],
+        "lemmas": [
+            "результат",
+            "авторами",
+            "работа"
         ]
     },
     {
-        "0_key": "авторами работа",
-        "1_textForm": "авторами работы",
-        "2_modelName": "С + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_авторами",
-            "1_работа"
+        "key": "авторами работа",
+        "textForm": "авторами работы",
+        "modelName": "С + Срд",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            1398,
+            1413
+        ],
+        "lemmas": [
+            "авторами",
+            "работа"
         ]
     },
     {
-        "0_key": "syntactic coordination",
-        "1_textForm": "Syntactic coordination",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 7,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_syntactic",
-            "1_coordination"
+        "key": "syntactic coordination",
+        "textForm": "Syntactic coordination",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 7,
+        "end_token_ind": 8,
+        "span": [
+            1414,
+            1436
+        ],
+        "lemmas": [
+            "syntactic",
+            "coordination"
         ]
     },
     {
-        "0_key": "coordination in",
-        "1_textForm": "coordination in",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 8,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_coordination",
-            "1_in"
+        "key": "coordination in",
+        "textForm": "coordination in",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 8,
+        "end_token_ind": 9,
+        "span": [
+            1424,
+            1439
+        ],
+        "lemmas": [
+            "coordination",
+            "in"
         ]
     },
     {
-        "0_key": "syntactic coordination in",
-        "1_textForm": "Syntactic coordination in",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 7,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_syntactic",
-            "1_coordination",
-            "2_in"
+        "key": "syntactic coordination in",
+        "textForm": "Syntactic coordination in",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 7,
+        "end_token_ind": 9,
+        "span": [
+            1414,
+            1439
+        ],
+        "lemmas": [
+            "syntactic",
+            "coordination",
+            "in"
         ]
     },
     {
-        "0_key": "in dialogue",
-        "1_textForm": "in dialogue",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_in",
-            "1_dialogue"
+        "key": "in dialogue",
+        "textForm": "in dialogue",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            1437,
+            1448
+        ],
+        "lemmas": [
+            "in",
+            "dialogue"
         ]
     },
     {
-        "0_key": "coordination in dialogue",
-        "1_textForm": "coordination in dialogue",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 8,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_coordination",
-            "1_in",
-            "2_dialogue"
+        "key": "coordination in dialogue",
+        "textForm": "coordination in dialogue",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 8,
+        "end_token_ind": 10,
+        "span": [
+            1424,
+            1448
+        ],
+        "lemmas": [
+            "coordination",
+            "in",
+            "dialogue"
         ]
     },
     {
-        "0_key": "syntactic coordination in dialogue",
-        "1_textForm": "Syntactic coordination in dialogue",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 7,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_syntactic",
-            "1_coordination",
-            "2_in",
-            "3_dialogue"
+        "key": "syntactic coordination in dialogue",
+        "textForm": "Syntactic coordination in dialogue",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 7,
+        "end_token_ind": 10,
+        "span": [
+            1414,
+            1448
+        ],
+        "lemmas": [
+            "syntactic",
+            "coordination",
+            "in",
+            "dialogue"
         ]
     },
     {
-        "0_key": "чистый результат авторами работа",
-        "1_textForm": "чистых результатов авторами работы",
-        "2_modelName": "(Прил + С) + Срд",
-        "3_docId": "2002-23",
-        "4_sentNum": 4,
-        "5_start_ind": 3,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_чистый",
-            "1_результат",
-            "2_авторами",
-            "3_работа"
+        "key": "чистый результат авторами работа",
+        "textForm": "чистых результатов авторами работы",
+        "modelName": "(Прил + С) + Срд",
+        "docId": "2002-23",
+        "sentNum": 4,
+        "start_token_ind": 3,
+        "end_token_ind": 6,
+        "span": [
+            1379,
+            1413
+        ],
+        "lemmas": [
+            "чистый",
+            "результат",
+            "авторами",
+            "работа"
         ]
     },
     {
-        "0_key": "специальный процедура",
-        "1_textForm": "специальная процедура",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 10,
-        "5_start_ind": 12,
-        "6_end_ind": 13,
-        "7_lemmas": [
-            "0_специальный",
-            "1_процедура"
+        "key": "специальный процедура",
+        "textForm": "специальная процедура",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 10,
+        "start_token_ind": 12,
+        "end_token_ind": 13,
+        "span": [
+            1589,
+            1610
+        ],
+        "lemmas": [
+            "специальный",
+            "процедура"
         ]
     },
     {
-        "0_key": "confederate-scripting technique",
-        "1_textForm": "confederate-scripting technique",
-        "2_modelName": "Англ",
-        "3_docId": "2002-23",
-        "4_sentNum": 10,
-        "5_start_ind": 15,
-        "6_end_ind": 16,
-        "7_lemmas": [
-            "0_confederate-scripting",
-            "1_technique"
+        "key": "confederate-scripting technique",
+        "textForm": "confederate-scripting technique",
+        "modelName": "Англ",
+        "docId": "2002-23",
+        "sentNum": 10,
+        "start_token_ind": 15,
+        "end_token_ind": 16,
+        "span": [
+            1612,
+            1643
+        ],
+        "lemmas": [
+            "confederate-scripting",
+            "technique"
         ]
     },
     {
-        "0_key": "настоящий работа",
-        "1_textForm": "Настоящая работа",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 11,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_настоящий",
-            "1_работа"
+        "key": "настоящий работа",
+        "textForm": "Настоящая работа",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 11,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            1681,
+            1697
+        ],
+        "lemmas": [
+            "настоящий",
+            "работа"
         ]
     },
     {
-        "0_key": "русский синтаксис",
-        "1_textForm": "русскому синтаксису",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 11,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_русский",
-            "1_синтаксис"
+        "key": "русский синтаксис",
+        "textForm": "русскому синтаксису",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 11,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            1762,
+            1781
+        ],
+        "lemmas": [
+            "русский",
+            "синтаксис"
         ]
     },
     {
-        "0_key": "синтаксический координация",
-        "1_textForm": "синтаксическую координацию",
-        "2_modelName": "Прил + С",
-        "3_docId": "2002-23",
-        "4_sentNum": 11,
-        "5_start_ind": 26,
-        "6_end_ind": 27,
-        "7_lemmas": [
-            "0_синтаксический",
-            "1_координация"
+        "key": "синтаксический координация",
+        "textForm": "синтаксическую координацию",
+        "modelName": "Прил + С",
+        "docId": "2002-23",
+        "sentNum": 11,
+        "start_token_ind": 26,
+        "end_token_ind": 27,
+        "span": [
+            1899,
+            1925
+        ],
+        "lemmas": [
+            "синтаксический",
+            "координация"
         ]
     }
 ]

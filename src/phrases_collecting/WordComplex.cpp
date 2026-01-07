@@ -1,4 +1,5 @@
 #include "WordComplex.h"
+
 #include "MorphAnalyzer.h"
 #include "Process.h"
 
@@ -28,12 +29,12 @@ const std::string WordComplex::getKey() const {
     return key;
 }
 
-WordComplexPtr initializeWordComplex(const WordComplexPtr& curSimplePhr, const std::string& modelName) {
+WordComplexPtr initializeWordComplex(const WordComplexPtr& basePhrase, const std::string& modelName) {
     WordComplexPtr wc = std::make_shared<WordComplex>();
-    wc->words = curSimplePhr->words;
-    wc->lemmas = curSimplePhr->lemmas;
-    wc->textForm = curSimplePhr->textForm;
-    wc->pos = curSimplePhr->pos;
+    wc->words = basePhrase->words;
+    wc->lemmas = basePhrase->lemmas;
+    wc->textForm = basePhrase->textForm;
+    wc->pos = basePhrase->pos;
     wc->modelName = modelName;
     return wc;
 }
@@ -45,7 +46,11 @@ WordComplexPtr initializeWordComplex(const size_t tokenInd, const X::WordFormPtr
     wc->words.push_back(token);
     wc->lemmas.push_back(morphAnalyzer.getLemma(token));
     wc->textForm = token->getWordForm().getRawString();
-    wc->pos = {tokenInd, tokenInd, process.docId, process.sentNum};
+    wc->pos.start = tokenInd;
+    wc->pos.end = tokenInd;
+    wc->pos.docId = process.getDocId();
+    wc->pos.sentNum = process.getSentNum();
+    // charStart и charEnd будут установлены позже в Process::outputResults()
     wc->modelName = modelName;
 
     return wc;

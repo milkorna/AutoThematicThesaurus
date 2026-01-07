@@ -1,314 +1,406 @@
 [
     {
-        "0_key": "документирование язык",
-        "1_textForm": "Документирование языков",
-        "2_modelName": "С + Срд",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_документирование",
-            "1_язык"
+        "key": "документирование язык",
+        "textForm": "Документирование языков",
+        "modelName": "С + Срд",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            23
+        ],
+        "lemmas": [
+            "документирование",
+            "язык"
         ]
     },
     {
-        "0_key": "sil fieldworks",
-        "1_textForm": "SIL FieldWorks",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_sil",
-            "1_fieldworks"
+        "key": "sil fieldworks",
+        "textForm": "SIL FieldWorks",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            47,
+            61
+        ],
+        "lemmas": [
+            "sil",
+            "fieldworks"
         ]
     },
     {
-        "0_key": "fieldworks language",
-        "1_textForm": "FieldWorks Language",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_fieldworks",
-            "1_language"
+        "key": "fieldworks language",
+        "textForm": "FieldWorks Language",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            51,
+            70
+        ],
+        "lemmas": [
+            "fieldworks",
+            "language"
         ]
     },
     {
-        "0_key": "sil fieldworks language",
-        "1_textForm": "SIL FieldWorks Language",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 5,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_sil",
-            "1_fieldworks",
-            "2_language"
+        "key": "sil fieldworks language",
+        "textForm": "SIL FieldWorks Language",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 5,
+        "end_token_ind": 7,
+        "span": [
+            47,
+            70
+        ],
+        "lemmas": [
+            "sil",
+            "fieldworks",
+            "language"
         ]
     },
     {
-        "0_key": "language explorer",
-        "1_textForm": "Language Explorer",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 7,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_language",
-            "1_explorer"
+        "key": "language explorer",
+        "textForm": "Language Explorer",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 7,
+        "end_token_ind": 8,
+        "span": [
+            62,
+            79
+        ],
+        "lemmas": [
+            "language",
+            "explorer"
         ]
     },
     {
-        "0_key": "fieldworks language explorer",
-        "1_textForm": "FieldWorks Language Explorer",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 6,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_fieldworks",
-            "1_language",
-            "2_explorer"
+        "key": "fieldworks language explorer",
+        "textForm": "FieldWorks Language Explorer",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 6,
+        "end_token_ind": 8,
+        "span": [
+            51,
+            79
+        ],
+        "lemmas": [
+            "fieldworks",
+            "language",
+            "explorer"
         ]
     },
     {
-        "0_key": "sil fieldworks language explorer",
-        "1_textForm": "SIL FieldWorks Language Explorer",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 5,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_sil",
-            "1_fieldworks",
-            "2_language",
-            "3_explorer"
+        "key": "sil fieldworks language explorer",
+        "textForm": "SIL FieldWorks Language Explorer",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 5,
+        "end_token_ind": 8,
+        "span": [
+            47,
+            79
+        ],
+        "lemmas": [
+            "sil",
+            "fieldworks",
+            "language",
+            "explorer"
         ]
     },
     {
-        "0_key": "осетинский язык",
-        "1_textForm": "осетинского языка",
-        "2_modelName": "Прил + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 12,
-        "6_end_ind": 13,
-        "7_lemmas": [
-            "0_осетинский",
-            "1_язык"
+        "key": "осетинский язык",
+        "textForm": "осетинского языка",
+        "modelName": "Прил + С",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 12,
+        "end_token_ind": 13,
+        "span": [
+            94,
+            111
+        ],
+        "lemmas": [
+            "осетинский",
+            "язык"
         ]
     },
     {
-        "0_key": "материал осетинский язык",
-        "1_textForm": "материале осетинского языка",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 0,
-        "5_start_ind": 11,
-        "6_end_ind": 13,
-        "7_lemmas": [
-            "0_материал",
-            "1_осетинский",
-            "2_язык"
+        "key": "материал осетинский язык",
+        "textForm": "материале осетинского языка",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2010-90",
+        "sentNum": 0,
+        "start_token_ind": 11,
+        "end_token_ind": 13,
+        "span": [
+            84,
+            111
+        ],
+        "lemmas": [
+            "материал",
+            "осетинский",
+            "язык"
         ]
     },
     {
-        "0_key": "рамка среда",
-        "1_textForm": "рамках среды",
-        "2_modelName": "С + Срд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_рамка",
-            "1_среда"
+        "key": "рамка среда",
+        "textForm": "рамках среды",
+        "modelName": "С + Срд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            209,
+            221
+        ],
+        "lemmas": [
+            "рамка",
+            "среда"
         ]
     },
     {
-        "0_key": "sil fieldworks",
-        "1_textForm": "SIL FieldWorks",
-        "2_modelName": "Англ",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_sil",
-            "1_fieldworks"
+        "key": "sil fieldworks",
+        "textForm": "SIL FieldWorks",
+        "modelName": "Англ",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            222,
+            236
+        ],
+        "lemmas": [
+            "sil",
+            "fieldworks"
         ]
     },
     {
-        "0_key": "морфологический описание",
-        "1_textForm": "морфологического описания",
-        "2_modelName": "Прил + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 8,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_морфологический",
-            "1_описание"
+        "key": "морфологический описание",
+        "textForm": "морфологического описания",
+        "modelName": "Прил + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 8,
+        "end_token_ind": 9,
+        "span": [
+            237,
+            262
+        ],
+        "lemmas": [
+            "морфологический",
+            "описание"
         ]
     },
     {
-        "0_key": "осетинский язык",
-        "1_textForm": "осетинского языка",
-        "2_modelName": "Прил + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 10,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_осетинский",
-            "1_язык"
+        "key": "осетинский язык",
+        "textForm": "осетинского языка",
+        "modelName": "Прил + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 10,
+        "end_token_ind": 11,
+        "span": [
+            263,
+            280
+        ],
+        "lemmas": [
+            "осетинский",
+            "язык"
         ]
     },
     {
-        "0_key": "создание онлайн-корпус",
-        "1_textForm": "создания онлайн-корпуса",
-        "2_modelName": "С + Срд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 15,
-        "6_end_ind": 16,
-        "7_lemmas": [
-            "0_создание",
-            "1_онлайн-корпус"
+        "key": "создание онлайн-корпус",
+        "textForm": "создания онлайн-корпуса",
+        "modelName": "С + Срд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 15,
+        "end_token_ind": 16,
+        "span": [
+            302,
+            325
+        ],
+        "lemmas": [
+            "создание",
+            "онлайн-корпус"
         ]
     },
     {
-        "0_key": "отглоссированный текст",
-        "1_textForm": "отглоссированных текстов",
-        "2_modelName": "Прич + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 17,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_отглоссированный",
-            "1_текст"
+        "key": "отглоссированный текст",
+        "textForm": "отглоссированных текстов",
+        "modelName": "Прич + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 17,
+        "end_token_ind": 18,
+        "span": [
+            326,
+            350
+        ],
+        "lemmas": [
+            "отглоссированный",
+            "текст"
         ]
     },
     {
-        "0_key": "языковый документирование",
-        "1_textForm": "языкового документирования",
-        "2_modelName": "Прил + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 31,
-        "6_end_ind": 32,
-        "7_lemmas": [
-            "0_языковый",
-            "1_документирование"
+        "key": "языковый документирование",
+        "textForm": "языкового документирования",
+        "modelName": "Прил + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 31,
+        "end_token_ind": 32,
+        "span": [
+            442,
+            468
+        ],
+        "lemmas": [
+            "языковый",
+            "документирование"
         ]
     },
     {
-        "0_key": "языковый данный",
-        "1_textForm": "языковых данных",
-        "2_modelName": "Прил + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 35,
-        "6_end_ind": 36,
-        "7_lemmas": [
-            "0_языковый",
-            "1_данный"
+        "key": "языковый данный",
+        "textForm": "языковых данных",
+        "modelName": "Прил + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 35,
+        "end_token_ind": 36,
+        "span": [
+            477,
+            492
+        ],
+        "lemmas": [
+            "языковый",
+            "данный"
         ]
     },
     {
-        "0_key": "морфологический описание осетинский язык",
-        "1_textForm": "морфологического описания осетинского языка",
-        "2_modelName": "(Прил + С) + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 8,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_морфологический",
-            "1_описание",
-            "2_осетинский",
-            "3_язык"
+        "key": "морфологический описание осетинский язык",
+        "textForm": "морфологического описания осетинского языка",
+        "modelName": "(Прил + С) + (Прил + С)рд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 8,
+        "end_token_ind": 11,
+        "span": [
+            237,
+            280
+        ],
+        "lemmas": [
+            "морфологический",
+            "описание",
+            "осетинский",
+            "язык"
         ]
     },
     {
-        "0_key": "описание осетинский язык",
-        "1_textForm": "описания осетинского языка",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 9,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_описание",
-            "1_осетинский",
-            "2_язык"
+        "key": "описание осетинский язык",
+        "textForm": "описания осетинского языка",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 9,
+        "end_token_ind": 11,
+        "span": [
+            254,
+            280
+        ],
+        "lemmas": [
+            "описание",
+            "осетинский",
+            "язык"
         ]
     },
     {
-        "0_key": "онлайн-корпус отглоссированный текст",
-        "1_textForm": "онлайн-корпуса отглоссированных текстов",
-        "2_modelName": "C + (Прич + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 16,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_онлайн-корпус",
-            "1_отглоссированный",
-            "2_текст"
+        "key": "онлайн-корпус отглоссированный текст",
+        "textForm": "онлайн-корпуса отглоссированных текстов",
+        "modelName": "C + (Прич + С)рд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 16,
+        "end_token_ind": 18,
+        "span": [
+            311,
+            350
+        ],
+        "lemmas": [
+            "онлайн-корпус",
+            "отглоссированный",
+            "текст"
         ]
     },
     {
-        "0_key": "языковый документирование и сбор",
-        "1_textForm": "языкового документирования и сбора",
-        "2_modelName": "(Прил + С) + и + С",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 31,
-        "6_end_ind": 34,
-        "7_lemmas": [
-            "0_языковый",
-            "1_документирование",
-            "2_и",
-            "3_сбор"
+        "key": "языковый документирование и сбор",
+        "textForm": "языкового документирования и сбора",
+        "modelName": "(Прил + С) + и + С",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 31,
+        "end_token_ind": 34,
+        "span": [
+            442,
+            476
+        ],
+        "lemmas": [
+            "языковый",
+            "документирование",
+            "и",
+            "сбор"
         ]
     },
     {
-        "0_key": "процесс языковый документирование",
-        "1_textForm": "процесс языкового документирования",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 30,
-        "6_end_ind": 32,
-        "7_lemmas": [
-            "0_процесс",
-            "1_языковый",
-            "2_документирование"
+        "key": "процесс языковый документирование",
+        "textForm": "процесс языкового документирования",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 30,
+        "end_token_ind": 32,
+        "span": [
+            434,
+            468
+        ],
+        "lemmas": [
+            "процесс",
+            "языковый",
+            "документирование"
         ]
     },
     {
-        "0_key": "сбор языковый данный",
-        "1_textForm": "сбора языковых данных",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 34,
-        "6_end_ind": 36,
-        "7_lemmas": [
-            "0_сбор",
-            "1_языковый",
-            "2_данный"
+        "key": "сбор языковый данный",
+        "textForm": "сбора языковых данных",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2010-90",
+        "sentNum": 1,
+        "start_token_ind": 34,
+        "end_token_ind": 36,
+        "span": [
+            471,
+            492
+        ],
+        "lemmas": [
+            "сбор",
+            "языковый",
+            "данный"
         ]
     }
 ]

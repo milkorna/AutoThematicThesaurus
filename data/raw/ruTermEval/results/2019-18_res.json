@@ -1,343 +1,443 @@
 [
     {
-        "0_key": "phrase-based attentional",
-        "1_textForm": "PHRASE-BASED ATTENTIONAL",
-        "2_modelName": "Англ",
-        "3_docId": "2019-18",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_phrase-based",
-            "1_attentional"
+        "key": "phrase-based attentional",
+        "textForm": "PHRASE-BASED ATTENTIONAL",
+        "modelName": "Англ",
+        "docId": "2019-18",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            24
+        ],
+        "lemmas": [
+            "phrase-based",
+            "attentional"
         ]
     },
     {
-        "0_key": "attentional transformer",
-        "1_textForm": "ATTENTIONAL TRANSFORMER",
-        "2_modelName": "Англ",
-        "3_docId": "2019-18",
-        "4_sentNum": 0,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_attentional",
-            "1_transformer"
+        "key": "attentional transformer",
+        "textForm": "ATTENTIONAL TRANSFORMER",
+        "modelName": "Англ",
+        "docId": "2019-18",
+        "sentNum": 0,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            13,
+            36
+        ],
+        "lemmas": [
+            "attentional",
+            "transformer"
         ]
     },
     {
-        "0_key": "phrase-based attentional transformer",
-        "1_textForm": "PHRASE-BASED ATTENTIONAL TRANSFORMER",
-        "2_modelName": "Англ",
-        "3_docId": "2019-18",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_phrase-based",
-            "1_attentional",
-            "2_transformer"
+        "key": "phrase-based attentional transformer",
+        "textForm": "PHRASE-BASED ATTENTIONAL TRANSFORMER",
+        "modelName": "Англ",
+        "docId": "2019-18",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 2,
+        "span": [
+            0,
+            36
+        ],
+        "lemmas": [
+            "phrase-based",
+            "attentional",
+            "transformer"
         ]
     },
     {
-        "0_key": "задача выделение",
-        "1_textForm": "задача выделения",
-        "2_modelName": "С + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 1,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_задача",
-            "1_выделение"
+        "key": "задача выделение",
+        "textForm": "задача выделения",
+        "modelName": "С + Срд",
+        "docId": "2019-18",
+        "sentNum": 1,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            120,
+            136
+        ],
+        "lemmas": [
+            "задача",
+            "выделение"
         ]
     },
     {
-        "0_key": "ключевой информация",
-        "1_textForm": "ключевой информации",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 1,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_ключевой",
-            "1_информация"
+        "key": "ключевой информация",
+        "textForm": "ключевой информации",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 1,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            137,
+            156
+        ],
+        "lemmas": [
+            "ключевой",
+            "информация"
         ]
     },
     {
-        "0_key": "текстовый данный",
-        "1_textForm": "текстовых данных",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 1,
-        "5_start_ind": 10,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_текстовый",
-            "1_данный"
+        "key": "текстовый данный",
+        "textForm": "текстовых данных",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 1,
+        "start_token_ind": 10,
+        "end_token_ind": 11,
+        "span": [
+            176,
+            192
+        ],
+        "lemmas": [
+            "текстовый",
+            "данный"
         ]
     },
     {
-        "0_key": "выделение ключевой информация",
-        "1_textForm": "выделения ключевой информации",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2019-18",
-        "4_sentNum": 1,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_выделение",
-            "1_ключевой",
-            "2_информация"
+        "key": "выделение ключевой информация",
+        "textForm": "выделения ключевой информации",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2019-18",
+        "sentNum": 1,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            127,
+            156
+        ],
+        "lemmas": [
+            "выделение",
+            "ключевой",
+            "информация"
         ]
     },
     {
-        "0_key": "объем текстовый данный",
-        "1_textForm": "объемов текстовых данных",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2019-18",
-        "4_sentNum": 1,
-        "5_start_ind": 9,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_объем",
-            "1_текстовый",
-            "2_данный"
+        "key": "объем текстовый данный",
+        "textForm": "объемов текстовых данных",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2019-18",
+        "sentNum": 1,
+        "start_token_ind": 9,
+        "end_token_ind": 11,
+        "span": [
+            168,
+            192
+        ],
+        "lemmas": [
+            "объем",
+            "текстовый",
+            "данный"
         ]
     },
     {
-        "0_key": "данный статья",
-        "1_textForm": "данной статье",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_данный",
-            "1_статья"
+        "key": "данный статья",
+        "textForm": "данной статье",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            357,
+            370
+        ],
+        "lemmas": [
+            "данный",
+            "статья"
         ]
     },
     {
-        "0_key": "нейронный сеть",
-        "1_textForm": "нейронной сети",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_нейронный",
-            "1_сеть"
+        "key": "нейронный сеть",
+        "textForm": "нейронной сети",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            400,
+            414
+        ],
+        "lemmas": [
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "глубокий нейронный сеть",
-        "1_textForm": "глубокой нейронной сети",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 5,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_глубокий",
-            "1_нейронный",
-            "2_сеть"
+        "key": "глубокий нейронный сеть",
+        "textForm": "глубокой нейронной сети",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 5,
+        "end_token_ind": 7,
+        "span": [
+            391,
+            414
+        ],
+        "lemmas": [
+            "глубокий",
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "фразовый механизм",
-        "1_textForm": "фразовым механизмом",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_фразовый",
-            "1_механизм"
+        "key": "фразовый механизм",
+        "textForm": "фразовым механизмом",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            417,
+            436
+        ],
+        "lemmas": [
+            "фразовый",
+            "механизм"
         ]
     },
     {
-        "0_key": "механизм внимание",
-        "1_textForm": "механизмом внимания",
-        "2_modelName": "С + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 10,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_механизм",
-            "1_внимание"
+        "key": "механизм внимание",
+        "textForm": "механизмом внимания",
+        "modelName": "С + Срд",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 10,
+        "end_token_ind": 11,
+        "span": [
+            426,
+            445
+        ],
+        "lemmas": [
+            "механизм",
+            "внимание"
         ]
     },
     {
-        "0_key": "автоматический генерация",
-        "1_textForm": "автоматической генерации",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 15,
-        "6_end_ind": 16,
-        "7_lemmas": [
-            "0_автоматический",
-            "1_генерация"
+        "key": "автоматический генерация",
+        "textForm": "автоматической генерации",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 15,
+        "end_token_ind": 16,
+        "span": [
+            463,
+            487
+        ],
+        "lemmas": [
+            "автоматический",
+            "генерация"
         ]
     },
     {
-        "0_key": "новостной заголовок",
-        "1_textForm": "новостных заголовков",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 17,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_новостной",
-            "1_заголовок"
+        "key": "новостной заголовок",
+        "textForm": "новостных заголовков",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 17,
+        "end_token_ind": 18,
+        "span": [
+            488,
+            508
+        ],
+        "lemmas": [
+            "новостной",
+            "заголовок"
         ]
     },
     {
-        "0_key": "модель глубокий нейронный сеть",
-        "1_textForm": "модель глубокой нейронной сети",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 4,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_модель",
-            "1_глубокий",
-            "2_нейронный",
-            "3_сеть"
+        "key": "модель глубокий нейронный сеть",
+        "textForm": "модель глубокой нейронной сети",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 4,
+        "end_token_ind": 7,
+        "span": [
+            384,
+            414
+        ],
+        "lemmas": [
+            "модель",
+            "глубокий",
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "фразовый механизм внимание",
-        "1_textForm": "фразовым механизмом внимания",
-        "2_modelName": "(Прил + С) + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 9,
-        "6_end_ind": 11,
-        "7_lemmas": [
-            "0_фразовый",
-            "1_механизм",
-            "2_внимание"
+        "key": "фразовый механизм внимание",
+        "textForm": "фразовым механизмом внимания",
+        "modelName": "(Прил + С) + Срд",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 9,
+        "end_token_ind": 11,
+        "span": [
+            417,
+            445
+        ],
+        "lemmas": [
+            "фразовый",
+            "механизм",
+            "внимание"
         ]
     },
     {
-        "0_key": "автоматический генерация новостной заголовок",
-        "1_textForm": "автоматической генерации новостных заголовков",
-        "2_modelName": "(Прил + С) + (Прил + С)рд",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 15,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_автоматический",
-            "1_генерация",
-            "2_новостной",
-            "3_заголовок"
+        "key": "автоматический генерация новостной заголовок",
+        "textForm": "автоматической генерации новостных заголовков",
+        "modelName": "(Прил + С) + (Прил + С)рд",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 15,
+        "end_token_ind": 18,
+        "span": [
+            463,
+            508
+        ],
+        "lemmas": [
+            "автоматический",
+            "генерация",
+            "новостной",
+            "заголовок"
         ]
     },
     {
-        "0_key": "генерация новостной заголовок",
-        "1_textForm": "генерации новостных заголовков",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2019-18",
-        "4_sentNum": 2,
-        "5_start_ind": 16,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_генерация",
-            "1_новостной",
-            "2_заголовок"
+        "key": "генерация новостной заголовок",
+        "textForm": "генерации новостных заголовков",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2019-18",
+        "sentNum": 2,
+        "start_token_ind": 16,
+        "end_token_ind": 18,
+        "span": [
+            478,
+            508
+        ],
+        "lemmas": [
+            "генерация",
+            "новостной",
+            "заголовок"
         ]
     },
     {
-        "0_key": "данный момент",
-        "1_textForm": "данный момент",
-        "2_modelName": "Прил + С",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_данный",
-            "1_момент"
+        "key": "данный момент",
+        "textForm": "данный момент",
+        "modelName": "Прил + С",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            692,
+            705
+        ],
+        "lemmas": [
+            "данный",
+            "момент"
         ]
     },
     {
-        "0_key": "момент результат",
-        "1_textForm": "момент результатов",
-        "2_modelName": "С + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_момент",
-            "1_результат"
+        "key": "момент результат",
+        "textForm": "момент результатов",
+        "modelName": "С + Срд",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            699,
+            717
+        ],
+        "lemmas": [
+            "момент",
+            "результат"
         ]
     },
     {
-        "0_key": "набор новость",
-        "1_textForm": "наборе новостей",
-        "2_modelName": "С + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_набор",
-            "1_новость"
+        "key": "набор новость",
+        "textForm": "наборе новостей",
+        "modelName": "С + Срд",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            721,
+            736
+        ],
+        "lemmas": [
+            "набор",
+            "новость"
         ]
     },
     {
-        "0_key": "данный момент результат",
-        "1_textForm": "данный момент результатов",
-        "2_modelName": "(Прил + С) + Срд",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 5,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_данный",
-            "1_момент",
-            "2_результат"
+        "key": "данный момент результат",
+        "textForm": "данный момент результатов",
+        "modelName": "(Прил + С) + Срд",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 5,
+        "end_token_ind": 7,
+        "span": [
+            692,
+            717
+        ],
+        "lemmas": [
+            "данный",
+            "момент",
+            "результат"
         ]
     },
     {
-        "0_key": "момент результат на набор новость",
-        "1_textForm": "момент результатов на наборе новостей",
-        "2_modelName": "(С + Срд) + Предл + (С + Срд)",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 6,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_момент",
-            "1_результат",
-            "2_на",
-            "3_набор",
-            "4_новость"
+        "key": "момент результат на набор новость",
+        "textForm": "момент результатов на наборе новостей",
+        "modelName": "(С + Срд) + Предл + (С + Срд)",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 6,
+        "end_token_ind": 10,
+        "span": [
+            699,
+            736
+        ],
+        "lemmas": [
+            "момент",
+            "результат",
+            "на",
+            "набор",
+            "новость"
         ]
     },
     {
-        "0_key": "результат на набор новость",
-        "1_textForm": "результатов на наборе новостей",
-        "2_modelName": "С + Предл + (С + Срд)",
-        "3_docId": "2019-18",
-        "4_sentNum": 3,
-        "5_start_ind": 7,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_результат",
-            "1_на",
-            "2_набор",
-            "3_новость"
+        "key": "результат на набор новость",
+        "textForm": "результатов на наборе новостей",
+        "modelName": "С + Предл + (С + Срд)",
+        "docId": "2019-18",
+        "sentNum": 3,
+        "start_token_ind": 7,
+        "end_token_ind": 10,
+        "span": [
+            706,
+            736
+        ],
+        "lemmas": [
+            "результат",
+            "на",
+            "набор",
+            "новость"
         ]
     }
 ]

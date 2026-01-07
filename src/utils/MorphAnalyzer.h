@@ -23,14 +23,6 @@ class MorphAnalyzer {
     bool isMorphAnalysisError(const X::WordFormPtr& token) const;
 
     /**
-     * @brief Checks if token has desired part of speech.
-     *
-     * @param morphInfo Set of morphological information.
-     * @return True if desired POS found, false otherwise.
-     */
-    // bool hasDesiredPOS(const std::unordered_set& morphInfo) const;
-
-    /**
      * @brief Retrieves the lemma (dictionary form) of a word.
      *
      * @param form The word form to extract lemma from.
@@ -60,9 +52,4 @@ class MorphAnalyzer {
      * @return The most probable MorphInfo object.
      */
     X::MorphInfo getMostProbableMorphInfo(const std::unordered_set<X::MorphInfo>& morphSet) const;
-
-    /**
-     * @brief Set of desired parts of speech for filtering.
-     */
-    // const std::unordered_set desiredPOS = {"ADJ", "NOUN", "PROPN", "VERB"};
 };

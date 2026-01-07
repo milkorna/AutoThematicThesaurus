@@ -77,6 +77,8 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
             std::istringstream textStream(textToProcess);
             X::SentenceSplitter sentenceSplitter(textStream);
 
+            size_t globalOffsetInDocument = 0;
+
             while (!sentenceSplitter.eof()) {
                 std::string rawSentence;
                 sentenceSplitter.readSentence(rawSentence);
@@ -86,6 +88,25 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
 
                 // Tokenization
                 std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
+
+                std::vector<std::pair<size_t, size_t>> tokenSpans;
+                tokenSpans.reserve(tokens.size()); // Зарезервировать память заранее для оптимизации
+
+                for (const auto& token : tokens) {
+                    // Пропускаем separators
+                    if (token->getType() == X::TokenTypeTag::SEPR) {
+                        continue;
+                    }
+
+                    // Используем готовые позиции из tokenizer - быстро и надёжно!
+                    size_t startByte = token->getStartPosUnicode();
+                    size_t lengthBytes = token->getLength();
+
+                    tokenSpans.push_back({startByte, startByte + lengthBytes});
+                }
+
+                // Передаём информацию в Process
+                processContext.setSentenceData(rawSentence, tokenSpans, globalOffsetInDocument);
 
                 // Morphological analysis
                 X::Sentence sentence = analyzer.analyze(tokens);
@@ -101,7 +122,8 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
                 Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + rawSentence);
                 collect(sentence, processContext);
 
-                processContext.sentNum++;
+                globalOffsetInDocument += rawSentence.length();
+                processContext.nextSentence();
             };
             finalizeDocumentProcessing();
         }
@@ -119,7 +141,7 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
 void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& process) {
     auto& corpus = TextCorpus::GetCorpus();
 
-    if (lastDocumentId.empty() && lastDocumentId != process.docId) {
+    if (lastDocumentId.empty() && lastDocumentId != process.getDocId()) {
         for (const auto& lemma : uniqueLemmasInDoc) {
             corpus.UpdateDocumentFrequency(lemma);
         }
@@ -136,7 +158,7 @@ void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& p
     }
 
     uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
-    lastDocumentId = process.docId;
+    lastDocumentId = process.getDocId();
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.collect(process);

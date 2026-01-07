@@ -1,176 +1,228 @@
 [
     {
-        "0_key": "abbyy retrieval",
-        "1_textForm": "ABBYY Retrieval",
-        "2_modelName": "Англ",
-        "3_docId": "2000-1",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_abbyy",
-            "1_retrieval"
+        "key": "abbyy retrieval",
+        "textForm": "ABBYY Retrieval",
+        "modelName": "Англ",
+        "docId": "2000-1",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            15
+        ],
+        "lemmas": [
+            "abbyy",
+            "retrieval"
         ]
     },
     {
-        "0_key": "morphology engine",
-        "1_textForm": "Morphology Engine",
-        "2_modelName": "Англ",
-        "3_docId": "2000-1",
-        "4_sentNum": 0,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_morphology",
-            "1_engine"
+        "key": "morphology engine",
+        "textForm": "Morphology Engine",
+        "modelName": "Англ",
+        "docId": "2000-1",
+        "sentNum": 0,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            18,
+            35
+        ],
+        "lemmas": [
+            "morphology",
+            "engine"
         ]
     },
     {
-        "0_key": "программный продукт",
-        "1_textForm": "программный продукт",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 1,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_программный",
-            "1_продукт"
+        "key": "программный продукт",
+        "textForm": "программный продукт",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 1,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            68,
+            87
+        ],
+        "lemmas": [
+            "программный",
+            "продукт"
         ]
     },
     {
-        "0_key": "предоставляющий пользователь",
-        "1_textForm": "предоставляющий пользователю",
-        "2_modelName": "Прич + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 1,
-        "5_start_ind": 17,
-        "6_end_ind": 18,
-        "7_lemmas": [
-            "0_предоставляющий",
-            "1_пользователь"
+        "key": "предоставляющий пользователь",
+        "textForm": "предоставляющий пользователю",
+        "modelName": "Прич + С",
+        "docId": "2000-1",
+        "sentNum": 1,
+        "start_token_ind": 17,
+        "end_token_ind": 18,
+        "span": [
+            130,
+            158
+        ],
+        "lemmas": [
+            "предоставляющий",
+            "пользователь"
         ]
     },
     {
-        "0_key": "программный продукт",
-        "1_textForm": "программных продуктов",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 1,
-        "5_start_ind": 25,
-        "6_end_ind": 26,
-        "7_lemmas": [
-            "0_программный",
-            "1_продукт"
+        "key": "программный продукт",
+        "textForm": "программных продуктов",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 1,
+        "start_token_ind": 25,
+        "end_token_ind": 26,
+        "span": [
+            204,
+            225
+        ],
+        "lemmas": [
+            "программный",
+            "продукт"
         ]
     },
     {
-        "0_key": "прикладной программный продукт",
-        "1_textForm": "прикладных программных продуктов",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 1,
-        "5_start_ind": 24,
-        "6_end_ind": 26,
-        "7_lemmas": [
-            "0_прикладной",
-            "1_программный",
-            "2_продукт"
+        "key": "прикладной программный продукт",
+        "textForm": "прикладных программных продуктов",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 1,
+        "start_token_ind": 24,
+        "end_token_ind": 26,
+        "span": [
+            193,
+            225
+        ],
+        "lemmas": [
+            "прикладной",
+            "программный",
+            "продукт"
         ]
     },
     {
-        "0_key": "состав прикладной программный продукт",
-        "1_textForm": "составе прикладных программных продуктов",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2000-1",
-        "4_sentNum": 1,
-        "5_start_ind": 23,
-        "6_end_ind": 26,
-        "7_lemmas": [
-            "0_состав",
-            "1_прикладной",
-            "2_программный",
-            "3_продукт"
+        "key": "состав прикладной программный продукт",
+        "textForm": "составе прикладных программных продуктов",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "2000-1",
+        "sentNum": 1,
+        "start_token_ind": 23,
+        "end_token_ind": 26,
+        "span": [
+            185,
+            225
+        ],
+        "lemmas": [
+            "состав",
+            "прикладной",
+            "программный",
+            "продукт"
         ]
     },
     {
-        "0_key": "полнотекстовый поиск",
-        "1_textForm": "полнотекстового поиска",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_полнотекстовый",
-            "1_поиск"
+        "key": "полнотекстовый поиск",
+        "textForm": "полнотекстового поиска",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            434,
+            456
+        ],
+        "lemmas": [
+            "полнотекстовый",
+            "поиск"
         ]
     },
     {
-        "0_key": "морфологический анализ",
-        "1_textForm": "морфологического анализа",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_морфологический",
-            "1_анализ"
+        "key": "морфологический анализ",
+        "textForm": "морфологического анализа",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            459,
+            483
+        ],
+        "lemmas": [
+            "морфологический",
+            "анализ"
         ]
     },
     {
-        "0_key": "abbyy retrieval",
-        "1_textForm": "ABBYY Retrieval",
-        "2_modelName": "Англ",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_abbyy",
-            "1_retrieval"
+        "key": "abbyy retrieval",
+        "textForm": "ABBYY Retrieval",
+        "modelName": "Англ",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            484,
+            499
+        ],
+        "lemmas": [
+            "abbyy",
+            "retrieval"
         ]
     },
     {
-        "0_key": "morphology engine",
-        "1_textForm": "Morphology Engine",
-        "2_modelName": "Англ",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 9,
-        "6_end_ind": 10,
-        "7_lemmas": [
-            "0_morphology",
-            "1_engine"
+        "key": "morphology engine",
+        "textForm": "Morphology Engine",
+        "modelName": "Англ",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 9,
+        "end_token_ind": 10,
+        "span": [
+            502,
+            519
+        ],
+        "lemmas": [
+            "morphology",
+            "engine"
         ]
     },
     {
-        "0_key": "программный система",
-        "1_textForm": "программные системы",
-        "2_modelName": "Прил + С",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 16,
-        "6_end_ind": 17,
-        "7_lemmas": [
-            "0_программный",
-            "1_система"
+        "key": "программный система",
+        "textForm": "программные системы",
+        "modelName": "Прил + С",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 16,
+        "end_token_ind": 17,
+        "span": [
+            548,
+            567
+        ],
+        "lemmas": [
+            "программный",
+            "система"
         ]
     },
     {
-        "0_key": "поиск и морфологический анализ",
-        "1_textForm": "поиска и морфологического анализа",
-        "2_modelName": "С + и + (Прил + С)",
-        "3_docId": "2000-1",
-        "4_sentNum": 2,
-        "5_start_ind": 2,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_поиск",
-            "1_и",
-            "2_морфологический",
-            "3_анализ"
+        "key": "поиск и морфологический анализ",
+        "textForm": "поиска и морфологического анализа",
+        "modelName": "С + и + (Прил + С)",
+        "docId": "2000-1",
+        "sentNum": 2,
+        "start_token_ind": 2,
+        "end_token_ind": 5,
+        "span": [
+            450,
+            483
+        ],
+        "lemmas": [
+            "поиск",
+            "и",
+            "морфологический",
+            "анализ"
         ]
     }
 ]
