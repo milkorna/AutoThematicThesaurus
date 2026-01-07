@@ -150,8 +150,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            284,
-            303
+            186,
+            205
         ],
         "lemmas": [
             "вторичный",
@@ -167,8 +167,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            294,
-            314
+            196,
+            216
         ],
         "lemmas": [
             "источник",
@@ -184,8 +184,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            284,
-            314
+            186,
+            216
         ],
         "lemmas": [
             "вторичный",
@@ -202,8 +202,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            294,
-            322
+            196,
+            224
         ],
         "lemmas": [
             "источник",
@@ -221,8 +221,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            492,
-            523
+            275,
+            306
         ],
         "lemmas": [
             "лексико-синтаксический",
@@ -238,8 +238,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            562,
-            594
+            345,
+            377
         ],
         "lemmas": [
             "лексико-синтаксический",
@@ -255,8 +255,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            481,
-            523
+            264,
+            306
         ],
         "lemmas": [
             "статистика",

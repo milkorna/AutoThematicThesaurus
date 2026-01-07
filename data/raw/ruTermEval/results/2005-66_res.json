@@ -60,8 +60,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            211,
-            235
+            148,
+            172
         ],
         "lemmas": [
             "когнитивной",
@@ -77,8 +77,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            205,
-            235
+            142,
+            172
         ],
         "lemmas": [
             "вид",
@@ -95,8 +95,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            343,
-            356
+            190,
+            203
         ],
         "lemmas": [
             "русский",
@@ -112,8 +112,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            398,
-            424
+            245,
+            271
         ],
         "lemmas": [
             "коммуникативный",
@@ -129,8 +129,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            426,
-            458
+            273,
+            305
         ],
         "lemmas": [
             "когнитивно-коммуникативный",
@@ -146,8 +146,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            461,
-            484
+            308,
+            331
         ],
         "lemmas": [
             "ментальный",

@@ -81,8 +81,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            118,
-            135
+            73,
+            90
         ],
         "lemmas": [
             "проблема",
@@ -98,8 +98,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            118,
-            140
+            73,
+            95
         ],
         "lemmas": [
             "проблема",
@@ -116,8 +116,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            127,
-            140
+            82,
+            95
         ],
         "lemmas": [
             "описание",
@@ -133,8 +133,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            205,
-            233
+            160,
+            188
         ],
         "lemmas": [
             "характерологический",
@@ -150,8 +150,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            237,
-            256
+            192,
+            211
         ],
         "lemmas": [
             "номинация",
@@ -167,8 +167,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            269,
-            287
+            224,
+            242
         ],
         "lemmas": [
             "наивный",
@@ -184,8 +184,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            277,
-            297
+            232,
+            252
         ],
         "lemmas": [
             "психология",
@@ -201,8 +201,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            277,
-            303
+            232,
+            258
         ],
         "lemmas": [
             "психология",
@@ -219,8 +219,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            288,
-            303
+            243,
+            258
         ],
         "lemmas": [
             "носитель",
@@ -236,8 +236,8 @@
         "start_token_ind": 25,
         "end_token_ind": 28,
         "span": [
-            269,
-            303
+            224,
+            258
         ],
         "lemmas": [
             "наивный",

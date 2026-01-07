@@ -130,8 +130,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            145,
-            166
+            81,
+            102
         ],
         "lemmas": [
             "представлен",
@@ -147,8 +147,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            167,
-            189
+            103,
+            125
         ],
         "lemmas": [
             "экспертный",
@@ -164,8 +164,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            190,
-            214
+            126,
+            150
         ],
         "lemmas": [
             "биологический",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            216,
-            229
+            152,
+            165
         ],
         "lemmas": [
             "размер",
@@ -198,8 +198,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            137,
-            166
+            73,
+            102
         ],
         "lemmas": [
             "доклад",
@@ -216,8 +216,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            167,
-            214
+            103,
+            150
         ],
         "lemmas": [
             "экспертный",
@@ -235,8 +235,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            158,
-            189
+            94,
+            125
         ],
         "lemmas": [
             "методика",
@@ -253,8 +253,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            178,
-            214
+            114,
+            150
         ],
         "lemmas": [
             "диагностика",
@@ -271,8 +271,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            429,
-            440
+            266,
+            277
         ],
         "lemmas": [
             "речевой",
@@ -288,8 +288,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            412,
-            440
+            249,
+            277
         ],
         "lemmas": [
             "представительный",
@@ -306,8 +306,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            437,
-            447
+            274,
+            284
         ],
         "lemmas": [
             "база",
@@ -323,8 +323,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            429,
-            447
+            266,
+            284
         ],
         "lemmas": [
             "речевой",
@@ -341,8 +341,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            412,
-            447
+            249,
+            284
         ],
         "lemmas": [
             "представительный",
@@ -360,8 +360,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            406,
-            440
+            243,
+            277
         ],
         "lemmas": [
             "сбор",
@@ -379,8 +379,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            596,
-            611
+            347,
+            362
         ],
         "lemmas": [
             "речевой",
@@ -396,8 +396,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            613,
-            638
+            364,
+            389
         ],
         "lemmas": [
             "иллюстрирующий",
@@ -413,8 +413,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            652,
-            676
+            403,
+            427
         ],
         "lemmas": [
             "аудитивный",
@@ -430,8 +430,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            805,
-            827
+            429,
+            451
         ],
         "lemmas": [
             "результат",
@@ -447,8 +447,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            839,
-            863
+            463,
+            487
         ],
         "lemmas": [
             "биологический",
@@ -464,8 +464,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            853,
-            871
+            477,
+            495
         ],
         "lemmas": [
             "параметр",
@@ -481,8 +481,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            875,
-            886
+            499,
+            510
         ],
         "lemmas": [
             "база",
@@ -498,8 +498,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            915,
-            932
+            539,
+            556
         ],
         "lemmas": [
             "реальный",
@@ -515,8 +515,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            925,
-            942
+            549,
+            566
         ],
         "lemmas": [
             "данный",
@@ -532,8 +532,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            976,
-            999
+            600,
+            623
         ],
         "lemmas": [
             "практический",
@@ -549,8 +549,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            839,
-            871
+            463,
+            495
         ],
         "lemmas": [
             "биологический",
@@ -567,8 +567,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            828,
-            863
+            452,
+            487
         ],
         "lemmas": [
             "эксперт",
@@ -585,8 +585,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            853,
-            886
+            477,
+            510
         ],
         "lemmas": [
             "параметр",
@@ -605,8 +605,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            864,
-            886
+            488,
+            510
         ],
         "lemmas": [
             "диктор",
@@ -624,8 +624,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            915,
-            942
+            539,
+            566
         ],
         "lemmas": [
             "реальный",
@@ -642,8 +642,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            925,
-            954
+            549,
+            578
         ],
         "lemmas": [
             "данный",
@@ -661,8 +661,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            971,
-            999
+            595,
+            623
         ],
         "lemmas": [
             "ряд",

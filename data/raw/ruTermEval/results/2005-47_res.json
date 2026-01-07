@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            138,
-            155
+            82,
+            99
         ],
         "lemmas": [
             "многозначный",
@@ -129,8 +129,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            173,
-            190
+            117,
+            134
         ],
         "lemmas": [
             "лексический",
@@ -146,8 +146,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            129,
-            155
+            73,
+            99
         ],
         "lemmas": [
             "значение",
@@ -164,8 +164,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            356,
-            370
+            204,
+            218
         ],
         "lemmas": [
             "дурной",
@@ -181,8 +181,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            455,
-            472
+            263,
+            280
         ],
         "lemmas": [
             "непрерывный",
@@ -198,8 +198,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            517,
-            542
+            325,
+            350
         ],
         "lemmas": [
             "идеографический",

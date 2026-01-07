@@ -157,8 +157,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            169,
-            195
+            102,
+            128
         ],
         "lemmas": [
             "принципиальный",
@@ -174,8 +174,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            212,
-            225
+            145,
+            158
         ],
         "lemmas": [
             "русский",
@@ -191,8 +191,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            265,
-            290
+            198,
+            223
         ],
         "lemmas": [
             "экспериментальный",
@@ -208,8 +208,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            350,
-            371
+            283,
+            304
         ],
         "lemmas": [
             "метрический",
@@ -225,8 +225,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            362,
-            383
+            295,
+            316
         ],
         "lemmas": [
             "стратегия",
@@ -242,8 +242,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            384,
-            395
+            317,
+            328
         ],
         "lemmas": [
             "устный",
@@ -259,8 +259,8 @@
         "start_token_ind": 31,
         "end_token_ind": 33,
         "span": [
-            350,
-            383
+            283,
+            316
         ],
         "lemmas": [
             "метрический",
@@ -277,8 +277,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            341,
-            371
+            274,
+            304
         ],
         "lemmas": [
             "проверка",
@@ -295,8 +295,8 @@
         "start_token_ind": 33,
         "end_token_ind": 35,
         "span": [
-            372,
-            395
+            305,
+            328
         ],
         "lemmas": [
             "сегментация",
@@ -313,8 +313,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            632,
-            651
+            365,
+            384
         ],
         "lemmas": [
             "положительный",

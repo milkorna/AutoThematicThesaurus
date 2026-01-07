@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            113,
-            124
+            67,
+            78
         ],
         "lemmas": [
             "устный",
@@ -42,8 +42,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            152,
-            183
+            106,
+            137
         ],
         "lemmas": [
             "иллокутивный",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            99,
-            124
+            53,
+            78
         ],
         "lemmas": [
             "произведение",
@@ -77,8 +77,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            284,
-            302
+            159,
+            177
         ],
         "lemmas": [
             "частотный",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            294,
-            312
+            169,
+            187
         ],
         "lemmas": [
             "контур",
@@ -111,8 +111,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            284,
-            312
+            159,
+            187
         ],
         "lemmas": [
             "частотный",
@@ -129,8 +129,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            539,
-            559
+            303,
+            323
         ],
         "lemmas": [
             "литургический",
@@ -146,8 +146,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            526,
-            559
+            290,
+            323
         ],
         "lemmas": [
             "православный",
@@ -164,8 +164,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            561,
-            582
+            325,
+            346
         ],
         "lemmas": [
             "мусульманский",

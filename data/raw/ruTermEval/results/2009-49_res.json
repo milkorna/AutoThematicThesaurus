@@ -149,8 +149,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            259,
-            280
+            155,
+            176
         ],
         "lemmas": [
             "иллюстративный",
@@ -166,8 +166,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            282,
-            301
+            178,
+            197
         ],
         "lemmas": [
             "сопровождающий",
@@ -183,8 +183,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            305,
-            323
+            201,
+            219
         ],
         "lemmas": [
             "структура",
@@ -200,8 +200,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            247,
-            280
+            143,
+            176
         ],
         "lemmas": [
             "взаимосвязь",
@@ -218,8 +218,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            451,
-            469
+            258,
+            276
         ],
         "lemmas": [
             "отдельный",
@@ -235,8 +235,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            461,
-            490
+            268,
+            297
         ],
         "lemmas": [
             "признак",
@@ -252,8 +252,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            504,
-            518
+            311,
+            325
         ],
         "lemmas": [
             "наличие",
@@ -269,8 +269,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            504,
-            528
+            311,
+            335
         ],
         "lemmas": [
             "наличие",
@@ -287,8 +287,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            512,
-            528
+            319,
+            335
         ],
         "lemmas": [
             "граница",
@@ -304,8 +304,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            537,
-            552
+            344,
+            359
         ],
         "lemmas": [
             "единица",
@@ -321,8 +321,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            451,
-            490
+            258,
+            297
         ],
         "lemmas": [
             "отдельный",

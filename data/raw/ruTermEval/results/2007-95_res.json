@@ -59,8 +59,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            198,
-            218
+            126,
+            146
         ],
         "lemmas": [
             "взаимосвязь",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            235,
-            262
+            163,
+            190
         ],
         "lemmas": [
             "неструктурированный",
@@ -93,8 +93,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            267,
-            284
+            195,
+            212
         ],
         "lemmas": [
             "основа",
@@ -110,8 +110,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            342,
-            363
+            270,
+            291
         ],
         "lemmas": [
             "совместный",
@@ -127,8 +127,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            428,
-            450
+            356,
+            378
         ],
         "lemmas": [
             "контекстный",
@@ -144,8 +144,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            336,
-            363
+            264,
+            291
         ],
         "lemmas": [
             "учет",
@@ -162,8 +162,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            726,
-            737
+            400,
+            411
         ],
         "lemmas": [
             "вид",
@@ -179,8 +179,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            726,
-            750
+            400,
+            424
         ],
         "lemmas": [
             "вид",
@@ -197,8 +197,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            726,
-            758
+            400,
+            432
         ],
         "lemmas": [
             "вид",
@@ -216,8 +216,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            731,
-            750
+            405,
+            424
         ],
         "lemmas": [
             "таблица",
@@ -233,8 +233,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            731,
-            758
+            405,
+            432
         ],
         "lemmas": [
             "таблица",
@@ -251,8 +251,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            738,
-            758
+            412,
+            432
         ],
         "lemmas": [
             "взаимосвязь",
@@ -268,8 +268,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            844,
-            863
+            471,
+            490
         ],
         "lemmas": [
             "взаимосвязь",

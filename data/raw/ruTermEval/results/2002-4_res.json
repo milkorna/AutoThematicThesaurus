@@ -62,8 +62,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            118,
-            134
+            73,
+            89
         ],
         "lemmas": [
             "печатный",
@@ -79,8 +79,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            176,
-            198
+            131,
+            153
         ],
         "lemmas": [
             "орфографический",
@@ -96,8 +96,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            254,
-            270
+            209,
+            225
         ],
         "lemmas": [
             "размер",
@@ -113,8 +113,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            321,
-            342
+            276,
+            297
         ],
         "lemmas": [
             "неалфавитный",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            162,
-            198
+            117,
+            153
         ],
         "lemmas": [
             "соответствие",
@@ -148,8 +148,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            615,
-            633
+            350,
+            368
         ],
         "lemmas": [
             "правописный",
@@ -165,8 +165,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            656,
-            675
+            391,
+            410
         ],
         "lemmas": [
             "фиксационный",
@@ -182,8 +182,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            820,
-            838
+            464,
+            482
         ],
         "lemmas": [
             "фиксационный",
@@ -199,8 +199,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            807,
-            838
+            451,
+            482
         ],
         "lemmas": [
             "типографский",
@@ -217,8 +217,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            882,
-            898
+            526,
+            542
         ],
         "lemmas": [
             "текстовый",
@@ -234,8 +234,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            970,
-            987
+            614,
+            631
         ],
         "lemmas": [
             "фрагмент",
@@ -251,8 +251,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            792,
-            838
+            436,
+            482
         ],
         "lemmas": [
             "машинописный",
@@ -271,8 +271,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1329,
-            1347
+            735,
+            753
         ],
         "lemmas": [
             "фиксационный",
@@ -288,8 +288,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            1313,
-            1347
+            719,
+            753
         ],
         "lemmas": [
             "полиграфический",
@@ -306,8 +306,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            1301,
-            1347
+            707,
+            753
         ],
         "lemmas": [
             "изменение",

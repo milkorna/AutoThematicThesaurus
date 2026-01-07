@@ -122,7 +122,10 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
                 Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + rawSentence);
                 collect(sentence, processContext);
 
-                globalOffsetInDocument += rawSentence.length();
+                globalOffsetInDocument += tokens.back()->getStartPosUnicode() + tokens.back()->getLength();
+                if (globalOffsetInDocument < textToProcess.length() && textToProcess[globalOffsetInDocument] == '\n') {
+                    globalOffsetInDocument++; // Пропускаем \n
+                }
                 processContext.nextSentence();
             };
             finalizeDocumentProcessing();

@@ -60,8 +60,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            171,
-            191
+            95,
+            115
         ],
         "lemmas": [
             "представлен",
@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            184,
-            205
+            108,
+            129
         ],
         "lemmas": [
             "попытка",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            206,
-            232
+            130,
+            156
         ],
         "lemmas": [
             "вопросно-ответный",
@@ -111,8 +111,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            259,
-            284
+            183,
+            208
         ],
         "lemmas": [
             "отражающий",
@@ -128,8 +128,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            164,
-            191
+            88,
+            115
         ],
         "lemmas": [
             "работа",
@@ -146,8 +146,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            171,
-            205
+            95,
+            129
         ],
         "lemmas": [
             "представлен",
@@ -164,8 +164,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            192,
-            232
+            116,
+            156
         ],
         "lemmas": [
             "моделирование",
@@ -182,8 +182,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            408,
-            423
+            218,
+            233
         ],
         "lemmas": [
             "основа",

@@ -8,8 +8,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            29,
-            50
+            17,
+            38
         ],
         "lemmas": [
             "недискурсивный",
@@ -25,8 +25,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            61,
-            86
+            49,
+            74
         ],
         "lemmas": [
             "описанияпроблем",
@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            87,
-            109
+            75,
+            97
         ],
         "lemmas": [
             "недискурсивный",
@@ -59,8 +59,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            181,
-            210
+            169,
+            198
         ],
         "lemmas": [
             "лингвистический",
@@ -76,8 +76,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            211,
-            235
+            199,
+            223
         ],
         "lemmas": [
             "естественный",
@@ -93,8 +93,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            238,
-            254
+            226,
+            242
         ],
         "lemmas": [
             "ментальный",
@@ -110,8 +110,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            249,
-            263
+            237,
+            251
         ],
         "lemmas": [
             "сфера",
@@ -127,8 +127,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            52,
-            86
+            40,
+            74
         ],
         "lemmas": [
             "проблема",
@@ -145,8 +145,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            78,
-            109
+            66,
+            97
         ],
         "lemmas": [
             "описание",
@@ -163,8 +163,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            181,
-            235
+            169,
+            223
         ],
         "lemmas": [
             "лингвистический",
@@ -182,8 +182,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            197,
-            235
+            185,
+            223
         ],
         "lemmas": [
             "моделирование",
@@ -200,8 +200,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            238,
-            263
+            226,
+            251
         ],
         "lemmas": [
             "ментальный",
@@ -218,8 +218,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            708,
-            730
+            411,
+            433
         ],
         "lemmas": [
             "зрительный",
@@ -235,8 +235,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            750,
-            772
+            453,
+            475
         ],
         "lemmas": [
             "недискурсивный",
@@ -252,8 +252,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            794,
-            812
+            497,
+            515
         ],
         "lemmas": [
             "роль",
@@ -269,8 +269,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            703,
-            730
+            406,
+            433
         ],
         "lemmas": [
             "роль",

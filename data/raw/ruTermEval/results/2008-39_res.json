@@ -150,8 +150,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            301,
-            322
+            182,
+            203
         ],
         "lemmas": [
             "традиционный",
@@ -167,8 +167,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            314,
-            334
+            195,
+            215
         ],
         "lemmas": [
             "практика",
@@ -184,8 +184,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            346,
-            372
+            227,
+            253
         ],
         "lemmas": [
             "терминологический",
@@ -201,8 +201,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            335,
-            372
+            216,
+            253
         ],
         "lemmas": [
             "переводный",
@@ -219,8 +219,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            288,
-            322
+            169,
+            203
         ],
         "lemmas": [
             "дополнение",
@@ -238,8 +238,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            301,
-            334
+            182,
+            215
         ],
         "lemmas": [
             "традиционный",
@@ -256,8 +256,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            323,
-            372
+            204,
+            253
         ],
         "lemmas": [
             "составление",
@@ -275,8 +275,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            543,
-            569
+            319,
+            345
         ],
         "lemmas": [
             "терминологический",
@@ -292,8 +292,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            532,
-            569
+            308,
+            345
         ],
         "lemmas": [
             "переводный",
@@ -310,8 +310,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            700,
-            725
+            378,
+            403
         ],
         "lemmas": [
             "хельсинкский",

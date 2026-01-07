@@ -79,8 +79,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            220,
-            245
+            139,
+            164
         ],
         "lemmas": [
             "коммуникативный",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            206,
-            245
+            125,
+            164
         ],
         "lemmas": [
             "когнитивной",
@@ -115,8 +115,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            351,
-            374
+            206,
+            229
         ],
         "lemmas": [
             "грамматический",
@@ -132,8 +132,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            366,
-            384
+            221,
+            239
         ],
         "lemmas": [
             "способ",
@@ -149,8 +149,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            366,
-            392
+            221,
+            247
         ],
         "lemmas": [
             "способ",
@@ -167,8 +167,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            366,
-            406
+            221,
+            261
         ],
         "lemmas": [
             "способ",
@@ -186,8 +186,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            366,
-            413
+            221,
+            268
         ],
         "lemmas": [
             "способ",
@@ -206,8 +206,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            375,
-            392
+            230,
+            247
         ],
         "lemmas": [
             "выражение",
@@ -223,8 +223,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            375,
-            406
+            230,
+            261
         ],
         "lemmas": [
             "выражение",
@@ -241,8 +241,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            375,
-            413
+            230,
+            268
         ],
         "lemmas": [
             "выражение",
@@ -260,8 +260,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            385,
-            406
+            240,
+            261
         ],
         "lemmas": [
             "модель",
@@ -277,8 +277,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            385,
-            413
+            240,
+            268
         ],
         "lemmas": [
             "модель",
@@ -295,8 +295,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            393,
-            413
+            248,
+            268
         ],
         "lemmas": [
             "представление",
@@ -312,8 +312,8 @@
         "start_token_ind": 5,
         "end_token_ind": 10,
         "span": [
-            351,
-            413
+            206,
+            268
         ],
         "lemmas": [
             "грамматический",
@@ -333,8 +333,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            340,
-            374
+            195,
+            229
         ],
         "lemmas": [
             "заданность",
@@ -351,8 +351,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            512,
-            537
+            275,
+            300
         ],
         "lemmas": [
             "грамматический",
@@ -368,8 +368,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            561,
-            583
+            324,
+            346
         ],
         "lemmas": [
             "дейктический",
@@ -385,8 +385,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            574,
-            596
+            337,
+            359
         ],
         "lemmas": [
             "координата",
@@ -402,8 +402,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            561,
-            596
+            324,
+            359
         ],
         "lemmas": [
             "дейктический",
@@ -420,8 +420,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            549,
-            583
+            312,
+            346
         ],
         "lemmas": [
             "определение",
@@ -438,8 +438,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            679,
-            699
+            361,
+            381
         ],
         "lemmas": [
             "соматический",
@@ -455,8 +455,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            724,
-            744
+            406,
+            426
         ],
         "lemmas": [
             "ментальный",
@@ -472,8 +472,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            709,
-            744
+            391,
+            426
         ],
         "lemmas": [
             "свидетельство",

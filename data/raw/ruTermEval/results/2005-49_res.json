@@ -154,8 +154,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            181,
-            200
+            108,
+            127
         ],
         "lemmas": [
             "русский",
@@ -171,8 +171,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            203,
-            221
+            130,
+            148
         ],
         "lemmas": [
             "внешний",
@@ -188,8 +188,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            181,
-            221
+            108,
+            148
         ],
         "lemmas": [
             "русский",
@@ -208,8 +208,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            189,
-            221
+            116,
+            148
         ],
         "lemmas": [
             "конструкция",
@@ -227,8 +227,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            423,
-            443
+            247,
+            267
         ],
         "lemmas": [
             "генитивный",
@@ -244,8 +244,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            414,
-            443
+            238,
+            267
         ],
         "lemmas": [
             "иерархия",
@@ -262,8 +262,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            559,
-            581
+            324,
+            346
         ],
         "lemmas": [
             "иерархия",
@@ -279,8 +279,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            559,
-            591
+            324,
+            356
         ],
         "lemmas": [
             "иерархия",
@@ -297,8 +297,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            568,
-            591
+            333,
+            356
         ],
         "lemmas": [
             "вовлеченность",

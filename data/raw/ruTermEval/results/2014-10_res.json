@@ -8,8 +8,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            307,
-            328
+            171,
+            192
         ],
         "lemmas": [
             "желательный",
@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            478,
-            508
+            267,
+            297
         ],
         "lemmas": [
             "функциональный",
@@ -42,8 +42,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            565,
-            587
+            354,
+            376
         ],
         "lemmas": [
             "ресурсный",
@@ -59,8 +59,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            466,
-            508
+            255,
+            297
         ],
         "lemmas": [
             "конструкция",

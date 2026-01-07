@@ -133,8 +133,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            199,
-            218
+            111,
+            130
         ],
         "lemmas": [
             "предпринят",
@@ -150,8 +150,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            235,
-            262
+            147,
+            174
         ],
         "lemmas": [
             "семантический",
@@ -167,8 +167,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            263,
-            279
+            175,
+            191
         ],
         "lemmas": [
             "русский",
@@ -184,8 +184,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            280,
-            300
+            192,
+            212
         ],
         "lemmas": [
             "физический",
@@ -201,8 +201,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            191,
-            218
+            103,
+            130
         ],
         "lemmas": [
             "доклад",
@@ -219,8 +219,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            235,
-            279
+            147,
+            191
         ],
         "lemmas": [
             "семантический",
@@ -238,8 +238,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            263,
-            300
+            175,
+            212
         ],
         "lemmas": [
             "русский",
@@ -257,8 +257,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            249,
-            279
+            161,
+            191
         ],
         "lemmas": [
             "классификация",
@@ -275,8 +275,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            271,
-            300
+            183,
+            212
         ],
         "lemmas": [
             "глагол",
@@ -293,8 +293,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            546,
-            570
+            314,
+            338
         ],
         "lemmas": [
             "расщепление",

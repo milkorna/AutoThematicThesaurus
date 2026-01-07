@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            111,
-            128
+            71,
+            88
         ],
         "lemmas": [
             "бытовой",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            111,
-            141
+            71,
+            101
         ],
         "lemmas": [
             "бытовой",
@@ -61,8 +61,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            97,
-            128
+            57,
+            88
         ],
         "lemmas": [
             "классификация",
@@ -79,8 +79,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            298,
-            319
+            196,
+            217
         ],
         "lemmas": [
             "общепринятый",
@@ -96,8 +96,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            286,
-            319
+            184,
+            217
         ],
         "lemmas": [
             "нейтральный",
@@ -114,8 +114,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            433,
-            447
+            238,
+            252
         ],
         "lemmas": [
             "личный",
@@ -131,8 +131,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            433,
-            454
+            238,
+            259
         ],
         "lemmas": [
             "личный",
@@ -150,8 +150,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            533,
-            547
+            299,
+            313
         ],
         "lemmas": [
             "состав",
@@ -167,8 +167,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            524,
-            547
+            290,
+            313
         ],
         "lemmas": [
             "набор",

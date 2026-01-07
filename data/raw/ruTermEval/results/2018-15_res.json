@@ -134,8 +134,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            228,
-            252
+            139,
+            163
         ],
         "lemmas": [
             "морфологический",
@@ -151,8 +151,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            212,
-            252
+            123,
+            163
         ],
         "lemmas": [
             "автоматический",
@@ -169,8 +169,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            354,
-            369
+            206,
+            221
         ],
         "lemmas": [
             "нейронный",
@@ -186,8 +186,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            343,
-            369
+            195,
+            221
         ],
         "lemmas": [
             "символьный",
@@ -204,8 +204,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            383,
-            401
+            235,
+            253
         ],
         "lemmas": [
             "языковый",
@@ -221,8 +221,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            372,
-            401
+            224,
+            253
         ],
         "lemmas": [
             "нейронный",
@@ -239,8 +239,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            420,
-            444
+            272,
+            296
         ],
         "lemmas": [
             "морфологический",
@@ -256,8 +256,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            453,
-            470
+            305,
+            322
         ],
         "lemmas": [
             "количество",
@@ -273,8 +273,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            488,
-            504
+            340,
+            356
         ],
         "lemmas": [
             "данный",
@@ -290,8 +290,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            535,
-            558
+            387,
+            410
         ],
         "lemmas": [
             "дополнительный",
@@ -307,8 +307,8 @@
         "start_token_ind": 6,
         "end_token_ind": 11,
         "span": [
-            354,
-            401
+            206,
+            253
         ],
         "lemmas": [
             "нейронный",
@@ -328,8 +328,8 @@
         "start_token_ind": 5,
         "end_token_ind": 11,
         "span": [
-            343,
-            401
+            195,
+            253
         ],
         "lemmas": [
             "символьный",
@@ -350,8 +350,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            332,
-            369
+            184,
+            221
         ],
         "lemmas": [
             "комбинация",
@@ -369,8 +369,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            364,
-            401
+            216,
+            253
         ],
         "lemmas": [
             "сеть",
@@ -389,8 +389,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            411,
-            444
+            263,
+            296
         ],
         "lemmas": [
             "качество",
@@ -407,8 +407,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            835,
-            859
+            476,
+            500
         ],
         "lemmas": [
             "морфологический",

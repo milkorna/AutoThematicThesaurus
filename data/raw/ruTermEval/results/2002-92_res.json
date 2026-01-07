@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            113,
-            129
+            64,
+            80
         ],
         "lemmas": [
             "посвящен",
@@ -60,8 +60,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            147,
-            160
+            98,
+            111
         ],
         "lemmas": [
             "наивный",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            161,
-            175
+            112,
+            126
         ],
         "lemmas": [
             "русский",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            147,
-            175
+            98,
+            126
         ],
         "lemmas": [
             "наивный",
@@ -113,8 +113,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            138,
-            160
+            89,
+            111
         ],
         "lemmas": [
             "концепт",
@@ -131,8 +131,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            155,
-            175
+            106,
+            126
         ],
         "lemmas": [
             "этика",
@@ -149,8 +149,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            300,
-            313
+            177,
+            190
         ],
         "lemmas": [
             "наивный",
@@ -166,8 +166,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1166,
-            1188
+            655,
+            677
         ],
         "lemmas": [
             "концепт",
@@ -183,8 +183,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            1343,
-            1364
+            832,
+            853
         ],
         "lemmas": [
             "этикетный",
@@ -200,8 +200,8 @@
         "start_token_ind": 44,
         "end_token_ind": 45,
         "span": [
-            1402,
-            1424
+            891,
+            913
         ],
         "lemmas": [
             "символический",
@@ -217,8 +217,8 @@
         "start_token_ind": 34,
         "end_token_ind": 37,
         "span": [
-            1330,
-            1364
+            819,
+            853
         ],
         "lemmas": [
             "моральный",
@@ -236,8 +236,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1710,
-            1728
+            938,
+            956
         ],
         "lemmas": [
             "синонимический",
@@ -253,8 +253,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1870,
-            1893
+            1032,
+            1055
         ],
         "lemmas": [
             "синтаксический",
@@ -270,8 +270,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            1963,
-            1983
+            1125,
+            1145
         ],
         "lemmas": [
             "синонимический",
@@ -287,8 +287,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            1955,
-            1983
+            1117,
+            1145
         ],
         "lemmas": [
             "данный",
@@ -305,8 +305,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            1870,
-            1904
+            1032,
+            1066
         ],
         "lemmas": [
             "синтаксический",
@@ -324,8 +324,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            1940,
-            1983
+            1102,
+            1145
         ],
         "lemmas": [
             "толкование",

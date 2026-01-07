@@ -77,8 +77,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            112,
-            134
+            60,
+            82
         ],
         "lemmas": [
             "предмет",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            163,
-            182
+            111,
+            130
         ],
         "lemmas": [
             "пространство",
@@ -111,8 +111,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            191,
-            210
+            139,
+            158
         ],
         "lemmas": [
             "усилительный",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            183,
-            210
+            131,
+            158
         ],
         "lemmas": [
             "русский",
@@ -146,8 +146,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            235,
-            262
+            183,
+            210
         ],
         "lemmas": [
             "указательный",
@@ -163,8 +163,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            144,
-            182
+            92,
+            130
         ],
         "lemmas": [
             "функционирование",
@@ -182,8 +182,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            176,
-            210
+            124,
+            158
         ],
         "lemmas": [
             "смысл",
@@ -201,8 +201,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            227,
-            262
+            175,
+            210
         ],
         "lemmas": [
             "форма",
@@ -220,8 +220,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            443,
-            459
+            250,
+            266
         ],
         "lemmas": [
             "функция",
@@ -237,8 +237,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            462,
-            481
+            269,
+            288
         ],
         "lemmas": [
             "данный",
@@ -254,8 +254,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            443,
-            481
+            250,
+            288
         ],
         "lemmas": [
             "функция",
@@ -274,8 +274,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            451,
-            481
+            258,
+            288
         ],
         "lemmas": [
             "указание",
@@ -293,8 +293,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            771,
-            790
+            429,
+            448
         ],
         "lemmas": [
             "пространство",
@@ -310,8 +310,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            846,
-            870
+            504,
+            528
         ],
         "lemmas": [
             "обнаруживаемый",
@@ -327,8 +327,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            760,
-            790
+            418,
+            448
         ],
         "lemmas": [
             "значение",
@@ -346,8 +346,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            838,
-            870
+            496,
+            528
         ],
         "lemmas": [
             "степень",
@@ -364,8 +364,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            1121,
-            1133
+            608,
+            620
         ],
         "lemmas": [
             "иной",
@@ -381,8 +381,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1172,
-            1191
+            659,
+            678
         ],
         "lemmas": [
             "пространство",

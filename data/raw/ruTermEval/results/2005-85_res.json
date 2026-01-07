@@ -44,8 +44,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            188,
-            205
+            120,
+            137
         ],
         "lemmas": [
             "когнитивной",
@@ -61,8 +61,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            206,
-            228
+            138,
+            160
         ],
         "lemmas": [
             "концептуальный",
@@ -78,8 +78,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            222,
-            239
+            154,
+            171
         ],
         "lemmas": [
             "поиск",
@@ -95,8 +95,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            242,
-            265
+            174,
+            197
         ],
         "lemmas": [
             "электронный",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            188,
-            228
+            120,
+            160
         ],
         "lemmas": [
             "когнитивной",
@@ -131,8 +131,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            179,
-            205
+            111,
+            137
         ],
         "lemmas": [
             "вариант",
@@ -149,8 +149,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            206,
-            239
+            138,
+            171
         ],
         "lemmas": [
             "концептуальный",
@@ -167,8 +167,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            200,
-            228
+            132,
+            160
         ],
         "lemmas": [
             "схема",
@@ -185,8 +185,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            222,
-            265
+            154,
+            197
         ],
         "lemmas": [
             "поиск",
@@ -205,8 +205,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            229,
-            265
+            161,
+            197
         ],
         "lemmas": [
             "документ",
@@ -224,8 +224,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            426,
-            445
+            247,
+            266
         ],
         "lemmas": [
             "реализация",
@@ -241,8 +241,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            426,
-            457
+            247,
+            278
         ],
         "lemmas": [
             "реализация",
@@ -259,8 +259,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            426,
-            468
+            247,
+            289
         ],
         "lemmas": [
             "реализация",
@@ -278,8 +278,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            437,
-            457
+            258,
+            278
         ],
         "lemmas": [
             "операция",
@@ -295,8 +295,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            437,
-            468
+            258,
+            289
         ],
         "lemmas": [
             "операция",
@@ -313,8 +313,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            446,
-            468
+            267,
+            289
         ],
         "lemmas": [
             "кодирование",
@@ -330,8 +330,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            499,
-            515
+            320,
+            336
         ],
         "lemmas": [
             "этап",
@@ -347,8 +347,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            499,
-            523
+            320,
+            344
         ],
         "lemmas": [
             "этап",
@@ -365,8 +365,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            505,
-            523
+            326,
+            344
         ],
         "lemmas": [
             "подготовка",
@@ -382,8 +382,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            524,
-            540
+            345,
+            361
         ],
         "lemmas": [
             "электронный",
@@ -399,8 +399,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            536,
-            551
+            357,
+            372
         ],
         "lemmas": [
             "форма",
@@ -416,8 +416,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            486,
-            523
+            307,
+            344
         ],
         "lemmas": [
             "тезаурус",
@@ -436,8 +436,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            524,
-            551
+            345,
+            372
         ],
         "lemmas": [
             "электронный",
@@ -454,8 +454,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            516,
-            540
+            337,
+            361
         ],
         "lemmas": [
             "автор",
@@ -472,8 +472,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            725,
-            746
+            393,
+            414
         ],
         "lemmas": [
             "технологический",
@@ -489,8 +489,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            761,
-            784
+            429,
+            452
         ],
         "lemmas": [
             "возможность",
@@ -506,8 +506,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            816,
-            836
+            484,
+            504
         ],
         "lemmas": [
             "он-лайновый",
@@ -523,8 +523,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            829,
-            844
+            497,
+            512
         ],
         "lemmas": [
             "доступа",
@@ -540,8 +540,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            816,
-            844
+            484,
+            512
         ],
         "lemmas": [
             "он-лайновый",
@@ -558,8 +558,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            808,
-            836
+            476,
+            504
         ],
         "lemmas": [
             "наличие",
@@ -576,8 +576,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            829,
-            856
+            497,
+            524
         ],
         "lemmas": [
             "доступа",

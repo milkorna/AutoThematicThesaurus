@@ -99,8 +99,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            293,
-            312
+            167,
+            186
         ],
         "lemmas": [
             "нарративный",
@@ -116,8 +116,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            287,
-            312
+            161,
+            186
         ],
         "lemmas": [
             "время",
@@ -134,8 +134,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            428,
-            449
+            267,
+            288
         ],
         "lemmas": [
             "употребление",
@@ -151,8 +151,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            428,
-            457
+            267,
+            296
         ],
         "lemmas": [
             "употребление",
@@ -169,8 +169,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            441,
-            457
+            280,
+            296
         ],
         "lemmas": [
             "граммема",
@@ -186,8 +186,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            612,
-            625
+            341,
+            354
         ],
         "lemmas": [
             "момент",
@@ -203,8 +203,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            631,
-            649
+            360,
+            378
         ],
         "lemmas": [
             "временный",

@@ -114,8 +114,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            195,
-            216
+            126,
+            147
         ],
         "lemmas": [
             "параллельный",
@@ -131,8 +131,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            239,
-            260
+            170,
+            191
         ],
         "lemmas": [
             "переводческий",
@@ -148,8 +148,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            288,
-            305
+            219,
+            236
         ],
         "lemmas": [
             "русский",
@@ -165,8 +165,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            316,
-            331
+            247,
+            262
         ],
         "lemmas": [
             "английский",
@@ -182,8 +182,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            374,
-            386
+            305,
+            317
         ],
         "lemmas": [
             "русский",
@@ -199,8 +199,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            195,
-            228
+            126,
+            159
         ],
         "lemmas": [
             "параллельный",
@@ -218,8 +218,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            231,
-            260
+            162,
+            191
         ],
         "lemmas": [
             "анализ",
@@ -236,8 +236,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            278,
-            305
+            209,
+            236
         ],
         "lemmas": [
             "передача",

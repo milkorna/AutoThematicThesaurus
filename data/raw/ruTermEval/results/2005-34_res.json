@@ -114,8 +114,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            354,
-            380
+            232,
+            258
         ],
         "lemmas": [
             "вопросительный",
@@ -131,8 +131,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            413,
-            429
+            291,
+            307
         ],
         "lemmas": [
             "русский",
@@ -148,8 +148,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            447,
-            470
+            325,
+            348
         ],
         "lemmas": [
             "многомерный",
@@ -165,8 +165,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            403,
-            429
+            281,
+            307
         ],
         "lemmas": [
             "интонация",
@@ -183,8 +183,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            857,
-            871
+            488,
+            502
         ],
         "lemmas": [
             "русский",
@@ -200,8 +200,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            873,
-            896
+            504,
+            527
         ],
         "lemmas": [
             "специальный",
@@ -217,8 +217,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            845,
-            871
+            476,
+            502
         ],
         "lemmas": [
             "грамматика",

@@ -81,8 +81,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            103,
-            130
+            70,
+            97
         ],
         "lemmas": [
             "лексикографический",
@@ -98,8 +98,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            157,
-            174
+            124,
+            141
         ],
         "lemmas": [
             "полный",
@@ -115,8 +115,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            206,
-            218
+            173,
+            185
         ],
         "lemmas": [
             "видовой",
@@ -132,8 +132,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            199,
-            218
+            166,
+            185
         ],
         "lemmas": [
             "член",

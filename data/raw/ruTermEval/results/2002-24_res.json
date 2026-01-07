@@ -81,8 +81,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            226,
-            249
+            135,
+            158
         ],
         "lemmas": [
             "русский",
@@ -98,8 +98,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            251,
-            272
+            160,
+            181
         ],
         "lemmas": [
             "обозначающий",
@@ -115,8 +115,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            216,
-            249
+            125,
+            158
         ],
         "lemmas": [
             "семантика",
@@ -133,8 +133,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            514,
-            537
+            313,
+            336
         ],
         "lemmas": [
             "сравниваемый",
@@ -150,8 +150,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            825,
-            848
+            487,
+            510
         ],
         "lemmas": [
             "распознаваемый",
@@ -167,8 +167,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            1187,
-            1206
+            683,
+            702
         ],
         "lemmas": [
             "субъективный",
@@ -184,8 +184,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1337,
-            1358
+            745,
+            766
         ],
         "lemmas": [
             "сравниваемый",
@@ -201,8 +201,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1595,
-            1614
+            889,
+            908
         ],
         "lemmas": [
             "сопоставляемый",

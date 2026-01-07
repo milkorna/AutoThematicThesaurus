@@ -25,8 +25,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            428,
-            446
+            261,
+            279
         ],
         "lemmas": [
             "устный",
@@ -42,8 +42,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            468,
-            485
+            301,
+            318
         ],
         "lemmas": [
             "поэтический",
@@ -59,8 +59,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            461,
-            485
+            294,
+            318
         ],
         "lemmas": [
             "устный",
@@ -77,8 +77,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            415,
-            446
+            248,
+            279
         ],
         "lemmas": [
             "произведение",
@@ -95,8 +95,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            635,
-            649
+            343,
+            357
         ],
         "lemmas": [
             "анализ",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            663,
-            681
+            371,
+            389
         ],
         "lemmas": [
             "теория",
@@ -129,8 +129,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            797,
-            820
+            444,
+            467
         ],
         "lemmas": [
             "результат",
@@ -146,8 +146,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            821,
-            847
+            468,
+            494
         ],
         "lemmas": [
             "отечественный",
@@ -163,8 +163,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            859,
-            879
+            506,
+            526
         ],
         "lemmas": [
             "народный",
@@ -180,8 +180,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            851,
-            879
+            498,
+            526
         ],
         "lemmas": [
             "устный",
@@ -198,8 +198,8 @@
         "start_token_ind": 9,
         "end_token_ind": 14,
         "span": [
-            821,
-            879
+            468,
+            526
         ],
         "lemmas": [
             "отечественный",
@@ -219,8 +219,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            808,
-            847
+            455,
+            494
         ],
         "lemmas": [
             "исследование",
@@ -237,8 +237,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            835,
-            879
+            482,
+            526
         ],
         "lemmas": [
             "специалист",
@@ -257,8 +257,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            989,
-            1005
+            539,
+            555
         ],
         "lemmas": [
             "анализ",
@@ -274,8 +274,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            989,
-            1012
+            539,
+            562
         ],
         "lemmas": [
             "анализ",
@@ -292,8 +292,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            996,
-            1012
+            546,
+            562
         ],
         "lemmas": [
             "структура",
@@ -309,8 +309,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1030,
-            1058
+            580,
+            608
         ],
         "lemmas": [
             "функциональный",
@@ -326,8 +326,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            1103,
-            1122
+            653,
+            672
         ],
         "lemmas": [
             "описываемый",
@@ -343,8 +343,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1267,
-            1293
+            690,
+            716
         ],
         "lemmas": [
             "мифологический",
@@ -360,8 +360,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            1267,
-            1302
+            690,
+            725
         ],
         "lemmas": [
             "мифологический",
@@ -379,8 +379,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1262,
-            1293
+            685,
+            716
         ],
         "lemmas": [
             "роль",
@@ -397,8 +397,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1367,
-            1387
+            744,
+            764
         ],
         "lemmas": [
             "прозаический",
@@ -414,8 +414,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1357,
-            1387
+            734,
+            764
         ],
         "lemmas": [
             "авторский",
@@ -432,8 +432,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1388,
-            1412
+            765,
+            789
         ],
         "lemmas": [
             "исследованный",
@@ -449,8 +449,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            1367,
-            1412
+            744,
+            789
         ],
         "lemmas": [
             "прозаический",
@@ -468,8 +468,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            1357,
-            1412
+            734,
+            789
         ],
         "lemmas": [
             "авторский",
@@ -488,8 +488,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            1380,
-            1412
+            757,
+            789
         ],
         "lemmas": [
             "перевод",

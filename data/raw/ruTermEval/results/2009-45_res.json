@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            127,
-            144
+            76,
+            93
         ],
         "lemmas": [
             "исследование",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            342,
-            356
+            187,
+            201
         ],
         "lemmas": [
             "основа",
@@ -76,8 +76,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            342,
-            369
+            187,
+            214
         ],
         "lemmas": [
             "основа",
@@ -94,8 +94,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            349,
-            369
+            194,
+            214
         ],
         "lemmas": [
             "анализ",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            370,
-            381
+            215,
+            226
         ],
         "lemmas": [
             "данный",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            384,
-            405
+            229,
+            250
         ],
         "lemmas": [
             "прилагательное",
@@ -145,8 +145,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            440,
-            468
+            285,
+            313
         ],
         "lemmas": [
             "топологический",
@@ -162,8 +162,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            502,
-            528
+            347,
+            373
         ],
         "lemmas": [
             "пространственный",
@@ -179,8 +179,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            370,
-            405
+            215,
+            250
         ],
         "lemmas": [
             "данный",
@@ -199,8 +199,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            357,
-            381
+            202,
+            226
         ],
         "lemmas": [
             "сочетаемость",
@@ -217,8 +217,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            377,
-            405
+            222,
+            250
         ],
         "lemmas": [
             "имя",
@@ -236,8 +236,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            384,
-            415
+            229,
+            260
         ],
         "lemmas": [
             "прилагательное",

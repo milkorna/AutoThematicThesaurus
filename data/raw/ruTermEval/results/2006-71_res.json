@@ -44,8 +44,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            142,
-            159
+            89,
+            106
         ],
         "lemmas": [
             "формальный",
@@ -61,8 +61,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            153,
-            168
+            100,
+            115
         ],
         "lemmas": [
             "модель",
@@ -78,8 +78,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            153,
-            179
+            100,
+            126
         ],
         "lemmas": [
             "модель",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            160,
-            179
+            107,
+            126
         ],
         "lemmas": [
             "описание",
@@ -113,8 +113,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            199,
-            222
+            146,
+            169
         ],
         "lemmas": [
             "формализм",
@@ -130,8 +130,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            142,
-            179
+            89,
+            126
         ],
         "lemmas": [
             "формальный",
@@ -149,8 +149,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            430,
-            458
+            258,
+            286
         ],
         "lemmas": [
             "морфосинтаксический",
@@ -166,8 +166,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            459,
-            474
+            287,
+            302
         ],
         "lemmas": [
             "русский",
@@ -183,8 +183,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            430,
-            474
+            258,
+            302
         ],
         "lemmas": [
             "морфосинтаксический",
@@ -202,8 +202,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            451,
-            474
+            279,
+            302
         ],
         "lemmas": [
             "анализ",
@@ -220,8 +220,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            563,
-            584
+            314,
+            335
         ],
         "lemmas": [
             "синтаксический",
@@ -237,8 +237,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            688,
-            711
+            389,
+            412
         ],
         "lemmas": [
             "синтаксический",
@@ -254,8 +254,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            713,
-            734
+            414,
+            435
         ],
         "lemmas": [
             "используемый",
@@ -271,8 +271,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            679,
-            711
+            380,
+            412
         ],
         "lemmas": [
             "алгоритм",
@@ -289,8 +289,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            807,
-            824
+            448,
+            465
         ],
         "lemmas": [
             "описание",
@@ -306,8 +306,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            855,
-            871
+            496,
+            512
         ],
         "lemmas": [
             "штрафной",
@@ -323,8 +323,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            840,
-            871
+            481,
+            512
         ],
         "lemmas": [
             "содержательный",
@@ -341,8 +341,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            890,
-            909
+            531,
+            550
         ],
         "lemmas": [
             "уменьшение",

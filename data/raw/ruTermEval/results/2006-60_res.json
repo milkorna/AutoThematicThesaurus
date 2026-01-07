@@ -60,8 +60,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            95,
-            112
+            53,
+            70
         ],
         "lemmas": [
             "посвящен",
@@ -77,8 +77,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            104,
-            127
+            62,
+            85
         ],
         "lemmas": [
             "проблема",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            113,
-            141
+            71,
+            99
         ],
         "lemmas": [
             "инструментарий",
@@ -112,8 +112,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            164,
-            182
+            122,
+            140
         ],
         "lemmas": [
             "описание",
@@ -129,8 +129,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            183,
-            202
+            141,
+            160
         ],
         "lemmas": [
             "естественный",
@@ -146,8 +146,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            256,
-            275
+            214,
+            233
         ],
         "lemmas": [
             "естественный",
@@ -163,8 +163,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            323,
-            346
+            281,
+            304
         ],
         "lemmas": [
             "универсальный",
@@ -180,8 +180,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            337,
-            354
+            295,
+            312
         ],
         "lemmas": [
             "инвентарь",
@@ -197,8 +197,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            95,
-            127
+            53,
+            85
         ],
         "lemmas": [
             "посвящен",
@@ -215,8 +215,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            104,
-            141
+            62,
+            99
         ],
         "lemmas": [
             "проблема",
@@ -234,8 +234,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            173,
-            202
+            131,
+            160
         ],
         "lemmas": [
             "семантика",
@@ -252,8 +252,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            249,
-            275
+            207,
+            233
         ],
         "lemmas": [
             "основа",
@@ -270,8 +270,8 @@
         "start_token_ind": 34,
         "end_token_ind": 36,
         "span": [
-            323,
-            354
+            281,
+            312
         ],
         "lemmas": [
             "универсальный",
@@ -288,8 +288,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            671,
-            694
+            398,
+            421
         ],
         "lemmas": [
             "ограниченный",
@@ -305,8 +305,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            702,
-            721
+            429,
+            448
         ],
         "lemmas": [
             "естественный",
@@ -322,8 +322,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            770,
-            790
+            497,
+            517
         ],
         "lemmas": [
             "семантический",
@@ -339,8 +339,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            756,
-            790
+            483,
+            517
         ],
         "lemmas": [
             "отечественный",
@@ -357,8 +357,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            664,
-            694
+            391,
+            421
         ],
         "lemmas": [
             "основа",
@@ -375,8 +375,8 @@
         "start_token_ind": 23,
         "end_token_ind": 26,
         "span": [
-            751,
-            790
+            478,
+            517
         ],
         "lemmas": [
             "ряд",
@@ -394,8 +394,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1071,
-            1094
+            621,
+            644
         ],
         "lemmas": [
             "семантический",
@@ -411,8 +411,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            1127,
-            1159
+            677,
+            709
         ],
         "lemmas": [
             "естественно-языковой",
@@ -428,8 +428,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            1178,
-            1211
+            728,
+            761
         ],
         "lemmas": [
             "искусственный",
@@ -445,8 +445,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            1457,
-            1478
+            792,
+            813
         ],
         "lemmas": [
             "состав",
@@ -462,8 +462,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1479,
-            1496
+            814,
+            831
         ],
         "lemmas": [
             "научный",
@@ -479,8 +479,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1534,
-            1554
+            869,
+            889
         ],
         "lemmas": [
             "поверхностный",
@@ -496,8 +496,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1548,
-            1564
+            883,
+            899
         ],
         "lemmas": [
             "ярус",
@@ -513,8 +513,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            1548,
-            1570
+            883,
+            905
         ],
         "lemmas": [
             "ярус",
@@ -531,8 +531,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1555,
-            1570
+            890,
+            905
         ],
         "lemmas": [
             "структура",
@@ -548,8 +548,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            1609,
-            1629
+            944,
+            964
         ],
         "lemmas": [
             "специфичность",
@@ -565,8 +565,8 @@
         "start_token_ind": 41,
         "end_token_ind": 42,
         "span": [
-            1744,
-            1770
+            1079,
+            1105
         ],
         "lemmas": [
             "металингвистический",
@@ -582,8 +582,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            1464,
-            1496
+            799,
+            831
         ],
         "lemmas": [
             "инструментарий",
@@ -600,8 +600,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            1534,
-            1570
+            869,
+            905
         ],
         "lemmas": [
             "поверхностный",

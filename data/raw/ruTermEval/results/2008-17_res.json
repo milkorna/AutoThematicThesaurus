@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            94,
-            116
+            61,
+            83
         ],
         "lemmas": [
             "исследование",
@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            117,
-            136
+            84,
+            103
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            139,
-            157
+            106,
+            124
         ],
         "lemmas": [
             "творительный",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            117,
-            157
+            84,
+            124
         ],
         "lemmas": [
             "русский",
@@ -96,8 +96,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            107,
-            136
+            74,
+            103
         ],
         "lemmas": [
             "семантика",
@@ -114,8 +114,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            125,
-            157
+            92,
+            124
         ],
         "lemmas": [
             "конструкция",
@@ -133,8 +133,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            312,
-            338
+            169,
+            195
         ],
         "lemmas": [
             "пространственный",
@@ -150,8 +150,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            329,
-            350
+            186,
+            207
         ],
         "lemmas": [
             "семантика",
@@ -167,8 +167,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            374,
-            396
+            231,
+            253
         ],
         "lemmas": [
             "топологический",
@@ -184,8 +184,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            440,
-            458
+            297,
+            315
         ],
         "lemmas": [
             "явление",
@@ -201,8 +201,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            459,
-            481
+            316,
+            338
         ],
         "lemmas": [
             "топологический",
@@ -218,8 +218,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            487,
-            507
+            344,
+            364
         ],
         "lemmas": [
             "взаимный",
@@ -235,8 +235,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            312,
-            350
+            169,
+            207
         ],
         "lemmas": [
             "пространственный",
@@ -253,8 +253,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            365,
-            396
+            222,
+            253
         ],
         "lemmas": [
             "термин",
@@ -271,8 +271,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            448,
-            481
+            305,
+            338
         ],
         "lemmas": [
             "совпадение",

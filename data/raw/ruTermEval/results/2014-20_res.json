@@ -79,8 +79,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            283,
-            303
+            186,
+            206
         ],
         "lemmas": [
             "дошкольный",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            652,
-            684
+            367,
+            399
         ],
         "lemmas": [
             "ассоциативно-семантический",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            878,
-            898
+            493,
+            513
         ],
         "lemmas": [
             "лсо",
@@ -131,8 +131,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            899,
-            925
+            514,
+            540
         ],
         "lemmas": [
             "мнемонический",
@@ -148,8 +148,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            886,
-            925
+            501,
+            540
         ],
         "lemmas": [
             "исследование",
@@ -166,8 +166,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            1038,
-            1058
+            559,
+            579
         ],
         "lemmas": [
             "сравнительный",
@@ -183,8 +183,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1052,
-            1070
+            573,
+            591
         ],
         "lemmas": [
             "анализ",
@@ -200,8 +200,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1073,
-            1084
+            594,
+            605
         ],
         "lemmas": [
             "модель",
@@ -217,8 +217,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1038,
-            1070
+            559,
+            591
         ],
         "lemmas": [
             "сравнительный",
@@ -235,8 +235,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            1052,
-            1084
+            573,
+            605
         ],
         "lemmas": [
             "анализ",
@@ -255,8 +255,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            1059,
-            1084
+            580,
+            605
         ],
         "lemmas": [
             "результат",

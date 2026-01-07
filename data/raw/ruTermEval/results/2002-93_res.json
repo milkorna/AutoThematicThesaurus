@@ -95,8 +95,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            340,
-            361
+            229,
+            250
         ],
         "lemmas": [
             "немецкоязычный",
@@ -112,8 +112,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            508,
-            530
+            290,
+            312
         ],
         "lemmas": [
             "первостепенный",
@@ -129,8 +129,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            541,
-            559
+            323,
+            341
         ],
         "lemmas": [
             "языковый",
@@ -146,8 +146,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            581,
-            608
+            363,
+            390
         ],
         "lemmas": [
             "семантический",

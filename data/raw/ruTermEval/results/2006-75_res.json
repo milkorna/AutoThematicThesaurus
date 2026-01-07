@@ -131,8 +131,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            158,
-            171
+            94,
+            107
         ],
         "lemmas": [
             "модель",
@@ -148,8 +148,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            158,
-            183
+            94,
+            119
         ],
         "lemmas": [
             "модель",
@@ -166,8 +166,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            165,
-            183
+            101,
+            119
         ],
         "lemmas": [
             "знание",
@@ -183,8 +183,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            353,
-            370
+            196,
+            213
         ],
         "lemmas": [
             "базовый",
@@ -200,8 +200,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            361,
-            382
+            204,
+            225
         ],
         "lemmas": [
             "онтология",
@@ -217,8 +217,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            385,
-            400
+            228,
+            243
         ],
         "lemmas": [
             "набор",
@@ -234,8 +234,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            385,
-            409
+            228,
+            252
         ],
         "lemmas": [
             "набор",
@@ -252,8 +252,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            385,
-            416
+            228,
+            259
         ],
         "lemmas": [
             "набор",
@@ -271,8 +271,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            391,
-            409
+            234,
+            252
         ],
         "lemmas": [
             "онтология",
@@ -288,8 +288,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            391,
-            416
+            234,
+            259
         ],
         "lemmas": [
             "онтология",
@@ -306,8 +306,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            401,
-            416
+            244,
+            259
         ],
         "lemmas": [
             "область",
@@ -323,8 +323,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            353,
-            382
+            196,
+            225
         ],
         "lemmas": [
             "базовый",
@@ -341,8 +341,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            361,
-            390
+            204,
+            233
         ],
         "lemmas": [
             "онтология",
@@ -360,8 +360,8 @@
         "start_token_ind": 5,
         "end_token_ind": 10,
         "span": [
-            371,
-            416
+            214,
+            259
         ],
         "lemmas": [
             "организация",
@@ -381,8 +381,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            488,
-            501
+            261,
+            274
         ],
         "lemmas": [
             "описан",
@@ -398,8 +398,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            504,
-            521
+            277,
+            294
         ],
         "lemmas": [
             "построение",
@@ -415,8 +415,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            504,
-            528
+            277,
+            301
         ],
         "lemmas": [
             "построение",
@@ -433,8 +433,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            515,
-            528
+            288,
+            301
         ],
         "lemmas": [
             "модель",
@@ -450,8 +450,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            542,
-            559
+            315,
+            332
         ],
         "lemmas": [
             "структура",
@@ -467,8 +467,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            542,
-            570
+            315,
+            343
         ],
         "lemmas": [
             "структура",
@@ -485,8 +485,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            552,
-            570
+            325,
+            343
         ],
         "lemmas": [
             "система",
@@ -502,8 +502,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            495,
-            528
+            268,
+            301
         ],
         "lemmas": [
             "подход",

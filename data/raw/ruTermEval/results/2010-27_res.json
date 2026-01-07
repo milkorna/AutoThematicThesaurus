@@ -228,8 +228,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            201,
-            229
+            120,
+            148
         ],
         "lemmas": [
             "автоматический",
@@ -245,8 +245,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            217,
-            234
+            136,
+            153
         ],
         "lemmas": [
             "формирование",
@@ -262,8 +262,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            217,
-            247
+            136,
+            166
         ],
         "lemmas": [
             "формирование",
@@ -280,8 +280,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            217,
-            252
+            136,
+            171
         ],
         "lemmas": [
             "формирование",
@@ -299,8 +299,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            230,
-            247
+            149,
+            166
         ],
         "lemmas": [
             "база",
@@ -316,8 +316,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            230,
-            252
+            149,
+            171
         ],
         "lemmas": [
             "база",
@@ -334,8 +334,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            235,
-            252
+            154,
+            171
         ],
         "lemmas": [
             "сочетаемость",
@@ -351,8 +351,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            201,
-            252
+            120,
+            171
         ],
         "lemmas": [
             "автоматический",
@@ -371,8 +371,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            709,
-            729
+            394,
+            414
         ],
         "lemmas": [
             "финансовый",
@@ -388,8 +388,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            745,
-            772
+            430,
+            457
         ],
         "lemmas": [
             "научно-педагогический",

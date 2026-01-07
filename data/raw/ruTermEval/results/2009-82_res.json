@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            179,
-            210
+            110,
+            141
         ],
         "lemmas": [
             "экспериментальный",
@@ -42,8 +42,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            211,
-            236
+            142,
+            167
         ],
         "lemmas": [
             "синтаксический",
@@ -59,8 +59,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            283,
-            296
+            214,
+            227
         ],
         "lemmas": [
             "русский",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            179,
-            236
+            110,
+            167
         ],
         "lemmas": [
             "экспериментальный",
@@ -95,8 +95,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            174,
-            210
+            105,
+            141
         ],
         "lemmas": [
             "опыт",
@@ -113,8 +113,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            211,
-            252
+            142,
+            183
         ],
         "lemmas": [
             "синтаксический",
@@ -132,8 +132,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            198,
-            236
+            129,
+            167
         ],
         "lemmas": [
             "исследование",
@@ -150,8 +150,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            442,
-            467
+            238,
+            263
         ],
         "lemmas": [
             "синтаксический",
@@ -167,8 +167,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            526,
-            546
+            322,
+            342
         ],
         "lemmas": [
             "заданный",
@@ -184,8 +184,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            435,
-            467
+            231,
+            263
         ],
         "lemmas": [
             "рамка",

@@ -8,8 +8,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            103,
-            122
+            77,
+            96
         ],
         "lemmas": [
             "нынешний",
@@ -25,8 +25,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            201,
-            229
+            175,
+            203
         ],
         "lemmas": [
             "биологический",
@@ -42,8 +42,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            232,
-            245
+            206,
+            219
         ],
         "lemmas": [
             "homo",
@@ -59,8 +59,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            298,
-            311
+            272,
+            285
         ],
         "lemmas": [
             "счет",
@@ -76,8 +76,8 @@
         "start_token_ind": 38,
         "end_token_ind": 39,
         "span": [
-            352,
-            375
+            326,
+            349
         ],
         "lemmas": [
             "сверхвысокий",
@@ -93,8 +93,8 @@
         "start_token_ind": 32,
         "end_token_ind": 35,
         "span": [
-            298,
-            324
+            272,
+            298
         ],
         "lemmas": [
             "счет",
@@ -112,8 +112,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            628,
-            642
+            353,
+            367
         ],
         "lemmas": [
             "данный",

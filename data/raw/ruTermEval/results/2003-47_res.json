@@ -96,8 +96,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            224,
-            242
+            161,
+            179
         ],
         "lemmas": [
             "машинный",
@@ -113,8 +113,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            216,
-            242
+            153,
+            179
         ],
         "lemmas": [
             "система",
@@ -131,8 +131,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            403,
-            417
+            235,
+            249
         ],
         "lemmas": [
             "этап",
@@ -148,8 +148,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            418,
-            439
+            250,
+            271
         ],
         "lemmas": [
             "турецкий",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            410,
-            439
+            242,
+            271
         ],
         "lemmas": [
             "синтез",
@@ -183,8 +183,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            550,
-            572
+            312,
+            334
         ],
         "lemmas": [
             "семантический",
@@ -200,8 +200,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            630,
-            645
+            392,
+            407
         ],
         "lemmas": [
             "турецкий",
@@ -217,8 +217,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            671,
-            689
+            433,
+            451
         ],
         "lemmas": [
             "линейный",
@@ -234,8 +234,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            710,
-            734
+            472,
+            496
         ],
         "lemmas": [
             "морфологический",
@@ -251,8 +251,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            749,
-            771
+            511,
+            533
         ],
         "lemmas": [
             "правильный",
@@ -268,8 +268,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            772,
-            787
+            534,
+            549
         ],
         "lemmas": [
             "турецкий",
@@ -285,8 +285,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            545,
-            572
+            307,
+            334
         ],
         "lemmas": [
             "этап",
@@ -303,8 +303,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            616,
-            645
+            378,
+            407
         ],
         "lemmas": [
             "конструкция",
@@ -321,8 +321,8 @@
         "start_token_ind": 28,
         "end_token_ind": 30,
         "span": [
-            704,
-            734
+            466,
+            496
         ],
         "lemmas": [
             "этап",
@@ -339,8 +339,8 @@
         "start_token_ind": 32,
         "end_token_ind": 35,
         "span": [
-            749,
-            787
+            511,
+            549
         ],
         "lemmas": [
             "правильный",
@@ -358,8 +358,8 @@
         "start_token_ind": 33,
         "end_token_ind": 35,
         "span": [
-            760,
-            787
+            522,
+            549
         ],
         "lemmas": [
             "предложение",

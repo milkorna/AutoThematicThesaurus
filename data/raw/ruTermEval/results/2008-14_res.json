@@ -77,8 +77,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            229,
-            248
+            149,
+            168
         ],
         "lemmas": [
             "программный",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            213,
-            248
+            133,
+            168
         ],
         "lemmas": [
             "лингвистический",
@@ -112,8 +112,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            259,
-            277
+            179,
+            197
         ],
         "lemmas": [
             "машинный",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            278,
-            294
+            198,
+            214
         ],
         "lemmas": [
             "tilde",
@@ -146,8 +146,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            251,
-            277
+            171,
+            197
         ],
         "lemmas": [
             "система",
@@ -164,8 +164,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            415,
-            442
+            257,
+            284
         ],
         "lemmas": [
             "лексический",
@@ -181,8 +181,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            453,
-            478
+            295,
+            320
         ],
         "lemmas": [
             "устойчивый",
@@ -198,8 +198,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            494,
-            516
+            336,
+            358
         ],
         "lemmas": [
             "семантический",
@@ -215,8 +215,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            508,
-            530
+            350,
+            372
         ],
         "lemmas": [
             "фильтр",
@@ -233,8 +233,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            521,
-            539
+            363,
+            381
         ],
         "lemmas": [
             "улучшение",
@@ -250,8 +250,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            540,
-            558
+            382,
+            400
         ],
         "lemmas": [
             "машинный",
@@ -267,8 +267,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            561,
-            584
+            403,
+            426
         ],
         "lemmas": [
             "рассматриваемый",
@@ -284,8 +284,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            453,
-            493
+            295,
+            335
         ],
         "lemmas": [
             "устойчивый",
@@ -303,8 +303,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            444,
-            478
+            286,
+            320
         ],
         "lemmas": [
             "перевода",
@@ -321,8 +321,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            494,
-            539
+            336,
+            381
         ],
         "lemmas": [
             "семантический",
@@ -341,8 +341,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            481,
-            516
+            323,
+            358
         ],
         "lemmas": [
             "употребление",
@@ -359,8 +359,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            508,
-            539
+            350,
+            381
         ],
         "lemmas": [
             "фильтр",
@@ -378,8 +378,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            531,
-            558
+            373,
+            400
         ],
         "lemmas": [
             "качество",

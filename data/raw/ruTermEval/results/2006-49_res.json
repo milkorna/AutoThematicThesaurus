@@ -95,8 +95,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            126,
-            143
+            75,
+            92
         ],
         "lemmas": [
             "анализ",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            126,
-            154
+            75,
+            103
         ],
         "lemmas": [
             "анализ",
@@ -130,8 +130,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            134,
-            154
+            83,
+            103
         ],
         "lemmas": [
             "стратегия",
@@ -147,8 +147,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            155,
-            165
+            104,
+            114
         ],
         "lemmas": [
             "чужой",
@@ -164,8 +164,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            200,
-            217
+            149,
+            166
         ],
         "lemmas": [
             "детский",
@@ -181,8 +181,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            144,
-            165
+            93,
+            114
         ],
         "lemmas": [
             "оформление",
@@ -199,8 +199,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            200,
-            231
+            149,
+            180
         ],
         "lemmas": [
             "детский",
@@ -218,8 +218,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            192,
-            217
+            141,
+            166
         ],
         "lemmas": [
             "корпус",
@@ -236,8 +236,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            369,
-            379
+            213,
+            223
         ],
         "lemmas": [
             "чужой",
@@ -253,8 +253,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            404,
-            419
+            248,
+            263
         ],
         "lemmas": [
             "косвенный",
@@ -270,8 +270,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            462,
-            483
+            306,
+            327
         ],
         "lemmas": [
             "интонационный",
@@ -287,8 +287,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            500,
-            512
+            344,
+            356
         ],
         "lemmas": [
             "детский",
@@ -304,8 +304,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            369,
-            388
+            213,
+            232
         ],
         "lemmas": [
             "чужой",
@@ -323,8 +323,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            364,
-            379
+            208,
+            223
         ],
         "lemmas": [
             "тип",
@@ -341,8 +341,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            395,
-            419
+            239,
+            263
         ],
         "lemmas": [
             "прямой",
@@ -360,8 +360,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            445,
-            483
+            289,
+            327
         ],
         "lemmas": [
             "грамматический",
@@ -379,8 +379,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            487,
-            512
+            331,
+            356
         ],
         "lemmas": [
             "оформление",

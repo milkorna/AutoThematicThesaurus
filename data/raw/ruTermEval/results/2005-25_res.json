@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            154,
-            176
+            95,
+            117
         ],
         "lemmas": [
             "информационный",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            187,
-            205
+            128,
+            146
         ],
         "lemmas": [
             "список",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            206,
-            236
+            147,
+            177
         ],
         "lemmas": [
             "контекстно-зависимый",
@@ -111,8 +111,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            147,
-            176
+            88,
+            117
         ],
         "lemmas": [
             "система",
@@ -129,8 +129,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            194,
-            236
+            135,
+            177
         ],
         "lemmas": [
             "результат",
@@ -147,8 +147,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            402,
-            423
+            222,
+            243
         ],
         "lemmas": [
             "алгоритм",
@@ -164,8 +164,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            457,
-            472
+            277,
+            292
         ],
         "lemmas": [
             "методика",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            457,
-            481
+            277,
+            301
         ],
         "lemmas": [
             "методика",
@@ -199,8 +199,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            466,
-            481
+            286,
+            301
         ],
         "lemmas": [
             "оценка",
@@ -216,8 +216,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            611,
-            628
+            332,
+            349
         ],
         "lemmas": [
             "ряд",
@@ -233,8 +233,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            611,
-            644
+            332,
+            365
         ],
         "lemmas": [
             "ряд",

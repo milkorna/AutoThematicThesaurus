@@ -61,8 +61,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            133,
-            150
+            84,
+            101
         ],
         "lemmas": [
             "идеология",
@@ -78,8 +78,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            133,
-            159
+            84,
+            110
         ],
         "lemmas": [
             "идеология",
@@ -96,8 +96,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            143,
-            159
+            94,
+            110
         ],
         "lemmas": [
             "система",
@@ -113,8 +113,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            173,
-            193
+            124,
+            144
         ],
         "lemmas": [
             "выполнение",
@@ -130,8 +130,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            194,
-            217
+            145,
+            168
         ],
         "lemmas": [
             "многоязыковый",
@@ -147,8 +147,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            161,
-            193
+            112,
+            144
         ],
         "lemmas": [
             "поддержка",
@@ -166,8 +166,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            184,
-            217
+            135,
+            168
         ],
         "lemmas": [
             "грамматика",
@@ -184,8 +184,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            336,
-            355
+            194,
+            213
         ],
         "lemmas": [
             "основный",
@@ -201,8 +201,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            356,
-            369
+            214,
+            227
         ],
         "lemmas": [
             "мировой",
@@ -218,8 +218,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            372,
-            390
+            230,
+            248
         ],
         "lemmas": [
             "область",
@@ -235,8 +235,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            372,
-            402
+            230,
+            260
         ],
         "lemmas": [
             "область",
@@ -253,8 +253,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            380,
-            402
+            238,
+            260
         ],
         "lemmas": [
             "построение",
@@ -270,8 +270,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            417,
-            439
+            275,
+            297
         ],
         "lemmas": [
             "особенность",
@@ -287,8 +287,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            336,
-            369
+            194,
+            227
         ],
         "lemmas": [
             "основный",
@@ -306,8 +306,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            356,
-            390
+            214,
+            248
         ],
         "lemmas": [
             "мировой",
@@ -326,8 +326,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            345,
-            369
+            203,
+            227
         ],
         "lemmas": [
             "достижение",
@@ -344,8 +344,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            364,
-            402
+            222,
+            260
         ],
         "lemmas": [
             "наука",
@@ -364,8 +364,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            620,
-            642
+            351,
+            373
         ],
         "lemmas": [
             "реализация",
@@ -381,8 +381,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            652,
-            666
+            383,
+            397
         ],
         "lemmas": [
             "данный",
@@ -398,8 +398,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            683,
-            704
+            414,
+            435
         ],
         "lemmas": [
             "семейство",
@@ -415,8 +415,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            711,
-            726
+            442,
+            457
         ],
         "lemmas": [
             "решающий",
@@ -432,8 +432,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            720,
-            735
+            451,
+            466
         ],
         "lemmas": [
             "задача",
@@ -449,8 +449,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            720,
-            748
+            451,
+            479
         ],
         "lemmas": [
             "задача",
@@ -467,8 +467,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            727,
-            748
+            458,
+            479
         ],
         "lemmas": [
             "контроль",
@@ -484,8 +484,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            752,
-            775
+            483,
+            506
         ],
         "lemmas": [
             "правильность",
@@ -501,8 +501,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            793,
-            803
+            524,
+            534
         ],
         "lemmas": [
             "бд",
@@ -518,8 +518,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            821,
-            832
+            552,
+            563
         ],
         "lemmas": [
             "база",
@@ -535,8 +535,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            834,
-            865
+            565,
+            596
         ],
         "lemmas": [
             "сформулированный",
@@ -552,8 +552,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            620,
-            651
+            351,
+            382
         ],
         "lemmas": [
             "реализация",
@@ -571,8 +571,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            645,
-            666
+            376,
+            397
         ],
         "lemmas": [
             "рамка",
@@ -589,8 +589,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            711,
-            748
+            442,
+            479
         ],
         "lemmas": [
             "решающий",
@@ -608,8 +608,8 @@
         "start_token_ind": 15,
         "end_token_ind": 20,
         "span": [
-            720,
-            775
+            451,
+            506
         ],
         "lemmas": [
             "задача",
@@ -629,8 +629,8 @@
         "start_token_ind": 16,
         "end_token_ind": 20,
         "span": [
-            727,
-            775
+            458,
+            506
         ],
         "lemmas": [
             "контроль",
@@ -649,8 +649,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            736,
-            775
+            467,
+            506
         ],
         "lemmas": [
             "пользователь",
@@ -668,8 +668,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            779,
-            803
+            510,
+            534
         ],
         "lemmas": [
             "интерфейс",
@@ -687,8 +687,8 @@
         "start_token_ind": 27,
         "end_token_ind": 30,
         "span": [
-            811,
-            832
+            542,
+            563
         ],
         "lemmas": [
             "запрос",

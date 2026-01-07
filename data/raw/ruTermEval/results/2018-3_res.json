@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            153,
-            171
+            91,
+            109
         ],
         "lemmas": [
             "серия",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            153,
-            187
+            91,
+            125
         ],
         "lemmas": [
             "серия",
@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            159,
-            187
+            97,
+            125
         ],
         "lemmas": [
             "исследование",
@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            188,
-            202
+            126,
+            140
         ],
         "lemmas": [
             "русский",
@@ -94,8 +94,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            252,
-            276
+            190,
+            214
         ],
         "lemmas": [
             "продолжительный",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            172,
-            202
+            110,
+            140
         ],
         "lemmas": [
             "микросинтаксис",
@@ -129,8 +129,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            406,
-            421
+            218,
+            233
         ],
         "lemmas": [
             "центр",
@@ -146,8 +146,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            446,
-            473
+            258,
+            285
         ],
         "lemmas": [
             "микросинтаксический",
@@ -163,8 +163,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            432,
-            473
+            244,
+            285
         ],
         "lemmas": [
             "адвербиальный",
@@ -181,8 +181,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            584,
-            610
+            396,
+            422
         ],
         "lemmas": [
             "семантический",
@@ -198,8 +198,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            572,
-            610
+            384,
+            422
         ],
         "lemmas": [
             "имплицитный",
@@ -216,8 +216,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            630,
-            652
+            442,
+            464
         ],
         "lemmas": [
             "синтаксический",
@@ -233,8 +233,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            568,
-            610
+            380,
+            422
         ],
         "lemmas": [
             "ряд",
@@ -252,8 +252,8 @@
         "start_token_ind": 28,
         "end_token_ind": 30,
         "span": [
-            624,
-            652
+            436,
+            464
         ],
         "lemmas": [
             "набор",
@@ -270,8 +270,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1115,
-            1144
+            615,
+            644
         ],
         "lemmas": [
             "микросинтаксический",
@@ -287,8 +287,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            1244,
-            1263
+            744,
+            763
         ],
         "lemmas": [
             "релевантный",
@@ -304,8 +304,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1462,
-            1487
+            798,
+            823
         ],
         "lemmas": [
             "адекватный",
@@ -321,8 +321,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1488,
-            1511
+            824,
+            847
         ],
         "lemmas": [
             "фразеологический",
@@ -338,8 +338,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1529,
-            1556
+            865,
+            892
         ],
         "lemmas": [
             "микросинтаксический",
@@ -355,8 +355,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            1557,
-            1571
+            893,
+            907
         ],
         "lemmas": [
             "русский",
@@ -372,8 +372,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            1573,
-            1593
+            909,
+            929
         ],
         "lemmas": [
             "составляемый",
@@ -389,8 +389,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            1615,
-            1630
+            951,
+            966
         ],
         "lemmas": [
             "корпус",
@@ -406,8 +406,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            1643,
-            1672
+            979,
+            1008
         ],
         "lemmas": [
             "микросинтаксический",
@@ -423,8 +423,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            1462,
-            1511
+            798,
+            847
         ],
         "lemmas": [
             "адекватный",
@@ -442,8 +442,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            1473,
-            1511
+            809,
+            847
         ],
         "lemmas": [
             "представление",
@@ -460,8 +460,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            1529,
-            1571
+            865,
+            907
         ],
         "lemmas": [
             "микросинтаксический",
@@ -479,8 +479,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            1549,
-            1571
+            885,
+            907
         ],
         "lemmas": [
             "словарь",

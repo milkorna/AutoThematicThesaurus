@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            150,
-            173
+            92,
+            115
         ],
         "lemmas": [
             "способность",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            174,
-            198
+            116,
+            140
         ],
         "lemmas": [
             "синонимичный",
@@ -76,8 +76,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            174,
-            214
+            116,
+            156
         ],
         "lemmas": [
             "синонимичный",
@@ -95,8 +95,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            163,
-            198
+            105,
+            140
         ],
         "lemmas": [
             "построение",
@@ -113,8 +113,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            331,
-            351
+            190,
+            210
         ],
         "lemmas": [
             "основа",
@@ -130,8 +130,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            331,
-            359
+            190,
+            218
         ],
         "lemmas": [
             "основа",
@@ -148,8 +148,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            339,
-            359
+            198,
+            218
         ],
         "lemmas": [
             "формирование",
@@ -165,8 +165,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            360,
-            373
+            219,
+            232
         ],
         "lemmas": [
             "речевой",
@@ -182,8 +182,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            352,
-            373
+            211,
+            232
         ],
         "lemmas": [
             "тактика",
@@ -200,8 +200,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            484,
-            504
+            277,
+            297
         ],
         "lemmas": [
             "уровень",
@@ -217,8 +217,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            656,
-            676
+            349,
+            369
         ],
         "lemmas": [
             "речевой",
@@ -234,8 +234,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            704,
-            729
+            397,
+            422
         ],
         "lemmas": [
             "физиологический",
@@ -251,8 +251,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            720,
-            737
+            413,
+            430
         ],
         "lemmas": [
             "приоритет",
@@ -268,8 +268,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            704,
-            737
+            397,
+            430
         ],
         "lemmas": [
             "физиологический",
@@ -286,8 +286,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            686,
-            729
+            379,
+            422
         ],
         "lemmas": [
             "психологический",
@@ -305,8 +305,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            835,
-            854
+            443,
+            462
         ],
         "lemmas": [
             "эмоциональный",
@@ -322,8 +322,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            849,
-            868
+            457,
+            476
         ],
         "lemmas": [
             "база",
@@ -340,8 +340,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            878,
-            896
+            486,
+            504
         ],
         "lemmas": [
             "принцип",
@@ -357,8 +357,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            898,
-            919
+            506,
+            527
         ],
         "lemmas": [
             "увеличивающий",
@@ -374,8 +374,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            936,
-            958
+            544,
+            566
         ],
         "lemmas": [
             "возможность",
@@ -391,8 +391,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            959,
-            980
+            567,
+            588
         ],
         "lemmas": [
             "психологический",
@@ -408,8 +408,8 @@
         "start_token_ind": 0,
         "end_token_ind": 3,
         "span": [
-            835,
-            868
+            443,
+            476
         ],
         "lemmas": [
             "эмоциональный",
@@ -427,8 +427,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            948,
-            980
+            556,
+            588
         ],
         "lemmas": [
             "расширение",
@@ -445,8 +445,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1149,
-            1175
+            622,
+            648
         ],
         "lemmas": [
             "информационный",
@@ -462,8 +462,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1178,
-            1198
+            651,
+            671
         ],
         "lemmas": [
             "коммуникативный",
@@ -479,8 +479,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            1149,
-            1198
+            622,
+            671
         ],
         "lemmas": [
             "информационный",
@@ -499,8 +499,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            1164,
-            1198
+            637,
+            671
         ],
         "lemmas": [
             "погрешность",
@@ -518,8 +518,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            1178,
-            1208
+            651,
+            681
         ],
         "lemmas": [
             "коммуникативный",
@@ -537,8 +537,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1364,
-            1387
+            749,
+            772
         ],
         "lemmas": [
             "бессознательный",
@@ -554,8 +554,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1388,
-            1405
+            773,
+            790
         ],
         "lemmas": [
             "речевой",
@@ -571,8 +571,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            1364,
-            1405
+            749,
+            790
         ],
         "lemmas": [
             "бессознательный",
@@ -590,8 +590,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            1349,
-            1387
+            734,
+            772
         ],
         "lemmas": [
             "сознательный",
@@ -609,8 +609,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            1380,
-            1405
+            765,
+            790
         ],
         "lemmas": [
             "мотив",

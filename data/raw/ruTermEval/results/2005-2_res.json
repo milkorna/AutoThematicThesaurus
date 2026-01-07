@@ -79,8 +79,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            156,
-            179
+            109,
+            132
         ],
         "lemmas": [
             "супрасегментный",
@@ -96,8 +96,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            317,
-            339
+            200,
+            222
         ],
         "lemmas": [
             "синтаксический",
@@ -113,8 +113,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            586,
-            617
+            360,
+            391
         ],
         "lemmas": [
             "экспрессивно-оценочный",
@@ -130,8 +130,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            618,
-            634
+            392,
+            408
         ],
         "lemmas": [
             "русский",
@@ -147,8 +147,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            586,
-            634
+            360,
+            408
         ],
         "lemmas": [
             "экспрессивно-оценочный",
@@ -166,8 +166,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            609,
-            634
+            383,
+            408
         ],
         "lemmas": [
             "реплика",
@@ -184,8 +184,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            789,
-            811
+            433,
+            455
         ],
         "lemmas": [
             "количество",
@@ -201,8 +201,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            868,
-            895
+            512,
+            539
         ],
         "lemmas": [
             "экспериментальный",

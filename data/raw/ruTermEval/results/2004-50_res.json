@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            226,
-            244
+            140,
+            158
         ],
         "lemmas": [
             "различной",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            267,
-            295
+            181,
+            209
         ],
         "lemmas": [
             "причинно-следственный",
@@ -93,8 +93,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            298,
-            314
+            212,
+            228
         ],
         "lemmas": [
             "русский",
@@ -110,8 +110,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            510,
-            530
+            309,
+            329
         ],
         "lemmas": [
             "дискурсивный",
@@ -127,8 +127,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            566,
-            586
+            365,
+            385
         ],
         "lemmas": [
             "закон",
@@ -144,8 +144,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            566,
-            596
+            365,
+            395
         ],
         "lemmas": [
             "закон",
@@ -162,8 +162,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            566,
-            605
+            365,
+            404
         ],
         "lemmas": [
             "закон",
@@ -181,8 +181,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            574,
-            596
+            373,
+            395
         ],
         "lemmas": [
             "формирование",
@@ -198,8 +198,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            574,
-            605
+            373,
+            404
         ],
         "lemmas": [
             "формирование",
@@ -216,8 +216,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            587,
-            605
+            386,
+            404
         ],
         "lemmas": [
             "структура",
@@ -233,8 +233,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            502,
-            530
+            301,
+            329
         ],
         "lemmas": [
             "феномен",
@@ -251,8 +251,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            772,
-            793
+            418,
+            439
         ],
         "lemmas": [
             "дискурсивный",
@@ -268,8 +268,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            760,
-            793
+            406,
+            439
         ],
         "lemmas": [
             "минимальный",
@@ -286,8 +286,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            817,
-            836
+            463,
+            482
         ],
         "lemmas": [
             "средство",
@@ -303,8 +303,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            817,
-            847
+            463,
+            493
         ],
         "lemmas": [
             "средство",
@@ -321,8 +321,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            826,
-            847
+            472,
+            493
         ],
         "lemmas": [
             "соединение",
@@ -338,8 +338,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            850,
-            870
+            496,
+            516
         ],
         "lemmas": [
             "дискурсивный",
@@ -355,8 +355,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            941,
-            963
+            587,
+            609
         ],
         "lemmas": [
             "характеристика",
@@ -372,8 +372,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            984,
-            1000
+            630,
+            646
         ],
         "lemmas": [
             "ситуация",
@@ -389,8 +389,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            1002,
-            1027
+            648,
+            673
         ],
         "lemmas": [
             "социальный",
@@ -406,8 +406,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            1013,
-            1038
+            659,
+            684
         ],
         "lemmas": [
             "принадлежность",
@@ -423,8 +423,8 @@
         "start_token_ind": 7,
         "end_token_ind": 12,
         "span": [
-            817,
-            870
+            463,
+            516
         ],
         "lemmas": [
             "средство",
@@ -444,8 +444,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            826,
-            870
+            472,
+            516
         ],
         "lemmas": [
             "соединение",
@@ -464,8 +464,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            837,
-            870
+            483,
+            516
         ],
         "lemmas": [
             "предикация",
@@ -483,8 +483,8 @@
         "start_token_ind": 34,
         "end_token_ind": 36,
         "span": [
-            1002,
-            1038
+            648,
+            684
         ],
         "lemmas": [
             "социальный",
@@ -501,8 +501,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1323,
-            1337
+            724,
+            738
         ],
         "lemmas": [
             "влияние",
@@ -518,8 +518,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1360,
-            1374
+            761,
+            775
         ],
         "lemmas": [
             "жанр",
@@ -535,8 +535,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            1424,
-            1443
+            825,
+            844
         ],
         "lemmas": [
             "дискурсивный",
@@ -552,8 +552,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            1402,
-            1443
+            803,
+            844
         ],
         "lemmas": [
             "причинно-следственный",
@@ -570,8 +570,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1679,
-            1693
+            922,
+            936
         ],
         "lemmas": [
             "устный",
@@ -587,8 +587,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1695,
-            1713
+            938,
+            956
         ],
         "lemmas": [
             "письменный",
@@ -604,8 +604,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1716,
-            1729
+            959,
+            972
         ],
         "lemmas": [
             "устный",
@@ -621,8 +621,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            1706,
-            1729
+            949,
+            972
         ],
         "lemmas": [
             "рассказ",
@@ -640,8 +640,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            1975,
-            1993
+            1065,
+            1083
         ],
         "lemmas": [
             "письменный",
@@ -657,8 +657,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            2048,
-            2062
+            1138,
+            1152
         ],
         "lemmas": [
             "устный",
@@ -674,8 +674,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            2140,
-            2162
+            1157,
+            1179
         ],
         "lemmas": [
             "устный",

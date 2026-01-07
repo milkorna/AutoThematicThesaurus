@@ -99,8 +99,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            108,
-            125
+            56,
+            73
         ],
         "lemmas": [
             "представлен",
@@ -116,8 +116,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            126,
-            148
+            74,
+            96
         ],
         "lemmas": [
             "параллельный",
@@ -133,8 +133,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            149,
-            171
+            97,
+            119
         ],
         "lemmas": [
             "компьютерный",
@@ -150,8 +150,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            176,
-            193
+            124,
+            141
         ],
         "lemmas": [
             "славянский",
@@ -167,8 +167,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            197,
-            214
+            145,
+            162
         ],
         "lemmas": [
             "основа",
@@ -184,8 +184,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            237,
-            259
+            185,
+            207
         ],
         "lemmas": [
             "общеславянский",
@@ -201,8 +201,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            295,
-            311
+            243,
+            259
         ],
         "lemmas": [
             "отдельный",
@@ -218,8 +218,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            126,
-            171
+            74,
+            119
         ],
         "lemmas": [
             "параллельный",
@@ -237,8 +237,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            121,
-            148
+            69,
+            96
         ],
         "lemmas": [
             "идея",
@@ -255,8 +255,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            149,
-            193
+            97,
+            141
         ],
         "lemmas": [
             "компьютерный",
@@ -275,8 +275,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            140,
-            171
+            88,
+            119
         ],
         "lemmas": [
             "создание",
@@ -293,8 +293,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            162,
-            193
+            110,
+            141
         ],
         "lemmas": [
             "грамматика",
@@ -312,8 +312,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            176,
-            214
+            124,
+            162
         ],
         "lemmas": [
             "славянский",
@@ -332,8 +332,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            187,
-            214
+            135,
+            162
         ],
         "lemmas": [
             "язык",
@@ -351,8 +351,8 @@
         "start_token_ind": 21,
         "end_token_ind": 24,
         "span": [
-            280,
-            311
+            228,
+            259
         ],
         "lemmas": [
             "расширение",
@@ -370,8 +370,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            526,
-            542
+            299,
+            315
         ],
         "lemmas": [
             "динамичный",
@@ -387,8 +387,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            549,
-            574
+            322,
+            347
         ],
         "lemmas": [
             "создаваемый",
@@ -404,8 +404,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            591,
-            613
+            364,
+            386
         ],
         "lemmas": [
             "размеченный",

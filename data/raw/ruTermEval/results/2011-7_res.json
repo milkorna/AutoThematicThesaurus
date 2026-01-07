@@ -79,8 +79,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            246,
-            274
+            161,
+            189
         ],
         "lemmas": [
             "лексикографический",
@@ -96,8 +96,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            230,
-            274
+            145,
+            189
         ],
         "lemmas": [
             "многоаспектный",
@@ -114,8 +114,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            266,
-            285
+            181,
+            200
         ],
         "lemmas": [
             "описание",
@@ -131,8 +131,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            286,
-            303
+            201,
+            218
         ],
         "lemmas": [
             "звуковой",
@@ -148,8 +148,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            304,
-            318
+            219,
+            233
         ],
         "lemmas": [
             "русский",
@@ -165,8 +165,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            351,
-            363
+            266,
+            278
         ],
         "lemmas": [
             "речевой",
@@ -182,8 +182,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            386,
-            405
+            301,
+            320
         ],
         "lemmas": [
             "лексический",
@@ -199,8 +199,8 @@
         "start_token_ind": 40,
         "end_token_ind": 41,
         "span": [
-            453,
-            470
+            368,
+            385
         ],
         "lemmas": [
             "толковый",
@@ -216,8 +216,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            471,
-            485
+            386,
+            400
         ],
         "lemmas": [
             "русский",
@@ -233,8 +233,8 @@
         "start_token_ind": 53,
         "end_token_ind": 54,
         "span": [
-            541,
-            569
+            456,
+            484
         ],
         "lemmas": [
             "особенность",
@@ -250,8 +250,8 @@
         "start_token_ind": 56,
         "end_token_ind": 57,
         "span": [
-            572,
-            583
+            487,
+            498
         ],
         "lemmas": [
             "устный",
@@ -267,8 +267,8 @@
         "start_token_ind": 57,
         "end_token_ind": 58,
         "span": [
-            579,
-            588
+            494,
+            503
         ],
         "lemmas": [
             "речь",
@@ -284,8 +284,8 @@
         "start_token_ind": 57,
         "end_token_ind": 59,
         "span": [
-            579,
-            595
+            494,
+            510
         ],
         "lemmas": [
             "речь",
@@ -302,8 +302,8 @@
         "start_token_ind": 58,
         "end_token_ind": 59,
         "span": [
-            584,
-            595
+            499,
+            510
         ],
         "lemmas": [
             "ряд",
@@ -319,8 +319,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            246,
-            285
+            161,
+            200
         ],
         "lemmas": [
             "лексикографический",
@@ -337,8 +337,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            230,
-            285
+            145,
+            200
         ],
         "lemmas": [
             "многоаспектный",
@@ -356,8 +356,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            224,
-            274
+            139,
+            189
         ],
         "lemmas": [
             "опыт",
@@ -375,8 +375,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            286,
-            318
+            201,
+            233
         ],
         "lemmas": [
             "звуковой",
@@ -394,8 +394,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            275,
-            303
+            190,
+            218
         ],
         "lemmas": [
             "материал",
@@ -412,8 +412,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            296,
-            318
+            211,
+            233
         ],
         "lemmas": [
             "корпус",
@@ -430,8 +430,8 @@
         "start_token_ind": 40,
         "end_token_ind": 43,
         "span": [
-            453,
-            485
+            368,
+            400
         ],
         "lemmas": [
             "толковый",
@@ -449,8 +449,8 @@
         "start_token_ind": 41,
         "end_token_ind": 43,
         "span": [
-            462,
-            485
+            377,
+            400
         ],
         "lemmas": [
             "словарь",
@@ -467,8 +467,8 @@
         "start_token_ind": 53,
         "end_token_ind": 57,
         "span": [
-            541,
-            583
+            456,
+            498
         ],
         "lemmas": [
             "особенность",
@@ -487,8 +487,8 @@
         "start_token_ind": 54,
         "end_token_ind": 57,
         "span": [
-            553,
-            583
+            468,
+            498
         ],
         "lemmas": [
             "функционирование",
@@ -506,8 +506,8 @@
         "start_token_ind": 56,
         "end_token_ind": 59,
         "span": [
-            572,
-            595
+            487,
+            510
         ],
         "lemmas": [
             "устный",

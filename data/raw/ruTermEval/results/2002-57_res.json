@@ -136,8 +136,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            122,
-            144
+            65,
+            87
         ],
         "lemmas": [
             "представляемый",
@@ -153,8 +153,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            165,
-            194
+            108,
+            137
         ],
         "lemmas": [
             "предикативный",
@@ -170,8 +170,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            180,
-            202
+            123,
+            145
         ],
         "lemmas": [
             "обстоятельство",
@@ -187,8 +187,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            220,
-            236
+            163,
+            179
         ],
         "lemmas": [
             "разговорный",
@@ -204,8 +204,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            213,
-            236
+            156,
+            179
         ],
         "lemmas": [
             "устный",
@@ -222,8 +222,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            205,
-            236
+            148,
+            179
         ],
         "lemmas": [
             "русский",
@@ -241,8 +241,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            248,
-            266
+            191,
+            209
         ],
         "lemmas": [
             "детский",
@@ -258,8 +258,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            297,
-            325
+            240,
+            268
         ],
         "lemmas": [
             "предикативный",
@@ -275,8 +275,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            311,
-            333
+            254,
+            276
         ],
         "lemmas": [
             "обстоятельство",
@@ -292,8 +292,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            341,
-            354
+            284,
+            297
         ],
         "lemmas": [
             "набор",
@@ -309,8 +309,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            165,
-            202
+            108,
+            145
         ],
         "lemmas": [
             "предикативный",
@@ -327,8 +327,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            159,
-            194
+            102,
+            137
         ],
         "lemmas": [
             "тип",
@@ -345,8 +345,8 @@
         "start_token_ind": 8,
         "end_token_ind": 14,
         "span": [
-            180,
-            236
+            123,
+            179
         ],
         "lemmas": [
             "обстоятельство",
@@ -367,8 +367,8 @@
         "start_token_ind": 9,
         "end_token_ind": 14,
         "span": [
-            195,
-            236
+            138,
+            179
         ],
         "lemmas": [
             "время",
@@ -388,8 +388,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            297,
-            333
+            240,
+            276
         ],
         "lemmas": [
             "предикативный",
@@ -406,8 +406,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            729,
-            755
+            419,
+            445
         ],
         "lemmas": [
             "коллективный",
@@ -423,8 +423,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            756,
-            773
+            446,
+            463
         ],
         "lemmas": [
             "детский",
@@ -440,8 +440,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            729,
-            773
+            419,
+            463
         ],
         "lemmas": [
             "коллективный",
@@ -459,8 +459,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            718,
-            755
+            408,
+            445
         ],
         "lemmas": [
             "результат",
@@ -477,8 +477,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            756,
-            787
+            446,
+            477
         ],
         "lemmas": [
             "детский",
@@ -496,8 +496,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            743,
-            773
+            433,
+            463
         ],
         "lemmas": [
             "исследование",
@@ -514,8 +514,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            935,
-            950
+            520,
+            535
         ],
         "lemmas": [
             "спонтанный",
@@ -531,8 +531,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            928,
-            950
+            513,
+            535
         ],
         "lemmas": [
             "устный",
@@ -549,8 +549,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            921,
-            950
+            506,
+            535
         ],
         "lemmas": [
             "запись",

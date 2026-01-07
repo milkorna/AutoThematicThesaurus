@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            59,
-            70
+            34,
+            45
         ],
         "lemmas": [
             "ряд",
@@ -42,8 +42,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            94,
-            113
+            69,
+            88
         ],
         "lemmas": [
             "существующий",
@@ -59,8 +59,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            117,
-            134
+            92,
+            109
         ],
         "lemmas": [
             "сочетание",
@@ -76,8 +76,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            107,
-            134
+            82,
+            109
         ],
         "lemmas": [
             "запрет",
@@ -95,8 +95,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            333,
-            354
+            203,
+            224
         ],
         "lemmas": [
             "недостаток",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            774,
-            797
+            428,
+            451
         ],
         "lemmas": [
             "риторический",

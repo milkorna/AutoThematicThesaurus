@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            55,
-            70
+            39,
+            54
         ],
         "lemmas": [
             "список",
@@ -42,8 +42,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            91,
-            104
+            75,
+            88
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            105,
-            117
+            89,
+            101
         ],
         "lemmas": [
             "знак",
@@ -76,8 +76,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            135,
-            156
+            119,
+            140
         ],
         "lemmas": [
             "инвариантный",
@@ -93,8 +93,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            197,
-            213
+            181,
+            197
         ],
         "lemmas": [
             "частный",
@@ -110,8 +110,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            231,
-            251
+            215,
+            235
         ],
         "lemmas": [
             "контекстный",
@@ -127,8 +127,8 @@
         "start_token_ind": 39,
         "end_token_ind": 40,
         "span": [
-            280,
-            302
+            264,
+            286
         ],
         "lemmas": [
             "показатель",
@@ -144,8 +144,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            316,
-            335
+            300,
+            319
         ],
         "lemmas": [
             "семиотической",

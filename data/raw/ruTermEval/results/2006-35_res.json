@@ -194,8 +194,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            181,
-            198
+            100,
+            117
         ],
         "lemmas": [
             "компьютерный",
@@ -211,8 +211,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            173,
-            198
+            92,
+            117
         ],
         "lemmas": [
             "ролевой",
@@ -229,8 +229,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            215,
-            238
+            134,
+            157
         ],
         "lemmas": [
             "последовательный",
@@ -246,8 +246,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            285,
-            304
+            204,
+            223
         ],
         "lemmas": [
             "виртуальный",
@@ -263,8 +263,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            306,
-            316
+            225,
+            235
         ],
         "lemmas": [
             "герой",
@@ -280,8 +280,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            467,
-            484
+            260,
+            277
         ],
         "lemmas": [
             "виртуальный",
@@ -297,8 +297,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            588,
-            602
+            318,
+            332
         ],
         "lemmas": [
             "данный",
@@ -314,8 +314,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            620,
-            640
+            350,
+            370
         ],
         "lemmas": [
             "теоретический",
@@ -331,8 +331,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            742,
-            761
+            472,
+            491
         ],
         "lemmas": [
             "различной",
@@ -348,8 +348,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            934,
-            950
+            511,
+            527
         ],
         "lemmas": [
             "стратегия",
@@ -365,8 +365,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            934,
-            963
+            511,
+            540
         ],
         "lemmas": [
             "стратегия",
@@ -383,8 +383,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            944,
-            963
+            521,
+            540
         ],
         "lemmas": [
             "выбор",
@@ -400,8 +400,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            967,
-            978
+            544,
+            555
         ],
         "lemmas": [
             "база",
@@ -417,8 +417,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            998,
-            1020
+            575,
+            597
         ],
         "lemmas": [
             "семантический",
@@ -434,8 +434,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1013,
-            1033
+            590,
+            610
         ],
         "lemmas": [
             "синтез",
@@ -451,8 +451,8 @@
         "start_token_ind": 3,
         "end_token_ind": 8,
         "span": [
-            934,
-            978
+            511,
+            555
         ],
         "lemmas": [
             "стратегия",
@@ -472,8 +472,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            944,
-            978
+            521,
+            555
         ],
         "lemmas": [
             "выбор",
@@ -492,8 +492,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            951,
-            978
+            528,
+            555
         ],
         "lemmas": [
             "высказывание",
@@ -511,8 +511,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            998,
-            1033
+            575,
+            610
         ],
         "lemmas": [
             "семантический",
@@ -529,8 +529,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            986,
-            1020
+            563,
+            597
         ],
         "lemmas": [
             "перспектива",

@@ -112,8 +112,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            211,
-            230
+            132,
+            151
         ],
         "lemmas": [
             "словарный",
@@ -129,8 +129,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            195,
-            230
+            116,
+            151
         ],
         "lemmas": [
             "компьютеризация",
@@ -147,8 +147,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            390,
-            403
+            218,
+            231
         ],
         "lemmas": [
             "роль",
@@ -164,8 +164,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            417,
-            436
+            245,
+            264
         ],
         "lemmas": [
             "работа",
@@ -181,8 +181,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            455,
-            475
+            283,
+            303
         ],
         "lemmas": [
             "специальный",
@@ -198,8 +198,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            496,
-            513
+            324,
+            341
         ],
         "lemmas": [
             "создание",
@@ -215,8 +215,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            390,
-            414
+            218,
+            242
         ],
         "lemmas": [
             "роль",
@@ -234,8 +234,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            406,
-            436
+            234,
+            264
         ],
         "lemmas": [
             "корпус",
@@ -253,8 +253,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            446,
-            475
+            274,
+            303
         ],
         "lemmas": [
             "создание",
@@ -271,8 +271,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            650,
-            667
+            355,
+            372
         ],
         "lemmas": [
             "идея",
@@ -288,8 +288,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            678,
-            696
+            383,
+            401
         ],
         "lemmas": [
             "открытый",
@@ -305,8 +305,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            650,
-            677
+            355,
+            382
         ],
         "lemmas": [
             "идея",
@@ -324,8 +324,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            670,
-            696
+            375,
+            401
         ],
         "lemmas": [
             "ведение",

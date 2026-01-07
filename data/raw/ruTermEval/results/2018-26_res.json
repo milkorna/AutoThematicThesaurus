@@ -281,8 +281,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            297,
-            325
+            183,
+            211
         ],
         "lemmas": [
             "количественный",
@@ -298,8 +298,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            345,
-            357
+            231,
+            243
         ],
         "lemmas": [
             "русский",
@@ -315,8 +315,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            358,
-            371
+            244,
+            257
         ],
         "lemmas": [
             "метод",
@@ -332,8 +332,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            358,
-            381
+            244,
+            267
         ],
         "lemmas": [
             "метод",
@@ -350,8 +350,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            366,
-            381
+            252,
+            267
         ],
         "lemmas": [
             "локус",
@@ -367,8 +367,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            284,
-            325
+            170,
+            211
         ],
         "lemmas": [
             "исследование",
@@ -385,8 +385,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            329,
-            357
+            215,
+            243
         ],
         "lemmas": [
             "коартикуляция",
@@ -404,8 +404,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            521,
-            534
+            285,
+            298
         ],
         "lemmas": [
             "ударный",
@@ -421,8 +421,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            560,
-            577
+            324,
+            341
         ],
         "lemmas": [
             "твердый",
@@ -438,8 +438,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            594,
-            613
+            358,
+            377
         ],
         "lemmas": [
             "способ",
@@ -455,8 +455,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            594,
-            623
+            358,
+            387
         ],
         "lemmas": [
             "способ",
@@ -473,8 +473,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            602,
-            623
+            366,
+            387
         ],
         "lemmas": [
             "образование",
@@ -490,8 +490,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            725,
-            741
+            391,
+            407
         ],
         "lemmas": [
             "безударный",
@@ -507,8 +507,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            754,
-            789
+            420,
+            455
         ],
         "lemmas": [
             "последовательный",
@@ -524,8 +524,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            912,
-            931
+            496,
+            515
         ],
         "lemmas": [
             "уравнение",
@@ -541,8 +541,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1046,
-            1062
+            566,
+            582
         ],
         "lemmas": [
             "мягкий",
@@ -558,8 +558,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            1088,
-            1104
+            608,
+            624
         ],
         "lemmas": [
             "безударный",
@@ -575,8 +575,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            1128,
-            1147
+            648,
+            667
         ],
         "lemmas": [
             "способ",
@@ -592,8 +592,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1038,
-            1062
+            558,
+            582
         ],
         "lemmas": [
             "переход",
@@ -610,8 +610,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            1078,
-            1104
+            598,
+            624
         ],
         "lemmas": [
             "ударный",
@@ -629,8 +629,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1302,
-            1318
+            720,
+            736
         ],
         "lemmas": [
             "мягкий",
@@ -646,8 +646,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            1294,
-            1318
+            712,
+            736
         ],
         "lemmas": [
             "ударный",
@@ -664,8 +664,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1309,
-            1328
+            727,
+            746
         ],
         "lemmas": [
             "согласный",
@@ -681,8 +681,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            1309,
-            1338
+            727,
+            756
         ],
         "lemmas": [
             "согласный",
@@ -699,8 +699,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            1319,
-            1338
+            737,
+            756
         ],
         "lemmas": [
             "уравнение",
@@ -716,8 +716,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            1373,
-            1393
+            791,
+            811
         ],
         "lemmas": [
             "мягкий",
@@ -733,8 +733,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            1362,
-            1393
+            780,
+            811
         ],
         "lemmas": [
             "безударный",
@@ -751,8 +751,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            1410,
-            1422
+            828,
+            840
         ],
         "lemmas": [
             "наклон",
@@ -768,8 +768,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            1410,
-            1432
+            828,
+            850
         ],
         "lemmas": [
             "наклон",
@@ -786,8 +786,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            1417,
-            1432
+            835,
+            850
         ],
         "lemmas": [
             "линия",
@@ -803,8 +803,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            1302,
-            1338
+            720,
+            756
         ],
         "lemmas": [
             "мягкий",
@@ -822,8 +822,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            1294,
-            1338
+            712,
+            756
         ],
         "lemmas": [
             "ударный",
@@ -842,8 +842,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            1281,
-            1318
+            699,
+            736
         ],
         "lemmas": [
             "безударный",

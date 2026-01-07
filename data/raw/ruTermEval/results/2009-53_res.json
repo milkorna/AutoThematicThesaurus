@@ -60,8 +60,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            64,
-            86
+            34,
+            56
         ],
         "lemmas": [
             "концептуальный",
@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            79,
-            93
+            49,
+            63
         ],
         "lemmas": [
             "аппарат",
@@ -94,8 +94,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            129,
-            156
+            99,
+            126
         ],
         "lemmas": [
             "разработанный",
@@ -111,8 +111,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            157,
-            173
+            127,
+            143
         ],
         "lemmas": [
             "предикатный",
@@ -128,8 +128,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            64,
-            93
+            34,
+            63
         ],
         "lemmas": [
             "концептуальный",
@@ -146,8 +146,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            143,
-            173
+            113,
+            143
         ],
         "lemmas": [
             "классификация",
@@ -164,8 +164,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            288,
-            302
+            157,
+            171
         ],
         "lemmas": [
             "имя",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            332,
-            348
+            201,
+            217
         ],
         "lemmas": [
             "объект",
@@ -198,8 +198,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            350,
-            367
+            219,
+            236
         ],
         "lemmas": [
             "имя",
@@ -215,8 +215,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            524,
-            538
+            290,
+            304
         ],
         "lemmas": [
             "имя",
@@ -232,8 +232,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            584,
-            597
+            320,
+            333
         ],
         "lemmas": [
             "имя",
@@ -249,8 +249,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            614,
-            633
+            350,
+            369
         ],
         "lemmas": [
             "переходный",
@@ -266,8 +266,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            641,
-            660
+            377,
+            396
         ],
         "lemmas": [
             "специальный",

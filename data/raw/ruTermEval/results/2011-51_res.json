@@ -61,8 +61,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            230,
-            251
+            154,
+            175
         ],
         "lemmas": [
             "профессиональный",
@@ -78,8 +78,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            479,
-            500
+            290,
+            311
         ],
         "lemmas": [
             "стилистический",
@@ -95,8 +95,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            502,
-            521
+            313,
+            332
         ],
         "lemmas": [
             "сочетающий",
@@ -112,8 +112,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            461,
-            500
+            272,
+            311
         ],
         "lemmas": [
             "словоупотребление",

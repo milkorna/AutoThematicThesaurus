@@ -8,8 +8,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            105,
-            127
+            72,
+            94
         ],
         "lemmas": [
             "семантический",
@@ -25,8 +25,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            128,
-            152
+            95,
+            119
         ],
         "lemmas": [
             "первообразный",
@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            105,
-            152
+            72,
+            119
         ],
         "lemmas": [
             "семантический",
@@ -61,8 +61,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            96,
-            127
+            63,
+            94
         ],
         "lemmas": [
             "принцип",
@@ -79,8 +79,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            120,
-            152
+            87,
+            119
         ],
         "lemmas": [
             "анализ",
@@ -97,8 +97,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            309,
-            334
+            188,
+            213
         ],
         "lemmas": [
             "характеристика",
@@ -114,8 +114,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            388,
-            404
+            267,
+            283
         ],
         "lemmas": [
             "значение",
@@ -131,8 +131,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            419,
-            438
+            298,
+            317
         ],
         "lemmas": [
             "выражение",
@@ -148,8 +148,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            388,
-            415
+            267,
+            294
         ],
         "lemmas": [
             "значение",
@@ -167,8 +167,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            664,
-            683
+            370,
+            389
         ],
         "lemmas": [
             "конкретный",
@@ -184,8 +184,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            893,
-            911
+            510,
+            528
         ],
         "lemmas": [
             "русский",
@@ -201,8 +201,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            994,
-            1014
+            541,
+            561
         ],
         "lemmas": [
             "параллелизм",
@@ -218,8 +218,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            994,
-            1020
+            541,
+            567
         ],
         "lemmas": [
             "параллелизм",
@@ -236,8 +236,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            994,
-            1031
+            541,
+            578
         ],
         "lemmas": [
             "параллелизм",
@@ -255,8 +255,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1006,
-            1020
+            553,
+            567
         ],
         "lemmas": [
             "значение",
@@ -272,8 +272,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            1006,
-            1031
+            553,
+            578
         ],
         "lemmas": [
             "значение",
@@ -290,8 +290,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            1015,
-            1031
+            562,
+            578
         ],
         "lemmas": [
             "группа",
@@ -307,8 +307,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1211,
-            1230
+            667,
+            686
         ],
         "lemmas": [
             "семантический",

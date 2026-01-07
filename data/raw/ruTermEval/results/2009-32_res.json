@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            87,
-            99
+            48,
+            60
         ],
         "lemmas": [
             "прямой",
@@ -60,8 +60,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            87,
-            113
+            48,
+            74
         ],
         "lemmas": [
             "прямой",
@@ -79,8 +79,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            165,
-            193
+            90,
+            118
         ],
         "lemmas": [
             "дискурсивный",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            212,
-            228
+            137,
+            153
         ],
         "lemmas": [
             "настоящий",
@@ -113,8 +113,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            266,
-            293
+            191,
+            218
         ],
         "lemmas": [
             "институциональный",
@@ -130,8 +130,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            261,
-            293
+            186,
+            218
         ],
         "lemmas": [
             "вид",
@@ -148,8 +148,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            439,
-            461
+            249,
+            271
         ],
         "lemmas": [
             "дискурсивный",
@@ -165,8 +165,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            493,
-            505
+            303,
+            315
         ],
         "lemmas": [
             "данный",
@@ -182,8 +182,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            501,
-            518
+            311,
+            328
         ],
         "lemmas": [
             "вид",
@@ -199,8 +199,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            493,
-            518
+            303,
+            328
         ],
         "lemmas": [
             "данный",

@@ -62,8 +62,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            126,
-            144
+            77,
+            95
         ],
         "lemmas": [
             "результат",
@@ -79,8 +79,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            179,
-            201
+            130,
+            152
         ],
         "lemmas": [
             "информационный",
@@ -96,8 +96,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            171,
-            201
+            122,
+            152
         ],
         "lemmas": [
             "русский",
@@ -114,8 +114,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            126,
-            156
+            77,
+            107
         ],
         "lemmas": [
             "результат",
@@ -133,8 +133,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            161,
-            201
+            112,
+            152
         ],
         "lemmas": [
             "интонация",
@@ -152,8 +152,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            314,
-            338
+            178,
+            202
         ],
         "lemmas": [
             "многолетний",
@@ -169,8 +169,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            365,
-            385
+            229,
+            249
         ],
         "lemmas": [
             "понятийный",
@@ -186,8 +186,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            388,
-            416
+            252,
+            280
         ],
         "lemmas": [
             "компьютерный",
@@ -203,8 +203,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            421,
-            443
+            285,
+            307
         ],
         "lemmas": [
             "всесторонний",
@@ -220,8 +220,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            435,
-            451
+            299,
+            315
         ],
         "lemmas": [
             "описание",
@@ -237,8 +237,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            462,
-            479
+            326,
+            343
         ],
         "lemmas": [
             "русский",
@@ -254,8 +254,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            483,
-            501
+            347,
+            365
         ],
         "lemmas": [
             "основа",
@@ -271,8 +271,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            510,
-            535
+            374,
+            399
         ],
         "lemmas": [
             "представительный",
@@ -288,8 +288,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            536,
-            551
+            400,
+            415
         ],
         "lemmas": [
             "русский",
@@ -305,8 +305,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            356,
-            385
+            220,
+            249
         ],
         "lemmas": [
             "создание",
@@ -323,8 +323,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            377,
-            416
+            241,
+            280
         ],
         "lemmas": [
             "аппарат",
@@ -342,8 +342,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            388,
-            443
+            252,
+            307
         ],
         "lemmas": [
             "компьютерный",
@@ -362,8 +362,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            402,
-            443
+            266,
+            307
         ],
         "lemmas": [
             "инструментарий",
@@ -381,8 +381,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            421,
-            451
+            285,
+            315
         ],
         "lemmas": [
             "всесторонний",
@@ -399,8 +399,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            435,
-            461
+            299,
+            325
         ],
         "lemmas": [
             "описание",
@@ -418,8 +418,8 @@
         "start_token_ind": 20,
         "end_token_ind": 24,
         "span": [
-            462,
-            501
+            326,
+            365
         ],
         "lemmas": [
             "русский",
@@ -438,8 +438,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            454,
-            479
+            318,
+            343
         ],
         "lemmas": [
             "средство",
@@ -456,8 +456,8 @@
         "start_token_ind": 21,
         "end_token_ind": 24,
         "span": [
-            470,
-            501
+            334,
+            365
         ],
         "lemmas": [
             "интонация",
@@ -475,8 +475,8 @@
         "start_token_ind": 26,
         "end_token_ind": 29,
         "span": [
-            510,
-            551
+            374,
+            415
         ],
         "lemmas": [
             "представительный",
@@ -494,8 +494,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            528,
-            551
+            392,
+            415
         ],
         "lemmas": [
             "корпус",
@@ -512,8 +512,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            883,
-            899
+            485,
+            501
         ],
         "lemmas": [
             "начальный",
@@ -529,8 +529,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            927,
-            949
+            529,
+            551
         ],
         "lemmas": [
             "корпусный",
@@ -546,8 +546,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            872,
-            899
+            474,
+            501
         ],
         "lemmas": [
             "результат",

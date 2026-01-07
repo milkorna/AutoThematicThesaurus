@@ -8,8 +8,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            75,
-            89
+            58,
+            72
         ],
         "lemmas": [
             "русский",
@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            370,
-            386
+            219,
+            235
         ],
         "lemmas": [
             "род",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            515,
-            531
+            294,
+            310
         ],
         "lemmas": [
             "значение",
@@ -59,8 +59,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            552,
-            573
+            331,
+            352
         ],
         "lemmas": [
             "бытийный",
@@ -76,8 +76,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            539,
-            573
+            318,
+            352
         ],
         "lemmas": [
             "локативный",

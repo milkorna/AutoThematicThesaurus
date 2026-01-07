@@ -95,8 +95,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            245,
-            259
+            180,
+            194
         ],
         "lemmas": [
             "русский",
@@ -112,8 +112,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            381,
-            401
+            209,
+            229
         ],
         "lemmas": [
             "формальный",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            444,
-            463
+            272,
+            291
         ],
         "lemmas": [
             "область",

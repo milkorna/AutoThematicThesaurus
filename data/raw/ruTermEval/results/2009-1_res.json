@@ -60,8 +60,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            125,
-            148
+            89,
+            112
         ],
         "lemmas": [
             "уступительный",
@@ -77,8 +77,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            187,
-            206
+            151,
+            170
         ],
         "lemmas": [
             "первичный",
@@ -94,8 +94,8 @@
         "start_token_ind": 61,
         "end_token_ind": 62,
         "span": [
-            356,
-            385
+            320,
+            349
         ],
         "lemmas": [
             "соответствие",
@@ -111,8 +111,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            117,
-            148
+            81,
+            112
         ],
         "lemmas": [
             "слово",

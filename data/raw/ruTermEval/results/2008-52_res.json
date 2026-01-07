@@ -114,8 +114,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            185,
-            211
+            109,
+            135
         ],
         "lemmas": [
             "коррелятивный",
@@ -131,8 +131,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            212,
-            226
+            136,
+            150
         ],
         "lemmas": [
             "русский",
@@ -148,8 +148,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            286,
-            310
+            210,
+            234
         ],
         "lemmas": [
             "невозможный",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            185,
-            226
+            109,
+            150
         ],
         "lemmas": [
             "коррелятивный",
@@ -184,8 +184,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            199,
-            226
+            123,
+            150
         ],
         "lemmas": [
             "предложение",
@@ -202,8 +202,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            487,
-            512
+            266,
+            291
         ],
         "lemmas": [
             "предварительный",
@@ -219,8 +219,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            513,
-            538
+            292,
+            317
         ],
         "lemmas": [
             "коррелятивный",
@@ -236,8 +236,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            539,
-            553
+            318,
+            332
         ],
         "lemmas": [
             "русский",
@@ -253,8 +253,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            487,
-            538
+            266,
+            317
         ],
         "lemmas": [
             "предварительный",
@@ -272,8 +272,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            513,
-            553
+            292,
+            332
         ],
         "lemmas": [
             "коррелятивный",
@@ -291,8 +291,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            503,
-            538
+            282,
+            317
         ],
         "lemmas": [
             "структура",
@@ -309,8 +309,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            527,
-            553
+            306,
+            332
         ],
         "lemmas": [
             "предложение",

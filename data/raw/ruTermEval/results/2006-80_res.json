@@ -44,8 +44,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            126,
-            143
+            81,
+            98
         ],
         "lemmas": [
             "свободный",
@@ -61,8 +61,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            365,
-            395
+            199,
+            229
         ],
         "lemmas": [
             "производный",
@@ -78,8 +78,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            485,
-            502
+            319,
+            336
         ],
         "lemmas": [
             "счет",
@@ -95,8 +95,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            533,
-            553
+            367,
+            387
         ],
         "lemmas": [
             "свойство",

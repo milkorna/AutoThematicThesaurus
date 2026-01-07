@@ -79,8 +79,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            223,
-            244
+            141,
+            162
         ],
         "lemmas": [
             "значение",
@@ -96,8 +96,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            521,
-            538
+            340,
+            357
         ],
         "lemmas": [
             "значение",
@@ -113,8 +113,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            740,
-            761
+            432,
+            453
         ],
         "lemmas": [
             "данный",
@@ -130,8 +130,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            786,
-            801
+            478,
+            493
         ],
         "lemmas": [
             "языковый",
@@ -147,8 +147,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            727,
-            761
+            419,
+            453
         ],
         "lemmas": [
             "употребление",
@@ -165,8 +165,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            774,
-            801
+            466,
+            493
         ],
         "lemmas": [
             "различие",
@@ -184,8 +184,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1018,
-            1036
+            567,
+            585
         ],
         "lemmas": [
             "материал",
@@ -201,8 +201,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1040,
-            1061
+            589,
+            610
         ],
         "lemmas": [
             "значение",

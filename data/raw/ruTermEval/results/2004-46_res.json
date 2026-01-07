@@ -61,8 +61,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            120,
-            134
+            80,
+            94
         ],
         "lemmas": [
             "речевой",
@@ -78,8 +78,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            112,
-            134
+            72,
+            94
         ],
         "lemmas": [
             "русский",
@@ -96,8 +96,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            294,
-            310
+            168,
+            184
         ],
         "lemmas": [
             "типовой",
@@ -113,8 +113,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            311,
-            327
+            185,
+            201
         ],
         "lemmas": [
             "речевой",
@@ -130,8 +130,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            331,
-            348
+            205,
+            222
         ],
         "lemmas": [
             "речевой",
@@ -147,8 +147,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            294,
-            327
+            168,
+            201
         ],
         "lemmas": [
             "типовой",
@@ -166,8 +166,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            288,
-            310
+            162,
+            184
         ],
         "lemmas": [
             "набор",
@@ -184,8 +184,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            302,
-            327
+            176,
+            201
         ],
         "lemmas": [
             "ситуация",
@@ -202,8 +202,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            571,
-            590
+            333,
+            352
         ],
         "lemmas": [
             "конкретный",
@@ -219,8 +219,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            601,
-            614
+            363,
+            376
         ],
         "lemmas": [
             "факт",
@@ -236,8 +236,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            632,
-            645
+            394,
+            407
         ],
         "lemmas": [
             "речевой",

@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            85,
-            105
+            48,
+            68
         ],
         "lemmas": [
             "материал",
@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            106,
-            124
+            69,
+            87
         ],
         "lemmas": [
             "иноязычный",
@@ -59,8 +59,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            128,
-            140
+            91,
+            103
         ],
         "lemmas": [
             "русский",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            147,
-            165
+            110,
+            128
         ],
         "lemmas": [
             "множество",
@@ -93,8 +93,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            179,
-            197
+            142,
+            160
         ],
         "lemmas": [
             "структура",
@@ -110,8 +110,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            231,
-            248
+            194,
+            211
         ],
         "lemmas": [
             "жанр",
@@ -127,8 +127,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            250,
-            265
+            213,
+            228
         ],
         "lemmas": [
             "структура",
@@ -144,8 +144,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            268,
-            284
+            231,
+            247
         ],
         "lemmas": [
             "акт",
@@ -161,8 +161,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            106,
-            140
+            69,
+            103
         ],
         "lemmas": [
             "иноязычный",
@@ -181,8 +181,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            96,
-            124
+            59,
+            87
         ],
         "lemmas": [
             "перевод",
@@ -199,8 +199,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            117,
-            140
+            80,
+            103
         ],
         "lemmas": [
             "текст",
@@ -218,8 +218,8 @@
         "start_token_ind": 27,
         "end_token_ind": 30,
         "span": [
-            250,
-            271
+            213,
+            234
         ],
         "lemmas": [
             "структура",
@@ -237,8 +237,8 @@
         "start_token_ind": 28,
         "end_token_ind": 31,
         "span": [
-            260,
-            284
+            223,
+            247
         ],
         "lemmas": [
             "язык",
@@ -256,8 +256,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            474,
-            488
+            263,
+            277
         ],
         "lemmas": [
             "русский",
@@ -273,8 +273,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            535,
-            547
+            324,
+            336
         ],
         "lemmas": [
             "русский",
@@ -290,8 +290,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            523,
-            547
+            312,
+            336
         ],
         "lemmas": [
             "перевод",

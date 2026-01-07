@@ -79,8 +79,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            230,
-            241
+            129,
+            140
         ],
         "lemmas": [
             "опыт",
@@ -96,8 +96,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            256,
-            288
+            155,
+            187
         ],
         "lemmas": [
             "санкт-петербургский",
@@ -113,8 +113,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            343,
-            361
+            242,
+            260
         ],
         "lemmas": [
             "звуковой",
@@ -130,8 +130,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            331,
-            361
+            230,
+            260
         ],
         "lemmas": [
             "электронный",
@@ -148,8 +148,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            380,
-            402
+            279,
+            301
         ],
         "lemmas": [
             "технический",
@@ -165,8 +165,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            324,
-            361
+            223,
+            260
         ],
         "lemmas": [
             "модель",
@@ -184,8 +184,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            569,
-            588
+            303,
+            322
         ],
         "lemmas": [
             "особенность",
@@ -201,8 +201,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            606,
-            625
+            340,
+            359
         ],
         "lemmas": [
             "материал",
@@ -218,8 +218,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            691,
-            716
+            425,
+            450
         ],
         "lemmas": [
             "фонетический",
@@ -235,8 +235,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            679,
-            716
+            413,
+            450
         ],
         "lemmas": [
             "очередь",
@@ -254,8 +254,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            964,
-            985
+            569,
+            590
         ],
         "lemmas": [
             "авторский",
@@ -271,8 +271,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            1003,
-            1022
+            608,
+            627
         ],
         "lemmas": [
             "реализация",
@@ -288,8 +288,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            1024,
-            1045
+            629,
+            650
         ],
         "lemmas": [
             "поддержанный",
@@ -305,8 +305,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            958,
-            985
+            563,
+            590
         ],
         "lemmas": [
             "опыт",

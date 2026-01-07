@@ -44,8 +44,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            131,
-            147
+            71,
+            87
         ],
         "lemmas": [
             "создание",
@@ -61,8 +61,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            158,
-            177
+            98,
+            117
         ],
         "lemmas": [
             "певческий",
@@ -78,8 +78,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            198,
-            211
+            138,
+            151
         ],
         "lemmas": [
             "способ",
@@ -95,8 +95,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            224,
-            241
+            164,
+            181
         ],
         "lemmas": [
             "содержащий",
@@ -112,8 +112,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            242,
-            258
+            182,
+            198
         ],
         "lemmas": [
             "крюковой",
@@ -129,8 +129,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            266,
-            291
+            206,
+            231
         ],
         "lemmas": [
             "церковнославянский",
@@ -146,8 +146,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            198,
-            222
+            138,
+            162
         ],
         "lemmas": [
             "способ",
@@ -165,8 +165,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            236,
-            258
+            176,
+            198
         ],
         "lemmas": [
             "знак",
@@ -183,8 +183,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            260,
-            291
+            200,
+            231
         ],
         "lemmas": [
             "нота",
@@ -202,8 +202,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            505,
-            521
+            302,
+            318
         ],
         "lemmas": [
             "ключевой",
@@ -219,8 +219,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            544,
-            566
+            341,
+            363
         ],
         "lemmas": [
             "прикладной",
@@ -236,8 +236,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            538,
-            566
+            335,
+            363
         ],
         "lemmas": [
             "задача",

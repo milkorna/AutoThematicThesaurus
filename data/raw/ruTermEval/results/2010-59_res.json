@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            155,
-            177
+            93,
+            115
         ],
         "lemmas": [
             "проблема",
@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            155,
-            187
+            93,
+            125
         ],
         "lemmas": [
             "проблема",
@@ -95,8 +95,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            164,
-            187
+            102,
+            125
         ],
         "lemmas": [
             "идентификация",
@@ -112,8 +112,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            273,
-            287
+            144,
+            158
         ],
         "lemmas": [
             "описан",
@@ -129,8 +129,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            280,
-            300
+            151,
+            171
         ],
         "lemmas": [
             "процесс",
@@ -146,8 +146,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            280,
-            307
+            151,
+            178
         ],
         "lemmas": [
             "процесс",
@@ -164,8 +164,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            280,
-            314
+            151,
+            185
         ],
         "lemmas": [
             "процесс",
@@ -183,8 +183,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            288,
-            307
+            159,
+            178
         ],
         "lemmas": [
             "формирование",
@@ -200,8 +200,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            288,
-            314
+            159,
+            185
         ],
         "lemmas": [
             "формирование",
@@ -218,8 +218,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            301,
-            314
+            172,
+            185
         ],
         "lemmas": [
             "модель",
@@ -235,8 +235,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            317,
-            333
+            188,
+            204
         ],
         "lemmas": [
             "алгоритм",
@@ -252,8 +252,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            317,
-            340
+            188,
+            211
         ],
         "lemmas": [
             "алгоритм",
@@ -270,8 +270,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            326,
-            340
+            197,
+            211
         ],
         "lemmas": [
             "разбор",
@@ -287,8 +287,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            273,
-            314
+            144,
+            185
         ],
         "lemmas": [
             "описан",
@@ -307,8 +307,8 @@
         "start_token_ind": 1,
         "end_token_ind": 6,
         "span": [
-            280,
-            325
+            151,
+            196
         ],
         "lemmas": [
             "процесс",
@@ -328,8 +328,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            288,
-            325
+            159,
+            196
         ],
         "lemmas": [
             "формирование",
@@ -348,8 +348,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            301,
-            325
+            172,
+            196
         ],
         "lemmas": [
             "модель",
@@ -367,8 +367,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            308,
-            340
+            179,
+            211
         ],
         "lemmas": [
             "автор",
@@ -387,8 +387,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            422,
-            446
+            234,
+            258
         ],
         "lemmas": [
             "результат",
@@ -404,8 +404,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            450,
-            473
+            262,
+            285
         ],
         "lemmas": [
             "идентификация",
@@ -421,8 +421,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            483,
-            504
+            295,
+            316
         ],
         "lemmas": [
             "электронный",
@@ -438,8 +438,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            580,
-            595
+            392,
+            407
         ],
         "lemmas": [
             "нейронный",
@@ -455,8 +455,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            566,
-            595
+            378,
+            407
         ],
         "lemmas": [
             "искусственный",
@@ -473,8 +473,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            607,
-            623
+            419,
+            435
         ],
         "lemmas": [
             "опорный",
@@ -490,8 +490,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            411,
-            446
+            223,
+            258
         ],
         "lemmas": [
             "описание",
@@ -509,8 +509,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            422,
-            473
+            234,
+            285
         ],
         "lemmas": [
             "результат",
@@ -529,8 +529,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            433,
-            473
+            245,
+            285
         ],
         "lemmas": [
             "эксперимент",
@@ -548,8 +548,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            580,
-            606
+            392,
+            418
         ],
         "lemmas": [
             "нейронный",
@@ -567,8 +567,8 @@
         "start_token_ind": 19,
         "end_token_ind": 23,
         "span": [
-            566,
-            606
+            378,
+            418
         ],
         "lemmas": [
             "искусственный",
@@ -587,8 +587,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            551,
-            595
+            363,
+            407
         ],
         "lemmas": [
             "разновидность",
@@ -606,8 +606,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            598,
-            623
+            410,
+            435
         ],
         "lemmas": [
             "аппарат",

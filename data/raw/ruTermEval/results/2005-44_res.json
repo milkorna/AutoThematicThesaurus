@@ -25,8 +25,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            190,
-            219
+            132,
+            161
         ],
         "lemmas": [
             "автоматический",
@@ -42,8 +42,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            245,
-            258
+            187,
+            200
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            259,
-            272
+            201,
+            214
         ],
         "lemmas": [
             "именной",
@@ -76,8 +76,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            386,
-            408
+            328,
+            350
         ],
         "lemmas": [
             "географический",
@@ -93,8 +93,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            245,
-            272
+            187,
+            214
         ],
         "lemmas": [
             "русский",
@@ -112,8 +112,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            253,
-            272
+            195,
+            214
         ],
         "lemmas": [
             "язык",

@@ -154,8 +154,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            213,
-            233
+            130,
+            150
         ],
         "lemmas": [
             "показывающий",
@@ -171,8 +171,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            226,
-            241
+            143,
+            158
         ],
         "lemmas": [
             "наличие",
@@ -188,8 +188,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            242,
-            262
+            159,
+            179
         ],
         "lemmas": [
             "грамматический",
@@ -205,8 +205,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            290,
-            317
+            207,
+            234
         ],
         "lemmas": [
             "предикативный",
@@ -222,8 +222,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            329,
-            342
+            246,
+            259
         ],
         "lemmas": [
             "русский",
@@ -239,8 +239,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            213,
-            241
+            130,
+            158
         ],
         "lemmas": [
             "показывающий",
@@ -257,8 +257,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            234,
-            262
+            151,
+            179
         ],
         "lemmas": [
             "влияние",
@@ -275,8 +275,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            290,
-            326
+            207,
+            243
         ],
         "lemmas": [
             "предикативный",
@@ -294,8 +294,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            281,
-            317
+            198,
+            234
         ],
         "lemmas": [
             "процесс",
@@ -312,8 +312,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            321,
-            342
+            238,
+            259
         ],
         "lemmas": [
             "число",
@@ -331,8 +331,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            520,
-            544
+            295,
+            319
         ],
         "lemmas": [
             "степень",
@@ -348,8 +348,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            552,
-            572
+            327,
+            347
         ],
         "lemmas": [
             "грамматический",
@@ -365,8 +365,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            575,
-            588
+            350,
+            363
         ],
         "lemmas": [
             "русский",
@@ -382,8 +382,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            552,
-            588
+            327,
+            363
         ],
         "lemmas": [
             "грамматический",
@@ -402,8 +402,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            567,
-            588
+            342,
+            363
         ],
         "lemmas": [
             "род",

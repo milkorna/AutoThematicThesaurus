@@ -60,8 +60,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            126,
-            148
+            74,
+            96
         ],
         "lemmas": [
             "проблема",
@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            126,
-            155
+            74,
+            103
         ],
         "lemmas": [
             "проблема",
@@ -95,8 +95,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            135,
-            155
+            83,
+            103
         ],
         "lemmas": [
             "классификация",
@@ -112,8 +112,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            126,
-            173
+            74,
+            121
         ],
         "lemmas": [
             "проблема",
@@ -132,8 +132,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            135,
-            173
+            83,
+            121
         ],
         "lemmas": [
             "классификация",
@@ -151,8 +151,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            448,
-            458
+            247,
+            257
         ],
         "lemmas": [
             "метод",
@@ -168,8 +168,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            462,
-            482
+            261,
+            281
         ],
         "lemmas": [
             "расширенный",
@@ -185,8 +185,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            474,
-            490
+            273,
+            289
         ],
         "lemmas": [
             "дерево",
@@ -202,8 +202,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            505,
-            523
+            304,
+            322
         ],
         "lemmas": [
             "результат",
@@ -219,8 +219,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            505,
-            532
+            304,
+            331
         ],
         "lemmas": [
             "результат",
@@ -237,8 +237,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            516,
-            532
+            315,
+            331
         ],
         "lemmas": [
             "склейка",
@@ -254,8 +254,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            524,
-            548
+            323,
+            347
         ],
         "lemmas": [
             "дерево",
@@ -272,8 +272,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            552,
-            566
+            351,
+            365
         ],
         "lemmas": [
             "основа",
@@ -289,8 +289,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            568,
-            589
+            367,
+            388
         ],
         "lemmas": [
             "риторический",
@@ -306,8 +306,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            592,
-            616
+            391,
+            415
         ],
         "lemmas": [
             "коммуникативный",
@@ -323,8 +323,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            462,
-            490
+            261,
+            289
         ],
         "lemmas": [
             "расширенный",
@@ -341,8 +341,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            505,
-            548
+            304,
+            347
         ],
         "lemmas": [
             "результат",
@@ -361,8 +361,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            516,
-            548
+            315,
+            347
         ],
         "lemmas": [
             "склейка",
@@ -380,8 +380,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            537,
-            566
+            336,
+            365
         ],
         "lemmas": [
             "предложение",
@@ -399,8 +399,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            581,
-            616
+            380,
+            415
         ],
         "lemmas": [
             "структура",
@@ -418,8 +418,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            817,
-            838
+            459,
+            480
         ],
         "lemmas": [
             "инженерный",
@@ -435,8 +435,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            850,
-            868
+            492,
+            510
         ],
         "lemmas": [
             "область",
@@ -452,8 +452,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            809,
-            838
+            451,
+            480
         ],
         "lemmas": [
             "корпус",
@@ -470,8 +470,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            1086,
-            1108
+            649,
+            671
         ],
         "lemmas": [
             "риторический",

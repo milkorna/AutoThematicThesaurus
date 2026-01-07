@@ -59,8 +59,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            253,
-            275
+            134,
+            156
         ],
         "lemmas": [
             "синтагматический",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            292,
-            310
+            173,
+            191
         ],
         "lemmas": [
             "линейный",
@@ -93,8 +93,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            311,
-            331
+            192,
+            212
         ],
         "lemmas": [
             "русский",
@@ -110,8 +110,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            340,
-            362
+            221,
+            243
         ],
         "lemmas": [
             "проективный",
@@ -127,8 +127,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            389,
-            405
+            270,
+            286
         ],
         "lemmas": [
             "предложный",
@@ -144,8 +144,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            292,
-            331
+            173,
+            212
         ],
         "lemmas": [
             "линейный",
@@ -163,8 +163,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            301,
-            331
+            182,
+            212
         ],
         "lemmas": [
             "структура",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            332,
-            362
+            213,
+            243
         ],
         "lemmas": [
             "граница",

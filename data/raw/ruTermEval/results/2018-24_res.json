@@ -133,8 +133,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            207,
-            231
+            134,
+            158
         ],
         "lemmas": [
             "автоматический",
@@ -150,8 +150,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            254,
-            280
+            181,
+            207
         ],
         "lemmas": [
             "словообразовательный",
@@ -167,8 +167,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            241,
-            280
+            168,
+            207
         ],
         "lemmas": [
             "продуктивный",
@@ -185,8 +185,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            281,
-            295
+            208,
+            222
         ],
         "lemmas": [
             "русский",
@@ -202,8 +202,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            198,
-            231
+            125,
+            158
         ],
         "lemmas": [
             "подход",
@@ -221,8 +221,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            254,
-            295
+            181,
+            222
         ],
         "lemmas": [
             "словообразовательный",
@@ -240,8 +240,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            241,
-            295
+            168,
+            222
         ],
         "lemmas": [
             "продуктивный",
@@ -260,8 +260,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            275,
-            295
+            202,
+            222
         ],
         "lemmas": [
             "тип",
@@ -278,8 +278,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            435,
-            454
+            235,
+            254
         ],
         "lemmas": [
             "образование",
@@ -295,8 +295,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            666,
-            693
+            388,
+            415
         ],
         "lemmas": [
             "словообразовательный",
@@ -312,8 +312,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            697,
-            713
+            419,
+            435
         ],
         "lemmas": [
             "формальный",
@@ -329,8 +329,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            666,
-            713
+            388,
+            435
         ],
         "lemmas": [
             "словообразовательный",
@@ -349,8 +349,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            687,
-            713
+            409,
+            435
         ],
         "lemmas": [
             "модель",

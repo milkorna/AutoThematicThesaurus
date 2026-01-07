@@ -150,8 +150,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            198,
-            213
+            121,
+            136
         ],
         "lemmas": [
             "базовый",
@@ -167,8 +167,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            181,
-            213
+            104,
+            136
         ],
         "lemmas": [
             "представительный",
@@ -185,8 +185,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            227,
-            241
+            150,
+            164
         ],
         "lemmas": [
             "русский",
@@ -202,8 +202,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            268,
-            274
+            191,
+            197
         ],
         "lemmas": [
             "xxi",
@@ -219,8 +219,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            261,
-            274
+            184,
+            197
         ],
         "lemmas": [
             "начало",
@@ -237,8 +237,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            367,
-            389
+            201,
+            223
         ],
         "lemmas": [
             "снабженный",
@@ -254,8 +254,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            392,
-            416
+            226,
+            250
         ],
         "lemmas": [
             "частотность",
@@ -271,8 +271,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            418,
-            446
+            252,
+            280
         ],
         "lemmas": [
             "статистический",
@@ -288,8 +288,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            471,
-            487
+            305,
+            321
         ],
         "lemmas": [
             "время",
@@ -305,8 +305,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            471,
-            495
+            305,
+            329
         ],
         "lemmas": [
             "время",
@@ -323,8 +323,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            479,
-            495
+            313,
+            329
         ],
         "lemmas": [
             "создание",
@@ -340,8 +340,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            378,
-            416
+            212,
+            250
         ],
         "lemmas": [
             "информация",
@@ -359,8 +359,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            418,
-            457
+            252,
+            291
         ],
         "lemmas": [
             "статистический",
@@ -378,8 +378,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            636,
-            657
+            358,
+            379
         ],
         "lemmas": [
             "национальный",
@@ -395,8 +395,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            658,
-            672
+            380,
+            394
         ],
         "lemmas": [
             "русский",
@@ -412,8 +412,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            636,
-            672
+            358,
+            394
         ],
         "lemmas": [
             "национальный",
@@ -431,8 +431,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            628,
-            657
+            350,
+            379
         ],
         "lemmas": [
             "текст",
@@ -449,8 +449,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            650,
-            672
+            372,
+            394
         ],
         "lemmas": [
             "корпус",

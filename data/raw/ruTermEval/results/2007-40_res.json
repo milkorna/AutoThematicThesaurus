@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            178,
-            201
+            112,
+            135
         ],
         "lemmas": [
             "лингвистический",
@@ -42,8 +42,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            217,
-            243
+            151,
+            177
         ],
         "lemmas": [
             "вычислительный",
@@ -59,8 +59,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            232,
-            261
+            166,
+            195
         ],
         "lemmas": [
             "лингвистика",
@@ -77,8 +77,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            248,
-            272
+            182,
+            206
         ],
         "lemmas": [
             "моделирование",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            169,
-            201
+            103,
+            135
         ],
         "lemmas": [
             "метод",
@@ -113,8 +113,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            217,
-            272
+            151,
+            206
         ],
         "lemmas": [
             "вычислительный",
@@ -133,8 +133,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            232,
-            272
+            166,
+            206
         ],
         "lemmas": [
             "лингвистика",
@@ -152,8 +152,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            248,
-            284
+            182,
+            218
         ],
         "lemmas": [
             "моделирование",
@@ -171,8 +171,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            420,
-            431
+            227,
+            238
         ],
         "lemmas": [
             "обзор",
@@ -188,8 +188,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            436,
-            459
+            243,
+            266
         ],
         "lemmas": [
             "автоматический",
@@ -205,8 +205,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            451,
-            470
+            258,
+            277
         ],
         "lemmas": [
             "анализ",
@@ -222,8 +222,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            483,
-            499
+            290,
+            306
         ],
         "lemmas": [
             "эстонский",
@@ -239,8 +239,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            519,
-            541
+            326,
+            348
         ],
         "lemmas": [
             "тартуский",
@@ -256,8 +256,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            420,
-            459
+            227,
+            266
         ],
         "lemmas": [
             "обзор",
@@ -276,8 +276,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            426,
-            459
+            233,
+            266
         ],
         "lemmas": [
             "работа",
@@ -295,8 +295,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            436,
-            470
+            243,
+            277
         ],
         "lemmas": [
             "автоматический",
@@ -313,8 +313,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            451,
-            482
+            258,
+            289
         ],
         "lemmas": [
             "анализ",
@@ -332,8 +332,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            473,
-            499
+            280,
+            306
         ],
         "lemmas": [
             "семантика",

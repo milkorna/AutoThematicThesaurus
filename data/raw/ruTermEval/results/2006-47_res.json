@@ -25,8 +25,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            143,
-            160
+            91,
+            108
         ],
         "lemmas": [
             "лабильный",
@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            135,
-            160
+            83,
+            108
         ],
         "lemmas": [
             "русский",
@@ -60,8 +60,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            203,
-            222
+            151,
+            170
         ],
         "lemmas": [
             "непереходный",
@@ -77,8 +77,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            216,
-            233
+            164,
+            181
         ],
         "lemmas": [
             "модель",
@@ -94,8 +94,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            203,
-            233
+            151,
+            181
         ],
         "lemmas": [
             "непереходный",
@@ -112,8 +112,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            359,
-            372
+            204,
+            217
         ],
         "lemmas": [
             "русский",
@@ -129,8 +129,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            559,
-            582
+            311,
+            334
         ],
         "lemmas": [
             "механизм",
@@ -146,8 +146,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            583,
-            601
+            335,
+            353
         ],
         "lemmas": [
             "лабильный",
@@ -163,8 +163,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            569,
-            601
+            321,
+            353
         ],
         "lemmas": [
             "возникновение",

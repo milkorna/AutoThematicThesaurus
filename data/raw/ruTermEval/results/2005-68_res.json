@@ -60,8 +60,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            151,
-            168
+            92,
+            109
         ],
         "lemmas": [
             "русский",
@@ -77,8 +77,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            224,
-            236
+            165,
+            177
         ],
         "lemmas": [
             "речевой",
@@ -94,8 +94,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            143,
-            168
+            84,
+            109
         ],
         "lemmas": [
             "история",
@@ -112,8 +112,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            420,
-            435
+            231,
+            246
         ],
         "lemmas": [
             "русский",
@@ -129,8 +129,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            455,
-            475
+            266,
+            286
         ],
         "lemmas": [
             "прецедентный",
@@ -146,8 +146,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            496,
-            511
+            307,
+            322
         ],
         "lemmas": [
             "фокус",
@@ -163,8 +163,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            534,
-            554
+            345,
+            365
         ],
         "lemmas": [
             "источник",
@@ -180,8 +180,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            555,
-            568
+            366,
+            379
         ],
         "lemmas": [
             "крылатый",
@@ -197,8 +197,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            448,
-            475
+            259,
+            286
         ],
         "lemmas": [
             "разряд",
@@ -215,8 +215,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            555,
-            578
+            366,
+            389
         ],
         "lemmas": [
             "крылатый",
@@ -234,8 +234,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            545,
-            568
+            356,
+            379
         ],
         "lemmas": [
             "появление",

@@ -150,8 +150,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            197,
-            220
+            116,
+            139
         ],
         "lemmas": [
             "поэтический",
@@ -167,8 +167,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            230,
-            260
+            149,
+            179
         ],
         "lemmas": [
             "акцентологический",
@@ -184,8 +184,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            186,
-            220
+            105,
+            139
         ],
         "lemmas": [
             "применение",
@@ -202,8 +202,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            360,
-            378
+            196,
+            214
         ],
         "lemmas": [
             "описание",
@@ -219,8 +219,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            360,
-            391
+            196,
+            227
         ],
         "lemmas": [
             "описание",
@@ -237,8 +237,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            369,
-            391
+            205,
+            227
         ],
         "lemmas": [
             "элемент",
@@ -254,8 +254,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            392,
-            411
+            228,
+            247
         ],
         "lemmas": [
             "поэтический",
@@ -271,8 +271,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            428,
-            459
+            264,
+            295
         ],
         "lemmas": [
             "акцентологический",
@@ -288,8 +288,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            477,
-            490
+            313,
+            326
         ],
         "lemmas": [
             "основный",
@@ -305,8 +305,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            491,
-            510
+            327,
+            346
         ],
         "lemmas": [
             "стихотворный",
@@ -322,8 +322,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            561,
-            583
+            397,
+            419
         ],
         "lemmas": [
             "акцентологический",
@@ -339,8 +339,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            588,
-            607
+            424,
+            443
         ],
         "lemmas": [
             "выбранный",
@@ -356,8 +356,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            379,
-            411
+            215,
+            247
         ],
         "lemmas": [
             "метаразметка",
@@ -374,8 +374,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            477,
-            510
+            313,
+            346
         ],
         "lemmas": [
             "основный",
@@ -393,8 +393,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            491,
-            524
+            327,
+            360
         ],
         "lemmas": [
             "стихотворный",
@@ -412,8 +412,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            486,
-            510
+            322,
+            346
         ],
         "lemmas": [
             "тип",

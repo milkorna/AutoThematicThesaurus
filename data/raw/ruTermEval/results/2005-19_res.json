@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            111,
-            125
+            77,
+            91
         ],
         "lemmas": [
             "модель",
@@ -59,8 +59,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            135,
-            152
+            101,
+            118
         ],
         "lemmas": [
             "речевой",
@@ -76,8 +76,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            169,
-            185
+            135,
+            151
         ],
         "lemmas": [
             "речевой",
@@ -93,8 +93,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            135,
-            168
+            101,
+            134
         ],
         "lemmas": [
             "речевой",
@@ -112,8 +112,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            127,
-            152
+            93,
+            118
         ],
         "lemmas": [
             "анализ",
@@ -130,8 +130,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            155,
-            185
+            121,
+            151
         ],
         "lemmas": [
             "классификация",
@@ -148,8 +148,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            286,
-            304
+            153,
+            171
         ],
         "lemmas": [
             "грамматика",
@@ -165,8 +165,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            338,
-            354
+            205,
+            221
         ],
         "lemmas": [
             "описание",
@@ -182,8 +182,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            379,
-            412
+            246,
+            279
         ],
         "lemmas": [
             "социально-коммуникативный",
@@ -199,8 +199,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            415,
-            442
+            282,
+            309
         ],
         "lemmas": [
             "позиционно-игровой",
@@ -216,8 +216,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            581,
-            599
+            311,
+            329
         ],
         "lemmas": [
             "основный",
@@ -233,8 +233,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            590,
-            610
+            320,
+            340
         ],
         "lemmas": [
             "категория",
@@ -250,8 +250,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            590,
-            618
+            320,
+            348
         ],
         "lemmas": [
             "категория",
@@ -268,8 +268,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            600,
-            618
+            330,
+            348
         ],
         "lemmas": [
             "грамматика",
@@ -285,8 +285,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            627,
-            646
+            357,
+            376
         ],
         "lemmas": [
             "языковый",
@@ -302,8 +302,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            650,
-            676
+            380,
+            406
         ],
         "lemmas": [
             "металингвистический",
@@ -319,8 +319,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            670,
-            683
+            400,
+            413
         ],
         "lemmas": [
             "уровень",
@@ -336,8 +336,8 @@
         "start_token_ind": 0,
         "end_token_ind": 3,
         "span": [
-            581,
-            618
+            311,
+            348
         ],
         "lemmas": [
             "основный",
@@ -355,8 +355,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            627,
-            676
+            357,
+            406
         ],
         "lemmas": [
             "языковый",
@@ -375,8 +375,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            636,
-            676
+            366,
+            406
         ],
         "lemmas": [
             "воплощение",
@@ -394,8 +394,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            650,
-            683
+            380,
+            413
         ],
         "lemmas": [
             "металингвистический",

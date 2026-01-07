@@ -60,8 +60,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            114,
-            134
+            73,
+            93
         ],
         "lemmas": [
             "нарративный",
@@ -77,8 +77,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            163,
-            184
+            122,
+            143
         ],
         "lemmas": [
             "успешный",
@@ -94,8 +94,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            259,
-            283
+            218,
+            242
         ],
         "lemmas": [
             "дискурсивный",
@@ -111,8 +111,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            305,
-            328
+            264,
+            287
         ],
         "lemmas": [
             "лингвокультурный",
@@ -128,8 +128,8 @@
         "start_token_ind": 44,
         "end_token_ind": 45,
         "span": [
-            398,
-            422
+            357,
+            381
         ],
         "lemmas": [
             "лингвокультурный",
@@ -145,8 +145,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            154,
-            184
+            113,
+            143
         ],
         "lemmas": [
             "процесс",
@@ -163,8 +163,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            251,
-            283
+            210,
+            242
         ],
         "lemmas": [
             "граница",

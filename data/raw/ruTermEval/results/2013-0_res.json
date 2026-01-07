@@ -8,8 +8,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            162,
-            178
+            96,
+            112
         ],
         "lemmas": [
             "процесс",
@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            196,
-            222
+            130,
+            156
         ],
         "lemmas": [
             "функциональный",
@@ -42,8 +42,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            492,
-            517
+            303,
+            328
         ],
         "lemmas": [
             "лингвистический",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            652,
-            675
+            371,
+            394
         ],
         "lemmas": [
             "структурный",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            692,
-            707
+            411,
+            426
         ],
         "lemmas": [
             "структура",
@@ -93,8 +93,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            637,
-            675
+            356,
+            394
         ],
         "lemmas": [
             "ограниченность",
@@ -111,8 +111,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            815,
-            838
+            461,
+            484
         ],
         "lemmas": [
             "лингвистический",
@@ -128,8 +128,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            848,
-            874
+            494,
+            520
         ],
         "lemmas": [
             "мыслительный",
@@ -145,8 +145,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            875,
-            894
+            521,
+            540
         ],
         "lemmas": [
             "говорящий",
@@ -162,8 +162,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            914,
-            931
+            560,
+            577
         ],
         "lemmas": [
             "языковый",
@@ -179,8 +179,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            985,
-            1001
+            631,
+            647
         ],
         "lemmas": [
             "центральный",
@@ -196,8 +196,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            997,
-            1011
+            643,
+            657
         ],
         "lemmas": [
             "роль",
@@ -213,8 +213,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            848,
-            894
+            494,
+            540
         ],
         "lemmas": [
             "мыслительный",
@@ -232,8 +232,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            861,
-            894
+            507,
+            540
         ],
         "lemmas": [
             "деятельность",
@@ -250,8 +250,8 @@
         "start_token_ind": 31,
         "end_token_ind": 33,
         "span": [
-            985,
-            1011
+            631,
+            657
         ],
         "lemmas": [
             "центральный",
@@ -268,8 +268,8 @@
         "start_token_ind": 32,
         "end_token_ind": 35,
         "span": [
-            997,
-            1019
+            643,
+            665
         ],
         "lemmas": [
             "роль",
@@ -287,8 +287,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            1232,
-            1252
+            674,
+            694
         ],
         "lemmas": [
             "развитие",

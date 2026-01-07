@@ -60,8 +60,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            170,
-            185
+            105,
+            120
         ],
         "lemmas": [
             "анализ",
@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            170,
-            199
+            105,
+            134
         ],
         "lemmas": [
             "анализ",
@@ -95,8 +95,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            178,
-            199
+            113,
+            134
         ],
         "lemmas": [
             "отзыв",
@@ -112,8 +112,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            256,
-            275
+            191,
+            210
         ],
         "lemmas": [
             "значимый",
@@ -129,8 +129,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            279,
-            296
+            214,
+            231
         ],
         "lemmas": [
             "специальный",
@@ -146,8 +146,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            161,
-            199
+            96,
+            134
         ],
         "lemmas": [
             "подход",
@@ -166,8 +166,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            246,
-            275
+            181,
+            210
         ],
         "lemmas": [
             "выделение",
@@ -184,8 +184,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            265,
-            296
+            200,
+            231
         ],
         "lemmas": [
             "фрагмент",
@@ -203,8 +203,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            449,
-            469
+            244,
+            264
         ],
         "lemmas": [
             "анализ",
@@ -220,8 +220,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            470,
-            496
+            265,
+            291
         ],
         "lemmas": [
             "автоматический",
@@ -237,8 +237,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            470,
-            508
+            265,
+            303
         ],
         "lemmas": [
             "автоматический",
@@ -256,8 +256,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            456,
-            496
+            251,
+            291
         ],
         "lemmas": [
             "эффективность",
@@ -274,8 +274,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            648,
-            672
+            350,
+            374
         ],
         "lemmas": [
             "результат",
@@ -291,8 +291,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            648,
-            681
+            350,
+            383
         ],
         "lemmas": [
             "результат",

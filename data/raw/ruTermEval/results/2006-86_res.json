@@ -59,8 +59,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            279,
-            309
+            170,
+            200
         ],
         "lemmas": [
             "синтаксический",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            331,
-            356
+            222,
+            247
         ],
         "lemmas": [
             "ранний-поздний",
@@ -93,8 +93,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            366,
-            382
+            257,
+            273
         ],
         "lemmas": [
             "зрение",
@@ -110,8 +110,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            385,
-            408
+            276,
+            299
         ],
         "lemmas": [
             "порождение",
@@ -127,8 +127,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            322,
-            356
+            213,
+            247
         ],
         "lemmas": [
             "феномен",
@@ -145,8 +145,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            366,
-            395
+            257,
+            286
         ],
         "lemmas": [
             "зрение",
@@ -164,8 +164,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            373,
-            408
+            264,
+            299
         ],
         "lemmas": [
             "понимание",
@@ -183,8 +183,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            675,
-            688
+            412,
+            425
         ],
         "lemmas": [
             "русский",
@@ -200,8 +200,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            711,
-            727
+            448,
+            464
         ],
         "lemmas": [
             "род",

@@ -94,8 +94,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            197,
-            215
+            107,
+            125
         ],
         "lemmas": [
             "материал",
@@ -111,8 +111,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            275,
-            292
+            185,
+            202
         ],
         "lemmas": [
             "многозначный",
@@ -128,8 +128,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            405,
-            420
+            235,
+            250
         ],
         "lemmas": [
             "данный",
@@ -145,8 +145,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            439,
-            464
+            269,
+            294
         ],
         "lemmas": [
             "регулярный",
@@ -162,8 +162,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            428,
-            464
+            258,
+            294
         ],
         "lemmas": [
             "характерный",
@@ -180,8 +180,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            619,
-            642
+            341,
+            364
         ],
         "lemmas": [
             "семантический",
@@ -197,8 +197,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            671,
-            690
+            393,
+            412
         ],
         "lemmas": [
             "семантический",
@@ -214,8 +214,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            707,
-            722
+            429,
+            444
         ],
         "lemmas": [
             "группа",

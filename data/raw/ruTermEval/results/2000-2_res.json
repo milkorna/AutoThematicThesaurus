@@ -44,8 +44,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            95,
-            120
+            73,
+            98
         ],
         "lemmas": [
             "лингвистический",
@@ -61,8 +61,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            262,
-            287
+            155,
+            180
         ],
         "lemmas": [
             "последовательность",
@@ -78,8 +78,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            291,
-            304
+            184,
+            197
         ],
         "lemmas": [
             "честный",
@@ -95,8 +95,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            395,
-            418
+            288,
+            311
         ],
         "lemmas": [
             "характеристика",
@@ -112,8 +112,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            395,
-            425
+            288,
+            318
         ],
         "lemmas": [
             "характеристика",
@@ -130,8 +130,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            412,
-            425
+            305,
+            318
         ],
         "lemmas": [
             "формула",
@@ -147,8 +147,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            451,
-            474
+            344,
+            367
         ],
         "lemmas": [
             "предшествующий",
@@ -164,8 +164,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            500,
-            524
+            393,
+            417
         ],
         "lemmas": [
             "фонетический",
@@ -181,8 +181,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            822,
-            843
+            465,
+            486
         ],
         "lemmas": [
             "предшествующий",
@@ -198,8 +198,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            893,
-            919
+            536,
+            562
         ],
         "lemmas": [
             "эпистемический",
@@ -215,8 +215,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            810,
-            843
+            453,
+            486
         ],
         "lemmas": [
             "искренность",
@@ -233,8 +233,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            885,
-            919
+            528,
+            562
         ],
         "lemmas": [
             "формула",

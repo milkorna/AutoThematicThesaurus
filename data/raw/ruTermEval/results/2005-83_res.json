@@ -25,8 +25,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            169,
-            185
+            130,
+            146
         ],
         "lemmas": [
             "зрение",
@@ -42,8 +42,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            188,
-            206
+            149,
+            167
         ],
         "lemmas": [
             "речевой",
@@ -59,8 +59,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            197,
-            217
+            158,
+            178
         ],
         "lemmas": [
             "поведение",
@@ -76,8 +76,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            176,
-            206
+            137,
+            167
         ],
         "lemmas": [
             "мотивация",
@@ -95,8 +95,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            188,
-            217
+            149,
+            178
         ],
         "lemmas": [
             "речевой",
@@ -113,8 +113,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            349,
-            366
+            190,
+            207
         ],
         "lemmas": [
             "публичный",
@@ -130,8 +130,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            670,
-            694
+            360,
+            384
         ],
         "lemmas": [
             "категория",
@@ -147,8 +147,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            697,
-            721
+            387,
+            411
         ],
         "lemmas": [
             "аргументированность",
@@ -164,8 +164,8 @@
         "start_token_ind": 0,
         "end_token_ind": 3,
         "span": [
-            670,
-            716
+            360,
+            406
         ],
         "lemmas": [
             "категория",
@@ -183,8 +183,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            680,
-            721
+            370,
+            411
         ],
         "lemmas": [
             "убедительность",
@@ -202,8 +202,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            866,
-            882
+            467,
+            483
         ],
         "lemmas": [
             "описание",
@@ -219,8 +219,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            883,
-            908
+            484,
+            509
         ],
         "lemmas": [
             "словесный",
@@ -236,8 +236,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            875,
-            908
+            476,
+            509
         ],
         "lemmas": [
             "средство",

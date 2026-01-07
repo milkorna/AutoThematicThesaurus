@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            85,
-            101
+            51,
+            67
         ],
         "lemmas": [
             "семантика",
@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            280,
-            297
+            163,
+            180
         ],
         "lemmas": [
             "основное",
@@ -59,8 +59,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            344,
-            367
+            227,
+            250
         ],
         "lemmas": [
             "значение",
@@ -76,8 +76,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            344,
-            376
+            227,
+            259
         ],
         "lemmas": [
             "значение",
@@ -95,8 +95,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            479,
-            503
+            261,
+            285
         ],
         "lemmas": [
             "структура",
@@ -112,8 +112,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            479,
-            509
+            261,
+            291
         ],
         "lemmas": [
             "структура",
@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            489,
-            509
+            271,
+            291
         ],
         "lemmas": [
             "многозначность",
@@ -147,8 +147,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            547,
-            572
+            329,
+            354
         ],
         "lemmas": [
             "структура",
@@ -164,8 +164,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            547,
-            578
+            329,
+            360
         ],
         "lemmas": [
             "структура",
@@ -182,8 +182,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            558,
-            578
+            340,
+            360
         ],
         "lemmas": [
             "многозначность",

@@ -113,8 +113,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            225,
-            238
+            119,
+            132
         ],
         "lemmas": [
             "данный",
@@ -130,8 +130,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            260,
-            284
+            154,
+            178
         ],
         "lemmas": [
             "система",
@@ -148,8 +148,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            478,
-            499
+            284,
+            305
         ],
         "lemmas": [
             "именованный",
@@ -165,8 +165,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            501,
-            524
+            307,
+            330
         ],
         "lemmas": [
             "классификация",
@@ -182,8 +182,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            581,
-            601
+            387,
+            407
         ],
         "lemmas": [
             "извлечение",
@@ -199,8 +199,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            464,
-            499
+            270,
+            305
         ],
         "lemmas": [
             "распознавание",
@@ -217,8 +217,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            1234,
-            1254
+            679,
+            699
         ],
         "lemmas": [
             "извлечение",
@@ -234,8 +234,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1276,
-            1291
+            721,
+            736
         ],
         "lemmas": [
             "задача",
@@ -251,8 +251,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            1276,
-            1311
+            721,
+            756
         ],
         "lemmas": [
             "задача",
@@ -269,8 +269,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1283,
-            1311
+            728,
+            756
         ],
         "lemmas": [
             "разметка",
@@ -286,8 +286,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            1405,
-            1424
+            780,
+            799
         ],
         "lemmas": [
             "совместный",
@@ -303,8 +303,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            1416,
-            1434
+            791,
+            809
         ],
         "lemmas": [
             "обучение",
@@ -321,8 +321,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1429,
-            1448
+            804,
+            823
         ],
         "lemmas": [
             "задача",
@@ -338,8 +338,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1449,
-            1470
+            824,
+            845
         ],
         "lemmas": [
             "именованный",
@@ -355,8 +355,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            1473,
-            1493
+            848,
+            868
         ],
         "lemmas": [
             "извлечение",
@@ -372,8 +372,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            1405,
-            1448
+            780,
+            823
         ],
         "lemmas": [
             "совместный",
@@ -392,8 +392,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            1416,
-            1448
+            791,
+            823
         ],
         "lemmas": [
             "обучение",
@@ -411,8 +411,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            1449,
-            1483
+            824,
+            858
         ],
         "lemmas": [
             "именованный",
@@ -430,8 +430,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            1435,
-            1470
+            810,
+            845
         ],
         "lemmas": [
             "распознавание",
@@ -448,8 +448,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            1461,
-            1493
+            836,
+            868
         ],
         "lemmas": [
             "сущность",

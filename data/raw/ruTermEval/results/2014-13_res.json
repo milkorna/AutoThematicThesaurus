@@ -8,8 +8,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            113,
-            132
+            81,
+            100
         ],
         "lemmas": [
             "частотный",
@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            133,
-            148
+            101,
+            116
         ],
         "lemmas": [
             "социальный",
@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            113,
-            148
+            81,
+            116
         ],
         "lemmas": [
             "частотный",
@@ -61,8 +61,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            123,
-            148
+            91,
+            116
         ],
         "lemmas": [
             "словоформа",
@@ -79,8 +79,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            293,
-            312
+            160,
+            179
         ],
         "lemmas": [
             "задача",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            324,
-            347
+            191,
+            214
         ],
         "lemmas": [
             "анализ",
@@ -113,8 +113,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            348,
-            362
+            215,
+            229
         ],
         "lemmas": [
             "русский",
@@ -130,8 +130,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            399,
-            427
+            266,
+            294
         ],
         "lemmas": [
             "словообразовательный",
@@ -147,8 +147,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            387,
-            427
+            254,
+            294
         ],
         "lemmas": [
             "характерный",
@@ -165,8 +165,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            451,
-            474
+            318,
+            341
         ],
         "lemmas": [
             "адаптация",
@@ -182,8 +182,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            332,
-            362
+            199,
+            229
         ],
         "lemmas": [
             "новообразование",
@@ -200,8 +200,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            700,
-            722
+            401,
+            423
         ],
         "lemmas": [
             "лингвистический",
@@ -217,8 +217,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            726,
-            744
+            427,
+            445
         ],
         "lemmas": [
             "тип",
@@ -234,8 +234,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            700,
-            744
+            401,
+            445
         ],
         "lemmas": [
             "лингвистический",
@@ -254,8 +254,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            716,
-            744
+            417,
+            445
         ],
         "lemmas": [
             "анализ",

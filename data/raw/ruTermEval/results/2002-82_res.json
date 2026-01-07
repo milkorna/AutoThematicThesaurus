@@ -62,8 +62,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            86,
-            99
+            50,
+            63
         ],
         "lemmas": [
             "опыт",
@@ -79,8 +79,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            100,
-            122
+            64,
+            86
         ],
         "lemmas": [
             "информационный",
@@ -96,8 +96,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            115,
-            139
+            79,
+            103
         ],
         "lemmas": [
             "система",
@@ -114,8 +114,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            100,
-            139
+            64,
+            103
         ],
         "lemmas": [
             "информационный",
@@ -133,8 +133,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            91,
-            122
+            55,
+            86
         ],
         "lemmas": [
             "создание",
@@ -151,8 +151,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            260,
-            275
+            153,
+            168
         ],
         "lemmas": [
             "основный",
@@ -168,8 +168,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            290,
-            313
+            183,
+            206
         ],
         "lemmas": [
             "автоматический",
@@ -185,8 +185,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            330,
-            347
+            223,
+            240
         ],
         "lemmas": [
             "свободный",
@@ -202,8 +202,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            260,
-            289
+            153,
+            182
         ],
         "lemmas": [
             "основный",
@@ -221,8 +221,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            278,
-            313
+            171,
+            206
         ],
         "lemmas": [
             "возможность",
@@ -239,8 +239,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            448,
-            469
+            252,
+            273
         ],
         "lemmas": [
             "предоставляемый",
@@ -256,8 +256,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            489,
-            512
+            293,
+            316
         ],
         "lemmas": [
             "информационный",
@@ -273,8 +273,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            553,
-            575
+            357,
+            379
         ],
         "lemmas": [
             "поисковый",
@@ -290,8 +290,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            546,
-            575
+            350,
+            379
         ],
         "lemmas": [
             "единый",
@@ -308,8 +308,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            583,
-            605
+            387,
+            409
         ],
         "lemmas": [
             "терминологический",
@@ -325,8 +325,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            636,
-            654
+            440,
+            458
         ],
         "lemmas": [
             "возможность",
@@ -342,8 +342,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            664,
-            682
+            468,
+            486
         ],
         "lemmas": [
             "пополнение",
@@ -359,8 +359,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            480,
-            512
+            284,
+            316
         ],
         "lemmas": [
             "изобилие",
@@ -377,8 +377,8 @@
         "start_token_ind": 30,
         "end_token_ind": 33,
         "span": [
-            655,
-            682
+            459,
+            486
         ],
         "lemmas": [
             "опыт",

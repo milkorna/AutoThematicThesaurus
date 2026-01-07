@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            85,
-            98
+            45,
+            58
         ],
         "lemmas": [
             "данный",
@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            112,
-            134
+            72,
+            94
         ],
         "lemmas": [
             "информационный",
@@ -59,8 +59,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            235,
-            260
+            142,
+            167
         ],
         "lemmas": [
             "централизованный",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            261,
-            286
+            168,
+            193
         ],
         "lemmas": [
             "литературный",
@@ -93,8 +93,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            316,
-            342
+            223,
+            249
         ],
         "lemmas": [
             "синтаксический",
@@ -110,8 +110,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            354,
-            378
+            261,
+            285
         ],
         "lemmas": [
             "статистический",
@@ -127,8 +127,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            394,
-            416
+            301,
+            323
         ],
         "lemmas": [
             "структура",
@@ -145,8 +145,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            407,
-            432
+            314,
+            339
         ],
         "lemmas": [
             "выявление",
@@ -162,8 +162,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            252,
-            286
+            159,
+            193
         ],
         "lemmas": [
             "хранение",
@@ -180,8 +180,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            299,
-            342
+            206,
+            249
         ],
         "lemmas": [
             "грамматический",
@@ -199,8 +199,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            354,
-            388
+            261,
+            295
         ],
         "lemmas": [
             "статистический",
@@ -218,8 +218,8 @@
         "start_token_ind": 27,
         "end_token_ind": 30,
         "span": [
-            394,
-            432
+            301,
+            339
         ],
         "lemmas": [
             "структура",

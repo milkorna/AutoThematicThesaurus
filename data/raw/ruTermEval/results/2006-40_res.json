@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            123,
-            139
+            78,
+            94
         ],
         "lemmas": [
             "изученность",
@@ -77,8 +77,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            159,
-            176
+            114,
+            131
         ],
         "lemmas": [
             "побочный",
@@ -94,8 +94,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            381,
-            397
+            211,
+            227
         ],
         "lemmas": [
             "аспект",
@@ -111,8 +111,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            430,
-            458
+            260,
+            288
         ],
         "lemmas": [
             "противоположный",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            422,
-            458
+            252,
+            288
         ],
         "lemmas": [
             "работа",
@@ -146,8 +146,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            542,
-            561
+            294,
+            313
         ],
         "lemmas": [
             "снятие",
@@ -163,8 +163,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            573,
-            595
+            325,
+            347
         ],
         "lemmas": [
             "подробный",
@@ -180,8 +180,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            583,
-            603
+            335,
+            355
         ],
         "lemmas": [
             "исследование",
@@ -197,8 +197,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            619,
-            632
+            371,
+            384
         ],
         "lemmas": [
             "русский",
@@ -214,8 +214,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            573,
-            603
+            325,
+            355
         ],
         "lemmas": [
             "подробный",
@@ -232,8 +232,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            583,
-            613
+            335,
+            365
         ],
         "lemmas": [
             "исследование",

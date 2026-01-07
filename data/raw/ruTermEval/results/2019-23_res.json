@@ -221,8 +221,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            270,
-            287
+            157,
+            174
         ],
         "lemmas": [
             "нейронный",
@@ -238,8 +238,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            280,
-            293
+            167,
+            180
         ],
         "lemmas": [
             "модель",
@@ -255,8 +255,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            314,
-            329
+            201,
+            216
         ],
         "lemmas": [
             "задача",
@@ -272,8 +272,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            330,
-            349
+            217,
+            236
         ],
         "lemmas": [
             "естественный",
@@ -289,8 +289,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            381,
-            396
+            268,
+            283
         ],
         "lemmas": [
             "здравый",
@@ -306,8 +306,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            448,
-            466
+            335,
+            353
         ],
         "lemmas": [
             "задача",
@@ -323,8 +323,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            484,
-            502
+            371,
+            389
         ],
         "lemmas": [
             "предметный",
@@ -340,8 +340,8 @@
         "start_token_ind": 39,
         "end_token_ind": 40,
         "span": [
-            519,
-            542
+            406,
+            429
         ],
         "lemmas": [
             "медицинский",
@@ -357,8 +357,8 @@
         "start_token_ind": 38,
         "end_token_ind": 40,
         "span": [
-            503,
-            542
+            390,
+            429
         ],
         "lemmas": [
             "предварительный",
@@ -375,8 +375,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            546,
-            558
+            433,
+            445
         ],
         "lemmas": [
             "основа",
@@ -392,8 +392,8 @@
         "start_token_ind": 42,
         "end_token_ind": 44,
         "span": [
-            546,
-            567
+            433,
+            454
         ],
         "lemmas": [
             "основа",
@@ -410,8 +410,8 @@
         "start_token_ind": 43,
         "end_token_ind": 44,
         "span": [
-            553,
-            567
+            440,
+            454
         ],
         "lemmas": [
             "жалоба",
@@ -427,8 +427,8 @@
         "start_token_ind": 51,
         "end_token_ind": 52,
         "span": [
-            601,
-            619
+            488,
+            506
         ],
         "lemmas": [
             "естественный",
@@ -444,8 +444,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            270,
-            293
+            157,
+            180
         ],
         "lemmas": [
             "нейронный",
@@ -462,8 +462,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            262,
-            287
+            149,
+            174
         ],
         "lemmas": [
             "успех",
@@ -480,8 +480,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            280,
-            303
+            167,
+            190
         ],
         "lemmas": [
             "модель",
@@ -499,8 +499,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            320,
-            349
+            207,
+            236
         ],
         "lemmas": [
             "понимание",
@@ -517,8 +517,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            374,
-            396
+            261,
+            283
         ],
         "lemmas": [
             "основа",
@@ -535,8 +535,8 @@
         "start_token_ind": 28,
         "end_token_ind": 31,
         "span": [
-            438,
-            466
+            325,
+            353
         ],
         "lemmas": [
             "модель",
@@ -554,8 +554,8 @@
         "start_token_ind": 39,
         "end_token_ind": 43,
         "span": [
-            519,
-            558
+            406,
+            445
         ],
         "lemmas": [
             "медицинский",
@@ -574,8 +574,8 @@
         "start_token_ind": 38,
         "end_token_ind": 43,
         "span": [
-            503,
-            558
+            390,
+            445
         ],
         "lemmas": [
             "предварительный",
@@ -595,8 +595,8 @@
         "start_token_ind": 40,
         "end_token_ind": 44,
         "span": [
-            531,
-            567
+            418,
+            454
         ],
         "lemmas": [
             "диагностика",
@@ -615,8 +615,8 @@
         "start_token_ind": 49,
         "end_token_ind": 52,
         "span": [
-            591,
-            619
+            478,
+            506
         ],
         "lemmas": [
             "текст",
@@ -634,8 +634,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            970,
-            985
+            530,
+            545
         ],
         "lemmas": [
             "языковый",
@@ -651,8 +651,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1022,
-            1041
+            582,
+            601
         ],
         "lemmas": [
             "медицинский",
@@ -668,8 +668,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            1160,
-            1173
+            720,
+            733
         ],
         "lemmas": [
             "набора",
@@ -685,8 +685,8 @@
         "start_token_ind": 41,
         "end_token_ind": 42,
         "span": [
-            1191,
-            1205
+            751,
+            765
         ],
         "lemmas": [
             "основа",
@@ -702,8 +702,8 @@
         "start_token_ind": 50,
         "end_token_ind": 51,
         "span": [
-            1265,
-            1285
+            825,
+            845
         ],
         "lemmas": [
             "медицинский",
@@ -719,8 +719,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            1022,
-            1053
+            582,
+            613
         ],
         "lemmas": [
             "медицинский",
@@ -738,8 +738,8 @@
         "start_token_ind": 34,
         "end_token_ind": 37,
         "span": [
-            1150,
-            1173
+            710,
+            733
         ],
         "lemmas": [
             "оценка",
@@ -757,8 +757,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1650,
-            1673
+            929,
+            952
         ],
         "lemmas": [
             "расширение",
@@ -774,8 +774,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            1650,
-            1689
+            929,
+            968
         ],
         "lemmas": [
             "расширение",
@@ -792,8 +792,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            1650,
-            1699
+            929,
+            978
         ],
         "lemmas": [
             "расширение",
@@ -811,8 +811,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1661,
-            1689
+            940,
+            968
         ],
         "lemmas": [
             "возможность",
@@ -828,8 +828,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            1661,
-            1699
+            940,
+            978
         ],
         "lemmas": [
             "возможность",
@@ -846,8 +846,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1674,
-            1699
+            953,
+            978
         ],
         "lemmas": [
             "онлайн-проверка",
@@ -863,8 +863,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            1702,
-            1718
+            981,
+            997
         ],
         "lemmas": [
             "система",
@@ -880,8 +880,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            1702,
-            1727
+            981,
+            1006
         ],
         "lemmas": [
             "система",
@@ -898,8 +898,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            1709,
-            1727
+            988,
+            1006
         ],
         "lemmas": [
             "поддержка",
@@ -915,8 +915,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            1728,
-            1747
+            1007,
+            1026
         ],
         "lemmas": [
             "клинический",
@@ -932,8 +932,8 @@
         "start_token_ind": 12,
         "end_token_ind": 17,
         "span": [
-            1650,
-            1708
+            929,
+            987
         ],
         "lemmas": [
             "расширение",
@@ -953,8 +953,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            1661,
-            1708
+            940,
+            987
         ],
         "lemmas": [
             "возможность",
@@ -973,8 +973,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            1674,
-            1708
+            953,
+            987
         ],
         "lemmas": [
             "онлайн-проверка",
@@ -992,8 +992,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            1690,
-            1727
+            969,
+            1006
         ],
         "lemmas": [
             "симптом",
@@ -1012,8 +1012,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            1719,
-            1747
+            998,
+            1026
         ],
         "lemmas": [
             "принятие",

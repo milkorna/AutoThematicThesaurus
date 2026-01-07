@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            73,
-            86
+            39,
+            52
         ],
         "lemmas": [
             "объект",
@@ -42,8 +42,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            221,
-            246
+            122,
+            147
         ],
         "lemmas": [
             "сверхфразовый",
@@ -59,8 +59,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            322,
-            343
+            199,
+            220
         ],
         "lemmas": [
             "семантический",
@@ -76,8 +76,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            352,
-            375
+            229,
+            252
         ],
         "lemmas": [
             "поверхностный",
@@ -93,8 +93,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            608,
-            632
+            334,
+            358
         ],
         "lemmas": [
             "определение",
@@ -111,8 +111,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            624,
-            642
+            350,
+            368
         ],
         "lemmas": [
             "описание",
@@ -128,8 +128,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            608,
-            642
+            334,
+            368
         ],
         "lemmas": [
             "определение",

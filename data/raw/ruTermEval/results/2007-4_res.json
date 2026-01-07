@@ -95,8 +95,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            122,
-            146
+            67,
+            91
         ],
         "lemmas": [
             "реализованный",
@@ -112,8 +112,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            171,
-            191
+            116,
+            136
         ],
         "lemmas": [
             "поисковый",
@@ -129,8 +129,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            237,
-            255
+            182,
+            200
         ],
         "lemmas": [
             "поисковый",
@@ -146,8 +146,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            277,
-            298
+            222,
+            243
         ],
         "lemmas": [
             "сверхкороткий",
@@ -163,8 +163,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            310,
-            321
+            255,
+            266
         ],
         "lemmas": [
             "единый",
@@ -180,8 +180,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            317,
-            330
+            262,
+            275
         ],
         "lemmas": [
             "база",
@@ -197,8 +197,8 @@
         "start_token_ind": 37,
         "end_token_ind": 38,
         "span": [
-            359,
-            381
+            304,
+            326
         ],
         "lemmas": [
             "распознавание",
@@ -214,8 +214,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            228,
-            255
+            173,
+            200
         ],
         "lemmas": [
             "тематика",
@@ -232,8 +232,8 @@
         "start_token_ind": 29,
         "end_token_ind": 31,
         "span": [
-            310,
-            330
+            255,
+            275
         ],
         "lemmas": [
             "единый",

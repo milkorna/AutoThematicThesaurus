@@ -61,8 +61,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            135,
-            153
+            74,
+            92
         ],
         "lemmas": [
             "дейктический",
@@ -78,8 +78,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            159,
-            183
+            98,
+            122
         ],
         "lemmas": [
             "типыакадемический",
@@ -95,8 +95,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            188,
-            209
+            127,
+            148
         ],
         "lemmas": [
             "разновидность",
@@ -112,8 +112,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            227,
-            249
+            166,
+            188
         ],
         "lemmas": [
             "полигон",
@@ -130,8 +130,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            322,
-            338
+            261,
+            277
         ],
         "lemmas": [
             "неречевой",
@@ -147,8 +147,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            312,
-            338
+            251,
+            277
         ],
         "lemmas": [
             "речевой",
@@ -166,8 +166,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            530,
-            534
+            291,
+            295
         ],
         "lemmas": [
             "ii",
@@ -183,8 +183,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            578,
-            595
+            339,
+            356
         ],
         "lemmas": [
             "лекторский",
@@ -200,8 +200,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            565,
-            595
+            326,
+            356
         ],
         "lemmas": [
             "дейктический",
@@ -218,8 +218,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            558,
-            595
+            319,
+            356
         ],
         "lemmas": [
             "класс",
@@ -237,8 +237,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            682,
-            686
+            380,
+            384
         ],
         "lemmas": [
             "ii",
@@ -254,8 +254,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            712,
-            730
+            410,
+            428
         ],
         "lemmas": [
             "дейктический",
@@ -271,8 +271,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            841,
-            856
+            539,
+            554
         ],
         "lemmas": [
             "состав",
@@ -288,8 +288,8 @@
         "start_token_ind": 28,
         "end_token_ind": 31,
         "span": [
-            831,
-            856
+            529,
+            554
         ],
         "lemmas": [
             "знак",

@@ -150,8 +150,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            232,
-            243
+            150,
+            161
         ],
         "lemmas": [
             "устный",
@@ -167,8 +167,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            397,
-            418
+            255,
+            276
         ],
         "lemmas": [
             "внутренний",
@@ -184,8 +184,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            408,
-            427
+            266,
+            285
         ],
         "lemmas": [
             "антонимия",
@@ -201,8 +201,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            454,
-            479
+            312,
+            337
         ],
         "lemmas": [
             "коммуникативный",
@@ -218,8 +218,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            397,
-            427
+            255,
+            285
         ],
         "lemmas": [
             "внутренний",

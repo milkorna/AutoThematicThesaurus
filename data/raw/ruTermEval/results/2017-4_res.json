@@ -153,8 +153,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            213,
-            237
+            138,
+            162
         ],
         "lemmas": [
             "морфологический",
@@ -170,8 +170,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            264,
-            283
+            189,
+            208
         ],
         "lemmas": [
             "развитие",
@@ -187,8 +187,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            284,
-            309
+            209,
+            234
         ],
         "lemmas": [
             "морфологический",
@@ -204,8 +204,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            300,
-            317
+            225,
+            242
         ],
         "lemmas": [
             "обработка",
@@ -221,8 +221,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            321,
-            334
+            246,
+            259
         ],
         "lemmas": [
             "русский",
@@ -238,8 +238,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            338,
-            357
+            263,
+            282
         ],
         "lemmas": [
             "особенность",
@@ -255,8 +255,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            402,
-            421
+            327,
+            346
         ],
         "lemmas": [
             "литературный",
@@ -272,8 +272,8 @@
         "start_token_ind": 37,
         "end_token_ind": 38,
         "span": [
-            436,
-            457
+            361,
+            382
         ],
         "lemmas": [
             "формальный",
@@ -289,8 +289,8 @@
         "start_token_ind": 43,
         "end_token_ind": 44,
         "span": [
-            474,
-            490
+            399,
+            415
         ],
         "lemmas": [
             "социальный",
@@ -306,8 +306,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            197,
-            237
+            122,
+            162
         ],
         "lemmas": [
             "соревнование",
@@ -325,8 +325,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            284,
-            317
+            209,
+            242
         ],
         "lemmas": [
             "морфологический",
@@ -343,8 +343,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            273,
-            309
+            198,
+            234
         ],
         "lemmas": [
             "технология",
@@ -361,8 +361,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            300,
-            334
+            225,
+            259
         ],
         "lemmas": [
             "обработка",
@@ -381,8 +381,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            310,
-            334
+            235,
+            259
         ],
         "lemmas": [
             "текст",
@@ -400,8 +400,8 @@
         "start_token_ind": 19,
         "end_token_ind": 22,
         "span": [
-            338,
-            365
+            263,
+            290
         ],
         "lemmas": [
             "особенность",
@@ -419,8 +419,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            770,
-            787
+            442,
+            459
         ],
         "lemmas": [
             "сравнение",
@@ -436,8 +436,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            916,
-            930
+            588,
+            602
         ],
         "lemmas": [
             "русский",

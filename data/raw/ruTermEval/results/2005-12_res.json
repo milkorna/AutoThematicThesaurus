@@ -77,8 +77,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            161,
-            183
+            85,
+            107
         ],
         "lemmas": [
             "предмет",
@@ -94,8 +94,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            236,
-            255
+            160,
+            179
         ],
         "lemmas": [
             "французский",
@@ -111,8 +111,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            280,
-            307
+            204,
+            231
         ],
         "lemmas": [
             "указательный",
@@ -128,8 +128,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            222,
-            255
+            146,
+            179
         ],
         "lemmas": [
             "английский",
@@ -147,8 +147,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            272,
-            307
+            196,
+            231
         ],
         "lemmas": [
             "форма",
@@ -166,8 +166,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            498,
-            519
+            285,
+            306
         ],
         "lemmas": [
             "этимологический",
@@ -183,8 +183,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            671,
-            691
+            412,
+            432
         ],
         "lemmas": [
             "усилительный",
@@ -200,8 +200,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            659,
-            691
+            400,
+            432
         ],
         "lemmas": [
             "местоимение",
@@ -218,8 +218,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            788,
-            805
+            437,
+            454
         ],
         "lemmas": [
             "основание",
@@ -235,8 +235,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            833,
-            858
+            482,
+            507
         ],
         "lemmas": [
             "пространственный",
@@ -252,8 +252,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            872,
-            893
+            521,
+            542
         ],
         "lemmas": [
             "речевой",
@@ -269,8 +269,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            827,
-            858
+            476,
+            507
         ],
         "lemmas": [
             "тип",

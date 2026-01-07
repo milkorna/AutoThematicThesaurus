@@ -99,8 +99,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            141,
-            175
+            94,
+            128
         ],
         "lemmas": [
             "эмоционально-экспрессивный",
@@ -116,8 +116,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            176,
-            197
+            129,
+            150
         ],
         "lemmas": [
             "компьютерный",
@@ -133,8 +133,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            141,
-            197
+            94,
+            150
         ],
         "lemmas": [
             "эмоционально-экспрессивный",
@@ -152,8 +152,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            168,
-            197
+            121,
+            150
         ],
         "lemmas": [
             "функция",
@@ -170,8 +170,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            291,
-            308
+            154,
+            171
         ],
         "lemmas": [
             "широкий",
@@ -187,8 +187,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            329,
-            362
+            192,
+            225
         ],
         "lemmas": [
             "когнитивно-дискурсивный",
@@ -204,8 +204,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            353,
-            369
+            216,
+            232
         ],
         "lemmas": [
             "парадигма",
@@ -221,8 +221,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            407,
-            427
+            270,
+            290
         ],
         "lemmas": [
             "номинативный",
@@ -238,8 +238,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            329,
-            369
+            192,
+            232
         ],
         "lemmas": [
             "когнитивно-дискурсивный",
@@ -256,8 +256,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            583,
-            604
+            323,
+            344
         ],
         "lemmas": [
             "компьютерный",
@@ -273,8 +273,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            634,
-            654
+            374,
+            394
         ],
         "lemmas": [
             "языковый",
@@ -290,8 +290,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            615,
-            654
+            355,
+            394
         ],
         "lemmas": [
             "некодифицированный",
@@ -308,8 +308,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            575,
-            604
+            315,
+            344
         ],
         "lemmas": [
             "отличие",

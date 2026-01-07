@@ -262,8 +262,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            247,
-            262
+            142,
+            157
         ],
         "lemmas": [
             "проблема",
@@ -279,8 +279,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            263,
-            287
+            158,
+            182
         ],
         "lemmas": [
             "морфологический",
@@ -296,8 +296,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            292,
-            306
+            187,
+            201
         ],
         "lemmas": [
             "русский",
@@ -313,8 +313,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            317,
-            339
+            212,
+            234
         ],
         "lemmas": [
             "статистический",
@@ -330,8 +330,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            263,
-            306
+            158,
+            201
         ],
         "lemmas": [
             "морфологический",
@@ -350,8 +350,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            256,
-            287
+            151,
+            182
         ],
         "lemmas": [
             "снятие",
@@ -368,8 +368,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            279,
-            306
+            174,
+            201
         ],
         "lemmas": [
             "омонимия",
@@ -387,8 +387,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            536,
-            554
+            286,
+            304
         ],
         "lemmas": [
             "conditional",
@@ -404,8 +404,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            548,
-            561
+            298,
+            311
         ],
         "lemmas": [
             "random",
@@ -421,8 +421,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            536,
-            561
+            286,
+            311
         ],
         "lemmas": [
             "conditional",
@@ -439,8 +439,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            582,
-            605
+            332,
+            355
         ],
         "lemmas": [
             "модифицированный",
@@ -456,8 +456,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            611,
-            628
+            361,
+            378
         ],
         "lemmas": [
             "дающий",
@@ -473,8 +473,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            782,
-            797
+            467,
+            482
         ],
         "lemmas": [
             "цифровой",
@@ -490,8 +490,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            791,
-            810
+            476,
+            495
         ],
         "lemmas": [
             "запись",
@@ -507,8 +507,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            782,
-            810
+            467,
+            495
         ],
         "lemmas": [
             "цифровой",
@@ -525,8 +525,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            769,
-            797
+            454,
+            482
         ],
         "lemmas": [
             "нормализация",
@@ -543,8 +543,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            905,
-            933
+            519,
+            547
         ],
         "lemmas": [
             "вычислительный",
@@ -560,8 +560,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            894,
-            933
+            508,
+            547
         ],
         "lemmas": [
             "результат",

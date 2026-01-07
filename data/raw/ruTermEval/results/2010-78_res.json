@@ -8,8 +8,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            139,
-            158
+            84,
+            103
         ],
         "lemmas": [
             "русский",
@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            127,
-            158
+            72,
+            103
         ],
         "lemmas": [
             "своеобразие",
@@ -43,8 +43,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            422,
-            441
+            248,
+            267
         ],
         "lemmas": [
             "русский",
@@ -60,8 +60,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            446,
-            467
+            272,
+            293
         ],
         "lemmas": [
             "синтаксический",
@@ -77,8 +77,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            480,
-            507
+            306,
+            333
         ],
         "lemmas": [
             "некомпозициональный",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            412,
-            441
+            238,
+            267
         ],
         "lemmas": [
             "инвентарь",
@@ -112,8 +112,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            470,
-            507
+            296,
+            333
         ],
         "lemmas": [
             "выражение",

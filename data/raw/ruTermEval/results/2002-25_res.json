@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            237,
-            253
+            126,
+            142
         ],
         "lemmas": [
             "цветовой",
@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            282,
-            302
+            171,
+            191
         ],
         "lemmas": [
             "смысловой",
@@ -59,8 +59,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            312,
-            335
+            201,
+            224
         ],
         "lemmas": [
             "содержательный",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            327,
-            351
+            216,
+            240
         ],
         "lemmas": [
             "значение",
@@ -94,8 +94,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            340,
-            358
+            229,
+            247
         ],
         "lemmas": [
             "организация",
@@ -111,8 +111,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            426,
-            449
+            315,
+            338
         ],
         "lemmas": [
             "электронный",
@@ -128,8 +128,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            312,
-            358
+            201,
+            247
         ],
         "lemmas": [
             "содержательный",
@@ -148,8 +148,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            327,
-            358
+            216,
+            247
         ],
         "lemmas": [
             "значение",
@@ -167,8 +167,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            651,
-            666
+            353,
+            368
         ],
         "lemmas": [
             "вариант",
@@ -184,8 +184,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            667,
-            686
+            369,
+            388
         ],
         "lemmas": [
             "невербальный",
@@ -201,8 +201,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            714,
-            732
+            416,
+            434
         ],
         "lemmas": [
             "цветовой",
@@ -218,8 +218,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            660,
-            686
+            362,
+            388
         ],
         "lemmas": [
             "поиск",
@@ -236,8 +236,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            834,
-            856
+            453,
+            475
         ],
         "lemmas": [
             "проблема",
@@ -253,8 +253,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            870,
-            889
+            489,
+            508
         ],
         "lemmas": [
             "невербальный",
@@ -270,8 +270,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            891,
-            911
+            510,
+            530
         ],
         "lemmas": [
             "связанный",
@@ -287,8 +287,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            913,
-            929
+            532,
+            548
         ],
         "lemmas": [
             "цветовой",
@@ -304,8 +304,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            956,
-            977
+            575,
+            596
         ],
         "lemmas": [
             "семиотический",
@@ -321,8 +321,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            997,
-            1018
+            616,
+            637
         ],
         "lemmas": [
             "принцип",
@@ -338,8 +338,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            1019,
-            1048
+            638,
+            667
         ],
         "lemmas": [
             "вербально-образный",
@@ -355,8 +355,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            857,
-            889
+            476,
+            508
         ],
         "lemmas": [
             "вербальный",
@@ -374,8 +374,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            1007,
-            1048
+            626,
+            667
         ],
         "lemmas": [
             "организация",
@@ -392,8 +392,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1276,
-            1296
+            691,
+            711
         ],
         "lemmas": [
             "способ",
@@ -409,8 +409,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1297,
-            1313
+            712,
+            728
         ],
         "lemmas": [
             "цветовой",
@@ -426,8 +426,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            1284,
-            1313
+            699,
+            728
         ],
         "lemmas": [
             "нормализация",

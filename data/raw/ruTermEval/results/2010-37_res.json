@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            107,
-            130
+            65,
+            88
         ],
         "lemmas": [
             "металингвистический",
@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            127,
-            137
+            85,
+            95
         ],
         "lemmas": [
             "база",
@@ -59,8 +59,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            159,
-            184
+            117,
+            142
         ],
         "lemmas": [
             "инструмент",
@@ -76,8 +76,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            159,
-            194
+            117,
+            152
         ],
         "lemmas": [
             "инструмент",
@@ -94,8 +94,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            159,
-            206
+            117,
+            164
         ],
         "lemmas": [
             "инструмент",
@@ -113,8 +113,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            170,
-            194
+            128,
+            152
         ],
         "lemmas": [
             "систематизация",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            170,
-            206
+            128,
+            164
         ],
         "lemmas": [
             "систематизация",
@@ -148,8 +148,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            185,
-            206
+            143,
+            164
         ],
         "lemmas": [
             "метаязык",
@@ -165,8 +165,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            107,
-            137
+            65,
+            95
         ],
         "lemmas": [
             "металингвистический",
@@ -183,8 +183,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            102,
-            130
+            60,
+            88
         ],
         "lemmas": [
             "тип",
@@ -201,8 +201,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            348,
-            382
+            201,
+            235
         ],
         "lemmas": [
             "систематизируемый",
@@ -218,8 +218,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            366,
-            392
+            219,
+            245
         ],
         "lemmas": [
             "металингвистика",
@@ -235,8 +235,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            334,
-            382
+            187,
+            235
         ],
         "lemmas": [
             "классификация",
@@ -253,8 +253,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            348,
-            392
+            201,
+            245
         ],
         "lemmas": [
             "систематизируемый",
@@ -271,8 +271,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            481,
-            501
+            261,
+            281
         ],
         "lemmas": [
             "способ",
@@ -288,8 +288,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            502,
-            530
+            282,
+            310
         ],
         "lemmas": [
             "металингвистический",
@@ -305,8 +305,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            489,
-            530
+            269,
+            310
         ],
         "lemmas": [
             "упорядочение",
@@ -323,8 +323,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            615,
-            638
+            336,
+            359
         ],
         "lemmas": [
             "подробный",
@@ -340,8 +340,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            626,
-            644
+            347,
+            365
         ],
         "lemmas": [
             "исследование",
@@ -357,8 +357,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            645,
-            668
+            366,
+            389
         ],
         "lemmas": [
             "семантический",
@@ -374,8 +374,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            693,
-            720
+            414,
+            441
         ],
         "lemmas": [
             "металингвистический",
@@ -391,8 +391,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            615,
-            644
+            336,
+            365
         ],
         "lemmas": [
             "подробный",
@@ -409,8 +409,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            639,
-            668
+            360,
+            389
         ],
         "lemmas": [
             "тип",
@@ -427,8 +427,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            685,
-            720
+            406,
+            441
         ],
         "lemmas": [
             "состав",

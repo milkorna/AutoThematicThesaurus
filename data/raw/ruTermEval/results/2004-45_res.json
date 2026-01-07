@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            167,
-            193
+            101,
+            127
         ],
         "lemmas": [
             "предварительный",
@@ -77,8 +77,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            183,
-            207
+            117,
+            141
         ],
         "lemmas": [
             "результат",
@@ -94,8 +94,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            251,
-            274
+            185,
+            208
         ],
         "lemmas": [
             "невербальный",
@@ -111,8 +111,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            242,
-            274
+            176,
+            208
         ],
         "lemmas": [
             "женский",
@@ -129,8 +129,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            265,
-            280
+            199,
+            214
         ],
         "lemmas": [
             "поведение",
@@ -146,8 +146,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            292,
-            314
+            226,
+            248
         ],
         "lemmas": [
             "диалогический",
@@ -163,8 +163,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            167,
-            207
+            101,
+            141
         ],
         "lemmas": [
             "предварительный",
@@ -181,8 +181,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            251,
-            280
+            185,
+            214
         ],
         "lemmas": [
             "невербальный",
@@ -199,8 +199,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            242,
-            280
+            176,
+            214
         ],
         "lemmas": [
             "женский",
@@ -218,8 +218,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            231,
-            274
+            165,
+            208
         ],
         "lemmas": [
             "мужской",
@@ -238,8 +238,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            265,
-            291
+            199,
+            225
         ],
         "lemmas": [
             "поведение",
@@ -257,8 +257,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            283,
-            314
+            217,
+            248
         ],
         "lemmas": [
             "ситуация",
@@ -275,8 +275,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            468,
-            495
+            250,
+            277
         ],
         "lemmas": [
             "материал",
@@ -293,8 +293,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            520,
-            541
+            302,
+            323
         ],
         "lemmas": [
             "магнитофонный",
@@ -310,8 +310,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            534,
-            549
+            316,
+            331
         ],
         "lemmas": [
             "запись",
@@ -327,8 +327,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            534,
-            558
+            316,
+            340
         ],
         "lemmas": [
             "запись",
@@ -345,8 +345,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            542,
-            558
+            324,
+            340
         ],
         "lemmas": [
             "текст",
@@ -362,8 +362,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            577,
-            594
+            359,
+            376
         ],
         "lemmas": [
             "русский",
@@ -379,8 +379,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            649,
-            669
+            431,
+            451
         ],
         "lemmas": [
             "финский",
@@ -396,8 +396,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            520,
-            558
+            302,
+            340
         ],
         "lemmas": [
             "магнитофонный",
@@ -415,8 +415,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            513,
-            541
+            295,
+            323
         ],
         "lemmas": [
             "корпус",
@@ -433,8 +433,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            534,
-            576
+            316,
+            358
         ],
         "lemmas": [
             "запись",
@@ -453,8 +453,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            542,
-            576
+            324,
+            358
         ],
         "lemmas": [
             "текст",
@@ -472,8 +472,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            561,
-            594
+            343,
+            376
         ],
         "lemmas": [
             "представитель",
@@ -490,8 +490,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            1020,
-            1031
+            560,
+            571
         ],
         "lemmas": [
             "время",
@@ -507,8 +507,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1059,
-            1079
+            599,
+            619
         ],
         "lemmas": [
             "задача",
@@ -524,8 +524,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1091,
-            1114
+            631,
+            654
         ],
         "lemmas": [
             "невербальный",
@@ -541,8 +541,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            1080,
-            1114
+            620,
+            654
         ],
         "lemmas": [
             "гендерный",
@@ -559,8 +559,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            1066,
-            1114
+            606,
+            654
         ],
         "lemmas": [
             "реконструкция",
@@ -578,8 +578,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            1322,
-            1333
+            712,
+            723
         ],
         "lemmas": [
             "цель",
@@ -595,8 +595,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1394,
-            1413
+            784,
+            803
         ],
         "lemmas": [
             "степень",
@@ -612,8 +612,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            1478,
-            1499
+            868,
+            889
         ],
         "lemmas": [
             "невербальный",
@@ -629,8 +629,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            1570,
-            1587
+            960,
+            977
         ],
         "lemmas": [
             "фрагмент",
@@ -646,8 +646,8 @@
         "start_token_ind": 39,
         "end_token_ind": 40,
         "span": [
-            1602,
-            1622
+            992,
+            1012
         ],
         "lemmas": [
             "гендерный",
@@ -663,8 +663,8 @@
         "start_token_ind": 38,
         "end_token_ind": 40,
         "span": [
-            1588,
-            1622
+            978,
+            1012
         ],
         "lemmas": [
             "невербальный",
@@ -681,8 +681,8 @@
         "start_token_ind": 37,
         "end_token_ind": 40,
         "span": [
-            1581,
-            1622
+            971,
+            1012
         ],
         "lemmas": [
             "модель",

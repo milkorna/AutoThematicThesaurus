@@ -96,8 +96,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            154,
-            170
+            90,
+            106
         ],
         "lemmas": [
             "прикладной",
@@ -113,8 +113,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            165,
-            177
+            101,
+            113
         ],
         "lemmas": [
             "точка",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            208,
-            229
+            144,
+            165
         ],
         "lemmas": [
             "синтаксический",
@@ -147,8 +147,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            200,
-            229
+            136,
+            165
         ],
         "lemmas": [
             "русский",
@@ -165,8 +165,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            248,
-            273
+            184,
+            209
         ],
         "lemmas": [
             "участие",
@@ -182,8 +182,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            154,
-            177
+            90,
+            113
         ],
         "lemmas": [
             "прикладной",
@@ -200,8 +200,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            138,
-            170
+            74,
+            106
         ],
         "lemmas": [
             "теоретический",
@@ -219,8 +219,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            194,
-            229
+            130,
+            165
         ],
         "lemmas": [
             "класс",
@@ -238,8 +238,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            436,
-            456
+            246,
+            266
         ],
         "lemmas": [
             "неповторимый",
@@ -255,8 +255,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            449,
-            464
+            259,
+            274
         ],
         "lemmas": [
             "набор",
@@ -272,8 +272,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            436,
-            464
+            246,
+            274
         ],
         "lemmas": [
             "неповторимый",
@@ -290,8 +290,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            531,
-            554
+            289,
+            312
         ],
         "lemmas": [
             "индивидуальный",
@@ -307,8 +307,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            602,
-            614
+            360,
+            372
         ],
         "lemmas": [
             "единый",

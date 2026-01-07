@@ -152,8 +152,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            181,
-            196
+            98,
+            113
         ],
         "lemmas": [
             "бытовой",
@@ -169,8 +169,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            209,
-            227
+            126,
+            144
         ],
         "lemmas": [
             "хорватский",
@@ -186,8 +186,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            233,
-            250
+            150,
+            167
         ],
         "lemmas": [
             "заметный",
@@ -203,8 +203,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            197,
-            227
+            114,
+            144
         ],
         "lemmas": [
             "сербский",
@@ -222,8 +222,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            323,
-            343
+            178,
+            198
         ],
         "lemmas": [
             "видовой",
@@ -239,8 +239,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            444,
-            464
+            299,
+            319
         ],
         "lemmas": [
             "родовой",
@@ -256,8 +256,8 @@
         "start_token_ind": 41,
         "end_token_ind": 42,
         "span": [
-            497,
-            524
+            352,
+            379
         ],
         "lemmas": [
             "канцелярский",
@@ -273,8 +273,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            435,
-            464
+            290,
+            319
         ],
         "lemmas": [
             "различие",

@@ -43,8 +43,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            240,
-            268
+            141,
+            169
         ],
         "lemmas": [
             "социолингвистический",
@@ -60,8 +60,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            276,
-            292
+            177,
+            193
         ],
         "lemmas": [
             "реляционный",
@@ -77,8 +77,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            288,
-            299
+            189,
+            200
         ],
         "lemmas": [
             "база",
@@ -94,8 +94,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            301,
-            322
+            202,
+            223
         ],
         "lemmas": [
             "содержащий",
@@ -111,8 +111,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            276,
-            299
+            177,
+            200
         ],
         "lemmas": [
             "реляционный",
@@ -129,8 +129,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            507,
-            533
+            286,
+            312
         ],
         "lemmas": [
             "информационный",
@@ -146,8 +146,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            535,
-            559
+            314,
+            338
         ],
         "lemmas": [
             "программный",
@@ -163,8 +163,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            560,
-            574
+            339,
+            353
         ],
         "lemmas": [
             "данный",
@@ -180,8 +180,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            567,
-            584
+            346,
+            363
         ],
         "lemmas": [
             "система",
@@ -197,8 +197,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            585,
-            612
+            364,
+            391
         ],
         "lemmas": [
             "социолингвистический",
@@ -214,8 +214,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            631,
-            651
+            410,
+            430
         ],
         "lemmas": [
             "перспектива",
@@ -231,8 +231,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            535,
-            574
+            314,
+            353
         ],
         "lemmas": [
             "программный",
@@ -250,8 +250,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            560,
-            584
+            339,
+            363
         ],
         "lemmas": [
             "данный",
@@ -268,8 +268,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            548,
-            574
+            327,
+            353
         ],
         "lemmas": [
             "обеспечение",
@@ -286,8 +286,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            575,
-            612
+            354,
+            391
         ],
         "lemmas": [
             "обработка",
@@ -304,8 +304,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            617,
-            651
+            396,
+            430
         ],
         "lemmas": [
             "возможность",

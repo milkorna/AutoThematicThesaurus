@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            158,
-            176
+            104,
+            122
         ],
         "lemmas": [
             "лексический",
@@ -129,8 +129,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            170,
-            187
+            116,
+            133
         ],
         "lemmas": [
             "анализ",
@@ -146,8 +146,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            190,
-            205
+            136,
+            151
         ],
         "lemmas": [
             "контекст",
@@ -163,8 +163,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            190,
-            216
+            136,
+            162
         ],
         "lemmas": [
             "контекст",
@@ -181,8 +181,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            190,
-            227
+            136,
+            173
         ],
         "lemmas": [
             "контекст",
@@ -200,8 +200,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            200,
-            216
+            146,
+            162
         ],
         "lemmas": [
             "задача",
@@ -217,8 +217,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            200,
-            227
+            146,
+            173
         ],
         "lemmas": [
             "задача",
@@ -235,8 +235,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            206,
-            227
+            152,
+            173
         ],
         "lemmas": [
             "извлечение",
@@ -252,8 +252,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            252,
-            276
+            198,
+            222
         ],
         "lemmas": [
             "гипертекстовый",
@@ -269,8 +269,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            158,
-            187
+            104,
+            133
         ],
         "lemmas": [
             "лексический",
@@ -287,8 +287,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            170,
-            205
+            116,
+            151
         ],
         "lemmas": [
             "анализ",
@@ -307,8 +307,8 @@
         "start_token_ind": 5,
         "end_token_ind": 10,
         "span": [
-            177,
-            227
+            123,
+            173
         ],
         "lemmas": [
             "ея-текст",
@@ -328,8 +328,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            522,
-            547
+            320,
+            345
         ],
         "lemmas": [
             "выразительный",
@@ -345,8 +345,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            560,
-            581
+            358,
+            379
         ],
         "lemmas": [
             "компактность",

@@ -263,8 +263,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            193,
-            215
+            114,
+            136
         ],
         "lemmas": [
             "результат",
@@ -280,8 +280,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            193,
-            231
+            114,
+            152
         ],
         "lemmas": [
             "результат",
@@ -298,8 +298,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            193,
-            237
+            114,
+            158
         ],
         "lemmas": [
             "результат",
@@ -317,8 +317,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            205,
-            231
+            126,
+            152
         ],
         "lemmas": [
             "применение",
@@ -334,8 +334,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            205,
-            237
+            126,
+            158
         ],
         "lemmas": [
             "применение",
@@ -352,8 +352,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            216,
-            237
+            137,
+            158
         ],
         "lemmas": [
             "распознаватель",
@@ -369,8 +369,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            252,
-            267
+            173,
+            188
         ],
         "lemmas": [
             "спонтанный",
@@ -386,8 +386,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            323,
-            340
+            244,
+            261
         ],
         "lemmas": [
             "текстовый",
@@ -403,8 +403,8 @@
         "start_token_ind": 4,
         "end_token_ind": 9,
         "span": [
-            193,
-            251
+            114,
+            172
         ],
         "lemmas": [
             "результат",
@@ -424,8 +424,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            205,
-            251
+            126,
+            172
         ],
         "lemmas": [
             "применение",
@@ -444,8 +444,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            216,
-            251
+            137,
+            172
         ],
         "lemmas": [
             "распознаватель",
@@ -463,8 +463,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            240,
-            267
+            161,
+            188
         ],
         "lemmas": [
             "фонограмма",
@@ -481,8 +481,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            309,
-            340
+            230,
+            261
         ],
         "lemmas": [
             "распознавание",
@@ -499,8 +499,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            584,
-            603
+            334,
+            353
         ],
         "lemmas": [
             "латгальский",
@@ -516,8 +516,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            572,
-            603
+            322,
+            353
         ],
         "lemmas": [
             "латышский",

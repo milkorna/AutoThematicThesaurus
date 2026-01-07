@@ -8,8 +8,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            92,
-            118
+            68,
+            94
         ],
         "lemmas": [
             "разрешение",
@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            119,
-            137
+            95,
+            113
         ],
         "lemmas": [
             "языковый",
@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            104,
-            137
+            80,
+            113
         ],
         "lemmas": [
             "многозначность",
@@ -60,8 +60,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            216,
-            229
+            117,
+            130
         ],
         "lemmas": [
             "русский",

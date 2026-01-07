@@ -43,8 +43,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            89,
-            108
+            58,
+            77
         ],
         "lemmas": [
             "уступительный",
@@ -60,8 +60,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            132,
-            155
+            101,
+            124
         ],
         "lemmas": [
             "семантический",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            118,
-            155
+            87,
+            124
         ],
         "lemmas": [
             "трехвалентной",
@@ -95,8 +95,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            367,
-            385
+            209,
+            227
         ],
         "lemmas": [
             "уступительный",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            392,
-            415
+            234,
+            257
         ],
         "lemmas": [
             "двухвалентной",
@@ -129,8 +129,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            442,
-            467
+            284,
+            309
         ],
         "lemmas": [
             "семантический",
@@ -146,8 +146,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            429,
-            467
+            271,
+            309
         ],
         "lemmas": [
             "инвариантный",
@@ -164,8 +164,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            848,
-            867
+            468,
+            487
         ],
         "lemmas": [
             "уступительный",
@@ -181,8 +181,8 @@
         "start_token_ind": 40,
         "end_token_ind": 41,
         "span": [
-            1078,
-            1106
+            698,
+            726
         ],
         "lemmas": [
             "коммуникативный",
@@ -198,8 +198,8 @@
         "start_token_ind": 46,
         "end_token_ind": 47,
         "span": [
-            1134,
-            1147
+            754,
+            767
         ],
         "lemmas": [
             "данный",
@@ -215,8 +215,8 @@
         "start_token_ind": 38,
         "end_token_ind": 41,
         "span": [
-            1061,
-            1106
+            681,
+            726
         ],
         "lemmas": [
             "синтаксический",

@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            213,
-            233
+            136,
+            156
         ],
         "lemmas": [
             "сравнительный",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            227,
-            243
+            150,
+            166
         ],
         "lemmas": [
             "анализ",
@@ -93,8 +93,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            244,
-            260
+            167,
+            183
         ],
         "lemmas": [
             "немецкий",
@@ -110,8 +110,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            305,
-            328
+            228,
+            251
         ],
         "lemmas": [
             "переводный",
@@ -127,8 +127,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            295,
-            328
+            218,
+            251
         ],
         "lemmas": [
             "словарный",
@@ -145,8 +145,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            331,
-            344
+            254,
+            267
         ],
         "lemmas": [
             "русский",
@@ -162,8 +162,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            213,
-            243
+            136,
+            166
         ],
         "lemmas": [
             "сравнительный",
@@ -180,8 +180,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            234,
-            260
+            157,
+            183
         ],
         "lemmas": [
             "семантика",
@@ -198,8 +198,8 @@
         "start_token_ind": 16,
         "end_token_ind": 20,
         "span": [
-            305,
-            344
+            228,
+            267
         ],
         "lemmas": [
             "переводный",
@@ -218,8 +218,8 @@
         "start_token_ind": 15,
         "end_token_ind": 20,
         "span": [
-            295,
-            344
+            218,
+            267
         ],
         "lemmas": [
             "словарный",
@@ -239,8 +239,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            316,
-            344
+            239,
+            267
         ],
         "lemmas": [
             "эквивалент",
@@ -258,8 +258,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            583,
-            597
+            339,
+            353
         ],
         "lemmas": [
             "серия",
@@ -275,8 +275,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            599,
-            619
+            355,
+            375
         ],
         "lemmas": [
             "посвященный",
@@ -292,8 +292,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            611,
-            628
+            367,
+            384
         ],
         "lemmas": [
             "проблемe",
@@ -309,8 +309,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            638,
-            654
+            394,
+            410
         ],
         "lemmas": [
             "модальный",
@@ -326,8 +326,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            629,
-            654
+            385,
+            410
         ],
         "lemmas": [
             "немецкий",
@@ -344,8 +344,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            658,
-            670
+            414,
+            426
         ],
         "lemmas": [
             "русский",
@@ -361,8 +361,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            599,
-            628
+            355,
+            384
         ],
         "lemmas": [
             "посвященный",
@@ -379,8 +379,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            638,
-            670
+            394,
+            426
         ],
         "lemmas": [
             "модальный",
@@ -399,8 +399,8 @@
         "start_token_ind": 11,
         "end_token_ind": 16,
         "span": [
-            629,
-            670
+            385,
+            426
         ],
         "lemmas": [
             "немецкий",
@@ -420,8 +420,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            620,
-            654
+            376,
+            410
         ],
         "lemmas": [
             "перевод",
@@ -439,8 +439,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            648,
-            670
+            404,
+            426
         ],
         "lemmas": [
             "частица",

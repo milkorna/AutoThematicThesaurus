@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            181,
-            199
+            108,
+            126
         ],
         "lemmas": [
             "стратегия",
@@ -94,8 +94,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            216,
-            226
+            143,
+            153
         ],
         "lemmas": [
             "чужой",
@@ -111,8 +111,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            237,
-            253
+            164,
+            180
         ],
         "lemmas": [
             "русский",
@@ -128,8 +128,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            230,
-            253
+            157,
+            180
         ],
         "lemmas": [
             "устный",
@@ -146,8 +146,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            448,
-            463
+            271,
+            286
         ],
         "lemmas": [
             "устный",
@@ -163,8 +163,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            439,
-            463
+            262,
+            286
         ],
         "lemmas": [
             "русский",
@@ -181,8 +181,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            572,
-            585
+            395,
+            408
         ],
         "lemmas": [
             "иной",
@@ -198,8 +198,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            578,
-            597
+            401,
+            420
         ],
         "lemmas": [
             "способ",
@@ -215,8 +215,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            572,
-            597
+            395,
+            420
         ],
         "lemmas": [
             "иной",

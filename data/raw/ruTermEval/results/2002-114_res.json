@@ -133,8 +133,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            272,
-            291
+            156,
+            175
         ],
         "lemmas": [
             "обсуждение",
@@ -150,8 +150,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            272,
-            302
+            156,
+            186
         ],
         "lemmas": [
             "обсуждение",
@@ -168,8 +168,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            283,
-            302
+            167,
+            186
         ],
         "lemmas": [
             "контроль",
@@ -185,8 +185,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            303,
-            327
+            187,
+            211
         ],
         "lemmas": [
             "рефлексивный",
@@ -202,8 +202,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            332,
-            358
+            216,
+            242
         ],
         "lemmas": [
             "экспериенциальный",
@@ -219,8 +219,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            361,
-            381
+            245,
+            265
         ],
         "lemmas": [
             "дативный",
@@ -236,8 +236,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            303,
-            358
+            187,
+            242
         ],
         "lemmas": [
             "рефлексивный",
@@ -256,8 +256,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            292,
-            327
+            176,
+            211
         ],
         "lemmas": [
             "референция",
@@ -274,8 +274,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            316,
-            358
+            200,
+            242
         ],
         "lemmas": [
             "местоимение",
@@ -293,8 +293,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            332,
-            381
+            216,
+            265
         ],
         "lemmas": [
             "экспериенциальный",
@@ -313,8 +313,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            350,
-            381
+            234,
+            265
         ],
         "lemmas": [
             "глагол",
@@ -332,8 +332,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            552,
-            568
+            301,
+            317
         ],
         "lemmas": [
             "марийский",
@@ -349,8 +349,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            593,
-            618
+            342,
+            367
         ],
         "lemmas": [
             "экспериенциальный",
@@ -366,8 +366,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            584,
-            618
+            333,
+            367
         ],
         "lemmas": [
             "дативный",
@@ -384,8 +384,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            621,
-            641
+            370,
+            390
         ],
         "lemmas": [
             "зависимый",
@@ -401,8 +401,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            665,
-            688
+            414,
+            437
         ],
         "lemmas": [
             "определительный",
@@ -418,8 +418,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            717,
-            739
+            466,
+            488
         ],
         "lemmas": [
             "возвратный",
@@ -435,8 +435,8 @@
         "start_token_ind": 39,
         "end_token_ind": 40,
         "span": [
-            831,
-            844
+            580,
+            593
         ],
         "lemmas": [
             "данный",
@@ -452,8 +452,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            593,
-            641
+            342,
+            390
         ],
         "lemmas": [
             "экспериенциальный",
@@ -472,8 +472,8 @@
         "start_token_ind": 8,
         "end_token_ind": 13,
         "span": [
-            584,
-            641
+            333,
+            390
         ],
         "lemmas": [
             "дативный",
@@ -493,8 +493,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            611,
-            641
+            360,
+            390
         ],
         "lemmas": [
             "глагол",
@@ -512,8 +512,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            1127,
-            1147
+            604,
+            624
         ],
         "lemmas": [
             "поведение",
@@ -529,8 +529,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1152,
-            1178
+            629,
+            655
         ],
         "lemmas": [
             "экспериенциальный",
@@ -546,8 +546,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            1215,
-            1234
+            692,
+            711
         ],
         "lemmas": [
             "семантический",
@@ -563,8 +563,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            1127,
-            1178
+            604,
+            655
         ],
         "lemmas": [
             "поведение",
@@ -583,8 +583,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            1137,
-            1178
+            614,
+            655
         ],
         "lemmas": [
             "рефлексив",
@@ -602,8 +602,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            1206,
-            1234
+            683,
+            711
         ],
         "lemmas": [
             "иерархия",

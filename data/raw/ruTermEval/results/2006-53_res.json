@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            110,
-            132
+            77,
+            99
         ],
         "lemmas": [
             "онтологический",
@@ -42,8 +42,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            133,
-            148
+            100,
+            115
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            162,
-            178
+            129,
+            145
         ],
         "lemmas": [
             "наивный",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            110,
-            148
+            77,
+            115
         ],
         "lemmas": [
             "онтологический",
@@ -95,8 +95,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            95,
-            132
+            62,
+            99
         ],
         "lemmas": [
             "рассмотрение",
@@ -114,8 +114,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            125,
-            148
+            92,
+            115
         ],
         "lemmas": [
             "аспект",
@@ -132,8 +132,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            277,
-            296
+            148,
+            167
         ],
         "lemmas": [
             "основа",
@@ -149,8 +149,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            299,
-            314
+            170,
+            185
         ],
         "lemmas": [
             "теория",
@@ -166,8 +166,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            416,
-            430
+            244,
+            258
         ],
         "lemmas": [
             "force",
@@ -183,8 +183,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            510,
-            532
+            338,
+            360
         ],
         "lemmas": [
             "традиционный",
@@ -200,8 +200,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            720,
-            739
+            412,
+            431
         ],
         "lemmas": [
             "концептуальный",
@@ -217,8 +217,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            735,
-            754
+            427,
+            446
         ],
         "lemmas": [
             "база",
@@ -235,8 +235,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            782,
-            805
+            474,
+            497
         ],
         "lemmas": [
             "универсальный",
@@ -252,8 +252,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            826,
-            848
+            518,
+            540
         ],
         "lemmas": [
             "семантический",
@@ -269,8 +269,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            810,
-            848
+            502,
+            540
         ],
         "lemmas": [
             "автоматический",
@@ -287,8 +287,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            720,
-            754
+            412,
+            446
         ],
         "lemmas": [
             "концептуальный",
@@ -306,8 +306,8 @@
         "start_token_ind": 11,
         "end_token_ind": 16,
         "span": [
-            782,
-            848
+            474,
+            540
         ],
         "lemmas": [
             "универсальный",
@@ -327,8 +327,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            772,
-            805
+            464,
+            497
         ],
         "lemmas": [
             "фрагмент",
@@ -345,8 +345,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            796,
-            848
+            488,
+            540
         ],
         "lemmas": [
             "онтология",

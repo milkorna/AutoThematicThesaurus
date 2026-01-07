@@ -25,8 +25,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            297,
-            325
+            187,
+            215
         ],
         "lemmas": [
             "противоположный",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            599,
-            621
+            338,
+            360
         ],
         "lemmas": [
             "специфический",
@@ -59,8 +59,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            688,
-            711
+            427,
+            450
         ],
         "lemmas": [
             "морфологический",
@@ -76,8 +76,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            737,
-            769
+            476,
+            508
         ],
         "lemmas": [
             "лексико-морфологический",
@@ -93,8 +93,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            727,
-            769
+            466,
+            508
         ],
         "lemmas": [
             "обработка",
@@ -111,8 +111,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            955,
-            972
+            527,
+            544
         ],
         "lemmas": [
             "проблема",
@@ -128,8 +128,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            985,
-            1009
+            557,
+            581
         ],
         "lemmas": [
             "обеспечение",
@@ -145,8 +145,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            985,
-            1015
+            557,
+            587
         ],
         "lemmas": [
             "обеспечение",
@@ -163,8 +163,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            997,
-            1015
+            569,
+            587
         ],
         "lemmas": [
             "адекватность",
@@ -180,8 +180,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            985,
-            1024
+            557,
+            596
         ],
         "lemmas": [
             "обеспечение",
@@ -200,8 +200,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            997,
-            1024
+            569,
+            596
         ],
         "lemmas": [
             "адекватность",

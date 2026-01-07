@@ -186,8 +186,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            273,
-            288
+            167,
+            182
         ],
         "lemmas": [
             "деловой",
@@ -203,8 +203,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            313,
-            331
+            207,
+            225
         ],
         "lemmas": [
             "предметный",
@@ -220,8 +220,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            349,
-            382
+            243,
+            276
         ],
         "lemmas": [
             "синтактико-семантический",
@@ -237,8 +237,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            590,
-            612
+            319,
+            341
         ],
         "lemmas": [
             "возможность",
@@ -254,8 +254,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            613,
-            629
+            342,
+            358
         ],
         "lemmas": [
             "логический",
@@ -271,8 +271,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            639,
-            657
+            368,
+            386
         ],
         "lemmas": [
             "предметный",
@@ -288,8 +288,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            630,
-            657
+            359,
+            386
         ],
         "lemmas": [
             "заданный",
@@ -306,8 +306,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            661,
-            678
+            390,
+            407
         ],
         "lemmas": [
             "основание",
@@ -323,8 +323,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            661,
-            685
+            390,
+            414
         ],
         "lemmas": [
             "основание",
@@ -341,8 +341,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            671,
-            685
+            400,
+            414
         ],
         "lemmas": [
             "анализ",
@@ -358,8 +358,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            721,
-            739
+            450,
+            468
         ],
         "lemmas": [
             "понятийный",
@@ -375,8 +375,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            613,
-            657
+            342,
+            386
         ],
         "lemmas": [
             "логический",
@@ -395,8 +395,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            602,
-            629
+            331,
+            358
         ],
         "lemmas": [
             "расширение",
@@ -413,8 +413,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            639,
-            678
+            368,
+            407
         ],
         "lemmas": [
             "предметный",
@@ -433,8 +433,8 @@
         "start_token_ind": 5,
         "end_token_ind": 10,
         "span": [
-            630,
-            678
+            359,
+            407
         ],
         "lemmas": [
             "заданный",
@@ -454,8 +454,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            624,
-            657
+            353,
+            386
         ],
         "lemmas": [
             "схема",
@@ -473,8 +473,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            650,
-            685
+            379,
+            414
         ],
         "lemmas": [
             "область",
@@ -493,8 +493,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            661,
-            696
+            390,
+            425
         ],
         "lemmas": [
             "основание",
@@ -513,8 +513,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            671,
-            696
+            400,
+            425
         ],
         "lemmas": [
             "анализ",

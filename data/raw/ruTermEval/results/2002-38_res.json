@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            131,
-            143
+            91,
+            103
         ],
         "lemmas": [
             "этап",
@@ -59,8 +59,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            148,
-            167
+            108,
+            127
         ],
         "lemmas": [
             "озвученный",
@@ -76,8 +76,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            159,
-            175
+            119,
+            135
         ],
         "lemmas": [
             "словарь",
@@ -93,8 +93,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            176,
-            194
+            136,
+            154
         ],
         "lemmas": [
             "северный",
@@ -110,8 +110,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            148,
-            175
+            108,
+            135
         ],
         "lemmas": [
             "озвученный",
@@ -128,8 +128,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            168,
-            194
+            128,
+            154
         ],
         "lemmas": [
             "говор",
@@ -146,8 +146,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            368,
-            386
+            231,
+            249
         ],
         "lemmas": [
             "модельный",
@@ -163,8 +163,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            387,
-            406
+            250,
+            269
         ],
         "lemmas": [
             "мультимедийный",
@@ -180,8 +180,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            478,
-            503
+            341,
+            366
         ],
         "lemmas": [
             "лексикографический",
@@ -197,8 +197,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            368,
-            406
+            231,
+            269
         ],
         "lemmas": [
             "модельный",
@@ -216,8 +216,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            379,
-            406
+            242,
+            269
         ],
         "lemmas": [
             "образец",
@@ -234,8 +234,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            818,
-            832
+            441,
+            455
         ],
         "lemmas": [
             "рамка",
@@ -251,8 +251,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            841,
-            859
+            464,
+            482
         ],
         "lemmas": [
             "северный",
@@ -268,8 +268,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            861,
-            886
+            484,
+            509
         ],
         "lemmas": [
             "сопоставительный",
@@ -285,8 +285,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            889,
-            900
+            512,
+            523
         ],
         "lemmas": [
             "база",
@@ -302,8 +302,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            901,
-            916
+            524,
+            539
         ],
         "lemmas": [
             "звуковой",
@@ -319,8 +319,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            834,
-            859
+            457,
+            482
         ],
         "lemmas": [
             "говор",
@@ -337,8 +337,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            861,
-            893
+            484,
+            516
         ],
         "lemmas": [
             "сопоставительный",
@@ -356,8 +356,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            878,
-            900
+            501,
+            523
         ],
         "lemmas": [
             "описание",
@@ -375,8 +375,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            894,
-            916
+            517,
+            539
         ],
         "lemmas": [
             "данный",
@@ -393,8 +393,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            1019,
-            1043
+            544,
+            568
         ],
         "lemmas": [
             "демонстрационный",
@@ -410,8 +410,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1036,
-            1051
+            561,
+            576
         ],
         "lemmas": [
             "версия",
@@ -427,8 +427,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1019,
-            1051
+            544,
+            576
         ],
         "lemmas": [
             "демонстрационный",

@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            144,
-            168
+            94,
+            118
         ],
         "lemmas": [
             "параметр",
@@ -42,8 +42,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            270,
-            289
+            145,
+            164
         ],
         "lemmas": [
             "сущность",
@@ -59,8 +59,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            316,
-            332
+            191,
+            207
         ],
         "lemmas": [
             "внутренний",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            327,
-            339
+            202,
+            214
         ],
         "lemmas": [
             "форма",
@@ -93,8 +93,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            359,
-            374
+            234,
+            249
         ],
         "lemmas": [
             "иной",
@@ -110,8 +110,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            375,
-            395
+            250,
+            270
         ],
         "lemmas": [
             "актуальный",
@@ -127,8 +127,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            316,
-            339
+            191,
+            214
         ],
         "lemmas": [
             "внутренний",
@@ -145,8 +145,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            359,
-            395
+            234,
+            270
         ],
         "lemmas": [
             "иной",
@@ -164,8 +164,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            364,
-            395
+            239,
+            270
         ],
         "lemmas": [
             "компонент",
@@ -182,8 +182,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            522,
-            537
+            289,
+            304
         ],
         "lemmas": [
             "перенос",
@@ -199,8 +199,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            522,
-            543
+            289,
+            310
         ],
         "lemmas": [
             "перенос",
@@ -217,8 +217,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            530,
-            543
+            297,
+            310
         ],
         "lemmas": [
             "свойство",
@@ -234,8 +234,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            705,
-            728
+            408,
+            431
         ],
         "lemmas": [
             "фактор",

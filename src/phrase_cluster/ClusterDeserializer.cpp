@@ -13,23 +13,23 @@ WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, cons
 
         WordComplexCluster cluster;
         cluster.key = key;
-        cluster.phraseSize = obj.at("0_phrase_size").get<size_t>();
-        cluster.frequency = obj.at("1_frequency").get<double>();
-        cluster.topicRelevance = obj.at("2_topic_relevance").get<double>();
-        cluster.centralityScore = obj.at("3_centrality_score").get<double>();
-        cluster.tagMatch = obj.at("4_tag_match").get<bool>();
-        cluster.modelName = obj.at("5_model_name").get<std::string>();
+        cluster.phraseSize = obj.at("phrase_size").get<size_t>();
+        cluster.frequency = obj.at("frequency").get<double>();
+        cluster.topicRelevance = obj.at("topic_relevance").get<double>();
+        cluster.centralityScore = obj.at("centrality_score").get<double>();
+        cluster.tagMatch = obj.at("tag_match").get<bool>();
+        cluster.modelName = obj.at("model_name").get<std::string>();
 
         // Synonyms (optional field)
-        if (obj.contains("9_synonyms")) {
-            cluster.synonyms = obj.at("9_synonyms").get<std::unordered_set<std::string>>();
+        if (obj.contains("synonyms")) {
+            cluster.synonyms = obj.at("synonyms").get<std::unordered_set<std::string>>();
         }
 
         // Deserialize lemmas with metrics
-        deserializeLemmas(obj.at("6_lemmas"), cluster);
+        deserializeLemmas(obj.at("lemmas"), cluster);
 
         // Deserialize word complexes (phrases)
-        deserializeWordComplexes(obj.at("8_phrases"), cluster);
+        deserializeWordComplexes(obj.at("phrases"), cluster);
 
         Logger::log("ClusterDeserializer", LogLevel::Debug, "Successfully deserialized cluster: " + key);
 
@@ -49,30 +49,30 @@ WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, cons
 WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
     try {
         // Validate key format
-        std::string key = obj.at("0_key").get<std::string>();
+        std::string key = obj.at("key").get<std::string>();
 
         if (!isValidPhraseKey(key)) {
             return nullptr; // Skip invalid keys
         }
 
-        std::string textForm = obj.at("1_textForm").get<std::string>();
-        std::string modelName = obj.at("2_modelName").get<std::string>();
+        std::string textForm = obj.at("textForm").get<std::string>();
+        std::string modelName = obj.at("modelName").get<std::string>();
 
         Position pos;
-        pos.docId = obj.at("3_docId").get<std::string>();
-        pos.sentNum = obj.at("4_sentNum").get<size_t>();
-        pos.start = obj.at("5_start_ind").get<size_t>();
-        pos.end = obj.at("6_end_ind").get<size_t>();
+        pos.docId = obj.at("docId").get<std::string>();
+        pos.sentNum = obj.at("sentNum").get<size_t>();
+        pos.start = obj.at("start_ind").get<size_t>();
+        pos.end = obj.at("end_ind").get<size_t>();
 
         // Extract lemmas
         std::deque<std::string> lemmas;
-        if (obj.contains("7_lemmas")) {
-            lemmas = obj.at("7_lemmas").get<std::deque<std::string>>();
+        if (obj.contains("lemmas")) {
+            lemmas = obj.at("lemmas").get<std::deque<std::string>>();
 
-            // Clean up numbered lemmas (e.g., "0_lemma_name" -> "lemma_name")
-            for (auto& lemma : lemmas) {
-                lemma = extractLemmaString(lemma);
-            }
+            // // Clean up numbered lemmas (e.g., "0_lemma_name" -> "lemma_name")
+            // for (auto& lemma : lemmas) {
+            //     lemma = extractLemmaString(lemma);
+            // }
         }
 
         // Create word complex
@@ -102,21 +102,21 @@ void ClusterDeserializer::deserializeLemmas(const json& lemmas_json, WordComplex
         }
 
         // Extract lemma string
-        std::string lemmaStrNumbered = lemma_obj.at("0_lemma").get<std::string>();
-        std::string lemmaStr = extractLemmaString(lemmaStrNumbered);
+        std::string lemma = lemma_obj.at("lemma").get<std::string>();
+        //  std::string lemmaStr = extractLemmaString(lemmaStrNumbered);
 
         // Add to cluster
-        cluster.lemmas.push_back(lemmaStr);
-        cluster.tf.push_back(lemma_obj.at("1_tf").get<double>());
-        cluster.idf.push_back(lemma_obj.at("2_idf").get<double>());
-        cluster.tfidf.push_back(lemma_obj.at("3_tf-idf").get<double>());
+        cluster.lemmas.push_back(lemma);
+        cluster.tf.push_back(lemma_obj.at("tf").get<double>());
+        cluster.idf.push_back(lemma_obj.at("idf").get<double>());
+        cluster.tfidf.push_back(lemma_obj.at("tf-idf").get<double>());
 
         // Semantic relations
-        cluster.hypernyms[lemmaStr] = lemma_obj.at("4_hypernyms").get<std::set<std::string>>();
-        cluster.hyponyms[lemmaStr] = lemma_obj.at("5_hyponyms").get<std::set<std::string>>();
+        cluster.hypernyms[lemma] = lemma_obj.at("hypernyms").get<std::set<std::string>>();
+        cluster.hyponyms[lemma] = lemma_obj.at("hyponyms").get<std::set<std::string>>();
 
         // Word embedding
-        cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemmaStr));
+        cluster.wordVectors.push_back(std::make_shared<WordEmbedding>(lemma));
     }
 }
 
@@ -131,15 +131,15 @@ void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, Wor
         }
 
         WordComplexPtr wc = std::make_shared<WordComplex>();
-        wc->textForm = phrase_obj.at("0_text_form").get<std::string>();
+        wc->textForm = phrase_obj.at("text_form").get<std::string>();
         wc->modelName = cluster.modelName;
 
         // Extract position
-        const auto& posObj = phrase_obj.at("1_position");
-        wc->pos.start = posObj.at("0_start").get<size_t>();
-        wc->pos.end = posObj.at("1_end").get<size_t>();
-        wc->pos.docId = posObj.at("2_doc_num").get<size_t>();
-        wc->pos.sentNum = posObj.at("3_sent_num").get<size_t>();
+        const auto& posObj = phrase_obj.at("position");
+        wc->pos.start = posObj.at("start").get<size_t>();
+        wc->pos.end = posObj.at("end").get<size_t>();
+        wc->pos.docId = posObj.at("doc_num").get<size_t>();
+        wc->pos.sentNum = posObj.at("sent_num").get<size_t>();
 
         // Copy lemmas from cluster
         wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
@@ -148,13 +148,13 @@ void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, Wor
     }
 }
 
-std::string ClusterDeserializer::extractLemmaString(const std::string& numberedLemma) const {
-    size_t pos = numberedLemma.find('_');
-    if (pos != std::string::npos) {
-        return numberedLemma.substr(pos + 1);
-    }
-    return numberedLemma;
-}
+// std::string ClusterDeserializer::extractLemmaString(const std::string& numberedLemma) const {
+//     size_t pos = numberedLemma.find('_');
+//     if (pos != std::string::npos) {
+//         return numberedLemma.substr(pos + 1);
+//     }
+//     return numberedLemma;
+// }
 
 bool ClusterDeserializer::isValidPhraseKey(const std::string& key) const {
     // Skip keys containing underscores

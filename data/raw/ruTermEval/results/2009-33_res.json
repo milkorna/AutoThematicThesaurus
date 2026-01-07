@@ -115,8 +115,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            280,
-            297
+            203,
+            220
         ],
         "lemmas": [
             "знаковый",
@@ -132,8 +132,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            267,
-            297
+            190,
+            220
         ],
         "lemmas": [
             "невербальный",
@@ -150,8 +150,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            259,
-            297
+            182,
+            220
         ],
         "lemmas": [
             "финский",
@@ -169,8 +169,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            309,
-            328
+            232,
+            251
         ],
         "lemmas": [
             "невербальный",
@@ -186,8 +186,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            339,
-            363
+            262,
+            286
         ],
         "lemmas": [
             "диалогический",
@@ -203,8 +203,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            354,
-            370
+            277,
+            293
         ],
         "lemmas": [
             "поведение",
@@ -220,8 +220,8 @@
         "start_token_ind": 12,
         "end_token_ind": 17,
         "span": [
-            245,
-            297
+            168,
+            220
         ],
         "lemmas": [
             "наблюдатель",
@@ -241,8 +241,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            309,
-            338
+            232,
+            261
         ],
         "lemmas": [
             "невербальный",
@@ -260,8 +260,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            339,
-            370
+            262,
+            293
         ],
         "lemmas": [
             "диалогический",
@@ -278,8 +278,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            331,
-            363
+            254,
+            286
         ],
         "lemmas": [
             "модель",
@@ -296,8 +296,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            550,
-            569
+            297,
+            316
         ],
         "lemmas": [
             "цель",
@@ -313,8 +313,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            599,
-            615
+            346,
+            362
         ],
         "lemmas": [
             "русский",

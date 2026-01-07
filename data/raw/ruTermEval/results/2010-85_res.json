@@ -44,8 +44,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            117,
-            135
+            73,
+            91
         ],
         "lemmas": [
             "способ",
@@ -61,8 +61,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            188,
-            208
+            144,
+            164
         ],
         "lemmas": [
             "статический",
@@ -78,8 +78,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            211,
-            235
+            167,
+            191
         ],
         "lemmas": [
             "онтологический",
@@ -95,8 +95,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            188,
-            235
+            144,
+            191
         ],
         "lemmas": [
             "статический",
@@ -115,8 +115,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            200,
-            235
+            156,
+            191
         ],
         "lemmas": [
             "ресурс",
@@ -134,8 +134,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            390,
-            408
+            221,
+            239
         ],
         "lemmas": [
             "освоение",
@@ -151,8 +151,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            410,
-            429
+            241,
+            260
         ],
         "lemmas": [
             "lexicon",
@@ -168,8 +168,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            488,
-            507
+            319,
+            338
         ],
         "lemmas": [
             "английский",
@@ -185,8 +185,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            499,
-            514
+            330,
+            345
         ],
         "lemmas": [
             "глагол",
@@ -202,8 +202,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            517,
-            556
+            348,
+            387
         ],
         "lemmas": [
             "инструментально-субъектный",
@@ -219,8 +219,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            613,
-            631
+            444,
+            462
         ],
         "lemmas": [
             "лексический",
@@ -236,8 +236,8 @@
         "start_token_ind": 33,
         "end_token_ind": 35,
         "span": [
-            602,
-            631
+            433,
+            462
         ],
         "lemmas": [
             "проблемный",
@@ -254,8 +254,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            488,
-            514
+            319,
+            345
         ],
         "lemmas": [
             "английский",
@@ -272,8 +272,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            479,
-            507
+            310,
+            338
         ],
         "lemmas": [
             "освоение",
@@ -290,8 +290,8 @@
         "start_token_ind": 32,
         "end_token_ind": 35,
         "span": [
-            593,
-            631
+            424,
+            462
         ],
         "lemmas": [
             "освоение",

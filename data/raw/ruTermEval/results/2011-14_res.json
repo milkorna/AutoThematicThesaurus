@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            164,
-            180
+            88,
+            104
         ],
         "lemmas": [
             "работа",
@@ -60,8 +60,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            184,
-            201
+            108,
+            125
         ],
         "lemmas": [
             "электронный",
@@ -77,8 +77,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            237,
-            253
+            161,
+            177
         ],
         "lemmas": [
             "российский",
@@ -94,8 +94,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            278,
-            289
+            202,
+            213
         ],
         "lemmas": [
             "зрение",
@@ -111,8 +111,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            164,
-            201
+            88,
+            125
         ],
         "lemmas": [
             "работа",
@@ -131,8 +131,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            171,
-            201
+            95,
+            125
         ],
         "lemmas": [
             "переписка",
@@ -150,8 +150,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            226,
-            253
+            150,
+            177
         ],
         "lemmas": [
             "студент",
@@ -168,8 +168,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            468,
-            485
+            263,
+            280
         ],
         "lemmas": [
             "содержание",
@@ -185,8 +185,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            526,
-            548
+            321,
+            343
         ],
         "lemmas": [
             "организационный",
@@ -202,8 +202,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            678,
-            700
+            379,
+            401
         ],
         "lemmas": [
             "организационный",
@@ -219,8 +219,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            721,
-            732
+            422,
+            433
         ],
         "lemmas": [
             "устный",
@@ -236,8 +236,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            671,
-            700
+            372,
+            401
         ],
         "lemmas": [
             "модус",
@@ -254,8 +254,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            822,
-            846
+            453,
+            477
         ],
         "lemmas": [
             "противопоставление",
@@ -271,8 +271,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            822,
-            856
+            453,
+            487
         ],
         "lemmas": [
             "противопоставление",
@@ -289,8 +289,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            841,
-            856
+            472,
+            487
         ],
         "lemmas": [
             "письмо",
@@ -306,8 +306,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            905,
-            925
+            536,
+            556
         ],
         "lemmas": [
             "социальный",
@@ -323,8 +323,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            822,
-            873
+            453,
+            504
         ],
         "lemmas": [
             "противопоставление",
@@ -343,8 +343,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            841,
-            873
+            472,
+            504
         ],
         "lemmas": [
             "письмо",
@@ -362,8 +362,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            897,
-            925
+            528,
+            556
         ],
         "lemmas": [
             "область",

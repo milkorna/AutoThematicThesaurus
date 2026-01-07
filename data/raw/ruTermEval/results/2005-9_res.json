@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            73,
-            89
+            38,
+            54
         ],
         "lemmas": [
             "словарный",
@@ -42,8 +42,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            144,
-            168
+            109,
+            133
         ],
         "lemmas": [
             "коммуникативный",
@@ -59,8 +59,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            187,
-            207
+            152,
+            172
         ],
         "lemmas": [
             "языковый",
@@ -76,8 +76,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            138,
-            168
+            103,
+            133
         ],
         "lemmas": [
             "тип",
@@ -94,8 +94,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            348,
-            367
+            185,
+            204
         ],
         "lemmas": [
             "адекватность",
@@ -111,8 +111,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            400,
-            419
+            237,
+            256
         ],
         "lemmas": [
             "знание",
@@ -128,8 +128,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            521,
-            555
+            358,
+            392
         ],
         "lemmas": [
             "интерпретируемый",
@@ -145,8 +145,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            573,
-            594
+            410,
+            431
         ],
         "lemmas": [
             "корректировка",
@@ -162,8 +162,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            573,
-            600
+            410,
+            437
         ],
         "lemmas": [
             "корректировка",
@@ -180,8 +180,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            587,
-            600
+            424,
+            437
         ],
         "lemmas": [
             "состав",
@@ -197,8 +197,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            400,
-            430
+            237,
+            267
         ],
         "lemmas": [
             "знание",

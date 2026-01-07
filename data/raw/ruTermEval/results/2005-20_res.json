@@ -98,8 +98,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            186,
-            215
+            104,
+            133
         ],
         "lemmas": [
             "синтаксический",
@@ -115,8 +115,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            216,
-            245
+            134,
+            163
         ],
         "lemmas": [
             "сложноподчиненный",
@@ -132,8 +132,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            186,
-            245
+            104,
+            163
         ],
         "lemmas": [
             "синтаксический",
@@ -151,8 +151,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            201,
-            245
+            119,
+            163
         ],
         "lemmas": [
             "многозначность",
@@ -169,8 +169,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            539,
-            562
+            301,
+            324
         ],
         "lemmas": [
             "альтернативный",
@@ -186,8 +186,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            576,
-            590
+            338,
+            352
         ],
         "lemmas": [
             "данный",
@@ -203,8 +203,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            885,
-            908
+            552,
+            575
         ],
         "lemmas": [
             "придаточный",
@@ -220,8 +220,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            875,
-            908
+            542,
+            575
         ],
         "lemmas": [
             "вложенный",
@@ -238,8 +238,8 @@
         "start_token_ind": 25,
         "end_token_ind": 28,
         "span": [
-            860,
-            908
+            527,
+            575
         ],
         "lemmas": [
             "дополнительный",

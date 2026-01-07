@@ -59,8 +59,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            166,
-            181
+            93,
+            108
         ],
         "lemmas": [
             "рамка",
@@ -76,8 +76,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            166,
-            193
+            93,
+            120
         ],
         "lemmas": [
             "рамка",
@@ -94,8 +94,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            173,
-            193
+            100,
+            120
         ],
         "lemmas": [
             "создание",
@@ -111,8 +111,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            194,
-            208
+            121,
+            135
         ],
         "lemmas": [
             "татарский",
@@ -128,8 +128,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            246,
-            267
+            173,
+            194
         ],
         "lemmas": [
             "русский",
@@ -145,8 +145,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            157,
-            193
+            84,
+            120
         ],
         "lemmas": [
             "статья",
@@ -165,8 +165,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            182,
-            208
+            109,
+            135
         ],
         "lemmas": [
             "синтезатор",
@@ -183,8 +183,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            233,
-            267
+            160,
+            194
         ],
         "lemmas": [
             "транскрипция",
@@ -201,8 +201,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            378,
-            398
+            205,
+            225
         ],
         "lemmas": [
             "описан",
@@ -218,8 +218,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            386,
-            403
+            213,
+            230
         ],
         "lemmas": [
             "транскрипция",
@@ -235,8 +235,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            405,
-            421
+            232,
+            248
         ],
         "lemmas": [
             "содержащий",
@@ -252,8 +252,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            435,
-            454
+            262,
+            281
         ],
         "lemmas": [
             "консонантный",
@@ -269,8 +269,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            378,
-            403
+            205,
+            230
         ],
         "lemmas": [
             "описан",
@@ -287,8 +287,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            542,
-            561
+            296,
+            315
         ],
         "lemmas": [
             "отдельный",
@@ -304,8 +304,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            562,
-            584
+            316,
+            338
         ],
         "lemmas": [
             "нормативный",
@@ -321,8 +321,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            585,
-            601
+            339,
+            355
         ],
         "lemmas": [
             "татарский",
@@ -338,8 +338,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            603,
-            621
+            357,
+            375
         ],
         "lemmas": [
             "нарушающий",
@@ -355,8 +355,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            614,
-            627
+            368,
+            381
         ],
         "lemmas": [
             "система",
@@ -372,8 +372,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            642,
-            666
+            396,
+            420
         ],
         "lemmas": [
             "алгоритмический",
@@ -389,8 +389,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            658,
-            672
+            412,
+            426
         ],
         "lemmas": [
             "описание",
@@ -406,8 +406,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            542,
-            584
+            296,
+            338
         ],
         "lemmas": [
             "отдельный",
@@ -425,8 +425,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            534,
-            561
+            288,
+            315
         ],
         "lemmas": [
             "критика",
@@ -443,8 +443,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            562,
-            601
+            316,
+            355
         ],
         "lemmas": [
             "нормативный",
@@ -462,8 +462,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            552,
-            584
+            306,
+            338
         ],
         "lemmas": [
             "положение",
@@ -480,8 +480,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            574,
-            601
+            328,
+            355
         ],
         "lemmas": [
             "грамматика",
@@ -498,8 +498,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            603,
-            627
+            357,
+            381
         ],
         "lemmas": [
             "нарушающий",
@@ -516,8 +516,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            642,
-            672
+            396,
+            426
         ],
         "lemmas": [
             "алгоритмический",

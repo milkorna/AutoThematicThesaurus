@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            68,
-            87
+            69,
+            88
         ],
         "lemmas": [
             "программный",
@@ -59,8 +59,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            130,
-            158
+            131,
+            159
         ],
         "lemmas": [
             "предоставляющий",
@@ -76,8 +76,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            204,
-            225
+            205,
+            226
         ],
         "lemmas": [
             "программный",
@@ -93,8 +93,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            193,
-            225
+            194,
+            226
         ],
         "lemmas": [
             "прикладной",
@@ -111,8 +111,8 @@
         "start_token_ind": 23,
         "end_token_ind": 26,
         "span": [
-            185,
-            225
+            186,
+            226
         ],
         "lemmas": [
             "состав",
@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            434,
-            456
+            258,
+            280
         ],
         "lemmas": [
             "полнотекстовый",
@@ -147,8 +147,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            459,
-            483
+            283,
+            307
         ],
         "lemmas": [
             "морфологический",
@@ -164,8 +164,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            484,
-            499
+            308,
+            323
         ],
         "lemmas": [
             "abbyy",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            502,
-            519
+            326,
+            343
         ],
         "lemmas": [
             "morphology",
@@ -198,8 +198,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            548,
-            567
+            372,
+            391
         ],
         "lemmas": [
             "программный",
@@ -215,8 +215,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            450,
-            483
+            274,
+            307
         ],
         "lemmas": [
             "поиск",

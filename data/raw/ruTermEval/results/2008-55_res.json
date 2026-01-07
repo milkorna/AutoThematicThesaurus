@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            111,
-            129
+            65,
+            83
         ],
         "lemmas": [
             "разработка",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            130,
-            146
+            84,
+            100
         ],
         "lemmas": [
             "устный",
@@ -111,8 +111,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            158,
-            176
+            112,
+            130
         ],
         "lemmas": [
             "судебный",
@@ -128,8 +128,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            122,
-            146
+            76,
+            100
         ],
         "lemmas": [
             "корпус",
@@ -146,8 +146,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            277,
-            288
+            162,
+            173
         ],
         "lemmas": [
             "устный",
@@ -163,8 +163,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            291,
-            310
+            176,
+            195
         ],
         "lemmas": [
             "параллельный",
@@ -180,8 +180,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            270,
-            288
+            155,
+            173
         ],
         "lemmas": [
             "корпус",
@@ -198,8 +198,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            284,
-            310
+            169,
+            195
         ],
         "lemmas": [
             "речь",
@@ -217,8 +217,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            425,
-            457
+            256,
+            288
         ],
         "lemmas": [
             "экстралингвистический",
@@ -234,8 +234,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            542,
-            556
+            290,
+            304
         ],
         "lemmas": [
             "данный",
@@ -251,8 +251,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            571,
-            601
+            319,
+            349
         ],
         "lemmas": [
             "междисциплинарный",

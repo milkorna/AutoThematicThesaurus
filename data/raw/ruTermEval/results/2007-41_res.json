@@ -113,8 +113,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            244,
-            261
+            141,
+            158
         ],
         "lemmas": [
             "ритуальный",
@@ -130,8 +130,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            262,
-            287
+            159,
+            184
         ],
         "lemmas": [
             "политический",
@@ -147,8 +147,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            290,
-            311
+            187,
+            208
         ],
         "lemmas": [
             "новогодний",
@@ -164,8 +164,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            244,
-            287
+            141,
+            184
         ],
         "lemmas": [
             "ритуальный",
@@ -183,8 +183,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            236,
-            261
+            133,
+            158
         ],
         "lemmas": [
             "анализа",
@@ -201,8 +201,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            256,
-            287
+            153,
+            184
         ],
         "lemmas": [
             "жанр",
@@ -219,8 +219,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            522,
-            543
+            285,
+            306
         ],
         "lemmas": [
             "новогодний",
@@ -236,8 +236,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            546,
-            562
+            309,
+            325
         ],
         "lemmas": [
             "типология",
@@ -253,8 +253,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            563,
-            585
+            326,
+            348
         ],
         "lemmas": [
             "политический",
@@ -270,8 +270,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            596,
-            617
+            359,
+            380
         ],
         "lemmas": [
             "особенность",
@@ -287,8 +287,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            620,
-            645
+            383,
+            408
         ],
         "lemmas": [
             "семантический",
@@ -304,8 +304,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            522,
-            562
+            285,
+            325
         ],
         "lemmas": [
             "новогодний",
@@ -324,8 +324,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            534,
-            562
+            297,
+            325
         ],
         "lemmas": [
             "обращение",
@@ -343,8 +343,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            556,
-            585
+            319,
+            348
         ],
         "lemmas": [
             "жанр",
@@ -361,8 +361,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            608,
-            645
+            371,
+            408
         ],
         "lemmas": [
             "структура",
@@ -380,8 +380,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            794,
-            814
+            434,
+            454
         ],
         "lemmas": [
             "специфика",
@@ -397,8 +397,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            815,
-            836
+            455,
+            476
         ],
         "lemmas": [
             "политический",
@@ -414,8 +414,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            839,
-            860
+            479,
+            500
         ],
         "lemmas": [
             "новогодний",
@@ -431,8 +431,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            850,
-            872
+            490,
+            512
         ],
         "lemmas": [
             "обращение",
@@ -448,8 +448,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            902,
-            923
+            542,
+            563
         ],
         "lemmas": [
             "сравнительный",
@@ -465,8 +465,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            815,
-            860
+            455,
+            500
         ],
         "lemmas": [
             "политический",
@@ -485,8 +485,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            804,
-            836
+            444,
+            476
         ],
         "lemmas": [
             "реализация",
@@ -503,8 +503,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            828,
-            860
+            468,
+            500
         ],
         "lemmas": [
             "риторика",
@@ -522,8 +522,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            839,
-            872
+            479,
+            512
         ],
         "lemmas": [
             "новогодний",

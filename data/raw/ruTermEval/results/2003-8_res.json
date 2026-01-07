@@ -96,8 +96,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            167,
-            185
+            89,
+            107
         ],
         "lemmas": [
             "российский",
@@ -113,8 +113,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            189,
-            203
+            111,
+            125
         ],
         "lemmas": [
             "оценка",
@@ -130,8 +130,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            204,
-            226
+            126,
+            148
         ],
         "lemmas": [
             "информационный",
@@ -147,8 +147,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            259,
-            277
+            181,
+            199
         ],
         "lemmas": [
             "независимый",
@@ -164,8 +164,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            278,
-            300
+            200,
+            222
         ],
         "lemmas": [
             "альтернативный",
@@ -181,8 +181,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            293,
-            308
+            215,
+            230
         ],
         "lemmas": [
             "метод",
@@ -198,8 +198,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            325,
-            347
+            247,
+            269
         ],
         "lemmas": [
             "информационный",
@@ -215,8 +215,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            167,
-            203
+            89,
+            125
         ],
         "lemmas": [
             "российский",
@@ -235,8 +235,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            178,
-            203
+            100,
+            125
         ],
         "lemmas": [
             "семинар",
@@ -254,8 +254,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            196,
-            226
+            118,
+            148
         ],
         "lemmas": [
             "метод",
@@ -272,8 +272,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            259,
-            300
+            181,
+            222
         ],
         "lemmas": [
             "независимый",
@@ -291,8 +291,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            248,
-            277
+            170,
+            199
         ],
         "lemmas": [
             "проведение",
@@ -309,8 +309,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            278,
-            308
+            200,
+            230
         ],
         "lemmas": [
             "альтернативный",
@@ -327,8 +327,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            271,
-            300
+            193,
+            222
         ],
         "lemmas": [
             "оценка",
@@ -345,8 +345,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            319,
-            347
+            241,
+            269
         ],
         "lemmas": [
             "задача",
@@ -363,8 +363,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            529,
-            546
+            292,
+            309
         ],
         "lemmas": [
             "основный",
@@ -380,8 +380,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            538,
-            557
+            301,
+            320
         ],
         "lemmas": [
             "принцип",
@@ -397,8 +397,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            538,
-            566
+            301,
+            329
         ],
         "lemmas": [
             "принцип",
@@ -415,8 +415,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            547,
-            566
+            310,
+            329
         ],
         "lemmas": [
             "проведение",
@@ -432,8 +432,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            586,
-            610
+            349,
+            373
         ],
         "lemmas": [
             "методологический",
@@ -449,8 +449,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            603,
-            617
+            366,
+            380
         ],
         "lemmas": [
             "аспект",
@@ -466,8 +466,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            648,
-            673
+            411,
+            436
         ],
         "lemmas": [
             "административный",
@@ -483,8 +483,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            529,
-            566
+            292,
+            329
         ],
         "lemmas": [
             "основный",
@@ -502,8 +502,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            586,
-            617
+            349,
+            380
         ],
         "lemmas": [
             "методологический",
@@ -520,8 +520,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            630,
-            673
+            393,
+            436
         ],
         "lemmas": [
             "организационный",

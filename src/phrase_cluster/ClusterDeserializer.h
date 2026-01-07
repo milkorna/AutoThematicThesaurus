@@ -66,7 +66,7 @@ class ClusterDeserializer {
      * @param numberedLemma Lemma string with number prefix
      * @return Pure lemma string without prefix
      */
-    [[nodiscard]] std::string extractLemmaString(const std::string& numberedLemma) const;
+    // [[nodiscard]] std::string extractLemmaString(const std::string& numberedLemma) const;
 
     /**
      * @brief Validate that phrase key should be included.

@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            161,
-            179
+            96,
+            114
         ],
         "lemmas": [
             "справочный",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            183,
-            199
+            118,
+            134
         ],
         "lemmas": [
             "цель",
@@ -94,8 +94,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            219,
-            237
+            154,
+            172
         ],
         "lemmas": [
             "применяемый",
@@ -111,8 +111,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            231,
-            252
+            166,
+            187
         ],
         "lemmas": [
             "человек",
@@ -129,8 +129,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            242,
-            261
+            177,
+            196
         ],
         "lemmas": [
             "оформление",
@@ -146,8 +146,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            331,
-            357
+            266,
+            292
         ],
         "lemmas": [
             "удовлетворительный",
@@ -163,8 +163,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            151,
-            179
+            86,
+            114
         ],
         "lemmas": [
             "звонкий",
@@ -182,8 +182,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            231,
-            261
+            166,
+            196
         ],
         "lemmas": [
             "человек",
@@ -201,8 +201,8 @@
         "start_token_ind": 26,
         "end_token_ind": 29,
         "span": [
-            331,
-            367
+            266,
+            302
         ],
         "lemmas": [
             "удовлетворительный",
@@ -220,8 +220,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            320,
-            357
+            255,
+            292
         ],
         "lemmas": [
             "нахождение",
@@ -238,8 +238,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            616,
-            634
+            350,
+            368
         ],
         "lemmas": [
             "диалоговый",
@@ -255,8 +255,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            669,
-            699
+            403,
+            433
         ],
         "lemmas": [
             "информационно-справочный",
@@ -272,8 +272,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            740,
-            755
+            474,
+            489
         ],
         "lemmas": [
             "эстонский",
@@ -289,8 +289,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            605,
-            634
+            339,
+            368
         ],
         "lemmas": [
             "разработка",

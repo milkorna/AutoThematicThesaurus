@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            62,
-            74
+            34,
+            46
         ],
         "lemmas": [
             "стихия",
@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            101,
-            123
+            73,
+            95
         ],
         "lemmas": [
             "жанровый",
@@ -59,8 +59,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            126,
-            146
+            98,
+            118
         ],
         "lemmas": [
             "национальный",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            147,
-            161
+            119,
+            133
         ],
         "lemmas": [
             "русский",
@@ -93,8 +93,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            264,
-            283
+            236,
+            255
         ],
         "lemmas": [
             "национальный",
@@ -110,8 +110,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            253,
-            283
+            225,
+            255
         ],
         "lemmas": [
             "британский",
@@ -128,8 +128,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            288,
-            307
+            260,
+            279
         ],
         "lemmas": [
             "национальный",
@@ -145,8 +145,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            308,
-            322
+            280,
+            294
         ],
         "lemmas": [
             "русский",
@@ -162,8 +162,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            101,
-            146
+            73,
+            118
         ],
         "lemmas": [
             "жанровый",
@@ -182,8 +182,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            126,
-            161
+            98,
+            133
         ],
         "lemmas": [
             "национальный",
@@ -201,8 +201,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            111,
-            146
+            83,
+            118
         ],
         "lemmas": [
             "разнообразие",
@@ -220,8 +220,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            139,
-            161
+            111,
+            133
         ],
         "lemmas": [
             "корпус",
@@ -238,8 +238,8 @@
         "start_token_ind": 29,
         "end_token_ind": 32,
         "span": [
-            288,
-            322
+            260,
+            294
         ],
         "lemmas": [
             "национальный",
@@ -257,8 +257,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            301,
-            322
+            273,
+            294
         ],
         "lemmas": [
             "корпус",
@@ -275,8 +275,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            683,
-            703
+            379,
+            399
         ],
         "lemmas": [
             "ручной",
@@ -292,8 +292,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            690,
-            711
+            386,
+            407
         ],
         "lemmas": [
             "аннотирование",
@@ -309,8 +309,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            760,
-            781
+            456,
+            477
         ],
         "lemmas": [
             "традиционный",
@@ -326,8 +326,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            683,
-            711
+            379,
+            407
         ],
         "lemmas": [
             "ручной",
@@ -344,8 +344,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            690,
-            731
+            386,
+            427
         ],
         "lemmas": [
             "аннотирование",
@@ -363,8 +363,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            747,
-            781
+            443,
+            477
         ],
         "lemmas": [
             "параметр",
@@ -382,8 +382,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            918,
-            939
+            504,
+            525
         ],
         "lemmas": [
             "статистический",
@@ -399,8 +399,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            973,
-            998
+            559,
+            584
         ],
         "lemmas": [
             "лексический",
@@ -416,8 +416,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            1009,
-            1037
+            595,
+            623
         ],
         "lemmas": [
             "автоматический",
@@ -433,8 +433,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            973,
-            1008
+            559,
+            594
         ],
         "lemmas": [
             "лексический",
@@ -452,8 +452,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            961,
-            998
+            547,
+            584
         ],
         "lemmas": [
             "жанровый",
@@ -471,8 +471,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            1002,
-            1037
+            588,
+            623
         ],
         "lemmas": [
             "основа",

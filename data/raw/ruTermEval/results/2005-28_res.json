@@ -96,8 +96,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            204,
-            234
+            135,
+            165
         ],
         "lemmas": [
             "синтаксический",
@@ -113,8 +113,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            259,
-            277
+            190,
+            208
         ],
         "lemmas": [
             "машинный",
@@ -130,8 +130,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            269,
-            284
+            200,
+            215
         ],
         "lemmas": [
             "перевод",
@@ -147,8 +147,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            190,
-            234
+            121,
+            165
         ],
         "lemmas": [
             "лексический",
@@ -166,8 +166,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            259,
-            284
+            190,
+            215
         ],
         "lemmas": [
             "машинный",
@@ -184,8 +184,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            251,
-            277
+            182,
+            208
         ],
         "lemmas": [
             "система",
@@ -202,8 +202,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            472,
-            492
+            280,
+            300
         ],
         "lemmas": [
             "лексический",
@@ -219,8 +219,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            497,
-            523
+            305,
+            331
         ],
         "lemmas": [
             "синтаксический",
@@ -236,8 +236,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            708,
-            735
+            385,
+            412
         ],
         "lemmas": [
             "лексический",
@@ -253,8 +253,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            797,
-            810
+            474,
+            487
         ],
         "lemmas": [
             "этап",
@@ -270,8 +270,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            828,
-            842
+            505,
+            519
         ],
         "lemmas": [
             "этап",
@@ -287,8 +287,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            697,
-            735
+            374,
+            412
         ],
         "lemmas": [
             "разрешение",
@@ -305,8 +305,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            978,
-            997
+            525,
+            544
         ],
         "lemmas": [
             "организация",
@@ -322,8 +322,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            978,
-            1004
+            525,
+            551
         ],
         "lemmas": [
             "организация",
@@ -340,8 +340,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            990,
-            1004
+            537,
+            551
         ],
         "lemmas": [
             "диалог",
@@ -357,8 +357,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1005,
-            1021
+            552,
+            568
         ],
         "lemmas": [
             "рабочий",
@@ -374,8 +374,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1013,
-            1029
+            560,
+            576
         ],
         "lemmas": [
             "словарь",
@@ -391,8 +391,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1041,
-            1071
+            588,
+            618
         ],
         "lemmas": [
             "диагностический",
@@ -408,8 +408,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            1106,
-            1125
+            653,
+            672
         ],
         "lemmas": [
             "оптимальный",
@@ -425,8 +425,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            1005,
-            1029
+            552,
+            576
         ],
         "lemmas": [
             "рабочий",
@@ -443,8 +443,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            998,
-            1021
+            545,
+            568
         ],
         "lemmas": [
             "статья",
@@ -461,8 +461,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1312,
-            1342
+            724,
+            754
         ],
         "lemmas": [
             "синтаксический",
@@ -478,8 +478,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1354,
-            1375
+            766,
+            787
         ],
         "lemmas": [
             "внешний",
@@ -495,8 +495,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1542,
-            1569
+            852,
+            879
         ],
         "lemmas": [
             "лексический",
@@ -512,8 +512,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            1531,
-            1569
+            841,
+            879
         ],
         "lemmas": [
             "переводной",
@@ -530,8 +530,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1581,
-            1608
+            891,
+            918
         ],
         "lemmas": [
             "человеческий",
@@ -547,8 +547,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            1514,
-            1569
+            824,
+            879
         ],
         "lemmas": [
             "внутриязыковой",

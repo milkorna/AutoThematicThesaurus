@@ -8,8 +8,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            31,
-            45
+            18,
+            32
         ],
         "lemmas": [
             "языковый",
@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            86,
-            102
+            60,
+            76
         ],
         "lemmas": [
             "авторский",
@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            97,
-            109
+            71,
+            83
         ],
         "lemmas": [
             "стиль",
@@ -59,8 +59,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            145,
-            167
+            119,
+            141
         ],
         "lemmas": [
             "процедура",
@@ -76,8 +76,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            198,
-            230
+            172,
+            204
         ],
         "lemmas": [
             "микростилистический",
@@ -93,8 +93,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            265,
-            292
+            239,
+            266
         ],
         "lemmas": [
             "совпадение",
@@ -110,8 +110,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            86,
-            109
+            60,
+            83
         ],
         "lemmas": [
             "авторский",
@@ -128,8 +128,8 @@
         "start_token_ind": 27,
         "end_token_ind": 30,
         "span": [
-            265,
-            305
+            239,
+            279
         ],
         "lemmas": [
             "совпадение",
@@ -147,8 +147,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            608,
-            632
+            353,
+            377
         ],
         "lemmas": [
             "абсолютный",
@@ -164,8 +164,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            669,
-            685
+            414,
+            430
         ],
         "lemmas": [
             "полный",
@@ -181,8 +181,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1159,
-            1187
+            646,
+            674
         ],
         "lemmas": [
             "нетривиальный",
@@ -198,8 +198,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            1239,
-            1252
+            726,
+            739
         ],
         "lemmas": [
             "адский",
@@ -215,8 +215,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            1282,
-            1294
+            769,
+            781
         ],
         "lemmas": [
             "работа",
@@ -232,8 +232,8 @@
         "start_token_ind": 51,
         "end_token_ind": 52,
         "span": [
-            1364,
-            1382
+            851,
+            869
         ],
         "lemmas": [
             "внутренний",
@@ -249,8 +249,8 @@
         "start_token_ind": 52,
         "end_token_ind": 53,
         "span": [
-            1375,
-            1393
+            862,
+            880
         ],
         "lemmas": [
             "исток",
@@ -266,8 +266,8 @@
         "start_token_ind": 59,
         "end_token_ind": 60,
         "span": [
-            1404,
-            1413
+            891,
+            900
         ],
         "lemmas": [
             "адов",
@@ -283,8 +283,8 @@
         "start_token_ind": 60,
         "end_token_ind": 61,
         "span": [
-            1410,
-            1424
+            897,
+            911
         ],
         "lemmas": [
             "дно",
@@ -300,8 +300,8 @@
         "start_token_ind": 51,
         "end_token_ind": 53,
         "span": [
-            1364,
-            1393
+            851,
+            880
         ],
         "lemmas": [
             "внутренний",
@@ -318,8 +318,8 @@
         "start_token_ind": 59,
         "end_token_ind": 61,
         "span": [
-            1404,
-            1424
+            891,
+            911
         ],
         "lemmas": [
             "адов",

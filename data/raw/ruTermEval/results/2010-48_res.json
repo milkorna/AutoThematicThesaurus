@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            168,
-            188
+            108,
+            128
         ],
         "lemmas": [
             "повседневный",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            158,
-            188
+            98,
+            128
         ],
         "lemmas": [
             "функция",
@@ -78,8 +78,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            263,
-            280
+            153,
+            170
         ],
         "lemmas": [
             "звуковой",
@@ -95,8 +95,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            326,
-            347
+            216,
+            237
         ],
         "lemmas": [
             "распределение",
@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            253,
-            280
+            143,
+            170
         ],
         "lemmas": [
             "материал",
@@ -130,8 +130,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            700,
-            722
+            385,
+            407
         ],
         "lemmas": [
             "проблема",
@@ -147,8 +147,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            723,
-            744
+            408,
+            429
         ],
         "lemmas": [
             "коммуникативный",
@@ -164,8 +164,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            739,
-            755
+            424,
+            440
         ],
         "lemmas": [
             "задача",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            766,
-            792
+            451,
+            477
         ],
         "lemmas": [
             "перцептивный",
@@ -198,8 +198,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            796,
-            815
+            481,
+            500
         ],
         "lemmas": [
             "распознавание",
@@ -215,8 +215,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            841,
-            856
+            526,
+            541
         ],
         "lemmas": [
             "речевой",
@@ -232,8 +232,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            723,
-            755
+            408,
+            440
         ],
         "lemmas": [
             "коммуникативный",
@@ -250,8 +250,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            709,
-            744
+            394,
+            429
         ],
         "lemmas": [
             "идентификация",
@@ -268,8 +268,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            766,
-            815
+            451,
+            500
         ],
         "lemmas": [
             "перцептивный",
@@ -288,8 +288,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            780,
-            815
+            465,
+            500
         ],
         "lemmas": [
             "эксперимент",

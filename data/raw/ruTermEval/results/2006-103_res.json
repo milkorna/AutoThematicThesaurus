@@ -42,8 +42,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            219,
-            232
+            155,
+            168
         ],
         "lemmas": [
             "эмоция",
@@ -59,8 +59,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            249,
-            272
+            185,
+            208
         ],
         "lemmas": [
             "концептуализация",
@@ -76,8 +76,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            420,
-            444
+            356,
+            380
         ],
         "lemmas": [
             "метафорический",

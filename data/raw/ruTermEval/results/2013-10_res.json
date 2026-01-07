@@ -43,8 +43,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            136,
-            157
+            82,
+            103
         ],
         "lemmas": [
             "исследование",
@@ -60,8 +60,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            158,
-            175
+            104,
+            121
         ],
         "lemmas": [
             "бытовой",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            178,
-            191
+            124,
+            137
         ],
         "lemmas": [
             "русский",
@@ -94,8 +94,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            212,
-            221
+            158,
+            167
         ],
         "lemmas": [
             "iomdin",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            158,
-            191
+            104,
+            137
         ],
         "lemmas": [
             "бытовой",
@@ -131,8 +131,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            149,
-            175
+            95,
+            121
         ],
         "lemmas": [
             "название",
@@ -149,8 +149,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            166,
-            191
+            112,
+            137
         ],
         "lemmas": [
             "предмет",
@@ -168,8 +168,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            347,
-            363
+            213,
+            229
         ],
         "lemmas": [
             "научный",
@@ -185,8 +185,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            376,
-            390
+            242,
+            256
         ],
         "lemmas": [
             "русский",
@@ -202,8 +202,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            347,
-            375
+            213,
+            241
         ],
         "lemmas": [
             "научный",
@@ -221,8 +221,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            366,
-            390
+            232,
+            256
         ],
         "lemmas": [
             "институт",
@@ -239,8 +239,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            544,
-            579
+            342,
+            377
         ],
         "lemmas": [
             "иллюстрированный",
@@ -256,8 +256,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            580,
-            600
+            378,
+            398
         ],
         "lemmas": [
             "бытовой",
@@ -273,8 +273,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            535,
-            579
+            333,
+            377
         ],
         "lemmas": [
             "проспект",
@@ -291,8 +291,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            562,
-            600
+            360,
+            398
         ],
         "lemmas": [
             "словарь-тезаурус",
@@ -309,8 +309,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            754,
-            771
+            451,
+            468
         ],
         "lemmas": [
             "языковой",
@@ -326,8 +326,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            809,
-            830
+            506,
+            527
         ],
         "lemmas": [
             "существующий",

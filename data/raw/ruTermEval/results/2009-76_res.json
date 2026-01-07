@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            103,
-            122
+            68,
+            87
         ],
         "lemmas": [
             "национальный",
@@ -60,8 +60,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            152,
-            183
+            117,
+            148
         ],
         "lemmas": [
             "информационно-поисковый",
@@ -77,8 +77,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            136,
-            183
+            101,
+            148
         ],
         "lemmas": [
             "лингвистический",
@@ -95,8 +95,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            208,
-            225
+            173,
+            190
         ],
         "lemmas": [
             "коллекция",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            378,
-            401
+            211,
+            234
         ],
         "lemmas": [
             "восточноармянский",
@@ -129,8 +129,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            403,
-            421
+            236,
+            254
         ],
         "lemmas": [
             "покрывающий",
@@ -146,8 +146,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            433,
-            443
+            266,
+            276
         ],
         "lemmas": [
             "19-й",
@@ -163,8 +163,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            487,
-            514
+            320,
+            347
         ],
         "lemmas": [
             "поисковый",
@@ -180,8 +180,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            480,
-            514
+            313,
+            347
         ],
         "lemmas": [
             "гибкий",
@@ -198,8 +198,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            424,
-            443
+            257,
+            276
         ],
         "lemmas": [
             "середина",
@@ -216,8 +216,8 @@
         "start_token_ind": 16,
         "end_token_ind": 20,
         "span": [
-            471,
-            514
+            304,
+            347
         ],
         "lemmas": [
             "мощный",
@@ -236,8 +236,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            650,
-            666
+            366,
+            382
         ],
         "lemmas": [
             "открытый",

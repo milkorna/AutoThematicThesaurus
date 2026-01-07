@@ -113,8 +113,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            188,
-            201
+            99,
+            112
         ],
         "lemmas": [
             "данный",
@@ -130,8 +130,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            352,
-            379
+            263,
+            290
         ],
         "lemmas": [
             "орфографический",
@@ -147,8 +147,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            380,
-            401
+            291,
+            312
         ],
         "lemmas": [
             "существующий",
@@ -164,8 +164,8 @@
         "start_token_ind": 24,
         "end_token_ind": 27,
         "span": [
-            352,
-            401
+            263,
+            312
         ],
         "lemmas": [
             "орфографический",
@@ -183,8 +183,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            337,
-            379
+            248,
+            290
         ],
         "lemmas": [
             "структурный",
@@ -202,8 +202,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            369,
-            401
+            280,
+            312
         ],
         "lemmas": [
             "вариант",
@@ -220,8 +220,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            613,
-            628
+            326,
+            341
         ],
         "lemmas": [
             "описанный",
@@ -237,8 +237,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            652,
-            671
+            365,
+            384
         ],
         "lemmas": [
             "процесс",
@@ -254,8 +254,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            652,
-            682
+            365,
+            395
         ],
         "lemmas": [
             "процесс",
@@ -272,8 +272,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            661,
-            682
+            374,
+            395
         ],
         "lemmas": [
             "построение",
@@ -289,8 +289,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            698,
-            721
+            411,
+            434
         ],
         "lemmas": [
             "фармакологический",
@@ -306,8 +306,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            723,
-            742
+            436,
+            455
         ],
         "lemmas": [
             "составляющий",
@@ -323,8 +323,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            736,
-            750
+            449,
+            463
         ],
         "lemmas": [
             "основа",
@@ -340,8 +340,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            736,
-            757
+            449,
+            470
         ],
         "lemmas": [
             "основа",
@@ -358,8 +358,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            736,
-            768
+            449,
+            481
         ],
         "lemmas": [
             "основа",
@@ -377,8 +377,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            743,
-            757
+            456,
+            470
         ],
         "lemmas": [
             "система",
@@ -394,8 +394,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            743,
-            768
+            456,
+            481
         ],
         "lemmas": [
             "система",
@@ -412,8 +412,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            751,
-            768
+            464,
+            481
         ],
         "lemmas": [
             "поиск",
@@ -429,8 +429,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            771,
-            792
+            484,
+            505
         ],
         "lemmas": [
             "извлечение",
@@ -446,8 +446,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            804,
-            822
+            517,
+            535
         ],
         "lemmas": [
             "обслуживающий",
@@ -463,8 +463,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            818,
-            829
+            531,
+            542
         ],
         "lemmas": [
             "база",
@@ -480,8 +480,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            818,
-            839
+            531,
+            552
         ],
         "lemmas": [
             "база",
@@ -498,8 +498,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            823,
-            839
+            536,
+            552
         ],
         "lemmas": [
             "данный",
@@ -515,8 +515,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            652,
-            695
+            365,
+            408
         ],
         "lemmas": [
             "процесс",
@@ -535,8 +535,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            661,
-            695
+            374,
+            408
         ],
         "lemmas": [
             "построение",
@@ -554,8 +554,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            686,
-            721
+            399,
+            434
         ],
         "lemmas": [
             "протеин",
@@ -573,8 +573,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            723,
-            768
+            436,
+            481
         ],
         "lemmas": [
             "составляющий",
@@ -593,8 +593,8 @@
         "start_token_ind": 16,
         "end_token_ind": 21,
         "span": [
-            736,
-            781
+            449,
+            494
         ],
         "lemmas": [
             "основа",
@@ -614,8 +614,8 @@
         "start_token_ind": 17,
         "end_token_ind": 21,
         "span": [
-            743,
-            781
+            456,
+            494
         ],
         "lemmas": [
             "система",
@@ -634,8 +634,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            751,
-            781
+            464,
+            494
         ],
         "lemmas": [
             "поиск",
@@ -653,8 +653,8 @@
         "start_token_ind": 19,
         "end_token_ind": 22,
         "span": [
-            758,
-            792
+            471,
+            505
         ],
         "lemmas": [
             "документ",
@@ -672,8 +672,8 @@
         "start_token_ind": 25,
         "end_token_ind": 28,
         "span": [
-            804,
-            839
+            517,
+            552
         ],
         "lemmas": [
             "обслуживающий",

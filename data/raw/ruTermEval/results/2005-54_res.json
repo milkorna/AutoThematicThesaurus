@@ -170,8 +170,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            282,
-            299
+            166,
+            183
         ],
         "lemmas": [
             "выполнение",
@@ -187,8 +187,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            315,
-            330
+            199,
+            214
         ],
         "lemmas": [
             "счетный",
@@ -204,8 +204,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            348,
-            374
+            232,
+            258
         ],
         "lemmas": [
             "терминологический",
@@ -221,8 +221,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            375,
-            395
+            259,
+            279
         ],
         "lemmas": [
             "финансовый",
@@ -238,8 +238,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            282,
-            311
+            166,
+            195
         ],
         "lemmas": [
             "выполнение",
@@ -257,8 +257,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            348,
-            395
+            232,
+            279
         ],
         "lemmas": [
             "терминологический",
@@ -276,8 +276,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            338,
-            374
+            222,
+            258
         ],
         "lemmas": [
             "уточнение",
@@ -294,8 +294,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            367,
-            395
+            251,
+            279
         ],
         "lemmas": [
             "словарь",
@@ -312,8 +312,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            544,
-            567
+            296,
+            319
         ],
         "lemmas": [
             "компьютерный",
@@ -329,8 +329,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            579,
-            604
+            331,
+            356
         ],
         "lemmas": [
             "автоматический",
@@ -346,8 +346,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            605,
-            637
+            357,
+            389
         ],
         "lemmas": [
             "терминологический",
@@ -363,8 +363,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            658,
-            675
+            410,
+            427
         ],
         "lemmas": [
             "анализ",
@@ -380,8 +380,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            676,
-            690
+            428,
+            442
         ],
         "lemmas": [
             "счетный",
@@ -397,8 +397,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            579,
-            637
+            331,
+            389
         ],
         "lemmas": [
             "автоматический",
@@ -416,8 +416,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            605,
-            648
+            357,
+            400
         ],
         "lemmas": [
             "терминологический",
@@ -435,8 +435,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            594,
-            637
+            346,
+            389
         ],
         "lemmas": [
             "извлечение",
@@ -453,8 +453,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            665,
-            690
+            417,
+            442
         ],
         "lemmas": [
             "документ",
@@ -471,8 +471,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            900,
-            921
+            478,
+            499
         ],
         "lemmas": [
             "компьютеризация",
@@ -488,8 +488,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            950,
-            968
+            528,
+            546
         ],
         "lemmas": [
             "предметный",
@@ -505,8 +505,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            981,
-            1005
+            559,
+            583
         ],
         "lemmas": [
             "терминологический",
@@ -522,8 +522,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1024,
-            1046
+            602,
+            624
         ],
         "lemmas": [
             "контекст",
@@ -539,8 +539,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            1024,
-            1055
+            602,
+            633
         ],
         "lemmas": [
             "контекст",
@@ -557,8 +557,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            1034,
-            1055
+            612,
+            633
         ],
         "lemmas": [
             "употребление",

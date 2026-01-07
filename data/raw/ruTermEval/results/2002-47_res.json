@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            218,
-            250
+            127,
+            159
         ],
         "lemmas": [
             "информационно-справочный",
@@ -129,8 +129,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            279,
-            304
+            188,
+            213
         ],
         "lemmas": [
             "коммуникативный",
@@ -146,8 +146,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            462,
-            483
+            248,
+            269
         ],
         "lemmas": [
             "конструктивный",
@@ -163,8 +163,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            477,
-            491
+            263,
+            277
         ],
         "lemmas": [
             "модель",
@@ -180,8 +180,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            462,
-            491
+            248,
+            277
         ],
         "lemmas": [
             "конструктивный",
@@ -198,8 +198,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            542,
-            559
+            301,
+            318
         ],
         "lemmas": [
             "участник",
@@ -215,8 +215,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            585,
-            605
+            344,
+            364
         ],
         "lemmas": [
             "кооперативный",
@@ -232,8 +232,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            666,
-            683
+            425,
+            442
         ],
         "lemmas": [
             "реакция",
@@ -249,8 +249,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            697,
-            716
+            456,
+            475
         ],
         "lemmas": [
             "меняющийся",
@@ -266,8 +266,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            708,
-            724
+            467,
+            483
         ],
         "lemmas": [
             "контекст",
@@ -283,8 +283,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            751,
-            776
+            510,
+            535
         ],
         "lemmas": [
             "коммуникативный",
@@ -300,8 +300,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            697,
-            724
+            456,
+            483
         ],
         "lemmas": [
             "меняющийся",
@@ -318,8 +318,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1019,
-            1052
+            558,
+            591
         ],
         "lemmas": [
             "информационно-справочный",
@@ -335,8 +335,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1063,
-            1084
+            602,
+            623
         ],
         "lemmas": [
             "коммуникативный",
@@ -352,8 +352,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            1096,
-            1121
+            635,
+            660
         ],
         "lemmas": [
             "коммуникативный",
@@ -369,8 +369,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            1009,
-            1052
+            548,
+            591
         ],
         "lemmas": [
             "структура",
@@ -387,8 +387,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            1058,
-            1084
+            597,
+            623
         ],
         "lemmas": [
             "цепь",
@@ -405,8 +405,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            1091,
-            1121
+            630,
+            660
         ],
         "lemmas": [
             "цепь",

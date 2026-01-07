@@ -173,8 +173,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            194,
-            215
+            107,
+            128
         ],
         "lemmas": [
             "феномен",
@@ -190,8 +190,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            194,
-            224
+            107,
+            137
         ],
         "lemmas": [
             "феномен",
@@ -208,8 +208,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            202,
-            224
+            115,
+            137
         ],
         "lemmas": [
             "идентификация",
@@ -225,8 +225,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            227,
-            248
+            140,
+            161
         ],
         "lemmas": [
             "условие",
@@ -242,8 +242,8 @@
         "start_token_ind": 1,
         "end_token_ind": 6,
         "span": [
-            194,
-            248
+            107,
+            161
         ],
         "lemmas": [
             "феномен",
@@ -263,8 +263,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            202,
-            248
+            115,
+            161
         ],
         "lemmas": [
             "идентификация",
@@ -283,8 +283,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            227,
-            256
+            140,
+            169
         ],
         "lemmas": [
             "условие",
@@ -302,8 +302,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            216,
-            248
+            129,
+            161
         ],
         "lemmas": [
             "личность",
@@ -321,8 +321,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            362,
-            382
+            201,
+            221
         ],
         "lemmas": [
             "семиотический",
@@ -338,8 +338,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            352,
-            382
+            191,
+            221
         ],
         "lemmas": [
             "подробный",
@@ -356,8 +356,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            396,
-            414
+            235,
+            253
         ],
         "lemmas": [
             "знаковый",
@@ -373,8 +373,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            383,
-            414
+            222,
+            253
         ],
         "lemmas": [
             "маргинальный",
@@ -391,8 +391,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            415,
-            435
+            254,
+            274
         ],
         "lemmas": [
             "электронный",
@@ -408,8 +408,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            362,
-            414
+            201,
+            253
         ],
         "lemmas": [
             "семиотический",
@@ -428,8 +428,8 @@
         "start_token_ind": 1,
         "end_token_ind": 6,
         "span": [
-            352,
-            414
+            191,
+            253
         ],
         "lemmas": [
             "подробный",
@@ -449,8 +449,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            396,
-            435
+            235,
+            274
         ],
         "lemmas": [
             "знаковый",
@@ -468,8 +468,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            383,
-            435
+            222,
+            274
         ],
         "lemmas": [
             "маргинальный",
@@ -488,8 +488,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            376,
-            414
+            215,
+            253
         ],
         "lemmas": [
             "анализ",
@@ -507,8 +507,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            405,
-            435
+            244,
+            274
         ],
         "lemmas": [
             "элемент",
@@ -525,8 +525,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            548,
-            565
+            301,
+            318
         ],
         "lemmas": [
             "речевой",
@@ -542,8 +542,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            539,
-            565
+            292,
+            318
         ],
         "lemmas": [
             "основный",
@@ -560,8 +560,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            556,
-            577
+            309,
+            330
         ],
         "lemmas": [
             "стратегия",
@@ -577,8 +577,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            556,
-            590
+            309,
+            343
         ],
         "lemmas": [
             "стратегия",
@@ -595,8 +595,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            566,
-            590
+            319,
+            343
         ],
         "lemmas": [
             "презентация",
@@ -612,8 +612,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            618,
-            639
+            371,
+            392
         ],
         "lemmas": [
             "электронный",
@@ -629,8 +629,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            548,
-            590
+            301,
+            343
         ],
         "lemmas": [
             "речевой",
@@ -648,8 +648,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            539,
-            590
+            292,
+            343
         ],
         "lemmas": [
             "основный",

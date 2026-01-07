@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            107,
-            122
+            66,
+            81
         ],
         "lemmas": [
             "семантика",
@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            177,
-            195
+            102,
+            120
         ],
         "lemmas": [
             "значение",
@@ -77,8 +77,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            410,
-            429
+            221,
+            240
         ],
         "lemmas": [
             "специфика",
@@ -94,8 +94,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            483,
-            505
+            294,
+            316
         ],
         "lemmas": [
             "неосновной",
@@ -111,8 +111,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            561,
-            579
+            372,
+            390
         ],
         "lemmas": [
             "ограниченный",
@@ -128,8 +128,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            574,
-            590
+            385,
+            401
         ],
         "lemmas": [
             "круг",
@@ -145,8 +145,8 @@
         "start_token_ind": 28,
         "end_token_ind": 30,
         "span": [
-            561,
-            590
+            372,
+            401
         ],
         "lemmas": [
             "ограниченный",

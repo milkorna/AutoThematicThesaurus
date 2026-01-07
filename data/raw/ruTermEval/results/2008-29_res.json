@@ -294,8 +294,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            298,
-            321
+            173,
+            196
         ],
         "lemmas": [
             "оценка",
@@ -311,8 +311,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            322,
-            342
+            197,
+            217
         ],
         "lemmas": [
             "научный",
@@ -328,8 +328,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            283,
-            321
+            158,
+            196
         ],
         "lemmas": [
             "эксперимент",
@@ -347,8 +347,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            305,
-            342
+            180,
+            217
         ],
         "lemmas": [
             "результативность",
@@ -365,8 +365,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            581,
-            601
+            331,
+            351
         ],
         "lemmas": [
             "мероприятие",
@@ -382,8 +382,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            686,
-            709
+            436,
+            459
         ],
         "lemmas": [
             "классификационный",
@@ -399,8 +399,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            712,
-            733
+            462,
+            483
         ],
         "lemmas": [
             "семантический",
@@ -416,8 +416,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            759,
-            783
+            509,
+            533
         ],
         "lemmas": [
             "классификационный",
@@ -433,8 +433,8 @@
         "start_token_ind": 21,
         "end_token_ind": 24,
         "span": [
-            704,
-            733
+            454,
+            483
         ],
         "lemmas": [
             "метод",

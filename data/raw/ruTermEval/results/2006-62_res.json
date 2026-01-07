@@ -42,8 +42,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            129,
-            144
+            70,
+            85
         ],
         "lemmas": [
             "армянский",
@@ -59,8 +59,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            167,
-            188
+            108,
+            129
         ],
         "lemmas": [
             "местоименный",
@@ -76,8 +76,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            180,
-            198
+            121,
+            139
         ],
         "lemmas": [
             "маркер",
@@ -93,8 +93,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            167,
-            198
+            108,
+            139
         ],
         "lemmas": [
             "местоименный",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            154,
-            188
+            95,
+            129
         ],
         "lemmas": [
             "согласование",
@@ -129,8 +129,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            497,
-            514
+            286,
+            303
         ],
         "lemmas": [
             "выбор",
@@ -146,8 +146,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            517,
-            539
+            306,
+            328
         ],
         "lemmas": [
             "грамматический",
@@ -163,8 +163,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            533,
-            547
+            322,
+            336
         ],
         "lemmas": [
             "класс",
@@ -180,8 +180,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            570,
-            588
+            359,
+            377
         ],
         "lemmas": [
             "конкретный",
@@ -197,8 +197,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            593,
-            615
+            382,
+            404
         ],
         "lemmas": [
             "развертывание",
@@ -214,8 +214,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            503,
-            539
+            292,
+            328
         ],
         "lemmas": [
             "конструкция",
@@ -233,8 +233,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            517,
-            547
+            306,
+            336
         ],
         "lemmas": [
             "грамматический",
@@ -251,8 +251,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            570,
-            615
+            359,
+            404
         ],
         "lemmas": [
             "конкретный",
@@ -271,8 +271,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            564,
-            588
+            353,
+            377
         ],
         "lemmas": [
             "выбор",
@@ -289,8 +289,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            581,
-            615
+            370,
+            404
         ],
         "lemmas": [
             "лексема",

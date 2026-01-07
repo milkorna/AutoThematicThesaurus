@@ -61,8 +61,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            229,
-            251
+            169,
+            191
         ],
         "lemmas": [
             "выявление",
@@ -78,8 +78,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            277,
-            292
+            217,
+            232
         ],
         "lemmas": [
             "жестовый",
@@ -95,8 +95,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            437,
-            454
+            234,
+            251
         ],
         "lemmas": [
             "жестовый",
@@ -112,8 +112,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            493,
-            508
+            290,
+            305
         ],
         "lemmas": [
             "элемент",
@@ -129,8 +129,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            545,
-            565
+            342,
+            362
         ],
         "lemmas": [
             "психический",
@@ -146,8 +146,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            601,
-            618
+            398,
+            415
         ],
         "lemmas": [
             "восприятие",
@@ -163,8 +163,8 @@
         "start_token_ind": 0,
         "end_token_ind": 3,
         "span": [
-            437,
-            461
+            234,
+            258
         ],
         "lemmas": [
             "жестовый",
@@ -182,8 +182,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            531,
-            565
+            328,
+            362
         ],
         "lemmas": [
             "когнитивной",

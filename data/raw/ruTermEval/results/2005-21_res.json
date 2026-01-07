@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            165,
-            182
+            103,
+            120
         ],
         "lemmas": [
             "построение",
@@ -42,8 +42,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            185,
-            209
+            123,
+            147
         ],
         "lemmas": [
             "морфологический",
@@ -59,8 +59,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            218,
-            235
+            156,
+            173
         ],
         "lemmas": [
             "зрение",
@@ -76,8 +76,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            251,
-            268
+            189,
+            206
         ],
         "lemmas": [
             "разработка",
@@ -93,8 +93,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            165,
-            209
+            103,
+            147
         ],
         "lemmas": [
             "построение",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            176,
-            209
+            114,
+            147
         ],
         "lemmas": [
             "система",
@@ -132,8 +132,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            401,
-            415
+            219,
+            233
         ],
         "lemmas": [
             "анализ",
@@ -149,8 +149,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            569,
-            583
+            387,
+            401
         ],
         "lemmas": [
             "анализе",
@@ -166,8 +166,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            892,
-            907
+            479,
+            494
         ],
         "lemmas": [
             "описан",
@@ -183,8 +183,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            927,
-            944
+            514,
+            531
         ],
         "lemmas": [
             "испанский",

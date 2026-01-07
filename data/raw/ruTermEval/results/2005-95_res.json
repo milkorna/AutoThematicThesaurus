@@ -79,8 +79,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            123,
-            145
+            66,
+            88
         ],
         "lemmas": [
             "предмет",
@@ -96,8 +96,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            148,
-            161
+            91,
+            104
         ],
         "lemmas": [
             "данный",
@@ -113,8 +113,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            178,
-            204
+            121,
+            147
         ],
         "lemmas": [
             "коммуникативный",
@@ -130,8 +130,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            207,
-            232
+            150,
+            175
         ],
         "lemmas": [
             "диалог",
@@ -147,8 +147,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            123,
-            161
+            66,
+            104
         ],
         "lemmas": [
             "предмет",
@@ -167,8 +167,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            133,
-            161
+            76,
+            104
         ],
         "lemmas": [
             "рассмотрение",
@@ -186,8 +186,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            178,
-            232
+            121,
+            175
         ],
         "lemmas": [
             "коммуникативный",
@@ -206,8 +206,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            194,
-            232
+            137,
+            175
         ],
         "lemmas": [
             "конфликт",
@@ -225,8 +225,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            343,
-            361
+            189,
+            207
         ],
         "lemmas": [
             "диалогический",
@@ -242,8 +242,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            383,
-            403
+            229,
+            249
         ],
         "lemmas": [
             "логика",
@@ -259,8 +259,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            406,
-            424
+            252,
+            270
         ],
         "lemmas": [
             "динамика",
@@ -276,8 +276,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            443,
-            465
+            289,
+            311
         ],
         "lemmas": [
             "коммуникационный",
@@ -293,8 +293,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            554,
-            575
+            400,
+            421
         ],
         "lemmas": [
             "преодоление",
@@ -310,8 +310,8 @@
         "start_token_ind": 37,
         "end_token_ind": 38,
         "span": [
-            599,
-            626
+            445,
+            472
         ],
         "lemmas": [
             "речекоммуникативный",
@@ -327,8 +327,8 @@
         "start_token_ind": 36,
         "end_token_ind": 38,
         "span": [
-            594,
-            626
+            440,
+            472
         ],
         "lemmas": [
             "иной",
@@ -345,8 +345,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            383,
-            414
+            229,
+            260
         ],
         "lemmas": [
             "логика",
@@ -364,8 +364,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            390,
-            424
+            236,
+            270
         ],
         "lemmas": [
             "возникновение",
@@ -383,8 +383,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            406,
-            435
+            252,
+            281
         ],
         "lemmas": [
             "динамика",

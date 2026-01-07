@@ -94,8 +94,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            234,
-            248
+            168,
+            182
         ],
         "lemmas": [
             "русский",
@@ -111,8 +111,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            223,
-            248
+            157,
+            182
         ],
         "lemmas": [
             "грамматика",
@@ -129,8 +129,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            407,
-            430
+            223,
+            246
         ],
         "lemmas": [
             "постулат",
@@ -146,8 +146,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            458,
-            480
+            274,
+            296
         ],
         "lemmas": [
             "аннотированный",
@@ -163,8 +163,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            495,
-            510
+            311,
+            326
         ],
         "lemmas": [
             "проблемный",
@@ -180,8 +180,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            519,
-            540
+            335,
+            356
         ],
         "lemmas": [
             "корпусный",
@@ -197,8 +197,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            511,
-            540
+            327,
+            356
         ],
         "lemmas": [
             "русский",
@@ -215,8 +215,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            495,
-            540
+            311,
+            356
         ],
         "lemmas": [
             "проблемный",
@@ -235,8 +235,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            506,
-            540
+            322,
+            356
         ],
         "lemmas": [
             "зона",

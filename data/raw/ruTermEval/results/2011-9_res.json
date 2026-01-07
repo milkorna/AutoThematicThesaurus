@@ -95,8 +95,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            149,
-            164
+            99,
+            114
         ],
         "lemmas": [
             "именной",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            126,
-            164
+            76,
+            114
         ],
         "lemmas": [
             "лексико-грамматический",
@@ -130,8 +130,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            181,
-            198
+            131,
+            148
         ],
         "lemmas": [
             "английский",
@@ -147,8 +147,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            237,
-            252
+            187,
+            202
         ],
         "lemmas": [
             "именной",
@@ -164,8 +164,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            407,
-            429
+            216,
+            238
         ],
         "lemmas": [
             "изучение",
@@ -181,8 +181,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            449,
-            461
+            258,
+            270
         ],
         "lemmas": [
             "объем",
@@ -198,8 +198,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            472,
-            491
+            281,
+            300
         ],
         "lemmas": [
             "глубокий",
@@ -215,8 +215,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            516,
-            535
+            325,
+            344
         ],
         "lemmas": [
             "организация",
@@ -232,8 +232,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            564,
-            582
+            373,
+            391
         ],
         "lemmas": [
             "языковый",
@@ -249,8 +249,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            498,
-            535
+            307,
+            344
         ],
         "lemmas": [
             "закономерность",
@@ -268,8 +268,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            516,
-            544
+            325,
+            353
         ],
         "lemmas": [
             "организация",
@@ -287,8 +287,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            551,
-            582
+            360,
+            391
         ],
         "lemmas": [
             "формализация",

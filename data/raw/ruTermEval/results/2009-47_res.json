@@ -95,8 +95,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            129,
-            150
+            91,
+            112
         ],
         "lemmas": [
             "национальный",
@@ -112,8 +112,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            142,
-            158
+            104,
+            120
         ],
         "lemmas": [
             "корпус",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            165,
-            184
+            127,
+            146
         ],
         "lemmas": [
             "литературный",
@@ -146,8 +146,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            246,
-            274
+            208,
+            236
         ],
         "lemmas": [
             "государственный",
@@ -163,8 +163,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            233,
-            274
+            195,
+            236
         ],
         "lemmas": [
             "дагестанский",
@@ -181,8 +181,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            129,
-            158
+            91,
+            120
         ],
         "lemmas": [
             "национальный",
@@ -199,8 +199,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            117,
-            150
+            79,
+            112
         ],
         "lemmas": [
             "перспектива",
@@ -217,8 +217,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            472,
-            490
+            262,
+            280
         ],
         "lemmas": [
             "проблема",
@@ -234,8 +234,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            472,
-            498
+            262,
+            288
         ],
         "lemmas": [
             "проблема",
@@ -252,8 +252,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            482,
-            498
+            272,
+            288
         ],
         "lemmas": [
             "создание",
@@ -269,8 +269,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            499,
-            522
+            289,
+            312
         ],
         "lemmas": [
             "автоматический",
@@ -286,8 +286,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            514,
-            530
+            304,
+            320
         ],
         "lemmas": [
             "разметка",
@@ -303,8 +303,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            542,
-            558
+            332,
+            348
         ],
         "lemmas": [
             "печатный",
@@ -320,8 +320,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            561,
-            579
+            351,
+            369
         ],
         "lemmas": [
             "электронный",
@@ -337,8 +337,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            499,
-            530
+            289,
+            320
         ],
         "lemmas": [
             "автоматический",
@@ -355,8 +355,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            491,
-            522
+            281,
+            312
         ],
         "lemmas": [
             "система",
@@ -373,8 +373,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            514,
-            541
+            304,
+            331
         ],
         "lemmas": [
             "разметка",
@@ -392,8 +392,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            542,
-            579
+            332,
+            369
         ],
         "lemmas": [
             "печатный",
@@ -412,8 +412,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            533,
-            558
+            323,
+            348
         ],
         "lemmas": [
             "перевода",
@@ -430,8 +430,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            551,
-            579
+            341,
+            369
         ],
         "lemmas": [
             "текст",

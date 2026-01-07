@@ -62,8 +62,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            176,
-            198
+            108,
+            130
         ],
         "lemmas": [
             "дейктический",
@@ -79,8 +79,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            231,
-            249
+            163,
+            181
         ],
         "lemmas": [
             "позиция",
@@ -96,8 +96,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            166,
-            198
+            98,
+            130
         ],
         "lemmas": [
             "семантика",
@@ -114,8 +114,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            372,
-            396
+            226,
+            250
         ],
         "lemmas": [
             "коммуникативный",
@@ -131,8 +131,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            359,
-            396
+            213,
+            250
         ],
         "lemmas": [
             "канонический",
@@ -149,8 +149,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            458,
-            481
+            254,
+            277
         ],
         "lemmas": [
             "неканонический",
@@ -166,8 +166,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            577,
-            600
+            373,
+            396
         ],
         "lemmas": [
             "дейктический",

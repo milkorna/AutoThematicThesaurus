@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            103,
-            125
+            64,
+            86
         ],
         "lemmas": [
             "вертикальный",
@@ -42,8 +42,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            154,
-            172
+            115,
+            133
         ],
         "lemmas": [
             "глагол",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            95,
-            125
+            56,
+            86
         ],
         "lemmas": [
             "глагол",
@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            398,
-            421
+            232,
+            255
         ],
         "lemmas": [
             "семантический",
@@ -94,8 +94,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            447,
-            474
+            281,
+            308
         ],
         "lemmas": [
             "контролируемость",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            654,
-            669
+            369,
+            384
         ],
         "lemmas": [
             "идея",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            672,
-            692
+            387,
+            407
         ],
         "lemmas": [
             "негативный",
@@ -145,8 +145,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            694,
-            711
+            409,
+            426
         ],
         "lemmas": [
             "идея",
@@ -162,8 +162,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            654,
-            692
+            369,
+            407
         ],
         "lemmas": [
             "идея",
@@ -182,8 +182,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            659,
-            692
+            374,
+            407
         ],
         "lemmas": [
             "погружение",
@@ -201,8 +201,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            694,
-            726
+            409,
+            441
         ],
         "lemmas": [
             "идея",

@@ -59,8 +59,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            209,
-            228
+            126,
+            145
         ],
         "lemmas": [
             "фонетический",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            255,
-            270
+            172,
+            187
         ],
         "lemmas": [
             "русский",
@@ -93,8 +93,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            364,
-            385
+            281,
+            302
         ],
         "lemmas": [
             "многоязычный",
@@ -110,8 +110,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            196,
-            228
+            113,
+            145
         ],
         "lemmas": [
             "особенность",
@@ -128,8 +128,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            607,
-            624
+            331,
+            348
         ],
         "lemmas": [
             "принцип",
@@ -145,8 +145,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            649,
-            665
+            373,
+            389
         ],
         "lemmas": [
             "речевой",
@@ -162,8 +162,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            607,
-            636
+            331,
+            360
         ],
         "lemmas": [
             "принцип",
@@ -181,8 +181,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            637,
-            665
+            361,
+            389
         ],
         "lemmas": [
             "текстовый",

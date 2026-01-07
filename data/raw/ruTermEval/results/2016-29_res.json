@@ -170,8 +170,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            231,
-            245
+            138,
+            152
         ],
         "lemmas": [
             "опыт",
@@ -187,8 +187,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            246,
-            266
+            153,
+            173
         ],
         "lemmas": [
             "кореферентный",
@@ -204,8 +204,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            277,
-            294
+            184,
+            201
         ],
         "lemmas": [
             "устный",
@@ -221,8 +221,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            295,
-            308
+            202,
+            215
         ],
         "lemmas": [
             "russian",
@@ -238,8 +238,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            310,
-            323
+            217,
+            230
         ],
         "lemmas": [
             "khudyakova",
@@ -255,8 +255,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            321,
-            326
+            228,
+            233
         ],
         "lemmas": [
             "et",
@@ -272,8 +272,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            310,
-            326
+            217,
+            233
         ],
         "lemmas": [
             "khudyakova",
@@ -290,8 +290,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            246,
-            276
+            153,
+            183
         ],
         "lemmas": [
             "кореферентный",
@@ -309,8 +309,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            237,
-            266
+            144,
+            173
         ],
         "lemmas": [
             "разметка",
@@ -327,8 +327,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            269,
-            294
+            176,
+            201
         ],
         "lemmas": [
             "корпус",
@@ -345,8 +345,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            433,
-            448
+            269,
+            284
         ],
         "lemmas": [
             "пересказ",
@@ -362,8 +362,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            433,
-            457
+            269,
+            293
         ],
         "lemmas": [
             "пересказ",
@@ -381,8 +381,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            526,
-            544
+            318,
+            336
         ],
         "lemmas": [
             "представлен",
@@ -398,8 +398,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            538,
-            555
+            330,
+            347
         ],
         "lemmas": [
             "анализ",
@@ -415,8 +415,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            606,
-            618
+            398,
+            410
         ],
         "lemmas": [
             "род",
@@ -432,8 +432,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            519,
-            544
+            311,
+            336
         ],
         "lemmas": [
             "статья",
@@ -450,8 +450,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            526,
-            555
+            318,
+            347
         ],
         "lemmas": [
             "представлен",
@@ -468,8 +468,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            710,
-            728
+            414,
+            432
         ],
         "lemmas": [
             "результат",
@@ -485,8 +485,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            710,
-            735
+            414,
+            439
         ],
         "lemmas": [
             "результат",
@@ -503,8 +503,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            721,
-            735
+            425,
+            439
         ],
         "lemmas": [
             "анализ",
@@ -520,8 +520,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            772,
-            792
+            476,
+            496
         ],
         "lemmas": [
             "кореферентный",
@@ -537,8 +537,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            795,
-            809
+            499,
+            513
         ],
         "lemmas": [
             "устный",
@@ -554,8 +554,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            812,
-            834
+            516,
+            538
         ],
         "lemmas": [
             "позиция",
@@ -571,8 +571,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            861,
-            882
+            565,
+            586
         ],
         "lemmas": [
             "кореферентный",
@@ -588,8 +588,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            906,
-            919
+            610,
+            623
         ],
         "lemmas": [
             "речевой",
@@ -605,8 +605,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            939,
-            963
+            643,
+            667
         ],
         "lemmas": [
             "переименование",
@@ -622,8 +622,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            772,
-            809
+            476,
+            513
         ],
         "lemmas": [
             "кореферентный",
@@ -642,8 +642,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            763,
-            792
+            467,
+            496
         ],
         "lemmas": [
             "разметка",
@@ -660,8 +660,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            786,
-            809
+            490,
+            513
         ],
         "lemmas": [
             "связь",
@@ -679,8 +679,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            795,
-            834
+            499,
+            538
         ],
         "lemmas": [
             "устный",
@@ -699,8 +699,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            802,
-            834
+            506,
+            538
         ],
         "lemmas": [
             "текст",
@@ -718,8 +718,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            861,
-            894
+            565,
+            598
         ],
         "lemmas": [
             "кореферентный",
@@ -737,8 +737,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            896,
-            919
+            600,
+            623
         ],
         "lemmas": [
             "элемент",
@@ -755,8 +755,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            1203,
-            1223
+            684,
+            704
         ],
         "lemmas": [
             "элемент",
@@ -772,8 +772,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1242,
-            1259
+            723,
+            740
         ],
         "lemmas": [
             "говорящий",
@@ -789,8 +789,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            1252,
-            1271
+            733,
+            752
         ],
         "lemmas": [
             "степень",
@@ -806,8 +806,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            1274,
-            1293
+            755,
+            774
         ],
         "lemmas": [
             "выбранный",
@@ -823,8 +823,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            1235,
-            1259
+            716,
+            740
         ],
         "lemmas": [
             "оценка",
@@ -841,8 +841,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            1242,
-            1271
+            723,
+            752
         ],
         "lemmas": [
             "говорящий",

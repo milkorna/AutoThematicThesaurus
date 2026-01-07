@@ -187,8 +187,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            312,
-            334
+            182,
+            204
         ],
         "lemmas": [
             "диагностический",
@@ -204,8 +204,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            348,
-            370
+            218,
+            240
         ],
         "lemmas": [
             "алгебраический",
@@ -221,8 +221,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            373,
-            396
+            243,
+            266
         ],
         "lemmas": [
             "двойственный",
@@ -238,8 +238,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            348,
-            396
+            218,
+            266
         ],
         "lemmas": [
             "алгебраический",
@@ -258,8 +258,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            339,
-            370
+            209,
+            240
         ],
         "lemmas": [
             "элемент",
@@ -276,8 +276,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            363,
-            396
+            233,
+            266
         ],
         "lemmas": [
             "решетка",
@@ -295,8 +295,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            520,
-            542
+            282,
+            304
         ],
         "lemmas": [
             "диагностический",
@@ -312,8 +312,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            554,
-            572
+            316,
+            334
         ],
         "lemmas": [
             "построение",
@@ -329,8 +329,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            573,
-            595
+            335,
+            357
         ],
         "lemmas": [
             "двойственный",
@@ -346,8 +346,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            596,
-            620
+            358,
+            382
         ],
         "lemmas": [
             "алгебраический",
@@ -363,8 +363,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            573,
-            620
+            335,
+            382
         ],
         "lemmas": [
             "двойственный",
@@ -382,8 +382,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            565,
-            595
+            327,
+            357
         ],
         "lemmas": [
             "цепочка",
@@ -400,8 +400,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            586,
-            620
+            348,
+            382
         ],
         "lemmas": [
             "элемент",
@@ -418,8 +418,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            743,
-            760
+            402,
+            419
         ],
         "lemmas": [
             "основный",
@@ -435,8 +435,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            752,
-            771
+            411,
+            430
         ],
         "lemmas": [
             "операция",
@@ -452,8 +452,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            752,
-            779
+            411,
+            438
         ],
         "lemmas": [
             "операция",
@@ -470,8 +470,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            752,
-            789
+            411,
+            448
         ],
         "lemmas": [
             "операция",
@@ -489,8 +489,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            761,
-            779
+            420,
+            438
         ],
         "lemmas": [
             "построение",
@@ -506,8 +506,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            761,
-            789
+            420,
+            448
         ],
         "lemmas": [
             "построение",
@@ -524,8 +524,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            772,
-            789
+            431,
+            448
         ],
         "lemmas": [
             "цепочка",
@@ -541,8 +541,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            830,
-            856
+            489,
+            515
         ],
         "lemmas": [
             "правдоподобный",
@@ -558,8 +558,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            889,
-            907
+            548,
+            566
         ],
         "lemmas": [
             "уточнение",
@@ -575,8 +575,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            909,
-            928
+            568,
+            587
         ],
         "lemmas": [
             "совмещение",
@@ -592,8 +592,8 @@
         "start_token_ind": 33,
         "end_token_ind": 34,
         "span": [
-            974,
-            995
+            633,
+            654
         ],
         "lemmas": [
             "существенный",
@@ -609,8 +609,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            743,
-            789
+            402,
+            448
         ],
         "lemmas": [
             "основный",

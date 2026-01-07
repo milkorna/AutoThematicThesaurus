@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            43,
-            57
+            27,
+            41
         ],
         "lemmas": [
             "влияние",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            43,
-            70
+            27,
+            54
         ],
         "lemmas": [
             "влияние",
@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            51,
-            70
+            35,
+            54
         ],
         "lemmas": [
             "канал",
@@ -77,8 +77,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            88,
-            100
+            72,
+            84
         ],
         "lemmas": [
             "смена",
@@ -94,8 +94,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            88,
-            113
+            72,
+            97
         ],
         "lemmas": [
             "смена",
@@ -112,8 +112,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            94,
-            113
+            78,
+            97
         ],
         "lemmas": [
             "канал",
@@ -129,8 +129,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            153,
-            176
+            137,
+            160
         ],
         "lemmas": [
             "ситуационный",
@@ -146,8 +146,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            181,
-            211
+            165,
+            195
         ],
         "lemmas": [
             "лингвистический",
@@ -163,8 +163,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            390,
-            411
+            210,
+            231
         ],
         "lemmas": [
             "количественный",
@@ -180,8 +180,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            426,
-            441
+            246,
+            261
         ],
         "lemmas": [
             "русский",
@@ -197,8 +197,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            479,
-            496
+            299,
+            316
         ],
         "lemmas": [
             "электронный",
@@ -214,8 +214,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            417,
-            441
+            237,
+            261
         ],
         "lemmas": [
             "корпус",

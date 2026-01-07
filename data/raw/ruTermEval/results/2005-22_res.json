@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            137,
-            161
+            91,
+            115
         ],
         "lemmas": [
             "семантический",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            123,
-            161
+            77,
+            115
         ],
         "lemmas": [
             "естественный",
@@ -60,8 +60,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            284,
-            312
+            238,
+            266
         ],
         "lemmas": [
             "семантический",
@@ -77,8 +77,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            322,
-            348
+            276,
+            302
         ],
         "lemmas": [
             "культурно-специфичный",
@@ -94,8 +94,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            112,
-            161
+            66,
+            115
         ],
         "lemmas": [
             "применение",
@@ -113,8 +113,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            723,
-            738
+            393,
+            408
         ],
         "lemmas": [
             "качество",
@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            723,
-            751
+            393,
+            421
         ],
         "lemmas": [
             "качество",
@@ -148,8 +148,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            732,
-            751
+            402,
+            421
         ],
         "lemmas": [
             "метод",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            778,
-            800
+            448,
+            470
         ],
         "lemmas": [
             "семантический",
@@ -182,8 +182,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            765,
-            800
+            435,
+            470
         ],
         "lemmas": [
             "естественный",

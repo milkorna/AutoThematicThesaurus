@@ -95,8 +95,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            108,
-            132
+            65,
+            89
         ],
         "lemmas": [
             "рассмотрение",
@@ -112,8 +112,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            140,
-            152
+            97,
+            109
         ],
         "lemmas": [
             "видовой",
@@ -129,8 +129,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            153,
-            174
+            110,
+            131
         ],
         "lemmas": [
             "императивный",
@@ -146,8 +146,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            205,
-            232
+            162,
+            189
         ],
         "lemmas": [
             "семантический",
@@ -163,8 +163,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            219,
-            243
+            176,
+            200
         ],
         "lemmas": [
             "интерпретация",
@@ -180,8 +180,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            274,
-            295
+            231,
+            252
         ],
         "lemmas": [
             "императивный",
@@ -197,8 +197,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            265,
-            295
+            222,
+            252
         ],
         "lemmas": [
             "видовой",
@@ -215,8 +215,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            316,
-            334
+            273,
+            291
         ],
         "lemmas": [
             "смысловой",
@@ -232,8 +232,8 @@
         "start_token_ind": 43,
         "end_token_ind": 44,
         "span": [
-            439,
-            451
+            396,
+            408
         ],
         "lemmas": [
             "видовой",
@@ -249,8 +249,8 @@
         "start_token_ind": 42,
         "end_token_ind": 44,
         "span": [
-            423,
-            451
+            380,
+            408
         ],
         "lemmas": [
             "противоположный",
@@ -267,8 +267,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            140,
-            174
+            97,
+            131
         ],
         "lemmas": [
             "видовой",
@@ -286,8 +286,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            148,
-            174
+            105,
+            131
         ],
         "lemmas": [
             "форма",
@@ -304,8 +304,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            205,
-            243
+            162,
+            200
         ],
         "lemmas": [
             "семантический",

@@ -81,8 +81,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            142,
-            167
+            79,
+            104
         ],
         "lemmas": [
             "представлен",
@@ -98,8 +98,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            155,
-            173
+            92,
+            110
         ],
         "lemmas": [
             "деятельность",
@@ -115,8 +115,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            142,
-            173
+            79,
+            110
         ],
         "lemmas": [
             "представлен",
@@ -133,8 +133,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            417,
-            431
+            252,
+            266
         ],
         "lemmas": [
             "правовой",
@@ -150,8 +150,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            407,
-            431
+            242,
+            266
         ],
         "lemmas": [
             "коллекция",
@@ -168,8 +168,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            567,
-            591
+            365,
+            389
         ],
         "lemmas": [
             "фактографический",
@@ -185,8 +185,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            551,
-            591
+            349,
+            389
         ],
         "lemmas": [
             "классификация",
@@ -204,8 +204,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            757,
-            773
+            449,
+            465
         ],
         "lemmas": [
             "вариант",
@@ -221,8 +221,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            779,
-            802
+            471,
+            494
         ],
         "lemmas": [
             "участвующий",
