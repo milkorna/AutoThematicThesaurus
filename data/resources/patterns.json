@@ -1,5 +1,22 @@
 [
   {
+    "name": "Англ",
+    "enabled": true,
+    "body": [
+      {
+        "type": "word",
+        "role": "dependent",
+        "pos": "X",
+        "recursive": true
+      },
+      {
+        "type": "word",
+        "role": "head",
+        "pos": "X"
+      }
+    ]
+  },
+  {
     "name": "Прил + С",
     "enabled": true,
     "body": [
