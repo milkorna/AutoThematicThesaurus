@@ -283,6 +283,128 @@
         ]
     },
     {
+        "0_key": "to take",
+        "1_textForm": "to take",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 23,
+        "6_end_ind": 24,
+        "7_lemmas": [
+            "0_to",
+            "1_take"
+        ]
+    },
+    {
+        "0_key": "take one",
+        "1_textForm": "take one",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 24,
+        "6_end_ind": 25,
+        "7_lemmas": [
+            "0_take",
+            "1_one"
+        ]
+    },
+    {
+        "0_key": "to take one",
+        "1_textForm": "to take one",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 23,
+        "6_end_ind": 25,
+        "7_lemmas": [
+            "0_to",
+            "1_take",
+            "2_one"
+        ]
+    },
+    {
+        "0_key": "s mind",
+        "1_textForm": "s mind",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 27,
+        "6_end_ind": 28,
+        "7_lemmas": [
+            "0_s",
+            "1_mind"
+        ]
+    },
+    {
+        "0_key": "mind off",
+        "1_textForm": "mind off",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 28,
+        "6_end_ind": 29,
+        "7_lemmas": [
+            "0_mind",
+            "1_off"
+        ]
+    },
+    {
+        "0_key": "s mind off",
+        "1_textForm": "s mind off",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 27,
+        "6_end_ind": 29,
+        "7_lemmas": [
+            "0_s",
+            "1_mind",
+            "2_off"
+        ]
+    },
+    {
+        "0_key": "off something",
+        "1_textForm": "off something",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 29,
+        "6_end_ind": 30,
+        "7_lemmas": [
+            "0_off",
+            "1_something"
+        ]
+    },
+    {
+        "0_key": "mind off something",
+        "1_textForm": "mind off something",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 28,
+        "6_end_ind": 30,
+        "7_lemmas": [
+            "0_mind",
+            "1_off",
+            "2_something"
+        ]
+    },
+    {
+        "0_key": "s mind off something",
+        "1_textForm": "s mind off something",
+        "2_modelName": "Англ",
+        "3_docId": "2002-70",
+        "4_sentNum": 3,
+        "5_start_ind": 27,
+        "6_end_ind": 30,
+        "7_lemmas": [
+            "0_s",
+            "1_mind",
+            "2_off",
+            "3_something"
+        ]
+    },
+    {
         "0_key": "семантический анализ метафорический выражение",
         "1_textForm": "семантического анализа метафорических выражений",
         "2_modelName": "(Прил + С) + (Прил + С)рд",

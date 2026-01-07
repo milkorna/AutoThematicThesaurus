@@ -270,6 +270,88 @@
         ]
     },
     {
+        "0_key": "syntactic coordination",
+        "1_textForm": "Syntactic coordination",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 7,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_syntactic",
+            "1_coordination"
+        ]
+    },
+    {
+        "0_key": "coordination in",
+        "1_textForm": "coordination in",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 8,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_coordination",
+            "1_in"
+        ]
+    },
+    {
+        "0_key": "syntactic coordination in",
+        "1_textForm": "Syntactic coordination in",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 7,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_syntactic",
+            "1_coordination",
+            "2_in"
+        ]
+    },
+    {
+        "0_key": "in dialogue",
+        "1_textForm": "in dialogue",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_in",
+            "1_dialogue"
+        ]
+    },
+    {
+        "0_key": "coordination in dialogue",
+        "1_textForm": "coordination in dialogue",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 8,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_coordination",
+            "1_in",
+            "2_dialogue"
+        ]
+    },
+    {
+        "0_key": "syntactic coordination in dialogue",
+        "1_textForm": "Syntactic coordination in dialogue",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 4,
+        "5_start_ind": 7,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_syntactic",
+            "1_coordination",
+            "2_in",
+            "3_dialogue"
+        ]
+    },
+    {
         "0_key": "чистый результат авторами работа",
         "1_textForm": "чистых результатов авторами работы",
         "2_modelName": "(Прил + С) + Срд",
@@ -295,6 +377,19 @@
         "7_lemmas": [
             "0_специальный",
             "1_процедура"
+        ]
+    },
+    {
+        "0_key": "confederate-scripting technique",
+        "1_textForm": "confederate-scripting technique",
+        "2_modelName": "Англ",
+        "3_docId": "2002-23",
+        "4_sentNum": 10,
+        "5_start_ind": 15,
+        "6_end_ind": 16,
+        "7_lemmas": [
+            "0_confederate-scripting",
+            "1_technique"
         ]
     },
     {

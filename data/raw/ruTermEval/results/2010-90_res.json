@@ -13,6 +13,88 @@
         ]
     },
     {
+        "0_key": "sil fieldworks",
+        "1_textForm": "SIL FieldWorks",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_sil",
+            "1_fieldworks"
+        ]
+    },
+    {
+        "0_key": "fieldworks language",
+        "1_textForm": "FieldWorks Language",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_fieldworks",
+            "1_language"
+        ]
+    },
+    {
+        "0_key": "sil fieldworks language",
+        "1_textForm": "SIL FieldWorks Language",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_sil",
+            "1_fieldworks",
+            "2_language"
+        ]
+    },
+    {
+        "0_key": "language explorer",
+        "1_textForm": "Language Explorer",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 7,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_language",
+            "1_explorer"
+        ]
+    },
+    {
+        "0_key": "fieldworks language explorer",
+        "1_textForm": "FieldWorks Language Explorer",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_fieldworks",
+            "1_language",
+            "2_explorer"
+        ]
+    },
+    {
+        "0_key": "sil fieldworks language explorer",
+        "1_textForm": "SIL FieldWorks Language Explorer",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_sil",
+            "1_fieldworks",
+            "2_language",
+            "3_explorer"
+        ]
+    },
+    {
         "0_key": "осетинский язык",
         "1_textForm": "осетинского языка",
         "2_modelName": "Прил + С",
@@ -50,6 +132,19 @@
         "7_lemmas": [
             "0_рамка",
             "1_среда"
+        ]
+    },
+    {
+        "0_key": "sil fieldworks",
+        "1_textForm": "SIL FieldWorks",
+        "2_modelName": "Англ",
+        "3_docId": "2010-90",
+        "4_sentNum": 1,
+        "5_start_ind": 6,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_sil",
+            "1_fieldworks"
         ]
     },
     {
@@ -174,20 +269,6 @@
         ]
     },
     {
-        "0_key": "процесс языковый документирование",
-        "1_textForm": "процесс языкового документирования",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2010-90",
-        "4_sentNum": 1,
-        "5_start_ind": 30,
-        "6_end_ind": 32,
-        "7_lemmas": [
-            "0_процесс",
-            "1_языковый",
-            "2_документирование"
-        ]
-    },
-    {
         "0_key": "языковый документирование и сбор",
         "1_textForm": "языкового документирования и сбора",
         "2_modelName": "(Прил + С) + и + С",
@@ -200,6 +281,20 @@
             "1_документирование",
             "2_и",
             "3_сбор"
+        ]
+    },
+    {
+        "0_key": "процесс языковый документирование",
+        "1_textForm": "процесс языкового документирования",
+        "2_modelName": "C + (Прил + С)рд",
+        "3_docId": "2010-90",
+        "4_sentNum": 1,
+        "5_start_ind": 30,
+        "6_end_ind": 32,
+        "7_lemmas": [
+            "0_процесс",
+            "1_языковый",
+            "2_документирование"
         ]
     },
     {

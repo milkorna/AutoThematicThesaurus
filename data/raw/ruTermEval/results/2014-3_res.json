@@ -110,6 +110,88 @@
         ]
     },
     {
+        "0_key": "gehst du",
+        "1_textForm": "Gehst du",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_gehst",
+            "1_du"
+        ]
+    },
+    {
+        "0_key": "du etwa",
+        "1_textForm": "du etwa",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 10,
+        "6_end_ind": 11,
+        "7_lemmas": [
+            "0_du",
+            "1_etwa"
+        ]
+    },
+    {
+        "0_key": "gehst du etwa",
+        "1_textForm": "Gehst du etwa",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 9,
+        "6_end_ind": 11,
+        "7_lemmas": [
+            "0_gehst",
+            "1_du",
+            "2_etwa"
+        ]
+    },
+    {
+        "0_key": "etwa mit",
+        "1_textForm": "etwa mit",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 11,
+        "6_end_ind": 12,
+        "7_lemmas": [
+            "0_etwa",
+            "1_mit"
+        ]
+    },
+    {
+        "0_key": "du etwa mit",
+        "1_textForm": "du etwa mit",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 10,
+        "6_end_ind": 12,
+        "7_lemmas": [
+            "0_du",
+            "1_etwa",
+            "2_mit"
+        ]
+    },
+    {
+        "0_key": "gehst du etwa mit",
+        "1_textForm": "Gehst du etwa mit",
+        "2_modelName": "Англ",
+        "3_docId": "2014-3",
+        "4_sentNum": 3,
+        "5_start_ind": 9,
+        "6_end_ind": 12,
+        "7_lemmas": [
+            "0_gehst",
+            "1_du",
+            "2_etwa",
+            "3_mit"
+        ]
+    },
+    {
         "0_key": "материал частица",
         "1_textForm": "Материал частиц",
         "2_modelName": "С + Срд",

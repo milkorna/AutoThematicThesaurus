@@ -52,6 +52,46 @@
         ]
     },
     {
+        "0_key": "yet another",
+        "1_textForm": "Yet Another",
+        "2_modelName": "Англ",
+        "3_docId": "2013-32",
+        "4_sentNum": 1,
+        "5_start_ind": 12,
+        "6_end_ind": 13,
+        "7_lemmas": [
+            "0_yet",
+            "1_another"
+        ]
+    },
+    {
+        "0_key": "another russnet",
+        "1_textForm": "Another RussNet",
+        "2_modelName": "Англ",
+        "3_docId": "2013-32",
+        "4_sentNum": 1,
+        "5_start_ind": 13,
+        "6_end_ind": 14,
+        "7_lemmas": [
+            "0_another",
+            "1_russnet"
+        ]
+    },
+    {
+        "0_key": "yet another russnet",
+        "1_textForm": "Yet Another RussNet",
+        "2_modelName": "Англ",
+        "3_docId": "2013-32",
+        "4_sentNum": 1,
+        "5_start_ind": 12,
+        "6_end_ind": 14,
+        "7_lemmas": [
+            "0_yet",
+            "1_another",
+            "2_russnet"
+        ]
+    },
+    {
         "0_key": "статья представлен проект",
         "1_textForm": "статье представлен проект",
         "2_modelName": "C + (Прич + С)рд",

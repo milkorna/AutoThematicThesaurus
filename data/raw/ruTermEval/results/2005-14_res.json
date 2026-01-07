@@ -13,6 +13,19 @@
         ]
     },
     {
+        "0_key": "model-theoretic syntax",
+        "1_textForm": "MODEL-THEORETIC SYNTAX",
+        "2_modelName": "Англ",
+        "3_docId": "2005-14",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 4,
+        "7_lemmas": [
+            "0_model-theoretic",
+            "1_syntax"
+        ]
+    },
+    {
         "0_key": "формальный грамматика",
         "1_textForm": "формальные грамматики",
         "2_modelName": "Прил + С",
@@ -76,6 +89,19 @@
             "0_синтаксический",
             "1_структура",
             "2_язык"
+        ]
+    },
+    {
+        "0_key": "model-theoretic syntax",
+        "1_textForm": "Model-theoretic syntax",
+        "2_modelName": "Англ",
+        "3_docId": "2005-14",
+        "4_sentNum": 5,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_model-theoretic",
+            "1_syntax"
         ]
     },
     {

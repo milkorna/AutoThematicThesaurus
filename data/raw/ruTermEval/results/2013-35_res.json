@@ -361,6 +361,46 @@
         ]
     },
     {
+        "0_key": "trec enterprise",
+        "1_textForm": "TREC Enterprise",
+        "2_modelName": "Англ",
+        "3_docId": "2013-35",
+        "4_sentNum": 4,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_trec",
+            "1_enterprise"
+        ]
+    },
+    {
+        "0_key": "enterprise track",
+        "1_textForm": "Enterprise track",
+        "2_modelName": "Англ",
+        "3_docId": "2013-35",
+        "4_sentNum": 4,
+        "5_start_ind": 10,
+        "6_end_ind": 11,
+        "7_lemmas": [
+            "0_enterprise",
+            "1_track"
+        ]
+    },
+    {
+        "0_key": "trec enterprise track",
+        "1_textForm": "TREC Enterprise track",
+        "2_modelName": "Англ",
+        "3_docId": "2013-35",
+        "4_sentNum": 4,
+        "5_start_ind": 9,
+        "6_end_ind": 11,
+        "7_lemmas": [
+            "0_trec",
+            "1_enterprise",
+            "2_track"
+        ]
+    },
+    {
         "0_key": "качество коллекция данный для проведение эксперимент",
         "1_textForm": "качестве коллекций данных для проведения экспериментов",
         "2_modelName": "(С + Срд) + Предл + (С + Срд)",

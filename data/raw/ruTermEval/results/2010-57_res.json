@@ -284,6 +284,19 @@
         ]
     },
     {
+        "0_key": "unit selection",
+        "1_textForm": "Unit Selection",
+        "2_modelName": "Англ",
+        "3_docId": "2010-57",
+        "4_sentNum": 2,
+        "5_start_ind": 17,
+        "6_end_ind": 18,
+        "7_lemmas": [
+            "0_unit",
+            "1_selection"
+        ]
+    },
+    {
         "0_key": "настройка параметр",
         "1_textForm": "настройка параметров",
         "2_modelName": "С + Срд",

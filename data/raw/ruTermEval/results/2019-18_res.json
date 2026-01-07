@@ -1,5 +1,45 @@
 [
     {
+        "0_key": "phrase-based attentional",
+        "1_textForm": "PHRASE-BASED ATTENTIONAL",
+        "2_modelName": "Англ",
+        "3_docId": "2019-18",
+        "4_sentNum": 0,
+        "5_start_ind": 0,
+        "6_end_ind": 1,
+        "7_lemmas": [
+            "0_phrase-based",
+            "1_attentional"
+        ]
+    },
+    {
+        "0_key": "attentional transformer",
+        "1_textForm": "ATTENTIONAL TRANSFORMER",
+        "2_modelName": "Англ",
+        "3_docId": "2019-18",
+        "4_sentNum": 0,
+        "5_start_ind": 1,
+        "6_end_ind": 2,
+        "7_lemmas": [
+            "0_attentional",
+            "1_transformer"
+        ]
+    },
+    {
+        "0_key": "phrase-based attentional transformer",
+        "1_textForm": "PHRASE-BASED ATTENTIONAL TRANSFORMER",
+        "2_modelName": "Англ",
+        "3_docId": "2019-18",
+        "4_sentNum": 0,
+        "5_start_ind": 0,
+        "6_end_ind": 2,
+        "7_lemmas": [
+            "0_phrase-based",
+            "1_attentional",
+            "2_transformer"
+        ]
+    },
+    {
         "0_key": "задача выделение",
         "1_textForm": "задача выделения",
         "2_modelName": "С + Срд",

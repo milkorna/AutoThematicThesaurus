@@ -26,6 +26,19 @@
         ]
     },
     {
+        "0_key": "homo sapience",
+        "1_textForm": "Homo Sapience",
+        "2_modelName": "Англ",
+        "3_docId": "2004-56",
+        "4_sentNum": 3,
+        "5_start_ind": 22,
+        "6_end_ind": 23,
+        "7_lemmas": [
+            "0_homo",
+            "1_sapience"
+        ]
+    },
+    {
         "0_key": "счет симбиоз",
         "1_textForm": "счет симбиоза",
         "2_modelName": "С + Срд",

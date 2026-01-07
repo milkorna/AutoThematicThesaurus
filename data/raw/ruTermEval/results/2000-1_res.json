@@ -1,5 +1,31 @@
 [
     {
+        "0_key": "abbyy retrieval",
+        "1_textForm": "ABBYY Retrieval",
+        "2_modelName": "Англ",
+        "3_docId": "2000-1",
+        "4_sentNum": 0,
+        "5_start_ind": 0,
+        "6_end_ind": 1,
+        "7_lemmas": [
+            "0_abbyy",
+            "1_retrieval"
+        ]
+    },
+    {
+        "0_key": "morphology engine",
+        "1_textForm": "Morphology Engine",
+        "2_modelName": "Англ",
+        "3_docId": "2000-1",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 4,
+        "7_lemmas": [
+            "0_morphology",
+            "1_engine"
+        ]
+    },
+    {
         "0_key": "программный продукт",
         "1_textForm": "программный продукт",
         "2_modelName": "Прил + С",
@@ -91,6 +117,32 @@
         "7_lemmas": [
             "0_морфологический",
             "1_анализ"
+        ]
+    },
+    {
+        "0_key": "abbyy retrieval",
+        "1_textForm": "ABBYY Retrieval",
+        "2_modelName": "Англ",
+        "3_docId": "2000-1",
+        "4_sentNum": 2,
+        "5_start_ind": 6,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_abbyy",
+            "1_retrieval"
+        ]
+    },
+    {
+        "0_key": "morphology engine",
+        "1_textForm": "Morphology Engine",
+        "2_modelName": "Англ",
+        "3_docId": "2000-1",
+        "4_sentNum": 2,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_morphology",
+            "1_engine"
         ]
     },
     {

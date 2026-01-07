@@ -270,6 +270,19 @@
         ]
     },
     {
+        "0_key": "estonian-x dictionary",
+        "1_textForm": "Estonian-X Dictionary",
+        "2_modelName": "Англ",
+        "3_docId": "2009-90",
+        "4_sentNum": 4,
+        "5_start_ind": 31,
+        "6_end_ind": 32,
+        "7_lemmas": [
+            "0_estonian-x",
+            "1_dictionary"
+        ]
+    },
+    {
         "0_key": "проект и настоящий ситуация",
         "1_textForm": "проекта и настоящая ситуация",
         "2_modelName": "С + и + (Прил + С)",

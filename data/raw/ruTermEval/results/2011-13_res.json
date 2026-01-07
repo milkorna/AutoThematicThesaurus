@@ -39,6 +39,19 @@
         ]
     },
     {
+        "0_key": "dictascope syntax",
+        "1_textForm": "Dictascope Syntax",
+        "2_modelName": "Англ",
+        "3_docId": "2011-13",
+        "4_sentNum": 0,
+        "5_start_ind": 8,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_dictascope",
+            "1_syntax"
+        ]
+    },
+    {
         "0_key": "синтаксический анализ текст",
         "1_textForm": "Синтаксический анализ текста",
         "2_modelName": "(Прил + С) + Срд",

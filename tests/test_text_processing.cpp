@@ -15,6 +15,8 @@
 #include <string>
 #include <vector>
 
+namespace fs = std::filesystem;
+
 namespace test_utils {
 
 inline std::string load(const std::string& filename) {
@@ -61,7 +63,9 @@ class SentenceProcessingTest : public ::testing::Test {
 
         Logger::enableLogging(true);
         Logger::setGlobalLogLevel(LogLevel::Debug);
-        Logger::initializeLogFile("test_sentence_processing.log");
+        fs::path testDataDir = fs::current_path() / "tests" / "data";
+        std::string logFilePath = (testDataDir / "test_sentence_processing.txt").string();
+        Logger::initializeLogFile(logFilePath);
 
         std::vector<ProcessedSentence> results;
 

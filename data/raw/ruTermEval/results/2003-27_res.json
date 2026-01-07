@@ -538,6 +538,46 @@
         ]
     },
     {
+        "0_key": "machine readable",
+        "1_textForm": "machine readable",
+        "2_modelName": "Англ",
+        "3_docId": "2003-27",
+        "4_sentNum": 3,
+        "5_start_ind": 18,
+        "6_end_ind": 19,
+        "7_lemmas": [
+            "0_machine",
+            "1_readable"
+        ]
+    },
+    {
+        "0_key": "readable form",
+        "1_textForm": "readable form",
+        "2_modelName": "Англ",
+        "3_docId": "2003-27",
+        "4_sentNum": 3,
+        "5_start_ind": 19,
+        "6_end_ind": 20,
+        "7_lemmas": [
+            "0_readable",
+            "1_form"
+        ]
+    },
+    {
+        "0_key": "machine readable form",
+        "1_textForm": "machine readable form",
+        "2_modelName": "Англ",
+        "3_docId": "2003-27",
+        "4_sentNum": 3,
+        "5_start_ind": 18,
+        "6_end_ind": 20,
+        "7_lemmas": [
+            "0_machine",
+            "1_readable",
+            "2_form"
+        ]
+    },
+    {
         "0_key": "единство разметка",
         "1_textForm": "единство разметки",
         "2_modelName": "С + Срд",

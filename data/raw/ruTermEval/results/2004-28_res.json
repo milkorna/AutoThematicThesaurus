@@ -260,6 +260,19 @@
         ]
     },
     {
+        "0_key": "aha reaction",
+        "1_textForm": "aha reaction",
+        "2_modelName": "Англ",
+        "3_docId": "2004-28",
+        "4_sentNum": 11,
+        "5_start_ind": 12,
+        "6_end_ind": 13,
+        "7_lemmas": [
+            "0_aha",
+            "1_reaction"
+        ]
+    },
+    {
         "0_key": "основа психологический термин",
         "1_textForm": "основу психологического термина",
         "2_modelName": "C + (Прил + С)рд",

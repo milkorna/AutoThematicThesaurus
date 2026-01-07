@@ -199,6 +199,19 @@
         ]
     },
     {
+        "0_key": "microsoft windows",
+        "1_textForm": "Microsoft Windows",
+        "2_modelName": "Англ",
+        "3_docId": "2002-1",
+        "4_sentNum": 6,
+        "5_start_ind": 5,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_microsoft",
+            "1_windows"
+        ]
+    },
+    {
         "0_key": "качество модель",
         "1_textForm": "качестве модели",
         "2_modelName": "С + Срд",
@@ -361,20 +374,6 @@
         ]
     },
     {
-        "0_key": "технология реляционный модель",
-        "1_textForm": "технология реляционной модели",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2002-1",
-        "4_sentNum": 7,
-        "5_start_ind": 6,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_технология",
-            "1_реляционный",
-            "2_модель"
-        ]
-    },
-    {
         "0_key": "реляционный модель база данный",
         "1_textForm": "реляционной модели баз данных",
         "2_modelName": "(Прил + С) + Срд",
@@ -387,6 +386,20 @@
             "1_модель",
             "2_база",
             "3_данный"
+        ]
+    },
+    {
+        "0_key": "технология реляционный модель",
+        "1_textForm": "технология реляционной модели",
+        "2_modelName": "C + (Прил + С)рд",
+        "3_docId": "2002-1",
+        "4_sentNum": 7,
+        "5_start_ind": 6,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_технология",
+            "1_реляционный",
+            "2_модель"
         ]
     },
     {
@@ -413,6 +426,46 @@
         "7_lemmas": [
             "0_база",
             "1_данный"
+        ]
+    },
+    {
+        "0_key": "ms sql",
+        "1_textForm": "MS SQL",
+        "2_modelName": "Англ",
+        "3_docId": "2002-1",
+        "4_sentNum": 8,
+        "5_start_ind": 5,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_ms",
+            "1_sql"
+        ]
+    },
+    {
+        "0_key": "sql server",
+        "1_textForm": "SQL Server",
+        "2_modelName": "Англ",
+        "3_docId": "2002-1",
+        "4_sentNum": 8,
+        "5_start_ind": 6,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_sql",
+            "1_server"
+        ]
+    },
+    {
+        "0_key": "ms sql server",
+        "1_textForm": "MS SQL Server",
+        "2_modelName": "Англ",
+        "3_docId": "2002-1",
+        "4_sentNum": 8,
+        "5_start_ind": 5,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_ms",
+            "1_sql",
+            "2_server"
         ]
     },
     {

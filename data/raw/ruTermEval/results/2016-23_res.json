@@ -1,5 +1,557 @@
 [
     {
+        "0_key": "the first",
+        "1_textForm": "THE FIRST",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 3,
+        "7_lemmas": [
+            "0_the",
+            "1_first"
+        ]
+    },
+    {
+        "0_key": "first competition",
+        "1_textForm": "FIRST COMPETITION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 4,
+        "7_lemmas": [
+            "0_first",
+            "1_competition"
+        ]
+    },
+    {
+        "0_key": "the first competition",
+        "1_textForm": "THE FIRST COMPETITION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 4,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition"
+        ]
+    },
+    {
+        "0_key": "competition on",
+        "1_textForm": "COMPETITION ON",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 5,
+        "7_lemmas": [
+            "0_competition",
+            "1_on"
+        ]
+    },
+    {
+        "0_key": "first competition on",
+        "1_textForm": "FIRST COMPETITION ON",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 5,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on"
+        ]
+    },
+    {
+        "0_key": "the first competition on",
+        "1_textForm": "THE FIRST COMPETITION ON",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 5,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on"
+        ]
+    },
+    {
+        "0_key": "on automatic",
+        "1_textForm": "ON AUTOMATIC",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_on",
+            "1_automatic"
+        ]
+    },
+    {
+        "0_key": "competition on automatic",
+        "1_textForm": "COMPETITION ON AUTOMATIC",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_competition",
+            "1_on",
+            "2_automatic"
+        ]
+    },
+    {
+        "0_key": "first competition on automatic",
+        "1_textForm": "FIRST COMPETITION ON AUTOMATIC",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on",
+            "3_automatic"
+        ]
+    },
+    {
+        "0_key": "the first competition on automatic",
+        "1_textForm": "THE FIRST COMPETITION ON AUTOMATIC",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 6,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on",
+            "4_automatic"
+        ]
+    },
+    {
+        "0_key": "automatic spelling",
+        "1_textForm": "AUTOMATIC SPELLING",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_automatic",
+            "1_spelling"
+        ]
+    },
+    {
+        "0_key": "on automatic spelling",
+        "1_textForm": "ON AUTOMATIC SPELLING",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_on",
+            "1_automatic",
+            "2_spelling"
+        ]
+    },
+    {
+        "0_key": "competition on automatic spelling",
+        "1_textForm": "COMPETITION ON AUTOMATIC SPELLING",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_competition",
+            "1_on",
+            "2_automatic",
+            "3_spelling"
+        ]
+    },
+    {
+        "0_key": "first competition on automatic spelling",
+        "1_textForm": "FIRST COMPETITION ON AUTOMATIC SPELLING",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on",
+            "3_automatic",
+            "4_spelling"
+        ]
+    },
+    {
+        "0_key": "the first competition on automatic spelling",
+        "1_textForm": "THE FIRST COMPETITION ON AUTOMATIC SPELLING",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 7,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on",
+            "4_automatic",
+            "5_spelling"
+        ]
+    },
+    {
+        "0_key": "spelling correction",
+        "1_textForm": "SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 7,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_spelling",
+            "1_correction"
+        ]
+    },
+    {
+        "0_key": "automatic spelling correction",
+        "1_textForm": "AUTOMATIC SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_automatic",
+            "1_spelling",
+            "2_correction"
+        ]
+    },
+    {
+        "0_key": "on automatic spelling correction",
+        "1_textForm": "ON AUTOMATIC SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_on",
+            "1_automatic",
+            "2_spelling",
+            "3_correction"
+        ]
+    },
+    {
+        "0_key": "competition on automatic spelling correction",
+        "1_textForm": "COMPETITION ON AUTOMATIC SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_competition",
+            "1_on",
+            "2_automatic",
+            "3_spelling",
+            "4_correction"
+        ]
+    },
+    {
+        "0_key": "first competition on automatic spelling correction",
+        "1_textForm": "FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on",
+            "3_automatic",
+            "4_spelling",
+            "5_correction"
+        ]
+    },
+    {
+        "0_key": "the first competition on automatic spelling correction",
+        "1_textForm": "THE FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 8,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on",
+            "4_automatic",
+            "5_spelling",
+            "6_correction"
+        ]
+    },
+    {
+        "0_key": "correction for",
+        "1_textForm": "CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 8,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_correction",
+            "1_for"
+        ]
+    },
+    {
+        "0_key": "spelling correction for",
+        "1_textForm": "SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 7,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_spelling",
+            "1_correction",
+            "2_for"
+        ]
+    },
+    {
+        "0_key": "automatic spelling correction for",
+        "1_textForm": "AUTOMATIC SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_automatic",
+            "1_spelling",
+            "2_correction",
+            "3_for"
+        ]
+    },
+    {
+        "0_key": "on automatic spelling correction for",
+        "1_textForm": "ON AUTOMATIC SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_on",
+            "1_automatic",
+            "2_spelling",
+            "3_correction",
+            "4_for"
+        ]
+    },
+    {
+        "0_key": "competition on automatic spelling correction for",
+        "1_textForm": "COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_competition",
+            "1_on",
+            "2_automatic",
+            "3_spelling",
+            "4_correction",
+            "5_for"
+        ]
+    },
+    {
+        "0_key": "first competition on automatic spelling correction for",
+        "1_textForm": "FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on",
+            "3_automatic",
+            "4_spelling",
+            "5_correction",
+            "6_for"
+        ]
+    },
+    {
+        "0_key": "the first competition on automatic spelling correction for",
+        "1_textForm": "THE FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on",
+            "4_automatic",
+            "5_spelling",
+            "6_correction",
+            "7_for"
+        ]
+    },
+    {
+        "0_key": "for russian",
+        "1_textForm": "FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 9,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_for",
+            "1_russian"
+        ]
+    },
+    {
+        "0_key": "correction for russian",
+        "1_textForm": "CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 8,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_correction",
+            "1_for",
+            "2_russian"
+        ]
+    },
+    {
+        "0_key": "spelling correction for russian",
+        "1_textForm": "SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 7,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_spelling",
+            "1_correction",
+            "2_for",
+            "3_russian"
+        ]
+    },
+    {
+        "0_key": "automatic spelling correction for russian",
+        "1_textForm": "AUTOMATIC SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 6,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_automatic",
+            "1_spelling",
+            "2_correction",
+            "3_for",
+            "4_russian"
+        ]
+    },
+    {
+        "0_key": "on automatic spelling correction for russian",
+        "1_textForm": "ON AUTOMATIC SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 5,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_on",
+            "1_automatic",
+            "2_spelling",
+            "3_correction",
+            "4_for",
+            "5_russian"
+        ]
+    },
+    {
+        "0_key": "competition on automatic spelling correction for russian",
+        "1_textForm": "COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 4,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_competition",
+            "1_on",
+            "2_automatic",
+            "3_spelling",
+            "4_correction",
+            "5_for",
+            "6_russian"
+        ]
+    },
+    {
+        "0_key": "first competition on automatic spelling correction for russian",
+        "1_textForm": "FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 3,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_first",
+            "1_competition",
+            "2_on",
+            "3_automatic",
+            "4_spelling",
+            "5_correction",
+            "6_for",
+            "7_russian"
+        ]
+    },
+    {
+        "0_key": "the first competition on automatic spelling correction for russian",
+        "1_textForm": "THE FIRST COMPETITION ON AUTOMATIC SPELLING CORRECTION FOR RUSSIAN",
+        "2_modelName": "Англ",
+        "3_docId": "2016-23",
+        "4_sentNum": 0,
+        "5_start_ind": 2,
+        "6_end_ind": 10,
+        "7_lemmas": [
+            "0_the",
+            "1_first",
+            "2_competition",
+            "3_on",
+            "4_automatic",
+            "5_spelling",
+            "6_correction",
+            "7_for",
+            "8_russian"
+        ]
+    },
+    {
         "0_key": "автоматический исправление",
         "1_textForm": "автоматическому исправлению",
         "2_modelName": "Прил + С",
@@ -351,21 +903,6 @@
         ]
     },
     {
-        "0_key": "поиск кандидат и комбинация",
-        "1_textForm": "поиска кандидатов и комбинацию",
-        "2_modelName": "(С + Срд) + и + С",
-        "3_docId": "2016-23",
-        "4_sentNum": 5,
-        "5_start_ind": 10,
-        "6_end_ind": 13,
-        "7_lemmas": [
-            "0_поиск",
-            "1_кандидат",
-            "2_и",
-            "3_комбинация"
-        ]
-    },
-    {
         "0_key": "расстояние для поиск кандидат",
         "1_textForm": "расстояние для поиска кандидатов",
         "2_modelName": "С + Предл + (С + Срд)",
@@ -378,6 +915,21 @@
             "1_для",
             "2_поиск",
             "3_кандидат"
+        ]
+    },
+    {
+        "0_key": "поиск кандидат и комбинация",
+        "1_textForm": "поиска кандидатов и комбинацию",
+        "2_modelName": "(С + Срд) + и + С",
+        "3_docId": "2016-23",
+        "4_sentNum": 5,
+        "5_start_ind": 10,
+        "6_end_ind": 13,
+        "7_lemmas": [
+            "0_поиск",
+            "1_кандидат",
+            "2_и",
+            "3_комбинация"
         ]
     },
     {
@@ -462,20 +1014,6 @@
         ]
     },
     {
-        "0_key": "качество автоматический исправление",
-        "1_textForm": "качества автоматического исправления",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "2016-23",
-        "4_sentNum": 6,
-        "5_start_ind": 7,
-        "6_end_ind": 9,
-        "7_lemmas": [
-            "0_качество",
-            "1_автоматический",
-            "2_исправление"
-        ]
-    },
-    {
         "0_key": "автоматический исправление опечатка",
         "1_textForm": "автоматического исправления опечаток",
         "2_modelName": "(Прил + С) + Срд",
@@ -487,6 +1025,20 @@
             "0_автоматический",
             "1_исправление",
             "2_опечатка"
+        ]
+    },
+    {
+        "0_key": "качество автоматический исправление",
+        "1_textForm": "качества автоматического исправления",
+        "2_modelName": "C + (Прил + С)рд",
+        "3_docId": "2016-23",
+        "4_sentNum": 6,
+        "5_start_ind": 7,
+        "6_end_ind": 9,
+        "7_lemmas": [
+            "0_качество",
+            "1_автоматический",
+            "2_исправление"
         ]
     }
 ]
