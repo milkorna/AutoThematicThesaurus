@@ -16,6 +16,7 @@ class ComplexPhrasesCollector {
     /**
      * @brief Constructs a ComplexPhrasesCollector with simple phrases and word forms
      * @details Initializes the collector with pre-identified simple phrases and the current sentence context.
+     * Creates validator and extender helper objects for morphological validation and phrase expansion.
      *
      * @param simplePhrases Vector of simple WordComplexPtr to extend with adjacent words
      * @param forms Vector of word forms (morphological data) from the sentence being analyzed
@@ -27,117 +28,97 @@ class ComplexPhrasesCollector {
 
     /**
      * @brief Collects complex phrases from the sentence
-     * @details Processes simple phrases using grammar patterns and outputs results.
-     * Validates phrase boundaries if option is enabled.
+     * @details Main entry point for complex phrase collection. For each simple phrase in the sentence,
+     * iterates through all available grammar models and attempts to match them. When a model matches,
+     * collects the resulting complex phrase and moves to the next simple phrase.
+     * Finally validates phrase boundaries if the option is enabled to remove nested phrases.
      *
      * @param process Context object containing document ID, output file path, and processing state
      */
     void collect(Process& process);
-
-    /**
-     * @brief Removes nested phrases from the collection
-     * @details Filters out complex phrases that are completely contained within other phrases.
-     * A phrase is considered nested if its start position matches another phrase's start
-     * and its end position is within or equal to that phrase's end position.
-     */
-    void validateBoundaries();
 
     /// @brief Default destructor
     ~ComplexPhrasesCollector() = default;
 
   private:
     /// @brief Immutable vector of simple phrases to extend
-    const std::vector<WordComplexPtr> m_simplePhrases;
+    const std::vector<WordComplexPtr>& m_simplePhrases;
+
+    /// @brief Immutable reference to word forms in the current sentence
+    const std::vector<X::WordFormPtr>& m_sentence;
 
     /// @brief Collection of identified complex phrases
     std::vector<WordComplexPtr> m_collection;
 
-    /// @brief Word forms representing the current sentence
-    std::vector<WordFormPtr> m_sentence;
-
+    /// @brief Validator for morphological compatibility checking
     PhraseValidator m_validator;
 
-    // Основной цикл обработки одной простой фразы
-    bool processSimplePhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
-                             const std::shared_ptr<Model>& model);
-
-    // Инициализация расширения фразы
-    bool initializeAndExtendPhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
-                                   const std::shared_ptr<Model>& model);
+    /**
+     * @brief Validates that a simple phrase matches the current model component
+     * @details Performs three-stage validation:
+     * 1. Checks morphological compatibility using validateWordComponents()
+     * 2. Validates that head is properly matched (if head was validated, it must match)
+     * 3. Ensures all additional model conditions are satisfied (must be empty)
+     *
+     * @param simplePhrase Simple phrase to validate against the component
+     * @param modelComp Model component to check compatibility with
+     * @param status Phrase match status to update with morphological validation results
+     * @return true if the simple phrase satisfies all component requirements, false otherwise
+     */
+    bool isSimplePhraseMatchesComponent(const WordComplexPtr& simplePhrase, const std::shared_ptr<ModelComp>& modelComp,
+                                        PhraseMatchStatus& status) const;
 
     /**
-     * @brief Checks if a simple phrase satisfies current model component requirements
-     * @details Validates morphological tags and additional conditions for the simple phrase.
+     * @brief Initializes a phrase and attempts to extend it in both directions around a component
+     * @details Executes a two-step expansion process:
+     * Step 1: Initialize WordComplex from the simple phrase
+     * Step 2: Attempt left extension (if component index > 0 and position allows)
+     * Step 3: Attempt right extension (if component index < model size - 1 and position allows)
      *
-     * @param curSimplePhr Simple phrase to validate
-     * @param curModelComp Model component with conditions to check
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @return true if phrase passes validation, false otherwise
+     * Each extension uses the checkComponent() dispatcher to handle both WordComp and ModelComp types.
+     * This allows seamless processing of mixed component sequences like (WordComp, ModelComp, WordComp).
+     *
+     * @param model Grammar model containing component definitions and structure
+     * @param simplePhrase Simple phrase to initialize and expand from
+     * @param simplePhraseIndex Index of the simple phrase in m_simplePhrases collection
+     * @param componentIndex Position of the current component in the model (entry point for expansion)
+     * @param status Phrase match status for tracking validation and matching progress
+     * @return true if successful expansion finds complete pattern match, false otherwise
      */
-    [[nodiscard]] bool checkCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
-                                                const std::shared_ptr<ModelComp>& curModelComp,
-                                                PhraseMatchStatus& curPhrStatus);
+    bool expandPhraseAroundComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& simplePhrase,
+                                     size_t simplePhraseIndex, size_t componentIndex, PhraseMatchStatus& status);
 
     /**
-     * @brief Determines if a simple phrase should be skipped during processing
-     * @details Checks boundary conditions, position validity, and model compatibility.
+     * @brief Orchestrates the complete matching process for a single model against a phrase
+     * @details Implements a two-phase matching strategy:
      *
-     * @param smpPhrOffset Index of the simple phrase to check
-     * @param curSimplePhrInd Index of the current simple phrase being processed
-     * @param isLeft Direction flag (true for left/preceding, false for right/following)
-     * @param wc Current word complex being built
-     * @param modelComp Model component being processed
-     * @return true if phrase should be skipped, false otherwise
+     * Phase 1 - Component Compatibility Check:
+     *   - Finds the model component corresponding to the simple phrase
+     *   - Validates morphological compatibility (isSimplePhraseMatchesComponent)
+     *   - Returns false immediately if validation fails
+     *
+     * Phase 2 - Phrase Expansion:
+     *   - Initializes WordComplex from the simple phrase
+     *   - Attempts bidirectional expansion around the component (expandPhraseAroundComponent)
+     *   - Recursively processes adjacent components through the dispatcher
+     *
+     * @param model Grammar model to apply against the phrase
+     * @param simplePhrase Simple phrase to process
+     * @param simplePhraseIndex Index of the simple phrase in m_simplePhrases
+     * @return true if model successfully matched and phrase was collected, false otherwise
      */
-    [[nodiscard]] bool shouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft, const WordComplexPtr& wc,
-                                  std::shared_ptr<ModelComp> modelComp);
+    bool processModelForPhrase(const std::shared_ptr<Model>& model, const WordComplexPtr& simplePhrase,
+                               size_t simplePhraseIndex);
 
     /**
-     * @brief Recursively extends complex phrase with adjacent word forms
-     * @details Checks components in specified direction (left/right) and accumulates matching words.
-     * Handles both WordComp and ModelComp component types. Recursively processes nested components
-     * until no more matches are found or boundaries are reached.
+     * @brief Removes nested phrases from the final collection
+     * @details Post-processing step that filters out complex phrases completely contained within others.
+     * A phrase is marked as nested if there exists another phrase with:
+     *   - Same start position
+     *   - End position greater than or equal to the current phrase's end position
      *
-     * @param curSPhPosCmp Index of current component in the model
-     * @param wc Current word complex being extended (modified in place)
-     * @param model Grammar model defining expected component structure
-     * @param compIndex Current component index in the model
-     * @param formIndex Current word form index in the sentence
-     * @param isLeft Direction flag (true for left/preceding words, false for right/following)
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @param curSimplePhrInd Index of the current simple phrase
-     * @return true if complete pattern match is found, false otherwise
+     * Only called when Options::validateBoundaries is enabled. Ensures only maximal
+     * non-overlapping phrases are included in the final result.
      */
-    [[nodiscard]] bool checkAside(size_t curSPhPosCmp, const WordComplexPtr& wc, const std::shared_ptr<Model>& model,
-                                  size_t compIndex, size_t formIndex, const bool isLeft,
-                                  PhraseMatchStatus& curPhrStatus, size_t curSimplePhrInd);
-
-    /**
-     * @brief Processes a model component for a simple phrase
-     * @details Initializes word complex from simple phrase and recursively checks adjacent components.
-     * Handles both left and right directions if component index allows.
-     *
-     * @param model Grammar model containing the component structure
-     * @param curSimplePhr Current simple phrase to process
-     * @param curSimplePhrInd Index of the current simple phrase
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @param wc Output word complex to initialize (modified in place)
-     * @return true if complete pattern match is found, false otherwise
-     */
-    [[nodiscard]] bool processModelComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& curSimplePhr,
-                                             const size_t curSimplePhrInd, PhraseMatchStatus& curPhrStatus,
-                                             WordComplexPtr& wc);
-
-    /**
-     * @brief Updates phrase boundaries and text form with adjacent phrase
-     * @details Extends the word complex text representation and adjusts position boundaries
-     * based on the adjacent phrase (left or right).
-     *
-     * @param wc Current word complex being updated (modified in place)
-     * @param asidePhrase Adjacent phrase to merge
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @param isLeft Direction flag (true for extending left, false for right)
-     */
-    void updatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
-                            PhraseMatchStatus& curPhrStatus, bool isLeft);
+    void validateBoundaries();
 };

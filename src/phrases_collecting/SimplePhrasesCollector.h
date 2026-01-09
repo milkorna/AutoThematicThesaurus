@@ -2,6 +2,7 @@
 
 #include "GrammarPatternManager.h"
 #include "ModelComponent.h"
+#include "PhraseValidator.h"
 #include "Process.h"
 
 #include "xmorphy/morph/WordForm.h"
@@ -19,7 +20,8 @@ class SimplePhrasesCollector {
      *
      * @param forms Vector of word forms with morphological information from the sentence
      */
-    explicit SimplePhrasesCollector(const std::vector<WordFormPtr>& forms) : m_sentence(forms), m_collection{} {
+    explicit SimplePhrasesCollector(const std::vector<WordFormPtr>& forms)
+        : m_sentence(forms), m_collection{}, m_validator(forms) {
     }
 
     /**
@@ -50,6 +52,8 @@ class SimplePhrasesCollector {
 
     /// @brief Word forms representing the current sentence
     std::vector<WordFormPtr> m_sentence;
+
+    PhraseValidator m_validator;
 
     /**
      * @brief Recursively extends phrase in specified direction

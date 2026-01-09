@@ -1,178 +1,8 @@
 #include "ComplexPhrasesCollector.h"
 #include "ModelComponent.h"
-#include "MorphAnalyzer.h"
 #include "Options.h"
+#include "PhraseExtender.h"
 #include "PhraseMatchStatus.h"
-#include "Process.h"
-
-bool ComplexPhrasesCollector::checkCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
-                                                       const std::shared_ptr<ModelComp>& curModelComp,
-                                                       PhraseMatchStatus& curPhrStatus) {
-    const auto& addCond = curModelComp->getCondition().getAdditional();
-    bool simplePhrAddCond = addCond.empty();
-    bool simplePhrMorph = m_validator.validateWordComponents(curSimplePhr, curModelComp, curPhrStatus);
-
-    if (curPhrStatus.headValidated && !curPhrStatus.headMatched) {
-        return false;
-    }
-
-    if (!simplePhrAddCond) {
-        return false;
-    }
-
-    return simplePhrMorph;
-}
-
-bool ComplexPhrasesCollector::shouldSkip(size_t smpPhrOffset, size_t curSimplePhrInd, bool isLeft,
-                                         const WordComplexPtr& wc, std::shared_ptr<ModelComp> modelComp) {
-    if (smpPhrOffset >= m_simplePhrases.size() || smpPhrOffset < 0) {
-        return true;
-    }
-
-    if (smpPhrOffset == curSimplePhrInd) {
-        return true;
-    }
-
-    if (isLeft && m_simplePhrases[smpPhrOffset]->pos.start >= wc->pos.end) {
-        return true;
-    }
-
-    if (!isLeft && m_simplePhrases[smpPhrOffset]->pos.start <= wc->pos.end) {
-        return true;
-    }
-
-    if (m_simplePhrases[smpPhrOffset]->modelName != modelComp->getForm()) {
-        return true;
-    }
-
-    return false;
-}
-
-bool ComplexPhrasesCollector::checkAside(size_t curSPhPosCmp, const WordComplexPtr& wc,
-                                         const std::shared_ptr<Model>& model, size_t compIndex, size_t formIndex,
-                                         const bool isLeft, PhraseMatchStatus& curPhrStatus, size_t curSimplePhrInd) {
-    auto& options = Options::getOptions();
-    auto comp = model->getComponents()[compIndex];
-
-    auto& morphAnalyzer = MorphAnalyzer::getInstance();
-
-    // Check if the component is a WordComp
-    if (auto wordComp = std::dynamic_pointer_cast<WordComp>(comp)) {
-        const auto token = m_sentence[formIndex];
-
-        if (!m_validator.isTokenValid(token)) {
-            return false;
-        }
-
-        std::string formFromText = token->getWordForm().getRawString();
-
-        if (!wordComp->condition().check(wordComp->getSPTag(), token)) {
-            return false;
-        } else {
-            if (!curPhrStatus.headValidated) {
-                curPhrStatus.headValidated = true;
-                curPhrStatus.headMatched = true;
-            }
-        }
-
-        updateWordComplex(wc, token, formFromText, isLeft);
-
-        curPhrStatus.matchedComponents++;
-        size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
-        size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
-
-        if (isLeft && formIndex == 0)
-            return false;
-
-        if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1)) {
-            if (!checkAside(curSPhPosCmp, wc, model, nextCompIndex, nextFormIndex, isLeft, curPhrStatus,
-                            curSimplePhrInd)) {
-                return false;
-            }
-        } else {
-            if (m_collection.empty() || wc->textForm != m_collection.back()->textForm) {
-                m_collection.push_back(std::make_shared<WordComplex>(*wc));
-            }
-
-            if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < m_sentence.size() - 1))) {
-                if (checkAside(curSPhPosCmp, wc, model, compIndex, nextFormIndex, isLeft, curPhrStatus,
-                               curSimplePhrInd)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-    }
-    // If the component is a ModelComp
-    else if (auto modelComp = std::dynamic_pointer_cast<ModelComp>(comp)) {
-        if (curSimplePhrInd > m_simplePhrases.size())
-            return false;
-
-        for (size_t smpPhrOffset = 0; smpPhrOffset < m_simplePhrases.size(); smpPhrOffset++) {
-
-            const auto asidePhrase = m_simplePhrases[smpPhrOffset];
-            if (shouldSkip(smpPhrOffset, curSimplePhrInd, isLeft, wc, modelComp)) {
-                continue;
-            }
-
-            if (!curPhrStatus.headValidated) {
-                if (modelComp->isHead()) {
-                    if (modelComp->getHead()->condition().check(modelComp->getHead()->getSPTag(),
-                                                                m_sentence[formIndex + *modelComp->getHeadPos()])) {
-                        curPhrStatus.headValidated = true;
-                        curPhrStatus.headMatched = true;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-
-            const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
-
-            if (!curPhrStatus.lexFound) {
-                for (size_t offset = 0; offset < curSimplePhr->words.size(); offset++) {
-                    for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
-                        if (!modelComp->getCondition().getAdditional().check(morphForm)) {
-                            return false;
-                        } else {
-                            curPhrStatus.lexFound = true;
-                        }
-                    }
-                }
-            }
-
-            size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
-
-            if (isLeft && asidePhrase->pos.end == formIndex) {
-                addWordsToFront(wc, asidePhrase);
-                updatePhraseStatus(wc, asidePhrase, curPhrStatus, true);
-            } else if (asidePhrase->pos.start == formIndex) {
-                addWordsToBack(wc, asidePhrase);
-                updatePhraseStatus(wc, asidePhrase, curPhrStatus, false);
-            }
-
-            if (curSPhPosCmp != 0 && wc->pos.start != 0 && curSimplePhr->pos.start - 1 == nextFormIndex) {
-                if (checkAside(curSPhPosCmp, wc, model, curSPhPosCmp - 1, curSimplePhr->pos.start - 1, isLeft,
-                               curPhrStatus, smpPhrOffset))
-                    break;
-            }
-            if (curSPhPosCmp != model->size() - 1 && curSimplePhr->pos.end + 1 == nextFormIndex) {
-                if (checkAside(curSPhPosCmp, wc, model, curSPhPosCmp + 1, curSimplePhr->pos.end + 1, isLeft,
-                               curPhrStatus, smpPhrOffset))
-                    break;
-            }
-
-            if (curPhrStatus.isValid() && compIndex == model->size() - 1 &&
-                curPhrStatus.matchedComponents >= model->size()) {
-                if (m_collection.empty() || wc->textForm != m_collection.back()->textForm) {
-                    m_collection.push_back(std::make_shared<WordComplex>(*wc));
-                }
-            }
-        }
-    }
-    return false;
-}
 
 void ComplexPhrasesCollector::validateBoundaries() {
     if (m_collection.empty()) {
@@ -218,74 +48,88 @@ void ComplexPhrasesCollector::validateBoundaries() {
     m_collection = std::move(validatedCollection);
 }
 
-bool ComplexPhrasesCollector::processModelComponent(const std::shared_ptr<Model>& model,
-                                                    const WordComplexPtr& curSimplePhr, const size_t curSimplePhrInd,
-                                                    PhraseMatchStatus& curPhrStatus, WordComplexPtr& wc) {
-    auto curSPhPosCmp = model->getModelCompIndByForm(curSimplePhr->modelName);
-    if (!curSPhPosCmp)
+bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const WordComplexPtr& simplePhrase,
+                                                             const std::shared_ptr<ModelComp>& modelComp,
+                                                             PhraseMatchStatus& status) const {
+
+    // Проверяем морфологию
+    if (!m_validator.validateWordComponents(simplePhrase, modelComp, status)) {
         return false;
+    }
 
-    if (!checkCurrentSimplePhrase(curSimplePhr, model->getModelComponent(*curSPhPosCmp), curPhrStatus))
+    // Если head валидирован но не совпадает - фраза не подходит
+    if (status.headValidated && !status.headMatched) {
         return false;
-
-    wc = initializeWordComplex(curSimplePhr, model->getForm());
-    curPhrStatus.matchedComponents++;
-
-    if (*curSPhPosCmp != 0 && wc->pos.start != 0) {
-        if (checkAside(*curSPhPosCmp, wc, model, *curSPhPosCmp - 1, curSimplePhr->pos.start - 1, true, curPhrStatus,
-                       curSimplePhrInd))
-            return true;
     }
-    if (*curSPhPosCmp != model->size() - 1 && curSimplePhr->pos.end + 1 < m_sentence.size()) {
-        if (checkAside(*curSPhPosCmp, wc, model, *curSPhPosCmp + 1, curSimplePhr->pos.end + 1, false, curPhrStatus,
-                       curSimplePhrInd))
-            return true;
+
+    // Проверяем дополнительные условия
+    const auto& addCond = modelComp->getCondition().getAdditional();
+    if (!addCond.empty()) {
+        return false; // Если есть условия и они не empty - не подходит
     }
-    return false;
+
+    return true;
 }
 
-// bool ComplexPhrasesCollector::processSimplePhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
-//                                                   const std::shared_ptr<Model>& model) {
-//     auto modelCompIndex = model->getModelCompIndByForm(simplePhrase->modelName);
-//     if (!modelCompIndex) {
-//         return false;
-//     }
+bool ComplexPhrasesCollector::processModelForPhrase(const std::shared_ptr<Model>& model,
+                                                    const WordComplexPtr& simplePhrase, size_t simplePhraseIndex) {
 
-//     // Фаза 1: Проверка что простая фраза соответствует модели
-//     PhraseMatchStatus status;
-//     auto modelComp = model->getModelComponent(*modelCompIndex);
-
-//     if (!m_validator.validateWordComponents(simplePhrase, modelComp, status)) {
-//         return false;
-//     }
-
-//     // Фаза 2: Инициализация и расширение
-//     return initializeAndExtendPhrase(simplePhrase, simplePhraseIndex, model);
-// }
-
-void ComplexPhrasesCollector::updatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
-                                                 PhraseMatchStatus& curPhrStatus, bool isLeft) {
-    curPhrStatus.matchedComponents++;
-    if (isLeft) {
-        wc->pos.start = asidePhrase->pos.start;
-        wc->textForm.insert(0, asidePhrase->textForm + " ");
-    } else {
-        wc->pos.end = asidePhrase->pos.end;
-        wc->textForm.append(" " + asidePhrase->textForm);
+    auto componentIndex = model->getModelCompIndByForm(simplePhrase->modelName);
+    if (!componentIndex) {
+        return false;
     }
+
+    PhraseMatchStatus status;
+
+    // Этап 1: Проверяем что простая фраза соответствует компоненту модели
+    auto modelComp = model->getModelComponent(*componentIndex);
+    if (!isSimplePhraseMatchesComponent(simplePhrase, modelComp, status)) {
+        return false;
+    }
+
+    // Этап 2: Инициализируем и пытаемся расширить фразу
+    return expandPhraseAroundComponent(model, simplePhrase, simplePhraseIndex, *componentIndex, status);
+}
+
+bool ComplexPhrasesCollector::expandPhraseAroundComponent(const std::shared_ptr<Model>& model,
+                                                          const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
+                                                          size_t componentIndex, PhraseMatchStatus& status) {
+
+    auto wc = initializeWordComplex(simplePhrase, model->getForm());
+    status.matchedComponents = 1;
+
+    // Создаем временный extender с текущим контекстом
+    PhraseExtender extender(model, m_collection, status, simplePhraseIndex, m_simplePhrases, m_sentence, m_validator);
+
+    // Пытаемся расширить влево
+    if (componentIndex > 0 && simplePhrase->pos.start > 0) {
+        if (extender.checkComponent(componentIndex - 1, simplePhrase->pos.start - 1, true, wc)) {
+            return true;
+        }
+    }
+
+    // Пытаемся расширить вправо
+    if (componentIndex < model->size() - 1 && simplePhrase->pos.end + 1 < m_sentence.size()) {
+        if (extender.checkComponent(componentIndex + 1, simplePhrase->pos.end + 1, false, wc)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void ComplexPhrasesCollector::collect(Process& process) {
     const auto& patterns = GrammarPatternManager::GetManager();
 
-    for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); curSimplePhrInd++) {
-        const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
+    // Обрабатываем каждую простую фразу
+    for (size_t simplePhraseIndex = 0; simplePhraseIndex < m_simplePhrases.size(); ++simplePhraseIndex) {
+        const auto& simplePhrase = m_simplePhrases[simplePhraseIndex];
 
+        // Пытаемся найти подходящую модель
         for (const auto& [name, model] : patterns.getComplexPatterns()) {
-            PhraseMatchStatus curPhrStatus;
-            WordComplexPtr wc;
-            if (processModelComponent(model, curSimplePhr, curSimplePhrInd, curPhrStatus, wc))
-                break;
+            if (processModelForPhrase(model, simplePhrase, simplePhraseIndex)) {
+                break; // Найдена подходящая модель - переходим к следующей фразе
+            }
         }
     }
 
@@ -296,52 +140,3 @@ void ComplexPhrasesCollector::collect(Process& process) {
 
     process.outputResults(m_collection);
 }
-
-// void ComplexPhrasesCollector::collect(Process& process) {
-//     const auto& patterns = GrammarPatternManager::GetManager();
-
-//     for (size_t curSimplePhrInd = 0; curSimplePhrInd < m_simplePhrases.size(); ++curSimplePhrInd) {
-//         const auto curSimplePhr = m_simplePhrases[curSimplePhrInd];
-
-//         for (const auto& [name, model] : patterns.getComplexPatterns()) {
-//             if (processSimplePhrase(curSimplePhr, curSimplePhrInd, model)) {
-//                 break; // Found match, move to next phrase
-//             }
-//         }
-//     }
-
-//     auto& options = Options::getOptions();
-//     if (options.validateBoundaries) {
-//         validateBoundaries();
-//     }
-
-//     process.outputResults(m_collection);
-// }
-
-// bool ComplexPhrasesCollector::initializeAndExtendPhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
-//                                                         const std::shared_ptr<Model>& model) {
-//     auto wc = initializeWordComplex(simplePhrase, model->getForm());
-//     PhraseMatchStatus status;
-//     status.matchedComponents = 1;
-
-//     auto modelCompIndex = model->getModelCompIndByForm(simplePhrase->modelName);
-//     if (!modelCompIndex) {
-//         return false;
-//     }
-
-//     // Попробовать расширить влево
-//     if (*modelCompIndex > 0 && simplePhrase->pos.start > 0) {
-//         if (m_extender.extendPhrase(wc, model, *modelCompIndex - 1, simplePhrase->pos.start - 1, true, status)) {
-//             return true;
-//         }
-//     }
-
-//     // Попробовать расширить вправо
-//     if (*modelCompIndex < model->size() - 1 && simplePhrase->pos.end + 1 < m_sentence.size()) {
-//         if (m_extender.extendPhrase(wc, model, *modelCompIndex + 1, simplePhrase->pos.end + 1, false, status)) {
-//             return true;
-//         }
-//     }
-
-//     return false;
-// }

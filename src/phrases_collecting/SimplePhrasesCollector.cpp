@@ -1,11 +1,8 @@
 #include "SimplePhrasesCollector.h"
 #include "GrammarPatternManager.h"
 #include "Logger.h"
-#include "MorphAnalyzer.h"
 #include "Options.h"
 #include "Process.h"
-#include "StopWordsManager.h"
-#include "StringUtils.h"
 
 static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo) {
     const auto& manager = GrammarPatternManager::GetManager();
@@ -29,25 +26,11 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
     auto& options = Options::getOptions();
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
-    auto& morphAnalyzer = MorphAnalyzer::getInstance();
-
-    if (options.cleanStopWords) {
-        if (StopWordsManager::isStopWord(token->getWordForm().toLowerCase().getRawString()))
-            return false;
-
-        const auto normalForm = morphAnalyzer.getLemma(token);
-        if (StopWordsManager::isStopWord(normalForm))
-            return false;
+    if (!m_validator.isTokenValid(token)) {
+        return false;
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (token->getTokenType() == X::TokenTypeTag::PNCT || token->getTokenType() == X::TokenTypeTag::NUMB) {
-        return false;
-    }
-
-    if (morphAnalyzer.isMorphAnalysisError(token))
-        return false;
-
     if (!comp->condition().check(comp->getSPTag(), token))
         return false;
     updateWordComplex(wc, token, formFromText, isLeft);
@@ -76,30 +59,12 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
 }
 
 void SimplePhrasesCollector::collect(Process& process) {
-    const auto& options = Options::getOptions();
     const auto& patterns = GrammarPatternManager::GetManager();
     const auto& simplePatterns = patterns.getSimplePatterns();
-    const auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
-
-        if (options.cleanStopWords) {
-            if (StopWordsManager::isStopWord(token->getWordForm().toLowerCase().getRawString())) {
-                continue;
-            }
-
-            const auto normalForm = morphAnalyzer.getLemma(token);
-            if (StopWordsManager::isStopWord(normalForm)) {
-                continue;
-            }
-        }
-
-        if (token->getTokenType() == X::TokenTypeTag::PNCT || token->getTokenType() == X::TokenTypeTag::NUMB) {
-            continue;
-        }
-
-        if (morphAnalyzer.isMorphAnalysisError(token)) {
+        if (!m_validator.isTokenValid(token)) {
             continue;
         }
 

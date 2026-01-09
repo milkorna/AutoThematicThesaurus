@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ModelComponent.h"
 #include "PhraseMatchStatus.h"
 #include "WordComplex.h"
