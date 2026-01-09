@@ -1,423 +1,547 @@
 [
     {
-        "0_key": "сопоставительный анализ",
-        "1_textForm": "Сопоставительный анализ",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 0,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_сопоставительный",
-            "1_анализ"
+        "key": "сопоставительный анализ",
+        "textForm": "Сопоставительный анализ",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 0,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            0,
+            23
+        ],
+        "lemmas": [
+            "сопоставительный",
+            "анализ"
         ]
     },
     {
-        "0_key": "корейский язык",
-        "1_textForm": "корейского языка",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 0,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_корейский",
-            "1_язык"
+        "key": "корейский язык",
+        "textForm": "корейского языка",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 0,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            38,
+            54
+        ],
+        "lemmas": [
+            "корейский",
+            "язык"
         ]
     },
     {
-        "0_key": "нейронный сеть",
-        "1_textForm": "нейронных сетях",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 0,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_нейронный",
-            "1_сеть"
+        "key": "нейронный сеть",
+        "textForm": "нейронных сетях",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 0,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            58,
+            73
+        ],
+        "lemmas": [
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "корейский язык на нейронный сеть",
-        "1_textForm": "корейского языка на нейронных сетях",
-        "2_modelName": "(Прил + С) + Предл + (Прил + С)",
-        "3_docId": "test-text-3",
-        "4_sentNum": 0,
-        "5_start_ind": 3,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_корейский",
-            "1_язык",
-            "2_на",
-            "3_нейронный",
-            "4_сеть"
+        "key": "корейский язык на нейронный сеть",
+        "textForm": "корейского языка на нейронных сетях",
+        "modelName": "(Прил + С) + Предл + (Прил + С)",
+        "docId": "test-text-3",
+        "sentNum": 0,
+        "start_token_ind": 3,
+        "end_token_ind": 7,
+        "span": [
+            38,
+            73
+        ],
+        "lemmas": [
+            "корейский",
+            "язык",
+            "на",
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "язык на нейронный сеть",
-        "1_textForm": "языка на нейронных сетях",
-        "2_modelName": "С + Предл + (Прил + С)",
-        "3_docId": "test-text-3",
-        "4_sentNum": 0,
-        "5_start_ind": 4,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_язык",
-            "1_на",
-            "2_нейронный",
-            "3_сеть"
+        "key": "язык на нейронный сеть",
+        "textForm": "языка на нейронных сетях",
+        "modelName": "С + Предл + (Прил + С)",
+        "docId": "test-text-3",
+        "sentNum": 0,
+        "start_token_ind": 4,
+        "end_token_ind": 7,
+        "span": [
+            49,
+            73
+        ],
+        "lemmas": [
+            "язык",
+            "на",
+            "нейронный",
+            "сеть"
         ]
     },
     {
-        "0_key": "данный исследование",
-        "1_textForm": "данном исследовании",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 1,
-        "6_end_ind": 2,
-        "7_lemmas": [
-            "0_данный",
-            "1_исследование"
+        "key": "данный исследование",
+        "textForm": "данном исследовании",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 1,
+        "end_token_ind": 2,
+        "span": [
+            76,
+            95
+        ],
+        "lemmas": [
+            "данный",
+            "исследование"
         ]
     },
     {
-        "0_key": "работа модель",
-        "1_textForm": "работа моделей",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_работа",
-            "1_модель"
+        "key": "работа модель",
+        "textForm": "работа моделей",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            110,
+            124
+        ],
+        "lemmas": [
+            "работа",
+            "модель"
         ]
     },
     {
-        "0_key": "нейронный парсер",
-        "1_textForm": "нейронных парсеров",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_нейронный",
-            "1_парсер"
+        "key": "нейронный парсер",
+        "textForm": "нейронных парсеров",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            125,
+            143
+        ],
+        "lemmas": [
+            "нейронный",
+            "парсер"
         ]
     },
     {
-        "0_key": "корпус проект",
-        "1_textForm": "корпусах проекта",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 14,
-        "6_end_ind": 15,
-        "7_lemmas": [
-            "0_корпус",
-            "1_проект"
+        "key": "корпус проект",
+        "textForm": "корпусах проекта",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 14,
+        "end_token_ind": 15,
+        "span": [
+            174,
+            190
+        ],
+        "lemmas": [
+            "корпус",
+            "проект"
         ]
     },
     {
-        "0_key": "universal dependencies",
-        "1_textForm": "Universal Dependencies",
-        "2_modelName": "Англ",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 16,
-        "6_end_ind": 17,
-        "7_lemmas": [
-            "0_universal",
-            "1_dependencies"
+        "key": "universal dependencies",
+        "textForm": "Universal Dependencies",
+        "modelName": "Англ",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 16,
+        "end_token_ind": 17,
+        "span": [
+            191,
+            213
+        ],
+        "lemmas": [
+            "universal",
+            "dependencies"
         ]
     },
     {
-        "0_key": "универсальный морфоразметка",
-        "1_textForm": "универсальной морфоразметки",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 23,
-        "6_end_ind": 24,
-        "7_lemmas": [
-            "0_универсальный",
-            "1_морфоразметка"
+        "key": "универсальный морфоразметка",
+        "textForm": "универсальной морфоразметки",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 23,
+        "end_token_ind": 24,
+        "span": [
+            250,
+            277
+        ],
+        "lemmas": [
+            "универсальный",
+            "морфоразметка"
         ]
     },
     {
-        "0_key": "морфоразметка для корпус",
-        "1_textForm": "морфоразметки для корпусов",
-        "2_modelName": "С + Предл(Для) + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 24,
-        "6_end_ind": 26,
-        "7_lemmas": [
-            "0_морфоразметка",
-            "1_для",
-            "2_корпус"
+        "key": "морфоразметка для корпус",
+        "textForm": "морфоразметки для корпусов",
+        "modelName": "С + Предл(Для) + С",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 24,
+        "end_token_ind": 26,
+        "span": [
+            264,
+            290
+        ],
+        "lemmas": [
+            "морфоразметка",
+            "для",
+            "корпус"
         ]
     },
     {
-        "0_key": "модель нейронный парсер",
-        "1_textForm": "моделей нейронных парсеров",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 5,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_модель",
-            "1_нейронный",
-            "2_парсер"
+        "key": "модель нейронный парсер",
+        "textForm": "моделей нейронных парсеров",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 5,
+        "end_token_ind": 7,
+        "span": [
+            117,
+            143
+        ],
+        "lemmas": [
+            "модель",
+            "нейронный",
+            "парсер"
         ]
     },
     {
-        "0_key": "универсальный морфоразметка для корпус",
-        "1_textForm": "универсальной морфоразметки для корпусов",
-        "2_modelName": "(Прил + С) + Предл + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 23,
-        "6_end_ind": 26,
-        "7_lemmas": [
-            "0_универсальный",
-            "1_морфоразметка",
-            "2_для",
-            "3_корпус"
+        "key": "разработка универсальный морфоразметка",
+        "textForm": "разработка универсальной морфоразметки",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 22,
+        "end_token_ind": 24,
+        "span": [
+            239,
+            277
+        ],
+        "lemmas": [
+            "разработка",
+            "универсальный",
+            "морфоразметка"
         ]
     },
     {
-        "0_key": "разработка универсальный морфоразметка",
-        "1_textForm": "разработка универсальной морфоразметки",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 1,
-        "5_start_ind": 22,
-        "6_end_ind": 24,
-        "7_lemmas": [
-            "0_разработка",
-            "1_универсальный",
-            "2_морфоразметка"
+        "key": "универсальный морфоразметка для корпус",
+        "textForm": "универсальной морфоразметки для корпусов",
+        "modelName": "(Прил + С) + Предл + С",
+        "docId": "test-text-3",
+        "sentNum": 1,
+        "start_token_ind": 23,
+        "end_token_ind": 26,
+        "span": [
+            250,
+            290
+        ],
+        "lemmas": [
+            "универсальный",
+            "морфоразметка",
+            "для",
+            "корпус"
         ]
     },
     {
-        "0_key": "применимость набор",
-        "1_textForm": "применимость набора",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 3,
-        "6_end_ind": 4,
-        "7_lemmas": [
-            "0_применимость",
-            "1_набор"
+        "key": "применимость набор",
+        "textForm": "применимость набора",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 3,
+        "end_token_ind": 4,
+        "span": [
+            334,
+            353
+        ],
+        "lemmas": [
+            "применимость",
+            "набор"
         ]
     },
     {
-        "0_key": "универсальный тег",
-        "1_textForm": "универсальных тегов",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_универсальный",
-            "1_тег"
+        "key": "универсальный тег",
+        "textForm": "универсальных тегов",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            354,
+            373
+        ],
+        "lemmas": [
+            "универсальный",
+            "тег"
         ]
     },
     {
-        "0_key": "корейский язык",
-        "1_textForm": "корейского языка",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 11,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_корейский",
-            "1_язык"
+        "key": "корейский язык",
+        "textForm": "корейского языка",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 11,
+        "end_token_ind": 12,
+        "span": [
+            396,
+            412
+        ],
+        "lemmas": [
+            "корейский",
+            "язык"
         ]
     },
     {
-        "0_key": "используемый парсер",
-        "1_textForm": "используемые парсерами",
-        "2_modelName": "Прич + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 24,
-        "6_end_ind": 25,
-        "7_lemmas": [
-            "0_используемый",
-            "1_парсер"
+        "key": "используемый парсер",
+        "textForm": "используемые парсерами",
+        "modelName": "Прич + С",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 24,
+        "end_token_ind": 25,
+        "span": [
+            463,
+            485
+        ],
+        "lemmas": [
+            "используемый",
+            "парсер"
         ]
     },
     {
-        "0_key": "корейский язык",
-        "1_textForm": "корейского языка",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 27,
-        "6_end_ind": 28,
-        "7_lemmas": [
-            "0_корейский",
-            "1_язык"
+        "key": "корейский язык",
+        "textForm": "корейского языка",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 27,
+        "end_token_ind": 28,
+        "span": [
+            490,
+            506
+        ],
+        "lemmas": [
+            "корейский",
+            "язык"
         ]
     },
     {
-        "0_key": "универсальный тег к система",
-        "1_textForm": "универсальных тегов к системе",
-        "2_modelName": "(Прил + С) + Предл + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 5,
-        "6_end_ind": 8,
-        "7_lemmas": [
-            "0_универсальный",
-            "1_тег",
-            "2_к",
-            "3_система"
+        "key": "набор универсальный тег",
+        "textForm": "набора универсальных тегов",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            347,
+            373
+        ],
+        "lemmas": [
+            "набор",
+            "универсальный",
+            "тег"
         ]
     },
     {
-        "0_key": "набор универсальный тег",
-        "1_textForm": "набора универсальных тегов",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_набор",
-            "1_универсальный",
-            "2_тег"
+        "key": "универсальный тег к система",
+        "textForm": "универсальных тегов к системе",
+        "modelName": "(Прил + С) + Предл + С",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 5,
+        "end_token_ind": 8,
+        "span": [
+            354,
+            383
+        ],
+        "lemmas": [
+            "универсальный",
+            "тег",
+            "к",
+            "система"
         ]
     },
     {
-        "0_key": "речь корейский язык",
-        "1_textForm": "речи корейского языка",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 10,
-        "6_end_ind": 12,
-        "7_lemmas": [
-            "0_речь",
-            "1_корейский",
-            "2_язык"
+        "key": "речь корейский язык",
+        "textForm": "речи корейского языка",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 10,
+        "end_token_ind": 12,
+        "span": [
+            391,
+            412
+        ],
+        "lemmas": [
+            "речь",
+            "корейский",
+            "язык"
         ]
     },
     {
-        "0_key": "парсер для корейский язык",
-        "1_textForm": "парсерами для корейского языка",
-        "2_modelName": "С + Предл + (Прил + С)",
-        "3_docId": "test-text-3",
-        "4_sentNum": 2,
-        "5_start_ind": 25,
-        "6_end_ind": 28,
-        "7_lemmas": [
-            "0_парсер",
-            "1_для",
-            "2_корейский",
-            "3_язык"
+        "key": "парсер для корейский язык",
+        "textForm": "парсерами для корейского языка",
+        "modelName": "С + Предл + (Прил + С)",
+        "docId": "test-text-3",
+        "sentNum": 2,
+        "start_token_ind": 25,
+        "end_token_ind": 28,
+        "span": [
+            476,
+            506
+        ],
+        "lemmas": [
+            "парсер",
+            "для",
+            "корейский",
+            "язык"
         ]
     },
     {
-        "0_key": "частеречный деление",
-        "1_textForm": "Частеречное деление",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 3,
-        "5_start_ind": 0,
-        "6_end_ind": 1,
-        "7_lemmas": [
-            "0_частеречный",
-            "1_деление"
+        "key": "частеречный деление",
+        "textForm": "Частеречное деление",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 3,
+        "start_token_ind": 0,
+        "end_token_ind": 1,
+        "span": [
+            508,
+            527
+        ],
+        "lemmas": [
+            "частеречный",
+            "деление"
         ]
     },
     {
-        "0_key": "набор тег",
-        "1_textForm": "наборах тегов",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 3,
-        "5_start_ind": 6,
-        "6_end_ind": 7,
-        "7_lemmas": [
-            "0_набор",
-            "1_тег"
+        "key": "набор тег",
+        "textForm": "наборах тегов",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 3,
+        "start_token_ind": 6,
+        "end_token_ind": 7,
+        "span": [
+            549,
+            562
+        ],
+        "lemmas": [
+            "набор",
+            "тег"
         ]
     },
     {
-        "0_key": "корейский грамматика",
-        "1_textForm": "корейской грамматики",
-        "2_modelName": "Прил + С",
-        "3_docId": "test-text-3",
-        "4_sentNum": 3,
-        "5_start_ind": 13,
-        "6_end_ind": 14,
-        "7_lemmas": [
-            "0_корейский",
-            "1_грамматика"
+        "key": "корейский грамматика",
+        "textForm": "корейской грамматики",
+        "modelName": "Прил + С",
+        "docId": "test-text-3",
+        "sentNum": 3,
+        "start_token_ind": 13,
+        "end_token_ind": 14,
+        "span": [
+            593,
+            613
+        ],
+        "lemmas": [
+            "корейский",
+            "грамматика"
         ]
     },
     {
-        "0_key": "зрение корейский грамматика",
-        "1_textForm": "зрения корейской грамматики",
-        "2_modelName": "C + (Прил + С)рд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 3,
-        "5_start_ind": 12,
-        "6_end_ind": 14,
-        "7_lemmas": [
-            "0_зрение",
-            "1_корейский",
-            "2_грамматика"
+        "key": "зрение корейский грамматика",
+        "textForm": "зрения корейской грамматики",
+        "modelName": "C + (Прил + С)рд",
+        "docId": "test-text-3",
+        "sentNum": 3,
+        "start_token_ind": 12,
+        "end_token_ind": 14,
+        "span": [
+            586,
+            613
+        ],
+        "lemmas": [
+            "зрение",
+            "корейский",
+            "грамматика"
         ]
     },
     {
-        "0_key": "качество работа",
-        "1_textForm": "качество работы",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 4,
-        "5_start_ind": 4,
-        "6_end_ind": 5,
-        "7_lemmas": [
-            "0_качество",
-            "1_работа"
+        "key": "качество работа",
+        "textForm": "качество работы",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 4,
+        "start_token_ind": 4,
+        "end_token_ind": 5,
+        "span": [
+            642,
+            657
+        ],
+        "lemmas": [
+            "качество",
+            "работа"
         ]
     },
     {
-        "0_key": "качество работа парсер",
-        "1_textForm": "качество работы парсеров",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 4,
-        "5_start_ind": 4,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_качество",
-            "1_работа",
-            "2_парсер"
+        "key": "качество работа парсер",
+        "textForm": "качество работы парсеров",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 4,
+        "start_token_ind": 4,
+        "end_token_ind": 6,
+        "span": [
+            642,
+            666
+        ],
+        "lemmas": [
+            "качество",
+            "работа",
+            "парсер"
         ]
     },
     {
-        "0_key": "работа парсер",
-        "1_textForm": "работы парсеров",
-        "2_modelName": "С + Срд",
-        "3_docId": "test-text-3",
-        "4_sentNum": 4,
-        "5_start_ind": 5,
-        "6_end_ind": 6,
-        "7_lemmas": [
-            "0_работа",
-            "1_парсер"
+        "key": "работа парсер",
+        "textForm": "работы парсеров",
+        "modelName": "С + Срд",
+        "docId": "test-text-3",
+        "sentNum": 4,
+        "start_token_ind": 5,
+        "end_token_ind": 6,
+        "span": [
+            651,
+            666
+        ],
+        "lemmas": [
+            "работа",
+            "парсер"
         ]
     }
 ]

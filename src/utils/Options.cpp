@@ -13,8 +13,8 @@ Options::Options() {
     patternsFile = dataDir / "resources" / "patterns.json";
     stopWordsFile = dataDir / "resources" / "stop_words";
     resDir = corpusDir / "results";
-    corpusFile = corpusDir / "corpus";
-    filteredCorpusFile = corpusDir / "filtered_corpus";
+    corpusFile = corpusDir / "corpus.json";
+    filteredCorpusFile = corpusDir / "filtered_corpus.json";
     sentencesFile = corpusDir / "sentences.json";
     embeddingModelFile = repoPath / "my_custom_fasttext_model_finetuned.bin";
     totalResultsPath = corpusDir / "total_results.json";
@@ -34,7 +34,7 @@ void Options::setCorpusDir(const fs::path& newCorpusDir) {
     corpusDir = newCorpusDir;
     rawDataFile = corpusDir / "raw_data.json";
     resDir = corpusDir / "results";
-    corpusFile = corpusDir / "corpus";
+    corpusFile = corpusDir / "corpus.json";
     sentencesFile = corpusDir / "sentences.json";
     totalResultsPath = corpusDir / "total_results.json";
     termsCandidatesPath = corpusDir / "term_candidates.json";

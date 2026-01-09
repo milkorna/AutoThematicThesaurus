@@ -153,6 +153,11 @@ class CorpusVocabulary {
      */
     void incrementDocumentCount();
 
+    /**
+     * @brief Clears all corpus data and resets counters to initial state.
+     */
+    void clear();
+
     // ════════════════════════════════════════════════════════════
     // Vocabulary Filtering
     // ════════════════════════════════════════════════════════════
@@ -192,11 +197,6 @@ class CorpusVocabulary {
     // ════════════════════════════════════════════════════════════
     // Serialization Internals
     // ════════════════════════════════════════════════════════════
-
-    /**
-     * @brief Clears all corpus data and resets counters to initial state.
-     */
-    void clear();
 
     /**
      * @brief Converts vocabulary to JSON representation
