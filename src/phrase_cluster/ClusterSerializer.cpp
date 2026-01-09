@@ -4,31 +4,31 @@
 
 #include <algorithm>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 json ClusterSerializer::serializeCluster(const WordComplexCluster& cluster, double frequency) const {
     json clusterJson;
 
     // Основные поля кластера
-    clusterJson["0_phrase_size"] = cluster.phraseSize;
-    clusterJson["1_frequency"] = frequency;
-    clusterJson["2_topic_relevance"] = cluster.topicRelevance;
-    clusterJson["3_centrality_score"] = cluster.centralityScore;
-    clusterJson["4_tag_match"] = cluster.tagMatch;
-    clusterJson["5_model_name"] = cluster.modelName;
+    clusterJson["phrase_size"] = cluster.phraseSize;
+    clusterJson["frequency"] = frequency;
+    clusterJson["topic_relevance"] = cluster.topicRelevance;
+    clusterJson["centrality_score"] = cluster.centralityScore;
+    clusterJson["tag_match"] = cluster.tagMatch;
+    clusterJson["model_name"] = cluster.modelName;
 
     // Синонимы
     std::vector<std::string> synonymsVec(cluster.synonyms.begin(), cluster.synonyms.end());
-    clusterJson["9_synonyms"] = synonymsVec;
+    clusterJson["synonyms"] = synonymsVec;
 
     // Леммы с метриками
-    clusterJson["6_lemmas"] = serializeLemmas(cluster);
+    clusterJson["lemmas"] = serializeLemmas(cluster);
 
     // Количество фраз
-    clusterJson["7_phrases_count"] = static_cast<double>(cluster.wordComplexes.size());
+    clusterJson["phrases_count"] = static_cast<double>(cluster.wordComplexes.size());
 
     // Фразы
-    clusterJson["8_phrases"] = serializeWordComplexes(cluster);
+    clusterJson["phrases"] = serializeWordComplexes(cluster);
 
     return clusterJson;
 }
@@ -71,7 +71,7 @@ json ClusterSerializer::serialize(const std::unordered_map<std::string, WordComp
         if (mergeNested && previousClusterJson != nullptr && key.find(previousKey) == 0) {
             // Текущий ключ начинается с предыдущего - это вложенный кластер
             json nestedClusterJson = clusterJson;
-            nestedClusterJson["00_key"] = key;
+            nestedClusterJson["key"] = key;
             (*previousClusterJson)["nested_clusters"].push_back(nestedClusterJson);
         } else {
             // Это отдельный кластер верхнего уровня
@@ -101,23 +101,23 @@ json ClusterSerializer::createLemmaObject(const std::string& lemma, size_t index
 
     // Леммы с индексом для порядка
     std::string lemmaStrNumbered = std::to_string(index) + "_" + lemma;
-    lemmaJson["0_lemma"] = lemmaStrNumbered;
+    lemmaJson["lemma"] = lemmaStrNumbered;
 
     // TF, IDF, TF-IDF
     if (index < cluster.tf.size()) {
-        lemmaJson["1_tf"] = cluster.tf[index];
+        lemmaJson["tf"] = cluster.tf[index];
     }
     if (index < cluster.idf.size()) {
-        lemmaJson["2_idf"] = cluster.idf[index];
+        lemmaJson["idf"] = cluster.idf[index];
     }
     if (index < cluster.tfidf.size()) {
-        lemmaJson["3_tf-idf"] = cluster.tfidf[index];
+        lemmaJson["tf-idf"] = cluster.tfidf[index];
     }
 
     // Семантические отношения
     json semanticRelations = serializeSemanticRelations(lemma, cluster);
-    lemmaJson["4_hypernyms"] = semanticRelations["hypernyms"];
-    lemmaJson["5_hyponyms"] = semanticRelations["hyponyms"];
+    lemmaJson["hypernyms"] = semanticRelations["hypernyms"];
+    lemmaJson["hyponyms"] = semanticRelations["hyponyms"];
 
     return lemmaJson;
 }
@@ -157,18 +157,18 @@ json ClusterSerializer::createPhraseObject(const WordComplexPtr& wordComplex,
 
     json phraseJson;
 
-    phraseJson["0_text_form"] = wordComplex->textForm;
+    phraseJson["text_form"] = wordComplex->textForm;
 
     // Позиция с вложенной структурой
-    phraseJson["1_position"] = {{"0_start", wordComplex->pos.start},
-                                {"1_end", wordComplex->pos.end},
-                                {"2_doc_id", wordComplex->pos.docId},
-                                {"3_sent_num", wordComplex->pos.sentNum}};
+    phraseJson["position"] = {{"start", wordComplex->pos.start},
+                              {"end", wordComplex->pos.end},
+                              {"doc_id", wordComplex->pos.docId},
+                              {"sent_num", wordComplex->pos.sentNum}};
 
     // Ищем контекст (оригинальное предложение)
     for (const auto& context : contexts) {
         if (context.docId == wordComplex->pos.docId && context.sentNum == wordComplex->pos.sentNum) {
-            phraseJson["2_context"] = context.originalStr;
+            phraseJson["context"] = context.originalStr;
             break;
         }
     }

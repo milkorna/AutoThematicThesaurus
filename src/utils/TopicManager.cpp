@@ -64,7 +64,7 @@ void TopicManager::loadTopics() {
             continue;
         }
 
-        auto trimmedLine = StringUtils::trimTrailingDigitsAndSpaces(line);
+        auto trimmedLine = std::string(StringUtils::trim(line));
         auto lowerLine = StringUtils::toLowerCase(trimmedLine);
         if (isValidTopic(lowerLine)) {
             topics.insert(lowerLine);

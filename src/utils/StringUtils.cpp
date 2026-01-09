@@ -118,12 +118,10 @@ bool containsNoLatin(const std::string& str) {
     return true;
 }
 
-std::string trimTrailingDigitsAndSpaces(const std::string& line) {
-    auto notDigitOrSpace = [](unsigned char ch) { return !std::isdigit(ch) && !std::isspace(ch); };
-
-    auto it = std::ranges::find_if_not(line | std::views::reverse, notDigitOrSpace).base();
-
-    return std::string(line.begin(), it);
+std::string_view trim(std::string_view sv) {
+    sv.remove_prefix(std::min(sv.size(), sv.find_first_not_of(" \t\n\r\f\v")));
+    sv.remove_suffix(std::min(sv.size(), sv.size() - sv.find_last_not_of(" \t\n\r\f\v") - 1));
+    return sv;
 }
 
 } // namespace StringUtils

@@ -28,7 +28,7 @@ void PatternPhrasesStorage::reserveClusters(size_t count) {
 
 void PatternPhrasesStorage::addContextsToClusters() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Adding contexts to clusters...");
-    auto& corpus = TokenizedSentenceCorpus::GetCorpus();
+    auto& corpus = SentenceCorpus::GetCorpus();
 
     for (auto& clusterPair : clusters) {
         WordComplexCluster& cluster = clusterPair.second;
@@ -149,7 +149,7 @@ void PatternPhrasesStorage::initializeAndFilterClusters(double tfidfThreshold, s
     }
 }
 
-void PatternPhrasesStorage::applyClassifiedPhrases(const nlohmann::json& phraseLabels,
+void PatternPhrasesStorage::applyClassifiedPhrases(const nlohmann::ordered_json& phraseLabels,
                                                    std::set<std::string>& sortedKeys,
                                                    std::unordered_set<std::string>& clustersToInclude) {
     const auto& clusters = getClusters();

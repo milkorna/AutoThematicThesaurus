@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Embedding.h"
-#include "TokenizedSentenceCorpus.h"
+#include "SentenceCorpus.h"
 #include "WordComplex.h"
 
 #include <set>
@@ -64,7 +64,7 @@ struct WordComplexCluster {
     /// @brief Set of synonyms for the cluster
     std::unordered_set<std::string> synonyms;
 
-    /// @brief Vector of tokenized sentences where the cluster appears
+    /// @brief Vector of sentences where the cluster appears
     std::vector<TokenizedSentence> contexts;
 
     /// @brief Flag indicating if the cluster is recognized as a term

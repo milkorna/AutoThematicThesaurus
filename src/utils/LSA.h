@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Eigen/Dense"
-#include "TokenizedSentenceCorpus.h"
+#include "SentenceCorpus.h"
 
+#include <iostream>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <iostream>
 
 using namespace Eigen;
 
@@ -61,9 +61,9 @@ class LSA {
     /**
      * @brief Constructs LSA analyzer for given corpus
      *
-     * @param corpus Reference to TokenizedSentenceCorpus containing source data
+     * @param corpus Reference to SentenceCorpus containing source data
      */
-    LSA(const TokenizedSentenceCorpus& corpus) : corpus(corpus) {
+    LSA(const SentenceCorpus& corpus) : corpus(corpus) {
     }
 
     /**
@@ -180,7 +180,7 @@ class LSA {
 
   private:
     /// @brief Reference to source corpus data
-    const TokenizedSentenceCorpus& corpus;
+    const SentenceCorpus& corpus;
 
     /// @brief Topic assignments: topic ID → vector of top words
     std::unordered_map<int, std::vector<std::string>> topics;

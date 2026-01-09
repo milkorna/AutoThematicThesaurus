@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <fstream>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 // Define static member
 ClusterDeserializer PhrasesStorageLoader::deserializer;

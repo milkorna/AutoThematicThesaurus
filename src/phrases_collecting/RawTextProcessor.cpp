@@ -4,8 +4,9 @@
 #include "CorpusVocabulary.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
+#include "SentenceCorpus.h"
 #include "SimplePhrasesCollector.h"
-#include "TopicManager.h"
+#include "StringUtils.h"
 
 #include "xmorphy/graphem/SentenceSplitter.h"
 #include "xmorphy/graphem/Tokenizer.h"
@@ -14,10 +15,6 @@
 #include "xmorphy/ml/TFMorphemicSplitter.h"
 #include "xmorphy/morph/Processor.h"
 #include "xmorphy/utils/UniString.h"
-
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
 
 void removeSeparators(std::vector<X::WordFormPtr>& sentence) {
     sentence.erase(
@@ -39,6 +36,8 @@ void RawTextProcessor::processRawData(std::vector<Document>& documents) {
     fs::create_directories(outputDir);
 
     CorpusVocabulary& corpus = CorpusVocabulary::GetCorpus();
+    SentenceCorpus& sentenceCorpus = SentenceCorpus::GetCorpus();
+
     X::Tokenizer tokenizer;
     X::TFMorphemicSplitter morphemicSplitter;
     X::Processor analyzer;
@@ -112,6 +111,7 @@ void RawTextProcessor::processRawData(std::vector<Document>& documents) {
                 }
 
                 // Передаём информацию в Process
+                rawSentence = std::string(StringUtils::trim(rawSentence));
                 processContext.setSentenceData(rawSentence, tokenSpans, globalOffsetInDocument);
 
                 // Morphological analysis
@@ -128,7 +128,12 @@ void RawTextProcessor::processRawData(std::vector<Document>& documents) {
                 doc.incrementWordCount(sentence.size());
 
                 Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + rawSentence);
-                collect(sentence, processContext, doc);
+
+                std::string normalizedSentence = processSentence(sentence, processContext, doc);
+                if (!normalizedSentence.empty()) {
+                    sentenceCorpus.addSentence(doc.getDocId(), processContext.getSentNum(), rawSentence,
+                                               normalizedSentence);
+                }
 
                 globalOffsetInDocument += tokens.back()->getStartPosUnicode() + tokens.back()->getLength();
                 if (options.mergeDocumentTitleAndText && firstSentence) {
@@ -152,6 +157,7 @@ void RawTextProcessor::processRawData(std::vector<Document>& documents) {
 
         // Save final corpus state to disk
         corpus.save(options.corpusFile.string());
+        sentenceCorpus.save(options.sentencesFile.string());
         Logger::log("RawTextProcessor", LogLevel::Info, "Successfully saved corpus to: " + options.corpusFile.string());
     } catch (const std::exception& e) {
         Logger::log("RawTextProcessor", LogLevel::Error, "Exception caught: " + std::string(e.what()));
@@ -160,27 +166,44 @@ void RawTextProcessor::processRawData(std::vector<Document>& documents) {
     }
 }
 
-void RawTextProcessor::collect(const std::vector<X::WordFormPtr>& forms, Process& process, Document& currentDoc) {
+std::string RawTextProcessor::processSentence(const std::vector<X::WordFormPtr>& forms, Process& process,
+                                              Document& currentDoc) {
     auto& corpus = CorpusVocabulary::GetCorpus();
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     std::unordered_set<std::string> uniqueLemmasInSentence;
+    std::string normalizedSentence;
+
     for (const auto& form : forms) {
         std::string lemma = morphAnalyzer.getLemma(form);
 
+        // Update global vocabulary frequency
         corpus.updateWordFrequency(lemma);
 
-        // ОБНОВЛЯЕМ локальную статистику документа
+        // Update local document statistics
         currentDoc.incrementWordFrequency(lemma);
 
+        // Collect unique lemmas
         uniqueLemmasInSentence.insert(lemma);
+
+        if (form->getTokenType() == X::TokenTypeTag::WORD || form->getTokenType() == X::TokenTypeTag::WRNM) {
+            normalizedSentence.append(lemma + " ");
+        }
     }
 
-    // Сохраняем уникальные леммы документа
+    // Remove trailing space
+    if (!normalizedSentence.empty()) {
+        normalizedSentence.pop_back();
+    }
+
+    // Save unique lemmas to document
     currentDoc.addUniqueLemmasFromSentence(uniqueLemmasInSentence);
 
+    // Collect phrases
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.collect(process);
     ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.getCollection(), forms);
     complexPhrasesCollector.collect(process);
+
+    return normalizedSentence;
 }

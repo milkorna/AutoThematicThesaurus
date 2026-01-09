@@ -38,16 +38,10 @@ namespace StringUtils {
  */
 [[nodiscard]] bool shouldBeFiltered(const std::string& str);
 
-/**
- * @brief Trims trailing digits and spaces from a line.
- *
- * @param line The input line to trim.
- * @return The trimmed line string.
- */
-[[nodiscard]] std::string trimTrailingDigitsAndSpaces(const std::string& line);
-
 [[nodiscard]] std::string toLowerCase(const std::string& line);
 
 [[nodiscard]] bool containsNoLatin(const std::string& str);
+
+[[nodiscard]] std::string_view trim(std::string_view sv);
 
 } // namespace StringUtils

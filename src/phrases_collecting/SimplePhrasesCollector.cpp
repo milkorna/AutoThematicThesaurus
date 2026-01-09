@@ -41,7 +41,11 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (StringUtils::isOnlyPunctuationOrDigits(formFromText) || morphAnalyzer.isMorphAnalysisError(token))
+    if (token->getTokenType() == X::TokenTypeTag::PNCT || token->getTokenType() == X::TokenTypeTag::NUMB) {
+        return false;
+    }
+
+    if (morphAnalyzer.isMorphAnalysisError(token))
         return false;
 
     if (!comp->condition().check(comp->getSPTag(), token))
@@ -91,9 +95,13 @@ void SimplePhrasesCollector::collect(Process& process) {
             }
         }
 
-        if (StringUtils::isOnlyPunctuationOrDigits(token->getWordForm().getRawString()) ||
-            morphAnalyzer.isMorphAnalysisError(token))
+        if (token->getTokenType() == X::TokenTypeTag::PNCT || token->getTokenType() == X::TokenTypeTag::NUMB) {
             continue;
+        }
+
+        if (morphAnalyzer.isMorphAnalysisError(token)) {
+            continue;
+        }
 
         if (!HaveSpHead(token->getMorphInfo()))
             continue;

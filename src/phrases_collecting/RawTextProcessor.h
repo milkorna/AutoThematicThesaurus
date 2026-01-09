@@ -37,21 +37,15 @@ class RawTextProcessor {
     RawTextProcessor() = default;
 
     /**
-     * @brief Analyzes a single sentence and extracts all phrases.
+     * @brief Collects phrases and builds normalized sentence
+     * @details Updates word frequency, document lemmas, collects phrases,
+     *          and builds lemmatized version of sentence
      *
-     * CORPUS UPDATES:
-     * - Updates word frequency for each lemma in sentence
-     * - Accumulates lemmas in uniqueLemmasInDoc for document stats
-     * - When document changes, updates document frequency for all accumulated lemmas
-     *
-     * PHRASE COLLECTION:
-     * - SimplePhrasesCollector: Finds phrases matching grammar patterns
-     * - ComplexPhrasesCollector: Extends simple phrases with additional patterns
-     *
-     * @param forms Morphological word forms from xmorphy analyzer.
-     *              Result of Processor::analyze() after disambiguation
-     * @param process Current processing context (docId, sentNum, file info)
-     * @param currentDoc Current document being processed
+     * @param forms Morphologically analyzed sentence
+     * @param process Process context for phrase collection
+     * @param currentDoc Document being processed
+     * @param corpus Reference to vocabulary corpus
+     * @return Normalized sentence with lemmatized words (space-separated)
      */
-    void collect(const std::vector<X::WordFormPtr>& forms, Process& process, Document& currentDoc);
+    std::string processSentence(const std::vector<X::WordFormPtr>& forms, Process& process, Document& currentDoc);
 };

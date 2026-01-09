@@ -67,7 +67,7 @@ class PatternPhrasesStorage {
     [[nodiscard]] WordComplexCluster* findCluster(const std::string& key);
 
     /**
-     * @brief Associates tokenized sentences with their containing clusters
+     * @brief Associates sentences with their containing clusters
      * @details Links context sentences from corpus to word complexes in clusters
      */
     void addContextsToClusters();
@@ -238,7 +238,7 @@ class PatternPhrasesStorage {
      * @param sortedKeys Modified: keys adjusted based on labels
      * @param clustersToInclude Modified: clusters removed if misclassified
      */
-    void applyClassifiedPhrases(const nlohmann::json& phraseLabels, std::set<std::string>& sortedKeys,
+    void applyClassifiedPhrases(const nlohmann::ordered_json& phraseLabels, std::set<std::string>& sortedKeys,
                                 std::unordered_set<std::string>& clustersToInclude);
 
     /**

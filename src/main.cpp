@@ -9,7 +9,7 @@
 #include "PhrasesStorageLoader.h"
 #include "RawDataLoader.h"
 #include "RawTextProcessor.h"
-#include "TokenizedSentenceCorpus.h"
+#include "SentenceCorpus.h"
 
 #include <chrono>
 #include <sys/stat.h>
@@ -29,7 +29,6 @@ static void printUsage(const po::options_description& desc) {
     std::cout << "  compute_text_metrics      Merge identical clusters and compute text metrics: tf, idf, tf-idf, "
                  "tag_match. Inicialize topic_relevance and centrality score.\n";
     std::cout << "  load_hypernyms            Load WikiWordNet relations (hypernyms/hyponyms) into clusters.\n";
-    std::cout << "  build_tokenized_corpus    Save a all sentence from corpus in lemmatized form.\n";
     std::cout << "  perform_lsa               Perform LSA analysis on previously saved data, compute topic_relevance "
                  "and centrality score.\n";
     std::cout << "  get_terminological_phrases      Filter out more relevant and terminological phrases from all the "
@@ -244,18 +243,6 @@ int main(int argc, char** argv) {
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
             storage.loadWikiWNRelations();
             storage.saveClusters(options.totalResultsPath);
-        } else if (command == "build_tokenized_corpus") {
-            fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
-            std::vector<Document> documents = RawDataLoader::loadFromJson(jsonInputPath);
-
-            if (documents.empty()) {
-                Logger::log("Main", LogLevel::Error, "No documents loaded from JSON file");
-                return 1;
-            }
-
-            auto& sentenceCorpus = TokenizedSentenceCorpus::GetCorpus();
-            sentenceCorpus.build(documents);
-            sentenceCorpus.save(options.sentencesFile.string());
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
             Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
@@ -263,7 +250,7 @@ int main(int argc, char** argv) {
             auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
 
-            auto& sentences = TokenizedSentenceCorpus::GetCorpus();
+            auto& sentences = SentenceCorpus::GetCorpus();
             sentences.load(options.sentencesFile.string());
 
             LSA lsa(sentences);
@@ -299,7 +286,7 @@ int main(int argc, char** argv) {
             // Load precomputed results without additional processing
             Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
             PhrasesStorageLoader loader;
-            auto& corpus = TokenizedSentenceCorpus::GetCorpus();
+            auto& corpus = SentenceCorpus::GetCorpus();
             corpus.load(options.sentencesFile.string());
 
             ::Embedding e;

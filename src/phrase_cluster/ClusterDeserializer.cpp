@@ -3,7 +3,7 @@
 
 #include <unicode/uchar.h>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, const std::string& key) {
     try {
