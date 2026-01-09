@@ -3,8 +3,6 @@
 #include <fstream>
 #include <sstream>
 
-// Не используем alias, чтобы избежать проблем с типами шаблонов
-
 std::vector<Document> RawDataLoader::loadFromJson(const fs::path& jsonFile) {
     std::vector<Document> documents;
     if (!validateFilePath(jsonFile)) {
@@ -59,7 +57,6 @@ bool RawDataLoader::validateFilePath(const fs::path& filePath) {
 std::vector<Document> RawDataLoader::parseDocumentsArray(const std::string& jsonStr, const fs::path& sourceFilePath) {
     std::vector<Document> documents;
     try {
-        // Явно парсим в стандартный тип nlohmann::json
         nlohmann::json data = nlohmann::json::parse(jsonStr);
 
         // Validate that "documents" field exists and is an array
@@ -77,7 +74,6 @@ std::vector<Document> RawDataLoader::parseDocumentsArray(const std::string& json
                 const auto& docJson = docsArray[i];
                 Document doc;
 
-                // Используем get() для явного преобразования типов
                 doc.doc_id = docJson.value("doc_id", "");
                 doc.title = docJson.value("title", "");
                 doc.text = docJson.value("text", "");
@@ -89,7 +85,6 @@ std::vector<Document> RawDataLoader::parseDocumentsArray(const std::string& json
                 doc.word_frequency_local.clear();
                 doc.document_lemmas.clear();
 
-                // Validate document
                 if (!validateDocument(doc, i)) {
                     continue;
                 }

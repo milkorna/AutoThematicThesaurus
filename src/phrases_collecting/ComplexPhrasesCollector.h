@@ -2,27 +2,9 @@
 
 #include "GrammarPatternManager.h"
 #include "ModelComponent.h"
-
+#include "PhraseMatchStatus.h"
+#include "PhraseValidator.h"
 #include "Process.h"
-
-/**
- * @brief Status tracking for phrase components during grammar pattern matching
- * @details Maintains state information for the current phrase being processed,
- * including matched component count and various validation flags.
- */
-struct CurrentPhraseStatus {
-    /// @brief Number of successfully matched phrase components
-    size_t correct = 0;
-
-    /// @brief Flag indicating phrase head has been matched against pattern
-    bool headIsMatched = false;
-
-    /// @brief Flag indicating phrase head validation has been performed
-    bool headIsChecked = false;
-
-    /// @brief Flag indicating a lexical item was located during processing
-    bool foundLex = false;
-};
 
 /**
  * @brief Collects complex phrases by extending simple phrases with adjacent words
@@ -40,7 +22,7 @@ class ComplexPhrasesCollector {
      */
     explicit ComplexPhrasesCollector(const std::vector<WordComplexPtr>& simplePhrases,
                                      const std::vector<X::WordFormPtr>& forms)
-        : m_simplePhrases(simplePhrases), m_sentence(forms), m_collection{} {
+        : m_simplePhrases(simplePhrases), m_sentence(forms), m_validator(forms) {
     }
 
     /**
@@ -73,30 +55,15 @@ class ComplexPhrasesCollector {
     /// @brief Word forms representing the current sentence
     std::vector<WordFormPtr> m_sentence;
 
-    /**
-     * @brief Validates morphological tags against pattern conditions
-     * @details Checks if any morphological form matches the condition requirements.
-     *
-     * @param morphForms Set of morphological information from a word form
-     * @param cond Condition to check against morphological data
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @return true if a matching morphological form is found, false otherwise
-     */
-    [[nodiscard]] bool checkMorphologicalTags(const std::unordered_set<X::MorphInfo>& morphForms, const Condition& cond,
-                                              CurrentPhraseStatus& curPhrStatus);
+    PhraseValidator m_validator;
 
-    /**
-     * @brief Validates word components of a model component
-     * @details Checks if components within a model component match morphological conditions.
-     *
-     * @param curSimplePhr Current simple phrase being processed
-     * @param curModelComp Model component containing word components to validate
-     * @param curPhrStatus Current phrase validation status (updated in place)
-     * @return true if validation succeeds, false otherwise
-     */
-    [[nodiscard]] bool checkWordComponents(const WordComplexPtr& curSimplePhr,
-                                           const std::shared_ptr<ModelComp>& curModelComp,
-                                           CurrentPhraseStatus& curPhrStatus);
+    // Основной цикл обработки одной простой фразы
+    bool processSimplePhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
+                             const std::shared_ptr<Model>& model);
+
+    // Инициализация расширения фразы
+    bool initializeAndExtendPhrase(const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
+                                   const std::shared_ptr<Model>& model);
 
     /**
      * @brief Checks if a simple phrase satisfies current model component requirements
@@ -109,7 +76,7 @@ class ComplexPhrasesCollector {
      */
     [[nodiscard]] bool checkCurrentSimplePhrase(const WordComplexPtr& curSimplePhr,
                                                 const std::shared_ptr<ModelComp>& curModelComp,
-                                                CurrentPhraseStatus& curPhrStatus);
+                                                PhraseMatchStatus& curPhrStatus);
 
     /**
      * @brief Determines if a simple phrase should be skipped during processing
@@ -143,7 +110,7 @@ class ComplexPhrasesCollector {
      */
     [[nodiscard]] bool checkAside(size_t curSPhPosCmp, const WordComplexPtr& wc, const std::shared_ptr<Model>& model,
                                   size_t compIndex, size_t formIndex, const bool isLeft,
-                                  CurrentPhraseStatus& curPhrStatus, size_t curSimplePhrInd);
+                                  PhraseMatchStatus& curPhrStatus, size_t curSimplePhrInd);
 
     /**
      * @brief Processes a model component for a simple phrase
@@ -158,7 +125,7 @@ class ComplexPhrasesCollector {
      * @return true if complete pattern match is found, false otherwise
      */
     [[nodiscard]] bool processModelComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& curSimplePhr,
-                                             const size_t curSimplePhrInd, CurrentPhraseStatus& curPhrStatus,
+                                             const size_t curSimplePhrInd, PhraseMatchStatus& curPhrStatus,
                                              WordComplexPtr& wc);
 
     /**
@@ -172,5 +139,5 @@ class ComplexPhrasesCollector {
      * @param isLeft Direction flag (true for extending left, false for right)
      */
     void updatePhraseStatus(const WordComplexPtr& wc, const WordComplexPtr& asidePhrase,
-                            CurrentPhraseStatus& curPhrStatus, bool isLeft);
+                            PhraseMatchStatus& curPhrStatus, bool isLeft);
 };
