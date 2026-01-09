@@ -5,9 +5,9 @@
 
 // Не используем alias, чтобы избежать проблем с типами шаблонов
 
-std::vector<DocumentRecord> RawDataLoader::LoadFromJson(const fs::path& jsonFile) {
-    std::vector<DocumentRecord> documents;
-    if (!ValidateFilePath(jsonFile)) {
+std::vector<Document> RawDataLoader::loadFromJson(const fs::path& jsonFile) {
+    std::vector<Document> documents;
+    if (!validateFilePath(jsonFile)) {
         return documents;
     }
 
@@ -23,7 +23,7 @@ std::vector<DocumentRecord> RawDataLoader::LoadFromJson(const fs::path& jsonFile
         file.close();
 
         // Parse and extract documents
-        documents = ParseDocumentsArray(fileContent);
+        documents = parseDocumentsArray(fileContent, jsonFile);
         Logger::log("RawDataLoader", LogLevel::Info,
                     "Successfully loaded " + std::to_string(documents.size()) +
                         " documents from: " + jsonFile.filename().string());
@@ -37,7 +37,7 @@ std::vector<DocumentRecord> RawDataLoader::LoadFromJson(const fs::path& jsonFile
     return documents;
 }
 
-bool RawDataLoader::ValidateFilePath(const fs::path& filePath) {
+bool RawDataLoader::validateFilePath(const fs::path& filePath) {
     if (filePath.empty()) {
         Logger::log("RawDataLoader", LogLevel::Error, "File path is empty");
         return false;
@@ -56,8 +56,8 @@ bool RawDataLoader::ValidateFilePath(const fs::path& filePath) {
     return true;
 }
 
-std::vector<DocumentRecord> RawDataLoader::ParseDocumentsArray(const std::string& jsonStr) {
-    std::vector<DocumentRecord> documents;
+std::vector<Document> RawDataLoader::parseDocumentsArray(const std::string& jsonStr, const fs::path& sourceFilePath) {
+    std::vector<Document> documents;
     try {
         // Явно парсим в стандартный тип nlohmann::json
         nlohmann::json data = nlohmann::json::parse(jsonStr);
@@ -69,18 +69,28 @@ std::vector<DocumentRecord> RawDataLoader::ParseDocumentsArray(const std::string
         }
 
         const auto& docsArray = data["documents"];
+        std::string currentTimestamp = getCurrentTimestamp();
+        std::string sourceFileName = sourceFilePath.filename().string();
+
         for (size_t i = 0; i < docsArray.size(); ++i) {
             try {
                 const auto& docJson = docsArray[i];
-                DocumentRecord doc;
+                Document doc;
 
                 // Используем get() для явного преобразования типов
                 doc.doc_id = docJson.value("doc_id", "");
                 doc.title = docJson.value("title", "");
                 doc.text = docJson.value("text", "");
 
+                doc.filename = sourceFileName;
+                doc.processing_timestamp = currentTimestamp;
+
+                doc.stats = Document::DocumentStats();
+                doc.word_frequency_local.clear();
+                doc.document_lemmas.clear();
+
                 // Validate document
-                if (!ValidateDocument(doc, i)) {
+                if (!validateDocument(doc, i)) {
                     continue;
                 }
 
@@ -103,7 +113,7 @@ std::vector<DocumentRecord> RawDataLoader::ParseDocumentsArray(const std::string
     return documents;
 }
 
-bool RawDataLoader::ValidateDocument(const DocumentRecord& doc, size_t index) {
+bool RawDataLoader::validateDocument(const Document& doc, size_t index) {
     // Validate doc_id
     if (doc.doc_id.empty()) {
         Logger::log("RawDataLoader", LogLevel::Warning,
@@ -120,4 +130,22 @@ bool RawDataLoader::ValidateDocument(const DocumentRecord& doc, size_t index) {
     }
 
     return true;
+}
+
+std::string RawDataLoader::getCurrentTimestamp() {
+    auto now = std::chrono::system_clock::now();
+    auto time = std::chrono::system_clock::to_time_t(now);
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
+
+    char buffer[30];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%S", std::gmtime(&time));
+
+    std::string timestamp(buffer);
+    timestamp += ".";
+
+    std::stringstream ss;
+    ss << std::setfill('0') << std::setw(3) << ms.count();
+    timestamp += ss.str() + "Z";
+
+    return timestamp;
 }

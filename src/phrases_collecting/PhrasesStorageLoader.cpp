@@ -1,6 +1,6 @@
 #include "PhrasesStorageLoader.h"
+#include "CorpusVocabulary.h"
 #include "Logger.h"
-#include "TextCorpus.h"
 #include "Options.h"
 
 #include <algorithm>
@@ -59,8 +59,8 @@ void PhrasesStorageLoader::loadPhraseStorageFromResultsDir(PatternPhrasesStorage
     }
 
     // Reserve space for clusters
-    auto& corpus = TextCorpus::GetCorpus();
-    storage.reserveClusters(corpus.getTextCount());
+    auto& corpus = CorpusVocabulary::GetCorpus();
+    //  storage.reserveClusters(corpus.getTextCount());
 
     // Load all result files
     auto resultFiles = getResultFilesFromDirectory(resultsDir);

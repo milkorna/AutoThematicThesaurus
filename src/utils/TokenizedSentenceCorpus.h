@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DocumentRecord.h"
+#include "Document.h"
 
 #include <nlohmann/json.hpp>
 
@@ -64,7 +64,7 @@ class TokenizedSentenceCorpus {
      *
      * @see SaveToFile
      */
-    void build(const std::vector<DocumentRecord>& documents);
+    void build(const std::vector<Document>& documents);
 
     /**
      * @brief Saves corpus to persistent storage.

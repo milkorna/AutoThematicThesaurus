@@ -1,14 +1,11 @@
 #pragma once
 
-#include "DocumentRecord.h"
-#include "Options.h"
+#include "Document.h"
 #include "Process.h"
 
 #include "xmorphy/morph/WordForm.h"
 
 #include <nlohmann/json.hpp>
-#include <string>
-#include <unordered_set>
 
 /**
  * @brief Processes raw text files extracts grammatical phrases from them
@@ -26,7 +23,7 @@ class RawTextProcessor {
     /**
      * @brief Processes all raw texts in the configured input directory.
      */
-    void processRawData(const std::vector<DocumentRecord>& documents);
+    void processRawData(std::vector<Document>& documents);
 
     /// Destructor
     ~RawTextProcessor() = default;
@@ -54,29 +51,7 @@ class RawTextProcessor {
      * @param forms Morphological word forms from xmorphy analyzer.
      *              Result of Processor::analyze() after disambiguation
      * @param process Current processing context (docId, sentNum, file info)
+     * @param currentDoc Current document being processed
      */
-    void collect(const std::vector<X::WordFormPtr>& forms, Process& process);
-
-    /**
-     * @brief Finalizes processing for the current document.
-     * @details Called at the end of ProcessFile() to clean up the last document.
-     *
-     * OPERATIONS:
-     * - Updates document frequencies for all lemmas in uniqueLemmasInDoc
-     * - Clears the accumulated lemmas set
-     */
-    void finalizeDocumentProcessing();
-
-    /// Tracks the last processed document ID to detect document boundaries.
-    /// Initialized to -1 to trigger document boundary on first sentence.
-    /// Updated in Collect() after processing a sentence.
-    std::string lastDocumentId = "";
-
-    /// Accumulates unique lemmas within the current document.
-    /// Used to track which lemmas appeared in a document for IDF calculations.
-    /// Cleared after each document boundary (when docId changes).
-    std::unordered_set<std::string> uniqueLemmasInDoc;
-
-    /// Reference to global options/configuration singleton
-    Options& options = Options::getOptions();
+    void collect(const std::vector<X::WordFormPtr>& forms, Process& process, Document& currentDoc);
 };

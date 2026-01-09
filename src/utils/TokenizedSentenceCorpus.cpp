@@ -15,7 +15,7 @@
 
 using json = nlohmann::json;
 
-void TokenizedSentenceCorpus::build(const std::vector<DocumentRecord>& documents) {
+void TokenizedSentenceCorpus::build(const std::vector<Document>& documents) {
     Logger::log("", LogLevel::Info, "Building and saving tokenized sentence corpus...");
 
     if (documents.empty()) {
@@ -34,14 +34,14 @@ void TokenizedSentenceCorpus::build(const std::vector<DocumentRecord>& documents
 
     try {
         for (const auto& doc : documents) {
-            const auto docId = doc.doc_id;
+            const auto docId = doc.getDocId();
             size_t sentNum = 0;
 
             // Получаем текст для обработки
-            std::string textToProcess = doc.getProcessingText(options.mergeDocumentTitleAndText);
+            std::string textToProcess = doc.getText(options.mergeDocumentTitleAndText);
             if (textToProcess.empty()) {
                 Logger::log("RawTextProcessor", LogLevel::Warning,
-                            "Document " + doc.doc_id + " has empty processing text, skipping");
+                            "Document " + doc.getDocId() + " has empty processing text, skipping");
                 continue;
             }
 

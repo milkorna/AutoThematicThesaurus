@@ -1,5 +1,6 @@
 #include "GrammarPatternManager.h"
 #include "Logger.h"
+#include "Options.h"
 #include "RawDataLoader.h"
 #include "RawTextProcessor.h"
 
@@ -85,7 +86,7 @@ class RawTextProcessorTest : public ::testing::Test {
 TEST_F(RawTextProcessorTest, BasicPipelineWithRawDataLoader) {
     // Load documents using RawDataLoader
     auto& options = Options::getOptions();
-    std::vector<DocumentRecord> documents = RawDataLoader::LoadFromJson(options.rawDataFile);
+    std::vector<Document> documents = RawDataLoader::loadFromJson(options.rawDataFile);
 
     ASSERT_GT(documents.size(), 0) << "RawDataLoader should load at least one document";
 
@@ -97,7 +98,7 @@ TEST_F(RawTextProcessorTest, BasicPipelineWithRawDataLoader) {
 
     // Verify output files were created for all documents
     for (const auto& doc : documents) {
-        EXPECT_TRUE(OutputFileExists(doc.doc_id)) << "Output file for " << doc.doc_id << " should exist";
+        EXPECT_TRUE(OutputFileExists(doc.getDocId())) << "Output file for " << doc.getDocId() << " should exist";
     }
 
     Logger::log("Test", LogLevel::Info, "Pipeline execution completed successfully");

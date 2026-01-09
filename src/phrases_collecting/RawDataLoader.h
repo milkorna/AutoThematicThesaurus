@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DocumentRecord.h"
+#include "Document.h"
 
 #include <filesystem>
 #include <nlohmann/json.hpp>
@@ -22,9 +22,9 @@ class RawDataLoader {
     /**
      * @brief Loads documents from a JSON file
      * @param jsonFile Path to the JSON file to load
-     * @return Vector of DocumentRecord objects successfully loaded and validated
+     * @return Vector of Document objects successfully loaded and validated
      */
-    static std::vector<DocumentRecord> LoadFromJson(const fs::path& jsonFile);
+    static std::vector<Document> loadFromJson(const fs::path& jsonFile);
 
   private:
     /**
@@ -32,11 +32,12 @@ class RawDataLoader {
      * @param filePath Path to validate
      * @return true if path is valid and file exists, false otherwise
      */
-    static bool ValidateFilePath(const fs::path& filePath);
+    static bool validateFilePath(const fs::path& filePath);
 
     /**
      * @brief Extracts and parses the documents array from JSON data
-     * @param data Parsed JSON object as string
+     * @param jsonStr Parsed JSON object as string
+     * @param sourceFilePath Path to the source JSON file
      * @return Vector of successfully loaded and validated DocumentRecord objects
      *
      * @details Validates:
@@ -44,7 +45,7 @@ class RawDataLoader {
      *   - Each document has required fields
      *   - Each document passes validation criteria
      */
-    static std::vector<DocumentRecord> ParseDocumentsArray(const std::string& jsonStr);
+    static std::vector<Document> parseDocumentsArray(const std::string& jsonStr, const fs::path& sourceFilePath);
 
     /**
      * @brief Validates a single document record
@@ -56,5 +57,7 @@ class RawDataLoader {
      *   - doc_id is not empty
      *   - At least one of title or text is non-empty
      */
-    static bool ValidateDocument(const DocumentRecord& doc, size_t index);
+    static bool validateDocument(const Document& doc, size_t index);
+
+    static std::string getCurrentTimestamp();
 };

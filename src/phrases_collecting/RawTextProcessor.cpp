@@ -1,10 +1,10 @@
 #include "RawTextProcessor.h"
 
 #include "ComplexPhrasesCollector.h"
+#include "CorpusVocabulary.h"
 #include "MorphAnalyzer.h"
+#include "Options.h"
 #include "SimplePhrasesCollector.h"
-#include "TextCorpus.h"
-#include "TextCorpusLoader.h"
 #include "TopicManager.h"
 
 #include "xmorphy/graphem/SentenceSplitter.h"
@@ -26,7 +26,7 @@ void removeSeparators(std::vector<X::WordFormPtr>& sentence) {
         sentence.end());
 }
 
-void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documents) {
+void RawTextProcessor::processRawData(std::vector<Document>& documents) {
     Logger::log("RawTextProcessor", LogLevel::Info, "Processing " + std::to_string(documents.size()) + " documents...");
 
     if (documents.empty()) {
@@ -34,11 +34,11 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
         return;
     }
 
+    Options& options = Options::getOptions();
     fs::path outputDir = options.resDir;
     fs::create_directories(outputDir);
 
-    auto& corpus = TextCorpus::GetCorpus();
-
+    CorpusVocabulary& corpus = CorpusVocabulary::GetCorpus();
     X::Tokenizer tokenizer;
     X::TFMorphemicSplitter morphemicSplitter;
     X::Processor analyzer;
@@ -46,20 +46,23 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
     X::TFJoinedModel joiner;
 
     try {
-        for (const auto& doc : documents) {
-            Logger::log("RawTextProcessor", LogLevel::Info, "Processing document: " + doc.doc_id);
+        for (auto& doc : documents) {
+            Logger::log("RawTextProcessor", LogLevel::Info, "Processing document: " + doc.getDocId());
 
             // Получаем текст для обработки
-            std::string textToProcess = doc.getProcessingText(options.mergeDocumentTitleAndText);
+            std::string textToProcess = doc.getText(options.mergeDocumentTitleAndText);
 
             if (textToProcess.empty()) {
                 Logger::log("RawTextProcessor", LogLevel::Warning,
-                            "Document " + doc.doc_id + " has empty processing text, skipping");
+                            "Document " + doc.getDocId() + " has empty processing text, skipping");
                 continue;
             }
 
+            // Сохраняем character_count
+            doc.setCharacterCount(countUTF8Characters(textToProcess));
+
             // Создаем выходной файл для этого документа
-            std::string outputFilename = doc.doc_id + "_res.json";
+            std::string outputFilename = doc.getDocId() + "_res.json";
             fs::path outputFile = outputDir / outputFilename;
 
             std::ofstream outFile(outputFile);
@@ -71,7 +74,7 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
             outFile << "[]" << std::endl;
             Logger::log("RawTextProcessor", LogLevel::Debug, "Created empty JSON file: " + outputFile.string());
 
-            Process processContext(doc.doc_id, outputFile);
+            Process processContext(doc.getDocId(), outputFile);
 
             // Передаем текст в SentenceSplitter через stringstream
             std::istringstream textStream(textToProcess);
@@ -86,6 +89,8 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
 
                 if (rawSentence.empty())
                     continue;
+
+                doc.incrementSentenceCount();
 
                 // Tokenization
                 std::vector<X::TokenPtr> tokens = tokenizer.analyze(X::UniString(rawSentence));
@@ -120,8 +125,10 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
                     morphemicSplitter.split(form);
                 }
 
+                doc.incrementWordCount(sentence.size());
+
                 Logger::log("RawTextProcessor", LogLevel::Info, "Read sentence: " + rawSentence);
-                collect(sentence, processContext);
+                collect(sentence, processContext, doc);
 
                 globalOffsetInDocument += tokens.back()->getStartPosUnicode() + tokens.back()->getLength();
                 if (options.mergeDocumentTitleAndText && firstSentence) {
@@ -130,11 +137,21 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
                 }
                 processContext.nextSentence();
             };
-            finalizeDocumentProcessing();
+
+            for (const auto& lemma : doc.getUniqueLemmas()) {
+                corpus.updateDocumentFrequency(lemma);
+            }
+            corpus.incrementDocumentCount();
+
+            Logger::log("RawTextProcessor", LogLevel::Info,
+                        "Document " + doc.getDocId() + " COMPLETE: " + "sentences=" +
+                            std::to_string(doc.getSentenceCount()) + " words=" + std::to_string(doc.getWordCount()) +
+                            " lemmas=" + std::to_string(doc.getUniqueLemmasCount()) +
+                            " chars=" + std::to_string(doc.getCharacterCount()));
         }
 
         // Save final corpus state to disk
-        TextCorpusLoader::save(corpus, options.corpusFile.string());
+        corpus.save(options.corpusFile.string());
         Logger::log("RawTextProcessor", LogLevel::Info, "Successfully saved corpus to: " + options.corpusFile.string());
     } catch (const std::exception& e) {
         Logger::log("RawTextProcessor", LogLevel::Error, "Exception caught: " + std::string(e.what()));
@@ -143,38 +160,27 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
     }
 }
 
-void RawTextProcessor::collect(const std::vector<WordFormPtr>& forms, Process& process) {
-    auto& corpus = TextCorpus::GetCorpus();
-
-    if (lastDocumentId.empty() && lastDocumentId != process.getDocId()) {
-        for (const auto& lemma : uniqueLemmasInDoc) {
-            corpus.UpdateDocumentFrequency(lemma);
-        }
-        uniqueLemmasInDoc.clear();
-    }
-
+void RawTextProcessor::collect(const std::vector<X::WordFormPtr>& forms, Process& process, Document& currentDoc) {
+    auto& corpus = CorpusVocabulary::GetCorpus();
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
     std::unordered_set<std::string> uniqueLemmasInSentence;
     for (const auto& form : forms) {
         std::string lemma = morphAnalyzer.getLemma(form);
-        corpus.UpdateWordFrequency(lemma);
+
+        corpus.updateWordFrequency(lemma);
+
+        // ОБНОВЛЯЕМ локальную статистику документа
+        currentDoc.incrementWordFrequency(lemma);
+
         uniqueLemmasInSentence.insert(lemma);
     }
 
-    uniqueLemmasInDoc.insert(uniqueLemmasInSentence.begin(), uniqueLemmasInSentence.end());
-    lastDocumentId = process.getDocId();
+    // Сохраняем уникальные леммы документа
+    currentDoc.addUniqueLemmasFromSentence(uniqueLemmasInSentence);
 
     SimplePhrasesCollector simplePhrasesCollector(forms);
     simplePhrasesCollector.collect(process);
     ComplexPhrasesCollector complexPhrasesCollector(simplePhrasesCollector.getCollection(), forms);
     complexPhrasesCollector.collect(process);
-}
-
-void RawTextProcessor::finalizeDocumentProcessing() {
-    auto& corpus = TextCorpus::GetCorpus();
-    for (const auto& lemma : uniqueLemmasInDoc) {
-        corpus.UpdateDocumentFrequency(lemma);
-    }
-    uniqueLemmasInDoc.clear();
 }

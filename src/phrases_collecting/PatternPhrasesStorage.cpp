@@ -1,10 +1,10 @@
 #include "PatternPhrasesStorage.h"
 #include "ClusterSerializer.h"
-#include "SemanticRelations.h"
-#include "TextCorpus.h"
-#include "TopicManager.h"
-#include "Options.h"
+#include "CorpusVocabulary.h"
 #include "Logger.h"
+#include "Options.h"
+#include "SemanticRelations.h"
+#include "TopicManager.h"
 
 #include <regex>
 
@@ -502,7 +502,7 @@ void PatternPhrasesStorage::calculateLSAMetrics(const Eigen::MatrixXd& U, const 
 
 void PatternPhrasesStorage::computeTextMetrics() {
     Logger::log("PhrasesStorage", LogLevel::Info, "Computing text metrics...");
-    const auto corpus = TextCorpus::GetCorpus();
+    const auto corpus = CorpusVocabulary::GetCorpus();
     int totalDocuments = corpus.getDocumentCount();
     const auto& topicVectors = TopicManager::getTopicVectors();
     static std::unordered_map<std::string, std::vector<std::string>> totalTopics;
@@ -517,8 +517,8 @@ void PatternPhrasesStorage::computeTextMetrics() {
 
         for (size_t i = 0; i < cluster.phraseSize; ++i) {
             const std::string& lemma = cluster.lemmas[i];
-            cluster.tf[i] = corpus.CalculateTF(lemma);
-            cluster.idf[i] = corpus.CalculateIDF(lemma);
+            // cluster.tf[i] = corpus.CalculateTF(lemma); TODO
+            // cluster.idf[i] = corpus.CalculateIDF(lemma);
             cluster.tfidf[i] = cluster.tf[i] * cluster.idf[i];
         }
 

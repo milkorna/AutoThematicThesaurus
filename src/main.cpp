@@ -1,4 +1,5 @@
 #include "ClusterMerger.h"
+#include "CorpusVocabulary.h"
 #include "Embedding.h"
 #include "GrammarPatternManager.h"
 #include "LSA.h"
@@ -8,9 +9,6 @@
 #include "PhrasesStorageLoader.h"
 #include "RawDataLoader.h"
 #include "RawTextProcessor.h"
-#include "TextCorpus.h"
-#include "TextCorpusFilter.h"
-#include "TextCorpusLoader.h"
 #include "TokenizedSentenceCorpus.h"
 
 #include <chrono>
@@ -209,7 +207,7 @@ int main(int argc, char** argv) {
             patternManager.printPatterns();
 
             fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
-            std::vector<DocumentRecord> documents = RawDataLoader::LoadFromJson(jsonInputPath);
+            std::vector<Document> documents = RawDataLoader::loadFromJson(jsonInputPath);
             if (documents.empty()) {
                 Logger::log("Main", LogLevel::Error, "No documents loaded from JSON file");
                 return 1;
@@ -220,16 +218,15 @@ int main(int argc, char** argv) {
             Logger::log("Main", LogLevel::Info, "Phrase collection completed successfully.");
         } else if (command == "filter_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting filtering corpus...");
-            auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusLoader::load(corpus, options.corpusFile.string());
-            TextCorpusFilter::filterTextsByLength(corpus);
-            TextCorpusFilter::filterStopWords(corpus);
-            TextCorpusLoader::save(corpus, options.filteredCorpusFile);
+            auto& corpus = CorpusVocabulary::GetCorpus();
+            corpus.load(options.corpusFile.string());
+            corpus.filter();
+            corpus.save(options.filteredCorpusFile.string());
             Logger::log("Main", LogLevel::Info, "Filtering corpus completed successfully.");
         } else if (command == "compute_text_metrics") {
             Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
-            auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusLoader::load(corpus, options.corpusFile.string());
+            auto& corpus = CorpusVocabulary::GetCorpus();
+            corpus.load(options.corpusFile.string());
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
@@ -240,8 +237,8 @@ int main(int argc, char** argv) {
         } else if (command == "load_hypernyms") {
             // Load hypernym and hyponym relations for stored lemmas
             Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
-            auto& corpus = TextCorpus::GetCorpus();
-            TextCorpusLoader::load(corpus, options.corpusFile.string());
+            auto& corpus = CorpusVocabulary::GetCorpus();
+            corpus.load(options.corpusFile.string());
             ::Embedding e;
             auto& storage = PatternPhrasesStorage::getStorage();
             PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
@@ -249,7 +246,7 @@ int main(int argc, char** argv) {
             storage.saveClusters(options.totalResultsPath);
         } else if (command == "build_tokenized_corpus") {
             fs::path jsonInputPath = options.corpusDir / "RuTermEval_processed.json";
-            std::vector<DocumentRecord> documents = RawDataLoader::LoadFromJson(jsonInputPath);
+            std::vector<Document> documents = RawDataLoader::loadFromJson(jsonInputPath);
 
             if (documents.empty()) {
                 Logger::log("Main", LogLevel::Error, "No documents loaded from JSON file");
