@@ -204,8 +204,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            148,
-            171
+            149,
+            172
         ],
         "lemmas": [
             "корпусный",
@@ -221,8 +221,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            133,
-            171
+            134,
+            172
         ],
         "lemmas": [
             "сравнительный",
@@ -239,8 +239,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            194,
-            208
+            195,
+            209
         ],
         "lemmas": [
             "русский",
@@ -256,8 +256,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            222,
-            240
+            223,
+            241
         ],
         "lemmas": [
             "школьный",
@@ -273,8 +273,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            213,
-            240
+            214,
+            241
         ],
         "lemmas": [
             "младший",
@@ -291,8 +291,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            122,
-            171
+            123,
+            172
         ],
         "lemmas": [
             "результат",
@@ -310,8 +310,8 @@
         "start_token_ind": 10,
         "end_token_ind": 15,
         "span": [
-            194,
-            240
+            195,
+            241
         ],
         "lemmas": [
             "русский",
@@ -331,8 +331,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            184,
-            208
+            185,
+            209
         ],
         "lemmas": [
             "учебник",
@@ -349,8 +349,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            203,
-            240
+            204,
+            241
         ],
         "lemmas": [
             "язык",
@@ -369,8 +369,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            253,
-            274
+            254,
+            275
         ],
         "lemmas": [
             "статистический",
@@ -386,8 +386,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            287,
-            307
+            288,
+            308
         ],
         "lemmas": [
             "разнообразие",
@@ -403,8 +403,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            389,
-            408
+            390,
+            409
         ],
         "lemmas": [
             "тематический",
@@ -420,8 +420,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            253,
-            284
+            254,
+            285
         ],
         "lemmas": [
             "статистический",
@@ -439,8 +439,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            278,
-            307
+            279,
+            308
         ],
         "lemmas": [
             "объем",

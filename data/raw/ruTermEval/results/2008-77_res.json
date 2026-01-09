@@ -8,8 +8,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            223,
-            244
+            224,
+            245
         ],
         "lemmas": [
             "анафорический",
@@ -25,8 +25,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            262,
-            276
+            263,
+            277
         ],
         "lemmas": [
             "данный",
@@ -42,8 +42,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            305,
-            328
+            306,
+            329
         ],
         "lemmas": [
             "семантический",
@@ -59,8 +59,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            319,
-            334
+            320,
+            335
         ],
         "lemmas": [
             "структура",
@@ -76,8 +76,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            305,
-            334
+            306,
+            335
         ],
         "lemmas": [
             "семантический",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            295,
-            328
+            296,
+            329
         ],
         "lemmas": [
             "фрагмент",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            385,
-            411
+            386,
+            412
         ],
         "lemmas": [
             "композициональный",
@@ -129,8 +129,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            404,
-            418
+            405,
+            419
         ],
         "lemmas": [
             "анализ",
@@ -146,8 +146,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            385,
-            418
+            386,
+            419
         ],
         "lemmas": [
             "композициональный",
@@ -164,8 +164,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            373,
-            411
+            374,
+            412
         ],
         "lemmas": [
             "возможность",
@@ -182,8 +182,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            404,
-            427
+            405,
+            428
         ],
         "lemmas": [
             "анализ",

@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            93,
-            112
+            94,
+            113
         ],
         "lemmas": [
             "способ",
@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            113,
-            131
+            114,
+            132
         ],
         "lemmas": [
             "диалектный",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            143,
-            159
+            144,
+            160
         ],
         "lemmas": [
             "поисковый",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            100,
-            131
+            101,
+            132
         ],
         "lemmas": [
             "исследование",
@@ -129,8 +129,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            143,
-            166
+            144,
+            167
         ],
         "lemmas": [
             "поисковый",
@@ -148,8 +148,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            206,
-            229
+            207,
+            230
         ],
         "lemmas": [
             "конкретный",

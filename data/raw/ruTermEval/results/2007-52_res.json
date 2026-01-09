@@ -62,8 +62,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            49,
-            76
+            50,
+            77
         ],
         "lemmas": [
             "семантический",
@@ -79,8 +79,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            126,
-            145
+            127,
+            146
         ],
         "lemmas": [
             "глобальный",
@@ -96,8 +96,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            137,
-            152
+            138,
+            153
         ],
         "lemmas": [
             "свойство",
@@ -113,8 +113,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            172,
-            191
+            173,
+            192
         ],
         "lemmas": [
             "смысловой",
@@ -130,8 +130,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            162,
-            191
+            163,
+            192
         ],
         "lemmas": [
             "локальный",
@@ -148,8 +148,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            126,
-            152
+            127,
+            153
         ],
         "lemmas": [
             "глобальный",
@@ -166,8 +166,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            218,
-            240
+            219,
+            241
         ],
         "lemmas": [
             "информационный",
@@ -183,8 +183,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            233,
-            247
+            234,
+            248
         ],
         "lemmas": [
             "качество",
@@ -200,8 +200,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            218,
-            247
+            219,
+            248
         ],
         "lemmas": [
             "информационный",
@@ -218,8 +218,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            211,
-            240
+            212,
+            241
         ],
         "lemmas": [
             "оценка",
@@ -236,8 +236,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            276,
-            287
+            277,
+            288
         ],
         "lemmas": [
             "сжатый",
@@ -253,8 +253,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            289,
-            302
+            290,
+            303
         ],
         "lemmas": [
             "знание",

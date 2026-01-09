@@ -120,8 +120,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            109,
-            128
+            110,
+            129
         ],
         "lemmas": [
             "уточнение",
@@ -137,8 +137,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            129,
-            152
+            130,
+            153
         ],
         "lemmas": [
             "компьютерный",
@@ -154,8 +154,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            214,
-            233
+            215,
+            234
         ],
         "lemmas": [
             "лексический",
@@ -171,8 +171,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            234,
-            248
+            235,
+            249
         ],
         "lemmas": [
             "русский",
@@ -188,8 +188,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            119,
-            152
+            120,
+            153
         ],
         "lemmas": [
             "структура",
@@ -206,8 +206,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            214,
-            248
+            215,
+            249
         ],
         "lemmas": [
             "лексический",
@@ -225,8 +225,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            226,
-            248
+            227,
+            249
         ],
         "lemmas": [
             "система",
@@ -243,8 +243,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            293,
-            313
+            294,
+            314
         ],
         "lemmas": [
             "частотность",
@@ -260,8 +260,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            293,
-            318
+            294,
+            319
         ],
         "lemmas": [
             "частотность",
@@ -278,8 +278,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            305,
-            318
+            306,
+            319
         ],
         "lemmas": [
             "значение",
@@ -295,8 +295,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            363,
-            383
+            364,
+            384
         ],
         "lemmas": [
             "контекстный",
@@ -312,8 +312,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            385,
-            410
+            386,
+            411
         ],
         "lemmas": [
             "разграничивающий",
@@ -329,8 +329,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            357,
-            383
+            358,
+            384
         ],
         "lemmas": [
             "набор",
@@ -347,8 +347,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            424,
-            440
+            425,
+            441
         ],
         "lemmas": [
             "методика",
@@ -364,8 +364,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            441,
-            461
+            442,
+            462
         ],
         "lemmas": [
             "контекстный",
@@ -381,8 +381,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            502,
-            527
+            503,
+            528
         ],
         "lemmas": [
             "устойчивый",
@@ -398,8 +398,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            433,
-            461
+            434,
+            462
         ],
         "lemmas": [
             "анализ",
@@ -416,8 +416,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            490,
-            527
+            491,
+            528
         ],
         "lemmas": [
             "свободный",

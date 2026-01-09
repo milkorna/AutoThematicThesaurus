@@ -78,8 +78,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            83,
-            95
+            84,
+            96
         ],
         "lemmas": [
             "анализа",
@@ -95,8 +95,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            106,
-            123
+            107,
+            124
         ],
         "lemmas": [
             "жестовый",
@@ -112,8 +112,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            98,
-            123
+            99,
+            124
         ],
         "lemmas": [
             "русский",
@@ -130,8 +130,8 @@
         "start_token_ind": 2,
         "end_token_ind": 7,
         "span": [
-            83,
-            123
+            84,
+            124
         ],
         "lemmas": [
             "анализа",
@@ -151,8 +151,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            91,
-            123
+            92,
+            124
         ],
         "lemmas": [
             "пауза",

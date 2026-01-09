@@ -8,8 +8,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            44,
-            63
+            45,
+            64
         ],
         "lemmas": [
             "локальный",
@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            81,
-            96
+            82,
+            97
         ],
         "lemmas": [
             "снятие",
@@ -42,8 +42,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            127,
-            140
+            128,
+            141
         ],
         "lemmas": [
             "жестовый",
@@ -59,8 +59,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            81,
-            109
+            82,
+            110
         ],
         "lemmas": [
             "снятие",
@@ -78,8 +78,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            158,
-            178
+            159,
+            179
         ],
         "lemmas": [
             "метод",
@@ -95,8 +95,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            158,
-            188
+            159,
+            189
         ],
         "lemmas": [
             "метод",
@@ -113,8 +113,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            165,
-            188
+            166,
+            189
         ],
         "lemmas": [
             "сопоставление",
@@ -130,8 +130,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            192,
-            206
+            193,
+            207
         ],
         "lemmas": [
             "основа",
@@ -147,8 +147,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            192,
-            217
+            193,
+            218
         ],
         "lemmas": [
             "основа",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            199,
-            217
+            200,
+            218
         ],
         "lemmas": [
             "анализ",
@@ -182,8 +182,8 @@
         "start_token_ind": 1,
         "end_token_ind": 6,
         "span": [
-            158,
-            206
+            159,
+            207
         ],
         "lemmas": [
             "метод",
@@ -203,8 +203,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            165,
-            206
+            166,
+            207
         ],
         "lemmas": [
             "сопоставление",
@@ -223,8 +223,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            179,
-            217
+            180,
+            218
         ],
         "lemmas": [
             "концепт",
@@ -243,8 +243,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            192,
-            229
+            193,
+            230
         ],
         "lemmas": [
             "основа",
@@ -263,8 +263,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            199,
-            229
+            200,
+            230
         ],
         "lemmas": [
             "анализ",
@@ -282,8 +282,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            251,
-            277
+            252,
+            278
         ],
         "lemmas": [
             "автоматизированный",
@@ -299,8 +299,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            316,
-            329
+            317,
+            330
         ],
         "lemmas": [
             "сеть",
@@ -316,8 +316,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            244,
-            277
+            245,
+            278
         ],
         "lemmas": [
             "способ",
@@ -334,8 +334,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            303,
-            329
+            304,
+            330
         ],
         "lemmas": [
             "документ",

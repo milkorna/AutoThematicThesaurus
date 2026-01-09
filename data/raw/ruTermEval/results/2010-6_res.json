@@ -77,8 +77,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            146,
-            163
+            147,
+            164
         ],
         "lemmas": [
             "звуковой",
@@ -94,8 +94,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            164,
-            178
+            165,
+            179
         ],
         "lemmas": [
             "русский",
@@ -111,8 +111,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            181,
-            196
+            182,
+            197
         ],
         "lemmas": [
             "массив",
@@ -128,8 +128,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            203,
-            222
+            204,
+            223
         ],
         "lemmas": [
             "монологический",
@@ -145,8 +145,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            287,
-            320
+            288,
+            321
         ],
         "lemmas": [
             "психолингвистический",
@@ -162,8 +162,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            146,
-            178
+            147,
+            179
         ],
         "lemmas": [
             "звуковой",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            156,
-            178
+            157,
+            179
         ],
         "lemmas": [
             "корпус",
@@ -199,8 +199,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            370,
-            393
+            371,
+            394
         ],
         "lemmas": [
             "результат",

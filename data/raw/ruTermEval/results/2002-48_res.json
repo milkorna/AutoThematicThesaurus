@@ -96,8 +96,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            125,
-            151
+            126,
+            152
         ],
         "lemmas": [
             "конвейерный",
@@ -113,8 +113,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            138,
-            163
+            139,
+            164
         ],
         "lemmas": [
             "моделирование",
@@ -131,8 +131,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            156,
-            170
+            157,
+            171
         ],
         "lemmas": [
             "решение",
@@ -148,8 +148,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            171,
-            199
+            172,
+            200
         ],
         "lemmas": [
             "интеллектуальный",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            125,
-            170
+            126,
+            171
         ],
         "lemmas": [
             "конвейерный",
@@ -185,8 +185,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            114,
-            151
+            115,
+            152
         ],
         "lemmas": [
             "технология",
@@ -203,8 +203,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            138,
-            170
+            139,
+            171
         ],
         "lemmas": [
             "моделирование",
@@ -222,8 +222,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            164,
-            199
+            165,
+            200
         ],
         "lemmas": [
             "задача",
@@ -240,8 +240,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            240,
-            277
+            241,
+            278
         ],
         "lemmas": [
             "объектно-ориентированный",
@@ -257,8 +257,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            292,
-            326
+            293,
+            327
         ],
         "lemmas": [
             "объектно-информационный",
@@ -274,8 +274,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            349,
-            373
+            350,
+            374
         ],
         "lemmas": [
             "практический",
@@ -291,8 +291,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            363,
-            384
+            364,
+            385
         ],
         "lemmas": [
             "применение",
@@ -308,8 +308,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            385,
-            411
+            386,
+            412
         ],
         "lemmas": [
             "конвейерный",
@@ -325,8 +325,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            438,
-            453
+            439,
+            454
         ],
         "lemmas": [
             "тестовый",
@@ -342,8 +342,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            455,
-            470
+            456,
+            471
         ],
         "lemmas": [
             "разгрузка",
@@ -359,8 +359,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            473,
-            486
+            474,
+            487
         ],
         "lemmas": [
             "морской",
@@ -376,8 +376,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            349,
-            384
+            350,
+            385
         ],
         "lemmas": [
             "практический",
@@ -394,8 +394,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            336,
-            373
+            337,
+            374
         ],
         "lemmas": [
             "демонстрация",
@@ -412,8 +412,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            374,
-            411
+            375,
+            412
         ],
         "lemmas": [
             "технология",
@@ -430,8 +430,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            430,
-            453
+            431,
+            454
         ],
         "lemmas": [
             "решение",
@@ -448,8 +448,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            455,
-            486
+            456,
+            487
         ],
         "lemmas": [
             "разгрузка",
@@ -468,8 +468,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            465,
-            486
+            466,
+            487
         ],
         "lemmas": [
             "суд",
@@ -487,8 +487,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            489,
-            505
+            490,
+            506
         ],
         "lemmas": [
             "акцент",
@@ -504,8 +504,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            523,
-            542
+            524,
+            543
         ],
         "lemmas": [
             "технология",
@@ -521,8 +521,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            523,
-            549
+            524,
+            550
         ],
         "lemmas": [
             "технология",
@@ -539,8 +539,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            534,
-            549
+            535,
+            550
         ],
         "lemmas": [
             "описание",
@@ -556,8 +556,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            569,
-            592
+            570,
+            593
         ],
         "lemmas": [
             "интеллектуальный",

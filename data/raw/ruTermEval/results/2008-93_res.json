@@ -135,8 +135,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            122,
-            144
+            123,
+            145
         ],
         "lemmas": [
             "интернет-портал",
@@ -152,8 +152,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            146,
-            175
+            147,
+            176
         ],
         "lemmas": [
             "обеспечивающий",
@@ -169,8 +169,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            161,
-            182
+            162,
+            183
         ],
         "lemmas": [
             "систематизация",
@@ -186,8 +186,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            185,
-            208
+            186,
+            209
         ],
         "lemmas": [
             "информационный",
@@ -203,8 +203,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            212,
-            236
+            213,
+            237
         ],
         "lemmas": [
             "компьютерный",
@@ -220,8 +220,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            261,
-            288
+            262,
+            289
         ],
         "lemmas": [
             "информационный",
@@ -237,8 +237,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            254,
-            288
+            255,
+            289
         ],
         "lemmas": [
             "единый",
@@ -255,8 +255,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            298,
-            319
+            299,
+            320
         ],
         "lemmas": [
             "содержательный",
@@ -272,8 +272,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            327,
-            343
+            328,
+            344
         ],
         "lemmas": [
             "поиск",
@@ -289,8 +289,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            355,
-            373
+            356,
+            374
         ],
         "lemmas": [
             "предметный",
@@ -306,8 +306,8 @@
         "start_token_ind": 33,
         "end_token_ind": 34,
         "span": [
-            366,
-            381
+            367,
+            382
         ],
         "lemmas": [
             "область",
@@ -323,8 +323,8 @@
         "start_token_ind": 36,
         "end_token_ind": 37,
         "span": [
-            384,
-            404
+            385,
+            405
         ],
         "lemmas": [
             "управляемый",
@@ -340,8 +340,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            146,
-            182
+            147,
+            183
         ],
         "lemmas": [
             "обеспечивающий",
@@ -358,8 +358,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            176,
-            208
+            177,
+            209
         ],
         "lemmas": [
             "знание",
@@ -377,8 +377,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            185,
-            236
+            186,
+            237
         ],
         "lemmas": [
             "информационный",
@@ -397,8 +397,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            200,
-            236
+            201,
+            237
         ],
         "lemmas": [
             "ресурс",
@@ -416,8 +416,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            241,
-            288
+            242,
+            289
         ],
         "lemmas": [
             "интеграция",
@@ -436,8 +436,8 @@
         "start_token_ind": 28,
         "end_token_ind": 31,
         "span": [
-            327,
-            354
+            328,
+            355
         ],
         "lemmas": [
             "поиск",
@@ -455,8 +455,8 @@
         "start_token_ind": 32,
         "end_token_ind": 34,
         "span": [
-            355,
-            381
+            356,
+            382
         ],
         "lemmas": [
             "предметный",
@@ -473,8 +473,8 @@
         "start_token_ind": 31,
         "end_token_ind": 33,
         "span": [
-            346,
-            373
+            347,
+            374
         ],
         "lemmas": [
             "термин",
@@ -491,8 +491,8 @@
         "start_token_ind": 34,
         "end_token_ind": 37,
         "span": [
-            374,
-            404
+            375,
+            405
         ],
         "lemmas": [
             "портал",

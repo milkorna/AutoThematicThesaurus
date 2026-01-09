@@ -79,8 +79,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            70,
-            90
+            71,
+            91
         ],
         "lemmas": [
             "сравнительный",
@@ -96,8 +96,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            96,
-            123
+            97,
+            124
         ],
         "lemmas": [
             "диалектологический",
@@ -113,8 +113,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            126,
-            145
+            127,
+            146
         ],
         "lemmas": [
             "диалектный",
@@ -130,8 +130,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            156,
-            177
+            157,
+            178
         ],
         "lemmas": [
             "национальный",
@@ -147,8 +147,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            178,
-            192
+            179,
+            193
         ],
         "lemmas": [
             "русский",
@@ -164,8 +164,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            218,
-            245
+            219,
+            246
         ],
         "lemmas": [
             "диалектологический",
@@ -181,8 +181,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            205,
-            245
+            206,
+            246
         ],
         "lemmas": [
             "саратовский",
@@ -199,8 +199,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            280,
-            296
+            281,
+            297
         ],
         "lemmas": [
             "параметр",
@@ -216,8 +216,8 @@
         "start_token_ind": 31,
         "end_token_ind": 33,
         "span": [
-            280,
-            304
+            281,
+            305
         ],
         "lemmas": [
             "параметр",
@@ -234,8 +234,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            290,
-            304
+            291,
+            305
         ],
         "lemmas": [
             "оценка",
@@ -251,8 +251,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            313,
-            328
+            314,
+            329
         ],
         "lemmas": [
             "диалектный",
@@ -268,8 +268,8 @@
         "start_token_ind": 34,
         "end_token_ind": 36,
         "span": [
-            305,
-            328
+            306,
+            329
         ],
         "lemmas": [
             "русский",
@@ -286,8 +286,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            63,
-            90
+            64,
+            91
         ],
         "lemmas": [
             "основа",
@@ -304,8 +304,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            126,
-            155
+            127,
+            156
         ],
         "lemmas": [
             "диалектный",
@@ -323,8 +323,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            156,
-            192
+            157,
+            193
         ],
         "lemmas": [
             "национальный",
@@ -342,8 +342,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            148,
-            177
+            149,
+            178
         ],
         "lemmas": [
             "состав",
@@ -360,8 +360,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            170,
-            192
+            171,
+            193
         ],
         "lemmas": [
             "корпус",
@@ -378,8 +378,8 @@
         "start_token_ind": 29,
         "end_token_ind": 33,
         "span": [
-            268,
-            304
+            269,
+            305
         ],
         "lemmas": [
             "концепция",
@@ -398,8 +398,8 @@
         "start_token_ind": 33,
         "end_token_ind": 36,
         "span": [
-            297,
-            328
+            298,
+            329
         ],
         "lemmas": [
             "корпус",

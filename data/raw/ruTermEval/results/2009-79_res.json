@@ -60,8 +60,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            82,
-            98
+            83,
+            99
         ],
         "lemmas": [
             "ссылочный",
@@ -77,8 +77,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            102,
-            116
+            103,
+            117
         ],
         "lemmas": [
             "основа",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            102,
-            127
+            103,
+            128
         ],
         "lemmas": [
             "основа",
@@ -112,8 +112,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            109,
-            127
+            110,
+            128
         ],
         "lemmas": [
             "анализ",
@@ -129,8 +129,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            82,
-            116
+            83,
+            117
         ],
         "lemmas": [
             "ссылочный",
@@ -149,8 +149,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            72,
-            98
+            73,
+            99
         ],
         "lemmas": [
             "выявление",
@@ -167,8 +167,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            93,
-            127
+            94,
+            128
         ],
         "lemmas": [
             "спам",
@@ -187,8 +187,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            275,
-            293
+            276,
+            294
         ],
         "lemmas": [
             "алгоритм",
@@ -204,8 +204,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            275,
-            305
+            276,
+            306
         ],
         "lemmas": [
             "алгоритм",
@@ -222,8 +222,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            284,
-            305
+            285,
+            306
         ],
         "lemmas": [
             "выявление",

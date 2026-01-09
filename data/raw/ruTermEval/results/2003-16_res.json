@@ -59,8 +59,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            150,
-            166
+            151,
+            167
         ],
         "lemmas": [
             "создание",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            193,
-            208
+            194,
+            209
         ],
         "lemmas": [
             "русский",
@@ -93,8 +93,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            140,
-            166
+            141,
+            167
         ],
         "lemmas": [
             "проект",
@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            237,
-            262
+            238,
+            263
         ],
         "lemmas": [
             "лингвистический",
@@ -129,8 +129,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            421,
-            443
+            422,
+            444
         ],
         "lemmas": [
             "морфологический",
@@ -146,8 +146,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            457,
-            478
+            458,
+            479
         ],
         "lemmas": [
             "элемент",
@@ -163,8 +163,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            504,
-            529
+            505,
+            530
         ],
         "lemmas": [
             "способ",
@@ -180,8 +180,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            504,
-            539
+            505,
+            540
         ],
         "lemmas": [
             "способ",
@@ -198,8 +198,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            512,
-            539
+            513,
+            540
         ],
         "lemmas": [
             "совершенствование",
@@ -215,8 +215,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            559,
-            577
+            560,
+            578
         ],
         "lemmas": [
             "оптимизация",
@@ -232,8 +232,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            447,
-            478
+            448,
+            479
         ],
         "lemmas": [
             "система",
@@ -251,8 +251,8 @@
         "start_token_ind": 25,
         "end_token_ind": 29,
         "span": [
-            504,
-            547
+            505,
+            548
         ],
         "lemmas": [
             "способ",
@@ -271,8 +271,8 @@
         "start_token_ind": 26,
         "end_token_ind": 29,
         "span": [
-            512,
-            547
+            513,
+            548
         ],
         "lemmas": [
             "совершенствование",

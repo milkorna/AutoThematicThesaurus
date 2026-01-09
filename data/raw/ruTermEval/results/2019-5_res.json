@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            155,
-            169
+            156,
+            170
         ],
         "lemmas": [
             "русский",
@@ -42,8 +42,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            185,
-            200
+            186,
+            201
         ],
         "lemmas": [
             "языковый",
@@ -59,8 +59,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            208,
-            228
+            209,
+            229
         ],
         "lemmas": [
             "качество",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            260,
-            275
+            261,
+            276
         ],
         "lemmas": [
             "нейронный",
@@ -93,8 +93,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            247,
-            275
+            248,
+            276
         ],
         "lemmas": [
             "рекуррентный",
@@ -111,8 +111,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            277,
-            296
+            278,
+            297
         ],
         "lemmas": [
             "механизм",
@@ -128,8 +128,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            307,
-            319
+            308,
+            320
         ],
         "lemmas": [
             "верхний",
@@ -145,8 +145,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            315,
-            324
+            316,
+            325
         ],
         "lemmas": [
             "слой",
@@ -162,8 +162,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            307,
-            324
+            308,
+            325
         ],
         "lemmas": [
             "верхний",
@@ -180,8 +180,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            411,
-            431
+            412,
+            432
         ],
         "lemmas": [
             "качество",

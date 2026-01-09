@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            83,
-            99
+            84,
+            100
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            67,
-            99
+            68,
+            100
         ],
         "lemmas": [
             "мультимедийный",
@@ -77,8 +77,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            167,
-            183
+            168,
+            184
         ],
         "lemmas": [
             "кванторный",
@@ -94,8 +94,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            187,
-            208
+            188,
+            209
         ],
         "lemmas": [
             "значение",
@@ -111,8 +111,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            57,
-            99
+            58,
+            100
         ],
         "lemmas": [
             "материал",
@@ -130,8 +130,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            278,
-            294
+            279,
+            295
         ],
         "lemmas": [
             "кванторный",
@@ -147,8 +147,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            351,
-            380
+            352,
+            381
         ],
         "lemmas": [
             "прагматический",
@@ -164,8 +164,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            381,
-            396
+            382,
+            397
         ],
         "lemmas": [
             "кванторный",
@@ -181,8 +181,8 @@
         "start_token_ind": 33,
         "end_token_ind": 34,
         "span": [
-            462,
-            482
+            463,
+            483
         ],
         "lemmas": [
             "оперативный",
@@ -198,8 +198,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            351,
-            396
+            352,
+            397
         ],
         "lemmas": [
             "прагматический",
@@ -217,8 +217,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            367,
-            396
+            368,
+            397
         ],
         "lemmas": [
             "особенность",

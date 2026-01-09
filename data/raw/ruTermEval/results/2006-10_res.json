@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            108,
-            128
+            109,
+            129
         ],
         "lemmas": [
             "семантический",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            147,
-            167
+            148,
+            168
         ],
         "lemmas": [
             "знаменательный",
@@ -111,8 +111,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            222,
-            234
+            223,
+            235
         ],
         "lemmas": [
             "иной",
@@ -128,8 +128,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            259,
-            284
+            260,
+            285
         ],
         "lemmas": [
             "расширенный",
@@ -145,8 +145,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            323,
-            340
+            324,
+            341
         ],
         "lemmas": [
             "метод",
@@ -162,8 +162,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            408,
-            427
+            409,
+            428
         ],
         "lemmas": [
             "числовой",
@@ -179,8 +179,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            428,
-            451
+            429,
+            452
         ],
         "lemmas": [
             "смысловой",
@@ -196,8 +196,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            248,
-            284
+            249,
+            285
         ],
         "lemmas": [
             "результат",
@@ -214,8 +214,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            323,
-            354
+            324,
+            355
         ],
         "lemmas": [
             "метод",
@@ -233,8 +233,8 @@
         "start_token_ind": 19,
         "end_token_ind": 22,
         "span": [
-            408,
-            451
+            409,
+            452
         ],
         "lemmas": [
             "числовой",
@@ -252,8 +252,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            417,
-            451
+            418,
+            452
         ],
         "lemmas": [
             "показатель",
@@ -270,8 +270,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            485,
-            500
+            486,
+            501
         ],
         "lemmas": [
             "качество",

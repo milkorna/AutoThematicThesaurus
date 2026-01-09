@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            105,
-            125
+            106,
+            126
         ],
         "lemmas": [
             "метод",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            126,
-            143
+            127,
+            144
         ],
         "lemmas": [
             "языковый",
@@ -111,8 +111,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            169,
-            197
+            170,
+            198
         ],
         "lemmas": [
             "исследовательский",
@@ -128,8 +128,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            112,
-            143
+            113,
+            144
         ],
         "lemmas": [
             "представление",
@@ -146,8 +146,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            248,
-            272
+            249,
+            273
         ],
         "lemmas": [
             "лингвистический",
@@ -163,8 +163,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            294,
-            316
+            295,
+            317
         ],
         "lemmas": [
             "статистический",
@@ -180,8 +180,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            328,
-            346
+            329,
+            347
         ],
         "lemmas": [
             "машинный",
@@ -197,8 +197,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            347,
-            364
+            348,
+            365
         ],
         "lemmas": [
             "метод",
@@ -214,8 +214,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            238,
-            272
+            239,
+            273
         ],
         "lemmas": [
             "сочетание",
@@ -232,8 +232,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            294,
-            327
+            295,
+            328
         ],
         "lemmas": [
             "статистический",
@@ -251,8 +251,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            319,
-            346
+            320,
+            347
         ],
         "lemmas": [
             "процесс",
@@ -269,8 +269,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            366,
-            390
+            367,
+            391
         ],
         "lemmas": [
             "вероятностный",

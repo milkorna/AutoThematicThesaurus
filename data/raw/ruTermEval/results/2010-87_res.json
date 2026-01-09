@@ -154,8 +154,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            79,
-            95
+            80,
+            96
         ],
         "lemmas": [
             "сравнение",
@@ -171,8 +171,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            96,
-            121
+            97,
+            122
         ],
         "lemmas": [
             "морфосинтаксический",
@@ -188,8 +188,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            160,
-            180
+            161,
+            181
         ],
         "lemmas": [
             "заслоняющий",
@@ -205,8 +205,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            89,
-            121
+            90,
+            122
         ],
         "lemmas": [
             "система",
@@ -223,8 +223,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            160,
-            191
+            161,
+            192
         ],
         "lemmas": [
             "заслоняющий",
@@ -242,8 +242,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            237,
-            266
+            238,
+            267
         ],
         "lemmas": [
             "концептуальный",
@@ -259,8 +259,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            290,
-            310
+            291,
+            311
         ],
         "lemmas": [
             "межъязыковой",
@@ -276,8 +276,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            278,
-            310
+            279,
+            311
         ],
         "lemmas": [
             "абстрактный",
@@ -294,8 +294,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            303,
-            316
+            304,
+            317
         ],
         "lemmas": [
             "система",
@@ -311,8 +311,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            321,
-            339
+            322,
+            340
         ],
         "lemmas": [
             "иерархия",
@@ -328,8 +328,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            358,
-            376
+            359,
+            377
         ],
         "lemmas": [
             "формальный",
@@ -345,8 +345,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            224,
-            266
+            225,
+            267
         ],
         "lemmas": [
             "формальный",
@@ -364,8 +364,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            290,
-            316
+            291,
+            317
         ],
         "lemmas": [
             "межъязыковой",
@@ -382,8 +382,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            278,
-            316
+            279,
+            317
         ],
         "lemmas": [
             "абстрактный",
@@ -401,8 +401,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            351,
-            376
+            352,
+            377
         ],
         "lemmas": [
             "анализ",

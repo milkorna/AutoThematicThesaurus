@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            71,
-            88
+            72,
+            89
         ],
         "lemmas": [
             "принцип",
@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            89,
-            121
+            90,
+            122
         ],
         "lemmas": [
             "вербально-образный",
@@ -59,8 +59,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            144,
-            164
+            145,
+            165
         ],
         "lemmas": [
             "представление",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            167,
-            185
+            168,
+            186
         ],
         "lemmas": [
             "классификация",
@@ -93,8 +93,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            167,
-            193
+            168,
+            194
         ],
         "lemmas": [
             "классификация",
@@ -111,8 +111,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            181,
-            193
+            182,
+            194
         ],
         "lemmas": [
             "форма",
@@ -128,8 +128,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            206,
-            227
+            207,
+            228
         ],
         "lemmas": [
             "гидрографический",
@@ -145,8 +145,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            80,
-            121
+            81,
+            122
         ],
         "lemmas": [
             "создание",
@@ -163,8 +163,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            144,
-            185
+            145,
+            186
         ],
         "lemmas": [
             "представление",
@@ -183,8 +183,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            158,
-            193
+            159,
+            194
         ],
         "lemmas": [
             "знание",
@@ -203,8 +203,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            167,
-            205
+            168,
+            206
         ],
         "lemmas": [
             "классификация",
@@ -223,8 +223,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            181,
-            205
+            182,
+            206
         ],
         "lemmas": [
             "форма",
@@ -242,8 +242,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            196,
-            227
+            197,
+            228
         ],
         "lemmas": [
             "элемент",
@@ -260,8 +260,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            293,
-            314
+            294,
+            315
         ],
         "lemmas": [
             "образный",
@@ -277,8 +277,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            339,
-            365
+            340,
+            366
         ],
         "lemmas": [
             "семантический",
@@ -294,8 +294,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            354,
-            380
+            355,
+            381
         ],
         "lemmas": [
             "кодирование",
@@ -311,8 +311,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            400,
-            418
+            401,
+            419
         ],
         "lemmas": [
             "образный",
@@ -328,8 +328,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            390,
-            418
+            391,
+            419
         ],
         "lemmas": [
             "первичный",
@@ -346,8 +346,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            430,
-            446
+            431,
+            447
         ],
         "lemmas": [
             "электронный",
@@ -363,8 +363,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            450,
-            472
+            451,
+            473
         ],
         "lemmas": [
             "концептуальный",
@@ -380,8 +380,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            466,
-            487
+            467,
+            488
         ],
         "lemmas": [
             "поиск",
@@ -397,8 +397,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            490,
-            516
+            491,
+            517
         ],
         "lemmas": [
             "электронный",
@@ -414,8 +414,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            281,
-            314
+            282,
+            315
         ],
         "lemmas": [
             "геотезаурус",
@@ -432,8 +432,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            339,
-            380
+            340,
+            381
         ],
         "lemmas": [
             "семантический",
@@ -450,8 +450,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            332,
-            365
+            333,
+            366
         ],
         "lemmas": [
             "задача",
@@ -468,8 +468,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            450,
-            487
+            451,
+            488
         ],
         "lemmas": [
             "концептуальный",
@@ -486,8 +486,8 @@
         "start_token_ind": 24,
         "end_token_ind": 28,
         "span": [
-            466,
-            516
+            467,
+            517
         ],
         "lemmas": [
             "поиск",
@@ -506,8 +506,8 @@
         "start_token_ind": 25,
         "end_token_ind": 28,
         "span": [
-            473,
-            516
+            474,
+            517
         ],
         "lemmas": [
             "геоизображение",

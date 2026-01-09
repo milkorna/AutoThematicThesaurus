@@ -60,8 +60,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            124,
-            144
+            125,
+            145
         ],
         "lemmas": [
             "теоретический",
@@ -77,8 +77,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            149,
-            172
+            150,
+            173
         ],
         "lemmas": [
             "автоматический",
@@ -94,8 +94,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            165,
-            185
+            166,
+            186
         ],
         "lemmas": [
             "синтез",
@@ -111,8 +111,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            188,
-            211
+            189,
+            212
         ],
         "lemmas": [
             "эмоциональный",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            124,
-            172
+            125,
+            173
         ],
         "lemmas": [
             "теоретический",
@@ -148,8 +148,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            138,
-            172
+            139,
+            173
         ],
         "lemmas": [
             "модель",
@@ -167,8 +167,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            149,
-            185
+            150,
+            186
         ],
         "lemmas": [
             "автоматический",
@@ -185,8 +185,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            165,
-            211
+            166,
+            212
         ],
         "lemmas": [
             "синтез",
@@ -205,8 +205,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            173,
-            211
+            174,
+            212
         ],
         "lemmas": [
             "высказывание",
@@ -224,8 +224,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            256,
-            268
+            257,
+            269
         ],
         "lemmas": [
             "выбор",
@@ -241,8 +241,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            269,
-            291
+            270,
+            292
         ],
         "lemmas": [
             "ответный",
@@ -258,8 +258,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            295,
-            316
+            296,
+            317
         ],
         "lemmas": [
             "множество",
@@ -275,8 +275,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            269,
-            316
+            270,
+            317
         ],
         "lemmas": [
             "ответный",
@@ -295,8 +295,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            262,
-            291
+            263,
+            292
         ],
         "lemmas": [
             "класс",
@@ -313,8 +313,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            279,
-            316
+            280,
+            317
         ],
         "lemmas": [
             "высказывание",
@@ -332,8 +332,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            331,
-            362
+            332,
+            363
         ],
         "lemmas": [
             "экспериментальный",
@@ -349,8 +349,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            397,
-            420
+            398,
+            421
         ],
         "lemmas": [
             "акцентуация",
@@ -366,8 +366,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            397,
-            431
+            398,
+            432
         ],
         "lemmas": [
             "акцентуация",
@@ -384,8 +384,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            411,
-            431
+            412,
+            432
         ],
         "lemmas": [
             "характер",
@@ -401,8 +401,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            434,
-            448
+            435,
+            449
         ],
         "lemmas": [
             "выбор",
@@ -418,8 +418,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            434,
-            461
+            435,
+            462
         ],
         "lemmas": [
             "выбор",
@@ -436,8 +436,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            442,
-            461
+            443,
+            462
         ],
         "lemmas": [
             "класс",
@@ -453,8 +453,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            464,
-            486
+            465,
+            487
         ],
         "lemmas": [
             "эмоциональный",
@@ -470,8 +470,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            321,
-            362
+            322,
+            363
         ],
         "lemmas": [
             "основание",
@@ -488,8 +488,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            397,
-            441
+            398,
+            442
         ],
         "lemmas": [
             "акцентуация",
@@ -508,8 +508,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            411,
-            441
+            412,
+            442
         ],
         "lemmas": [
             "характер",
@@ -527,8 +527,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            421,
-            461
+            422,
+            462
         ],
         "lemmas": [
             "испытуемый",
@@ -547,8 +547,8 @@
         "start_token_ind": 11,
         "end_token_ind": 16,
         "span": [
-            434,
-            486
+            435,
+            487
         ],
         "lemmas": [
             "выбор",
@@ -568,8 +568,8 @@
         "start_token_ind": 12,
         "end_token_ind": 16,
         "span": [
-            442,
-            486
+            443,
+            487
         ],
         "lemmas": [
             "класс",
@@ -588,8 +588,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            449,
-            486
+            450,
+            487
         ],
         "lemmas": [
             "высказывание",

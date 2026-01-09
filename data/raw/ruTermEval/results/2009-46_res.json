@@ -207,8 +207,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            121,
-            139
+            122,
+            140
         ],
         "lemmas": [
             "результат",
@@ -224,8 +224,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            140,
-            166
+            141,
+            167
         ],
         "lemmas": [
             "русскоязычный",
@@ -241,8 +241,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            167,
-            188
+            168,
+            189
         ],
         "lemmas": [
             "корпусный",
@@ -258,8 +258,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            225,
-            249
+            226,
+            250
         ],
         "lemmas": [
             "автоматический",
@@ -275,8 +275,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            250,
-            270
+            251,
+            271
         ],
         "lemmas": [
             "специальный",
@@ -292,8 +292,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            263,
-            278
+            264,
+            279
         ],
         "lemmas": [
             "корпус",
@@ -309,8 +309,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            140,
-            188
+            141,
+            189
         ],
         "lemmas": [
             "русскоязычный",
@@ -328,8 +328,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            132,
-            166
+            133,
+            167
         ],
         "lemmas": [
             "анализ",
@@ -346,8 +346,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            154,
-            188
+            155,
+            189
         ],
         "lemmas": [
             "терминология",
@@ -364,8 +364,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            225,
-            270
+            226,
+            271
         ],
         "lemmas": [
             "автоматический",
@@ -383,8 +383,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            216,
-            249
+            217,
+            250
         ],
         "lemmas": [
             "ручной",
@@ -402,8 +402,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            250,
-            278
+            251,
+            279
         ],
         "lemmas": [
             "специальный",
@@ -420,8 +420,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            240,
-            270
+            241,
+            271
         ],
         "lemmas": [
             "обработка",
@@ -438,8 +438,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            368,
-            399
+            369,
+            400
         ],
         "lemmas": [
             "лексико-грамматический",
@@ -455,8 +455,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            413,
-            433
+            414,
+            434
         ],
         "lemmas": [
             "внутренний",
@@ -472,8 +472,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            424,
-            442
+            425,
+            443
         ],
         "lemmas": [
             "структура",
@@ -489,8 +489,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            413,
-            442
+            414,
+            443
         ],
         "lemmas": [
             "внутренний",
@@ -507,8 +507,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            404,
-            433
+            405,
+            434
         ],
         "lemmas": [
             "описание",

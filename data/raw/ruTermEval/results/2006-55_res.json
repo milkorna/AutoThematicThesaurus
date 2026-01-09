@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            104,
-            123
+            105,
+            124
         ],
         "lemmas": [
             "обучающий",
@@ -94,8 +94,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            91,
-            123
+            92,
+            124
         ],
         "lemmas": [
             "существующий",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            127,
-            145
+            128,
+            146
         ],
         "lemmas": [
             "иностранный",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            176,
-            199
+            177,
+            200
         ],
         "lemmas": [
             "компьютерный",
@@ -146,8 +146,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            224,
-            244
+            225,
+            245
         ],
         "lemmas": [
             "сборник",
@@ -163,8 +163,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            114,
-            145
+            115,
+            146
         ],
         "lemmas": [
             "программа",
@@ -182,8 +182,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            248,
-            264
+            249,
+            265
         ],
         "lemmas": [
             "настоящий",
@@ -199,8 +199,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            304,
-            318
+            305,
+            319
         ],
         "lemmas": [
             "словарный",
@@ -216,8 +216,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            314,
-            325
+            315,
+            326
         ],
         "lemmas": [
             "база",
@@ -233,8 +233,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            369,
-            387
+            370,
+            388
         ],
         "lemmas": [
             "учебный",
@@ -250,8 +250,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            304,
-            325
+            305,
+            326
         ],
         "lemmas": [
             "словарный",
@@ -268,8 +268,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            364,
-            387
+            365,
+            388
         ],
         "lemmas": [
             "род",

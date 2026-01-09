@@ -99,8 +99,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            108,
-            127
+            109,
+            128
         ],
         "lemmas": [
             "задача",
@@ -116,8 +116,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            108,
-            137
+            109,
+            138
         ],
         "lemmas": [
             "задача",
@@ -134,8 +134,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            108,
-            149
+            109,
+            150
         ],
         "lemmas": [
             "задача",
@@ -153,8 +153,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            115,
-            137
+            116,
+            138
         ],
         "lemmas": [
             "визуализация",
@@ -170,8 +170,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            115,
-            149
+            116,
+            150
         ],
         "lemmas": [
             "визуализация",
@@ -188,8 +188,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            128,
-            149
+            129,
+            150
         ],
         "lemmas": [
             "структура",
@@ -205,8 +205,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            150,
-            163
+            151,
+            164
         ],
         "lemmas": [
             "деловой",
@@ -222,8 +222,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            176,
-            199
+            177,
+            200
         ],
         "lemmas": [
             "интерактивный",
@@ -239,8 +239,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            205,
-            223
+            206,
+            224
         ],
         "lemmas": [
             "машинный",
@@ -256,8 +256,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            227,
-            256
+            228,
+            257
         ],
         "lemmas": [
             "прологоподобный",
@@ -273,8 +273,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            150,
-            175
+            151,
+            176
         ],
         "lemmas": [
             "деловой",
@@ -292,8 +292,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            138,
-            163
+            139,
+            164
         ],
         "lemmas": [
             "предложение",
@@ -310,8 +310,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            166,
-            199
+            167,
+            200
         ],
         "lemmas": [
             "контекст",
@@ -328,8 +328,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            287,
-            301
+            288,
+            302
         ],
         "lemmas": [
             "решение",
@@ -345,8 +345,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            287,
-            314
+            288,
+            315
         ],
         "lemmas": [
             "решение",
@@ -363,8 +363,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            295,
-            314
+            296,
+            315
         ],
         "lemmas": [
             "задача",
@@ -380,8 +380,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            346,
-            368
+            347,
+            369
         ],
         "lemmas": [
             "интерактивный",
@@ -397,8 +397,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            408,
-            428
+            409,
+            429
         ],
         "lemmas": [
             "интерактивный",
@@ -414,8 +414,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            338,
-            368
+            339,
+            369
         ],
         "lemmas": [
             "система",
@@ -432,8 +432,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            455,
-            474
+            456,
+            475
         ],
         "lemmas": [
             "задача",
@@ -449,8 +449,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            494,
-            516
+            495,
+            517
         ],
         "lemmas": [
             "оптимизационный",
@@ -466,8 +466,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            527,
-            547
+            528,
+            548
         ],
         "lemmas": [
             "устойчивый",
@@ -483,8 +483,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            548,
-            572
+            549,
+            573
         ],
         "lemmas": [
             "взаимодействующий",
@@ -500,8 +500,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            574,
-            592
+            575,
+            593
         ],
         "lemmas": [
             "знаковый",
@@ -517,8 +517,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            596,
-            608
+            597,
+            609
         ],
         "lemmas": [
             "силовой",
@@ -534,8 +534,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            610,
-            638
+            611,
+            639
         ],
         "lemmas": [
             "ограниченный",
@@ -551,8 +551,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            494,
-            526
+            495,
+            527
         ],
         "lemmas": [
             "оптимизационный",
@@ -570,8 +570,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            527,
-            572
+            528,
+            573
         ],
         "lemmas": [
             "устойчивый",
@@ -589,8 +589,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            520,
-            547
+            521,
+            548
         ],
         "lemmas": [
             "поиск",
@@ -607,8 +607,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            538,
-            572
+            539,
+            573
         ],
         "lemmas": [
             "состояние",
@@ -625,8 +625,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            650,
-            673
+            651,
+            674
         ],
         "lemmas": [
             "разработанный",
@@ -642,8 +642,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            686,
-            706
+            687,
+            707
         ],
         "lemmas": [
             "правомерность",
@@ -659,8 +659,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            708,
-            729
+            709,
+            730
         ],
         "lemmas": [
             "силовой",
@@ -676,8 +676,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            747,
-            769
+            748,
+            770
         ],
         "lemmas": [
             "элемент",
@@ -693,8 +693,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            775,
-            800
+            776,
+            801
         ],
         "lemmas": [
             "удобство",
@@ -711,8 +711,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            803,
-            821
+            804,
+            822
         ],
         "lemmas": [
             "контекст",
@@ -728,8 +728,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            825,
-            845
+            826,
+            846
         ],
         "lemmas": [
             "перевод",
@@ -745,8 +745,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            848,
-            869
+            849,
+            870
         ],
         "lemmas": [
             "прологоподобной",
@@ -762,8 +762,8 @@
         "start_token_ind": 20,
         "end_token_ind": 24,
         "span": [
-            803,
-            845
+            804,
+            846
         ],
         "lemmas": [
             "контекст",
@@ -782,8 +782,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            788,
-            821
+            789,
+            822
         ],
         "lemmas": [
             "пользователь",
@@ -801,8 +801,8 @@
         "start_token_ind": 21,
         "end_token_ind": 24,
         "span": [
-            813,
-            845
+            814,
+            846
         ],
         "lemmas": [
             "действие",
@@ -820,8 +820,8 @@
         "start_token_ind": 23,
         "end_token_ind": 27,
         "span": [
-            825,
-            869
+            826,
+            870
         ],
         "lemmas": [
             "перевод",
@@ -840,8 +840,8 @@
         "start_token_ind": 24,
         "end_token_ind": 27,
         "span": [
-            834,
-            869
+            835,
+            870
         ],
         "lemmas": [
             "предложение",

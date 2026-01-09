@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            122,
-            143
+            123,
+            144
         ],
         "lemmas": [
             "формальный",
@@ -59,8 +59,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            148,
-            162
+            149,
+            163
         ],
         "lemmas": [
             "система",
@@ -76,8 +76,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            176,
-            200
+            177,
+            201
         ],
         "lemmas": [
             "синтаксический",
@@ -93,8 +93,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            191,
-            206
+            192,
+            207
         ],
         "lemmas": [
             "структура",
@@ -110,8 +110,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            176,
-            206
+            177,
+            207
         ],
         "lemmas": [
             "синтаксический",
@@ -128,8 +128,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            306,
-            328
+            307,
+            329
         ],
         "lemmas": [
             "model-theoretic",
@@ -145,8 +145,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            361,
-            373
+            362,
+            374
         ],
         "lemmas": [
             "цель",
@@ -162,8 +162,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            460,
-            476
+            461,
+            477
         ],
         "lemmas": [
             "модальный",
@@ -179,8 +179,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            470,
-            489
+            471,
+            490
         ],
         "lemmas": [
             "логика",
@@ -197,8 +197,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            490,
-            513
+            491,
+            514
         ],
         "lemmas": [
             "синтаксический",
@@ -214,8 +214,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            460,
-            489
+            461,
+            490
         ],
         "lemmas": [
             "модальный",
@@ -233,8 +233,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            481,
-            513
+            482,
+            514
         ],
         "lemmas": [
             "описание",

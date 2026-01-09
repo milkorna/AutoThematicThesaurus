@@ -96,8 +96,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            134,
-            158
+            135,
+            159
         ],
         "lemmas": [
             "результат",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            162,
-            184
+            163,
+            185
         ],
         "lemmas": [
             "автоматизация",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            196,
-            233
+            197,
+            234
         ],
         "lemmas": [
             "лексико-семантический",
@@ -147,8 +147,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            240,
-            263
+            241,
+            264
         ],
         "lemmas": [
             "эмпирический",
@@ -164,8 +164,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            253,
-            276
+            254,
+            277
         ],
         "lemmas": [
             "материал",
@@ -181,8 +181,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            307,
-            322
+            308,
+            323
         ],
         "lemmas": [
             "предметный",
@@ -198,8 +198,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            339,
-            360
+            340,
+            361
         ],
         "lemmas": [
             "национальный",
@@ -215,8 +215,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            361,
-            375
+            362,
+            376
         ],
         "lemmas": [
             "русский",
@@ -232,8 +232,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            240,
-            276
+            241,
+            277
         ],
         "lemmas": [
             "эмпирический",
@@ -250,8 +250,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            294,
-            322
+            295,
+            323
         ],
         "lemmas": [
             "употребление",
@@ -268,8 +268,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            339,
-            375
+            340,
+            376
         ],
         "lemmas": [
             "национальный",
@@ -287,8 +287,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            353,
-            375
+            354,
+            376
         ],
         "lemmas": [
             "корпус",
@@ -305,8 +305,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            389,
-            408
+            390,
+            409
         ],
         "lemmas": [
             "оптимальный",
@@ -322,8 +322,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            460,
-            483
+            461,
+            484
         ],
         "lemmas": [
             "лексический",

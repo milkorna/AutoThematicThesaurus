@@ -42,8 +42,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            53,
-            75
+            54,
+            76
         ],
         "lemmas": [
             "предмет",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            93,
-            108
+            94,
+            109
         ],
         "lemmas": [
             "финитный",
@@ -76,8 +76,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            85,
-            108
+            86,
+            109
         ],
         "lemmas": [
             "русский",
@@ -94,8 +94,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            138,
-            154
+            139,
+            155
         ],
         "lemmas": [
             "корпусный",
@@ -111,8 +111,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            247,
-            261
+            248,
+            262
         ],
         "lemmas": [
             "набор",
@@ -128,8 +128,8 @@
         "start_token_ind": 23,
         "end_token_ind": 25,
         "span": [
-            247,
-            273
+            248,
+            274
         ],
         "lemmas": [
             "набор",
@@ -146,8 +146,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            254,
-            273
+            255,
+            274
         ],
         "lemmas": [
             "свойство",
@@ -163,8 +163,8 @@
         "start_token_ind": 38,
         "end_token_ind": 39,
         "span": [
-            357,
-            378
+            358,
+            379
         ],
         "lemmas": [
             "пассивный",
@@ -180,8 +180,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            138,
-            164
+            139,
+            165
         ],
         "lemmas": [
             "корпусный",
@@ -199,8 +199,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            131,
-            154
+            132,
+            155
         ],
         "lemmas": [
             "массив",
@@ -217,8 +217,8 @@
         "start_token_ind": 38,
         "end_token_ind": 41,
         "span": [
-            357,
-            389
+            358,
+            390
         ],
         "lemmas": [
             "пассивный",

@@ -25,8 +25,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            128,
-            144
+            129,
+            145
         ],
         "lemmas": [
             "языковой",
@@ -42,8 +42,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            115,
-            144
+            116,
+            145
         ],
         "lemmas": [
             "естественный",
@@ -60,8 +60,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            186,
-            208
+            187,
+            209
         ],
         "lemmas": [
             "орфографический",
@@ -77,8 +77,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            219,
-            239
+            220,
+            240
         ],
         "lemmas": [
             "ошибочный",
@@ -94,8 +94,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            240,
-            253
+            241,
+            254
         ],
         "lemmas": [
             "мягкий",
@@ -111,8 +111,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            277,
-            296
+            278,
+            297
         ],
         "lemmas": [
             "единственный",
@@ -128,8 +128,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            297,
-            316
+            298,
+            317
         ],
         "lemmas": [
             "возвратный",
@@ -145,8 +145,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            219,
-            253
+            220,
+            254
         ],
         "lemmas": [
             "ошибочный",
@@ -164,8 +164,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            240,
-            262
+            241,
+            263
         ],
         "lemmas": [
             "мягкий",
@@ -183,8 +183,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            230,
-            253
+            231,
+            254
         ],
         "lemmas": [
             "написание",
@@ -201,8 +201,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            277,
-            316
+            278,
+            317
         ],
         "lemmas": [
             "единственный",
@@ -220,8 +220,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            272,
-            296
+            273,
+            297
         ],
         "lemmas": [
             "лицо",
@@ -238,8 +238,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            291,
-            316
+            292,
+            317
         ],
         "lemmas": [
             "число",
@@ -256,8 +256,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            378,
-            400
+            379,
+            401
         ],
         "lemmas": [
             "орфографический",
@@ -273,8 +273,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            490,
-            511
+            491,
+            512
         ],
         "lemmas": [
             "орфографический",

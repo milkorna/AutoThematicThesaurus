@@ -42,8 +42,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            94,
-            112
+            95,
+            113
         ],
         "lemmas": [
             "посвящен",
@@ -59,8 +59,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            127,
-            150
+            128,
+            151
         ],
         "lemmas": [
             "лингвистический",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            143,
-            157
+            144,
+            158
         ],
         "lemmas": [
             "метод",
@@ -93,8 +93,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            172,
-            189
+            173,
+            190
         ],
         "lemmas": [
             "поисковый",
@@ -110,8 +110,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            127,
-            157
+            128,
+            158
         ],
         "lemmas": [
             "лингвистический",
@@ -128,8 +128,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            213,
-            233
+            214,
+            234
         ],
         "lemmas": [
             "поисковый",
@@ -145,8 +145,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            260,
-            284
+            261,
+            285
         ],
         "lemmas": [
             "экспериментальный",
@@ -162,8 +162,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            201,
-            233
+            202,
+            234
         ],
         "lemmas": [
             "особенность",
@@ -180,8 +180,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            303,
-            328
+            304,
+            329
         ],
         "lemmas": [
             "преимущество",
@@ -197,8 +197,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            347,
-            372
+            348,
+            373
         ],
         "lemmas": [
             "статистический",
@@ -214,8 +214,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            362,
-            379
+            363,
+            380
         ],
         "lemmas": [
             "алгоритм",
@@ -231,8 +231,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            294,
-            328
+            295,
+            329
         ],
         "lemmas": [
             "вывод",
@@ -250,8 +250,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            347,
-            379
+            348,
+            380
         ],
         "lemmas": [
             "статистический",
@@ -268,8 +268,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            329,
-            372
+            330,
+            373
         ],
         "lemmas": [
             "лингвистический",

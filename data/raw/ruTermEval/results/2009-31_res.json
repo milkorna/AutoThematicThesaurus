@@ -170,8 +170,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            140,
-            160
+            141,
+            161
         ],
         "lemmas": [
             "компьютерный",
@@ -187,8 +187,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            194,
-            211
+            195,
+            212
         ],
         "lemmas": [
             "речевой",
@@ -204,8 +204,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            180,
-            211
+            181,
+            212
         ],
         "lemmas": [
             "эмоциональный",
@@ -222,8 +222,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            226,
-            246
+            227,
+            247
         ],
         "lemmas": [
             "изменение",
@@ -239,8 +239,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            128,
-            160
+            129,
+            161
         ],
         "lemmas": [
             "архитектура",
@@ -257,8 +257,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            261,
-            284
+            262,
+            285
         ],
         "lemmas": [
             "мультимодальный",
@@ -274,8 +274,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            286,
-            302
+            287,
+            303
         ],
         "lemmas": [
             "запись",
@@ -291,8 +291,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            352,
-            373
+            353,
+            374
         ],
         "lemmas": [
             "эмоциональный",
@@ -308,8 +308,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            340,
-            373
+            341,
+            374
         ],
         "lemmas": [
             "контрастный",
@@ -326,8 +326,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            413,
-            433
+            414,
+            434
         ],
         "lemmas": [
             "компьютерный",
@@ -343,8 +343,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            352,
-            387
+            353,
+            388
         ],
         "lemmas": [
             "эмоциональный",
@@ -362,8 +362,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            340,
-            387
+            341,
+            388
         ],
         "lemmas": [
             "контрастный",
@@ -382,8 +382,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            321,
-            373
+            322,
+            374
         ],
         "lemmas": [
             "последовательность",
@@ -401,8 +401,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            402,
-            433
+            403,
+            434
         ],
         "lemmas": [
             "реакция",

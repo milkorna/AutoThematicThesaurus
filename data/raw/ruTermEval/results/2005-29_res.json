@@ -8,8 +8,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            32,
-            53
+            33,
+            54
         ],
         "lemmas": [
             "ориентированный",
@@ -25,8 +25,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            89,
-            107
+            90,
+            108
         ],
         "lemmas": [
             "лексический",
@@ -42,8 +42,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            167,
-            188
+            168,
+            189
         ],
         "lemmas": [
             "ориентированный",
@@ -59,8 +59,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            80,
-            107
+            81,
+            108
         ],
         "lemmas": [
             "свойство",
@@ -77,8 +77,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            159,
-            188
+            160,
+            189
         ],
         "lemmas": [
             "понятие",
@@ -95,8 +95,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            267,
-            287
+            268,
+            288
         ],
         "lemmas": [
             "направленность",
@@ -112,8 +112,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            302,
-            315
+            303,
+            316
         ],
         "lemmas": [
             "значение",

@@ -80,8 +80,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            101,
-            123
+            102,
+            124
         ],
         "lemmas": [
             "специальный",
@@ -97,8 +97,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            113,
-            134
+            114,
+            135
         ],
         "lemmas": [
             "подготовка",
@@ -114,8 +114,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            168,
-            189
+            169,
+            190
         ],
         "lemmas": [
             "электронный",
@@ -131,8 +131,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            190,
-            208
+            191,
+            209
         ],
         "lemmas": [
             "научный",
@@ -148,8 +148,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            101,
-            134
+            102,
+            135
         ],
         "lemmas": [
             "специальный",
@@ -166,8 +166,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            168,
-            208
+            169,
+            209
         ],
         "lemmas": [
             "электронный",
@@ -185,8 +185,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            156,
-            189
+            157,
+            190
         ],
         "lemmas": [
             "включение",
@@ -204,8 +204,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            180,
-            208
+            181,
+            209
         ],
         "lemmas": [
             "коллекция",
@@ -222,8 +222,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            210,
-            237
+            211,
+            238
         ],
         "lemmas": [
             "материал",
@@ -240,8 +240,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            248,
-            269
+            249,
+            270
         ],
         "lemmas": [
             "электронный",
@@ -257,8 +257,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            288,
-            305
+            289,
+            306
         ],
         "lemmas": [
             "российский",
@@ -274,8 +274,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            306,
-            334
+            307,
+            335
         ],
         "lemmas": [
             "фундаментальный",
@@ -291,8 +291,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            248,
-            279
+            249,
+            280
         ],
         "lemmas": [
             "электронный",
@@ -310,8 +310,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            288,
-            334
+            289,
+            335
         ],
         "lemmas": [
             "российский",
@@ -329,8 +329,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            282,
-            305
+            283,
+            306
         ],
         "lemmas": [
             "земля",
@@ -347,8 +347,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            300,
-            334
+            301,
+            335
         ],
         "lemmas": [
             "фонд",
@@ -365,8 +365,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            336,
-            359
+            337,
+            360
         ],
         "lemmas": [
             "географический",
@@ -382,8 +382,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            422,
-            440
+            423,
+            441
         ],
         "lemmas": [
             "электронный",
@@ -399,8 +399,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            410,
-            440
+            411,
+            441
         ],
         "lemmas": [
             "двухязычный",
@@ -417,8 +417,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            464,
-            490
+            465,
+            491
         ],
         "lemmas": [
             "геопространственный",
@@ -434,8 +434,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            571,
-            594
+            572,
+            595
         ],
         "lemmas": [
             "географический",
@@ -451,8 +451,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            614,
-            637
+            615,
+            638
         ],
         "lemmas": [
             "промежуточный",
@@ -468,8 +468,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            656,
-            682
+            657,
+            683
         ],
         "lemmas": [
             "географический",
@@ -485,8 +485,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            458,
-            490
+            459,
+            491
         ],
         "lemmas": [
             "поиск",
@@ -503,8 +503,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            571,
-            601
+            572,
+            602
         ],
         "lemmas": [
             "географический",
@@ -522,8 +522,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            565,
-            594
+            566,
+            595
         ],
         "lemmas": [
             "число",
@@ -540,8 +540,8 @@
         "start_token_ind": 27,
         "end_token_ind": 30,
         "span": [
-            644,
-            682
+            645,
+            683
         ],
         "lemmas": [
             "термин",
@@ -559,8 +559,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            714,
-            737
+            715,
+            738
         ],
         "lemmas": [
             "географический",
@@ -576,8 +576,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            754,
-            769
+            755,
+            770
         ],
         "lemmas": [
             "точность",
@@ -593,8 +593,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            770,
-            796
+            771,
+            797
         ],
         "lemmas": [
             "геопространственный",
@@ -610,8 +610,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            708,
-            737
+            709,
+            738
         ],
         "lemmas": [
             "земля",
@@ -628,8 +628,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            763,
-            796
+            764,
+            797
         ],
         "lemmas": [
             "поиск",
@@ -646,8 +646,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            818,
-            841
+            819,
+            842
         ],
         "lemmas": [
             "топонимический",
@@ -663,8 +663,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            810,
-            841
+            811,
+            842
         ],
         "lemmas": [
             "явление",
@@ -681,8 +681,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            895,
-            918
+            896,
+            919
         ],
         "lemmas": [
             "географический",
@@ -698,8 +698,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            948,
-            966
+            949,
+            967
         ],
         "lemmas": [
             "научный",
@@ -715,8 +715,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            933,
-            966
+            934,
+            967
         ],
         "lemmas": [
             "полнотекстовый",
@@ -733,8 +733,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            921,
-            966
+            922,
+            967
         ],
         "lemmas": [
             "двухязычный",
@@ -752,8 +752,8 @@
         "start_token_ind": 6,
         "end_token_ind": 12,
         "span": [
-            895,
-            966
+            896,
+            967
         ],
         "lemmas": [
             "географический",
@@ -774,8 +774,8 @@
         "start_token_ind": 7,
         "end_token_ind": 12,
         "span": [
-            910,
-            966
+            911,
+            967
         ],
         "lemmas": [
             "название",
@@ -795,8 +795,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            971,
-            987
+            972,
+            988
         ],
         "lemmas": [
             "решение",
@@ -812,8 +812,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            988,
-            1010
+            989,
+            1011
         ],
         "lemmas": [
             "полнотекстовый",
@@ -829,8 +829,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            1011,
-            1041
+            1012,
+            1042
         ],
         "lemmas": [
             "геопространственный",
@@ -846,8 +846,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            1161,
-            1184
+            1162,
+            1185
         ],
         "lemmas": [
             "картографический",
@@ -863,8 +863,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            988,
-            1041
+            989,
+            1042
         ],
         "lemmas": [
             "полнотекстовый",
@@ -882,8 +882,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            979,
-            1010
+            980,
+            1011
         ],
         "lemmas": [
             "проблема",
@@ -900,8 +900,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            1011,
-            1054
+            1012,
+            1055
         ],
         "lemmas": [
             "геопространственный",
@@ -919,8 +919,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            1004,
-            1041
+            1005,
+            1042
         ],
         "lemmas": [
             "поиск",
@@ -937,8 +937,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            1154,
-            1184
+            1155,
+            1185
         ],
         "lemmas": [
             "поиск",
@@ -955,8 +955,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            1215,
-            1234
+            1216,
+            1235
         ],
         "lemmas": [
             "выработка",
@@ -972,8 +972,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            1266,
-            1288
+            1267,
+            1289
         ],
         "lemmas": [
             "геологический",
@@ -989,8 +989,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            1260,
-            1288
+            1261,
+            1289
         ],
         "lemmas": [
             "тип",
@@ -1007,8 +1007,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            1332,
-            1347
+            1333,
+            1348
         ],
         "lemmas": [
             "этап",
@@ -1024,8 +1024,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            1332,
-            1358
+            1333,
+            1359
         ],
         "lemmas": [
             "этап",
@@ -1042,8 +1042,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            1338,
-            1358
+            1339,
+            1359
         ],
         "lemmas": [
             "генерация",
@@ -1059,8 +1059,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            1363,
-            1384
+            1364,
+            1385
         ],
         "lemmas": [
             "электронный",
@@ -1076,8 +1076,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            1414,
-            1438
+            1415,
+            1439
         ],
         "lemmas": [
             "коммуникативный",
@@ -1093,8 +1093,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            1430,
-            1448
+            1431,
+            1449
         ],
         "lemmas": [
             "качество",
@@ -1110,8 +1110,8 @@
         "start_token_ind": 6,
         "end_token_ind": 11,
         "span": [
-            1332,
-            1384
+            1333,
+            1385
         ],
         "lemmas": [
             "этап",
@@ -1131,8 +1131,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            1338,
-            1384
+            1339,
+            1385
         ],
         "lemmas": [
             "генерация",
@@ -1151,8 +1151,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            1348,
-            1384
+            1349,
+            1385
         ],
         "lemmas": [
             "документ",
@@ -1170,8 +1170,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            1414,
-            1448
+            1415,
+            1449
         ],
         "lemmas": [
             "коммуникативный",

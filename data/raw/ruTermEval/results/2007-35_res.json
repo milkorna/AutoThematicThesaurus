@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            98,
-            130
+            99,
+            131
         ],
         "lemmas": [
             "криминалистический",
@@ -147,8 +147,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            117,
-            139
+            118,
+            140
         ],
         "lemmas": [
             "идентификация",
@@ -164,8 +164,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            201,
-            218
+            202,
+            219
         ],
         "lemmas": [
             "гауссов",
@@ -181,8 +181,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            211,
-            223
+            212,
+            224
         ],
         "lemmas": [
             "модель",
@@ -198,8 +198,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            235,
-            249
+            236,
+            250
         ],
         "lemmas": [
             "основный",
@@ -215,8 +215,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            245,
-            256
+            246,
+            257
         ],
         "lemmas": [
             "тон",
@@ -232,8 +232,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            268,
-            288
+            269,
+            289
         ],
         "lemmas": [
             "экспертный",
@@ -249,8 +249,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            279,
-            296
+            280,
+            297
         ],
         "lemmas": [
             "сравнение",
@@ -266,8 +266,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            297,
-            312
+            298,
+            313
         ],
         "lemmas": [
             "ударный",
@@ -283,8 +283,8 @@
         "start_token_ind": 44,
         "end_token_ind": 45,
         "span": [
-            397,
-            417
+            398,
+            418
         ],
         "lemmas": [
             "психологический",
@@ -300,8 +300,8 @@
         "start_token_ind": 45,
         "end_token_ind": 46,
         "span": [
-            413,
-            425
+            414,
+            426
         ],
         "lemmas": [
             "вид",
@@ -317,8 +317,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            98,
-            139
+            99,
+            140
         ],
         "lemmas": [
             "криминалистический",
@@ -335,8 +335,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            117,
-            147
+            118,
+            148
         ],
         "lemmas": [
             "идентификация",
@@ -354,8 +354,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            201,
-            223
+            202,
+            224
         ],
         "lemmas": [
             "гауссов",
@@ -372,8 +372,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            191,
-            218
+            192,
+            219
         ],
         "lemmas": [
             "сравнение",
@@ -390,8 +390,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            235,
-            256
+            236,
+            257
         ],
         "lemmas": [
             "основный",
@@ -408,8 +408,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            225,
-            249
+            226,
+            250
         ],
         "lemmas": [
             "статистик",
@@ -426,8 +426,8 @@
         "start_token_ind": 21,
         "end_token_ind": 24,
         "span": [
-            245,
-            266
+            246,
+            267
         ],
         "lemmas": [
             "тон",
@@ -445,8 +445,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            268,
-            296
+            269,
+            297
         ],
         "lemmas": [
             "экспертный",
@@ -463,8 +463,8 @@
         "start_token_ind": 28,
         "end_token_ind": 30,
         "span": [
-            289,
-            312
+            290,
+            313
         ],
         "lemmas": [
             "формант",
@@ -481,8 +481,8 @@
         "start_token_ind": 44,
         "end_token_ind": 46,
         "span": [
-            397,
-            425
+            398,
+            426
         ],
         "lemmas": [
             "психологический",

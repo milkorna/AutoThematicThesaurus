@@ -166,8 +166,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            140,
-            152
+            141,
+            153
         ],
         "lemmas": [
             "рамка",
@@ -183,8 +183,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            153,
-            167
+            154,
+            168
         ],
         "lemmas": [
             "sil",
@@ -200,8 +200,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            168,
-            193
+            169,
+            194
         ],
         "lemmas": [
             "морфологический",
@@ -217,8 +217,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            194,
-            211
+            195,
+            212
         ],
         "lemmas": [
             "осетинский",
@@ -234,8 +234,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            233,
-            256
+            234,
+            257
         ],
         "lemmas": [
             "создание",
@@ -251,8 +251,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            257,
-            281
+            258,
+            282
         ],
         "lemmas": [
             "отглоссированный",
@@ -268,8 +268,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            373,
-            399
+            374,
+            400
         ],
         "lemmas": [
             "языковый",
@@ -285,8 +285,8 @@
         "start_token_ind": 35,
         "end_token_ind": 36,
         "span": [
-            408,
-            423
+            409,
+            424
         ],
         "lemmas": [
             "языковый",
@@ -302,8 +302,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            168,
-            211
+            169,
+            212
         ],
         "lemmas": [
             "морфологический",
@@ -321,8 +321,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            185,
-            211
+            186,
+            212
         ],
         "lemmas": [
             "описание",
@@ -339,8 +339,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            242,
-            281
+            243,
+            282
         ],
         "lemmas": [
             "онлайн-корпус",
@@ -357,8 +357,8 @@
         "start_token_ind": 31,
         "end_token_ind": 34,
         "span": [
-            373,
-            407
+            374,
+            408
         ],
         "lemmas": [
             "языковый",
@@ -376,8 +376,8 @@
         "start_token_ind": 30,
         "end_token_ind": 32,
         "span": [
-            365,
-            399
+            366,
+            400
         ],
         "lemmas": [
             "процесс",
@@ -394,8 +394,8 @@
         "start_token_ind": 34,
         "end_token_ind": 36,
         "span": [
-            402,
-            423
+            403,
+            424
         ],
         "lemmas": [
             "сбор",

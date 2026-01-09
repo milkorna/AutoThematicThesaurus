@@ -8,8 +8,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            64,
-            82
+            65,
+            83
         ],
         "lemmas": [
             "конструкция",
@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            153,
-            175
+            154,
+            176
         ],
         "lemmas": [
             "семантический",
@@ -42,8 +42,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            213,
-            235
+            214,
+            236
         ],
         "lemmas": [
             "актантный",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            140,
-            175
+            141,
+            176
         ],
         "lemmas": [
             "формальный",
@@ -78,8 +78,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            199,
-            235
+            200,
+            236
         ],
         "lemmas": [
             "соотношение",
@@ -97,8 +97,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            319,
-            338
+            320,
+            339
         ],
         "lemmas": [
             "актантной",

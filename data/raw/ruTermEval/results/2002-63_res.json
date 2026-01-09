@@ -112,8 +112,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            88,
-            101
+            89,
+            102
         ],
         "lemmas": [
             "данный",
@@ -129,8 +129,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            113,
-            130
+            114,
+            131
         ],
         "lemmas": [
             "обзорный",
@@ -146,8 +146,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            131,
-            152
+            132,
+            153
         ],
         "lemmas": [
             "неточный",
@@ -163,8 +163,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            113,
-            152
+            114,
+            153
         ],
         "lemmas": [
             "обзорный",
@@ -182,8 +182,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            122,
-            152
+            123,
+            153
         ],
         "lemmas": [
             "описание",
@@ -200,8 +200,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            250,
-            269
+            251,
+            270
         ],
         "lemmas": [
             "частный",
@@ -217,8 +217,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            281,
-            308
+            282,
+            309
         ],
         "lemmas": [
             "теоретический",
@@ -234,8 +234,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            379,
-            411
+            380,
+            412
         ],
         "lemmas": [
             "репрезентативный",
@@ -251,8 +251,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            424,
-            444
+            425,
+            445
         ],
         "lemmas": [
             "эмоциональный",
@@ -268,8 +268,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            379,
-            423
+            380,
+            424
         ],
         "lemmas": [
             "репрезентативный",
@@ -287,8 +287,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            414,
-            444
+            415,
+            445
         ],
         "lemmas": [
             "выражение",

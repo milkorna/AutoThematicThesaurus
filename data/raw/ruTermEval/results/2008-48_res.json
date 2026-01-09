@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            95,
-            115
+            96,
+            116
         ],
         "lemmas": [
             "компьютерный",
@@ -147,8 +147,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            108,
-            128
+            109,
+            129
         ],
         "lemmas": [
             "система",
@@ -164,8 +164,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            129,
-            156
+            130,
+            157
         ],
         "lemmas": [
             "просодический",
@@ -181,8 +181,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            143,
-            161
+            144,
+            162
         ],
         "lemmas": [
             "характеристика",
@@ -198,8 +198,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            209,
-            225
+            210,
+            226
         ],
         "lemmas": [
             "процесс",
@@ -215,8 +215,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            209,
-            235
+            210,
+            236
         ],
         "lemmas": [
             "процесс",
@@ -233,8 +233,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            217,
-            235
+            218,
+            236
         ],
         "lemmas": [
             "создание",
@@ -250,8 +250,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            236,
-            259
+            237,
+            260
         ],
         "lemmas": [
             "просодический",
@@ -267,8 +267,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            277,
-            289
+            278,
+            290
         ],
         "lemmas": [
             "синтез",
@@ -284,8 +284,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            293,
-            313
+            294,
+            314
         ],
         "lemmas": [
             "произвольный",
@@ -301,8 +301,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            95,
-            128
+            96,
+            129
         ],
         "lemmas": [
             "компьютерный",
@@ -319,8 +319,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            129,
-            161
+            130,
+            162
         ],
         "lemmas": [
             "просодический",
@@ -337,8 +337,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            116,
-            156
+            117,
+            157
         ],
         "lemmas": [
             "клонирование",
@@ -355,8 +355,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            226,
-            259
+            227,
+            260
         ],
         "lemmas": [
             "комплекс",
@@ -373,8 +373,8 @@
         "start_token_ind": 22,
         "end_token_ind": 26,
         "span": [
-            277,
-            313
+            278,
+            314
         ],
         "lemmas": [
             "синтез",
@@ -393,8 +393,8 @@
         "start_token_ind": 23,
         "end_token_ind": 26,
         "span": [
-            285,
-            313
+            286,
+            314
         ],
         "lemmas": [
             "речь",
@@ -412,8 +412,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            341,
-            361
+            342,
+            362
         ],
         "lemmas": [
             "расширение",
@@ -429,8 +429,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            362,
-            385
+            363,
+            386
         ],
         "lemmas": [
             "просодический",
@@ -446,8 +446,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            398,
-            422
+            399,
+            423
         ],
         "lemmas": [
             "персонализированный",
@@ -463,8 +463,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            362,
-            397
+            363,
+            398
         ],
         "lemmas": [
             "просодический",
@@ -482,8 +482,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            352,
-            385
+            353,
+            386
         ],
         "lemmas": [
             "инвентарь",
@@ -500,8 +500,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            390,
-            422
+            391,
+            423
         ],
         "lemmas": [
             "синтез",

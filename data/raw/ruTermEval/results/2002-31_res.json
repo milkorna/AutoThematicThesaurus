@@ -62,8 +62,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            74,
-            89
+            75,
+            90
         ],
         "lemmas": [
             "основный",
@@ -79,8 +79,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            83,
-            100
+            84,
+            101
         ],
         "lemmas": [
             "модуль",
@@ -96,8 +96,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            120,
-            141
+            121,
+            142
         ],
         "lemmas": [
             "машинный",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            101,
-            141
+            102,
+            142
         ],
         "lemmas": [
             "татарско-турецкий",
@@ -131,8 +131,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            174,
-            202
+            175,
+            203
         ],
         "lemmas": [
             "морфологический",
@@ -148,8 +148,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            159,
-            202
+            160,
+            203
         ],
         "lemmas": [
             "двухуровневый",
@@ -166,8 +166,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            216,
-            232
+            217,
+            233
         ],
         "lemmas": [
             "турецкий",
@@ -183,8 +183,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            261,
-            286
+            262,
+            287
         ],
         "lemmas": [
             "билкентский",
@@ -200,8 +200,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            74,
-            100
+            75,
+            101
         ],
         "lemmas": [
             "основный",
@@ -218,8 +218,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            90,
-            141
+            91,
+            142
         ],
         "lemmas": [
             "построение",
@@ -237,8 +237,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            203,
-            232
+            204,
+            233
         ],
         "lemmas": [
             "татарский",
@@ -256,8 +256,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            308,
-            325
+            309,
+            326
         ],
         "lemmas": [
             "рамка",
@@ -273,8 +273,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            326,
-            347
+            327,
+            348
         ],
         "lemmas": [
             "европейский",
@@ -290,8 +290,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            315,
-            347
+            316,
+            348
         ],
         "lemmas": [
             "выполнение",

@@ -94,8 +94,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            138,
-            161
+            139,
+            162
         ],
         "lemmas": [
             "параллельный",
@@ -111,8 +111,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            173,
-            188
+            174,
+            189
         ],
         "lemmas": [
             "русский",
@@ -128,8 +128,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            237,
-            260
+            238,
+            261
         ],
         "lemmas": [
             "переводный",
@@ -145,8 +145,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            324,
-            357
+            325,
+            358
         ],
         "lemmas": [
             "семантико-синтаксический",
@@ -162,8 +162,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            128,
-            161
+            129,
+            162
         ],
         "lemmas": [
             "материал",

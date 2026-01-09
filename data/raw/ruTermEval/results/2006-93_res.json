@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            37,
-            55
+            38,
+            56
         ],
         "lemmas": [
             "грамматика",
@@ -42,8 +42,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            118,
-            132
+            119,
+            133
         ],
         "lemmas": [
             "текст",
@@ -59,8 +59,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            170,
-            189
+            171,
+            190
         ],
         "lemmas": [
             "ситуация",
@@ -76,8 +76,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            191,
-            202
+            192,
+            203
         ],
         "lemmas": [
             "факт",
@@ -93,8 +93,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            225,
-            242
+            226,
+            243
         ],
         "lemmas": [
             "ситуация",
@@ -110,8 +110,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            244,
-            254
+            245,
+            255
         ],
         "lemmas": [
             "акт",
@@ -127,8 +127,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            260,
-            280
+            261,
+            281
         ],
         "lemmas": [
             "метатекстовый",
@@ -144,8 +144,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            304,
-            326
+            305,
+            327
         ],
         "lemmas": [
             "речевой",
@@ -161,8 +161,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            312,
-            334
+            313,
+            335
         ],
         "lemmas": [
             "характеристика",
@@ -178,8 +178,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            304,
-            334
+            305,
+            335
         ],
         "lemmas": [
             "речевой",

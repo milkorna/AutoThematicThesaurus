@@ -141,8 +141,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            113,
-            129
+            114,
+            130
         ],
         "lemmas": [
             "выражение",
@@ -158,8 +158,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            113,
-            144
+            114,
+            145
         ],
         "lemmas": [
             "выражение",
@@ -177,8 +177,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            202,
-            220
+            203,
+            221
         ],
         "lemmas": [
             "скрытый",
@@ -194,8 +194,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            235,
-            258
+            236,
+            259
         ],
         "lemmas": [
             "первичный",
@@ -211,8 +211,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            291,
-            311
+            292,
+            312
         ],
         "lemmas": [
             "компьютерный",
@@ -228,8 +228,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            340,
-            358
+            341,
+            359
         ],
         "lemmas": [
             "имитируемый",
@@ -245,8 +245,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            279,
-            311
+            280,
+            312
         ],
         "lemmas": [
             "архитектура",

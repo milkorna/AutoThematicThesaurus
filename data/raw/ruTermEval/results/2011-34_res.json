@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            89,
-            114
+            90,
+            115
         ],
         "lemmas": [
             "референциальный",
@@ -59,8 +59,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            82,
-            114
+            83,
+            115
         ],
         "lemmas": [
             "тип",
@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            234,
-            253
+            235,
+            254
         ],
         "lemmas": [
             "данный",
@@ -94,8 +94,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            331,
-            349
+            332,
+            350
         ],
         "lemmas": [
             "машинный",
@@ -111,8 +111,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            320,
-            349
+            321,
+            350
         ],
         "lemmas": [
             "алгоритм",
@@ -129,8 +129,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            382,
-            402
+            383,
+            403
         ],
         "lemmas": [
             "англоязычный",
@@ -146,8 +146,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            370,
-            402
+            371,
+            403
         ],
         "lemmas": [
             "специальный",

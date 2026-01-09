@@ -42,8 +42,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            114,
-            130
+            115,
+            131
         ],
         "lemmas": [
             "поисковый",
@@ -59,8 +59,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            124,
-            140
+            125,
+            141
         ],
         "lemmas": [
             "машина",
@@ -76,8 +76,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            161,
-            176
+            162,
+            177
         ],
         "lemmas": [
             "поисковый",
@@ -93,8 +93,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            114,
-            140
+            115,
+            141
         ],
         "lemmas": [
             "поисковый",
@@ -111,8 +111,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            101,
-            130
+            102,
+            131
         ],
         "lemmas": [
             "пользователь",
@@ -129,8 +129,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            204,
-            227
+            205,
+            228
         ],
         "lemmas": [
             "параллельный",
@@ -146,8 +146,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            316,
-            332
+            317,
+            333
         ],
         "lemmas": [
             "временный",
@@ -163,8 +163,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            401,
-            418
+            402,
+            419
         ],
         "lemmas": [
             "исполняемый",
@@ -180,8 +180,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            491,
-            509
+            492,
+            510
         ],
         "lemmas": [
             "исполняемый",

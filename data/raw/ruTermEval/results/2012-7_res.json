@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            78,
-            93
+            79,
+            94
         ],
         "lemmas": [
             "служебный",
@@ -59,8 +59,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            113,
-            133
+            114,
+            134
         ],
         "lemmas": [
             "усилительный",
@@ -76,8 +76,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            200,
-            217
+            201,
+            218
         ],
         "lemmas": [
             "понимание",
@@ -93,8 +93,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            113,
-            143
+            114,
+            144
         ],
         "lemmas": [
             "усилительный",
@@ -112,8 +112,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            369,
-            391
+            370,
+            392
         ],
         "lemmas": [
             "дискурсивный",
@@ -129,8 +129,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            432,
-            454
+            433,
+            455
         ],
         "lemmas": [
             "семантический",
@@ -146,8 +146,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            477,
-            495
+            478,
+            496
         ],
         "lemmas": [
             "выраженный",
@@ -163,8 +163,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            511,
-            534
+            512,
+            535
         ],
         "lemmas": [
             "вероятный",
@@ -180,8 +180,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            424,
-            454
+            425,
+            455
         ],
         "lemmas": [
             "учет",
@@ -199,8 +199,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            511,
-            547
+            512,
+            548
         ],
         "lemmas": [
             "вероятный",

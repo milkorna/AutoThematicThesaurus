@@ -79,8 +79,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            85,
-            101
+            86,
+            102
         ],
         "lemmas": [
             "настоящий",
@@ -96,8 +96,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            114,
-            137
+            115,
+            138
         ],
         "lemmas": [
             "посессивный",
@@ -113,8 +113,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            234,
-            249
+            235,
+            250
         ],
         "lemmas": [
             "тип",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            285,
-            308
+            286,
+            309
         ],
         "lemmas": [
             "синтаксический",
@@ -147,8 +147,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            309,
-            326
+            310,
+            327
         ],
         "lemmas": [
             "обладаемый",
@@ -164,8 +164,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            357,
-            373
+            358,
+            374
         ],
         "lemmas": [
             "тип",
@@ -181,8 +181,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            416,
-            434
+            417,
+            435
         ],
         "lemmas": [
             "посессивный",
@@ -198,8 +198,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            406,
-            434
+            407,
+            435
         ],
         "lemmas": [
             "вероятный",
@@ -216,8 +216,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            439,
-            455
+            440,
+            456
         ],
         "lemmas": [
             "исследуемый",
@@ -233,8 +233,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            285,
-            326
+            286,
+            327
         ],
         "lemmas": [
             "синтаксический",
@@ -252,8 +252,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            300,
-            326
+            301,
+            327
         ],
         "lemmas": [
             "позиция",
@@ -270,8 +270,8 @@
         "start_token_ind": 25,
         "end_token_ind": 29,
         "span": [
-            416,
-            455
+            417,
+            456
         ],
         "lemmas": [
             "посессивный",
@@ -290,8 +290,8 @@
         "start_token_ind": 24,
         "end_token_ind": 29,
         "span": [
-            406,
-            455
+            407,
+            456
         ],
         "lemmas": [
             "вероятный",
@@ -311,8 +311,8 @@
         "start_token_ind": 26,
         "end_token_ind": 29,
         "span": [
-            428,
-            455
+            429,
+            456
         ],
         "lemmas": [
             "связь",

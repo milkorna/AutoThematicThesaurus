@@ -156,8 +156,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            131,
-            150
+            132,
+            151
         ],
         "lemmas": [
             "система",
@@ -173,8 +173,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            131,
-            157
+            132,
+            158
         ],
         "lemmas": [
             "система",
@@ -191,8 +191,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            140,
-            157
+            141,
+            158
         ],
         "lemmas": [
             "извлечение",
@@ -208,8 +208,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            131,
-            167
+            132,
+            168
         ],
         "lemmas": [
             "система",
@@ -228,8 +228,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            119,
-            157
+            120,
+            158
         ],
         "lemmas": [
             "онтология",
@@ -248,8 +248,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            140,
-            167
+            141,
+            168
         ],
         "lemmas": [
             "извлечение",
@@ -267,8 +267,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            185,
-            206
+            186,
+            207
         ],
         "lemmas": [
             "особенность",
@@ -284,8 +284,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            261,
-            291
+            262,
+            292
         ],
         "lemmas": [
             "автоматизированный",
@@ -301,8 +301,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            281,
-            301
+            282,
+            302
         ],
         "lemmas": [
             "построение",
@@ -318,8 +318,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            317,
-            335
+            318,
+            336
         ],
         "lemmas": [
             "предметный",
@@ -335,8 +335,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            399,
-            420
+            400,
+            421
         ],
         "lemmas": [
             "компьютерный",
@@ -352,8 +352,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            413,
-            427
+            414,
+            428
         ],
         "lemmas": [
             "анализ",
@@ -369,8 +369,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            252,
-            291
+            253,
+            292
         ],
         "lemmas": [
             "методика",
@@ -387,8 +387,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            261,
-            301
+            262,
+            302
         ],
         "lemmas": [
             "автоматизированный",
@@ -405,8 +405,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            317,
-            343
+            318,
+            344
         ],
         "lemmas": [
             "предметный",
@@ -424,8 +424,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            309,
-            335
+            310,
+            336
         ],
         "lemmas": [
             "термин",
@@ -442,8 +442,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            399,
-            427
+            400,
+            428
         ],
         "lemmas": [
             "компьютерный",
@@ -460,8 +460,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            391,
-            420
+            392,
+            421
         ],
         "lemmas": [
             "метод",

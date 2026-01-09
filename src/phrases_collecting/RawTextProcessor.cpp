@@ -78,6 +78,7 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
             X::SentenceSplitter sentenceSplitter(textStream);
 
             size_t globalOffsetInDocument = 0;
+            bool firstSentence = true;
 
             while (!sentenceSplitter.eof()) {
                 std::string rawSentence;
@@ -123,8 +124,9 @@ void RawTextProcessor::processRawData(const std::vector<DocumentRecord>& documen
                 collect(sentence, processContext);
 
                 globalOffsetInDocument += tokens.back()->getStartPosUnicode() + tokens.back()->getLength();
-                if (globalOffsetInDocument < textToProcess.length() && textToProcess[globalOffsetInDocument] == '\n') {
-                    globalOffsetInDocument++; // Пропускаем \n
+                if (options.mergeDocumentTitleAndText && firstSentence) {
+                    firstSentence = false;
+                    globalOffsetInDocument++;
                 }
                 processContext.nextSentence();
             };

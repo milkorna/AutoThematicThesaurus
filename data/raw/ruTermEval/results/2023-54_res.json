@@ -98,8 +98,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            75,
-            94
+            76,
+            95
         ],
         "lemmas": [
             "данный",
@@ -115,8 +115,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            109,
-            123
+            110,
+            124
         ],
         "lemmas": [
             "работа",
@@ -132,8 +132,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            124,
-            142
+            125,
+            143
         ],
         "lemmas": [
             "нейронный",
@@ -149,8 +149,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            173,
-            189
+            174,
+            190
         ],
         "lemmas": [
             "корпус",
@@ -166,8 +166,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            190,
-            212
+            191,
+            213
         ],
         "lemmas": [
             "universal",
@@ -183,8 +183,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            249,
-            276
+            250,
+            277
         ],
         "lemmas": [
             "универсальный",
@@ -200,8 +200,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            263,
-            289
+            264,
+            290
         ],
         "lemmas": [
             "морфоразметка",
@@ -218,8 +218,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            116,
-            142
+            117,
+            143
         ],
         "lemmas": [
             "модель",
@@ -236,8 +236,8 @@
         "start_token_ind": 23,
         "end_token_ind": 26,
         "span": [
-            249,
-            289
+            250,
+            290
         ],
         "lemmas": [
             "универсальный",
@@ -255,8 +255,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            238,
-            276
+            239,
+            277
         ],
         "lemmas": [
             "разработка",
@@ -273,8 +273,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            333,
-            352
+            334,
+            353
         ],
         "lemmas": [
             "применимость",
@@ -290,8 +290,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            353,
-            372
+            354,
+            373
         ],
         "lemmas": [
             "универсальный",
@@ -307,8 +307,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            395,
-            411
+            396,
+            412
         ],
         "lemmas": [
             "корейский",
@@ -324,8 +324,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            462,
-            484
+            463,
+            485
         ],
         "lemmas": [
             "используемый",
@@ -341,8 +341,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            489,
-            505
+            490,
+            506
         ],
         "lemmas": [
             "корейский",
@@ -358,8 +358,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            353,
-            382
+            354,
+            383
         ],
         "lemmas": [
             "универсальный",
@@ -377,8 +377,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            346,
-            372
+            347,
+            373
         ],
         "lemmas": [
             "набор",
@@ -395,8 +395,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            390,
-            411
+            391,
+            412
         ],
         "lemmas": [
             "речь",
@@ -413,8 +413,8 @@
         "start_token_ind": 25,
         "end_token_ind": 28,
         "span": [
-            475,
-            505
+            476,
+            506
         ],
         "lemmas": [
             "парсер",
@@ -432,8 +432,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            507,
-            526
+            508,
+            527
         ],
         "lemmas": [
             "частеречный",
@@ -449,8 +449,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            548,
-            561
+            549,
+            562
         ],
         "lemmas": [
             "набор",
@@ -466,8 +466,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            592,
-            612
+            593,
+            613
         ],
         "lemmas": [
             "корейский",
@@ -483,8 +483,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            585,
-            612
+            586,
+            613
         ],
         "lemmas": [
             "зрение",
@@ -501,8 +501,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            641,
-            656
+            642,
+            657
         ],
         "lemmas": [
             "качество",
@@ -518,8 +518,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            641,
-            665
+            642,
+            666
         ],
         "lemmas": [
             "качество",
@@ -536,8 +536,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            650,
-            665
+            651,
+            666
         ],
         "lemmas": [
             "работа",

@@ -135,8 +135,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            100,
-            117
+            101,
+            118
         ],
         "lemmas": [
             "диалектный",
@@ -152,8 +152,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            130,
-            153
+            131,
+            154
         ],
         "lemmas": [
             "транскрипционный",
@@ -169,8 +169,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            229,
-            251
+            230,
+            252
         ],
         "lemmas": [
             "диалектный",
@@ -186,8 +186,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            267,
-            285
+            268,
+            286
         ],
         "lemmas": [
             "диалектный",
@@ -203,8 +203,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            362,
-            379
+            363,
+            380
         ],
         "lemmas": [
             "цельный",
@@ -220,8 +220,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            395,
-            411
+            396,
+            412
         ],
         "lemmas": [
             "полевой",
@@ -237,8 +237,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            220,
-            251
+            221,
+            252
         ],
         "lemmas": [
             "название",
@@ -255,8 +255,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            260,
-            285
+            261,
+            286
         ],
         "lemmas": [
             "корпус",
@@ -273,8 +273,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            455,
-            473
+            456,
+            474
         ],
         "lemmas": [
             "подготовка",
@@ -290,8 +290,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            590,
-            607
+            591,
+            608
         ],
         "lemmas": [
             "уровень",
@@ -307,8 +307,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            633,
-            656
+            634,
+            657
         ],
         "lemmas": [
             "диалектный",
@@ -324,8 +324,8 @@
         "start_token_ind": 50,
         "end_token_ind": 51,
         "span": [
-            718,
-            730
+            719,
+            731
         ],
         "lemmas": [
             "автор",
@@ -341,8 +341,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            455,
-            486
+            456,
+            487
         ],
         "lemmas": [
             "подготовка",
@@ -360,8 +360,8 @@
         "start_token_ind": 24,
         "end_token_ind": 27,
         "span": [
-            578,
-            607
+            579,
+            608
         ],
         "lemmas": [
             "разметка",
@@ -379,8 +379,8 @@
         "start_token_ind": 33,
         "end_token_ind": 35,
         "span": [
-            623,
-            656
+            624,
+            657
         ],
         "lemmas": [
             "указание",
@@ -397,8 +397,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            781,
-            805
+            782,
+            806
         ],
         "lemmas": [
             "фонетический",
@@ -414,8 +414,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            818,
-            843
+            819,
+            844
         ],
         "lemmas": [
             "тематический",
@@ -431,8 +431,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            807,
-            843
+            808,
+            844
         ],
         "lemmas": [
             "жанровый",

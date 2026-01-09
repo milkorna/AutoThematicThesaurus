@@ -25,8 +25,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            67,
-            91
+            68,
+            92
         ],
         "lemmas": [
             "морфологический",
@@ -42,8 +42,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            126,
-            144
+            127,
+            145
         ],
         "lemmas": [
             "селькупский",
@@ -59,8 +59,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            148,
-            170
+            149,
+            171
         ],
         "lemmas": [
             "материал",
@@ -76,8 +76,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            196,
-            216
+            197,
+            217
         ],
         "lemmas": [
             "малоресурсный",
@@ -93,8 +93,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            67,
-            106
+            68,
+            107
         ],
         "lemmas": [
             "морфологический",
@@ -112,8 +112,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            126,
-            170
+            127,
+            171
         ],
         "lemmas": [
             "селькупский",
@@ -132,8 +132,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            111,
-            144
+            112,
+            145
         ],
         "lemmas": [
             "эвенкийский",
@@ -151,8 +151,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            139,
-            170
+            140,
+            171
         ],
         "lemmas": [
             "язык",
@@ -170,8 +170,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            240,
-            256
+            241,
+            257
         ],
         "lemmas": [
             "нейронный",
@@ -187,8 +187,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            232,
-            256
+            233,
+            257
         ],
         "lemmas": [
             "базовый",
@@ -205,8 +205,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            290,
-            316
+            291,
+            317
         ],
         "lemmas": [
             "лингвистический",
@@ -222,8 +222,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            318,
-            341
+            319,
+            342
         ],
         "lemmas": [
             "морфологический",
@@ -239,8 +239,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            401,
-            419
+            402,
+            420
         ],
         "lemmas": [
             "улучшение",
@@ -256,8 +256,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            454,
-            479
+            455,
+            480
         ],
         "lemmas": [
             "дополнительный",
@@ -273,8 +273,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            505,
-            523
+            506,
+            524
         ],
         "lemmas": [
             "обучающий",
@@ -290,8 +290,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            530,
-            548
+            531,
+            549
         ],
         "lemmas": [
             "внешний",
@@ -307,8 +307,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            624,
-            638
+            625,
+            639
         ],
         "lemmas": [
             "нейронный",

@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            95,
-            117
+            96,
+            118
         ],
         "lemmas": [
             "информационный",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            128,
-            146
+            129,
+            147
         ],
         "lemmas": [
             "список",
@@ -94,8 +94,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            147,
-            177
+            148,
+            178
         ],
         "lemmas": [
             "контекстно-зависимый",
@@ -111,8 +111,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            88,
-            117
+            89,
+            118
         ],
         "lemmas": [
             "система",
@@ -129,8 +129,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            135,
-            177
+            136,
+            178
         ],
         "lemmas": [
             "результат",
@@ -147,8 +147,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            222,
-            243
+            223,
+            244
         ],
         "lemmas": [
             "алгоритм",
@@ -164,8 +164,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            277,
-            292
+            278,
+            293
         ],
         "lemmas": [
             "методика",
@@ -181,8 +181,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            277,
-            301
+            278,
+            302
         ],
         "lemmas": [
             "методика",
@@ -199,8 +199,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            286,
-            301
+            287,
+            302
         ],
         "lemmas": [
             "оценка",
@@ -216,8 +216,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            332,
-            349
+            333,
+            350
         ],
         "lemmas": [
             "ряд",
@@ -233,8 +233,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            332,
-            365
+            333,
+            366
         ],
         "lemmas": [
             "ряд",

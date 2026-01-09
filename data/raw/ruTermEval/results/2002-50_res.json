@@ -277,8 +277,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            167,
-            187
+            168,
+            188
         ],
         "lemmas": [
             "принцип",
@@ -294,8 +294,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            160,
-            187
+            161,
+            188
         ],
         "lemmas": [
             "речь",
@@ -313,8 +313,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            222,
-            243
+            223,
+            244
         ],
         "lemmas": [
             "валентность",
@@ -330,8 +330,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            283,
-            303
+            284,
+            304
         ],
         "lemmas": [
             "левосторонний",
@@ -347,8 +347,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            304,
-            330
+            305,
+            331
         ],
         "lemmas": [
             "синтаксический",
@@ -364,8 +364,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            283,
-            330
+            284,
+            331
         ],
         "lemmas": [
             "левосторонний",
@@ -383,8 +383,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            266,
-            303
+            267,
+            304
         ],
         "lemmas": [
             "правосторонний",
@@ -402,8 +402,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            297,
-            330
+            298,
+            331
         ],
         "lemmas": [
             "член",
@@ -420,8 +420,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            586,
-            619
+            587,
+            620
         ],
         "lemmas": [
             "семантико-синтаксический",
@@ -437,8 +437,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            576,
-            619
+            577,
+            620
         ],
         "lemmas": [
             "предикат",
@@ -455,8 +455,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            641,
-            659
+            642,
+            660
         ],
         "lemmas": [
             "данный",
@@ -472,8 +472,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            721,
-            739
+            722,
+            740
         ],
         "lemmas": [
             "научный",
@@ -489,8 +489,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            710,
-            739
+            711,
+            740
         ],
         "lemmas": [
             "украинский",
@@ -507,8 +507,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            752,
-            770
+            753,
+            771
         ],
         "lemmas": [
             "четкий",
@@ -524,8 +524,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            780,
-            797
+            781,
+            798
         ],
         "lemmas": [
             "украинский",
@@ -541,8 +541,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            744,
-            770
+            745,
+            771
         ],
         "lemmas": [
             "образец",
@@ -559,8 +559,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            803,
-            825
+            804,
+            826
         ],
         "lemmas": [
             "результат",
@@ -576,8 +576,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            846,
-            865
+            847,
+            866
         ],
         "lemmas": [
             "словарь",
@@ -593,8 +593,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            846,
-            876
+            847,
+            877
         ],
         "lemmas": [
             "словарь",
@@ -611,8 +611,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            854,
-            876
+            855,
+            877
         ],
         "lemmas": [
             "валентность",
@@ -628,8 +628,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            917,
-            935
+            918,
+            936
         ],
         "lemmas": [
             "научный",
@@ -645,8 +645,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            906,
-            935
+            907,
+            936
         ],
         "lemmas": [
             "украинский",

@@ -77,8 +77,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            68,
-            92
+            69,
+            93
         ],
         "lemmas": [
             "эгоцентрический",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            84,
-            98
+            85,
+            99
         ],
         "lemmas": [
             "единица",
@@ -111,8 +111,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            109,
-            134
+            110,
+            135
         ],
         "lemmas": [
             "грамматический",
@@ -128,8 +128,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            214,
-            234
+            215,
+            235
         ],
         "lemmas": [
             "описываемый",
@@ -145,8 +145,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            68,
-            98
+            69,
+            99
         ],
         "lemmas": [
             "эгоцентрический",
@@ -163,8 +163,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            109,
-            149
+            110,
+            150
         ],
         "lemmas": [
             "грамматический",
@@ -182,8 +182,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            203,
-            234
+            204,
+            235
         ],
         "lemmas": [
             "участник",
@@ -200,8 +200,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            328,
-            341
+            329,
+            342
         ],
         "lemmas": [
             "роль",
@@ -217,8 +217,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            372,
-            396
+            373,
+            397
         ],
         "lemmas": [
             "эгоцентрический",
@@ -234,8 +234,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            463,
-            485
+            464,
+            486
         ],
         "lemmas": [
             "свойство",
@@ -251,8 +251,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            626,
-            651
+            627,
+            652
         ],
         "lemmas": [
             "коммуникативный",
@@ -268,8 +268,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            611,
-            651
+            612,
+            652
         ],
         "lemmas": [
             "неканонический",
@@ -286,8 +286,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            683,
-            701
+            684,
+            702
         ],
         "lemmas": [
             "мягкий",
@@ -303,8 +303,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            727,
-            749
+            728,
+            750
         ],
         "lemmas": [
             "неканонический",
@@ -320,8 +320,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            775,
-            800
+            776,
+            801
         ],
         "lemmas": [
             "подразумеваемый",
@@ -337,8 +337,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            858,
-            877
+            859,
+            878
         ],
         "lemmas": [
             "жесткий",
@@ -354,8 +354,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            880,
-            902
+            881,
+            903
         ],
         "lemmas": [
             "неканонический",
@@ -371,8 +371,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            858,
-            902
+            859,
+            903
         ],
         "lemmas": [
             "жесткий",
@@ -391,8 +391,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            866,
-            902
+            867,
+            903
         ],
         "lemmas": [
             "эгоцентрик",
@@ -410,8 +410,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            964,
-            984
+            965,
+            985
         ],
         "lemmas": [
             "дискурсивный",
@@ -427,8 +427,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            978,
-            998
+            979,
+            999
         ],
         "lemmas": [
             "режим",
@@ -444,8 +444,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            964,
-            998
+            965,
+            999
         ],
         "lemmas": [
             "дискурсивный",
@@ -462,8 +462,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            1081,
-            1099
+            1082,
+            1100
         ],
         "lemmas": [
             "жесткий",
@@ -479,8 +479,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            1100,
-            1120
+            1101,
+            1121
         ],
         "lemmas": [
             "дискурсивный",
@@ -496,8 +496,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            1081,
-            1120
+            1082,
+            1121
         ],
         "lemmas": [
             "жесткий",
@@ -515,8 +515,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            1089,
-            1120
+            1090,
+            1121
         ],
         "lemmas": [
             "эгоцентрик",

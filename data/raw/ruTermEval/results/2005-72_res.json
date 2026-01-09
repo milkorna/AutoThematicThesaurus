@@ -149,8 +149,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            91,
-            113
+            92,
+            114
         ],
         "lemmas": [
             "семантический",
@@ -166,8 +166,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            105,
-            118
+            106,
+            119
         ],
         "lemmas": [
             "свойство",
@@ -183,8 +183,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            119,
-            146
+            120,
+            147
         ],
         "lemmas": [
             "темпоральной",
@@ -200,8 +200,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            91,
-            118
+            92,
+            119
         ],
         "lemmas": [
             "семантический",
@@ -218,8 +218,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            114,
-            146
+            115,
+            147
         ],
         "lemmas": [
             "ряд",
@@ -236,8 +236,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            285,
-            312
+            286,
+            313
         ],
         "lemmas": [
             "коммуникативный",
@@ -253,8 +253,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            329,
-            353
+            330,
+            354
         ],
         "lemmas": [
             "ограничение",

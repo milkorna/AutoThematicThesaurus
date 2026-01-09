@@ -25,8 +25,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            105,
-            119
+            106,
+            120
         ],
         "lemmas": [
             "влияние",
@@ -42,8 +42,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            105,
-            127
+            106,
+            128
         ],
         "lemmas": [
             "влияние",
@@ -60,8 +60,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            113,
-            127
+            114,
+            128
         ],
         "lemmas": [
             "размера",
@@ -77,8 +77,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            164,
-            177
+            165,
+            178
         ],
         "lemmas": [
             "мера",
@@ -94,8 +94,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            164,
-            186
+            165,
+            187
         ],
         "lemmas": [
             "мера",
@@ -112,8 +112,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            168,
-            186
+            169,
+            187
         ],
         "lemmas": [
             "сравнение",
@@ -129,8 +129,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            197,
-            214
+            198,
+            215
         ],
         "lemmas": [
             "частотный",
@@ -146,8 +146,8 @@
         "start_token_ind": 15,
         "end_token_ind": 19,
         "span": [
-            164,
-            196
+            165,
+            197
         ],
         "lemmas": [
             "мера",
@@ -166,8 +166,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            168,
-            196
+            169,
+            197
         ],
         "lemmas": [
             "сравнение",
@@ -185,8 +185,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            190,
-            214
+            191,
+            215
         ],
         "lemmas": [
             "основа",
@@ -203,8 +203,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            247,
-            267
+            248,
+            268
         ],
         "lemmas": [
             "евклидов",
@@ -220,8 +220,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            269,
-            293
+            270,
+            294
         ],
         "lemmas": [
             "манхэттенский",
@@ -237,8 +237,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            295,
-            316
+            296,
+            317
         ],
         "lemmas": [
             "косинусный",
@@ -254,8 +254,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            347,
-            362
+            348,
+            363
         ],
         "lemmas": [
             "ключевой",
@@ -271,8 +271,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            335,
-            362
+            336,
+            363
         ],
         "lemmas": [
             "сходство",
@@ -290,8 +290,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            401,
-            422
+            402,
+            423
         ],
         "lemmas": [
             "национальный",
@@ -307,8 +307,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            389,
-            422
+            390,
+            423
         ],
         "lemmas": [
             "британский",
@@ -325,8 +325,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            446,
-            466
+            447,
+            467
         ],
         "lemmas": [
             "евклидов",
@@ -342,8 +342,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            476,
-            494
+            477,
+            495
         ],
         "lemmas": [
             "подверженный",
@@ -359,8 +359,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            487,
-            502
+            488,
+            503
         ],
         "lemmas": [
             "влияние",
@@ -376,8 +376,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            487,
-            510
+            488,
+            511
         ],
         "lemmas": [
             "влияние",
@@ -394,8 +394,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            495,
-            510
+            496,
+            511
         ],
         "lemmas": [
             "размер",
@@ -411,8 +411,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            546,
-            564
+            547,
+            565
         ],
         "lemmas": [
             "сравнение",
@@ -428,8 +428,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            379,
-            422
+            380,
+            423
         ],
         "lemmas": [
             "материал",
@@ -447,8 +447,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            476,
-            510
+            477,
+            511
         ],
         "lemmas": [
             "подверженный",

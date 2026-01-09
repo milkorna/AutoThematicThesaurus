@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            108,
-            123
+            109,
+            124
         ],
         "lemmas": [
             "формальный",
@@ -94,8 +94,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            119,
-            136
+            120,
+            137
         ],
         "lemmas": [
             "язык",
@@ -112,8 +112,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            137,
-            160
+            138,
+            161
         ],
         "lemmas": [
             "семантический",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            151,
-            169
+            152,
+            170
         ],
         "lemmas": [
             "структура",
@@ -146,8 +146,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            179,
-            204
+            180,
+            205
         ],
         "lemmas": [
             "художественный",
@@ -163,8 +163,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            233,
-            251
+            234,
+            252
         ],
         "lemmas": [
             "семантический",
@@ -180,8 +180,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            108,
-            136
+            109,
+            137
         ],
         "lemmas": [
             "формальный",
@@ -199,8 +199,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            137,
-            169
+            138,
+            170
         ],
         "lemmas": [
             "семантический",
@@ -217,8 +217,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            128,
-            160
+            129,
+            161
         ],
         "lemmas": [
             "описание",
@@ -235,8 +235,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            170,
-            204
+            171,
+            205
         ],
         "lemmas": [
             "элемент",
@@ -253,8 +253,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            224,
-            251
+            225,
+            252
         ],
         "lemmas": [
             "принцип",
@@ -271,8 +271,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            285,
-            303
+            286,
+            304
         ],
         "lemmas": [
             "семантика",
@@ -288,8 +288,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            333,
-            356
+            334,
+            357
         ],
         "lemmas": [
             "семантический",
@@ -305,8 +305,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            348,
-            364
+            349,
+            365
         ],
         "lemmas": [
             "сходство",
@@ -322,8 +322,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            333,
-            364
+            334,
+            365
         ],
         "lemmas": [
             "семантический",
@@ -340,8 +340,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            323,
-            356
+            324,
+            357
         ],
         "lemmas": [
             "отношение",
@@ -358,8 +358,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            415,
-            431
+            416,
+            432
         ],
         "lemmas": [
             "русский",
@@ -375,8 +375,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            460,
-            478
+            461,
+            479
         ],
         "lemmas": [
             "русло",

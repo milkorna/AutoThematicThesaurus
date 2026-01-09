@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            90,
-            111
+            91,
+            112
         ],
         "lemmas": [
             "продолжающийся",
@@ -77,8 +77,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            138,
-            154
+            139,
+            155
         ],
         "lemmas": [
             "русский",
@@ -94,8 +94,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            79,
-            111
+            80,
+            112
         ],
         "lemmas": [
             "результат",
@@ -112,8 +112,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            128,
-            154
+            129,
+            155
         ],
         "lemmas": [
             "интонация",
@@ -130,8 +130,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            192,
-            212
+            193,
+            213
         ],
         "lemmas": [
             "посвященный",
@@ -147,8 +147,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            204,
-            223
+            205,
+            224
         ],
         "lemmas": [
             "просодия",
@@ -164,8 +164,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            192,
-            223
+            193,
+            224
         ],
         "lemmas": [
             "посвященный",
@@ -182,8 +182,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            225,
-            237
+            226,
+            238
         ],
         "lemmas": [
             "единица",
@@ -199,8 +199,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            247,
-            260
+            248,
+            261
         ],
         "lemmas": [
             "звуковой",
@@ -216,8 +216,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            275,
-            293
+            276,
+            294
         ],
         "lemmas": [
             "реактивный",
@@ -233,8 +233,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            295,
-            311
+            296,
+            312
         ],
         "lemmas": [
             "графический",
@@ -250,8 +250,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            329,
-            358
+            330,
+            359
         ],
         "lemmas": [
             "многопараметрический",
@@ -267,8 +267,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            350,
-            367
+            351,
+            368
         ],
         "lemmas": [
             "описание",
@@ -284,8 +284,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            350,
-            375
+            351,
+            376
         ],
         "lemmas": [
             "описание",
@@ -302,8 +302,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            359,
-            375
+            360,
+            376
         ],
         "lemmas": [
             "просодия",
@@ -319,8 +319,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            378,
-            404
+            379,
+            405
         ],
         "lemmas": [
             "многомерный",
@@ -336,8 +336,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            329,
-            375
+            330,
+            376
         ],
         "lemmas": [
             "многопараметрический",
@@ -355,8 +355,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            368,
-            404
+            369,
+            405
         ],
         "lemmas": [
             "реплика",
@@ -374,8 +374,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            460,
-            482
+            461,
+            483
         ],
         "lemmas": [
             "прикладной",
@@ -391,8 +391,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            483,
-            509
+            484,
+            510
         ],
         "lemmas": [
             "филологический",
@@ -408,8 +408,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            537,
-            550
+            538,
+            551
         ],
         "lemmas": [
             "создание",
@@ -425,8 +425,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            537,
-            557
+            538,
+            558
         ],
         "lemmas": [
             "создание",
@@ -443,8 +443,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            546,
-            557
+            547,
+            558
         ],
         "lemmas": [
             "база",
@@ -460,8 +460,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            460,
-            509
+            461,
+            510
         ],
         "lemmas": [
             "прикладной",
@@ -479,8 +479,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            444,
-            482
+            445,
+            483
         ],
         "lemmas": [
             "теоретический",
@@ -498,8 +498,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            471,
-            509
+            472,
+            510
         ],
         "lemmas": [
             "лингвистика",
@@ -516,8 +516,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            527,
-            557
+            528,
+            558
         ],
         "lemmas": [
             "работа",
@@ -536,8 +536,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            598,
-            612
+            599,
+            613
         ],
         "lemmas": [
             "компонент",
@@ -553,8 +553,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            625,
-            647
+            626,
+            648
         ],
         "lemmas": [
             "вопросительный",
@@ -570,8 +570,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            625,
-            656
+            626,
+            657
         ],
         "lemmas": [
             "вопросительный",
@@ -589,8 +589,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            717,
-            734
+            718,
+            735
         ],
         "lemmas": [
             "настоящий",
@@ -606,8 +606,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            746,
-            765
+            747,
+            766
         ],
         "lemmas": [
             "основный",
@@ -623,8 +623,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            755,
-            772
+            756,
+            773
         ],
         "lemmas": [
             "результат",
@@ -640,8 +640,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            776,
-            795
+            777,
+            796
         ],
         "lemmas": [
             "создание",
@@ -657,8 +657,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            812,
-            833
+            813,
+            834
         ],
         "lemmas": [
             "побудительный",
@@ -674,8 +674,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            746,
-            772
+            747,
+            773
         ],
         "lemmas": [
             "основный",
@@ -692,8 +692,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            755,
-            795
+            756,
+            796
         ],
         "lemmas": [
             "результат",
@@ -712,8 +712,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            766,
-            795
+            767,
+            796
         ],
         "lemmas": [
             "работа",
@@ -731,8 +731,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            812,
-            843
+            813,
+            844
         ],
         "lemmas": [
             "побудительный",

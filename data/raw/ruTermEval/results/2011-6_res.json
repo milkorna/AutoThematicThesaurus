@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            135,
-            154
+            136,
+            155
         ],
         "lemmas": [
             "данный",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            175,
-            192
+            176,
+            193
         ],
         "lemmas": [
             "публичный",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            167,
-            192
+            168,
+            193
         ],
         "lemmas": [
             "русский",
@@ -129,8 +129,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            215,
-            235
+            216,
+            236
         ],
         "lemmas": [
             "электронный",
@@ -146,8 +146,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            286,
-            308
+            287,
+            309
         ],
         "lemmas": [
             "дискурсивный",
@@ -163,8 +163,8 @@
         "start_token_ind": 33,
         "end_token_ind": 34,
         "span": [
-            400,
-            426
+            401,
+            427
         ],
         "lemmas": [
             "коммуникативный",
@@ -180,8 +180,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            279,
-            308
+            280,
+            309
         ],
         "lemmas": [
             "блог",
@@ -198,8 +198,8 @@
         "start_token_ind": 32,
         "end_token_ind": 34,
         "span": [
-            390,
-            426
+            391,
+            427
         ],
         "lemmas": [
             "паттерн",

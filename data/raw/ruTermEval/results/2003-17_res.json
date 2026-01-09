@@ -25,8 +25,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            148,
-            175
+            149,
+            176
         ],
         "lemmas": [
             "экстенсиональный",
@@ -42,8 +42,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            166,
-            180
+            167,
+            181
         ],
         "lemmas": [
             "тождество",
@@ -59,8 +59,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            206,
-            218
+            207,
+            219
         ],
         "lemmas": [
             "рамка",
@@ -76,8 +76,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            148,
-            180
+            149,
+            181
         ],
         "lemmas": [
             "экстенсиональный",
@@ -94,8 +94,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            299,
-            329
+            300,
+            330
         ],
         "lemmas": [
             "характеристический",
@@ -111,8 +111,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            368,
-            405
+            369,
+            406
         ],
         "lemmas": [
             "поверхностно-синтаксический",
@@ -128,8 +128,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            406,
-            426
+            407,
+            427
         ],
         "lemmas": [
             "русский",
@@ -145,8 +145,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            368,
-            426
+            369,
+            427
         ],
         "lemmas": [
             "поверхностно-синтаксический",
@@ -164,8 +164,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            396,
-            426
+            397,
+            427
         ],
         "lemmas": [
             "структура",
@@ -182,8 +182,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            447,
-            467
+            448,
+            468
         ],
         "lemmas": [
             "межсегментный",
@@ -199,8 +199,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            471,
-            490
+            472,
+            491
         ],
         "lemmas": [
             "множество",
@@ -216,8 +216,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            510,
-            530
+            511,
+            531
         ],
         "lemmas": [
             "сочинительный",
@@ -233,8 +233,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            524,
-            540
+            525,
+            541
         ],
         "lemmas": [
             "связь",
@@ -250,8 +250,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            447,
-            490
+            448,
+            491
         ],
         "lemmas": [
             "межсегментный",
@@ -270,8 +270,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            442,
-            467
+            443,
+            468
         ],
         "lemmas": [
             "граф",
@@ -288,8 +288,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            461,
-            490
+            462,
+            491
         ],
         "lemmas": [
             "связь",
@@ -307,8 +307,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            510,
-            540
+            511,
+            541
         ],
         "lemmas": [
             "сочинительный",
@@ -325,8 +325,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            491,
-            530
+            492,
+            531
         ],
         "lemmas": [
             "синтагматический",
@@ -344,8 +344,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            565,
-            591
+            566,
+            592
         ],
         "lemmas": [
             "референциальный",
@@ -361,8 +361,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            593,
-            616
+            594,
+            617
         ],
         "lemmas": [
             "имплицируемый",
@@ -378,8 +378,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            617,
-            643
+            618,
+            644
         ],
         "lemmas": [
             "синтагматический",
@@ -395,8 +395,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            666,
-            691
+            667,
+            692
         ],
         "lemmas": [
             "кореферентнымой",
@@ -412,8 +412,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            748,
-            763
+            749,
+            764
         ],
         "lemmas": [
             "структура",
@@ -429,8 +429,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            764,
-            784
+            765,
+            785
         ],
         "lemmas": [
             "русский",
@@ -446,8 +446,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            608,
-            643
+            609,
+            644
         ],
         "lemmas": [
             "наличие",
@@ -464,8 +464,8 @@
         "start_token_ind": 22,
         "end_token_ind": 25,
         "span": [
-            736,
-            763
+            737,
+            764
         ],
         "lemmas": [
             "отношение",
@@ -483,8 +483,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            758,
-            784
+            759,
+            785
         ],
         "lemmas": [
             "графа",

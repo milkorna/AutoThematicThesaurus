@@ -60,8 +60,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            103,
-            130
+            104,
+            131
         ],
         "lemmas": [
             "лексико-грамматический",
@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            182,
-            196
+            183,
+            197
         ],
         "lemmas": [
             "московский",
@@ -94,8 +94,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            232,
-            249
+            233,
+            250
         ],
         "lemmas": [
             "диалектный",
@@ -111,8 +111,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            224,
-            249
+            225,
+            250
         ],
         "lemmas": [
             "ядерный",
@@ -129,8 +129,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            334,
-            347
+            335,
+            348
         ],
         "lemmas": [
             "создание",

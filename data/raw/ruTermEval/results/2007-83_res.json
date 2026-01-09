@@ -8,8 +8,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            65,
-            80
+            66,
+            81
         ],
         "lemmas": [
             "различие",
@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            54,
-            80
+            55,
+            81
         ],
         "lemmas": [
             "сходство",
@@ -44,8 +44,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            125,
-            136
+            126,
+            137
         ],
         "lemmas": [
             "данный",
@@ -61,8 +61,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            115,
-            136
+            116,
+            137
         ],
         "lemmas": [
             "полисемия",
@@ -79,8 +79,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            263,
-            285
+            264,
+            286
         ],
         "lemmas": [
             "критерий",
@@ -96,8 +96,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            263,
-            292
+            264,
+            293
         ],
         "lemmas": [
             "критерий",
@@ -114,8 +114,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            272,
-            292
+            273,
+            293
         ],
         "lemmas": [
             "разграничение",
@@ -131,8 +131,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            300,
-            319
+            301,
+            320
         ],
         "lemmas": [
             "многозначный",

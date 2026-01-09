@@ -8,8 +8,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            43,
-            61
+            44,
+            62
         ],
         "lemmas": [
             "предмет",
@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            62,
-            78
+            63,
+            79
         ],
         "lemmas": [
             "настоящий",
@@ -42,8 +42,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            112,
-            129
+            113,
+            130
         ],
         "lemmas": [
             "фразовый",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            53,
-            78
+            54,
+            79
         ],
         "lemmas": [
             "внимание",
@@ -77,8 +77,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            105,
-            129
+            106,
+            130
         ],
         "lemmas": [
             "слово",
@@ -96,8 +96,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            251,
-            263
+            252,
+            264
         ],
         "lemmas": [
             "данный",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            286,
-            308
+            287,
+            309
         ],
         "lemmas": [
             "многоуровневый",
@@ -130,8 +130,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            301,
-            314
+            302,
+            315
         ],
         "lemmas": [
             "модель",
@@ -147,8 +147,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            321,
-            341
+            322,
+            342
         ],
         "lemmas": [
             "алгоритм",
@@ -164,8 +164,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            342,
-            362
+            343,
+            363
         ],
         "lemmas": [
             "структурный",
@@ -181,8 +181,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            365,
-            387
+            366,
+            388
         ],
         "lemmas": [
             "формальный",
@@ -198,8 +198,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            286,
-            314
+            287,
+            315
         ],
         "lemmas": [
             "многоуровневый",
@@ -216,8 +216,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            342,
-            387
+            343,
+            388
         ],
         "lemmas": [
             "структурный",
@@ -236,8 +236,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            331,
-            362
+            332,
+            363
         ],
         "lemmas": [
             "порождение",
@@ -254,8 +254,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            354,
-            387
+            355,
+            388
         ],
         "lemmas": [
             "объект",
@@ -273,8 +273,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            403,
-            416
+            404,
+            417
         ],
         "lemmas": [
             "русский",
@@ -290,8 +290,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            417,
-            432
+            418,
+            433
         ],
         "lemmas": [
             "механизм",
@@ -307,8 +307,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            417,
-            441
+            418,
+            442
         ],
         "lemmas": [
             "механизм",
@@ -325,8 +325,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            426,
-            441
+            427,
+            442
         ],
         "lemmas": [
             "выбор",
@@ -342,8 +342,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            442,
-            459
+            443,
+            460
         ],
         "lemmas": [
             "фразовый",
@@ -359,8 +359,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            479,
-            494
+            480,
+            495
         ],
         "lemmas": [
             "иерархия",
@@ -376,8 +376,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            479,
-            506
+            480,
+            507
         ],
         "lemmas": [
             "иерархия",
@@ -394,8 +394,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            488,
-            506
+            489,
+            507
         ],
         "lemmas": [
             "член",
@@ -411,8 +411,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            433,
-            459
+            434,
+            460
         ],
         "lemmas": [
             "носитель",
@@ -429,8 +429,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            553,
-            565
+            554,
+            566
         ],
         "lemmas": [
             "порядок",
@@ -446,8 +446,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            568,
-            581
+            569,
+            582
         ],
         "lemmas": [
             "русский",
@@ -463,8 +463,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            595,
-            630
+            596,
+            631
         ],
         "lemmas": [
             "линейно-акцентный",
@@ -480,8 +480,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            683,
-            703
+            684,
+            704
         ],
         "lemmas": [
             "акцентный",
@@ -497,8 +497,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            704,
-            732
+            705,
+            733
         ],
         "lemmas": [
             "коммуникативный",
@@ -514,8 +514,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            553,
-            581
+            554,
+            582
         ],
         "lemmas": [
             "порядок",
@@ -534,8 +534,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            561,
-            581
+            562,
+            582
         ],
         "lemmas": [
             "слово",
@@ -553,8 +553,8 @@
         "start_token_ind": 16,
         "end_token_ind": 19,
         "span": [
-            683,
-            732
+            684,
+            733
         ],
         "lemmas": [
             "акцентный",
@@ -572,8 +572,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            693,
-            732
+            694,
+            733
         ],
         "lemmas": [
             "маркировка",
@@ -590,8 +590,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            811,
-            830
+            812,
+            831
         ],
         "lemmas": [
             "русский",
@@ -607,8 +607,8 @@
         "start_token_ind": 29,
         "end_token_ind": 30,
         "span": [
-            956,
-            990
+            957,
+            991
         ],
         "lemmas": [
             "контекстно-свободный",
@@ -624,8 +624,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            800,
-            830
+            801,
+            831
         ],
         "lemmas": [
             "исчисление",

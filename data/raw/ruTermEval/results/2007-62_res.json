@@ -77,8 +77,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            60,
-            82
+            61,
+            83
         ],
         "lemmas": [
             "предмет",
@@ -94,8 +94,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            111,
-            130
+            112,
+            131
         ],
         "lemmas": [
             "пространство",
@@ -111,8 +111,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            139,
-            158
+            140,
+            159
         ],
         "lemmas": [
             "усилительный",
@@ -128,8 +128,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            131,
-            158
+            132,
+            159
         ],
         "lemmas": [
             "русский",
@@ -146,8 +146,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            183,
-            210
+            184,
+            211
         ],
         "lemmas": [
             "указательный",
@@ -163,8 +163,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            92,
-            130
+            93,
+            131
         ],
         "lemmas": [
             "функционирование",
@@ -182,8 +182,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            124,
-            158
+            125,
+            159
         ],
         "lemmas": [
             "смысл",
@@ -201,8 +201,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            175,
-            210
+            176,
+            211
         ],
         "lemmas": [
             "форма",
@@ -220,8 +220,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            250,
-            266
+            251,
+            267
         ],
         "lemmas": [
             "функция",
@@ -237,8 +237,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            269,
-            288
+            270,
+            289
         ],
         "lemmas": [
             "данный",
@@ -254,8 +254,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            250,
-            288
+            251,
+            289
         ],
         "lemmas": [
             "функция",
@@ -274,8 +274,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            258,
-            288
+            259,
+            289
         ],
         "lemmas": [
             "указание",
@@ -293,8 +293,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            429,
-            448
+            430,
+            449
         ],
         "lemmas": [
             "пространство",
@@ -310,8 +310,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            504,
-            528
+            505,
+            529
         ],
         "lemmas": [
             "обнаруживаемый",
@@ -327,8 +327,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            418,
-            448
+            419,
+            449
         ],
         "lemmas": [
             "значение",
@@ -346,8 +346,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            496,
-            528
+            497,
+            529
         ],
         "lemmas": [
             "степень",
@@ -364,8 +364,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            608,
-            620
+            609,
+            621
         ],
         "lemmas": [
             "иной",
@@ -381,8 +381,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            659,
-            678
+            660,
+            679
         ],
         "lemmas": [
             "пространство",

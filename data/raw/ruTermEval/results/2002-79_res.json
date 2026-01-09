@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            85,
-            102
+            86,
+            103
         ],
         "lemmas": [
             "семантика",
@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            121,
-            138
+            122,
+            139
         ],
         "lemmas": [
             "когнитивной",
@@ -76,8 +76,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            168,
-            191
+            169,
+            192
         ],
         "lemmas": [
             "когнитивной",
@@ -93,8 +93,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            262,
-            279
+            263,
+            280
         ],
         "lemmas": [
             "когнитивной",
@@ -110,8 +110,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            297,
-            319
+            298,
+            320
         ],
         "lemmas": [
             "когнитивной",
@@ -127,8 +127,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            387,
-            408
+            388,
+            409
         ],
         "lemmas": [
             "интерпретация",
@@ -144,8 +144,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            453,
-            469
+            454,
+            470
         ],
         "lemmas": [
             "конкретный",
@@ -161,8 +161,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            487,
-            504
+            488,
+            505
         ],
         "lemmas": [
             "анализ",
@@ -178,8 +178,8 @@
         "start_token_ind": 0,
         "end_token_ind": 3,
         "span": [
-            487,
-            516
+            488,
+            517
         ],
         "lemmas": [
             "анализ",
@@ -197,8 +197,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            706,
-            725
+            707,
+            726
         ],
         "lemmas": [
             "предлагаемый",
@@ -214,8 +214,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            780,
-            801
+            781,
+            802
         ],
         "lemmas": [
             "когнитивной",
@@ -231,8 +231,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            792,
-            808
+            793,
+            809
         ],
         "lemmas": [
             "парадигма",
@@ -248,8 +248,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            879,
-            902
+            880,
+            903
         ],
         "lemmas": [
             "когнитивной",
@@ -265,8 +265,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            780,
-            808
+            781,
+            809
         ],
         "lemmas": [
             "когнитивной",
@@ -283,8 +283,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            767,
-            801
+            768,
+            802
         ],
         "lemmas": [
             "терминология",

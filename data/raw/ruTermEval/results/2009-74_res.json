@@ -95,8 +95,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            111,
-            130
+            112,
+            131
         ],
         "lemmas": [
             "применение",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            111,
-            139
+            112,
+            140
         ],
         "lemmas": [
             "применение",
@@ -130,8 +130,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            111,
-            149
+            112,
+            150
         ],
         "lemmas": [
             "применение",
@@ -149,8 +149,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            122,
-            139
+            123,
+            140
         ],
         "lemmas": [
             "аппарат",
@@ -166,8 +166,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            122,
-            149
+            123,
+            150
         ],
         "lemmas": [
             "аппарат",
@@ -184,8 +184,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            131,
-            149
+            132,
+            150
         ],
         "lemmas": [
             "описание",
@@ -201,8 +201,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            150,
-            178
+            151,
+            179
         ],
         "lemmas": [
             "пространственный",
@@ -218,8 +218,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            224,
-            243
+            225,
+            244
         ],
         "lemmas": [
             "дагестанский",
@@ -235,8 +235,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            265,
-            293
+            266,
+            294
         ],
         "lemmas": [
             "типологический",
@@ -252,8 +252,8 @@
         "start_token_ind": 38,
         "end_token_ind": 39,
         "span": [
-            353,
-            370
+            354,
+            371
         ],
         "lemmas": [
             "русский",
@@ -269,8 +269,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            140,
-            178
+            141,
+            179
         ],
         "lemmas": [
             "семантика",
@@ -287,8 +287,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            214,
-            243
+            215,
+            244
         ],
         "lemmas": [
             "материал",

@@ -96,8 +96,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            98,
-            117
+            99,
+            118
         ],
         "lemmas": [
             "данный",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            146,
-            167
+            147,
+            168
         ],
         "lemmas": [
             "синтаксический",
@@ -130,8 +130,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            201,
-            220
+            202,
+            221
         ],
         "lemmas": [
             "монологический",
@@ -147,8 +147,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            192,
-            220
+            193,
+            221
         ],
         "lemmas": [
             "японский",
@@ -165,8 +165,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            185,
-            220
+            186,
+            221
         ],
         "lemmas": [
             "устный",
@@ -184,8 +184,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            138,
-            167
+            139,
+            168
         ],
         "lemmas": [
             "граница",
@@ -202,8 +202,8 @@
         "start_token_ind": 9,
         "end_token_ind": 14,
         "span": [
-            176,
-            220
+            177,
+            221
         ],
         "lemmas": [
             "уровень",
@@ -223,8 +223,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            305,
-            325
+            306,
+            326
         ],
         "lemmas": [
             "граница",
@@ -240,8 +240,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            336,
-            357
+            337,
+            358
         ],
         "lemmas": [
             "синтаксический",
@@ -257,8 +257,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            328,
-            357
+            329,
+            358
         ],
         "lemmas": [
             "малый",
@@ -275,8 +275,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            296,
-            325
+            297,
+            326
         ],
         "lemmas": [
             "пауза",
@@ -294,8 +294,8 @@
         "start_token_ind": 18,
         "end_token_ind": 22,
         "span": [
-            314,
-            357
+            315,
+            358
         ],
         "lemmas": [
             "предложение",

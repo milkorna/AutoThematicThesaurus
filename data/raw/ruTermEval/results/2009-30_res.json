@@ -133,8 +133,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            90,
-            121
+            91,
+            122
         ],
         "lemmas": [
             "произнесение",
@@ -150,8 +150,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            135,
-            154
+            136,
+            155
         ],
         "lemmas": [
             "дискурсивный",
@@ -167,8 +167,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            122,
-            154
+            123,
+            155
         ],
         "lemmas": [
             "элементарный",
@@ -185,8 +185,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            159,
-            176
+            160,
+            177
         ],
         "lemmas": [
             "пограничный",
@@ -202,8 +202,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            187,
-            206
+            188,
+            207
         ],
         "lemmas": [
             "повышенный",
@@ -219,8 +219,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            207,
-            231
+            208,
+            232
         ],
         "lemmas": [
             "семантический",
@@ -236,8 +236,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            266,
-            290
+            267,
+            291
         ],
         "lemmas": [
             "синтаксический",
@@ -253,8 +253,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            291,
-            314
+            292,
+            315
         ],
         "lemmas": [
             "анализируемый",
@@ -270,8 +270,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            135,
-            176
+            136,
+            177
         ],
         "lemmas": [
             "дискурсивный",
@@ -290,8 +290,8 @@
         "start_token_ind": 2,
         "end_token_ind": 7,
         "span": [
-            122,
-            176
+            123,
+            177
         ],
         "lemmas": [
             "элементарный",
@@ -311,8 +311,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            103,
-            154
+            104,
+            155
         ],
         "lemmas": [
             "последовательность",
@@ -330,8 +330,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            148,
-            176
+            149,
+            177
         ],
         "lemmas": [
             "единица",
@@ -349,8 +349,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            198,
-            231
+            199,
+            232
         ],
         "lemmas": [
             "степень",
@@ -367,8 +367,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            266,
-            314
+            267,
+            315
         ],
         "lemmas": [
             "синтаксический",
@@ -386,8 +386,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            250,
-            290
+            251,
+            291
         ],
         "lemmas": [
             "просодический",
@@ -405,8 +405,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            281,
-            314
+            282,
+            315
         ],
         "lemmas": [
             "свойство",
@@ -423,8 +423,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            319,
-            333
+            320,
+            334
         ],
         "lemmas": [
             "данный",
@@ -440,8 +440,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            334,
-            350
+            335,
+            351
         ],
         "lemmas": [
             "устный",
@@ -457,8 +457,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            352,
-            363
+            353,
+            364
         ],
         "lemmas": [
             "доля",
@@ -474,8 +474,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            326,
-            350
+            327,
+            351
         ],
         "lemmas": [
             "корпус",
@@ -492,8 +492,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            352,
-            372
+            353,
+            373
         ],
         "lemmas": [
             "доля",

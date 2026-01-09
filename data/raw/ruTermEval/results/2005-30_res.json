@@ -173,8 +173,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            198,
-            214
+            199,
+            215
         ],
         "lemmas": [
             "объектный",
@@ -190,8 +190,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            208,
-            229
+            209,
+            230
         ],
         "lemmas": [
             "модель",
@@ -208,8 +208,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            240,
-            260
+            241,
+            261
         ],
         "lemmas": [
             "электронный",
@@ -225,8 +225,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            198,
-            229
+            199,
+            230
         ],
         "lemmas": [
             "объектный",
@@ -244,8 +244,8 @@
         "start_token_ind": 17,
         "end_token_ind": 19,
         "span": [
-            232,
-            260
+            233,
+            261
         ],
         "lemmas": [
             "ведение",
@@ -262,8 +262,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            301,
-            319
+            302,
+            320
         ],
         "lemmas": [
             "возможность",
@@ -279,8 +279,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            313,
-            337
+            314,
+            338
         ],
         "lemmas": [
             "модель",
@@ -297,8 +297,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            340,
-            354
+            341,
+            355
         ],
         "lemmas": [
             "словарь",
@@ -314,8 +314,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            389,
-            402
+            390,
+            403
         ],
         "lemmas": [
             "русский",
@@ -331,8 +331,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            301,
-            337
+            302,
+            338
         ],
         "lemmas": [
             "возможность",
@@ -350,8 +350,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            324,
-            354
+            325,
+            355
         ],
         "lemmas": [
             "представление",
@@ -369,8 +369,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            369,
-            402
+            370,
+            403
         ],
         "lemmas": [
             "словообразование",

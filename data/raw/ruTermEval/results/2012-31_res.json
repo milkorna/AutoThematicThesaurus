@@ -116,8 +116,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            98,
-            121
+            99,
+            122
         ],
         "lemmas": [
             "представлен",
@@ -133,8 +133,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            111,
-            129
+            112,
+            130
         ],
         "lemmas": [
             "результат",
@@ -150,8 +150,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            149,
-            177
+            150,
+            178
         ],
         "lemmas": [
             "лексикографический",
@@ -167,8 +167,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            178,
-            193
+            179,
+            194
         ],
         "lemmas": [
             "спонтанный",
@@ -184,8 +184,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            196,
-            210
+            197,
+            211
         ],
         "lemmas": [
             "цель",
@@ -201,8 +201,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            196,
-            218
+            197,
+            219
         ],
         "lemmas": [
             "цель",
@@ -219,8 +219,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            202,
-            218
+            203,
+            219
         ],
         "lemmas": [
             "создание",
@@ -236,8 +236,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            227,
-            239
+            228,
+            240
         ],
         "lemmas": [
             "бытовой",
@@ -253,8 +253,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            219,
-            239
+            220,
+            240
         ],
         "lemmas": [
             "русский",
@@ -271,8 +271,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            90,
-            121
+            91,
+            122
         ],
         "lemmas": [
             "доклад",
@@ -289,8 +289,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            98,
-            129
+            99,
+            130
         ],
         "lemmas": [
             "представлен",
@@ -307,8 +307,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            149,
-            193
+            150,
+            194
         ],
         "lemmas": [
             "лексикографический",
@@ -326,8 +326,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            140,
-            177
+            141,
+            178
         ],
         "lemmas": [
             "способ",
@@ -344,8 +344,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            178,
-            210
+            179,
+            211
         ],
         "lemmas": [
             "спонтанный",
@@ -364,8 +364,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            169,
-            193
+            170,
+            194
         ],
         "lemmas": [
             "описание",
@@ -382,8 +382,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            189,
-            218
+            190,
+            219
         ],
         "lemmas": [
             "речь",
@@ -402,8 +402,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            211,
-            239
+            212,
+            240
         ],
         "lemmas": [
             "словарь",
@@ -421,8 +421,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            241,
-            263
+            242,
+            264
         ],
         "lemmas": [
             "материал",
@@ -439,8 +439,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            280,
-            292
+            281,
+            293
         ],
         "lemmas": [
             "речевой",
@@ -456,8 +456,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            294,
-            311
+            295,
+            312
         ],
         "lemmas": [
             "звуковой",
@@ -473,8 +473,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            312,
-            326
+            313,
+            327
         ],
         "lemmas": [
             "русский",
@@ -490,8 +490,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            294,
-            326
+            295,
+            327
         ],
         "lemmas": [
             "звуковой",
@@ -509,8 +509,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            304,
-            326
+            305,
+            327
         ],
         "lemmas": [
             "корпус",
@@ -527,8 +527,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            364,
-            380
+            365,
+            381
         ],
         "lemmas": [
             "разговорной",
@@ -544,8 +544,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            356,
-            380
+            357,
+            381
         ],
         "lemmas": [
             "бытовой",
@@ -562,8 +562,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            348,
-            380
+            349,
+            381
         ],
         "lemmas": [
             "русский",
@@ -581,8 +581,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            443,
-            459
+            444,
+            460
         ],
         "lemmas": [
             "частотный",
@@ -598,8 +598,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            516,
-            543
+            517,
+            544
         ],
         "lemmas": [
             "лексико-семантический",
@@ -615,8 +615,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            506,
-            543
+            507,
+            544
         ],
         "lemmas": [
             "отдельный",
@@ -633,8 +633,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            339,
-            380
+            340,
+            381
         ],
         "lemmas": [
             "словарь",

@@ -8,8 +8,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            51,
-            87
+            52,
+            88
         ],
         "lemmas": [
             "семантико-синтаксический",
@@ -25,8 +25,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            88,
-            101
+            89,
+            102
         ],
         "lemmas": [
             "русский",
@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            51,
-            101
+            52,
+            102
         ],
         "lemmas": [
             "семантико-синтаксический",
@@ -61,8 +61,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            76,
-            101
+            77,
+            102
         ],
         "lemmas": [
             "особенность",
@@ -79,8 +79,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            200,
-            231
+            201,
+            232
         ],
         "lemmas": [
             "квазиграмматический",
@@ -96,8 +96,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            232,
-            259
+            233,
+            260
         ],
         "lemmas": [
             "континуативный",
@@ -113,8 +113,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            200,
-            259
+            201,
+            260
         ],
         "lemmas": [
             "квазиграмматический",
@@ -132,8 +132,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            220,
-            259
+            221,
+            260
         ],
         "lemmas": [
             "показатель",
@@ -150,8 +150,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            521,
-            534
+            522,
+            535
         ],
         "lemmas": [
             "данный",
@@ -167,8 +167,8 @@
         "start_token_ind": 45,
         "end_token_ind": 46,
         "span": [
-            690,
-            701
+            691,
+            702
         ],
         "lemmas": [
             "ход",

@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            125,
-            148
+            126,
+            149
         ],
         "lemmas": [
             "определение",
@@ -59,8 +59,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            125,
-            160
+            126,
+            161
         ],
         "lemmas": [
             "определение",
@@ -77,8 +77,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            137,
-            160
+            138,
+            161
         ],
         "lemmas": [
             "взаимосвязь",
@@ -94,8 +94,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            163,
-            181
+            164,
+            182
         ],
         "lemmas": [
             "внешний",
@@ -111,8 +111,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            184,
-            204
+            185,
+            205
         ],
         "lemmas": [
             "генитивный",
@@ -128,8 +128,8 @@
         "start_token_ind": 3,
         "end_token_ind": 8,
         "span": [
-            125,
-            181
+            126,
+            182
         ],
         "lemmas": [
             "определение",
@@ -149,8 +149,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            137,
-            181
+            138,
+            182
         ],
         "lemmas": [
             "взаимосвязь",
@@ -169,8 +169,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            149,
-            181
+            150,
+            182
         ],
         "lemmas": [
             "конструкция",
@@ -188,8 +188,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            171,
-            204
+            172,
+            205
         ],
         "lemmas": [
             "посессор",
@@ -207,8 +207,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            238,
-            256
+            239,
+            257
         ],
         "lemmas": [
             "внешний",
@@ -224,8 +224,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            224,
-            256
+            225,
+            257
         ],
         "lemmas": [
             "конструкция",
@@ -243,8 +243,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            456,
-            476
+            457,
+            477
         ],
         "lemmas": [
             "синтаксический",

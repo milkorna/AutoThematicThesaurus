@@ -63,8 +63,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            114,
-            137
+            115,
+            138
         ],
         "lemmas": [
             "исследованный",
@@ -80,8 +80,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            138,
-            159
+            139,
+            160
         ],
         "lemmas": [
             "степенный",
@@ -97,8 +97,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            182,
-            205
+            183,
+            206
         ],
         "lemmas": [
             "функциональный",
@@ -114,8 +114,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            128,
-            159
+            129,
+            160
         ],
         "lemmas": [
             "компонент",
@@ -132,8 +132,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            282,
-            300
+            283,
+            301
         ],
         "lemmas": [
             "целевой",
@@ -149,8 +149,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            303,
-            319
+            304,
+            320
         ],
         "lemmas": [
             "число",
@@ -166,8 +166,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            320,
-            348
+            321,
+            349
         ],
         "lemmas": [
             "градуальный",
@@ -183,8 +183,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            282,
-            319
+            283,
+            320
         ],
         "lemmas": [
             "целевой",
@@ -203,8 +203,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            290,
-            319
+            291,
+            320
         ],
         "lemmas": [
             "пропозиция",
@@ -222,8 +222,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            309,
-            348
+            310,
+            349
         ],
         "lemmas": [
             "аргумент",

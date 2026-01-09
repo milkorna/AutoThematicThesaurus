@@ -59,8 +59,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            60,
-            86
+            61,
+            87
         ],
         "lemmas": [
             "морфо-синтаксический",
@@ -76,8 +76,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            81,
-            98
+            82,
+            99
         ],
         "lemmas": [
             "тип",
@@ -93,8 +93,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            101,
-            119
+            102,
+            120
         ],
         "lemmas": [
             "внешний",
@@ -110,8 +110,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            122,
-            135
+            123,
+            136
         ],
         "lemmas": [
             "русский",
@@ -127,8 +127,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            60,
-            98
+            61,
+            99
         ],
         "lemmas": [
             "морфо-синтаксический",
@@ -145,8 +145,8 @@
         "start_token_ind": 2,
         "end_token_ind": 6,
         "span": [
-            81,
-            119
+            82,
+            120
         ],
         "lemmas": [
             "тип",
@@ -165,8 +165,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            87,
-            119
+            88,
+            120
         ],
         "lemmas": [
             "конструкция",
@@ -184,8 +184,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            101,
-            135
+            102,
+            136
         ],
         "lemmas": [
             "внешний",
@@ -204,8 +204,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            109,
-            135
+            110,
+            136
         ],
         "lemmas": [
             "посессор",
@@ -223,8 +223,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            307,
-            325
+            308,
+            326
         ],
         "lemmas": [
             "внешний",
@@ -240,8 +240,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            292,
-            325
+            293,
+            326
         ],
         "lemmas": [
             "конструкция",
@@ -259,8 +259,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            307,
-            333
+            308,
+            334
         ],
         "lemmas": [
             "внешний",

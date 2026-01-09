@@ -44,8 +44,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            73,
-            94
+            74,
+            95
         ],
         "lemmas": [
             "неоднородность",
@@ -61,8 +61,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            95,
-            120
+            96,
+            121
         ],
         "lemmas": [
             "экспериментальный",
@@ -78,8 +78,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            144,
-            174
+            145,
+            175
         ],
         "lemmas": [
             "синтаксический",
@@ -95,8 +95,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            184,
-            202
+            185,
+            203
         ],
         "lemmas": [
             "зрение",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            88,
-            120
+            89,
+            121
         ],
         "lemmas": [
             "класс",
@@ -130,8 +130,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            134,
-            174
+            135,
+            175
         ],
         "lemmas": [
             "изучение",
@@ -148,8 +148,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            264,
-            283
+            265,
+            284
         ],
         "lemmas": [
             "предпринят",
@@ -165,8 +165,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            296,
-            323
+            297,
+            324
         ],
         "lemmas": [
             "экспериментальный",
@@ -182,8 +182,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            314,
-            334
+            315,
+            335
         ],
         "lemmas": [
             "поведение",
@@ -199,8 +199,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            337,
-            363
+            338,
+            364
         ],
         "lemmas": [
             "разрешение",
@@ -216,8 +216,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            366,
-            387
+            367,
+            388
         ],
         "lemmas": [
             "реальный",
@@ -233,8 +233,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            296,
-            334
+            297,
+            335
         ],
         "lemmas": [
             "экспериментальный",
@@ -251,8 +251,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            314,
-            347
+            315,
+            348
         ],
         "lemmas": [
             "поведение",
@@ -270,8 +270,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            324,
-            363
+            325,
+            364
         ],
         "lemmas": [
             "испытуемый",
@@ -289,8 +289,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            337,
-            387
+            338,
+            388
         ],
         "lemmas": [
             "разрешение",
@@ -309,8 +309,8 @@
         "start_token_ind": 11,
         "end_token_ind": 14,
         "span": [
-            348,
-            387
+            349,
+            388
         ],
         "lemmas": [
             "неоднозначность",

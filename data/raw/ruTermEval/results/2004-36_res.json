@@ -25,8 +25,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            117,
-            137
+            118,
+            138
         ],
         "lemmas": [
             "естественный",
@@ -42,8 +42,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            141,
-            154
+            142,
+            155
         ],
         "lemmas": [
             "русский",
@@ -59,8 +59,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            259,
-            281
+            260,
+            282
         ],
         "lemmas": [
             "словарный",
@@ -76,8 +76,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            247,
-            281
+            248,
+            282
         ],
         "lemmas": [
             "переход",
@@ -95,8 +95,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            480,
-            508
+            481,
+            509
         ],
         "lemmas": [
             "морфосинтаксический",
@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            468,
-            508
+            469,
+            509
         ],
         "lemmas": [
             "пограничный",
@@ -130,8 +130,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            600,
-            626
+            601,
+            627
         ],
         "lemmas": [
             "словоизменительный",
@@ -147,8 +147,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            641,
-            668
+            642,
+            669
         ],
         "lemmas": [
             "словообразовательный",
@@ -164,8 +164,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            628,
-            668
+            629,
+            669
         ],
         "lemmas": [
             "продуктивный",
@@ -182,8 +182,8 @@
         "start_token_ind": 41,
         "end_token_ind": 42,
         "span": [
-            717,
-            739
+            718,
+            740
         ],
         "lemmas": [
             "словарный",
@@ -199,8 +199,8 @@
         "start_token_ind": 49,
         "end_token_ind": 50,
         "span": [
-            769,
-            794
+            770,
+            795
         ],
         "lemmas": [
             "устойчивый",
@@ -216,8 +216,8 @@
         "start_token_ind": 51,
         "end_token_ind": 52,
         "span": [
-            795,
-            823
+            796,
+            824
         ],
         "lemmas": [
             "морфологический",
@@ -233,8 +233,8 @@
         "start_token_ind": 54,
         "end_token_ind": 55,
         "span": [
-            826,
-            850
+            827,
+            851
         ],
         "lemmas": [
             "морфологический",
@@ -250,8 +250,8 @@
         "start_token_ind": 59,
         "end_token_ind": 60,
         "span": [
-            865,
-            888
+            866,
+            889
         ],
         "lemmas": [
             "синтаксический",
@@ -267,8 +267,8 @@
         "start_token_ind": 65,
         "end_token_ind": 66,
         "span": [
-            894,
-            916
+            895,
+            917
         ],
         "lemmas": [
             "несловарный",
@@ -284,8 +284,8 @@
         "start_token_ind": 70,
         "end_token_ind": 71,
         "span": [
-            934,
-            946
+            935,
+            947
         ],
         "lemmas": [
             "единый",
@@ -301,8 +301,8 @@
         "start_token_ind": 75,
         "end_token_ind": 76,
         "span": [
-            964,
-            992
+            965,
+            993
         ],
         "lemmas": [
             "морфосинтаксический",
@@ -318,8 +318,8 @@
         "start_token_ind": 81,
         "end_token_ind": 82,
         "span": [
-            1012,
-            1038
+            1013,
+            1039
         ],
         "lemmas": [
             "окказиональный",
@@ -335,8 +335,8 @@
         "start_token_ind": 1,
         "end_token_ind": 5,
         "span": [
-            450,
-            508
+            451,
+            509
         ],
         "lemmas": [
             "морфологический",
@@ -355,8 +355,8 @@
         "start_token_ind": 20,
         "end_token_ind": 23,
         "span": [
-            577,
-            626
+            578,
+            627
         ],
         "lemmas": [
             "словообразовательный",
@@ -374,8 +374,8 @@
         "start_token_ind": 40,
         "end_token_ind": 42,
         "span": [
-            711,
-            739
+            712,
+            740
         ],
         "lemmas": [
             "этап",
@@ -392,8 +392,8 @@
         "start_token_ind": 49,
         "end_token_ind": 52,
         "span": [
-            769,
-            823
+            770,
+            824
         ],
         "lemmas": [
             "устойчивый",
@@ -411,8 +411,8 @@
         "start_token_ind": 47,
         "end_token_ind": 50,
         "span": [
-            757,
-            794
+            758,
+            795
         ],
         "lemmas": [
             "вхождение",
@@ -430,8 +430,8 @@
         "start_token_ind": 50,
         "end_token_ind": 52,
         "span": [
-            780,
-            823
+            781,
+            824
         ],
         "lemmas": [
             "словосочетание",
@@ -448,8 +448,8 @@
         "start_token_ind": 52,
         "end_token_ind": 55,
         "span": [
-            811,
-            850
+            812,
+            851
         ],
         "lemmas": [
             "автономность",
@@ -467,8 +467,8 @@
         "start_token_ind": 81,
         "end_token_ind": 84,
         "span": [
-            1012,
-            1049
+            1013,
+            1050
         ],
         "lemmas": [
             "окказиональный",

@@ -60,8 +60,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            87,
-            116
+            88,
+            117
         ],
         "lemmas": [
             "прагматический",
@@ -77,8 +77,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            102,
-            123
+            103,
+            124
         ],
         "lemmas": [
             "характеристика",
@@ -94,8 +94,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            87,
-            123
+            88,
+            124
         ],
         "lemmas": [
             "прагматический",
@@ -112,8 +112,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            71,
-            116
+            72,
+            117
         ],
         "lemmas": [
             "семантический",
@@ -131,8 +131,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            176,
-            195
+            177,
+            196
         ],
         "lemmas": [
             "вербальный",
@@ -148,8 +148,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            202,
-            226
+            203,
+            227
         ],
         "lemmas": [
             "невербальный",
@@ -165,8 +165,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            229,
-            252
+            230,
+            253
         ],
         "lemmas": [
             "нерегулярный",
@@ -182,8 +182,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            202,
-            252
+            203,
+            253
         ],
         "lemmas": [
             "невербальный",
@@ -202,8 +202,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            216,
-            252
+            217,
+            253
         ],
         "lemmas": [
             "действие",
@@ -221,8 +221,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            396,
-            409
+            397,
+            410
         ],
         "lemmas": [
             "речевой",
@@ -238,8 +238,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            386,
-            409
+            387,
+            410
         ],
         "lemmas": [
             "косвенный",
@@ -256,8 +256,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            430,
-            450
+            431,
+            451
         ],
         "lemmas": [
             "имплицитный",
@@ -273,8 +273,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            443,
-            464
+            444,
+            465
         ],
         "lemmas": [
             "способ",
@@ -290,8 +290,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            443,
-            475
+            444,
+            476
         ],
         "lemmas": [
             "способ",
@@ -308,8 +308,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            451,
-            475
+            452,
+            476
         ],
         "lemmas": [
             "представление",
@@ -325,8 +325,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            489,
-            501
+            490,
+            502
         ],
         "lemmas": [
             "речевой",
@@ -342,8 +342,8 @@
         "start_token_ind": 20,
         "end_token_ind": 22,
         "span": [
-            479,
-            501
+            480,
+            502
         ],
         "lemmas": [
             "косвенный",
@@ -360,8 +360,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            430,
-            475
+            431,
+            476
         ],
         "lemmas": [
             "имплицитный",

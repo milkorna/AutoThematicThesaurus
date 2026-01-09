@@ -60,8 +60,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            84,
-            104
+            85,
+            105
         ],
         "lemmas": [
             "индикаторный",
@@ -77,8 +77,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            98,
-            115
+            99,
+            116
         ],
         "lemmas": [
             "метод",
@@ -94,8 +94,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            98,
-            126
+            99,
+            127
         ],
         "lemmas": [
             "метод",
@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            105,
-            126
+            106,
+            127
         ],
         "lemmas": [
             "извлечение",
@@ -129,8 +129,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            139,
-            158
+            140,
+            159
         ],
         "lemmas": [
             "аспект",
@@ -146,8 +146,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            159,
-            174
+            160,
+            175
         ],
         "lemmas": [
             "научный",
@@ -163,8 +163,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            84,
-            126
+            85,
+            127
         ],
         "lemmas": [
             "индикаторный",
@@ -182,8 +182,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            148,
-            174
+            149,
+            175
         ],
         "lemmas": [
             "содержание",
@@ -200,8 +200,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            234,
-            247
+            235,
+            248
         ],
         "lemmas": [
             "прошлый",
@@ -217,8 +217,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            295,
-            319
+            296,
+            320
         ],
         "lemmas": [
             "трудоемкость",
@@ -234,8 +234,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            320,
-            341
+            321,
+            342
         ],
         "lemmas": [
             "индикаторный",
@@ -251,8 +251,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            308,
-            341
+            309,
+            342
         ],
         "lemmas": [
             "составление",
@@ -269,8 +269,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            356,
-            375
+            357,
+            376
         ],
         "lemmas": [
             "схема",
@@ -286,8 +286,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            404,
-            423
+            405,
+            424
         ],
         "lemmas": [
             "уменьшающий",
@@ -303,8 +303,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            424,
-            437
+            425,
+            438
         ],
         "lemmas": [
             "ручной",
@@ -320,8 +320,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            416,
-            437
+            417,
+            438
         ],
         "lemmas": [
             "затрата",

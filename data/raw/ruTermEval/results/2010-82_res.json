@@ -8,8 +8,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            119,
-            149
+            120,
+            150
         ],
         "lemmas": [
             "синтаксический",
@@ -25,8 +25,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            159,
-            177
+            160,
+            178
         ],
         "lemmas": [
             "зрение",
@@ -42,8 +42,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            197,
-            219
+            198,
+            220
         ],
         "lemmas": [
             "автоматический",
@@ -59,8 +59,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            212,
-            226
+            213,
+            227
         ],
         "lemmas": [
             "анализ",
@@ -76,8 +76,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            245,
-            261
+            246,
+            262
         ],
         "lemmas": [
             "результат",
@@ -93,8 +93,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            262,
-            284
+            263,
+            285
         ],
         "lemmas": [
             "семантический",
@@ -110,8 +110,8 @@
         "start_token_ind": 32,
         "end_token_ind": 33,
         "span": [
-            298,
-            328
+            299,
+            329
         ],
         "lemmas": [
             "синтаксический",
@@ -127,8 +127,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            108,
-            149
+            109,
+            150
         ],
         "lemmas": [
             "разрешение",
@@ -145,8 +145,8 @@
         "start_token_ind": 19,
         "end_token_ind": 21,
         "span": [
-            197,
-            226
+            198,
+            227
         ],
         "lemmas": [
             "автоматический",
@@ -163,8 +163,8 @@
         "start_token_ind": 28,
         "end_token_ind": 31,
         "span": [
-            262,
-            297
+            263,
+            298
         ],
         "lemmas": [
             "семантический",
@@ -182,8 +182,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            256,
-            284
+            257,
+            285
         ],
         "lemmas": [
             "опыт",
@@ -200,8 +200,8 @@
         "start_token_ind": 31,
         "end_token_ind": 33,
         "span": [
-            287,
-            328
+            288,
+            329
         ],
         "lemmas": [
             "разрешение",

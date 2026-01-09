@@ -78,8 +78,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            172,
-            186
+            173,
+            187
         ],
         "lemmas": [
             "глагол",
@@ -95,8 +95,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            224,
-            244
+            225,
+            245
         ],
         "lemmas": [
             "значение",
@@ -112,8 +112,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            248,
-            265
+            249,
+            266
         ],
         "lemmas": [
             "модальный",
@@ -129,8 +129,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            268,
-            290
+            269,
+            291
         ],
         "lemmas": [
             "семантика",
@@ -146,8 +146,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            317,
-            329
+            318,
+            330
         ],
         "lemmas": [
             "вид",
@@ -163,8 +163,8 @@
         "start_token_ind": 16,
         "end_token_ind": 20,
         "span": [
-            248,
-            290
+            249,
+            291
         ],
         "lemmas": [
             "модальный",
@@ -183,8 +183,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            258,
-            290
+            259,
+            291
         ],
         "lemmas": [
             "глагол",
@@ -202,8 +202,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            353,
-            366
+            354,
+            367
         ],
         "lemmas": [
             "круг",

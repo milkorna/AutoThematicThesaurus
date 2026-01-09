@@ -60,8 +60,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            88,
-            111
+            89,
+            112
         ],
         "lemmas": [
             "разговорный",
@@ -77,8 +77,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            80,
-            111
+            81,
+            112
         ],
         "lemmas": [
             "русский",
@@ -95,8 +95,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            134,
-            154
+            135,
+            155
         ],
         "lemmas": [
             "формальный",
@@ -112,8 +112,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            146,
-            160
+            147,
+            161
         ],
         "lemmas": [
             "средство",
@@ -129,8 +129,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            200,
-            219
+            201,
+            220
         ],
         "lemmas": [
             "беспредложный",
@@ -146,8 +146,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            260,
-            273
+            261,
+            274
         ],
         "lemmas": [
             "союзный",
@@ -163,8 +163,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            134,
-            160
+            135,
+            161
         ],
         "lemmas": [
             "формальный",
@@ -181,8 +181,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            125,
-            154
+            126,
+            155
         ],
         "lemmas": [
             "качество",
@@ -199,8 +199,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            190,
-            219
+            191,
+            220
         ],
         "lemmas": [
             "сочетание",
@@ -217,8 +217,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            304,
-            337
+            305,
+            338
         ],
         "lemmas": [
             "семантико-синтаксический",
@@ -234,8 +234,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            373,
-            384
+            374,
+            385
         ],
         "lemmas": [
             "устный",
@@ -251,8 +251,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            361,
-            384
+            362,
+            385
         ],
         "lemmas": [
             "непубличный",
@@ -269,8 +269,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            438,
-            454
+            439,
+            455
         ],
         "lemmas": [
             "союзный",
@@ -286,8 +286,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            430,
-            454
+            431,
+            455
         ],
         "lemmas": [
             "слитный",
@@ -304,8 +304,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            538,
-            561
+            539,
+            562
         ],
         "lemmas": [
             "расчлененный",
@@ -321,8 +321,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            552,
-            573
+            553,
+            574
         ],
         "lemmas": [
             "сочетание",
@@ -338,8 +338,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            525,
-            561
+            526,
+            562
         ],
         "lemmas": [
             "употребление",
@@ -356,8 +356,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            538,
-            573
+            539,
+            574
         ],
         "lemmas": [
             "расчлененный",

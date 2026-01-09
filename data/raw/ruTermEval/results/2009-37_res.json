@@ -101,8 +101,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            130,
-            146
+            131,
+            147
         ],
         "lemmas": [
             "речевой",
@@ -118,8 +118,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            176,
-            192
+            177,
+            193
         ],
         "lemmas": [
             "русский",
@@ -135,8 +135,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            160,
-            192
+            161,
+            193
         ],
         "lemmas": [
             "мультимедийный",
@@ -153,8 +153,8 @@
         "start_token_ind": 30,
         "end_token_ind": 31,
         "span": [
-            303,
-            323
+            304,
+            324
         ],
         "lemmas": [
             "русский",
@@ -170,8 +170,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            336,
-            348
+            337,
+            349
         ],
         "lemmas": [
             "речевой",
@@ -187,8 +187,8 @@
         "start_token_ind": 40,
         "end_token_ind": 41,
         "span": [
-            372,
-            384
+            373,
+            385
         ],
         "lemmas": [
             "русский",
@@ -204,8 +204,8 @@
         "start_token_ind": 39,
         "end_token_ind": 41,
         "span": [
-            365,
-            384
+            366,
+            385
         ],
         "lemmas": [
             "устный",
@@ -222,8 +222,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            130,
-            155
+            131,
+            156
         ],
         "lemmas": [
             "речевой",
@@ -241,8 +241,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            119,
-            146
+            120,
+            147
         ],
         "lemmas": [
             "разметчик",
@@ -259,8 +259,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            149,
-            192
+            150,
+            193
         ],
         "lemmas": [
             "жест",

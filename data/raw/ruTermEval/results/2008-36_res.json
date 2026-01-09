@@ -149,8 +149,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            137,
-            159
+            138,
+            160
         ],
         "lemmas": [
             "информационный",
@@ -166,8 +166,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            192,
-            214
+            193,
+            215
         ],
         "lemmas": [
             "синтаксический",
@@ -183,8 +183,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            228,
-            249
+            229,
+            250
         ],
         "lemmas": [
             "знаменательный",
@@ -200,8 +200,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            216,
-            249
+            217,
+            250
         ],
         "lemmas": [
             "минимальный",
@@ -218,8 +218,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            243,
-            261
+            244,
+            262
         ],
         "lemmas": [
             "член",
@@ -235,8 +235,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            313,
-            333
+            314,
+            334
         ],
         "lemmas": [
             "генеральный",
@@ -252,8 +252,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            334,
-            348
+            335,
+            349
         ],
         "lemmas": [
             "русский",
@@ -269,8 +269,8 @@
         "start_token_ind": 34,
         "end_token_ind": 35,
         "span": [
-            371,
-            391
+            372,
+            392
         ],
         "lemmas": [
             "уппсальский",
@@ -286,8 +286,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            180,
-            214
+            181,
+            215
         ],
         "lemmas": [
             "частотность",
@@ -304,8 +304,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            228,
-            261
+            229,
+            262
         ],
         "lemmas": [
             "знаменательный",
@@ -322,8 +322,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            216,
-            261
+            217,
+            262
         ],
         "lemmas": [
             "минимальный",
@@ -341,8 +341,8 @@
         "start_token_ind": 26,
         "end_token_ind": 29,
         "span": [
-            313,
-            348
+            314,
+            349
         ],
         "lemmas": [
             "генеральный",
@@ -360,8 +360,8 @@
         "start_token_ind": 25,
         "end_token_ind": 27,
         "span": [
-            303,
-            333
+            304,
+            334
         ],
         "lemmas": [
             "материал",
@@ -378,8 +378,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            326,
-            348
+            327,
+            349
         ],
         "lemmas": [
             "корпус",
@@ -396,8 +396,8 @@
         "start_token_ind": 33,
         "end_token_ind": 35,
         "span": [
-            364,
-            391
+            365,
+            392
         ],
         "lemmas": [
             "основа",

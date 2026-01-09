@@ -8,8 +8,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            77,
-            99
+            78,
+            100
         ],
         "lemmas": [
             "дейктический",
@@ -25,8 +25,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            109,
-            128
+            110,
+            129
         ],
         "lemmas": [
             "вторичный",
@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            70,
-            99
+            71,
+            100
         ],
         "lemmas": [
             "знак",
@@ -61,8 +61,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            101,
-            128
+            102,
+            129
         ],
         "lemmas": [
             "субъект",
@@ -79,8 +79,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            155,
-            174
+            156,
+            175
         ],
         "lemmas": [
             "первичный",
@@ -96,8 +96,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            227,
-            247
+            228,
+            248
         ],
         "lemmas": [
             "участок",
@@ -113,8 +113,8 @@
         "start_token_ind": 24,
         "end_token_ind": 25,
         "span": [
-            296,
-            311
+            297,
+            312
         ],
         "lemmas": [
             "отрезок",
@@ -130,8 +130,8 @@
         "start_token_ind": 31,
         "end_token_ind": 32,
         "span": [
-            339,
-            357
+            340,
+            358
         ],
         "lemmas": [
             "настоящий",
@@ -147,8 +147,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            147,
-            174
+            148,
+            175
         ],
         "lemmas": [
             "субъект",
@@ -165,8 +165,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            217,
-            247
+            218,
+            248
         ],
         "lemmas": [
             "объект",
@@ -184,8 +184,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            408,
-            432
+            409,
+            433
         ],
         "lemmas": [
             "грамматический",
@@ -201,8 +201,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            401,
-            432
+            402,
+            433
         ],
         "lemmas": [
             "имя",

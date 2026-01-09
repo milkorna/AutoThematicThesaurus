@@ -115,8 +115,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            135,
-            157
+            136,
+            158
         ],
         "lemmas": [
             "семантический",
@@ -132,8 +132,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            149,
-            162
+            150,
+            163
         ],
         "lemmas": [
             "фильтр",
@@ -149,8 +149,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            264,
-            284
+            265,
+            285
         ],
         "lemmas": [
             "национальный",
@@ -166,8 +166,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            285,
-            299
+            286,
+            300
         ],
         "lemmas": [
             "русский",
@@ -183,8 +183,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            135,
-            162
+            136,
+            163
         ],
         "lemmas": [
             "семантический",
@@ -201,8 +201,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            127,
-            157
+            128,
+            158
         ],
         "lemmas": [
             "система",
@@ -219,8 +219,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            264,
-            299
+            265,
+            300
         ],
         "lemmas": [
             "национальный",
@@ -238,8 +238,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            277,
-            299
+            278,
+            300
         ],
         "lemmas": [
             "корпус",
@@ -256,8 +256,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            322,
-            349
+            323,
+            350
         ],
         "lemmas": [
             "многозначный",
@@ -273,8 +273,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            364,
-            381
+            365,
+            382
         ],
         "lemmas": [
             "многозначный",
@@ -290,8 +290,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            385,
-            400
+            386,
+            401
         ],
         "lemmas": [
             "словарь",
@@ -307,8 +307,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            418,
-            439
+            419,
+            440
         ],
         "lemmas": [
             "семантический",
@@ -324,8 +324,8 @@
         "start_token_ind": 1,
         "end_token_ind": 3,
         "span": [
-            313,
-            349
+            314,
+            350
         ],
         "lemmas": [
             "значение",
@@ -342,8 +342,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            410,
-            439
+            411,
+            440
         ],
         "lemmas": [
             "помета",
@@ -360,8 +360,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            457,
-            472
+            458,
+            473
         ],
         "lemmas": [
             "вхождение",
@@ -377,8 +377,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            510,
-            530
+            511,
+            531
         ],
         "lemmas": [
             "семантический",
@@ -394,8 +394,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            500,
-            530
+            501,
+            531
         ],
         "lemmas": [
             "словарный",
@@ -412,8 +412,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            542,
-            564
+            543,
+            565
         ],
         "lemmas": [
             "семантический",

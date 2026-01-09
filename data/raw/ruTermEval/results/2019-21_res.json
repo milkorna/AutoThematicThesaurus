@@ -81,8 +81,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            89,
-            105
+            90,
+            106
         ],
         "lemmas": [
             "задача",
@@ -98,8 +98,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            89,
-            115
+            90,
+            116
         ],
         "lemmas": [
             "задача",
@@ -116,8 +116,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            96,
-            115
+            97,
+            116
         ],
         "lemmas": [
             "выявление",
@@ -133,8 +133,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            209,
-            232
+            210,
+            233
         ],
         "lemmas": [
             "коллектив",
@@ -150,8 +150,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            275,
-            300
+            276,
+            301
         ],
         "lemmas": [
             "подтвержденный",
@@ -167,8 +167,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            318,
-            334
+            319,
+            335
         ],
         "lemmas": [
             "нейтральный",
@@ -184,8 +184,8 @@
         "start_token_ind": 18,
         "end_token_ind": 21,
         "span": [
-            310,
-            334
+            311,
+            335
         ],
         "lemmas": [
             "эссе",
@@ -203,8 +203,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            380,
-            402
+            381,
+            403
         ],
         "lemmas": [
             "написан",
@@ -220,8 +220,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            443,
-            462
+            444,
+            463
         ],
         "lemmas": [
             "выявление",
@@ -237,8 +237,8 @@
         "start_token_ind": 20,
         "end_token_ind": 21,
         "span": [
-            477,
-            494
+            478,
+            495
         ],
         "lemmas": [
             "признак",
@@ -254,8 +254,8 @@
         "start_token_ind": 22,
         "end_token_ind": 23,
         "span": [
-            495,
-            517
+            496,
+            518
         ],
         "lemmas": [
             "ментальный",
@@ -271,8 +271,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            431,
-            462
+            432,
+            463
         ],
         "lemmas": [
             "опросник",
@@ -290,8 +290,8 @@
         "start_token_ind": 21,
         "end_token_ind": 23,
         "span": [
-            487,
-            517
+            488,
+            518
         ],
         "lemmas": [
             "наличие",
@@ -308,8 +308,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            587,
-            605
+            588,
+            606
         ],
         "lemmas": [
             "текстовый",
@@ -325,8 +325,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            629,
-            651
+            630,
+            652
         ],
         "lemmas": [
             "инструмент",
@@ -342,8 +342,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            652,
-            671
+            653,
+            672
         ],
         "lemmas": [
             "естественный",
@@ -359,8 +359,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            693,
-            713
+            694,
+            714
         ],
         "lemmas": [
             "задача",
@@ -376,8 +376,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            642,
-            671
+            643,
+            672
         ],
         "lemmas": [
             "обработка",
@@ -394,8 +394,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            729,
-            746
+            730,
+            747
         ],
         "lemmas": [
             "машинный",
@@ -411,8 +411,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            747,
-            771
+            748,
+            772
         ],
         "lemmas": [
             "классификационный",
@@ -428,8 +428,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            808,
-            826
+            809,
+            827
         ],
         "lemmas": [
             "задача",
@@ -445,8 +445,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            808,
-            831
+            809,
+            832
         ],
         "lemmas": [
             "задача",
@@ -463,8 +463,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            815,
-            831
+            816,
+            832
         ],
         "lemmas": [
             "обнаружение",
@@ -480,8 +480,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            833,
-            850
+            834,
+            851
         ],
         "lemmas": [
             "написанный",
@@ -497,8 +497,8 @@
         "start_token_ind": 2,
         "end_token_ind": 5,
         "span": [
-            729,
-            771
+            730,
+            772
         ],
         "lemmas": [
             "машинный",
@@ -516,8 +516,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            738,
-            771
+            739,
+            772
         ],
         "lemmas": [
             "обучение",
@@ -534,8 +534,8 @@
         "start_token_ind": 10,
         "end_token_ind": 14,
         "span": [
-            798,
-            831
+            799,
+            832
         ],
         "lemmas": [
             "f1-мера",

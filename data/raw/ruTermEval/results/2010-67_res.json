@@ -190,8 +190,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            112,
-            129
+            113,
+            130
         ],
         "lemmas": [
             "материал",
@@ -207,8 +207,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            130,
-            144
+            131,
+            145
         ],
         "lemmas": [
             "устный",
@@ -224,8 +224,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            157,
-            169
+            158,
+            170
         ],
         "lemmas": [
             "речевой",
@@ -241,8 +241,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            179,
-            193
+            180,
+            194
         ],
         "lemmas": [
             "вид",
@@ -258,8 +258,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            195,
-            219
+            196,
+            220
         ],
         "lemmas": [
             "вызванный",
@@ -275,8 +275,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            224,
-            254
+            225,
+            255
         ],
         "lemmas": [
             "русско-белорусский",
@@ -292,8 +292,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            122,
-            144
+            123,
+            145
         ],
         "lemmas": [
             "корпус",
@@ -310,8 +310,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            205,
-            254
+            206,
+            255
         ],
         "lemmas": [
             "интерференция",
@@ -329,8 +329,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            288,
-            310
+            289,
+            311
         ],
         "lemmas": [
             "стратегия",
@@ -346,8 +346,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            311,
-            324
+            312,
+            325
         ],
         "lemmas": [
             "речевой",
@@ -363,8 +363,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            327,
-            340
+            328,
+            341
         ],
         "lemmas": [
             "русский",
@@ -380,8 +380,8 @@
         "start_token_ind": 3,
         "end_token_ind": 6,
         "span": [
-            279,
-            310
+            280,
+            311
         ],
         "lemmas": [
             "данный",
@@ -399,8 +399,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            311,
-            340
+            312,
+            341
         ],
         "lemmas": [
             "речевой",
@@ -419,8 +419,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            299,
-            324
+            300,
+            325
         ],
         "lemmas": [
             "преодоление",
@@ -437,8 +437,8 @@
         "start_token_ind": 8,
         "end_token_ind": 11,
         "span": [
-            319,
-            340
+            320,
+            341
         ],
         "lemmas": [
             "сбой",

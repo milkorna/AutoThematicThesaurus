@@ -94,8 +94,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            87,
-            107
+            88,
+            108
         ],
         "lemmas": [
             "проблема",
@@ -111,8 +111,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            87,
-            115
+            88,
+            116
         ],
         "lemmas": [
             "проблема",
@@ -129,8 +129,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            96,
-            115
+            97,
+            116
         ],
         "lemmas": [
             "соотношение",
@@ -146,8 +146,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            139,
-            160
+            140,
+            161
         ],
         "lemmas": [
             "практический",
@@ -163,8 +163,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            165,
-            185
+            166,
+            186
         ],
         "lemmas": [
             "разработка",
@@ -180,8 +180,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            190,
-            214
+            191,
+            215
         ],
         "lemmas": [
             "автоматический",
@@ -197,8 +197,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            205,
-            222
+            206,
+            223
         ],
         "lemmas": [
             "обработка",
@@ -214,8 +214,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            87,
-            126
+            88,
+            127
         ],
         "lemmas": [
             "проблема",
@@ -234,8 +234,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            96,
-            126
+            97,
+            127
         ],
         "lemmas": [
             "соотношение",
@@ -253,8 +253,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            139,
-            185
+            140,
+            186
         ],
         "lemmas": [
             "практический",
@@ -273,8 +273,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            152,
-            185
+            153,
+            186
         ],
         "lemmas": [
             "характер",
@@ -292,8 +292,8 @@
         "start_token_ind": 9,
         "end_token_ind": 13,
         "span": [
-            165,
-            214
+            166,
+            215
         ],
         "lemmas": [
             "разработка",
@@ -312,8 +312,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            176,
-            214
+            177,
+            215
         ],
         "lemmas": [
             "онтология",
@@ -331,8 +331,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            190,
-            222
+            191,
+            223
         ],
         "lemmas": [
             "автоматический",
@@ -349,8 +349,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            249,
-            269
+            250,
+            270
         ],
         "lemmas": [
             "существующий",
@@ -366,8 +366,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            272,
-            289
+            273,
+            290
         ],
         "lemmas": [
             "проблема",
@@ -383,8 +383,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            272,
-            297
+            273,
+            298
         ],
         "lemmas": [
             "проблема",
@@ -401,8 +401,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            281,
-            297
+            282,
+            298
         ],
         "lemmas": [
             "описание",
@@ -418,8 +418,8 @@
         "start_token_ind": 21,
         "end_token_ind": 22,
         "span": [
-            364,
-            383
+            365,
+            384
         ],
         "lemmas": [
             "процесс",
@@ -435,8 +435,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            384,
-            407
+            385,
+            408
         ],
         "lemmas": [
             "компьютерный",
@@ -452,8 +452,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            408,
-            422
+            409,
+            423
         ],
         "lemmas": [
             "русский",
@@ -469,8 +469,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            262,
-            297
+            263,
+            298
         ],
         "lemmas": [
             "подход",
@@ -489,8 +489,8 @@
         "start_token_ind": 6,
         "end_token_ind": 10,
         "span": [
-            272,
-            308
+            273,
+            309
         ],
         "lemmas": [
             "проблема",
@@ -509,8 +509,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            281,
-            308
+            282,
+            309
         ],
         "lemmas": [
             "описание",
@@ -528,8 +528,8 @@
         "start_token_ind": 23,
         "end_token_ind": 26,
         "span": [
-            384,
-            422
+            385,
+            423
         ],
         "lemmas": [
             "компьютерный",
@@ -547,8 +547,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            373,
-            407
+            374,
+            408
         ],
         "lemmas": [
             "разработка",
@@ -565,8 +565,8 @@
         "start_token_ind": 24,
         "end_token_ind": 26,
         "span": [
-            398,
-            422
+            399,
+            423
         ],
         "lemmas": [
             "тезаурус",

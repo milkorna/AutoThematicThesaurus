@@ -168,8 +168,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            95,
-            111
+            96,
+            112
         ],
         "lemmas": [
             "материал",
@@ -185,8 +185,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            112,
-            132
+            113,
+            133
         ],
         "lemmas": [
             "спонтанный",
@@ -202,8 +202,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            136,
-            153
+            137,
+            154
         ],
         "lemmas": [
             "звуковой",
@@ -219,8 +219,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            154,
-            168
+            155,
+            169
         ],
         "lemmas": [
             "русский",
@@ -236,8 +236,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            185,
-            212
+            186,
+            213
         ],
         "lemmas": [
             "словоизменительный",
@@ -253,8 +253,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            112,
-            153
+            113,
+            154
         ],
         "lemmas": [
             "спонтанный",
@@ -273,8 +273,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            105,
-            132
+            106,
+            133
         ],
         "lemmas": [
             "запись",
@@ -291,8 +291,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            136,
-            168
+            137,
+            169
         ],
         "lemmas": [
             "звуковой",
@@ -310,8 +310,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            123,
-            153
+            124,
+            154
         ],
         "lemmas": [
             "монолог",
@@ -329,8 +329,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            146,
-            168
+            147,
+            169
         ],
         "lemmas": [
             "корпус",
@@ -347,8 +347,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            178,
-            212
+            179,
+            213
         ],
         "lemmas": [
             "анализ",
@@ -365,8 +365,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            252,
-            275
+            253,
+            276
         ],
         "lemmas": [
             "грамматический",
@@ -382,8 +382,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            277,
-            299
+            278,
+            300
         ],
         "lemmas": [
             "передаваемый",
@@ -399,8 +399,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            314,
-            335
+            315,
+            336
         ],
         "lemmas": [
             "фонетический",
@@ -416,8 +416,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            345,
-            367
+            346,
+            368
         ],
         "lemmas": [
             "недореализация",

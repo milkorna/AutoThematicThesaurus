@@ -78,8 +78,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            105,
-            127
+            106,
+            128
         ],
         "lemmas": [
             "машинный",
@@ -95,8 +95,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            144,
-            165
+            145,
+            166
         ],
         "lemmas": [
             "несловарный",
@@ -112,8 +112,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            105,
-            143
+            106,
+            144
         ],
         "lemmas": [
             "машинный",
@@ -131,8 +131,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            94,
-            127
+            95,
+            128
         ],
         "lemmas": [
             "результат",
@@ -149,8 +149,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            131,
-            165
+            132,
+            166
         ],
         "lemmas": [
             "лемматизация",
@@ -167,8 +167,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            218,
-            239
+            219,
+            240
         ],
         "lemmas": [
             "процесс",
@@ -184,8 +184,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            288,
-            301
+            289,
+            302
         ],
         "lemmas": [
             "данный",
@@ -201,8 +201,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            329,
-            346
+            330,
+            347
         ],
         "lemmas": [
             "процесс",
@@ -218,8 +218,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            360,
-            383
+            361,
+            384
         ],
         "lemmas": [
             "морфологический",
@@ -235,8 +235,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            271,
-            301
+            272,
+            302
         ],
         "lemmas": [
             "невозможность",
@@ -254,8 +254,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            353,
-            383
+            354,
+            384
         ],
         "lemmas": [
             "слово",

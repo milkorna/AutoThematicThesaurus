@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            116,
-            135
+            117,
+            136
         ],
         "lemmas": [
             "продолжение",
@@ -77,8 +77,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            189,
-            205
+            190,
+            206
         ],
         "lemmas": [
             "алгоритм",
@@ -94,8 +94,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            220,
-            247
+            221,
+            248
         ],
         "lemmas": [
             "синтаксический",
@@ -111,8 +111,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            373,
-            395
+            374,
+            396
         ],
         "lemmas": [
             "алгоритмический",
@@ -128,8 +128,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            389,
-            406
+            390,
+            407
         ],
         "lemmas": [
             "язык",
@@ -145,8 +145,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            373,
-            406
+            374,
+            407
         ],
         "lemmas": [
             "алгоритмический",
@@ -163,8 +163,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            365,
-            395
+            366,
+            396
         ],
         "lemmas": [
             "кафедра",
@@ -181,8 +181,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            456,
-            470
+            457,
+            471
         ],
         "lemmas": [
             "раздел",
@@ -198,8 +198,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            490,
-            511
+            491,
+            512
         ],
         "lemmas": [
             "математический",
@@ -215,8 +215,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            527,
-            546
+            528,
+            547
         ],
         "lemmas": [
             "основа",
@@ -232,8 +232,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            481,
-            511
+            482,
+            512
         ],
         "lemmas": [
             "описание",
@@ -250,8 +250,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            618,
-            641
+            619,
+            642
         ],
         "lemmas": [
             "синтаксический",
@@ -267,8 +267,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            654,
-            670
+            655,
+            671
         ],
         "lemmas": [
             "алгоритм",
@@ -284,8 +284,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            611,
-            641
+            612,
+            642
         ],
         "lemmas": [
             "задача",

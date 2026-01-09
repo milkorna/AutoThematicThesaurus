@@ -8,8 +8,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            25,
-            43
+            26,
+            44
         ],
         "lemmas": [
             "изучение",
@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            25,
-            60
+            26,
+            61
         ],
         "lemmas": [
             "изучение",
@@ -43,8 +43,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            34,
-            60
+            35,
+            61
         ],
         "lemmas": [
             "категория",
@@ -60,8 +60,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            90,
-            114
+            91,
+            115
         ],
         "lemmas": [
             "грамматический",
@@ -77,8 +77,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            148,
-            173
+            149,
+            174
         ],
         "lemmas": [
             "теоретический",
@@ -94,8 +94,8 @@
         "start_token_ind": 26,
         "end_token_ind": 27,
         "span": [
-            239,
-            260
+            240,
+            261
         ],
         "lemmas": [
             "языковый",
@@ -111,8 +111,8 @@
         "start_token_ind": 27,
         "end_token_ind": 28,
         "span": [
-            248,
-            269
+            249,
+            270
         ],
         "lemmas": [
             "компетенция",
@@ -128,8 +128,8 @@
         "start_token_ind": 33,
         "end_token_ind": 34,
         "span": [
-            280,
-            302
+            281,
+            303
         ],
         "lemmas": [
             "приложение",
@@ -145,8 +145,8 @@
         "start_token_ind": 40,
         "end_token_ind": 41,
         "span": [
-            335,
-            355
+            336,
+            356
         ],
         "lemmas": [
             "инструмент",
@@ -162,8 +162,8 @@
         "start_token_ind": 42,
         "end_token_ind": 43,
         "span": [
-            356,
-            375
+            357,
+            376
         ],
         "lemmas": [
             "естественный",
@@ -179,8 +179,8 @@
         "start_token_ind": 49,
         "end_token_ind": 50,
         "span": [
-            417,
-            438
+            418,
+            439
         ],
         "lemmas": [
             "языковый",
@@ -196,8 +196,8 @@
         "start_token_ind": 51,
         "end_token_ind": 52,
         "span": [
-            439,
-            464
+            440,
+            465
         ],
         "lemmas": [
             "эпистемический",
@@ -213,8 +213,8 @@
         "start_token_ind": 0,
         "end_token_ind": 4,
         "span": [
-            25,
-            67
+            26,
+            68
         ],
         "lemmas": [
             "изучение",
@@ -233,8 +233,8 @@
         "start_token_ind": 1,
         "end_token_ind": 4,
         "span": [
-            34,
-            67
+            35,
+            68
         ],
         "lemmas": [
             "категория",
@@ -252,8 +252,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            75,
-            114
+            76,
+            115
         ],
         "lemmas": [
             "эпистемическое",
@@ -270,8 +270,8 @@
         "start_token_ind": 26,
         "end_token_ind": 28,
         "span": [
-            239,
-            269
+            240,
+            270
         ],
         "lemmas": [
             "языковый",
@@ -288,8 +288,8 @@
         "start_token_ind": 41,
         "end_token_ind": 43,
         "span": [
-            348,
-            375
+            349,
+            376
         ],
         "lemmas": [
             "анализ",
@@ -306,8 +306,8 @@
         "start_token_ind": 49,
         "end_token_ind": 52,
         "span": [
-            417,
-            464
+            418,
+            465
         ],
         "lemmas": [
             "языковый",
@@ -325,8 +325,8 @@
         "start_token_ind": 48,
         "end_token_ind": 50,
         "span": [
-            409,
-            438
+            410,
+            439
         ],
         "lemmas": [
             "способ",
@@ -343,8 +343,8 @@
         "start_token_ind": 50,
         "end_token_ind": 52,
         "span": [
-            427,
-            464
+            428,
+            465
         ],
         "lemmas": [
             "кодирование",
@@ -361,8 +361,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            497,
-            517
+            498,
+            518
         ],
         "lemmas": [
             "обсуждение",
@@ -378,8 +378,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            497,
-            534
+            498,
+            535
         ],
         "lemmas": [
             "обсуждение",
@@ -396,8 +396,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            508,
-            534
+            509,
+            535
         ],
         "lemmas": [
             "категория",
@@ -413,8 +413,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            537,
-            552
+            538,
+            553
         ],
         "lemmas": [
             "татарский",
@@ -430,8 +430,8 @@
         "start_token_ind": 3,
         "end_token_ind": 8,
         "span": [
-            497,
-            552
+            498,
+            553
         ],
         "lemmas": [
             "обсуждение",
@@ -451,8 +451,8 @@
         "start_token_ind": 4,
         "end_token_ind": 8,
         "span": [
-            508,
-            552
+            509,
+            553
         ],
         "lemmas": [
             "категория",
@@ -471,8 +471,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            518,
-            552
+            519,
+            553
         ],
         "lemmas": [
             "эвиденциальность",

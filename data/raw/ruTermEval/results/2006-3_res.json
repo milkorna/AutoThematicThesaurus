@@ -25,8 +25,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            31,
-            44
+            32,
+            45
         ],
         "lemmas": [
             "данный",
@@ -42,8 +42,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            78,
-            94
+            79,
+            95
         ],
         "lemmas": [
             "языковый",
@@ -59,8 +59,8 @@
         "start_token_ind": 5,
         "end_token_ind": 7,
         "span": [
-            70,
-            94
+            71,
+            95
         ],
         "lemmas": [
             "русский",
@@ -77,8 +77,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            101,
-            125
+            102,
+            126
         ],
         "lemmas": [
             "касающийся",
@@ -94,8 +94,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            128,
-            152
+            129,
+            153
         ],
         "lemmas": [
             "контролируемость",
@@ -111,8 +111,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            61,
-            94
+            62,
+            95
         ],
         "lemmas": [
             "фрагмент",
@@ -130,8 +130,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            396,
-            412
+            397,
+            413
         ],
         "lemmas": [
             "языковый",
@@ -147,8 +147,8 @@
         "start_token_ind": 0,
         "end_token_ind": 2,
         "span": [
-            388,
-            412
+            389,
+            413
         ],
         "lemmas": [
             "русский",
@@ -165,8 +165,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            453,
-            468
+            454,
+            469
         ],
         "lemmas": [
             "языковый",
@@ -182,8 +182,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            507,
-            524
+            508,
+            525
         ],
         "lemmas": [
             "русский",
@@ -199,8 +199,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            448,
-            468
+            449,
+            469
         ],
         "lemmas": [
             "база",
@@ -217,8 +217,8 @@
         "start_token_ind": 15,
         "end_token_ind": 17,
         "span": [
-            487,
-            524
+            488,
+            525
         ],
         "lemmas": [
             "лингвоспецифичность",

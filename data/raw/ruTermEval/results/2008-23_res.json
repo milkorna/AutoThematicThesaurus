@@ -81,8 +81,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            51,
-            71
+            52,
+            72
         ],
         "lemmas": [
             "метаязыковый",
@@ -98,8 +98,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            98,
-            118
+            99,
+            119
         ],
         "lemmas": [
             "соотношение",
@@ -115,8 +115,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            120,
-            137
+            121,
+            138
         ],
         "lemmas": [
             "языковый",
@@ -132,8 +132,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            193,
-            213
+            194,
+            214
         ],
         "lemmas": [
             "интерпретация",
@@ -149,8 +149,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            247,
-            271
+            248,
+            272
         ],
         "lemmas": [
             "автоматический",
@@ -166,8 +166,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            262,
-            279
+            263,
+            280
         ],
         "lemmas": [
             "обработка",
@@ -183,8 +183,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            236,
-            271
+            237,
+            272
         ],
         "lemmas": [
             "задача",
@@ -202,8 +202,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            247,
-            279
+            248,
+            280
         ],
         "lemmas": [
             "автоматический",
@@ -220,8 +220,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            324,
-            340
+            325,
+            341
         ],
         "lemmas": [
             "ключевой",

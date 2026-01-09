@@ -97,8 +97,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            95,
-            123
+            96,
+            124
         ],
         "lemmas": [
             "преднамеренный",
@@ -114,8 +114,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            126,
-            141
+            127,
+            142
         ],
         "lemmas": [
             "письменный",
@@ -131,8 +131,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            167,
-            189
+            168,
+            190
         ],
         "lemmas": [
             "лингвистический",
@@ -148,8 +148,8 @@
         "start_token_ind": 16,
         "end_token_ind": 17,
         "span": [
-            191,
-            209
+            192,
+            210
         ],
         "lemmas": [
             "теория",
@@ -165,8 +165,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            88,
-            123
+            89,
+            124
         ],
         "lemmas": [
             "анализ",
@@ -183,8 +183,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            111,
-            141
+            112,
+            142
         ],
         "lemmas": [
             "зачеркивание",
@@ -202,8 +202,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            224,
-            241
+            225,
+            242
         ],
         "lemmas": [
             "теория",
@@ -219,8 +219,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            275,
-            295
+            276,
+            296
         ],
         "lemmas": [
             "теория",
@@ -236,8 +236,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            366,
-            388
+            367,
+            389
         ],
         "lemmas": [
             "механизм",
@@ -253,8 +253,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            405,
-            419
+            406,
+            420
         ],
         "lemmas": [
             "процесс",
@@ -270,8 +270,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            396,
-            419
+            397,
+            420
         ],
         "lemmas": [
             "число",
@@ -289,8 +289,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            504,
-            522
+            505,
+            523
         ],
         "lemmas": [
             "вербальный",
@@ -306,8 +306,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            515,
-            535
+            516,
+            536
         ],
         "lemmas": [
             "аналог",
@@ -323,8 +323,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            547,
-            572
+            548,
+            573
         ],
         "lemmas": [
             "художественный",
@@ -340,8 +340,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            504,
-            535
+            505,
+            536
         ],
         "lemmas": [
             "вербальный",
@@ -358,8 +358,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            490,
-            522
+            491,
+            523
         ],
         "lemmas": [
             "графический",
@@ -377,8 +377,8 @@
         "start_token_ind": 7,
         "end_token_ind": 10,
         "span": [
-            515,
-            544
+            516,
+            545
         ],
         "lemmas": [
             "аналог",
@@ -396,8 +396,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            538,
-            572
+            539,
+            573
         ],
         "lemmas": [
             "блог",

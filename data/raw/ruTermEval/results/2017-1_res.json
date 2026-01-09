@@ -117,8 +117,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            104,
-            123
+            105,
+            124
         ],
         "lemmas": [
             "применение",
@@ -134,8 +134,8 @@
         "start_token_ind": 3,
         "end_token_ind": 5,
         "span": [
-            104,
-            134
+            105,
+            135
         ],
         "lemmas": [
             "применение",
@@ -152,8 +152,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            115,
-            134
+            116,
+            135
         ],
         "lemmas": [
             "ансамбль",
@@ -169,8 +169,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            162,
-            179
+            163,
+            180
         ],
         "lemmas": [
             "машинный",
@@ -186,8 +186,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            205,
-            218
+            206,
+            219
         ],
         "lemmas": [
             "русский",
@@ -203,8 +203,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            195,
-            218
+            196,
+            219
         ],
         "lemmas": [
             "анафора",
@@ -222,8 +222,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            289,
-            307
+            290,
+            308
         ],
         "lemmas": [
             "машинный",
@@ -239,8 +239,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            308,
-            319
+            309,
+            320
         ],
         "lemmas": [
             "extra",
@@ -256,8 +256,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            322,
-            342
+            323,
+            343
         ],
         "lemmas": [
             "алгоритм",
@@ -274,8 +274,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            345,
-            372
+            346,
+            373
         ],
         "lemmas": [
             "несбалансированный",
@@ -291,8 +291,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            373,
-            388
+            374,
+            389
         ],
         "lemmas": [
             "balance",
@@ -308,8 +308,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            279,
-            307
+            280,
+            308
         ],
         "lemmas": [
             "алгоритм",
@@ -326,8 +326,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            390,
-            411
+            391,
+            412
         ],
         "lemmas": [
             "комплексность",
@@ -343,8 +343,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            498,
-            523
+            499,
+            524
         ],
         "lemmas": [
             "синтаксический",
@@ -360,8 +360,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            485,
-            523
+            486,
+            524
         ],
         "lemmas": [
             "векторизация",

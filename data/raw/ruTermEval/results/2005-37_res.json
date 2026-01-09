@@ -60,8 +60,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            81,
-            103
+            82,
+            104
         ],
         "lemmas": [
             "диалогический",
@@ -77,8 +77,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            131,
-            156
+            132,
+            157
         ],
         "lemmas": [
             "информационный",
@@ -94,8 +94,8 @@
         "start_token_ind": 25,
         "end_token_ind": 26,
         "span": [
-            251,
-            289
+            252,
+            290
         ],
         "lemmas": [
             "семантико-прагматический",
@@ -111,8 +111,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            373,
-            389
+            374,
+            390
         ],
         "lemmas": [
             "русский",
@@ -128,8 +128,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            405,
-            436
+            406,
+            437
         ],
         "lemmas": [
             "когнитивно-дискурсивный",
@@ -145,8 +145,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            363,
-            389
+            364,
+            390
         ],
         "lemmas": [
             "интонация",
@@ -163,8 +163,8 @@
         "start_token_ind": 14,
         "end_token_ind": 16,
         "span": [
-            393,
-            436
+            394,
+            437
         ],
         "lemmas": [
             "применение",
@@ -181,8 +181,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            566,
-            584
+            567,
+            585
         ],
         "lemmas": [
             "поддержан",
@@ -198,8 +198,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            616,
-            638
+            617,
+            639
         ],
         "lemmas": [
             "информационный",
@@ -215,8 +215,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            650,
-            666
+            651,
+            667
         ],
         "lemmas": [
             "русский",
@@ -232,8 +232,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            607,
-            638
+            608,
+            639
         ],
         "lemmas": [
             "создание",
@@ -250,8 +250,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            640,
-            666
+            641,
+            667
         ],
         "lemmas": [
             "интонация",

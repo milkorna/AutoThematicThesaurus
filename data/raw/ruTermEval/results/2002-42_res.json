@@ -166,8 +166,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            130,
-            151
+            131,
+            152
         ],
         "lemmas": [
             "грамматический",
@@ -183,8 +183,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            163,
-            195
+            164,
+            196
         ],
         "lemmas": [
             "морфологический",
@@ -200,8 +200,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            226,
-            246
+            227,
+            247
         ],
         "lemmas": [
             "универсальный",
@@ -217,8 +217,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            240,
-            257
+            241,
+            258
         ],
         "lemmas": [
             "модуль",
@@ -234,8 +234,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            240,
-            272
+            241,
+            273
         ],
         "lemmas": [
             "модуль",
@@ -252,8 +252,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            247,
-            272
+            248,
+            273
         ],
         "lemmas": [
             "алгоритм",
@@ -269,8 +269,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            226,
-            272
+            227,
+            273
         ],
         "lemmas": [
             "универсальный",
@@ -288,8 +288,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            274,
-            297
+            275,
+            298
         ],
         "lemmas": [
             "лингвистический",
@@ -305,8 +305,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            308,
-            321
+            309,
+            322
         ],
         "lemmas": [
             "словарь",
@@ -322,8 +322,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            322,
-            346
+            323,
+            347
         ],
         "lemmas": [
             "морфологический",
@@ -339,8 +339,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            373,
-            397
+            374,
+            398
         ],
         "lemmas": [
             "морфологический",
@@ -356,8 +356,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            407,
-            430
+            408,
+            431
         ],
         "lemmas": [
             "грамматический",
@@ -373,8 +373,8 @@
         "start_token_ind": 6,
         "end_token_ind": 8,
         "span": [
-            316,
-            346
+            317,
+            347
         ],
         "lemmas": [
             "тип",
@@ -391,8 +391,8 @@
         "start_token_ind": 13,
         "end_token_ind": 16,
         "span": [
-            373,
-            406
+            374,
+            407
         ],
         "lemmas": [
             "морфологический",
@@ -410,8 +410,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            363,
-            397
+            364,
+            398
         ],
         "lemmas": [
             "множество",
@@ -428,8 +428,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            400,
-            430
+            401,
+            431
         ],
         "lemmas": [
             "объем",
@@ -446,8 +446,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            504,
-            538
+            505,
+            539
         ],
         "lemmas": [
             "поверхностно-синтаксический",
@@ -463,8 +463,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            544,
-            566
+            545,
+            567
         ],
         "lemmas": [
             "синтаксический",

@@ -25,8 +25,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            47,
-            67
+            48,
+            68
         ],
         "lemmas": [
             "диффузность",
@@ -42,8 +42,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            122,
-            142
+            123,
+            143
         ],
         "lemmas": [
             "интонационный",
@@ -59,8 +59,8 @@
         "start_token_ind": 15,
         "end_token_ind": 16,
         "span": [
-            285,
-            297
+            286,
+            298
         ],
         "lemmas": [
             "целый",
@@ -76,8 +76,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            298,
-            321
+            299,
+            322
         ],
         "lemmas": [
             "перформативный",
@@ -93,8 +93,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            285,
-            321
+            286,
+            322
         ],
         "lemmas": [
             "целый",
@@ -112,8 +112,8 @@
         "start_token_ind": 16,
         "end_token_ind": 18,
         "span": [
-            291,
-            321
+            292,
+            322
         ],
         "lemmas": [
             "спектр",

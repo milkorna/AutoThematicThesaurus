@@ -42,8 +42,8 @@
         "start_token_ind": 4,
         "end_token_ind": 5,
         "span": [
-            110,
-            128
+            111,
+            129
         ],
         "lemmas": [
             "прямой",
@@ -59,8 +59,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            131,
-            142
+            132,
+            143
         ],
         "lemmas": [
             "имя",
@@ -76,8 +76,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            203,
-            228
+            204,
+            229
         ],
         "lemmas": [
             "интенциональный",
@@ -93,8 +93,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            296,
-            317
+            297,
+            318
         ],
         "lemmas": [
             "нементальный",
@@ -110,8 +110,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            330,
-            349
+            331,
+            350
         ],
         "lemmas": [
             "действие",
@@ -127,8 +127,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            351,
-            377
+            352,
+            378
         ],
         "lemmas": [
             "противоположный",
@@ -144,8 +144,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            378,
-            406
+            379,
+            407
         ],
         "lemmas": [
             "социо-когнитивный",
@@ -161,8 +161,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            351,
-            406
+            352,
+            407
         ],
         "lemmas": [
             "противоположный",
@@ -180,8 +180,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            368,
-            406
+            369,
+            407
         ],
         "lemmas": [
             "механизм",

@@ -241,8 +241,8 @@
         "start_token_ind": 2,
         "end_token_ind": 3,
         "span": [
-            133,
-            164
+            134,
+            165
         ],
         "lemmas": [
             "экспериментальный",
@@ -258,8 +258,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            152,
-            176
+            153,
+            177
         ],
         "lemmas": [
             "исследование",
@@ -275,8 +275,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            191,
-            214
+            192,
+            215
         ],
         "lemmas": [
             "синтаксический",
@@ -292,8 +292,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            215,
-            233
+            216,
+            234
         ],
         "lemmas": [
             "письменный",
@@ -309,8 +309,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            237,
-            252
+            238,
+            253
         ],
         "lemmas": [
             "начальный",
@@ -326,8 +326,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            247,
-            262
+            248,
+            263
         ],
         "lemmas": [
             "этап",
@@ -343,8 +343,8 @@
         "start_token_ind": 12,
         "end_token_ind": 14,
         "span": [
-            247,
-            270
+            248,
+            271
         ],
         "lemmas": [
             "этап",
@@ -361,8 +361,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            247,
-            275
+            248,
+            276
         ],
         "lemmas": [
             "этап",
@@ -380,8 +380,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            253,
-            270
+            254,
+            271
         ],
         "lemmas": [
             "алгоритм",
@@ -397,8 +397,8 @@
         "start_token_ind": 13,
         "end_token_ind": 15,
         "span": [
-            253,
-            275
+            254,
+            276
         ],
         "lemmas": [
             "алгоритм",
@@ -415,8 +415,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            263,
-            275
+            264,
+            276
         ],
         "lemmas": [
             "синтез",
@@ -432,8 +432,8 @@
         "start_token_ind": 2,
         "end_token_ind": 4,
         "span": [
-            133,
-            176
+            134,
+            177
         ],
         "lemmas": [
             "экспериментальный",
@@ -450,8 +450,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            191,
-            233
+            192,
+            234
         ],
         "lemmas": [
             "синтаксический",
@@ -469,8 +469,8 @@
         "start_token_ind": 8,
         "end_token_ind": 12,
         "span": [
-            215,
-            252
+            216,
+            253
         ],
         "lemmas": [
             "письменный",
@@ -489,8 +489,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            207,
-            233
+            208,
+            234
         ],
         "lemmas": [
             "анализ",
@@ -507,8 +507,8 @@
         "start_token_ind": 9,
         "end_token_ind": 12,
         "span": [
-            227,
-            252
+            228,
+            253
         ],
         "lemmas": [
             "текст",
@@ -526,8 +526,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            237,
-            275
+            238,
+            276
         ],
         "lemmas": [
             "начальный",
@@ -546,8 +546,8 @@
         "start_token_ind": 12,
         "end_token_ind": 17,
         "span": [
-            247,
-            285
+            248,
+            286
         ],
         "lemmas": [
             "этап",
@@ -567,8 +567,8 @@
         "start_token_ind": 13,
         "end_token_ind": 17,
         "span": [
-            253,
-            285
+            254,
+            286
         ],
         "lemmas": [
             "алгоритм",
@@ -587,8 +587,8 @@
         "start_token_ind": 14,
         "end_token_ind": 17,
         "span": [
-            263,
-            285
+            264,
+            286
         ],
         "lemmas": [
             "синтез",
@@ -606,8 +606,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            372,
-            396
+            373,
+            397
         ],
         "lemmas": [
             "синтаксический",
@@ -623,8 +623,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            387,
-            408
+            388,
+            409
         ],
         "lemmas": [
             "структура",
@@ -640,8 +640,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            416,
-            435
+            417,
+            436
         ],
         "lemmas": [
             "дерево",
@@ -657,8 +657,8 @@
         "start_token_ind": 18,
         "end_token_ind": 19,
         "span": [
-            452,
-            474
+            453,
+            475
         ],
         "lemmas": [
             "выделенный",
@@ -674,8 +674,8 @@
         "start_token_ind": 8,
         "end_token_ind": 10,
         "span": [
-            372,
-            408
+            373,
+            409
         ],
         "lemmas": [
             "синтаксический",
@@ -692,8 +692,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            501,
-            524
+            502,
+            525
         ],
         "lemmas": [
             "результат",
@@ -709,8 +709,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            541,
-            554
+            542,
+            555
         ],
         "lemmas": [
             "данный",

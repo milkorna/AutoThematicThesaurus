@@ -208,8 +208,8 @@
         "start_token_ind": 1,
         "end_token_ind": 2,
         "span": [
-            120,
-            133
+            121,
+            134
         ],
         "lemmas": [
             "данный",
@@ -225,8 +225,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            157,
-            171
+            158,
+            172
         ],
         "lemmas": [
             "японский",
@@ -242,8 +242,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            183,
-            203
+            184,
+            204
         ],
         "lemmas": [
             "первичный",
@@ -259,8 +259,8 @@
         "start_token_ind": 14,
         "end_token_ind": 15,
         "span": [
-            206,
-            225
+            207,
+            226
         ],
         "lemmas": [
             "топикальный",
@@ -276,8 +276,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            146,
-            171
+            147,
+            172
         ],
         "lemmas": [
             "паузация",
@@ -295,8 +295,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            193,
-            225
+            194,
+            226
         ],
         "lemmas": [
             "послелог",
@@ -314,8 +314,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            285,
-            302
+            286,
+            303
         ],
         "lemmas": [
             "заполнение",
@@ -331,8 +331,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            285,
-            307
+            286,
+            308
         ],
         "lemmas": [
             "заполнение",
@@ -349,8 +349,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            296,
-            307
+            297,
+            308
         ],
         "lemmas": [
             "данный",
@@ -366,8 +366,8 @@
         "start_token_ind": 23,
         "end_token_ind": 24,
         "span": [
-            363,
-            384
+            364,
+            385
         ],
         "lemmas": [
             "синтаксический",
@@ -383,8 +383,8 @@
         "start_token_ind": 7,
         "end_token_ind": 11,
         "span": [
-            277,
-            307
+            278,
+            308
         ],
         "lemmas": [
             "длина",
@@ -403,8 +403,8 @@
         "start_token_ind": 22,
         "end_token_ind": 24,
         "span": [
-            357,
-            384
+            358,
+            385
         ],
         "lemmas": [
             "тип",

@@ -112,8 +112,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            127,
-            149
+            128,
+            150
         ],
         "lemmas": [
             "особенность",
@@ -129,8 +129,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            150,
-            175
+            151,
+            176
         ],
         "lemmas": [
             "дискурсивный",
@@ -146,8 +146,8 @@
         "start_token_ind": 11,
         "end_token_ind": 12,
         "span": [
-            203,
-            218
+            204,
+            219
         ],
         "lemmas": [
             "русский",
@@ -163,8 +163,8 @@
         "start_token_ind": 17,
         "end_token_ind": 18,
         "span": [
-            233,
-            252
+            234,
+            253
         ],
         "lemmas": [
             "кувейтский",
@@ -180,8 +180,8 @@
         "start_token_ind": 19,
         "end_token_ind": 20,
         "span": [
-            253,
-            268
+            254,
+            269
         ],
         "lemmas": [
             "арабский",
@@ -197,8 +197,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            139,
-            175
+            140,
+            176
         ],
         "lemmas": [
             "применение",
@@ -215,8 +215,8 @@
         "start_token_ind": 10,
         "end_token_ind": 12,
         "span": [
-            195,
-            218
+            196,
+            219
         ],
         "lemmas": [
             "корпус",
@@ -233,8 +233,8 @@
         "start_token_ind": 17,
         "end_token_ind": 20,
         "span": [
-            233,
-            268
+            234,
+            269
         ],
         "lemmas": [
             "кувейтский",
@@ -252,8 +252,8 @@
         "start_token_ind": 15,
         "end_token_ind": 18,
         "span": [
-            222,
-            252
+            223,
+            253
         ],
         "lemmas": [
             "текст",
@@ -271,8 +271,8 @@
         "start_token_ind": 18,
         "end_token_ind": 20,
         "span": [
-            244,
-            268
+            245,
+            269
         ],
         "lemmas": [
             "диалект",
@@ -289,8 +289,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            298,
-            320
+            299,
+            321
         ],
         "lemmas": [
             "нестандартный",
@@ -306,8 +306,8 @@
         "start_token_ind": 6,
         "end_token_ind": 7,
         "span": [
-            324,
-            344
+            325,
+            345
         ],
         "lemmas": [
             "дискурсивный",
@@ -323,8 +323,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            364,
-            391
+            365,
+            392
         ],
         "lemmas": [
             "грамматический",
@@ -340,8 +340,8 @@
         "start_token_ind": 3,
         "end_token_ind": 7,
         "span": [
-            298,
-            344
+            299,
+            345
         ],
         "lemmas": [
             "нестандартный",
@@ -360,8 +360,8 @@
         "start_token_ind": 4,
         "end_token_ind": 7,
         "span": [
-            313,
-            344
+            314,
+            345
         ],
         "lemmas": [
             "деление",

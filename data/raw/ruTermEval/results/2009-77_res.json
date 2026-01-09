@@ -25,8 +25,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            87,
-            111
+            88,
+            112
         ],
         "lemmas": [
             "теоретический",
@@ -42,8 +42,8 @@
         "start_token_ind": 5,
         "end_token_ind": 8,
         "span": [
-            75,
-            111
+            76,
+            112
         ],
         "lemmas": [
             "элемент",
@@ -61,8 +61,8 @@
         "start_token_ind": 7,
         "end_token_ind": 8,
         "span": [
-            172,
-            196
+            173,
+            197
         ],
         "lemmas": [
             "оптимальный",
@@ -78,8 +78,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            184,
-            205
+            185,
+            206
         ],
         "lemmas": [
             "инструмент",
@@ -95,8 +95,8 @@
         "start_token_ind": 10,
         "end_token_ind": 11,
         "span": [
-            206,
-            233
+            207,
+            234
         ],
         "lemmas": [
             "трансформационный",
@@ -112,8 +112,8 @@
         "start_token_ind": 7,
         "end_token_ind": 9,
         "span": [
-            172,
-            205
+            173,
+            206
         ],
         "lemmas": [
             "оптимальный",
@@ -130,8 +130,8 @@
         "start_token_ind": 9,
         "end_token_ind": 11,
         "span": [
-            197,
-            233
+            198,
+            234
         ],
         "lemmas": [
             "описание",
@@ -148,8 +148,8 @@
         "start_token_ind": 5,
         "end_token_ind": 6,
         "span": [
-            312,
-            333
+            313,
+            334
         ],
         "lemmas": [
             "финитный",
@@ -165,8 +165,8 @@
         "start_token_ind": 8,
         "end_token_ind": 9,
         "span": [
-            336,
-            351
+            337,
+            352
         ],
         "lemmas": [
             "единый",
@@ -182,8 +182,8 @@
         "start_token_ind": 5,
         "end_token_ind": 9,
         "span": [
-            312,
-            351
+            313,
+            352
         ],
         "lemmas": [
             "финитный",
@@ -202,8 +202,8 @@
         "start_token_ind": 4,
         "end_token_ind": 6,
         "span": [
-            300,
-            333
+            301,
+            334
         ],
         "lemmas": [
             "местоимение",
@@ -220,8 +220,8 @@
         "start_token_ind": 6,
         "end_token_ind": 9,
         "span": [
-            322,
-            351
+            323,
+            352
         ],
         "lemmas": [
             "предложение",
@@ -239,8 +239,8 @@
         "start_token_ind": 3,
         "end_token_ind": 4,
         "span": [
-            476,
-            494
+            477,
+            495
         ],
         "lemmas": [
             "ролевый",
@@ -256,8 +256,8 @@
         "start_token_ind": 13,
         "end_token_ind": 14,
         "span": [
-            561,
-            578
+            562,
+            579
         ],
         "lemmas": [
             "ролевый",

@@ -25,8 +25,8 @@
         "start_token_ind": 0,
         "end_token_ind": 1,
         "span": [
-            67,
-            79
+            68,
+            80
         ],
         "lemmas": [
             "автор",
@@ -42,8 +42,8 @@
         "start_token_ind": 9,
         "end_token_ind": 10,
         "span": [
-            130,
-            152
+            131,
+            153
         ],
         "lemmas": [
             "механизм",
@@ -59,8 +59,8 @@
         "start_token_ind": 12,
         "end_token_ind": 13,
         "span": [
-            166,
-            192
+            167,
+            193
         ],
         "lemmas": [
             "семантический",
@@ -76,8 +76,8 @@
         "start_token_ind": 11,
         "end_token_ind": 13,
         "span": [
-            153,
-            192
+            154,
+            193
         ],
         "lemmas": [
             "обязательный",
@@ -94,8 +94,8 @@
         "start_token_ind": 28,
         "end_token_ind": 29,
         "span": [
-            265,
-            297
+            266,
+            298
         ],
         "lemmas": [
             "неопределенно-личный",
@@ -111,8 +111,8 @@
         "start_token_ind": 12,
         "end_token_ind": 15,
         "span": [
-            166,
-            206
+            167,
+            207
         ],
         "lemmas": [
             "семантический",
@@ -130,8 +130,8 @@
         "start_token_ind": 11,
         "end_token_ind": 15,
         "span": [
-            153,
-            206
+            154,
+            207
         ],
         "lemmas": [
             "обязательный",
@@ -150,8 +150,8 @@
         "start_token_ind": 10,
         "end_token_ind": 13,
         "span": [
-            141,
-            192
+            142,
+            193
         ],
         "lemmas": [
             "ненасыщение",
@@ -169,8 +169,8 @@
         "start_token_ind": 27,
         "end_token_ind": 29,
         "span": [
-            257,
-            297
+            258,
+            298
         ],
         "lemmas": [
             "анализ",
