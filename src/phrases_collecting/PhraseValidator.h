@@ -13,22 +13,19 @@ class PhraseMatchStatus;
  */
 class PhraseValidator {
   public:
-    explicit PhraseValidator(const std::vector<X::WordFormPtr>& sentence) : m_sentence(sentence) {
+    explicit PhraseValidator(const std::vector<X::WordFormPtr>& sentence) {
     }
 
     // Фаза 1: Базовая валидация токена (стоп-слова, пунктуация, ошибки анализа)
-    bool isTokenValid(const X::WordFormPtr& token) const;
+    static bool isTokenValid(const X::WordFormPtr& token);
 
     // Фаза 2: Проверка морфологии против условия
-    bool validateMorphology(const X::WordFormPtr& token, const Condition& condition, PhraseMatchStatus& status) const;
+    static bool validateMorphology(const X::WordFormPtr& token, const Condition& condition, PhraseMatchStatus& status);
 
     // Фаза 3: Проверка компонентов модели
-    bool validateWordComponents(const WordComplexPtr& phrase, const std::shared_ptr<ModelComp>& modelComp,
-                                PhraseMatchStatus& status) const;
+    static bool validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const WordComplexPtr& phrase,
+                                       const std::shared_ptr<ModelComp>& modelComp, PhraseMatchStatus& status);
 
     // Фаза 4: Проверка что фраза готова к сохранению
-    bool isPhraseComplete(const PhraseMatchStatus& status) const;
-
-  private:
-    const std::vector<X::WordFormPtr>& m_sentence;
+    static bool isPhraseComplete(const PhraseMatchStatus& status);
 };

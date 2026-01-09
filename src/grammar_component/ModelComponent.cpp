@@ -1,4 +1,5 @@
 #include "ModelComponent.h"
+#include "Logger.h"
 
 using namespace X;
 

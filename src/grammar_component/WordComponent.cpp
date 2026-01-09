@@ -1,4 +1,5 @@
 #include "WordComponent.h"
+#include "Logger.h"
 
 using namespace X;
 
@@ -32,15 +33,15 @@ void WordComp::print() const {
         Logger::log("\t\tsp", LogLevel::Warning, "failed to stringify SP tag");
     }
 
-    if (const auto& cond = this->condition(); !cond.empty()) {
+    if (const auto& cond = this->condition(); !cond.isDefault()) {
         try {
             Logger::log("\t\t\t\tmt", LogLevel::Info, cond.getMorphTag().toString());
         } catch (...) {
             Logger::log("\t\t\t\tmt", LogLevel::Warning, "failed to stringify morph tag");
         }
 
-        if (const auto& addCond = cond.getAdditional(); !addCond.empty()) {
-            Logger::log("\t\t\t\tlex", LogLevel::Info, addCond.m_exLex);
+        if (cond.hasExactLexeme()) {
+            Logger::log("\t\t\t\tlex", LogLevel::Info, cond.getExactLexeme());
         }
     }
 }
@@ -53,7 +54,7 @@ const Condition& WordComp::condition() const noexcept {
 }
 
 const bool WordComp::isRec() const {
-    return m_cond.getAdditional().m_rec;
+    return m_cond.isRecursive();
 }
 
 const std::optional<bool> WordComp::isHead() const {

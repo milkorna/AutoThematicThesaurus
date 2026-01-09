@@ -127,8 +127,8 @@ TEST_F(JsonParserFixture, ParsesNounPrepositionForNoun_WithExactLexeme) {
     auto prepFor = std::dynamic_pointer_cast<WordComp>(comps[1]);
     ASSERT_TRUE(prepFor);
 
-    const auto& add = prepFor->condition().getAdditional();
-    EXPECT_EQ(add.m_exLex, "для");
+    const auto& exactLexeme = prepFor->condition().getExactLexeme();
+    EXPECT_EQ(exactLexeme, "для");
 }
 
 TEST_F(JsonParserFixture, ParsesComposite_AdjNounHead_PlusGenNoun_AndDividesAsComplex) {

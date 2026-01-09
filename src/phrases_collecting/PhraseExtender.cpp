@@ -35,7 +35,7 @@ bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIn
 
     const auto token = m_sentence[formIndex];
 
-    if (!m_validator.isTokenValid(token)) {
+    if (!PhraseValidator::isTokenValid(token)) {
         return false;
     }
 
@@ -133,7 +133,7 @@ bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formI
 
                 bool wordLexMatched = false;
                 for (const auto& morphForm : m_sentence[formIndex + offset]->getMorphInfo()) {
-                    if (modelComp->getCondition().getAdditional().check(morphForm)) {
+                    if (modelComp->getCondition().matchesExactLexeme(morphForm)) {
                         wordLexMatched = true;
                         break;
                     }

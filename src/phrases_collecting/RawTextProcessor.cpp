@@ -2,6 +2,7 @@
 
 #include "ComplexPhrasesCollector.h"
 #include "CorpusVocabulary.h"
+#include "Logger.h"
 #include "MorphAnalyzer.h"
 #include "Options.h"
 #include "SentenceCorpus.h"

@@ -1,6 +1,6 @@
+#include "GrammarPatternManager.h"
 #include "JsonPatternParser.h"
-#include <Component.h>
-#include <GrammarPatternManager.h>
+#include "Logger.h"
 
 #include <filesystem>
 

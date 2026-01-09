@@ -53,7 +53,7 @@ bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const WordComplexPt
                                                              PhraseMatchStatus& status) const {
 
     // Проверяем морфологию
-    if (!m_validator.validateWordComponents(simplePhrase, modelComp, status)) {
+    if (!PhraseValidator::validateWordComponents(m_sentence, simplePhrase, modelComp, status)) {
         return false;
     }
 
@@ -63,8 +63,7 @@ bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const WordComplexPt
     }
 
     // Проверяем дополнительные условия
-    const auto& addCond = modelComp->getCondition().getAdditional();
-    if (!addCond.empty()) {
+    if (modelComp->getCondition().hasExactLexeme()) {
         return false; // Если есть условия и они не empty - не подходит
     }
 
@@ -99,7 +98,7 @@ bool ComplexPhrasesCollector::expandPhraseAroundComponent(const std::shared_ptr<
     status.matchedComponents = 1;
 
     // Создаем временный extender с текущим контекстом
-    PhraseExtender extender(model, m_collection, status, simplePhraseIndex, m_simplePhrases, m_sentence, m_validator);
+    PhraseExtender extender(model, m_collection, status, simplePhraseIndex, m_simplePhrases, m_sentence);
 
     // Пытаемся расширить влево
     if (componentIndex > 0 && simplePhrase->pos.start > 0) {

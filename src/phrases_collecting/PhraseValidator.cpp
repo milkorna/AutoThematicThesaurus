@@ -7,7 +7,7 @@
 // PhraseValidator Implementation
 // ════════════════════════════════════════════════════════════════════════════
 
-bool PhraseValidator::isTokenValid(const X::WordFormPtr& token) const {
+bool PhraseValidator::isTokenValid(const X::WordFormPtr& token) {
     auto& options = Options::getOptions();
     auto& morphAnalyzer = MorphAnalyzer::getInstance();
 
@@ -36,7 +36,7 @@ bool PhraseValidator::isTokenValid(const X::WordFormPtr& token) const {
 }
 
 bool PhraseValidator::validateMorphology(const X::WordFormPtr& token, const Condition& condition,
-                                         PhraseMatchStatus& status) const {
+                                         PhraseMatchStatus& status) {
     const auto& morphForms = token->getMorphInfo();
 
     for (const auto& morphForm : morphForms) {
@@ -47,7 +47,7 @@ bool PhraseValidator::validateMorphology(const X::WordFormPtr& token, const Cond
         status.headValidated = true;
         status.headMatched = true;
 
-        if (condition.getAdditional().exLexCheck(morphForm)) {
+        if (condition.matchesExactLexeme(morphForm)) {
             status.lexFound = true;
         }
         return true;
@@ -55,16 +55,16 @@ bool PhraseValidator::validateMorphology(const X::WordFormPtr& token, const Cond
     return false;
 }
 
-bool PhraseValidator::validateWordComponents(const WordComplexPtr& phrase, const std::shared_ptr<ModelComp>& modelComp,
-                                             PhraseMatchStatus& status) const {
+bool PhraseValidator::validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const WordComplexPtr& phrase,
+                                             const std::shared_ptr<ModelComp>& modelComp, PhraseMatchStatus& status) {
     size_t componentIndex = 0;
 
     for (const auto& component : modelComp->getComponents()) {
         if (const auto& wordComp = std::dynamic_pointer_cast<WordComp>(component)) {
-            const auto& morphForms = m_sentence[phrase->pos.start + componentIndex++]->getMorphInfo();
+            const auto& morphForms = sentence[phrase->pos.start + componentIndex++]->getMorphInfo();
 
-            if (validateMorphology(m_sentence[phrase->pos.start + componentIndex - 1],
-                                   modelComp->getHead()->condition(), status)) {
+            if (validateMorphology(sentence[phrase->pos.start + componentIndex - 1], modelComp->getHead()->condition(),
+                                   status)) {
                 if (wordComp->isHead()) {
                     status.headValidated = true;
                     status.headMatched = true;
@@ -76,6 +76,6 @@ bool PhraseValidator::validateWordComponents(const WordComplexPtr& phrase, const
     return false;
 }
 
-bool PhraseValidator::isPhraseComplete(const PhraseMatchStatus& status) const {
+bool PhraseValidator::isPhraseComplete(const PhraseMatchStatus& status) {
     return status.headValidated && status.headMatched && status.lexFound;
 }

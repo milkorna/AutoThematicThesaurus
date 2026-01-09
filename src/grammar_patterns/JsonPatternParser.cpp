@@ -1,4 +1,5 @@
 #include "JsonPatternParser.h"
+#include "Logger.h"
 
 #include <fstream>
 #include <stdexcept>
@@ -248,13 +249,14 @@ std::shared_ptr<WordComp> JsonPatternParser::buildWordComp(const json& item) {
         tag = featuresFromJson(item.at("features"));
     }
 
-    Additional add;
+    bool isRecursive = false;
     if (item.contains("recursive") && item.at("recursive").is_boolean())
-        add.m_rec = item.at("recursive").get<bool>();
+        isRecursive = item.at("recursive").get<bool>();
+    std::string exLex;
     if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string())
-        add.m_exLex = item.at("exact_lexeme").get<std::string>();
+        exLex = item.at("exact_lexeme").get<std::string>();
 
-    Condition cond(role, tag, add);
+    Condition cond(role, tag, isRecursive, exLex);
     return std::make_shared<WordComp>(sp, cond);
 }
 
@@ -277,15 +279,13 @@ std::shared_ptr<ModelComp> JsonPatternParser::buildPatternComp(const json& item)
         tag = featuresFromJson(item.at("features"));
     }
 
-    // additional
-    Additional add;
-    if (item.contains("recursive") && item.at("recursive").is_boolean()) {
-        add.m_rec = item.at("recursive").get<bool>();
-    }
-    if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string()) {
-        add.m_exLex = item.at("exact_lexeme").get<std::string>();
-    }
+    bool isRecursive = false;
+    if (item.contains("recursive") && item.at("recursive").is_boolean())
+        isRecursive = item.at("recursive").get<bool>();
+    std::string exLex;
+    if (item.contains("exact_lexeme") && item.at("exact_lexeme").is_string())
+        exLex = item.at("exact_lexeme").get<std::string>();
 
-    Condition cond(role, tag, add);
+    Condition cond(role, tag, isRecursive, exLex);
     return std::make_shared<ModelComp>(refName, refModel->getComponents(), cond);
 }

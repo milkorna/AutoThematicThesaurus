@@ -33,10 +33,9 @@ class PhraseExtender {
     explicit PhraseExtender(const std::shared_ptr<Model>& model, std::vector<WordComplexPtr>& collection,
                             PhraseMatchStatus& status, size_t simplePhraseIndex,
                             const std::vector<WordComplexPtr>& simplePhrases,
-                            const std::vector<X::WordFormPtr>& sentence, const PhraseValidator& validator)
+                            const std::vector<X::WordFormPtr>& sentence)
         : m_currentModel(model), m_currentCollection(&collection), m_currentStatus(&status),
-          m_currentSimplePhraseIndex(simplePhraseIndex), m_simplePhrases(simplePhrases), m_sentence(sentence),
-          m_validator(validator) {
+          m_currentSimplePhraseIndex(simplePhraseIndex), m_simplePhrases(simplePhrases), m_sentence(sentence) {
     }
 
     /**
@@ -104,9 +103,6 @@ class PhraseExtender {
 
     /// @brief Reference to word forms/tokens in current sentence (immutable, set at construction)
     const std::vector<X::WordFormPtr>& m_sentence;
-
-    /// @brief Morphological validator (immutable, set at construction)
-    const PhraseValidator& m_validator;
 
     /// @brief Current grammar model being processed (set at construction, valid for lifetime)
     std::shared_ptr<Model> m_currentModel;

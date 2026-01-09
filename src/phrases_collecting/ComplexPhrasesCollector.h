@@ -23,7 +23,7 @@ class ComplexPhrasesCollector {
      */
     explicit ComplexPhrasesCollector(const std::vector<WordComplexPtr>& simplePhrases,
                                      const std::vector<X::WordFormPtr>& forms)
-        : m_simplePhrases(simplePhrases), m_sentence(forms), m_validator(forms) {
+        : m_simplePhrases(simplePhrases), m_sentence(forms) {
     }
 
     /**
@@ -49,9 +49,6 @@ class ComplexPhrasesCollector {
 
     /// @brief Collection of identified complex phrases
     std::vector<WordComplexPtr> m_collection;
-
-    /// @brief Validator for morphological compatibility checking
-    PhraseValidator m_validator;
 
     /**
      * @brief Validates that a simple phrase matches the current model component
