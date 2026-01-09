@@ -31,7 +31,7 @@ using SentenceMap = std::unordered_map<std::string, std::unordered_map<size_t, T
 
 /**
  * @class SentenceCorpus
- * @brief Manages storage and serialization of tokenized sentence data.
+ * @brief Manages storage and serialization of sentence data.
  * @details Maintains corpus of sentences with both original and normalized forms.
  */
 class SentenceCorpus {
