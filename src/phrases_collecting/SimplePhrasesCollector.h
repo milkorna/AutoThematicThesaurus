@@ -25,14 +25,10 @@ class SimplePhrasesCollector {
     }
 
     /**
-     * @brief Retrieves the collection of identified word complexes
-     * @details Returns the accumulated simple phrases found during collection
-     *
+     * @brief Retrieves the collection of identified phrases
      * @return Reference to the vector of collected PhrasePtr
      */
-    [[nodiscard]] std::vector<PhrasePtr>& getCollection() {
-        return m_collection;
-    }
+    [[nodiscard]] const std::vector<PhrasePtr>& getCollection() const;
 
     /**
      * @brief Collects simple phrases from the sentence
@@ -47,29 +43,47 @@ class SimplePhrasesCollector {
     ~SimplePhrasesCollector() = default;
 
   private:
-    /// @brief Collection of identified simple phrase complexes
-    std::vector<PhrasePtr> m_collection;
-
-    /// @brief Word forms representing the current sentence
-    std::vector<WordFormPtr> m_sentence;
-
-    PhraseValidator m_validator;
+    /**
+     * @brief Expands phrase in specified direction (left or right)
+     * @details Recursively checks components and extends phrase.
+     * Returns true if phrase was completely matched and added to m_collection.
+     *
+     * @param phrase Phrase being expanded (modified in place)
+     * @param model Grammar model with expected component sequence
+     * @param componentIndex Current component index
+     * @param tokenIndex Current token index in sentence
+     * @param matchedComponents Counter of matched components (incremented in place)
+     * @param expandLeft Direction flag (true = leftward, false = rightward)
+     * @return true if phrase completed and collected, false if match failed
+     */
+    [[nodiscard]] bool expandPhraseInDirection(const std::shared_ptr<Phrase>& wc, const std::shared_ptr<Model>& model,
+                                               size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft);
 
     /**
-     * @brief Recursively extends phrase in specified direction
-     * @details Checks if word form at given position matches component requirements.
-     * Applies filters (stop words, punctuation, morphology validation).
-     * Recursively processes adjacent components until model boundary or no match.
-     *
-     * @param wc Word complex being built (extended in place)
-     * @param model Grammar model defining expected component sequence
-     * @param compIndex Current component index in the model
-     * @param tokenInd Current word token index in the sentence
-     * @param correct Reference counter for matched components (incremented in place)
-     * @param isLeft Direction flag (true for extending left, false for extending right)
-     * @return true if all remaining model components matched and phrase was added to collection,
-     *         false if match failed or component is non-recursive
+     * @brief Matches and expands phrase for specific model
+     * @param model Grammar model to match
+     * @param tokenIndex Head token index
+     * @param token Head word form
+     * @param process Context for phrase creation
+     * @return true if phrase was successfully collected
      */
-    [[nodiscard]] bool checkAside(const std::shared_ptr<Phrase>& wc, const std::shared_ptr<Model>& model,
-                                  size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft);
+    [[nodiscard]] bool tryExpandPhraseWithModel(Process& process, const std::shared_ptr<Model>& model,
+                                                size_t tokenIndex, const X::WordFormPtr& token);
+
+    /**
+     * @brief Checks if token can be a valid phrase head
+     * @param token Word form to check
+     * @return true if token is valid and has head speech parts
+     */
+    [[nodiscard]] bool isValidPhraseHead(const X::WordFormPtr& token) const;
+
+  private:
+    /// @brief Collection of identified simple phrases
+    std::vector<PhrasePtr> m_collection;
+
+    /// @brief Word forms in the current sentence (reference, not owned)
+    const std::vector<X::WordFormPtr>& m_sentence;
+
+    /// @brief Morphological validator for tokens
+    PhraseValidator m_validator;
 };

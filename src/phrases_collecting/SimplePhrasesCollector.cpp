@@ -1,44 +1,59 @@
 #include "SimplePhrasesCollector.h"
 #include "GrammarPatternManager.h"
-#include "Logger.h"
-#include "Options.h"
 #include "Process.h"
 
-static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo) {
-    const auto& manager = GrammarPatternManager::GetManager();
-
-    for (const auto& morphForm : currFormMorphInfo) {
-        Logger::log("HaveSpHead", LogLevel::Debug, "MorphForm: " + morphForm.normalForm.getRawString());
-        const auto& spSet = manager.getUsedHeadSp();
-        if (!spSet.contains(morphForm.sp.toString())) {
-            Logger::log("HaveSpHead", LogLevel::Debug, "No head with " + morphForm.sp.toString() + " speach of word");
-        } else {
-            Logger::log("HaveSpHead", LogLevel::Debug,
-                        "Found head with " + morphForm.sp.toString() + " speech of word");
-            return true;
-        }
-    }
-    return false;
+const std::vector<PhrasePtr>& SimplePhrasesCollector::getCollection() const {
+    return m_collection;
 }
 
-bool SimplePhrasesCollector::checkAside(const PhrasePtr& wc, const std::shared_ptr<Model>& model, size_t compIndex,
-                                        size_t tokenInd, size_t& correct, const bool isLeft) {
-    auto& options = Options::getOptions();
+void SimplePhrasesCollector::collect(Process& process) {
+    const auto& simplePatterns = GrammarPatternManager::GetManager().getSimplePatterns();
+
+    for (size_t tokenIndex = 0; tokenIndex < m_sentence.size(); tokenIndex++) {
+        const auto& token = m_sentence[tokenIndex];
+
+        // Skip invalid tokens and non-head candidates
+        if (!isValidPhraseHead(token)) {
+            continue;
+        }
+
+        // Try to match token as head in each grammar model
+        for (const auto& [name, model] : simplePatterns) {
+
+            // Check if token matches model's head component
+            if (!model->getHead()->isValidCondition(token)) {
+                continue;
+            }
+
+            // Attempt to expand phrase with this model
+            if (tryExpandPhraseWithModel(process, model, tokenIndex, token)) {
+                break;
+            }
+        }
+    }
+
+    // Output all collected phrases
+    process.outputResults(m_collection);
+}
+
+bool SimplePhrasesCollector::expandPhraseInDirection(const PhrasePtr& phrase, const std::shared_ptr<Model>& model,
+                                                     size_t compIndex, size_t tokenInd, size_t& correct,
+                                                     const bool isLeft) {
+
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
     if (!m_validator.isTokenValid(token)) {
         return false;
     }
 
-    const std::string formFromText = token->getWordForm().getRawString();
-    if (!comp->condition().check(comp->getSPTag(), token)) {
+    if (!comp->isValidCondition(token)) {
         return false;
     }
 
     if (isLeft) {
-        wc->addWordToLeft(token);
+        phrase->addWordToLeft(token);
     } else {
-        wc->addWordToRight(token);
+        phrase->addWordToRight(token);
     }
 
     ++correct;
@@ -46,56 +61,68 @@ bool SimplePhrasesCollector::checkAside(const PhrasePtr& wc, const std::shared_p
     const size_t nextTokenInd = isLeft ? tokenInd - 1 : tokenInd + 1;
 
     if ((isLeft && compIndex > 0) || (!isLeft && compIndex < model->size() - 1)) {
-        if (!checkAside(wc, model, nextCompIndex, nextTokenInd, correct, isLeft)) {
-            return false;
-        }
-
+        return expandPhraseInDirection(phrase, model, nextCompIndex, nextTokenInd, correct, isLeft);
     } else {
-        m_collection.push_back(std::make_shared<Phrase>(*wc));
+        m_collection.push_back(std::make_shared<Phrase>(*phrase));
         if (comp->isRec() && ((isLeft && tokenInd > 0) || (!isLeft && tokenInd < m_sentence.size() - 1))) {
-            if (checkAside(wc, model, compIndex, nextTokenInd, correct, isLeft)) {
-                return true;
-            } else {
-                return false;
-            }
+            return expandPhraseInDirection(phrase, model, compIndex, nextTokenInd, correct, isLeft);
         }
     }
 
     return false;
 }
 
-void SimplePhrasesCollector::collect(Process& process) {
-    const auto& simplePatterns = GrammarPatternManager::GetManager().getSimplePatterns();
+bool SimplePhrasesCollector::tryExpandPhraseWithModel(Process& process, const std::shared_ptr<Model>& model,
+                                                      size_t tokenIndex, const X::WordFormPtr& token) {
+    if (!model || !token) {
+        return false;
+    }
 
-    for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
-        const auto token = m_sentence[tokenInd];
-        if (!m_validator.isTokenValid(token)) {
-            continue;
-        }
+    const auto headPosition = model->getHeadPos();
+    if (!headPosition.has_value()) {
+        return false;
+    }
 
-        if (!HaveSpHead(token->getMorphInfo()))
-            continue;
+    auto phrase = Phrase::createFromToken(tokenIndex, token, model->getForm(), process);
+    size_t matchedComponents = 1;
 
-        for (const auto& [name, model] : simplePatterns) {
-            if (!model->getHead()->condition().check(model->getHead()->getSPTag(), token)) {
-                continue;
-            }
-
-            const size_t headPos = *model->getHeadPos();
-            size_t correct = 0;
-
-            auto wc = Phrase::createFromToken(tokenInd, token, model->getForm(), process);
-            ++correct;
-
-            if (headPos != 0 && tokenInd != 0 && checkAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {
-                break;
-            }
-
-            if (headPos != model->size() - 1 && tokenInd + 1 < m_sentence.size() &&
-                checkAside(wc, model, headPos + 1, tokenInd + 1, correct, false)) {
-                break;
-            }
+    if (headPosition.value() > 0 && tokenIndex > 0) {
+        if (expandPhraseInDirection(phrase, model, headPosition.value() - 1, tokenIndex - 1, matchedComponents, true)) {
+            return true;
         }
     }
-    process.outputResults(m_collection);
+
+    if (headPosition.value() != model->size() - 1 && tokenIndex + 1 < m_sentence.size()) {
+        return expandPhraseInDirection(phrase, model, headPosition.value() + 1, tokenIndex + 1, matchedComponents,
+                                       false);
+    }
+
+    return false;
+}
+
+bool SimplePhrasesCollector::isValidPhraseHead(const X::WordFormPtr& token) const {
+    if (!token) {
+        return false;
+    }
+
+    // Check if token is valid
+    if (!m_validator.isTokenValid(token)) {
+        return false;
+    }
+
+    // Check if token has morphology
+    if (token->getMorphInfo().empty()) {
+        return false;
+    }
+
+    // Check if any morph form matches a head speech part
+    const auto& usedHeadSpeechParts = GrammarPatternManager::GetManager().getUsedHeadSp();
+
+    for (const auto& morphForm : token->getMorphInfo()) {
+        if (usedHeadSpeechParts.contains(morphForm.sp.toString())) {
+            return true; // Found valid head speech part
+        }
+    }
+
+    return false;
 }

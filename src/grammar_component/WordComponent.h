@@ -9,6 +9,7 @@
 
 // Derived class representing a Word in the grammar system.
 class Word : public Component {
+  protected:
     UniSPTag m_sp;
 
   public:
@@ -31,6 +32,8 @@ class WordComp : public Word {
   public:
     explicit WordComp(const UniSPTag& sp = UniSPTag::X, const Condition& cond = Condition());
     ~WordComp() override = default;
+
+    const bool isValidCondition(const X::WordFormPtr& wordForm) const;
 
     [[nodiscard]] const Condition& condition() const noexcept;
 

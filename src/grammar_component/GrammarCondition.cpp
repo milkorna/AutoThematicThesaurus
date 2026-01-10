@@ -34,9 +34,9 @@ bool Condition::morphTagCheck(const MorphInfo& morphForm) const {
            validateAttribute(&X::UniMorphTag::hasAspect, &X::UniMorphTag::getAspect, compMorphTag, morphForm.tag);
 }
 
-bool Condition::check(const X::UniSPTag spTag, const X::WordFormPtr& form) const {
+bool Condition::isValid(const X::UniSPTag speechTag, const X::WordFormPtr& form) const {
     for (const auto& morphForm : form->getMorphInfo()) {
-        if (morphForm.sp == spTag) {
+        if (morphForm.sp == speechTag) {
             if (!morphTagCheck(morphForm)) {
                 return false;
             }

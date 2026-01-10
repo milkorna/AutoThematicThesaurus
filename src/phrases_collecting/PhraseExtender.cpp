@@ -38,8 +38,8 @@ bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIn
         return false;
     }
 
-    // Проверка морфологии
-    if (!wordComp->condition().check(wordComp->getSPTag(), token)) {
+    // Проверка морфологии todo
+    if (!wordComp->isValidCondition(token)) {
         return false;
     }
 
@@ -115,8 +115,7 @@ bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formI
                 continue;
             }
 
-            if (!modelComp->getHead()->condition().check(modelComp->getHead()->getSPTag(),
-                                                         m_sentence[formIndex + *modelComp->getHeadPos()])) {
+            if (!modelComp->getHead()->isValidCondition(m_sentence[formIndex + *modelComp->getHeadPos()])) {
                 return false;
             }
 

@@ -26,22 +26,26 @@ const bool Word::isModel() const {
     return false;
 }
 
+const bool WordComp::isValidCondition(const X::WordFormPtr& wordForm) const {
+    return m_cond.isValid(m_sp, wordForm);
+}
+
 void WordComp::print() const {
     try {
-        Logger::log("\t\tsp", LogLevel::Info, this->getSPTag().toString());
+        Logger::log("\t\tsp", LogLevel::Info, m_sp.toString());
     } catch (...) {
         Logger::log("\t\tsp", LogLevel::Warning, "failed to stringify SP tag");
     }
 
-    if (const auto& cond = this->condition(); !cond.isDefault()) {
+    if (!m_cond.isDefault()) {
         try {
-            Logger::log("\t\t\t\tmt", LogLevel::Info, cond.getMorphTag().toString());
+            Logger::log("\t\t\t\tmt", LogLevel::Info, m_cond.getMorphTag().toString());
         } catch (...) {
             Logger::log("\t\t\t\tmt", LogLevel::Warning, "failed to stringify morph tag");
         }
 
-        if (cond.hasExactLexeme()) {
-            Logger::log("\t\t\t\tlex", LogLevel::Info, cond.getExactLexeme());
+        if (m_cond.hasExactLexeme()) {
+            Logger::log("\t\t\t\tlex", LogLevel::Info, m_cond.getExactLexeme());
         }
     }
 }

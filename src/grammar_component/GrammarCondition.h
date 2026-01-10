@@ -70,7 +70,7 @@ class Condition {
      * @param form Word form containing morphological information
      * @return true if form satisfies all conditions, false otherwise
      */
-    [[nodiscard]] bool check(const X::UniSPTag spTag, const X::WordFormPtr& form) const;
+    [[nodiscard]] bool isValid(const X::UniSPTag speechTag, const X::WordFormPtr& form) const;
 
     // ─────────────────────────────────────────────────────────────────────
     // Getters
