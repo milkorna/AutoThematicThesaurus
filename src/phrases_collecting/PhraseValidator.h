@@ -1,8 +1,8 @@
 #pragma once
 
 #include "ModelComponent.h"
+#include "Phrase.h"
 #include "PhraseMatchStatus.h"
-#include "WordComplex.h"
 
 #include <vector>
 
@@ -23,7 +23,7 @@ class PhraseValidator {
     static bool validateMorphology(const X::WordFormPtr& token, const Condition& condition, PhraseMatchStatus& status);
 
     // Фаза 3: Проверка компонентов модели
-    static bool validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const WordComplexPtr& phrase,
+    static bool validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const PhrasePtr& phrase,
                                        const std::shared_ptr<ModelComp>& modelComp, PhraseMatchStatus& status);
 
     // Фаза 4: Проверка что фраза готова к сохранению

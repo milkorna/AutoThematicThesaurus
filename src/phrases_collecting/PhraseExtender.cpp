@@ -1,6 +1,6 @@
 #include "PhraseExtender.h"
 
-bool PhraseExtender::checkComponent(size_t componentIndex, size_t formIndex, bool isLeft, const WordComplexPtr& wc) {
+bool PhraseExtender::checkComponent(size_t componentIndex, size_t formIndex, bool isLeft, const PhrasePtr& wc) {
 
     // Проверяем что контекст установлен и индексы валидны
     if (!m_currentModel || componentIndex >= m_currentModel->size() || formIndex >= m_sentence.size()) {
@@ -19,8 +19,7 @@ bool PhraseExtender::checkComponent(size_t componentIndex, size_t formIndex, boo
     return false;
 }
 
-bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft,
-                                            const WordComplexPtr& wc) {
+bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft, const PhrasePtr& wc) {
 
     auto comp = m_currentModel->getComponents()[componentIndex];
     auto wordComp = std::dynamic_pointer_cast<WordComp>(comp);
@@ -51,7 +50,12 @@ bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIn
 
     // Обновление фразы
     std::string formFromText = token->getWordForm().getRawString();
-    updateWordComplex(wc, token, formFromText, isLeft);
+    if (isLeft) {
+        wc->addWordToLeft(token);
+    } else {
+        wc->addWordToRight(token);
+    }
+
     m_currentStatus->matchedComponents++;
 
     size_t nextCompIndex = isLeft ? componentIndex - 1 : componentIndex + 1;
@@ -69,7 +73,7 @@ bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIn
     } else {
         // Паттерн завершен
         if (m_currentCollection->empty() || wc->textForm != m_currentCollection->back()->textForm) {
-            m_currentCollection->push_back(std::make_shared<WordComplex>(*wc));
+            m_currentCollection->push_back(std::make_shared<Phrase>(*wc));
         }
 
         if (wordComp->isRec() && ((isLeft && formIndex > 0) || (!isLeft && formIndex < m_sentence.size() - 1))) {
@@ -84,7 +88,7 @@ bool PhraseExtender::checkWordComponentImpl(size_t componentIndex, size_t formIn
 }
 
 bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft,
-                                             const WordComplexPtr& wc) {
+                                             const PhrasePtr& wc) {
 
     auto comp = m_currentModel->getComponents()[componentIndex];
     auto modelComp = std::dynamic_pointer_cast<ModelComp>(comp);
@@ -155,11 +159,12 @@ bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formI
         size_t nextFormIndex = isLeft ? formIndex - 1 : formIndex + 1;
 
         // Присоединяем соседнюю фразу
+        // todo
         if (isLeft && asidePhrase->pos.end == formIndex) {
-            addWordsToFront(wc, asidePhrase);
+            wc->mergeLeft(asidePhrase);
             attachAdjacentPhrase(wc, asidePhrase, *m_currentStatus, true);
         } else if (!isLeft && asidePhrase->pos.start == formIndex) {
-            addWordsToBack(wc, asidePhrase);
+            wc->mergeRight(asidePhrase);
             attachAdjacentPhrase(wc, asidePhrase, *m_currentStatus, false);
         }
 
@@ -186,7 +191,7 @@ bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formI
         if (m_currentStatus->isValid() && componentIndex == m_currentModel->size() - 1 &&
             m_currentStatus->matchedComponents >= m_currentModel->size()) {
             if (m_currentCollection->empty() || wc->textForm != m_currentCollection->back()->textForm) {
-                m_currentCollection->push_back(std::make_shared<WordComplex>(*wc));
+                m_currentCollection->push_back(std::make_shared<Phrase>(*wc));
             }
         }
     }
@@ -195,7 +200,7 @@ bool PhraseExtender::checkModelComponentImpl(size_t componentIndex, size_t formI
 }
 
 bool PhraseExtender::shouldSkipAdjacentPhrase(size_t phraseIndex, size_t currentIndex, bool isLeft,
-                                              const WordComplexPtr& currentPhrase,
+                                              const PhrasePtr& currentPhrase,
                                               const std::shared_ptr<ModelComp>& modelComp) const {
     if (phraseIndex >= m_simplePhrases.size()) {
         return true;
@@ -221,8 +226,8 @@ bool PhraseExtender::shouldSkipAdjacentPhrase(size_t phraseIndex, size_t current
     return false;
 }
 
-void PhraseExtender::attachAdjacentPhrase(const WordComplexPtr& target, const WordComplexPtr& adjacent,
-                                          PhraseMatchStatus& status, bool isLeft) {
+void PhraseExtender::attachAdjacentPhrase(const PhrasePtr& target, const PhrasePtr& adjacent, PhraseMatchStatus& status,
+                                          bool isLeft) {
     status.matchedComponents++;
 
     if (isLeft) {

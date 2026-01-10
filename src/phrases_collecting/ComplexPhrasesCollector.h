@@ -18,10 +18,10 @@ class ComplexPhrasesCollector {
      * @details Initializes the collector with pre-identified simple phrases and the current sentence context.
      * Creates validator and extender helper objects for morphological validation and phrase expansion.
      *
-     * @param simplePhrases Vector of simple WordComplexPtr to extend with adjacent words
+     * @param simplePhrases Vector of simple PhrasePtr to extend with adjacent words
      * @param forms Vector of word forms (morphological data) from the sentence being analyzed
      */
-    explicit ComplexPhrasesCollector(const std::vector<WordComplexPtr>& simplePhrases,
+    explicit ComplexPhrasesCollector(const std::vector<PhrasePtr>& simplePhrases,
                                      const std::vector<X::WordFormPtr>& forms)
         : m_simplePhrases(simplePhrases), m_sentence(forms) {
     }
@@ -42,13 +42,13 @@ class ComplexPhrasesCollector {
 
   private:
     /// @brief Immutable vector of simple phrases to extend
-    const std::vector<WordComplexPtr>& m_simplePhrases;
+    const std::vector<PhrasePtr>& m_simplePhrases;
 
     /// @brief Immutable reference to word forms in the current sentence
     const std::vector<X::WordFormPtr>& m_sentence;
 
     /// @brief Collection of identified complex phrases
-    std::vector<WordComplexPtr> m_collection;
+    std::vector<PhrasePtr> m_collection;
 
     /**
      * @brief Validates that a simple phrase matches the current model component
@@ -62,13 +62,13 @@ class ComplexPhrasesCollector {
      * @param status Phrase match status to update with morphological validation results
      * @return true if the simple phrase satisfies all component requirements, false otherwise
      */
-    bool isSimplePhraseMatchesComponent(const WordComplexPtr& simplePhrase, const std::shared_ptr<ModelComp>& modelComp,
+    bool isSimplePhraseMatchesComponent(const PhrasePtr& simplePhrase, const std::shared_ptr<ModelComp>& modelComp,
                                         PhraseMatchStatus& status) const;
 
     /**
      * @brief Initializes a phrase and attempts to extend it in both directions around a component
      * @details Executes a two-step expansion process:
-     * Step 1: Initialize WordComplex from the simple phrase
+     * Step 1: Initialize Phrase from the simple phrase
      * Step 2: Attempt left extension (if component index > 0 and position allows)
      * Step 3: Attempt right extension (if component index < model size - 1 and position allows)
      *
@@ -82,7 +82,7 @@ class ComplexPhrasesCollector {
      * @param status Phrase match status for tracking validation and matching progress
      * @return true if successful expansion finds complete pattern match, false otherwise
      */
-    bool expandPhraseAroundComponent(const std::shared_ptr<Model>& model, const WordComplexPtr& simplePhrase,
+    bool expandPhraseAroundComponent(const std::shared_ptr<Model>& model, const PhrasePtr& simplePhrase,
                                      size_t simplePhraseIndex, size_t componentIndex, PhraseMatchStatus& status);
 
     /**
@@ -95,7 +95,7 @@ class ComplexPhrasesCollector {
      *   - Returns false immediately if validation fails
      *
      * Phase 2 - Phrase Expansion:
-     *   - Initializes WordComplex from the simple phrase
+     *   - Initializes Phrase from the simple phrase
      *   - Attempts bidirectional expansion around the component (expandPhraseAroundComponent)
      *   - Recursively processes adjacent components through the dispatcher
      *
@@ -104,7 +104,7 @@ class ComplexPhrasesCollector {
      * @param simplePhraseIndex Index of the simple phrase in m_simplePhrases
      * @return true if model successfully matched and phrase was collected, false otherwise
      */
-    bool processModelForPhrase(const std::shared_ptr<Model>& model, const WordComplexPtr& simplePhrase,
+    bool processModelForPhrase(const std::shared_ptr<Model>& model, const PhrasePtr& simplePhrase,
                                size_t simplePhraseIndex);
 
     /**

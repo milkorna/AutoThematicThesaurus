@@ -5,13 +5,13 @@
 
 using json = nlohmann::ordered_json;
 
-WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, const std::string& key) {
+PhraseCluster ClusterDeserializer::deserializeCluster(const json& obj, const std::string& key) {
     try {
         if (!obj.is_object()) {
             throw std::runtime_error("Expected JSON object for cluster");
         }
 
-        WordComplexCluster cluster;
+        PhraseCluster cluster;
         cluster.key = key;
         cluster.phraseSize = obj.at("phrase_size").get<size_t>();
         cluster.frequency = obj.at("frequency").get<double>();
@@ -29,7 +29,7 @@ WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, cons
         deserializeLemmas(obj.at("lemmas"), cluster);
 
         // Deserialize word complexes (phrases)
-        deserializeWordComplexes(obj.at("phrases"), cluster);
+        deserializePhrases(obj.at("phrases"), cluster);
 
         Logger::log("ClusterDeserializer", LogLevel::Debug, "Successfully deserialized cluster: " + key);
 
@@ -46,7 +46,7 @@ WordComplexCluster ClusterDeserializer::deserializeCluster(const json& obj, cons
     }
 }
 
-WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
+PhrasePtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
     try {
         // Validate key format
         std::string key = obj.at("key").get<std::string>();
@@ -68,15 +68,10 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
         std::deque<std::string> lemmas;
         if (obj.contains("lemmas")) {
             lemmas = obj.at("lemmas").get<std::deque<std::string>>();
-
-            // // Clean up numbered lemmas (e.g., "0_lemma_name" -> "lemma_name")
-            // for (auto& lemma : lemmas) {
-            //     lemma = extractLemmaString(lemma);
-            // }
         }
 
         // Create word complex
-        WordComplexPtr wc = std::make_shared<WordComplex>();
+        PhrasePtr wc = std::make_shared<Phrase>();
         wc->textForm = textForm;
         wc->pos = pos;
         wc->modelName = modelName;
@@ -91,7 +86,7 @@ WordComplexPtr ClusterDeserializer::deserializePhraseResult(const json& obj) {
     }
 }
 
-void ClusterDeserializer::deserializeLemmas(const json& lemmas_json, WordComplexCluster& cluster) {
+void ClusterDeserializer::deserializeLemmas(const json& lemmas_json, PhraseCluster& cluster) {
     if (!lemmas_json.is_array()) {
         throw std::runtime_error("Lemmas field must be an array");
     }
@@ -120,7 +115,7 @@ void ClusterDeserializer::deserializeLemmas(const json& lemmas_json, WordComplex
     }
 }
 
-void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, WordComplexCluster& cluster) {
+void ClusterDeserializer::deserializePhrases(const json& phrases_json, PhraseCluster& cluster) {
     if (!phrases_json.is_array()) {
         throw std::runtime_error("Phrases field must be an array");
     }
@@ -130,7 +125,7 @@ void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, Wor
             throw std::runtime_error("Each phrase must be a JSON object");
         }
 
-        WordComplexPtr wc = std::make_shared<WordComplex>();
+        auto wc = std::make_shared<Phrase>();
         wc->textForm = phrase_obj.at("text_form").get<std::string>();
         wc->modelName = cluster.modelName;
 
@@ -144,17 +139,9 @@ void ClusterDeserializer::deserializeWordComplexes(const json& phrases_json, Wor
         // Copy lemmas from cluster
         wc->lemmas.assign(cluster.lemmas.begin(), cluster.lemmas.end());
 
-        cluster.wordComplexes.push_back(wc);
+        cluster.phrases.push_back(wc);
     }
 }
-
-// std::string ClusterDeserializer::extractLemmaString(const std::string& numberedLemma) const {
-//     size_t pos = numberedLemma.find('_');
-//     if (pos != std::string::npos) {
-//         return numberedLemma.substr(pos + 1);
-//     }
-//     return numberedLemma;
-// }
 
 bool ClusterDeserializer::isValidPhraseKey(const std::string& key) const {
     // Skip keys containing underscores

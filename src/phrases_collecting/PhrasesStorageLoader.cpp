@@ -33,7 +33,7 @@ void PhrasesStorageLoader::loadStorageFromFile(PatternPhrasesStorage& storage, c
             const std::string& key = it.key();
             const json& obj = it.value();
 
-            WordComplexCluster cluster = deserializer.deserializeCluster(obj, key);
+            PhraseCluster cluster = deserializer.deserializeCluster(obj, key);
             storage.addCluster(key, cluster);
         }
 
@@ -139,16 +139,16 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhras
     for (const auto& obj : j) {
         try {
             // Deserialize phrase result
-            WordComplexPtr wordComplex = deserializer.deserializePhraseResult(obj);
+            PhrasePtr phrase = deserializer.deserializePhraseResult(obj);
 
-            if (!wordComplex) {
+            if (!phrase) {
                 // Skip invalid phrase (deserializePhraseResult already logged)
                 continue;
             }
 
             // Get or create cluster
             std::string key;
-            for (const auto& lemma : wordComplex->lemmas) {
+            for (const auto& lemma : phrase->lemmas) {
                 if (!key.empty())
                     key += " ";
                 key += lemma;
@@ -158,14 +158,13 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhras
 
             if (existingCluster != nullptr) {
                 // Add to existing cluster if not duplicate
-                auto found = std::find(existingCluster->wordComplexes.begin(), existingCluster->wordComplexes.end(),
-                                       wordComplex);
-                if (found == existingCluster->wordComplexes.end()) {
-                    existingCluster->wordComplexes.push_back(wordComplex);
+                auto found = std::find(existingCluster->phrases.begin(), existingCluster->phrases.end(), phrase);
+                if (found == existingCluster->phrases.end()) {
+                    existingCluster->phrases.push_back(phrase);
                 }
             } else {
                 // Create new cluster
-                WordComplexCluster newCluster = createClusterFromPhrase(key, wordComplex);
+                PhraseCluster newCluster = createClusterFromPhrase(key, phrase);
                 storage.addCluster(key, newCluster);
             }
 
@@ -177,22 +176,21 @@ void PhrasesStorageLoader::loadResultFile(const fs::path& filePath, PatternPhras
     }
 }
 
-WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(const std::string& key,
-                                                                 const WordComplexPtr& wordComplex) {
+PhraseCluster PhrasesStorageLoader::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase) {
 
-    WordComplexCluster newCluster;
+    PhraseCluster newCluster;
 
     // Basic properties
     newCluster.key = key;
-    newCluster.modelName = wordComplex->modelName;
-    newCluster.phraseSize = wordComplex->lemmas.size();
+    newCluster.modelName = phrase->modelName;
+    newCluster.phraseSize = phrase->lemmas.size();
     newCluster.frequency = 1.0;
     newCluster.topicRelevance = 0.0;
     newCluster.centralityScore = 0.0;
     newCluster.tagMatch = false;
 
     // Initialize lemma-related structures
-    for (const auto& lemma : wordComplex->lemmas) {
+    for (const auto& lemma : phrase->lemmas) {
         newCluster.lemmas.push_back(lemma);
         newCluster.tf.push_back(0.0);
         newCluster.idf.push_back(0.0);
@@ -203,7 +201,7 @@ WordComplexCluster PhrasesStorageLoader::createClusterFromPhrase(const std::stri
     }
 
     // Add the phrase
-    newCluster.wordComplexes.push_back(wordComplex);
+    newCluster.phrases.push_back(phrase);
 
     return newCluster;
 }

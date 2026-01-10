@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Embedding.h"
+#include "Phrase.h"
 #include "SentenceCorpus.h"
-#include "WordComplex.h"
 
 #include <set>
 #include <string>
@@ -11,11 +11,11 @@
 #include <vector>
 
 /**
- * @struct WordComplexCluster
+ * @struct PhraseCluster
  * @brief Represents a cluster of word complexes with linguistic metrics and embeddings
  * @details Contains TF, IDF, TF-IDF values, FastText vectors, semantic relations, and context information
  */
-struct WordComplexCluster {
+struct PhraseCluster {
     /// @brief Size of the phrase (number of words)
     size_t phraseSize;
 
@@ -41,7 +41,7 @@ struct WordComplexCluster {
     std::vector<std::string> lemmas;
 
     /// @brief Vector of word complexes (phrases) in the cluster
-    std::vector<WordComplexPtr> wordComplexes;
+    std::vector<PhrasePtr> phrases;
 
     /// @brief Vector of TF (Term Frequency) values for each word
     std::vector<double> tf;

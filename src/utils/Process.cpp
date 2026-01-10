@@ -1,7 +1,7 @@
 #include "Process.h"
 #include "Logger.h"
 #include "MorphAnalyzer.h"
-#include "WordComplex.h"
+#include "Phrase.h"
 
 #include <fstream>
 #include <nlohmann/json.hpp>
@@ -56,7 +56,7 @@ void Process::setSentenceData(const std::string& sentence, const std::vector<std
                     std::to_string(rawSentenceText.length()) + " chars");
 }
 
-void Process::outputResults(const std::vector<WordComplexPtr>& phrases) {
+void Process::outputResults(const std::vector<PhrasePtr>& phrases) {
     if (phrases.empty()) {
         return;
     }

@@ -78,12 +78,12 @@ class PhrasesStorageLoader {
 
     /**
      * @brief Create new cluster from single word complex.
-     * @details Helper method to initialize WordComplexCluster from
+     * @details Helper method to initialize PhraseCluster from
      *          a single phrase when cluster doesn't exist yet.
      *
      * @param key Cluster key (normalized phrase)
-     * @param wordComplex The phrase to initialize cluster with
-     * @return New WordComplexCluster ready for storage
+     * @param phrase The phrase to initialize cluster with
+     * @return New PhraseCluster ready for storage
      */
-    static WordComplexCluster createClusterFromPhrase(const std::string& key, const WordComplexPtr& wordComplex);
+    static PhraseCluster createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase);
 };

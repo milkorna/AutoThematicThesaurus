@@ -28,9 +28,9 @@ class SimplePhrasesCollector {
      * @brief Retrieves the collection of identified word complexes
      * @details Returns the accumulated simple phrases found during collection
      *
-     * @return Reference to the vector of collected WordComplexPtr
+     * @return Reference to the vector of collected PhrasePtr
      */
-    [[nodiscard]] std::vector<WordComplexPtr>& getCollection() {
+    [[nodiscard]] std::vector<PhrasePtr>& getCollection() {
         return m_collection;
     }
 
@@ -48,7 +48,7 @@ class SimplePhrasesCollector {
 
   private:
     /// @brief Collection of identified simple phrase complexes
-    std::vector<WordComplexPtr> m_collection;
+    std::vector<PhrasePtr> m_collection;
 
     /// @brief Word forms representing the current sentence
     std::vector<WordFormPtr> m_sentence;
@@ -70,6 +70,6 @@ class SimplePhrasesCollector {
      * @return true if all remaining model components matched and phrase was added to collection,
      *         false if match failed or component is non-recursive
      */
-    [[nodiscard]] bool checkAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
+    [[nodiscard]] bool checkAside(const std::shared_ptr<Phrase>& wc, const std::shared_ptr<Model>& model,
                                   size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft);
 };

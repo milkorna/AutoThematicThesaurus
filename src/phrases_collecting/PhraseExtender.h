@@ -1,9 +1,9 @@
 #pragma once
 
 #include "ModelComponent.h"
+#include "Phrase.h"
 #include "PhraseMatchStatus.h"
 #include "PhraseValidator.h"
-#include "WordComplex.h"
 
 /**
  * @brief Manages recursive phrase boundary extension with dispatcher pattern
@@ -30,10 +30,9 @@ class PhraseExtender {
      * @param sentence Vector of word forms (tokens) in the sentence
      * @param validator Validator for morphological compatibility checks
      */
-    explicit PhraseExtender(const std::shared_ptr<Model>& model, std::vector<WordComplexPtr>& collection,
+    explicit PhraseExtender(const std::shared_ptr<Model>& model, std::vector<PhrasePtr>& collection,
                             PhraseMatchStatus& status, size_t simplePhraseIndex,
-                            const std::vector<WordComplexPtr>& simplePhrases,
-                            const std::vector<X::WordFormPtr>& sentence)
+                            const std::vector<PhrasePtr>& simplePhrases, const std::vector<X::WordFormPtr>& sentence)
         : m_currentModel(model), m_currentCollection(&collection), m_currentStatus(&status),
           m_currentSimplePhraseIndex(simplePhraseIndex), m_simplePhrases(simplePhrases), m_sentence(sentence) {
     }
@@ -55,7 +54,7 @@ class PhraseExtender {
      * @param wc Word complex being expanded (modified in place during recursion)
      * @return true if matching continues successfully, false if boundary exceeded or no match
      */
-    bool checkComponent(size_t componentIndex, size_t formIndex, bool isLeft, const WordComplexPtr& wc);
+    bool checkComponent(size_t componentIndex, size_t formIndex, bool isLeft, const PhrasePtr& wc);
 
     /**
      * @brief Validates if an adjacent phrase should be included during expansion
@@ -72,8 +71,7 @@ class PhraseExtender {
      * @param modelComp Model component defining expected form name
      * @return true if phrase should be skipped, false if it's a valid adjacent phrase
      */
-    bool shouldSkipAdjacentPhrase(size_t phraseIndex, size_t currentIndex, bool isLeft,
-                                  const WordComplexPtr& currentPhrase,
+    bool shouldSkipAdjacentPhrase(size_t phraseIndex, size_t currentIndex, bool isLeft, const PhrasePtr& currentPhrase,
                                   const std::shared_ptr<ModelComp>& modelComp) const;
 
     /**
@@ -94,12 +92,12 @@ class PhraseExtender {
      * @param status Match status to update (increments matchedComponents)
      * @param isLeft Direction of attachment (true for left, false for right)
      */
-    void attachAdjacentPhrase(const WordComplexPtr& target, const WordComplexPtr& adjacent, PhraseMatchStatus& status,
+    void attachAdjacentPhrase(const PhrasePtr& target, const PhrasePtr& adjacent, PhraseMatchStatus& status,
                               bool isLeft);
 
   private:
     /// @brief Reference to simple phrases collection (immutable, set at construction)
-    const std::vector<WordComplexPtr>& m_simplePhrases;
+    const std::vector<PhrasePtr>& m_simplePhrases;
 
     /// @brief Reference to word forms/tokens in current sentence (immutable, set at construction)
     const std::vector<X::WordFormPtr>& m_sentence;
@@ -108,7 +106,7 @@ class PhraseExtender {
     std::shared_ptr<Model> m_currentModel;
 
     /// @brief Pointer to output collection for matched phrases (set at construction, valid for lifetime)
-    std::vector<WordComplexPtr>* m_currentCollection;
+    std::vector<PhrasePtr>* m_currentCollection;
 
     /// @brief Pointer to phrase match status (set at construction, valid for lifetime)
     PhraseMatchStatus* m_currentStatus;
@@ -139,7 +137,7 @@ class PhraseExtender {
      * @param wc Word complex being built (modified in place)
      * @return true if complete pattern found and saved, false if matching failed
      */
-    bool checkWordComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft, const WordComplexPtr& wc);
+    bool checkWordComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft, const PhrasePtr& wc);
 
     /**
      * @brief Processes a nested model component (ModelComp) in recursive expansion
@@ -166,5 +164,5 @@ class PhraseExtender {
      * @param wc Word complex being built (modified in place by attachAdjacentPhrase)
      * @return false always (internal collection is populated, not return value)
      */
-    bool checkModelComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft, const WordComplexPtr& wc);
+    bool checkModelComponentImpl(size_t componentIndex, size_t formIndex, bool isLeft, const PhrasePtr& wc);
 };

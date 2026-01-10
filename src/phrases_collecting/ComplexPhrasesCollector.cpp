@@ -1,6 +1,7 @@
 #include "ComplexPhrasesCollector.h"
 #include "ModelComponent.h"
 #include "Options.h"
+#include "Phrase.h"
 #include "PhraseExtender.h"
 #include "PhraseMatchStatus.h"
 
@@ -10,7 +11,7 @@ void ComplexPhrasesCollector::validateBoundaries() {
     }
 
     // A new container to store only the valid elements after validation
-    std::vector<WordComplexPtr> validatedCollection;
+    std::vector<PhrasePtr> validatedCollection;
 
     for (const auto& it : m_collection) {
         if (it == nullptr) {
@@ -48,7 +49,7 @@ void ComplexPhrasesCollector::validateBoundaries() {
     m_collection = std::move(validatedCollection);
 }
 
-bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const WordComplexPtr& simplePhrase,
+bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const PhrasePtr& simplePhrase,
                                                              const std::shared_ptr<ModelComp>& modelComp,
                                                              PhraseMatchStatus& status) const {
 
@@ -70,8 +71,8 @@ bool ComplexPhrasesCollector::isSimplePhraseMatchesComponent(const WordComplexPt
     return true;
 }
 
-bool ComplexPhrasesCollector::processModelForPhrase(const std::shared_ptr<Model>& model,
-                                                    const WordComplexPtr& simplePhrase, size_t simplePhraseIndex) {
+bool ComplexPhrasesCollector::processModelForPhrase(const std::shared_ptr<Model>& model, const PhrasePtr& simplePhrase,
+                                                    size_t simplePhraseIndex) {
 
     auto componentIndex = model->getModelCompIndByForm(simplePhrase->modelName);
     if (!componentIndex) {
@@ -91,10 +92,10 @@ bool ComplexPhrasesCollector::processModelForPhrase(const std::shared_ptr<Model>
 }
 
 bool ComplexPhrasesCollector::expandPhraseAroundComponent(const std::shared_ptr<Model>& model,
-                                                          const WordComplexPtr& simplePhrase, size_t simplePhraseIndex,
+                                                          const PhrasePtr& simplePhrase, size_t simplePhraseIndex,
                                                           size_t componentIndex, PhraseMatchStatus& status) {
 
-    auto wc = initializeWordComplex(simplePhrase, model->getForm());
+    auto wc = Phrase::createFromPhrase(simplePhrase, model->getForm());
     status.matchedComponents = 1;
 
     // Создаем временный extender с текущим контекстом

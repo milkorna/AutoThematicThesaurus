@@ -1,13 +1,13 @@
 #pragma once
 
-#include "WordComplexCluster.h"
+#include "PhraseCluster.h"
 
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 
 /**
- * @brief Serializes WordComplexCluster objects to JSON format
+ * @brief Serializes PhraseCluster objects to JSON format
  * @details Takes only the data needed, not the whole singleton
  */
 class ClusterSerializer {
@@ -18,7 +18,7 @@ class ClusterSerializer {
      * @param frequency Calculated frequency for the cluster
      * @return JSON object with cluster data
      */
-    [[nodiscard]] nlohmann::ordered_json serializeCluster(const WordComplexCluster& cluster, double frequency) const;
+    [[nodiscard]] nlohmann::ordered_json serializeCluster(const PhraseCluster& cluster, double frequency) const;
 
     /**
      * @brief Serialize collection of clusters
@@ -27,7 +27,7 @@ class ClusterSerializer {
      * @param mergeNested If true, nest clusters with substring keys
      * @return JSON object with all clusters
      */
-    [[nodiscard]] nlohmann::ordered_json serialize(const std::unordered_map<std::string, WordComplexCluster>& clusters,
+    [[nodiscard]] nlohmann::ordered_json serialize(const std::unordered_map<std::string, PhraseCluster>& clusters,
                                                    const std::unordered_map<std::string, double>& frequencies,
                                                    bool mergeNested = false) const;
 
@@ -36,14 +36,14 @@ class ClusterSerializer {
      * @param cluster The cluster with lemmas
      * @return JSON array of lemma objects
      */
-    [[nodiscard]] nlohmann::ordered_json serializeLemmas(const WordComplexCluster& cluster) const;
+    [[nodiscard]] nlohmann::ordered_json serializeLemmas(const PhraseCluster& cluster) const;
 
     /**
      * @brief Serialize word complexes (phrases) in a cluster
      * @param cluster The cluster with phrases
      * @return JSON array of phrase objects
      */
-    [[nodiscard]] nlohmann::ordered_json serializeWordComplexes(const WordComplexCluster& cluster) const;
+    [[nodiscard]] nlohmann::ordered_json serializePhrases(const PhraseCluster& cluster) const;
 
     /**
      * @brief Serialize semantic relations for a lemma
@@ -52,7 +52,7 @@ class ClusterSerializer {
      * @return JSON object with hypernyms and hyponyms
      */
     [[nodiscard]] nlohmann::ordered_json serializeSemanticRelations(const std::string& lemma,
-                                                                    const WordComplexCluster& cluster) const;
+                                                                    const PhraseCluster& cluster) const;
 
   private:
     /**
@@ -63,15 +63,15 @@ class ClusterSerializer {
      * @return JSON object with lemma data
      */
     [[nodiscard]] nlohmann::ordered_json createLemmaObject(const std::string& lemma, size_t index,
-                                                           const WordComplexCluster& cluster) const;
+                                                           const PhraseCluster& cluster) const;
 
     /**
      * @brief Create JSON object for a single phrase (word complex)
-     * @param wordComplex The phrase to serialize
+     * @param phrase The phrase to serialize
      * @param contexts Vector of contexts to search for matching one
      * @return JSON object with phrase data
      */
-    [[nodiscard]] nlohmann::ordered_json createPhraseObject(const WordComplexPtr& wordComplex,
+    [[nodiscard]] nlohmann::ordered_json createPhraseObject(const PhrasePtr& phrase,
                                                             const std::vector<TokenizedSentence>& contexts) const;
 
     /**
@@ -81,6 +81,5 @@ class ClusterSerializer {
      * @return Vector of keys in sorted order (or with nesting structure)
      */
     [[nodiscard]] std::vector<std::string>
-    sortKeysForSerialization(const std::unordered_map<std::string, WordComplexCluster>& clusterMap,
-                             bool mergeNested) const;
+    sortKeysForSerialization(const std::unordered_map<std::string, PhraseCluster>& clusterMap, bool mergeNested) const;
 };

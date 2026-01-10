@@ -1,6 +1,6 @@
 #include "ClusterMerger.h"
-#include "Options.h"
 #include "Logger.h"
+#include "Options.h"
 
 #include <algorithm>
 
@@ -32,7 +32,7 @@ void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff
         std::string& previousKey = sortedKeys[i - 1];
 
         if (areKeysSimilar(previousKey, currentKey) || areKeysSimilar(previousKey, currentKey, 2, 4, true)) {
-            // Move all wordComplexes from the current cluster to the previous cluster
+            // Move all phrases from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
 
@@ -47,9 +47,8 @@ void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff
 
             previousCluster.tagMatch = currentCluster.tagMatch || previousCluster.tagMatch;
 
-            previousCluster.wordComplexes.insert(previousCluster.wordComplexes.end(),
-                                                 currentCluster.wordComplexes.begin(),
-                                                 currentCluster.wordComplexes.end());
+            previousCluster.phrases.insert(previousCluster.phrases.end(), currentCluster.phrases.begin(),
+                                           currentCluster.phrases.end());
 
             // Remove the current cluster after the move
             clusters.erase(currentKey);

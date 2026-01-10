@@ -1,8 +1,8 @@
 #pragma once
 
 #include "LSA.h"
+#include "PhraseCluster.h"
 #include "ThreadController.h"
-#include "WordComplexCluster.h"
 
 #include <filesystem>
 #include <nlohmann/json.hpp>
@@ -47,9 +47,9 @@ class PatternPhrasesStorage {
      * @brief Adds a cluster to the storage
      *
      * @param key Unique identifier for the cluster
-     * @param cluster The WordComplexCluster to store
+     * @param cluster The PhraseCluster to store
      */
-    void addCluster(const std::string& key, const WordComplexCluster& cluster);
+    void addCluster(const std::string& key, const PhraseCluster& cluster);
 
     /**
      * @brief Reserves space for clusters
@@ -64,7 +64,7 @@ class PatternPhrasesStorage {
      * @param key Cluster identifier
      * @return Pointer to the cluster if found, nullptr otherwise
      */
-    [[nodiscard]] WordComplexCluster* findCluster(const std::string& key);
+    [[nodiscard]] PhraseCluster* findCluster(const std::string& key);
 
     /**
      * @brief Associates sentences with their containing clusters
@@ -147,7 +147,7 @@ class PatternPhrasesStorage {
      *
      * @return Const reference to the clusters map
      */
-    [[nodiscard]] const std::unordered_map<std::string, WordComplexCluster> getClusters() const;
+    [[nodiscard]] const std::unordered_map<std::string, PhraseCluster> getClusters() const;
 
     /**
      * @brief Collects and filters terminology candidates from clusters
@@ -176,7 +176,7 @@ class PatternPhrasesStorage {
      * @param config Metric configuration
      * @return Topic relevance score [0, 1]
      */
-    [[nodiscard]] static double calculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+    [[nodiscard]] static double calculateTopicRelevance(const PhraseCluster& cluster, const Eigen::MatrixXd& U,
                                                         const Eigen::MatrixXd& Sigma,
                                                         const std::vector<std::string>& words,
                                                         const LSA_MetricsConfig& config);
@@ -192,7 +192,7 @@ class PatternPhrasesStorage {
      * @param config Metric configuration
      * @return Centrality score [0, 1] or similar scale
      */
-    [[nodiscard]] static double calculateCentrality(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+    [[nodiscard]] static double calculateCentrality(const PhraseCluster& cluster, const Eigen::MatrixXd& U,
                                                     const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
                                                     const LSA_MetricsConfig& config);
 
@@ -204,7 +204,7 @@ class PatternPhrasesStorage {
      * @param topics Map of topic ID to word list
      * @return Proportion of lemmas found in topics [0, 1]
      */
-    [[nodiscard]] double calculateTopicRelevance(const WordComplexCluster& cluster,
+    [[nodiscard]] double calculateTopicRelevance(const PhraseCluster& cluster,
                                                  const std::unordered_map<int, std::vector<std::string>>& topics);
 
     /**
@@ -216,7 +216,7 @@ class PatternPhrasesStorage {
      * @param words Corpus words (row indices)
      * @return Average cosine similarity [-1, 1]
      */
-    [[nodiscard]] double calculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
+    [[nodiscard]] double calculateCentrality(const PhraseCluster& cluster, const MatrixXd& U,
                                              const std::vector<std::string>& words);
 
     /**
@@ -279,6 +279,6 @@ class PatternPhrasesStorage {
     /// @brief Deleted assignment operator to enforce singleton pattern
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
 
-    /// @brief Map of cluster key to WordComplexCluster data
-    std::unordered_map<std::string, WordComplexCluster> clusters;
+    /// @brief Map of cluster key to PhraseCluster data
+    std::unordered_map<std::string, PhraseCluster> clusters;
 };

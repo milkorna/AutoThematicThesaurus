@@ -55,7 +55,7 @@ bool PhraseValidator::validateMorphology(const X::WordFormPtr& token, const Cond
     return false;
 }
 
-bool PhraseValidator::validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const WordComplexPtr& phrase,
+bool PhraseValidator::validateWordComponents(const std::vector<X::WordFormPtr>& sentence, const PhrasePtr& phrase,
                                              const std::shared_ptr<ModelComp>& modelComp, PhraseMatchStatus& status) {
     size_t componentIndex = 0;
 

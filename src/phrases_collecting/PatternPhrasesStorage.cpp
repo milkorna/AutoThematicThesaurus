@@ -10,11 +10,11 @@
 
 using json = nlohmann::json;
 
-void PatternPhrasesStorage::addCluster(const std::string& key, const WordComplexCluster& cluster) {
+void PatternPhrasesStorage::addCluster(const std::string& key, const PhraseCluster& cluster) {
     clusters[key] = cluster;
 }
 
-WordComplexCluster* PatternPhrasesStorage::findCluster(const std::string& key) {
+PhraseCluster* PatternPhrasesStorage::findCluster(const std::string& key) {
     auto it = clusters.find(key);
     if (it != clusters.end()) {
         return &(it->second);
@@ -31,11 +31,11 @@ void PatternPhrasesStorage::addContextsToClusters() {
     auto& corpus = SentenceCorpus::GetCorpus();
 
     for (auto& clusterPair : clusters) {
-        WordComplexCluster& cluster = clusterPair.second;
+        PhraseCluster& cluster = clusterPair.second;
         cluster.contexts.clear();
 
-        for (const auto& wordComplex : cluster.wordComplexes) {
-            const Position& pos = wordComplex->pos;
+        for (const auto& phrase : cluster.phrases) {
+            const Position& pos = phrase->pos;
             const auto sentence = corpus.getSentence(pos.docId, pos.sentNum);
 
             if (sentence.has_value()) {
@@ -51,8 +51,8 @@ bool IsPrefix(const std::string& phrase1Key, const std::string& phrase2Key) {
 }
 
 // Checks exclusion conditions based on TF-IDF and frequency
-bool ShouldExcludeBasedOnTfidfAndFrequency(const WordComplexCluster& phrase1, const WordComplexCluster& phrase2,
-                                           const WordComplexCluster& phrase3) {
+bool ShouldExcludeBasedOnTfidfAndFrequency(const PhraseCluster& phrase1, const PhraseCluster& phrase2,
+                                           const PhraseCluster& phrase3) {
     // Check TF-IDF conditions for phrase1 and phrase2
     bool tfidfCondition =
         !phrase1.tfidf.empty() && !phrase3.tfidf.empty() && phrase1.tfidf[0] < 0.0005 && phrase3.tfidf.back() > 0.0005;
@@ -115,7 +115,7 @@ void PatternPhrasesStorage::initializeAndFilterClusters(double tfidfThreshold, s
 
     for (const auto& pair : clusters) {
         const std::string& key = pair.first;
-        const WordComplexCluster& cluster = pair.second;
+        const PhraseCluster& cluster = pair.second;
 
         std::vector<std::string> words = Split(key);
         bool hasRomanNumerals = false;
@@ -262,7 +262,7 @@ void PatternPhrasesStorage::evaluateTermRelevance(const LSA& lsa) {
     }
 }
 
-const std::unordered_map<std::string, WordComplexCluster> PatternPhrasesStorage::getClusters() const {
+const std::unordered_map<std::string, PhraseCluster> PatternPhrasesStorage::getClusters() const {
     return clusters;
 }
 
@@ -288,7 +288,7 @@ void ApplyTopicFrequencyPenalty(std::unordered_map<std::string, std::vector<std:
     }
 }
 
-double PatternPhrasesStorage::calculateTopicRelevance(const WordComplexCluster& cluster,
+double PatternPhrasesStorage::calculateTopicRelevance(const PhraseCluster& cluster,
                                                       const std::unordered_map<int, std::vector<std::string>>& topics) {
     double relevanceScore = 0.0;
 
@@ -309,7 +309,7 @@ double PatternPhrasesStorage::calculateTopicRelevance(const WordComplexCluster& 
     return relevanceScore;
 }
 
-double PatternPhrasesStorage::calculateCentrality(const WordComplexCluster& cluster, const MatrixXd& U,
+double PatternPhrasesStorage::calculateCentrality(const PhraseCluster& cluster, const MatrixXd& U,
                                                   const std::vector<std::string>& words) {
     double centralityScore = 0.0;
 
@@ -364,7 +364,7 @@ void PatternPhrasesStorage::calculateLSAMetrics(const MatrixXd& U, const std::ve
  * - Determines which component in this vector is the largest modulo and counts ratio = max^2 / sumOfSquares.
  * - Summarizes the ratio for all lemmas and take the average.
  */
-double PatternPhrasesStorage::calculateTopicRelevance(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+double PatternPhrasesStorage::calculateTopicRelevance(const PhraseCluster& cluster, const Eigen::MatrixXd& U,
                                                       const Eigen::MatrixXd& Sigma,
                                                       const std::vector<std::string>& words,
                                                       const LSA_MetricsConfig& config) {
@@ -426,7 +426,7 @@ double PatternPhrasesStorage::calculateTopicRelevance(const WordComplexCluster& 
  * 3) For each lemma, the similarity (or distance) to the centroid is read.
  * 4) Cluster average = centrality
  */
-double PatternPhrasesStorage::calculateCentrality(const WordComplexCluster& cluster, const Eigen::MatrixXd& U,
+double PatternPhrasesStorage::calculateCentrality(const PhraseCluster& cluster, const Eigen::MatrixXd& U,
                                                   const Eigen::MatrixXd& Sigma, const std::vector<std::string>& words,
                                                   const LSA_MetricsConfig& config) {
     // Сколько используем компонент
@@ -564,7 +564,7 @@ void PatternPhrasesStorage::loadWikiWNRelations() {
     auto& options = Options::getOptions();
 
     for (auto& clusterPair : clusters) {
-        WordComplexCluster& cluster = clusterPair.second;
+        PhraseCluster& cluster = clusterPair.second;
         std::cout << cluster.key << std::endl;
 
         for (auto lemma : cluster.lemmas) {
@@ -609,7 +609,7 @@ void PatternPhrasesStorage::saveClusters(const std::string& filename, bool merge
     Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
 
     // Определяем какие кластеры сохранять
-    std::unordered_map<std::string, WordComplexCluster> clustersToSave;
+    std::unordered_map<std::string, PhraseCluster> clustersToSave;
 
     if (termsOnly) {
         // Сохраняем только термины
@@ -629,7 +629,7 @@ void PatternPhrasesStorage::saveClusters(const std::string& filename, bool merge
     std::unordered_map<std::string, double> frequencies;
     const auto divisor = static_cast<double>(options.totalDocuments);
     for (const auto& [key, cluster] : clustersToSave) {
-        frequencies[key] = static_cast<double>(cluster.wordComplexes.size()) / divisor;
+        frequencies[key] = static_cast<double>(cluster.phrases.size()) / divisor;
     }
 
     // Сериализуем с помощью ClusterSerializer

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "WordComplex.h"
+#include "Phrase.h"
 
 #include <filesystem>
 #include <nlohmann/json.hpp>
@@ -57,7 +57,7 @@ class Process {
      *
      * @param phrases Vector of extracted word complexes to serialize
      */
-    void outputResults(const std::vector<WordComplexPtr>& phrases);
+    void outputResults(const std::vector<PhrasePtr>& phrases);
 
     /**
      * @brief Increments sentence number for next sentence processing

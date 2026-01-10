@@ -21,8 +21,8 @@ static bool HaveSpHead(const std::unordered_set<X::MorphInfo>& currFormMorphInfo
     return false;
 }
 
-bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, const std::shared_ptr<Model>& model,
-                                        size_t compIndex, size_t tokenInd, size_t& correct, const bool isLeft) {
+bool SimplePhrasesCollector::checkAside(const PhrasePtr& wc, const std::shared_ptr<Model>& model, size_t compIndex,
+                                        size_t tokenInd, size_t& correct, const bool isLeft) {
     auto& options = Options::getOptions();
     const auto& comp = std::dynamic_pointer_cast<WordComp>(model->getComponents()[compIndex]);
     const auto& token = m_sentence[tokenInd];
@@ -31,9 +31,15 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
     }
 
     const std::string formFromText = token->getWordForm().getRawString();
-    if (!comp->condition().check(comp->getSPTag(), token))
+    if (!comp->condition().check(comp->getSPTag(), token)) {
         return false;
-    updateWordComplex(wc, token, formFromText, isLeft);
+    }
+
+    if (isLeft) {
+        wc->addWordToLeft(token);
+    } else {
+        wc->addWordToRight(token);
+    }
 
     ++correct;
     const size_t nextCompIndex = isLeft ? compIndex - 1 : compIndex + 1;
@@ -45,7 +51,7 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
         }
 
     } else {
-        m_collection.push_back(std::make_shared<WordComplex>(*wc));
+        m_collection.push_back(std::make_shared<Phrase>(*wc));
         if (comp->isRec() && ((isLeft && tokenInd > 0) || (!isLeft && tokenInd < m_sentence.size() - 1))) {
             if (checkAside(wc, model, compIndex, nextTokenInd, correct, isLeft)) {
                 return true;
@@ -59,8 +65,7 @@ bool SimplePhrasesCollector::checkAside(const std::shared_ptr<WordComplex>& wc, 
 }
 
 void SimplePhrasesCollector::collect(Process& process) {
-    const auto& patterns = GrammarPatternManager::GetManager();
-    const auto& simplePatterns = patterns.getSimplePatterns();
+    const auto& simplePatterns = GrammarPatternManager::GetManager().getSimplePatterns();
 
     for (size_t tokenInd = 0; tokenInd < m_sentence.size(); tokenInd++) {
         const auto token = m_sentence[tokenInd];
@@ -79,7 +84,7 @@ void SimplePhrasesCollector::collect(Process& process) {
             const size_t headPos = *model->getHeadPos();
             size_t correct = 0;
 
-            WordComplexPtr wc = initializeWordComplex(tokenInd, token, model->getForm(), process);
+            auto wc = Phrase::createFromToken(tokenInd, token, model->getForm(), process);
             ++correct;
 
             if (headPos != 0 && tokenInd != 0 && checkAside(wc, model, headPos - 1, tokenInd - 1, correct, true)) {
