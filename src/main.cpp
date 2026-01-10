@@ -24,7 +24,7 @@ auto& options = Options::getOptions();
 static void printUsage(const po::options_description& desc) {
     std::cout << "Usage: myprogram <command> [options]\n\n";
     std::cout << "Commands:\n";
-    std::cout << "  collect_phrases           Collect phrases for each text, save phrase storage.\n";
+    std::cout << "  process_corpus           Collect phrases for each text, save phrase storage.\n";
     std::cout << "  filter_corpus             Remove invalid words and sentences from the corpus data and save.\n";
     std::cout << "  compute_text_metrics      Merge identical clusters and compute text metrics: tf, idf, tf-idf, "
                  "tag_match. Inicialize topic_relevance and centrality score.\n";
@@ -157,8 +157,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 #else
-    // Хардкод для отладки: выполняем collect_phrases с заданными опциями
-    std::string command = "collect_phrases";
+    // Хардкод для отладки: выполняем process_corpus с заданными опциями
+    std::string command = "filter_corpus";
     std::vector<std::string> opts = {
         // "--patterns-file",
         // "/abs/path/to/patterns.json",
@@ -198,7 +198,7 @@ int main(int argc, char** argv) {
 
     // Execute command
     try {
-        if (command == "collect_phrases") {
+        if (command == "process_corpus") {
             Logger::log("Main", LogLevel::Info, "Starting phrase collection...");
             fs::path patternsPath = options.patternsFile;
             auto& patternManager = GrammarPatternManager::GetManager();

@@ -30,7 +30,7 @@ class RawTextProcessorTest : public ::testing::Test {
         testOutputDir = testDataDir / "rtp_test_output";
         fs::create_directories(testOutputDir);
 
-        std::string logFilePath = (testOutputDir / "collect_phrases_test_logs.txt").string();
+        std::string logFilePath = (testOutputDir / "process_corpus_test_logs.txt").string();
         Logger::initializeLogFile(logFilePath);
 
         // Initialize Options singleton with test paths
