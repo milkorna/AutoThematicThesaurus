@@ -81,15 +81,6 @@ class PhraseAggregator {
     [[nodiscard]] static PhrasePtr deserializePhraseFromJson(const json& obj);
 
     /**
-     * @brief Creates cluster key from lemmas
-     * @details Joins lemmas with space separator.
-     *
-     * @param lemmas Vector of lemma strings
-     * @return Space-separated key (e.g., "географический название")
-     */
-    [[nodiscard]] static std::string createKeyFromLemmas(const std::vector<std::string>& lemmas);
-
-    /**
      * @brief Creates new cluster from phrase
      * @details Initializes PhraseCluster with phrase data (lemmas with metrics, model, phrase itself).
      * Leaves all metric values at default (0.0).

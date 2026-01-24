@@ -65,7 +65,17 @@ void PhraseAggregator::saveClusters(const std::unordered_map<std::string, Phrase
 
     json outputJson = json::object();
 
-    for (const auto& [key, cluster] : clusters) {
+    // Sort clusters by key for consistent output
+    std::vector<std::string> sortedKeys;
+    sortedKeys.reserve(clusters.size());
+    for (const auto& [key, _] : clusters) {
+        sortedKeys.push_back(key);
+    }
+    std::sort(sortedKeys.begin(), sortedKeys.end());
+
+    // Process clusters in sorted order
+    for (const auto& key : sortedKeys) {
+        const auto& cluster = clusters.at(key);
         json clusterJson = json::object();
 
         // Basic cluster metadata
@@ -101,7 +111,6 @@ void PhraseAggregator::saveClusters(const std::unordered_map<std::string, Phrase
             phraseJson["end_token_ind"] = phrase->pos.end;
             phraseJson["charStart"] = phrase->pos.charStart;
             phraseJson["charEnd"] = phrase->pos.charEnd;
-            phraseJson["modelName"] = phrase->modelName;
             phrasesJson.push_back(phraseJson);
         }
         clusterJson["phrases"] = phrasesJson;
@@ -180,13 +189,21 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
     // Process each phrase result
     for (const auto& obj : j) {
         try {
+            // Get key directly from JSON (no need to reconstruct from lemmas)
+            if (!obj.contains("key") || !obj["key"].is_string()) {
+                Logger::log("PhraseAggregator", LogLevel::Debug, "Skipped phrase: missing 'key' field");
+                continue;
+            }
+
+            std::string key = obj["key"].get<std::string>();
+
             // Deserialize phrase
             PhrasePtr phrase = deserializePhraseFromJson(obj);
             if (!phrase) {
                 continue; // Skip invalid phrase
             }
 
-            // Extract lemmas and create key
+            // Extract lemmas for cluster structure
             std::vector<std::string> lemmas;
             if (obj.contains("lemmas") && obj["lemmas"].is_array()) {
                 for (const auto& lemma : obj["lemmas"]) {
@@ -197,10 +214,9 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
             }
 
             if (lemmas.empty()) {
-                continue; // Skip if no lemmas
+                Logger::log("PhraseAggregator", LogLevel::Debug, "Skipped phrase: empty lemmas for key " + key);
+                continue;
             }
-
-            std::string key = createKeyFromLemmas(lemmas);
 
             // Add to cluster or create new one
             auto it = clusters.find(key);
@@ -252,7 +268,7 @@ PhrasePtr PhraseAggregator::deserializePhraseFromJson(const json& obj) {
         phrase->textForm = obj["textForm"].get<std::string>();
         phrase->modelName = obj["modelName"].get<std::string>();
 
-        // Lemmas (note: we don't have word forms from JSON, just lemmas)
+        // Lemmas
         for (const auto& lemmaObj : obj["lemmas"]) {
             if (lemmaObj.is_string()) {
                 phrase->lemmas.push_back(lemmaObj.get<std::string>());
@@ -265,16 +281,6 @@ PhrasePtr PhraseAggregator::deserializePhraseFromJson(const json& obj) {
         Logger::log("PhraseAggregator", LogLevel::Debug, "Error deserializing phrase: " + std::string(e.what()));
         return nullptr;
     }
-}
-
-std::string PhraseAggregator::createKeyFromLemmas(const std::vector<std::string>& lemmas) {
-    std::string key;
-    for (size_t i = 0; i < lemmas.size(); ++i) {
-        if (i > 0)
-            key += " ";
-        key += lemmas[i];
-    }
-    return key;
 }
 
 PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
