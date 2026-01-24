@@ -1,7 +1,6 @@
 #include "PhraseAggregator.h"
 
 #include "Logger.h"
-#include "PhraseCluster.h"
 
 #include <algorithm>
 #include <fstream>
@@ -79,18 +78,17 @@ void PhraseAggregator::saveClusters(const std::unordered_map<std::string, Phrase
         clusterJson["tagMatch"] = cluster.tagMatch;
         clusterJson["is_term"] = cluster.is_term;
 
-        // Lemmas
-        clusterJson["lemmas"] = cluster.lemmas;
-
-        // Metrics (all zero initially - will be computed by separate tools)
-        clusterJson["tf"] = cluster.tf;
-        clusterJson["idf"] = cluster.idf;
-        clusterJson["tfidf"] = cluster.tfidf;
-
-        // Semantic relations
-        // clusterJson["hypernyms"] = cluster.hypernyms;
-        // clusterJson["hyponyms"] = cluster.hyponyms;
-        // clusterJson["synonyms"] = json::array(cluster.synonyms.begin(), cluster.synonyms.end());
+        // Lemmas with their metrics
+        json lemmasJson = json::array();
+        for (const auto& lemmaMetrics : cluster.lemmas) {
+            json lemmaJson = json::object();
+            lemmaJson["text"] = lemmaMetrics.text;
+            lemmaJson["tf"] = lemmaMetrics.tf;
+            lemmaJson["idf"] = lemmaMetrics.idf;
+            lemmaJson["tfidf"] = lemmaMetrics.tfidf;
+            lemmasJson.push_back(lemmaJson);
+        }
+        clusterJson["lemmas"] = lemmasJson;
 
         // Phrases (array of phrase occurrences)
         json phrasesJson = json::array();
@@ -203,6 +201,7 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
             }
 
             std::string key = createKeyFromLemmas(lemmas);
+
             // Add to cluster or create new one
             auto it = clusters.find(key);
             if (it != clusters.end()) {
@@ -210,7 +209,7 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
                 it->second.phrases.push_back(phrase);
             } else {
                 // Create new cluster
-                PhraseCluster newCluster = createClusterFromPhrase(key, phrase);
+                PhraseCluster newCluster = createClusterFromPhrase(key, phrase, lemmas);
                 clusters[key] = newCluster;
             }
 
@@ -278,14 +277,24 @@ std::string PhraseAggregator::createKeyFromLemmas(const std::vector<std::string>
     return key;
 }
 
-PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase) {
+PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
+                                                        const std::vector<std::string>& lemmas) {
     PhraseCluster cluster;
 
     // Basic properties
     cluster.key = key;
     cluster.modelName = phrase->modelName;
-    cluster.phraseSize = phrase->lemmas.size();
-    cluster.lemmas = std::vector<std::string>(phrase->lemmas.begin(), phrase->lemmas.end());
+    cluster.phraseSize = lemmas.size();
+
+    // Initialize lemmas with metrics
+    for (const auto& lemma : lemmas) {
+        LemmaMetrics lm;
+        lm.text = lemma;
+        lm.tf = 0.0;
+        lm.idf = 0.0;
+        lm.tfidf = 0.0;
+        cluster.lemmas.push_back(lm);
+    }
 
     // Default metrics (will be computed by separate tools)
     cluster.frequency = 0.0;
@@ -294,13 +303,8 @@ PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, 
     cluster.tagMatch = false;
     cluster.is_term = false;
 
-    // Initialize metric vectors
-    cluster.tf.resize(cluster.phraseSize, 0.0);
-    cluster.idf.resize(cluster.phraseSize, 0.0);
-    cluster.tfidf.resize(cluster.phraseSize, 0.0);
-
     // Initialize semantic relation maps
-    for (const auto& lemma : cluster.lemmas) {
+    for (const auto& lemma : lemmas) {
         cluster.hypernyms[lemma] = {};
         cluster.hyponyms[lemma] = {};
     }

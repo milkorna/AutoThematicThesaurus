@@ -91,12 +91,14 @@ class PhraseAggregator {
 
     /**
      * @brief Creates new cluster from phrase
-     * @details Initializes PhraseCluster with phrase data (lemmas, model, phrase itself).
-     * Leaves all metrics fields at default (0.0, empty vectors, etc.).
+     * @details Initializes PhraseCluster with phrase data (lemmas with metrics, model, phrase itself).
+     * Leaves all metric values at default (0.0).
      *
      * @param key Cluster key (space-separated lemmas)
      * @param phrase The phrase to initialize cluster with
+     * @param lemmas Vector of lemma texts
      * @return New PhraseCluster ready for storage
      */
-    [[nodiscard]] static PhraseCluster createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase);
+    [[nodiscard]] static PhraseCluster createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
+                                                               const std::vector<std::string>& lemmas);
 };
