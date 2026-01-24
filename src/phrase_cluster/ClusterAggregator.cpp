@@ -1,13 +1,12 @@
-#include "PhraseAggregator.h"
-
+#include "ClusterAggregator.h"
 #include "Logger.h"
 
 #include <algorithm>
 #include <fstream>
 #include <ranges>
 
-std::unordered_map<std::string, PhraseCluster> PhraseAggregator::aggregatePhrases(const fs::path& resultsDir) {
-    Logger::log("PhraseAggregator", LogLevel::Info, "Starting phrase aggregation from: " + resultsDir.string());
+std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromResultsDirectory(const fs::path& resultsDir) {
+    Logger::log("ClusterAggregator", LogLevel::Info, "Starting cluster aggregation from: " + resultsDir.string());
 
     std::unordered_map<std::string, PhraseCluster> clusters;
 
@@ -15,45 +14,87 @@ std::unordered_map<std::string, PhraseCluster> PhraseAggregator::aggregatePhrase
         throw std::runtime_error("Results directory does not exist or is not a directory: " + resultsDir.string());
     }
 
-    // Get all result files
     auto resultFiles = getResultFilesFromDirectory(resultsDir);
-    Logger::log("PhraseAggregator", LogLevel::Info, "Found " + std::to_string(resultFiles.size()) + " result files");
+    Logger::log("ClusterAggregator", LogLevel::Info, "Found " + std::to_string(resultFiles.size()) + " result files");
 
     if (resultFiles.empty()) {
-        Logger::log("PhraseAggregator", LogLevel::Warning, "No result files found in directory");
+        Logger::log("ClusterAggregator", LogLevel::Warning, "No result files found in directory");
         return clusters;
     }
 
-    // Load each result file
     size_t totalPhrases = 0;
     for (const auto& filePath : resultFiles) {
         try {
             auto phraseCountBefore = countPhrases(clusters);
-
             loadResultFile(filePath, clusters);
-
             auto phraseCountAfter = countPhrases(clusters);
             auto phrasesAdded = phraseCountAfter - phraseCountBefore;
             totalPhrases += phrasesAdded;
 
-            Logger::log("PhraseAggregator", LogLevel::Debug,
+            Logger::log("ClusterAggregator", LogLevel::Debug,
                         "Loaded " + std::to_string(phrasesAdded) + " phrases from " + filePath.filename().string());
         } catch (const std::exception& e) {
-            Logger::log("PhraseAggregator", LogLevel::Warning,
+            Logger::log("ClusterAggregator", LogLevel::Warning,
                         "Error loading file " + filePath.string() + ": " + std::string(e.what()));
         }
     }
 
-    Logger::log("PhraseAggregator", LogLevel::Info,
+    Logger::log("ClusterAggregator", LogLevel::Info,
                 "Aggregation completed: " + std::to_string(clusters.size()) + " clusters with " +
                     std::to_string(totalPhrases) + " total phrases");
 
     return clusters;
 }
 
-void PhraseAggregator::saveClusters(const std::unordered_map<std::string, PhraseCluster>& clusters,
-                                    const fs::path& outputPath) {
-    Logger::log("PhraseAggregator", LogLevel::Info, "Saving clusters to: " + outputPath.string());
+std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromJsonFile(const fs::path& filePath) {
+    Logger::log("ClusterAggregator", LogLevel::Info, "Loading clusters from JSON file: " + filePath.string());
+
+    std::unordered_map<std::string, PhraseCluster> clusters;
+
+    if (!fs::exists(filePath)) {
+        throw std::runtime_error("Clusters file not found: " + filePath.string());
+    }
+
+    std::ifstream file(filePath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Cannot open clusters file: " + filePath.string());
+    }
+
+    json j;
+    try {
+        file >> j;
+    } catch (const json::exception& e) {
+        throw std::runtime_error("Invalid JSON in clusters file " + filePath.string() + ": " + std::string(e.what()));
+    }
+    file.close();
+
+    if (!j.is_object()) {
+        throw std::runtime_error("Expected JSON object in clusters file, got " + std::string(j.type_name()));
+    }
+
+    Logger::log("ClusterAggregator", LogLevel::Debug, "Found " + std::to_string(j.size()) + " clusters in file");
+
+    size_t successCount = 0;
+    for (auto& [key, clusterJson] : j.items()) {
+        try {
+            clusters[key] = deserializeClusterFromJson(key, clusterJson);
+            successCount++;
+
+            Logger::log("ClusterAggregator", LogLevel::Debug, "Loaded cluster: " + key);
+        } catch (const std::exception& e) {
+            Logger::log("ClusterAggregator", LogLevel::Warning,
+                        "Failed to load cluster '" + key + "': " + std::string(e.what()));
+        }
+    }
+
+    Logger::log("ClusterAggregator", LogLevel::Info, "Loaded " + std::to_string(successCount) + " clusters from file");
+
+    return clusters;
+}
+
+void ClusterAggregator::saveClusters(const std::unordered_map<std::string, PhraseCluster>& clusters,
+                                     const fs::path& outputPath) {
+    Logger::log("ClusterAggregator", LogLevel::Info, "Saving clusters to: " + outputPath.string());
 
     json outputJson = json::object();
 
@@ -69,7 +110,7 @@ void PhraseAggregator::saveClusters(const std::unordered_map<std::string, Phrase
         const auto& cluster = clusters.at(key);
         json clusterJson = json::object();
 
-        // Basic cluster metadata
+        // Basic cluster metadata (note: key is implicit in JSON object key)
         clusterJson["modelName"] = cluster.modelName;
         clusterJson["phraseSize"] = cluster.phraseSize;
         clusterJson["frequency"] = cluster.frequency;
@@ -117,11 +158,11 @@ void PhraseAggregator::saveClusters(const std::unordered_map<std::string, Phrase
     outFile << outputJson.dump(4) << "\n";
     outFile.close();
 
-    Logger::log("PhraseAggregator", LogLevel::Info,
+    Logger::log("ClusterAggregator", LogLevel::Info,
                 "Saved " + std::to_string(clusters.size()) + " clusters to " + outputPath.filename().string());
 }
 
-std::vector<fs::path> PhraseAggregator::getResultFilesFromDirectory(const fs::path& resultsDir) {
+std::vector<fs::path> ClusterAggregator::getResultFilesFromDirectory(const fs::path& resultsDir) {
     if (!fs::exists(resultsDir)) {
         throw std::runtime_error("Results directory does not exist: " + resultsDir.string());
     }
@@ -135,22 +176,22 @@ std::vector<fs::path> PhraseAggregator::getResultFilesFromDirectory(const fs::pa
     try {
         for (const auto& entry : fs::directory_iterator(resultsDir)) {
             if (entry.is_regular_file()) {
-                const auto& filename = entry.path().filename().string();
+                const std::string& filename = entry.path().filename().string();
                 if (filename.ends_with("_res.json")) {
                     resultFiles.push_back(entry.path());
                 }
             }
         }
-
-        std::ranges::sort(resultFiles);
-        return resultFiles;
     } catch (const fs::filesystem_error& e) {
         throw std::runtime_error("Failed to iterate results directory: " + std::string(e.what()));
     }
+
+    std::ranges::sort(resultFiles);
+    return resultFiles;
 }
 
-void PhraseAggregator::loadResultFile(const fs::path& filePath,
-                                      std::unordered_map<std::string, PhraseCluster>& clusters) {
+void ClusterAggregator::loadResultFile(const fs::path& filePath,
+                                       std::unordered_map<std::string, PhraseCluster>& clusters) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
         throw std::runtime_error("Cannot open file: " + filePath.string());
@@ -164,25 +205,21 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
     }
 
     if (!j.is_array()) {
-        Logger::log("PhraseAggregator", LogLevel::Warning, "Expected JSON array in result file: " + filePath.string());
+        Logger::log("ClusterAggregator", LogLevel::Warning, "Expected JSON array in result file: " + filePath.string());
         return;
     }
 
-    Logger::log("PhraseAggregator", LogLevel::Debug,
+    Logger::log("ClusterAggregator", LogLevel::Debug,
                 "Processing " + std::to_string(j.size()) + " phrases from " + filePath.filename().string());
 
-    // Process each phrase result
     for (const auto& obj : j) {
         try {
-            // Get key directly from JSON
             if (!obj.contains("key") || !obj["key"].is_string()) {
-                Logger::log("PhraseAggregator", LogLevel::Debug, "Skipped phrase: missing 'key' field");
+                Logger::log("ClusterAggregator", LogLevel::Debug, "Skipped phrase: missing 'key' field");
                 continue;
             }
 
             std::string key = obj["key"].get<std::string>();
-
-            // Deserialize phrase
             auto phrase = deserializePhraseFromJson(obj);
             if (!phrase) {
                 continue;
@@ -199,7 +236,7 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
             }
 
             if (lemmas.empty()) {
-                Logger::log("PhraseAggregator", LogLevel::Debug, "Skipped phrase: empty lemmas for key " + key);
+                Logger::log("ClusterAggregator", LogLevel::Debug, "Skipped phrase: empty lemmas for key " + key);
                 continue;
             }
 
@@ -211,12 +248,12 @@ void PhraseAggregator::loadResultFile(const fs::path& filePath,
             }
 
         } catch (const std::exception& e) {
-            Logger::log("PhraseAggregator", LogLevel::Debug, "Skipped phrase due to error: " + std::string(e.what()));
+            Logger::log("ClusterAggregator", LogLevel::Debug, "Skipped phrase due to error: " + std::string(e.what()));
         }
     }
 }
 
-PhrasePtr PhraseAggregator::deserializePhraseFromJson(const json& obj) {
+PhrasePtr ClusterAggregator::deserializePhraseFromJson(const json& obj) {
     try {
         if (!obj.contains("textForm") || !obj["textForm"].is_string()) {
             return nullptr;
@@ -249,7 +286,6 @@ PhrasePtr PhraseAggregator::deserializePhraseFromJson(const json& obj) {
         phrase->textForm = obj["textForm"].get<std::string>();
         phrase->modelName = obj["modelName"].get<std::string>();
 
-        // Lemmas
         for (const auto& lemmaObj : obj["lemmas"]) {
             if (lemmaObj.is_string()) {
                 phrase->lemmas.push_back(lemmaObj.get<std::string>());
@@ -259,13 +295,80 @@ PhrasePtr PhraseAggregator::deserializePhraseFromJson(const json& obj) {
         return phrase;
 
     } catch (const std::exception& e) {
-        Logger::log("PhraseAggregator", LogLevel::Debug, "Error deserializing phrase: " + std::string(e.what()));
+        Logger::log("ClusterAggregator", LogLevel::Debug, "Error deserializing phrase: " + std::string(e.what()));
         return nullptr;
     }
 }
 
-PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
-                                                        const std::vector<std::string>& lemmas) {
+PhraseCluster ClusterAggregator::deserializeClusterFromJson(const std::string& key, const json& clusterJson) {
+    PhraseCluster cluster;
+    cluster.key = key;
+
+    if (!clusterJson.contains("modelName") || !clusterJson["modelName"].is_string()) {
+        throw std::runtime_error("Missing or invalid 'modelName' field");
+    }
+    if (!clusterJson.contains("lemmas") || !clusterJson["lemmas"].is_array()) {
+        throw std::runtime_error("Missing or invalid 'lemmas' array");
+    }
+    if (!clusterJson.contains("phrases") || !clusterJson["phrases"].is_array()) {
+        throw std::runtime_error("Missing or invalid 'phrases' array");
+    }
+
+    cluster.modelName = clusterJson["modelName"].get<std::string>();
+    cluster.phraseSize = clusterJson.value("phraseSize", 0);
+    cluster.frequency = clusterJson.value("frequency", 0.0);
+    cluster.topicRelevance = clusterJson.value("topicRelevance", 0.0);
+    cluster.centralityScore = clusterJson.value("centralityScore", 0.0);
+    cluster.tagMatch = clusterJson.value("tagMatch", false);
+    cluster.is_term = clusterJson.value("is_term", false);
+
+    cluster.lemmas.reserve(clusterJson["lemmas"].size());
+    for (const auto& lemmaJson : clusterJson["lemmas"]) {
+        try {
+            cluster.lemmas.push_back(deserializeLemmaFromJson(lemmaJson));
+        } catch (const std::exception& e) {
+            Logger::log("ClusterAggregator", LogLevel::Debug,
+                        "Skipped invalid lemma in cluster '" + key + "': " + std::string(e.what()));
+        }
+    }
+
+    if (cluster.lemmas.empty()) {
+        throw std::runtime_error("No valid lemmas found");
+    }
+
+    cluster.phrases.reserve(clusterJson["phrases"].size());
+    for (const auto& phraseJson : clusterJson["phrases"]) {
+        try {
+            auto phrase = deserializePhraseFromJson(phraseJson);
+            if (phrase) {
+                cluster.phrases.push_back(phrase);
+            }
+        } catch (const std::exception& e) {
+            Logger::log("ClusterAggregator", LogLevel::Debug,
+                        "Skipped invalid phrase in cluster '" + key + "': " + std::string(e.what()));
+        }
+    }
+
+    if (cluster.phrases.empty()) {
+        throw std::runtime_error("No valid phrases found");
+    }
+
+    return cluster;
+}
+
+LemmaMetrics ClusterAggregator::deserializeLemmaFromJson(const json& lemmaJson) {
+    if (!lemmaJson.contains("text") || !lemmaJson["text"].is_string()) {
+        throw std::runtime_error("Missing or invalid 'text' field in lemma");
+    }
+
+    return LemmaMetrics{.text = lemmaJson["text"].get<std::string>(),
+                        .tf = lemmaJson.value("tf", 0.0),
+                        .idf = lemmaJson.value("idf", 0.0),
+                        .tfidf = lemmaJson.value("tfidf", 0.0)};
+}
+
+PhraseCluster ClusterAggregator::createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
+                                                         const std::vector<std::string>& lemmas) {
     PhraseCluster cluster;
 
     // Basic properties
@@ -297,7 +400,7 @@ PhraseCluster PhraseAggregator::createClusterFromPhrase(const std::string& key, 
     return cluster;
 }
 
-size_t PhraseAggregator::countPhrases(const std::unordered_map<std::string, PhraseCluster>& clusters) {
+inline size_t ClusterAggregator::countPhrases(const std::unordered_map<std::string, PhraseCluster>& clusters) {
     size_t total = 0;
     for (const auto& [_, cluster] : clusters) {
         total += cluster.phrases.size();
