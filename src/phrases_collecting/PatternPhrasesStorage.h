@@ -30,14 +30,6 @@ class PatternPhrasesStorage {
     }
 
     /**
-     * @brief Processes input file and outputs results to specified directory
-     *
-     * @param inputFile Path to the input file
-     * @param outputDir Path to output directory
-     */
-    void processFile(const std::filesystem::path& inputFile, const std::filesystem::path& outputDir);
-
-    /**
      * @brief Builds and finalizes the phrase storage
      * @details Performs post-processing operations on collected phrases
      */
@@ -115,19 +107,6 @@ class PatternPhrasesStorage {
      */
     void calculateLSAMetrics(const MatrixXd& U, const std::vector<std::string>& words,
                              const std::unordered_map<int, std::vector<std::string>>& topics);
-
-    /**
-     * @brief Saves clusters to JSON file with optional filtering and nesting
-     * @details Serializes clusters to JSON format with configurable output options
-     *
-     * @param filename Path to output JSON file
-     * @param mergeNestedClusters If true, nests clusters whose keys are prefixes of other keys
-     * @param termsOnly If true, saves only terminology candidates (from clustersToInclude);
-     *                  if false, saves all clusters
-     *
-     * @throws std::runtime_error If file cannot be written
-     */
-    void saveClusters(const std::string& filename, bool mergeNestedClusters = false, bool termsOnly = false) const;
 
     /**
      * @brief Loads hypernym and hyponym relations from WikiWordNet database

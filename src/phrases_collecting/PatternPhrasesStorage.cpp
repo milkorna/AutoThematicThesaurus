@@ -1,5 +1,4 @@
 #include "PatternPhrasesStorage.h"
-#include "ClusterSerializer.h"
 #include "CorpusVocabulary.h"
 #include "Logger.h"
 #include "Options.h"
@@ -603,48 +602,4 @@ void PatternPhrasesStorage::loadWikiWNRelations() {
             }
         }
     }
-}
-
-void PatternPhrasesStorage::saveClusters(const std::string& filename, bool mergeNestedClusters, bool termsOnly) const {
-    Logger::log("PhrasesStorage", LogLevel::Info, "Outputting clusters to JSON file: " + filename);
-
-    // Определяем какие кластеры сохранять
-    std::unordered_map<std::string, PhraseCluster> clustersToSave;
-
-    if (termsOnly) {
-        // Сохраняем только термины
-        for (const auto& key : clustersToInclude) {
-            if (clusters.contains(key)) {
-                clustersToSave[key] = clusters.at(key);
-            }
-        }
-    } else {
-        // Сохраняем все кластеры
-        clustersToSave = clusters;
-    }
-
-    auto& options = Options::getOptions();
-
-    // Вычисляем частоты
-    std::unordered_map<std::string, double> frequencies;
-    const auto divisor = static_cast<double>(options.totalDocuments);
-    for (const auto& [key, cluster] : clustersToSave) {
-        frequencies[key] = static_cast<double>(cluster.phrases.size()) / divisor;
-    }
-
-    // Сериализуем с помощью ClusterSerializer
-    ClusterSerializer serializer;
-    json j = serializer.serialize(clustersToSave, frequencies, mergeNestedClusters);
-
-    // Сохраняем в файл
-    std::ofstream outFile(filename);
-    if (!outFile.is_open()) {
-        throw std::runtime_error("Could not open file for writing: " + filename);
-    }
-
-    outFile << j.dump(4);
-    outFile.close();
-
-    Logger::log("PhrasesStorage", LogLevel::Info,
-                "Successfully saved " + std::to_string(clustersToSave.size()) + " clusters to " + filename);
 }
