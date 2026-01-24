@@ -6,7 +6,7 @@
 #include "Logger.h"
 #include "PathUtils.h"
 #include "PatternPhrasesStorage.h"
-#include "PhrasesStorageLoader.h"
+#include "PhraseAggregator.h"
 #include "RawDataLoader.h"
 #include "RawTextProcessor.h"
 #include "SentenceCorpus.h"
@@ -158,7 +158,7 @@ int main(int argc, char** argv) {
     }
 #else
     // Хардкод для отладки: выполняем process_corpus с заданными опциями
-    std::string command = "filter_corpus";
+    std::string command = "merge_results";
     std::vector<std::string> opts = {
         // "--patterns-file",
         // "/abs/path/to/patterns.json",
@@ -222,80 +222,84 @@ int main(int argc, char** argv) {
             corpus.filter();
             corpus.save(options.filteredCorpusFile.string());
             Logger::log("Main", LogLevel::Info, "Filtering corpus completed successfully.");
+        } else if (command == "merge_results") {
+            auto clusters = PhraseAggregator::aggregatePhrases(options.resDir);
+            ClusterMerger::mergeClusters(clusters);
+            PhraseAggregator::saveClusters(clusters, options.totalResultsPath);
         } else if (command == "compute_text_metrics") {
-            Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
-            auto& corpus = CorpusVocabulary::GetCorpus();
-            corpus.load(options.corpusFile.string());
-            ::Embedding e;
-            auto& storage = PatternPhrasesStorage::getStorage();
-            PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
-            ClusterMerger::mergeClusters(storage, 3, 2);
-            storage.computeTextMetrics();
-            storage.saveClusters(options.totalResultsPath.string());
-            Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");
+            // Logger::log("Main", LogLevel::Info, "Starting computing text metrics...");
+            // auto& corpus = CorpusVocabulary::GetCorpus();
+            // corpus.load(options.corpusFile.string());
+            // ::Embedding e;
+            // auto& storage = PatternPhrasesStorage::getStorage();
+            // PhrasesStorageLoader::loadPhraseStorageFromResultsDir(storage);
+            // ClusterMerger::mergeClusters(storage, 3, 2);
+            // storage.computeTextMetrics();
+            // storage.saveClusters(options.totalResultsPath.string());
+            // Logger::log("Main", LogLevel::Info, "Computing text metrics completed successfully.");
         } else if (command == "load_hypernyms") {
-            // Load hypernym and hyponym relations for stored lemmas
-            Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
-            auto& corpus = CorpusVocabulary::GetCorpus();
-            corpus.load(options.corpusFile.string());
-            ::Embedding e;
-            auto& storage = PatternPhrasesStorage::getStorage();
-            PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
-            storage.loadWikiWNRelations();
-            storage.saveClusters(options.totalResultsPath);
+            // // Load hypernym and hyponym relations for stored lemmas
+            // Logger::log("Main", LogLevel::Info, "Loading hypernyms and hyponyms...");
+            // auto& corpus = CorpusVocabulary::GetCorpus();
+            // corpus.load(options.corpusFile.string());
+            // ::Embedding e;
+            // auto& storage = PatternPhrasesStorage::getStorage();
+            // PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
+            // storage.loadWikiWNRelations();
+            // storage.saveClusters(options.totalResultsPath);
         } else if (command == "perform_lsa") {
             // Load preprocessed data and execute Latent Semantic Analysis (LSA)
-            Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
-            ::Embedding e;
-            auto& storage = PatternPhrasesStorage::getStorage();
-            PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
+            // Logger::log("Main", LogLevel::Info, "Starting LSA analysis...");
+            // ::Embedding e;
+            // auto& storage = PatternPhrasesStorage::getStorage();
+            // PhrasesStorageLoader::loadStorageFromFile(storage, options.totalResultsPath.string());
 
-            auto& sentences = SentenceCorpus::GetCorpus();
-            sentences.load(options.sentencesFile.string());
+            // auto& sentences = SentenceCorpus::GetCorpus();
+            // sentences.load(options.sentencesFile.string());
 
-            LSA lsa(sentences);
-            lsa.PerformAnalysis(false);
+            // LSA lsa(sentences);
+            // lsa.PerformAnalysis(false);
 
-            MatrixXd U = lsa.GetU();
-            MatrixXd Sigma = lsa.GetSigma();
-            MatrixXd V = lsa.GetV();
-            std::vector<std::string> words = lsa.GetWords();
+            // MatrixXd U = lsa.GetU();
+            // MatrixXd Sigma = lsa.GetSigma();
+            // MatrixXd V = lsa.GetV();
+            // std::vector<std::string> words = lsa.GetWords();
 
-            Logger::log("LSA", LogLevel::Info, "LSA analysis completed successfully.");
-            Logger::log("LSA", LogLevel::Info,
-                        "Matrix U size: " + std::to_string(U.rows()) + "x" + std::to_string(U.cols()));
-            Logger::log("LSA", LogLevel::Info,
-                        "Matrix Sigma size: " + std::to_string(Sigma.rows()) + "x" + std::to_string(Sigma.cols()));
-            Logger::log("LSA", LogLevel::Info,
-                        "Matrix V size: " + std::to_string(V.rows()) + "x" + std::to_string(V.cols()));
+            // Logger::log("LSA", LogLevel::Info, "LSA analysis completed successfully.");
+            // Logger::log("LSA", LogLevel::Info,
+            //             "Matrix U size: " + std::to_string(U.rows()) + "x" + std::to_string(U.cols()));
+            // Logger::log("LSA", LogLevel::Info,
+            //             "Matrix Sigma size: " + std::to_string(Sigma.rows()) + "x" + std::to_string(Sigma.cols()));
+            // Logger::log("LSA", LogLevel::Info,
+            //             "Matrix V size: " + std::to_string(V.rows()) + "x" + std::to_string(V.cols()));
 
-            Logger::log("LSA", LogLevel::Info, "Analyzing top topics...");
-            lsa.AnalyzeTopics(5, 30);
+            // Logger::log("LSA", LogLevel::Info, "Analyzing top topics...");
+            // lsa.AnalyzeTopics(5, 30);
 
-            // storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
+            // // storage.UpdateClusterMetrics(U, words, lsa.GetTopics());
 
-            LSA_MetricsConfig config;
-            config.useCosineForCentrality = true;
-            config.useVectorRatioForTopicRelevance = true;
-            config.applySigmaScaling = true;
-            config.maxComponents = 50;
-            storage.calculateLSAMetrics(U, words, Sigma, config);
+            // LSA_MetricsConfig config;
+            // config.useCosineForCentrality = true;
+            // config.useVectorRatioForTopicRelevance = true;
+            // config.applySigmaScaling = true;
+            // config.maxComponents = 50;
+            // storage.calculateLSAMetrics(U, words, Sigma, config);
 
-            storage.saveClusters(options.totalResultsPath);
+            // storage.saveClusters(options.totalResultsPath);
         } else if (command == "get_terminological_phrases") {
-            // Load precomputed results without additional processing
-            Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
-            PhrasesStorageLoader loader;
-            auto& corpus = SentenceCorpus::GetCorpus();
-            corpus.load(options.sentencesFile.string());
+            // // Load precomputed results without additional processing
+            // Logger::log("Main", LogLevel::Info, "Loading precomputed results...");
+            // PhrasesStorageLoader loader;
+            // auto& corpus = SentenceCorpus::GetCorpus();
+            // corpus.load(options.sentencesFile.string());
 
-            ::Embedding e;
+            // ::Embedding e;
 
-            auto& storage = PatternPhrasesStorage::getStorage();
-            loader.loadStorageFromFile(storage, options.totalResultsPath.string());
-            storage.addContextsToClusters();
-            storage.collectTerms();
-            storage.saveClusters(options.termsCandidatesPath.string(), false, true);
+            // auto& storage = PatternPhrasesStorage::getStorage();
+            // loader.loadStorageFromFile(storage, options.totalResultsPath.string());
+            // storage.addContextsToClusters();
+            // storage.collectTerms();
+            // storage.saveClusters(options.termsCandidatesPath.string(), false, true);
         } else {
             std::cerr << "Unknown command: " << command << "\n";
             printUsage(desc);

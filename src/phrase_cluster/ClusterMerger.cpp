@@ -4,62 +4,58 @@
 
 #include <algorithm>
 
-void ClusterMerger::mergeClusters(PatternPhrasesStorage& storage, size_t maxDiff, size_t endLength) {
+size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluster>& clusters, size_t maxDiff,
+                                    size_t endLength) {
     Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");
 
-    auto& clusters = storage.clusters;
+    Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");
+
+    if (clusters.empty()) {
+        Logger::log("ClusterMerger", LogLevel::Warning, "No clusters to merge");
+        return 0;
+    }
 
     size_t originalCount = clusters.size();
+    size_t totalMerged = 0;
 
-    if (originalCount == 0) {
-        Logger::log("ClusterMerger", LogLevel::Warning, "No clusters to merge");
-        return;
-    }
-
-    // Get all keys from the map and sort them
+    // Get all keys and sort them
     std::vector<std::string> sortedKeys;
     sortedKeys.reserve(clusters.size());
-
-    for (const auto& pair : clusters) {
-        sortedKeys.push_back(pair.first);
+    for (const auto& [key, _] : clusters) {
+        sortedKeys.push_back(key);
     }
-
     std::sort(sortedKeys.begin(), sortedKeys.end());
 
     // Iterate over sorted keys and merge similar clusters
     for (size_t i = 1; i < sortedKeys.size(); ++i) {
-        std::string& currentKey = sortedKeys[i];
-        std::string& previousKey = sortedKeys[i - 1];
+        const std::string& currentKey = sortedKeys[i];
+        const std::string& previousKey = sortedKeys[i - 1];
+
+        // Check if clusters still exist (may have been merged already)
+        if (!clusters.contains(currentKey) || !clusters.contains(previousKey)) {
+            continue;
+        }
 
         if (areKeysSimilar(previousKey, currentKey) || areKeysSimilar(previousKey, currentKey, 2, 4, true)) {
             // Move all phrases from the current cluster to the previous cluster
             auto& previousCluster = clusters[previousKey];
             auto& currentCluster = clusters[currentKey];
 
-            for (int j = 0; j < previousCluster.tfidf.size(); j++) {
-                if (currentCluster.tf[j] > previousCluster.tf[j])
-                    previousCluster.tf[j] = currentCluster.tf[j];
-                if (currentCluster.idf[j] > previousCluster.idf[j])
-                    previousCluster.idf[j] = currentCluster.idf[j];
-                if (currentCluster.tfidf[j] > previousCluster.tfidf[j])
-                    previousCluster.tfidf[j] = currentCluster.tfidf[j];
-            }
+            // Merge current into previous
+            mergeClusterData(clusters.at(previousKey), clusters.at(currentKey));
 
-            previousCluster.tagMatch = currentCluster.tagMatch || previousCluster.tagMatch;
-
-            previousCluster.phrases.insert(previousCluster.phrases.end(), currentCluster.phrases.begin(),
-                                           currentCluster.phrases.end());
-
-            // Remove the current cluster after the move
+            // Remove current cluster
             clusters.erase(currentKey);
+            totalMerged++;
         }
     }
 
-    size_t mergedCount = clusters.size();
-
-    logMergeStatistics(originalCount, mergedCount);
+    size_t finalCount = clusters.size();
+    logMergeStatistics(originalCount, finalCount, totalMerged);
 
     Logger::log("ClusterMerger", LogLevel::Info, "Cluster merging completed successfully.");
+
+    return totalMerged;
 }
 
 bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff, size_t endLength,
@@ -74,12 +70,11 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
     while (stream1 >> word) {
         words1.push_back(word);
     }
-
     while (stream2 >> word) {
         words2.push_back(word);
     }
 
-    // If the number of words is different, the keys are not considered similar
+    // Must have same number of words
     if (words1.size() != words2.size()) {
         return false;
     }
@@ -89,86 +84,90 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
 
     // Compare the beginnings and endings of each word
     for (size_t i = 0; i < words1.size(); ++i) {
-        if ((words1[i].length() <= 8 || words2[i].length() <= 8) && words1[i] != words2[i]) {
+        const std::string& w1 = words1[i];
+        const std::string& w2 = words2[i];
+
+        // Short words must match exactly
+        if ((w1.length() <= 8 || w2.length() <= 8) && w1 != w2) {
             return false;
         }
 
-        // Extract the initial parts of the words (everything except the last few characters)
-        std::string start1 =
-            (words1[i].length() > endLength) ? words1[i].substr(0, words1[i].length() - endLength) : "";
-        std::string start2 =
-            (words2[i].length() > endLength) ? words2[i].substr(0, words2[i].length() - endLength) : "";
+        // Extract stems (everything except last endLength chars)
+        std::string stem1 = (w1.length() > endLength) ? w1.substr(0, w1.length() - endLength) : "";
+        std::string stem2 = (w2.length() > endLength) ? w2.substr(0, w2.length() - endLength) : "";
 
-        // Check if the difference in length between the initial parts exceeds maxDiff
-        if (std::abs(static_cast<long>(start1.length()) - static_cast<long>(start2.length())) >= maxDiff) {
+        // Stems must be similar length
+        if (std::abs(static_cast<int>(stem1.length()) - static_cast<int>(stem2.length())) >=
+            static_cast<int>(maxDiff)) {
             return false;
         }
 
-        // Adjust the initial parts to be the same length
-        if (start1.length() != start2.length()) {
-            if (start1.length() > start2.length()) {
-                start1 = start1.substr(0, start2.length());
+        // Equalize stem lengths for comparison
+        if (stem1.length() != stem2.length()) {
+            if (stem1.length() > stem2.length()) {
+                stem1 = stem1.substr(0, stem2.length());
             } else {
-                start2 = start2.substr(0, start1.length());
+                stem2 = stem2.substr(0, stem1.length());
             }
         }
 
-        // Skip comparison if either start is empty
-        if (start1.empty() || start2.empty()) {
+        // Skip if either stem is empty
+        if (stem1.empty() || stem2.empty()) {
             continue;
         }
 
-        // Compare the initial parts of the words
-        if (start1 != start2) {
-            // If initial parts do not match, keys are not similar
+        // Stems must match
+        if (stem1 != stem2) {
             return false;
         }
 
-        // Extract the endings of the words
-        std::string end1 =
-            (words1[i].length() >= endLength) ? words1[i].substr(words1[i].length() - endLength) : words1[i];
-        std::string end2 =
-            (words2[i].length() >= endLength) ? words2[i].substr(words2[i].length() - endLength) : words2[i];
+        // Extract and compare endings
+        std::string end1 = (w1.length() >= endLength) ? w1.substr(w1.length() - endLength) : w1;
+        std::string end2 = (w2.length() >= endLength) ? w2.substr(w2.length() - endLength) : w2;
 
-        // Compare the endings of the words
+        // Count ending differences
         if (end1 != end2) {
             ++diffCount;
 
-            // If CheckFirstOnly is true, only check the first word for differences
             if (checkFirstOnly) {
-                // If the first word has been checked and the difference is not zero, subsequent words must match
-                // exactly
                 firstWordChecked = true;
                 if (diffCount > maxDiff) {
                     return false;
                 }
             } else {
-                // If not checking the first word only, ensure differences don't exceed maxDiff
                 if (diffCount > maxDiff) {
                     return false;
                 }
             }
         }
 
-        // If checkFirstOnly is true and the first word has been checked with differences, ensure remaining words match
+        // If checkFirstOnly and first word checked, remaining words must match exactly
         if (checkFirstOnly && firstWordChecked && i > 0) {
-            if (words1[i] != words2[i]) {
+            if (w1 != w2) {
                 return false;
             }
         }
     }
 
-    // If the number of differences in the endings does not exceed maxDiff, the keys are considered similar
     return diffCount <= maxDiff;
 }
 
-void ClusterMerger::logMergeStatistics(size_t originalCount, size_t mergedCount) {
-    size_t mergedClusters = originalCount - mergedCount;
-    double reductionPercent = (mergedClusters / static_cast<double>(originalCount)) * 100.0;
+void ClusterMerger::mergeClusterData(PhraseCluster& targetCluster, const PhraseCluster& sourceCluster) {
+    // Simply add all phrases from source to target
+    targetCluster.phrases.insert(targetCluster.phrases.end(), sourceCluster.phrases.begin(),
+                                 sourceCluster.phrases.end());
+
+    // Note: All metrics (TF, IDF, TF-IDF, topicRelevance, centrality) are LEFT UNCHANGED
+    // They will be recalculated by MetricsCalculator if needed
+}
+
+void ClusterMerger::logMergeStatistics(size_t originalCount, size_t mergedCount, size_t totalMerged) {
+    double reductionPercent = originalCount > 0 ? (totalMerged / static_cast<double>(originalCount)) * 100.0 : 0.0;
 
     Logger::log("ClusterMerger", LogLevel::Info,
-                "Clusters merged: " + std::to_string(mergedClusters) + " (" +
+                "Clusters merged: " + std::to_string(totalMerged) + " (" +
                     std::to_string(static_cast<int>(reductionPercent)) + "%)");
+
     Logger::log("ClusterMerger", LogLevel::Info,
                 "Result: " + std::to_string(originalCount) + " → " + std::to_string(mergedCount));
 }
