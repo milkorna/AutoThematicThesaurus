@@ -3,11 +3,11 @@
 #include "Options.h"
 
 #include <algorithm>
+#include <ranges>
+#include <sstream>
 
 size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluster>& clusters, size_t maxDiff,
                                     size_t endLength) {
-    Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");
-
     Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");
 
     if (clusters.empty()) {
@@ -24,7 +24,7 @@ size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluste
     for (const auto& [key, _] : clusters) {
         sortedKeys.push_back(key);
     }
-    std::sort(sortedKeys.begin(), sortedKeys.end());
+    std::ranges::sort(sortedKeys);
 
     // Iterate over sorted keys and merge similar clusters
     for (size_t i = 1; i < sortedKeys.size(); ++i) {
@@ -36,11 +36,11 @@ size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluste
             continue;
         }
 
-        if (areKeysSimilar(previousKey, currentKey) || areKeysSimilar(previousKey, currentKey, 2, 4, true)) {
-            // Move all phrases from the current cluster to the previous cluster
-            auto& previousCluster = clusters[previousKey];
-            auto& currentCluster = clusters[currentKey];
+        // Check similarity - delegate both comparisons to areKeysSimilar with different params
+        bool isSimilar = areKeysSimilar(previousKey, currentKey, maxDiff, endLength, false) ||
+                         areKeysSimilar(previousKey, currentKey, maxDiff, endLength, true);
 
+        if (isSimilar) {
             // Merge current into previous
             mergeClusterData(clusters.at(previousKey), clusters.at(currentKey));
 
@@ -58,21 +58,28 @@ size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluste
     return totalMerged;
 }
 
+/**
+ * @brief Helper to split string by whitespace
+ * @param str Input string
+ * @return Vector of words
+ */
+static std::vector<std::string> splitWords(const std::string& str) {
+    std::istringstream stream(str);
+    std::vector<std::string> words;
+    std::string word;
+
+    while (stream >> word) {
+        words.push_back(word);
+    }
+
+    return words;
+}
+
 bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& key2, size_t maxDiff, size_t endLength,
                                    bool checkFirstOnly) {
     // Split keys into words
-    std::istringstream stream1(key1);
-    std::istringstream stream2(key2);
-
-    std::vector<std::string> words1, words2;
-    std::string word;
-
-    while (stream1 >> word) {
-        words1.push_back(word);
-    }
-    while (stream2 >> word) {
-        words2.push_back(word);
-    }
+    auto words1 = splitWords(key1);
+    auto words2 = splitWords(key2);
 
     // Must have same number of words
     if (words1.size() != words2.size()) {
@@ -84,8 +91,8 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
 
     // Compare the beginnings and endings of each word
     for (size_t i = 0; i < words1.size(); ++i) {
-        const std::string& w1 = words1[i];
-        const std::string& w2 = words2[i];
+        const auto& w1 = words1[i];
+        const auto& w2 = words2[i];
 
         // Short words must match exactly
         if ((w1.length() <= 8 || w2.length() <= 8) && w1 != w2) {
@@ -93,8 +100,12 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
         }
 
         // Extract stems (everything except last endLength chars)
-        std::string stem1 = (w1.length() > endLength) ? w1.substr(0, w1.length() - endLength) : "";
-        std::string stem2 = (w2.length() > endLength) ? w2.substr(0, w2.length() - endLength) : "";
+        auto getStem = [endLength](const std::string& word) -> std::string {
+            return (word.length() > endLength) ? word.substr(0, word.length() - endLength) : "";
+        };
+
+        std::string stem1 = getStem(w1);
+        std::string stem2 = getStem(w2);
 
         // Stems must be similar length
         if (std::abs(static_cast<int>(stem1.length()) - static_cast<int>(stem2.length())) >=
@@ -103,41 +114,32 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
         }
 
         // Equalize stem lengths for comparison
-        if (stem1.length() != stem2.length()) {
-            if (stem1.length() > stem2.length()) {
-                stem1 = stem1.substr(0, stem2.length());
-            } else {
-                stem2 = stem2.substr(0, stem1.length());
+        size_t minStemLength = std::min(stem1.length(), stem2.length());
+        if (minStemLength > 0) {
+            // Compare only the common prefix
+            if (stem1.substr(0, minStemLength) != stem2.substr(0, minStemLength)) {
+                return false;
             }
         }
 
-        // Skip if either stem is empty
-        if (stem1.empty() || stem2.empty()) {
-            continue;
-        }
-
-        // Stems must match
-        if (stem1 != stem2) {
-            return false;
-        }
-
         // Extract and compare endings
-        std::string end1 = (w1.length() >= endLength) ? w1.substr(w1.length() - endLength) : w1;
-        std::string end2 = (w2.length() >= endLength) ? w2.substr(w2.length() - endLength) : w2;
+        auto getEnd = [endLength](const std::string& word) -> std::string {
+            return (word.length() >= endLength) ? word.substr(word.length() - endLength) : word;
+        };
+
+        std::string end1 = getEnd(w1);
+        std::string end2 = getEnd(w2);
 
         // Count ending differences
         if (end1 != end2) {
             ++diffCount;
 
+            if (diffCount > maxDiff) {
+                return false;
+            }
+
             if (checkFirstOnly) {
                 firstWordChecked = true;
-                if (diffCount > maxDiff) {
-                    return false;
-                }
-            } else {
-                if (diffCount > maxDiff) {
-                    return false;
-                }
             }
         }
 
@@ -154,8 +156,8 @@ bool ClusterMerger::areKeysSimilar(const std::string& key1, const std::string& k
 
 void ClusterMerger::mergeClusterData(PhraseCluster& targetCluster, const PhraseCluster& sourceCluster) {
     // Simply add all phrases from source to target
-    targetCluster.phrases.insert(targetCluster.phrases.end(), sourceCluster.phrases.begin(),
-                                 sourceCluster.phrases.end());
+    targetCluster.phrases.insert(targetCluster.phrases.end(), std::make_move_iterator(sourceCluster.phrases.begin()),
+                                 std::make_move_iterator(sourceCluster.phrases.end()));
 
     // Note: All metrics (TF, IDF, TF-IDF, topicRelevance, centrality) are LEFT UNCHANGED
     // They will be recalculated by MetricsCalculator if needed

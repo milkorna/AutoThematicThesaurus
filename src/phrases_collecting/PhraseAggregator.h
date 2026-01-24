@@ -92,4 +92,14 @@ class PhraseAggregator {
      */
     [[nodiscard]] static PhraseCluster createClusterFromPhrase(const std::string& key, const PhrasePtr& phrase,
                                                                const std::vector<std::string>& lemmas);
+
+    /**
+     * @brief Counts total number of phrases across all clusters
+     * @details Iterates through all clusters and sums up phrase counts. Used to track
+     * aggregation progress and verify loading correctness.
+     *
+     * @param clusters Map of cluster key to PhraseCluster objects
+     * @return Total count of phrases in all clusters
+     */
+    [[nodiscard]] static size_t countPhrases(const std::unordered_map<std::string, PhraseCluster>& clusters);
 };
