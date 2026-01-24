@@ -80,57 +80,59 @@ struct PhraseCluster {
     /// @brief Flag indicating if the cluster is recognized as a term
     bool is_term = false;
 
-    // ========== HELPER METHODS ==========
+    // // ========== HELPER METHODS ==========
 
-    /**
-     * @brief Get vector of just lemma texts (for backward compatibility)
-     * @return Vector of lemma strings
-     */
-    [[nodiscard]] std::vector<std::string> getLemmaTexts() const {
-        std::vector<std::string> texts;
-        texts.reserve(lemmas.size());
-        for (const auto& lm : lemmas) {
-            texts.push_back(lm.text);
-        }
-        return texts;
-    }
+    // /**
+    //  * @brief Get vector of just lemma texts (for backward compatibility)
+    //  * @return Vector of lemma strings
+    //  */
+    // [[nodiscard]] std::vector<std::string> getLemmaTexts() const {
+    //     std::vector<std::string> texts;
+    //     texts.reserve(lemmas.size());
+    //     for (const auto& lm : lemmas) {
+    //         texts.push_back(lm.text);
+    //     }
+    //     return texts;
+    // }
 
-    /**
-     * @brief Get vector of TF values
-     * @return Vector of TF values in lemma order
-     */
-    [[nodiscard]] std::vector<double> getTfValues() const {
-        std::vector<double> values;
-        values.reserve(lemmas.size());
-        for (const auto& lm : lemmas) {
-            values.push_back(lm.tf);
-        }
-        return values;
-    }
+    // /**
+    //  * @brief Get vector of TF values
+    //  * @return Vector of TF values in lemma order
+    //  */
+    // [[nodiscard]] std::vector<double> getTfValues() const {
+    //     std::vector<double> values;
+    //     values.reserve(lemmas.size());
+    //     for (const auto& lm : lemmas) {
+    //         values.push_back(lm.tf);
+    //     }
+    //     return values;
+    // }
 
-    /**
-     * @brief Get vector of IDF values
-     * @return Vector of IDF values in lemma order
-     */
-    [[nodiscard]] std::vector<double> getIdfValues() const {
-        std::vector<double> values;
-        values.reserve(lemmas.size());
-        for (const auto& lm : lemmas) {
-            values.push_back(lm.idf);
-        }
-        return values;
-    }
+    // /**
+    //  * @brief Get vector of IDF values
+    //  * @return Vector of IDF values in lemma order
+    //  */
+    // [[nodiscard]] std::vector<double> getIdfValues() const {
+    //     std::vector<double> values;
+    //     values.reserve(lemmas.size());
+    //     for (const auto& lm : lemmas) {
+    //         values.push_back(lm.idf);
+    //     }
+    //     return values;
+    // }
 
-    /**
-     * @brief Get vector of TF-IDF values
-     * @return Vector of TF-IDF values in lemma order
-     */
-    [[nodiscard]] std::vector<double> getTfidfValues() const {
-        std::vector<double> values;
-        values.reserve(lemmas.size());
-        for (const auto& lm : lemmas) {
-            values.push_back(lm.tfidf);
-        }
-        return values;
-    }
+    // /**
+    //  * @brief Get vector of TF-IDF values
+    //  * @return Vector of TF-IDF values in lemma order
+    //  */
+    // [[nodiscard]] std::vector<double> getTfidfValues() const {
+    //     std::vector<double> values;
+    //     values.reserve(lemmas.size());
+    //     for (const auto& lm : lemmas) {
+    //         values.push_back(lm.tfidf);
+    //     }
+    //     return values;
+    // }
 };
+
+using PhraseClusters = std::unordered_map<std::string, PhraseCluster>;

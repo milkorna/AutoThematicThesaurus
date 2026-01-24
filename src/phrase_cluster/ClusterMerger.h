@@ -25,8 +25,7 @@ class ClusterMerger {
      *
      * @return Number of clusters merged
      */
-    static size_t mergeClusters(std::unordered_map<std::string, PhraseCluster>& clusters, size_t maxDiff = 2,
-                                size_t endLength = 4);
+    static size_t mergeClusters(PhraseClusters& clusters, size_t maxDiff = 2, size_t endLength = 4);
 
   private:
     /**

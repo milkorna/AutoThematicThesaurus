@@ -126,7 +126,7 @@ class PatternPhrasesStorage {
      *
      * @return Const reference to the clusters map
      */
-    [[nodiscard]] const std::unordered_map<std::string, PhraseCluster> getClusters() const;
+    [[nodiscard]] const PhraseClusters getClusters() const;
 
     /**
      * @brief Collects and filters terminology candidates from clusters
@@ -259,5 +259,5 @@ class PatternPhrasesStorage {
     PatternPhrasesStorage& operator=(const PatternPhrasesStorage&) = delete;
 
     /// @brief Map of cluster key to PhraseCluster data
-    std::unordered_map<std::string, PhraseCluster> clusters;
+    PhraseClusters clusters;
 };

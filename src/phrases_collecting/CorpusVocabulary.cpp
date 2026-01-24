@@ -3,16 +3,16 @@
 #include "StringUtils.h"
 
 using json = nlohmann::ordered_json;
+namespace fs = std::filesystem;
 
-void CorpusVocabulary::save(const std::string& filename) {
-    Logger::log("TextCorpusLoader", LogLevel::Info, "Serializing corpus to file: " + filename);
+void CorpusVocabulary::save(const fs::path& filePath) {
+    Logger::log("TextCorpusLoader", LogLevel::Info, "Serializing corpus to file: " + filePath.string());
 
     try {
-        std::ofstream file(filename);
+        std::ofstream file(filePath);
         if (!file.is_open()) {
-            throw std::runtime_error("Failed to open file for writing: " + filename);
+            throw std::runtime_error("Cannot open output file: ...");
         }
-
         json j = serialize();
         file << j.dump(4);
         file.close();
@@ -24,13 +24,17 @@ void CorpusVocabulary::save(const std::string& filename) {
     }
 }
 
-void CorpusVocabulary::load(const std::string& filename) {
-    Logger::log("TextCorpusLoader", LogLevel::Info, "Loading corpus global statistics from: " + filename);
+void CorpusVocabulary::load(const fs::path& filePath) {
+    Logger::log("TextCorpusLoader", LogLevel::Info, "Loading corpus global statistics from: " + filePath.string());
 
     try {
-        std::ifstream file(filename);
+        if (!fs::exists(filePath)) {
+            throw std::runtime_error("Corpus file not found: ...");
+        }
+
+        std::ifstream file(filePath);
         if (!file.is_open()) {
-            throw std::runtime_error("Failed to open file: " + filename);
+            throw std::runtime_error("Cannot open corpus file: ...");
         }
 
         json j;

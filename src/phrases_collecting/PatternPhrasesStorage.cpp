@@ -239,7 +239,7 @@ void PatternPhrasesStorage::evaluateTermRelevance(const LSA& lsa) {
     // }
 }
 
-const std::unordered_map<std::string, PhraseCluster> PatternPhrasesStorage::getClusters() const {
+const PhraseClusters PatternPhrasesStorage::getClusters() const {
     return clusters;
 }
 

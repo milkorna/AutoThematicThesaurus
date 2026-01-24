@@ -5,9 +5,6 @@
 #include <string>
 #include <unordered_map>
 
-namespace fs = std::filesystem;
-using json = nlohmann::ordered_json;
-
 /**
  * @brief Aggregates and manages phrase clusters from various sources
  * @details Handles loading clusters from multiple sources (results directory, JSON file)
@@ -28,8 +25,7 @@ class ClusterAggregator {
      * @return Map of cluster key to PhraseCluster objects
      * @throws std::runtime_error if directory doesn't exist or is invalid
      */
-    [[nodiscard]] static std::unordered_map<std::string, PhraseCluster>
-    loadFromResultsDirectory(const fs::path& resultsDir);
+    [[nodiscard]] static PhraseClusters loadFromResultsDirectory(const std::filesystem::path& resultsDir);
 
     /**
      * @brief Loads pre-aggregated clusters from JSON file
@@ -41,7 +37,7 @@ class ClusterAggregator {
      * @return Map of cluster key to PhraseCluster objects
      * @throws std::runtime_error if file not found or JSON is invalid
      */
-    [[nodiscard]] static std::unordered_map<std::string, PhraseCluster> loadFromJsonFile(const fs::path& filePath);
+    [[nodiscard]] static PhraseClusters loadFromJsonFile(const std::filesystem::path& filePath);
 
     /**
      * @brief Saves clusters to JSON file
@@ -53,8 +49,7 @@ class ClusterAggregator {
      * @param outputPath Path to output JSON file
      * @throws std::runtime_error if file cannot be opened for writing
      */
-    static void saveClusters(const std::unordered_map<std::string, PhraseCluster>& clusters,
-                             const fs::path& outputPath);
+    static void saveClusters(const PhraseClusters& clusters, const std::filesystem::path& outputPath);
 
   private:
     // ===== Deserialization helpers =====
@@ -66,7 +61,8 @@ class ClusterAggregator {
      * @param resultsDir Directory to search
      * @return Sorted vector of file paths
      */
-    [[nodiscard]] static std::vector<fs::path> getResultFilesFromDirectory(const fs::path& resultsDir);
+    [[nodiscard]] static std::vector<std::filesystem::path>
+    getResultFilesFromDirectory(const std::filesystem::path& resultsDir);
 
     /**
      * @brief Loads and processes single result file
@@ -75,7 +71,7 @@ class ClusterAggregator {
      * @param filePath Path to _res.json file
      * @param clusters Map to add phrases to
      */
-    static void loadResultFile(const fs::path& filePath, std::unordered_map<std::string, PhraseCluster>& clusters);
+    static void loadResultFile(const std::filesystem::path& filePath, PhraseClusters& clusters);
 
     /**
      * @brief Deserializes phrase from JSON object
@@ -84,7 +80,7 @@ class ClusterAggregator {
      * @param obj JSON object with phrase data
      * @return Shared pointer to Phrase, nullptr if invalid
      */
-    [[nodiscard]] static PhrasePtr deserializePhraseFromJson(const json& obj);
+    [[nodiscard]] static PhrasePtr deserializePhraseFromJson(const nlohmann::ordered_json& obj);
 
     /**
      * @brief Deserializes single cluster from JSON object
@@ -94,7 +90,8 @@ class ClusterAggregator {
      * @param clusterJson JSON object representing cluster
      * @return PhraseCluster with all data populated
      */
-    [[nodiscard]] static PhraseCluster deserializeClusterFromJson(const std::string& key, const json& clusterJson);
+    [[nodiscard]] static PhraseCluster deserializeClusterFromJson(const std::string& key,
+                                                                  const nlohmann::ordered_json& clusterJson);
 
     /**
      * @brief Deserializes lemma metrics from JSON
@@ -103,7 +100,7 @@ class ClusterAggregator {
      * @param lemmaJson JSON object with lemma data
      * @return LemmaMetrics with populated fields
      */
-    [[nodiscard]] static LemmaMetrics deserializeLemmaFromJson(const json& lemmaJson);
+    [[nodiscard]] static LemmaMetrics deserializeLemmaFromJson(const nlohmann::ordered_json& lemmaJson);
 
     /**
      * @brief Creates new cluster from phrase
@@ -126,5 +123,5 @@ class ClusterAggregator {
      * @param clusters Map of cluster key to PhraseCluster objects
      * @return Total count of phrases in all clusters
      */
-    [[nodiscard]] static size_t countPhrases(const std::unordered_map<std::string, PhraseCluster>& clusters);
+    [[nodiscard]] static size_t countPhrases(const PhraseClusters& clusters);
 };

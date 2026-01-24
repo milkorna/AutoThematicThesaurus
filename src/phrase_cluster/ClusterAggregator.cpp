@@ -5,10 +5,13 @@
 #include <fstream>
 #include <ranges>
 
-std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromResultsDirectory(const fs::path& resultsDir) {
+using json = nlohmann::ordered_json;
+namespace fs = std::filesystem;
+
+PhraseClusters ClusterAggregator::loadFromResultsDirectory(const fs::path& resultsDir) {
     Logger::log("ClusterAggregator", LogLevel::Info, "Starting cluster aggregation from: " + resultsDir.string());
 
-    std::unordered_map<std::string, PhraseCluster> clusters;
+    PhraseClusters clusters;
 
     if (!fs::exists(resultsDir) || !fs::is_directory(resultsDir)) {
         throw std::runtime_error("Results directory does not exist or is not a directory: " + resultsDir.string());
@@ -46,10 +49,10 @@ std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromResult
     return clusters;
 }
 
-std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromJsonFile(const fs::path& filePath) {
+PhraseClusters ClusterAggregator::loadFromJsonFile(const fs::path& filePath) {
     Logger::log("ClusterAggregator", LogLevel::Info, "Loading clusters from JSON file: " + filePath.string());
 
-    std::unordered_map<std::string, PhraseCluster> clusters;
+    PhraseClusters clusters;
 
     if (!fs::exists(filePath)) {
         throw std::runtime_error("Clusters file not found: " + filePath.string());
@@ -92,8 +95,7 @@ std::unordered_map<std::string, PhraseCluster> ClusterAggregator::loadFromJsonFi
     return clusters;
 }
 
-void ClusterAggregator::saveClusters(const std::unordered_map<std::string, PhraseCluster>& clusters,
-                                     const fs::path& outputPath) {
+void ClusterAggregator::saveClusters(const PhraseClusters& clusters, const fs::path& outputPath) {
     Logger::log("ClusterAggregator", LogLevel::Info, "Saving clusters to: " + outputPath.string());
 
     json outputJson = json::object();
@@ -190,8 +192,7 @@ std::vector<fs::path> ClusterAggregator::getResultFilesFromDirectory(const fs::p
     return resultFiles;
 }
 
-void ClusterAggregator::loadResultFile(const fs::path& filePath,
-                                       std::unordered_map<std::string, PhraseCluster>& clusters) {
+void ClusterAggregator::loadResultFile(const fs::path& filePath, PhraseClusters& clusters) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
         throw std::runtime_error("Cannot open file: " + filePath.string());
@@ -400,7 +401,7 @@ PhraseCluster ClusterAggregator::createClusterFromPhrase(const std::string& key,
     return cluster;
 }
 
-inline size_t ClusterAggregator::countPhrases(const std::unordered_map<std::string, PhraseCluster>& clusters) {
+inline size_t ClusterAggregator::countPhrases(const PhraseClusters& clusters) {
     size_t total = 0;
     for (const auto& [_, cluster] : clusters) {
         total += cluster.phrases.size();

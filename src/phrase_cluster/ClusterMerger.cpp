@@ -6,8 +6,7 @@
 #include <ranges>
 #include <sstream>
 
-size_t ClusterMerger::mergeClusters(std::unordered_map<std::string, PhraseCluster>& clusters, size_t maxDiff,
-                                    size_t endLength) {
+size_t ClusterMerger::mergeClusters(PhraseClusters& clusters, size_t maxDiff, size_t endLength) {
     Logger::log("ClusterMerger", LogLevel::Info, "Starting cluster merging...");
 
     if (clusters.empty()) {

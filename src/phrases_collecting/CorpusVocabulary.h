@@ -1,15 +1,9 @@
 #pragma once
 
-#include <Eigen/Dense>
 #include <boost/algorithm/string.hpp>
-#include <cmath>
-#include <fasttext.h>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <unordered_map>
-
-using namespace Eigen;
-using VectorPtr = std::shared_ptr<fasttext::Vector>;
 
 /**
  * @class CorpusVocabulary
@@ -60,7 +54,7 @@ class CorpusVocabulary {
      * @param filename Output file path
      * @throws std::runtime_error If file cannot be opened or written
      */
-    void save(const std::string& filename);
+    void save(const std::filesystem::path& filePath);
 
     /**
      * @brief Loads global vocabulary statistics from JSON file
@@ -70,7 +64,7 @@ class CorpusVocabulary {
      * @param filename Path to JSON file
      * @throws std::runtime_error If file cannot be opened or JSON is invalid
      */
-    void load(const std::string& filename);
+    void load(const std::filesystem::path& filePath);
 
     // ════════════════════════════════════════════════════════════
     // Data Access
